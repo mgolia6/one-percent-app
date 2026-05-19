@@ -119,7 +119,7 @@ export default function EntryPage() {
           ← LIBRARY
         </button>
       </div>
-      <EntryViewer entry={entry} onComplete={handleComplete} userStats={userStats} />
+      <EntryViewer entry={entry} onComplete={handleComplete} onBack={() => router.push('/')} userStats={userStats} />
     </div>
   )
 }

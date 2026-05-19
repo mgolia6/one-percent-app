@@ -50,7 +50,7 @@ function Celebration({ score, accent }) {
         if (frame > 50) {
           const ta = Math.min(1, (frame - 50) / 20) * fadeAlpha
           ctx.save(); ctx.globalAlpha = ta; ctx.fillStyle = accent; ctx.shadowColor = accent; ctx.shadowBlur = 20
-          ctx.font = "bold 28px 'Inter',sans-serif"; ctx.textAlign = 'center'; ctx.fillText('LOCKED IN 🔒', cx, cy + 60); ctx.restore()
+          ctx.font = "bold 28px 'Inter',sans-serif"; ctx.textAlign = 'center'; ctx.fillText('LOCKED IN', cx, cy + 60); ctx.restore()
         }
         frame++
         if (frame < 140) animRef.current = requestAnimationFrame(tick)
@@ -63,7 +63,8 @@ function Celebration({ score, accent }) {
         const fa = frame > 60 ? 1 - (frame - 60) / 20 : 1, pr = Math.min(1, frame / 50)
         ctx.save(); ctx.translate(cx, cy); ctx.globalAlpha = fa
         ctx.beginPath(); ctx.arc(0, 0, 55, 0, Math.PI * 2); ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 6; ctx.stroke()
-        ctx.beginPath(); ctx.arc(0, 0, 55, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 4 / 3) * pr); ctx.strokeStyle = accent; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.shadowColor = accent; ctx.shadowBlur = 10; ctx.stroke()
+        ctx.beginPath(); ctx.arc(0, 0, 55, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 4 / 3) * pr)
+        ctx.strokeStyle = accent; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.shadowColor = accent; ctx.shadowBlur = 10; ctx.stroke()
         ctx.fillStyle = '#fff'; ctx.font = "bold 24px 'Inter',sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('2/3', 0, 0)
         ctx.restore(); frame++
         if (frame < 80) animRef.current = requestAnimationFrame(tickArc)
@@ -76,7 +77,7 @@ function Celebration({ score, accent }) {
   return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 9999 }} />
 }
 
-export default function EntryViewer({ entry, onComplete, userStats }) {
+export default function EntryViewer({ entry, onComplete, onBack, userStats }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -84,14 +85,14 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
   const [srcOpen, setSrcOpen] = useState(false)
   const [startTime] = useState(Date.now())
   const scoreRef = useRef(null)
+  const completionRef = useRef(null)
   const isFirst = useRef(true)
 
   const ACCENT = entry.accent
   const ACCENT_DIM = entry.accentDim
 
-  // Restore previous quiz state if already completed
   useEffect(() => {
-    if (userStats?.answers) {
+    if (userStats && userStats.answers) {
       setAnswers(userStats.answers)
       setSubmitted(true)
     }
@@ -111,7 +112,7 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
     setSubmitted(true)
     if (score >= 2) setShowCelebration(true)
     setTimeout(() => scoreRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
-    // Report completion upward to parent (page will save to Supabase)
+    setTimeout(() => completionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 800)
     if (onComplete) onComplete({ score, timeToQuiz, answers })
   }
 
@@ -120,6 +121,12 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
     { id: 'midday', label: 'MIDDAY', icon: Lightbulb },
     { id: 'evening', label: 'EVENING', icon: Award },
   ]
+
+  const scoreBg = score === 3 ? 'op-score-perfect' : score === 2 ? 'op-score-close' : 'op-score-low'
+  const scoreBorder = score === 3 ? ACCENT : score === 2 ? '#606060' : '#333'
+  const scoreColor = score === 3 ? ACCENT : score === 2 ? '#ccc' : '#555'
+  const scoreLabel = score === 3 ? 'PERFECT SCORE' : score === 2 ? 'ALMOST THERE' : score === 1 ? 'KEEP GOING' : 'REVIEW & RETRY'
+  const scoreSub = score === 3 ? "You've got this one locked in." : score === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
 
   return (
     <div style={{ background: '#0A0A0A', minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff', maxWidth: 720, margin: '0 auto', paddingBottom: 80 }}>
@@ -130,6 +137,7 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
         @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
         @keyframes popIn{0%{transform:scale(0.85);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
         @keyframes pulseBorder{0%,100%{box-shadow:0 0 0 0 ${ACCENT}44}50%{box-shadow:0 0 0 8px ${ACCENT}11}}
+        @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         .fade-in{animation:fadeIn 0.28s ease forwards}
         .op-tab-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;padding:10px 14px;color:#555;transition:color 0.2s;border-bottom:2px solid transparent;display:flex;align-items:center}
         .op-tab-btn:hover{color:#aaa}
@@ -147,6 +155,10 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
         .op-score-perfect{background:${ACCENT}0f;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards,pulseBorder 1.8s ease-in-out 0.4s 3}
         .op-score-close{background:#1a1a1a}
         .op-score-low{background:#111}
+        .op-completion-card{background:#111;border:1px solid #1a1a1a;border-radius:6px;padding:20px;margin-top:8px;animation:slideUp 0.35s ease forwards}
+        .op-action-primary{display:block;width:100%;background:${ACCENT};color:#0A0A0A;border:none;border-radius:4px;padding:14px;font-size:12px;font-weight:600;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;text-align:center;margin-bottom:8px}
+        .op-action-secondary{display:block;width:100%;background:none;color:#555;border:1px solid #222;border-radius:4px;padding:12px;font-size:11px;font-weight:500;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;text-align:center}
+        .op-action-secondary:hover{color:#999;border-color:#444}
         .op-src-toggle{background:none;border:1px solid #222;padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#555;cursor:pointer;border-radius:3px;letter-spacing:0.08em}
         .op-src-toggle:hover{color:#999;border-color:#444}
         .op-src-link{color:${ACCENT};text-decoration:none;font-size:12px;display:block;margin-bottom:4px;font-family:'Inter',sans-serif;font-weight:500}
@@ -192,9 +204,11 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
 
       {/* Content */}
       <div style={{ padding: '24px 24px 0' }} className="fade-in" key={tab}>
+
+        {/* Morning */}
         {tab === 'morning' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>☀ MORNING BRIEF</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING BRIEF</div>
             <div style={{ fontSize: 20, color: '#fff', lineHeight: 1.5, fontWeight: 400, marginBottom: 20, letterSpacing: '-0.01em' }}>{entry.morning.hook}</div>
             <div style={{ marginBottom: 20 }}>
               {entry.morning.explanation_paragraphs.map((p, i) => (
@@ -206,20 +220,21 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
               <div style={{ fontSize: 14, color: '#bbb', lineHeight: 1.7 }}>{entry.morning.why_today}</div>
             </div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
-              <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>⚡ MORNING CHALLENGE</div>
+              <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING CHALLENGE</div>
               <div style={{ fontSize: 14, color: '#999', lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
             </div>
-            <button className="op-next-btn" onClick={() => setTab('midday')}>☁ MIDDAY →</button>
+            <button className="op-next-btn" onClick={() => setTab('midday')}>MIDDAY</button>
           </div>
         )}
 
+        {/* Midday */}
         {tab === 'midday' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>☁ MIDDAY REFRAME</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MIDDAY REFRAME</div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
               <div style={{ fontSize: 17, color: '#fff', lineHeight: 1.5, fontWeight: 500 }}>{entry.midday.reframe}</div>
             </div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 14, fontWeight: 600, textTransform: 'uppercase', color: '#555' }}>👁 {entry.midday.itw_label}</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 14, fontWeight: 600, textTransform: 'uppercase', color: '#555' }}>{entry.midday.itw_label}</div>
             <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 16, marginBottom: 20 }}>
               {entry.midday.itw_paragraphs.map((p, i) => (
                 <p key={i} style={{ fontSize: 15, color: '#bbb', lineHeight: 1.8, marginBottom: i < entry.midday.itw_paragraphs.length - 1 ? 16 : 0 }}>{p}</p>
@@ -230,13 +245,14 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
               <div style={{ fontSize: 12, color: '#666', letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
             </div>
             <div style={{ fontSize: 14, color: '#777', lineHeight: 1.7, borderTop: '1px solid #141414', paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
-            <button className="op-next-btn" onClick={() => setTab('evening')}>🔥 EVENING →</button>
+            <button className="op-next-btn" onClick={() => setTab('evening')}>EVENING</button>
           </div>
         )}
 
+        {/* Evening */}
         {tab === 'evening' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>🔥 TEST YOURSELF</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>TEST YOURSELF</div>
             {entry.quiz.map((q, qi) => (
               <div key={qi} style={{ marginBottom: 28 }}>
                 <div style={{ fontSize: 14, color: '#ccc', lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
@@ -254,18 +270,37 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
                 {submitted && <div style={{ fontSize: 13, color: '#666', lineHeight: 1.7, marginTop: 10, paddingLeft: 4 }}>{q.explanation}</div>}
               </div>
             ))}
+
             {!submitted && <button className="op-submit-btn" onClick={handleSubmit} disabled={!allAnswered}>SUBMIT</button>}
+
             {submitted && (
-              <div ref={scoreRef} className={`op-score-box ${score === 3 ? 'op-score-perfect' : score === 2 ? 'op-score-close' : 'op-score-low'}`} style={{ border: `2px solid ${score === 3 ? ACCENT : score === 2 ? '#606060' : '#333'}` }}>
-                <div style={{ fontSize: 36, fontWeight: 500, color: score === 3 ? ACCENT : score === 2 ? '#ccc' : '#555' }}>{score}/3</div>
-                <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? '#fff' : '#888', marginTop: 6 }}>
-                  {score === 3 ? 'PERFECT SCORE' : score === 2 ? 'ALMOST THERE' : score === 1 ? 'KEEP GOING' : 'REVIEW & RETRY'}
+              <>
+                <div ref={scoreRef} className={`op-score-box ${scoreBg}`} style={{ border: `2px solid ${scoreBorder}` }}>
+                  <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{score}/3</div>
+                  <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? '#fff' : '#888', marginTop: 6 }}>{scoreLabel}</div>
+                  <div style={{ fontSize: 12, color: '#555', marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
                 </div>
-                <div style={{ fontSize: 12, color: '#555', marginTop: 8, lineHeight: 1.5 }}>
-                  {score === 3 ? "You've got this one locked in." : score === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'}
+
+                {/* Completion action card */}
+                <div ref={completionRef} className="op-completion-card">
+                  <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.12em', fontWeight: 600, marginBottom: 14 }}>WHAT'S NEXT</div>
+                  {onBack && (
+                    <button className="op-action-primary" onClick={onBack}>
+                      BACK TO LIBRARY
+                    </button>
+                  )}
+                  <button className="op-action-secondary" onClick={() => { setSrcOpen(true); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }) }}>
+                    VIEW SOURCES
+                  </button>
+                  {score < 3 && (
+                    <div style={{ fontSize: 12, color: '#333', textAlign: 'center', marginTop: 14, lineHeight: 1.6 }}>
+                      Retake the quiz anytime — it stays live in your library.
+                    </div>
+                  )}
                 </div>
-              </div>
+              </>
             )}
+
             <div style={{ fontSize: 14, color: '#aaa', borderTop: '1px solid #1a1a1a', paddingTop: 20, marginTop: 20, lineHeight: 1.8, fontStyle: 'italic' }}>{entry.closing}</div>
           </div>
         )}
@@ -274,7 +309,7 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
       {/* Sources */}
       <div style={{ padding: '28px 24px 48px' }}>
         <div style={{ borderTop: '1px solid #141414', marginBottom: 18 }} />
-        <button className="op-src-toggle" onClick={() => setSrcOpen(!srcOpen)}>{srcOpen ? '▲' : '▼'} SOURCES</button>
+        <button className="op-src-toggle" onClick={() => setSrcOpen(!srcOpen)}>{srcOpen ? 'HIDE SOURCES' : 'VIEW SOURCES'}</button>
         {srcOpen && (
           <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
             {entry.sources.map((s, i) => (
@@ -284,7 +319,7 @@ export default function EntryViewer({ entry, onComplete, userStats }) {
               </div>
             ))}
             <div style={{ fontSize: 10, color: '#2a2a2a', letterSpacing: '0.1em', marginTop: 8, paddingTop: 12, borderTop: '1px solid #141414', fontWeight: 500 }}>
-              ✓ ALL SOURCES VERIFIED · ENTRY {entry.entry} · {entry.editionId}
+              ALL SOURCES VERIFIED · ENTRY {entry.entry} · {entry.editionId}
             </div>
           </div>
         )}
