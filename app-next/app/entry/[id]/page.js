@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { supabase } from '../../lib/supabase'
-import { isUnlocked } from '../../lib/unlock'
-import EntryViewer from '../../components/EntryViewer'
+import { supabase } from '@/lib/supabase'
+import { isUnlocked } from '@/lib/unlock'
+import EntryViewer from '@/components/EntryViewer'
 
 export default function EntryPage() {
   const router = useRouter()

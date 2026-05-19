@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '../lib/supabase'
-import { getUnlockedCount } from '../lib/unlock'
+import { supabase } from '@/lib/supabase'
+import { getUnlockedCount } from '@/lib/unlock'
 
 const TOTAL_ENTRIES = 16 // update as entries are added
 
