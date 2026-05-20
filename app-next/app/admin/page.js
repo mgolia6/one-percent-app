@@ -41,6 +41,17 @@ export default function AdminPage() {
     setUsers(us || [])
   }
 
+  const refreshAll = async () => {
+    const [{ data: fb }, { data: br }, { data: us }] = await Promise.all([
+      supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
+      supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
+      supabase.from('profiles').select('id, email, name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
+    ])
+    setFeedback(fb || [])
+    setBugs(br || [])
+    setUsers(us || [])
+  }
+
   // Data reset: wipe completions + feedback + streak — keeps account + onboarding
   const resetUserData = async (userId, email) => {
     setResetting(`${email}-data`)
@@ -124,7 +135,10 @@ export default function AdminPage() {
           <div style={{ fontSize: 11, letterSpacing: '0.2em', fontWeight: 600 }}>ONE PERCENT</div>
           <div style={{ fontSize: 9, color: '#47FFE8', letterSpacing: '0.15em', marginTop: 2 }}>ADMIN DASHBOARD</div>
         </div>
-        <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #222', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={refreshAll} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>↻ REFRESH</button>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #222', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+        </div>
       </div>
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px' }}>
