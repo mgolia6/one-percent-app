@@ -100,6 +100,10 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
 
   const submit = async () => {
     if (!allRated) return
+    if (!userId) {
+      setError('Not signed in — please reload and try again.')
+      return
+    }
     setSubmitting(true)
     const { error } = await _supabase.from('feedback').insert({
       user_id: userId,
@@ -111,8 +115,9 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       comment: comment.trim() || null,
     })
     if (error) {
+      console.error('PostEntryFeedback insert error:', error.message, error.code, error.details)
       setSubmitting(false)
-      setError('Something went wrong — tap to retry.')
+      setError(error.message || 'Something went wrong — tap to retry.')
       return
     }
     setDone(true)
