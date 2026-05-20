@@ -93,7 +93,8 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const submit = async () => {
     if (!allRated) return
     setSubmitting(true)
-    const { error } = await _supabase.from('feedback').insert({
+    setError('DEBUG: uid=' + userId + ' entry=' + entryNumber)
+    const result = await _supabase.from('feedback').insert({
       user_id: userId,
       feedback_type: 'post_entry',
       entry_number: entryNumber,
@@ -101,11 +102,18 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       clarity_rating: ratings.clarity,
       quiz_rating: ratings.quiz,
       comment: comment.trim() || null,
-    })
+    }).select()
+    const error = result.error
+    const data = result.data
+    const status = result.status
     if (error) {
-      console.error('Feedback insert failed:', error)
       setSubmitting(false)
-      setError(`Error: ${error.code} — ${error.message}${error.details ? ' | ' + error.details : ''}`)
+      setError(status + ' | ' + error.code + ' — ' + error.message + ' | ' + JSON.stringify(error.details))
+      return
+    }
+    if (!data || data.length === 0) {
+      setSubmitting(false)
+      setError('No data returned (status ' + status + ') — RLS may be blocking silently')
       return
     }
     setDone(true)
