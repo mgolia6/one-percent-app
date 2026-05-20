@@ -11,6 +11,8 @@ export default function AdminPage() {
   const [bugs, setBugs] = useState([])
   const [users, setUsers] = useState([])
   const [tab, setTab] = useState('feedback')
+  const [resetting, setResetting] = useState(null)
+  const [resetConfirm, setResetConfirm] = useState(null)
 
   useEffect(() => {
     async function init() {
@@ -46,6 +48,26 @@ export default function AdminPage() {
     const h = Math.floor(diff / 3600000)
     if (h < 24) return `${h}h ago`
     return `${Math.floor(h / 24)}d ago`
+  }
+
+  const resetUser = async (email) => {
+    setResetting(email)
+    const { data: prof } = await supabase.from('profiles').select('id').eq('email', email).single()
+    if (!prof) { setResetting(null); return }
+    await Promise.all([
+      supabase.from('completions').delete().eq('user_id', prof.id),
+      supabase.from('feedback').delete().eq('user_id', prof.id),
+      supabase.from('profiles').update({
+        current_streak: 0,
+        longest_streak: 0,
+        last_active_date: null,
+      }).eq('id', prof.id),
+    ])
+    setResetting(null)
+    setResetConfirm(null)
+    // Refresh users list
+    const { data: us } = await supabase.from('profiles').select('email, signup_date, current_streak, longest_streak, last_active_date, is_admin').order('signup_date', { ascending: false })
+    setUsers(us || [])
   }
 
   const dailyFb = feedback.filter(f => f.feedback_type === 'daily' || f.feedback_type === 'landing')
@@ -160,17 +182,35 @@ export default function AdminPage() {
           <div>
             <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
             {users.map(u => (
-              <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    {u.email}
-                    {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
+              <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
+                      {u.email}
+                      {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
+                    </div>
+                    <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.06em' }}>
+                      Joined {new Date(u.signup_date).toLocaleDateString()} · Streak: {u.current_streak || 0} · Best: {u.longest_streak || 0}
+                    </div>
                   </div>
-                  <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.06em' }}>
-                    Joined {new Date(u.signup_date).toLocaleDateString()} · Streak: {u.current_streak || 0} · Best: {u.longest_streak || 0}
-                  </div>
+                  <div style={{ fontSize: 10, color: '#333' }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
                 </div>
-                <div style={{ fontSize: 10, color: '#333' }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
+                {/* Reset controls */}
+                <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid #1a1a1a' }}>
+                  {resetConfirm === u.email ? (
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <span style={{ fontSize: 11, color: '#FF4778', flex: 1 }}>Delete all completions + feedback?</span>
+                      <button onClick={() => resetUser(u.email)} disabled={resetting === u.email} style={{ padding: '6px 14px', background: '#FF417822', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: resetting === u.email ? 0.5 : 1 }}>
+                        {resetting === u.email ? 'RESETTING...' : 'CONFIRM'}
+                      </button>
+                      <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
+                    </div>
+                  ) : (
+                    <button onClick={() => setResetConfirm(u.email)} style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+                      RESET USER DATA
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
