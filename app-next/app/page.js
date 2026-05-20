@@ -402,6 +402,7 @@ export default function HomePage() {
   const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
+  const [filter, setFilter] = useState('All')
 
   useEffect(() => {
     async function init() {
@@ -534,8 +535,8 @@ export default function HomePage() {
           <div style={{ display: 'flex', gap: 6 }}>
             {/* Feedback group */}
             <button onClick={() => setShowBug(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
-            <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
-            <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
+            <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
+            <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
 
             {/* Account group */}
             {isAdmin && (
@@ -544,7 +545,7 @@ export default function HomePage() {
           </div>
 
           {/* Sign out pushed to right */}
-          <button onClick={handleSignOut} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
+          <button onClick={handleSignOut} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
       </div>
@@ -571,15 +572,54 @@ export default function HomePage() {
           ].map(s => (
             <div key={s.label} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 4, padding: '14px 12px', textAlign: 'center' }}>
               <div style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 4 }}>{s.value}</div>
-              <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.12em' }}>{s.label}</div>
+              <div style={{ fontSize: 9, color: '#fff', letterSpacing: '0.12em', opacity: 0.6 }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         {/* Entry list */}
-        <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>YOUR LIBRARY</div>
+        <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 600 }}>YOUR LIBRARY</div>
+        
+        {/* Category filter tabs */}
+        <div style={{ display: 'flex', gap: 6, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none' }}>
+          <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
+          {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy'].map(cat => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              style={{
+                background: filter === cat ? (CATEGORY_COLORS[cat] || '#1a1a1a') : 'transparent',
+                color: filter === cat ? '#0a0a0a' : '#555',
+                border: `1px solid ${filter === cat ? 'transparent' : '#333'}`,
+                borderRadius: 3,
+                padding: '4px 10px',
+                fontSize: 9,
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                cursor: 'pointer',
+                fontFamily: "'Inter',sans-serif",
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
+            >
+              {cat.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {ENTRIES.map((e, idx) => {
+          {ENTRIES
+            .filter((e, idx) => {
+              const entryNum = idx + 1
+              const unlocked = entryNum <= unlockedCount
+              const completed = !!completions[e.entry]
+              
+              if (filter === 'All') return true
+              if (filter === 'Unlocked') return unlocked
+              if (filter === 'Completed') return completed
+              return e.category === filter
+            })
+            .map((e, idx) => {
             const entryNum = idx + 1
             const unlocked = entryNum <= unlockedCount
             const completed = !!completions[e.entry]
