@@ -87,7 +87,7 @@ export default function OnboardingPage() {
       if (!session) { router.push('/login'); return }
       setUser(session.user)
 
-      const { data: prof } = await supabase.from('profiles').select('onboarding_complete').eq('id', session.user.id).single()
+      const { data: prof } = await supabase.from('profiles').select('onboarding_complete').eq('id', session.user.id).maybeSingle()
       if (prof?.onboarding_complete) { router.push('/'); return }
     }
     init()
