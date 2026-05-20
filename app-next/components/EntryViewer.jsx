@@ -78,6 +78,8 @@ function Celebration({ score, accent, onDone }) {
 }
 
 
+import { supabase as _supabase } from '@/lib/supabase'
+
 function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const T = theme
   const [ratings, setRatings] = useState({ topic: 0, clarity: 0, quiz: 0 })
@@ -91,8 +93,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const submit = async () => {
     if (!allRated) return
     setSubmitting(true)
-    const { supabase } = await import('@/lib/supabase')
-    const { error } = await supabase.from('feedback').insert({
+    const { error } = await _supabase.from('feedback').insert({
       user_id: userId,
       feedback_type: 'post_entry',
       entry_number: entryNumber,
