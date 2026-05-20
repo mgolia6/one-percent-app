@@ -87,6 +87,10 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState(null)
+  const formRef = useRef(null)
+  useEffect(() => {
+    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
+  }, [])
 
   const allRated = ratings.topic && ratings.clarity && ratings.quiz
 
@@ -108,7 +112,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       return
     }
     setDone(true)
-    if (onSubmit) onSubmit()
+    setTimeout(() => { if (onSubmit) onSubmit() }, 2000)
   }
 
   const RatingRow = ({ label, sublabel, field }) => (
@@ -139,7 +143,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   )
 
   return (
-    <div style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
+    <div ref={formRef} style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
       <div style={{ fontSize: 10, color: T.textDim, letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>QUICK FEEDBACK</div>
       <div style={{ fontSize: 13, color: T.textMid, marginBottom: 20, lineHeight: 1.5 }}>Rate this entry — helps shape what comes next.</div>
       <RatingRow label="TOPIC" sublabel="Interesting / relevant?" field="topic" />

@@ -205,10 +205,12 @@ export default function EntryPage() {
   return (
     <div>
       {showWeeklyFeedback && <WeeklyFeedbackModal userId={user?.id} onClose={() => setShowWeeklyFeedback(false)} />}
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '16px 24px 0' }}>
-        <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: '#555', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", padding: 0 }}>
-          ← LIBRARY
-        </button>
+      <div style={{ position: 'sticky', top: 0, zIndex: 20, background: '#0A0A0A', borderBottom: '1px solid #141414' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px' }}>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: '#555', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", padding: 0 }}>
+            ← LIBRARY
+          </button>
+        </div>
       </div>
       <EntryViewer entry={entry} onComplete={handleComplete} onBack={() => router.push('/')} userStats={userStats} userId={user?.id} />
     </div>
