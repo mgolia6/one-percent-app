@@ -23,12 +23,13 @@ export default function AdminPage() {
       console.log('[admin] profile fetch:', prof, profError)
       if (profError || !prof?.is_admin) { router.push('/'); return }
 
-      const [{ data: fb }, { data: br }, { data: us }] = await Promise.all([
+      const [{ data: fb }, { data: br }, { data: us, error: usError }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('profiles').select('id, email, name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
       ])
 
+      console.log('[admin] users fetch:', us, usError)
       setFeedback(fb || [])
       setBugs(br || [])
       setUsers(us || [])
