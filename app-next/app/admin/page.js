@@ -70,7 +70,7 @@ export default function AdminPage() {
     setUsers(us || [])
   }
 
-  const dailyFb = feedback.filter(f => f.feedback_type === 'daily' || f.feedback_type === 'landing')
+  const dailyFb = feedback.filter(f => f.feedback_type === 'daily' || f.feedback_type === 'landing' || f.feedback_type === 'post_entry')
   const weeklyFb = feedback.filter(f => f.feedback_type === 'weekly')
 
   return (
@@ -93,7 +93,7 @@ export default function AdminPage() {
             { label: 'USERS', value: users.length },
             { label: 'FEEDBACK', value: feedback.length },
             { label: 'BUGS', value: bugs.length },
-            { label: 'AVG RATING', value: dailyFb.length ? (dailyFb.reduce((a, f) => a + (f.rating || 0), 0) / dailyFb.filter(f => f.rating).length).toFixed(1) + '/5' : '—' },
+            { label: 'AVG RATING', value: dailyFb.length ? (dailyFb.reduce((a, f) => a + (f.overall_rating || f.topic_rating || 0), 0) / dailyFb.filter(f => f.overall_rating || f.topic_rating).length).toFixed(1) + '/5' : '—' },
           ].map(s => (
             <div key={s.label} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 4, padding: '14px 12px', textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{s.value}</div>
@@ -145,7 +145,7 @@ export default function AdminPage() {
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: f.comment ? 8 : 0 }}>
                       <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
-                      {f.rating && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.rating}/5</span>}
+                      {(f.overall_rating || f.topic_rating) && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.overall_rating || f.topic_rating}/5</span>}
                       <span style={{ fontSize: 9, color: '#333', letterSpacing: '0.08em' }}>{f.feedback_type?.toUpperCase()}</span>
                     </div>
                     {f.comment && <div style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}

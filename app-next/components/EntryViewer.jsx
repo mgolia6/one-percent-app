@@ -89,7 +89,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const [error, setError] = useState(null)
   const formRef = useRef(null)
   useEffect(() => {
-    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
+    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 1200)
   }, [])
 
   const allRated = ratings.topic && ratings.clarity && ratings.quiz
@@ -112,7 +112,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       return
     }
     setDone(true)
-    setTimeout(() => { if (onSubmit) onSubmit() }, 2000)
+    setTimeout(() => { if (onSubmit) onSubmit() }, 4000)
   }
 
   const RatingRow = ({ label, sublabel, field }) => (
@@ -138,7 +138,8 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
 
   if (done) return (
     <div style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12, textAlign: 'center' }}>
-      <div style={{ fontSize: 13, color: T.textDim, letterSpacing: '0.08em' }}>FEEDBACK LOGGED — THANKS 🙏</div>
+      <div style={{ fontSize: 11, color: T.textDim, letterSpacing: '0.12em', fontWeight: 600 }}>FEEDBACK LOGGED</div>
+      <div style={{ fontSize: 12, color: T.textFaint, marginTop: 6, letterSpacing: '0.04em' }}>That helps. For real.</div>
     </div>
   )
 
