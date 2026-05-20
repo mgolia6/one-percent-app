@@ -926,3 +926,48 @@ All 16 entries have JSON files in `public/entries/`:
 NEXT_PUBLIC_SUPABASE_URL=https://uuzdlubbynavybttlmeh.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1emRsdWJieW5hdnlidHRsbWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTAzMDQsImV4cCI6MjA5NDc4NjMwNH0.Wtd0HkesOp1n3CMUdxeX_AqPpv0s5oiBcvfKkTLM-p0
 ```
+
+---
+
+## Session Update 2026-05-20
+
+### Design Direction — IMPORTANT
+**Pivoting away from all-dark.** New aesthetic direction approved by Matthew:
+- **Light blue-gray** is the new default — fresh, airy, not dark
+- Library/home page: light permanently
+- Entry experience: day/night theme follows the tab
+  - Morning tab → light blue-gray (`#f0f4f8` gradient)
+  - Midday tab → warm amber-dark
+  - Evening/Quiz tab → original dark (`#0A0A0A`)
+- Fade transition between themes (0.4–0.6s ease) when switching tabs
+- Onboarding page is the style reference for the new direction
+
+### Onboarding Flow — BUILT & DEPLOYED
+`/app-next/app/onboarding/page.js` — 6-screen interactive commitment flow
+- Fires for any user where `onboarding_complete = false`
+- Light blue-gray aesthetic, DM Mono + DM Sans
+- Screens: Welcome → Access → Daily Feedback → Day 15 → Day 30 → Name capture
+- Committed pills accumulate as user taps through
+- Writes `name` + `onboarding_complete: true` to profiles on completion
+
+### Post-Entry Feedback — BUILT & DEPLOYED
+`PostEntryFeedback` component in `EntryViewer.jsx`
+- Fires after every quiz submission
+- Ratings: Topic · Content · Quiz (1–5 each)
+- Optional freeflow comment
+- Writes to `feedback` table, `feedback_type: 'post_entry'`
+
+### Supabase Schema Additions — APPLIED
+Run `supabase-schema-additions.sql` if setting up fresh:
+- `profiles`: `name`, `onboarding_complete`, `is_admin`
+- `feedback` table: full rating fields + entry_number
+- `bug_reports` table
+
+### Verify Codeword
+**Dead Drop** — Matthew verifies a claim interactively. I surface it, he hunts it down.
+
+### Known Bugs (fix before next content push)
+1. **CRITICAL — Content mismatch:** Entries serving wrong content (see BUGS.md)
+2. Celebration overlay stuck on screen, blocks post-entry feedback
+3. Quiz tab rendering too light after theme patch
+4. Multi-threading not working
