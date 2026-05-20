@@ -226,6 +226,8 @@ function BugModal({ userId, onClose }) {
               <option>Entry — Morning</option>
               <option>Entry — Midday</option>
               <option>Entry — Evening / Quiz</option>
+              <option>Onboarding</option>
+              <option>Info</option>
               <option>Login</option>
               <option>Other</option>
             </select>
