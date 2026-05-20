@@ -583,45 +583,45 @@ export default function HomePage() {
         
         {/* Category filter tabs */}
         <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
-        <div className="filter-tabs" style={{ display: 'flex', gap: 0, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
-          {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
-            const isSelected = filter === cat
-            const categoryColor = CATEGORY_COLORS[cat]
-            const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
-            const accentColor = isSystemTab ? '#555' : categoryColor
+        <div style={{ background: '#111', borderRadius: 8, padding: '4px 4px', marginBottom: 16 }}>
+          <div className="filter-tabs" style={{ display: 'flex', gap: 0, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+            {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
+              const isSelected = filter === cat
+              const categoryColor = CATEGORY_COLORS[cat]
+              const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
+              const accentColor = isSystemTab ? '#888' : categoryColor
 
-            return (
-              <button
-                key={cat}
-                onClick={() => {
-                  setFilter(cat)
-                  setTimeout(() => {
-                    libraryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }, 50)
-                }}
-                style={{
-                  background: 'transparent',
-                  color: isSelected ? (isSystemTab ? '#0a0a0a' : categoryColor) : (accentColor || '#555'),
-                  border: 'none',
-                  borderBottom: isSelected ? `2px solid ${isSystemTab ? '#0a0a0a' : categoryColor}` : '2px solid transparent',
-                  borderRadius: 0,
-                  padding: '6px 12px 8px',
-                  fontSize: 9,
-                  fontWeight: isSelected ? 700 : 500,
-                  letterSpacing: '0.08em',
-                  cursor: 'pointer',
-                  fontFamily: "'Inter',sans-serif",
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  opacity: isSelected ? 1 : 0.45,
-                  transition: 'all 0.15s ease',
-                  marginBottom: -1,
-                }}
-              >
-                {cat.toUpperCase()}
-              </button>
-            )
-          })}
+              return (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setFilter(cat)
+                    setTimeout(() => {
+                      libraryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }, 50)
+                  }}
+                  style={{
+                    background: isSelected ? (isSystemTab ? '#2a2a2a' : `${categoryColor}18`) : 'transparent',
+                    color: isSelected ? (isSystemTab ? '#fff' : categoryColor) : (accentColor || '#888'),
+                    border: 'none',
+                    borderRadius: 6,
+                    padding: '6px 12px',
+                    fontSize: 9,
+                    fontWeight: isSelected ? 700 : 500,
+                    letterSpacing: '0.08em',
+                    cursor: 'pointer',
+                    fontFamily: "'Inter',sans-serif",
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    opacity: isSelected ? 1 : 0.55,
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  {cat.toUpperCase()}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         <div ref={libraryRef} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
