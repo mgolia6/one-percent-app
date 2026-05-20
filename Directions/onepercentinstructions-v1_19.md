@@ -971,3 +971,36 @@ Run `supabase-schema-additions.sql` if setting up fresh:
 2. Celebration overlay stuck on screen, blocks post-entry feedback
 3. Quiz tab rendering too light after theme patch
 4. Multi-threading not working
+
+---
+
+## Feedback System Reference (updated 2026-05-20)
+
+Three distinct feedback surfaces — all write to `feedback` table with different `feedback_type`:
+
+### 1. Daily Post-Entry (`feedback_type: 'post_entry'`)
+File: `components/EntryViewer.jsx` — `PostEntryFeedback` component
+Fires: After every quiz submission
+Fields: `topic_rating`, `clarity_rating`, `quiz_rating`, `comment`, `entry_number`
+Labels to user: Topic · Content · Quiz + optional freeflow
+
+### 2. Weekly Modal (`feedback_type: 'weekly'`)
+File: `app/entry/[id]/page.js` — `WeeklyFeedbackModal` component
+Fires: Auto on day 7, 14, 21, 28 from signup when entry is opened
+Fields: `topic_rating`, `clarity_rating`, `quiz_rating`, `would_recommend`, `biggest_win`, `missing_topics`
+About overall product experience, not a specific entry
+
+### 3. Anytime Button (`feedback_type: 'landing'`)
+File: `app/page.js` — `FeedbackModal` component
+Fires: User taps FEEDBACK button on library/home page
+Fields: `overall_rating`, `comment`
+Also: BUG button → writes to separate `bug_reports` table
+
+### Supabase Project
+- Name: one-percent-better
+- ID: `uuzdlubbynavybttlmeh`
+- MCP connected — new sessions can use Supabase tools directly
+- Schema additions SQL: `app-next/supabase-schema-additions.sql`
+
+### feedback Table Columns (current)
+`id`, `user_id`, `feedback_type`, `entry_number`, `topic_rating`, `clarity_rating`, `quiz_rating`, `overall_rating`, `would_recommend` (text), `missing_topics`, `biggest_win`, `comment`, `created_at`
