@@ -204,9 +204,9 @@ const THEMES = {
     surface: 'rgba(255,255,255,0.06)',
     surfaceBorder: 'rgba(255,255,255,0.08)',
     text: '#f0f2f5',
-    textMid: 'rgba(240,242,245,0.65)',
-    textDim: 'rgba(240,242,245,0.35)',
-    textFaint: 'rgba(240,242,245,0.18)',
+    textMid: 'rgba(240,242,245,0.70)',
+    textDim: 'rgba(240,242,245,0.50)',
+    textFaint: 'rgba(240,242,245,0.30)',
     border: 'rgba(255,255,255,0.07)',
     borderMid: 'rgba(255,255,255,0.1)',
     headerBg: 'rgba(34,37,46,0.92)',
@@ -221,9 +221,9 @@ const THEMES = {
     surface: 'rgba(255,255,255,0.05)',
     surfaceBorder: 'rgba(255,255,255,0.07)',
     text: '#e8eaf0',
-    textMid: 'rgba(232,234,240,0.65)',
-    textDim: 'rgba(232,234,240,0.35)',
-    textFaint: 'rgba(232,234,240,0.15)',
+    textMid: 'rgba(232,234,240,0.70)',
+    textDim: 'rgba(232,234,240,0.50)',
+    textFaint: 'rgba(232,234,240,0.30)',
     border: 'rgba(255,255,255,0.06)',
     borderMid: 'rgba(255,255,255,0.09)',
     headerBg: 'rgba(22,24,32,0.95)',
@@ -238,9 +238,9 @@ const THEMES = {
     surface: '#111',
     surfaceBorder: '#1a1a1a',
     text: '#fff',
-    textMid: '#bbb',
-    textDim: '#555',
-    textFaint: '#333',
+    textMid: '#ccc',
+    textDim: '#888',
+    textFaint: '#555',
     border: '#141414',
     borderMid: '#222',
     headerBg: '#0A0A0A',
@@ -402,7 +402,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING CHALLENGE</div>
               <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
             </div>
-            <button className="op-next-btn" onClick={() => setTab('midday')}>MIDDAY</button>
+            <button className="op-next-btn" onClick={() => { setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>MIDDAY</button>
           </div>
         )}
 
@@ -424,7 +424,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 12, color: T.textDim, letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
             </div>
             <div style={{ fontSize: 14, color: T.textDim, lineHeight: 1.7, borderTop: `1px solid ${T.border}`, paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
-            <button className="op-next-btn" onClick={() => setTab('evening')}>EVENING</button>
+            <button className="op-next-btn" onClick={() => { setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>EVENING</button>
           </div>
         )}
 

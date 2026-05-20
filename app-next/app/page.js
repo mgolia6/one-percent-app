@@ -496,6 +496,7 @@ export default function HomePage() {
         {/* Row 1 — wordmark */}
         <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
+          <span style={{ fontSize: 9, background: '#E8FF4722', color: '#E8FF47', border: '1px solid #E8FF4744', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
           {isAdmin && (
             <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
           )}
@@ -524,6 +525,7 @@ export default function HomePage() {
           {isAdmin && (
             <button onClick={() => router.push('/admin')} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
           )}
+          <button onClick={() => router.push('/profile')} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>PROFILE</button>
           <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
