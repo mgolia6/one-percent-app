@@ -19,8 +19,9 @@ export default function AdminPage() {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/login'); return }
 
-      const { data: prof } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).single()
-      if (!prof?.is_admin) { router.push('/'); return }
+      const { data: prof, error: profError } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).maybeSingle()
+      console.log('[admin] profile fetch:', prof, profError)
+      if (profError || !prof?.is_admin) { router.push('/'); return }
 
       const [{ data: fb }, { data: br }, { data: us }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),

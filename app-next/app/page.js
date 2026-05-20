@@ -411,6 +411,7 @@ export default function HomePage() {
       setUser(session.user)
 
       let { data: prof, error: profError } = await supabase.from('profiles').select('*').eq('id', session.user.id).maybeSingle()
+      console.log('[library] profile fetch:', prof, profError)
       if (profError) {
         console.error('Profile fetch error:', profError)
         setLoading(false)
