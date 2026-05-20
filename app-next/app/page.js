@@ -494,12 +494,34 @@ export default function HomePage() {
       <div style={{ maxWidth: 720, margin: '0 auto', borderBottom: '1px solid #141414' }}>
 
         {/* Row 1 — wordmark */}
-        <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
-          <span style={{ fontSize: 9, background: '#E8FF4722', color: '#E8FF47', border: '1px solid #E8FF4744', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
-          {isAdmin && (
-            <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
-          )}
+        <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
+            <span style={{ fontSize: 9, background: '#E8FF4722', color: '#E8FF47', border: '1px solid #E8FF4744', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
+            {isAdmin && (
+              <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
+            )}
+          </div>
+          {/* Profile avatar */}
+          <button
+            onClick={() => router.push('/profile')}
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              background: '#1a1a1a',
+              border: '1px solid #2a2a2a',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              fontSize: 14,
+              color: '#666',
+              padding: 0,
+            }}
+          >
+            👤
+          </button>
         </div>
 
         {/* Divider */}
@@ -525,7 +547,6 @@ export default function HomePage() {
           {isAdmin && (
             <button onClick={() => router.push('/admin')} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
           )}
-          <button onClick={() => router.push('/profile')} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>PROFILE</button>
           <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
