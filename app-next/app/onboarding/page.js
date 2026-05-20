@@ -223,6 +223,15 @@ export default function OnboardingPage() {
         <div style={{ height: '100%', width: `${progress}%`, background: 'rgba(26,42,58,0.3)', transition: 'width 0.4s ease' }} />
       </div>
 
+      {/* Bottom reference note — appears from step 2 onward */}
+      {step > 0 && (
+        <div style={{ position: 'fixed', bottom: committed.length > 0 ? 80 : 28, left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}>
+          <div style={{ fontSize: 10, color: 'rgba(26,42,58,0.3)', letterSpacing: '0.08em', fontFamily: "'DM Mono', monospace" }}>
+            You can revisit this anytime — tap <span style={{ color: 'rgba(26,42,58,0.5)', fontWeight: 500 }}>INFO</span> in your library.
+          </div>
+        </div>
+      )}
+
       {/* Committed pills */}
       {committed.length > 0 && (
         <div style={{ position: 'fixed', bottom: 28, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 8, flexWrap: 'wrap', padding: '0 24px' }}>

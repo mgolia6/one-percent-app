@@ -289,73 +289,101 @@ const HOW_IT_WORKS = [
 ]
 
 function HowItWorksModal({ onClose }) {
+  const [step, setStep] = useState(0)
+  const [animate, setAnimate] = useState(true)
+
+  const current = HOW_IT_WORKS[step]
+  const isLast = step === HOW_IT_WORKS.length - 1
+  const isFirst = step === 0
+  const progress = (step / (HOW_IT_WORKS.length - 1)) * 100
+
+  const go = (dir) => {
+    setAnimate(false)
+    setTimeout(() => {
+      setStep(s => s + dir)
+      setAnimate(true)
+    }, 160)
+  }
+
   return (
     <div
       onClick={onClose}
       style={{
-        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)',
-        display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
-        zIndex: 1000, padding: '24px 24px 48px', overflowY: 'auto',
+        position: 'fixed', inset: 0, zIndex: 1000,
+        background: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        padding: '24px', overflow: 'hidden',
+        fontFamily: "'DM Mono', 'Courier New', monospace",
       }}
     >
-      <div
-        onClick={e => e.stopPropagation()}
-        style={{
-          background: '#111', border: '1px solid #222', borderRadius: 8,
-          maxWidth: 420, width: '100%', marginTop: 24,
-          fontFamily: "'Inter', sans-serif",
-        }}
-      >
-        {/* Modal header */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          padding: '18px 24px', borderBottom: '1px solid #1a1a1a',
-        }}>
-          <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', fontWeight: 600 }}>HOW IT WORKS</div>
-          <button
-            onClick={onClose}
-            style={{ background: 'none', border: 'none', color: '#444', fontSize: 18, cursor: 'pointer', lineHeight: 1, padding: 0 }}
-          >✕</button>
-        </div>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+        .hiw-card { opacity: 0; transform: translateY(14px); transition: opacity 0.28s ease, transform 0.28s ease; }
+        .hiw-card.visible { opacity: 1; transform: translateY(0); }
+        .hiw-btn { background: #1a2a3a; color: #e8eef5; border: none; border-radius: 4px; padding: 14px 24px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+        .hiw-btn:hover { background: #243548; transform: translateY(-1px); }
+        .hiw-btn:active { transform: translateY(0); }
+        .hiw-btn-ghost { background: none; border: 1px solid rgba(26,42,58,0.15); color: rgba(26,42,58,0.45); border-radius: 4px; padding: 14px 24px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+        .hiw-btn-ghost:hover { border-color: rgba(26,42,58,0.3); color: rgba(26,42,58,0.65); }
+        .noise-hiw { position: fixed; inset: 0; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 200px 200px; }
+      `}</style>
 
-        {/* Sections */}
-        <div style={{ padding: '0 24px 32px' }}>
-          {HOW_IT_WORKS.map((section, i) => (
-            <div
-              key={i}
-              style={{
-                paddingTop: 28,
-                paddingBottom: 28,
-                borderBottom: i < HOW_IT_WORKS.length - 1 ? '1px solid #1a1a1a' : 'none',
-              }}
-            >
-              <div style={{ fontSize: 9, letterSpacing: '0.18em', color: '#444', fontWeight: 600, marginBottom: 10 }}>
-                {section.eyebrow}
-              </div>
-              <div style={{ fontSize: 17, color: '#fff', fontWeight: 500, lineHeight: 1.3, marginBottom: 14, letterSpacing: '-0.01em' }}>
-                {section.heading}
-              </div>
-              {section.body.split('\n\n').map((para, j) => (
-                <p key={j} style={{ fontSize: 13, color: '#666', lineHeight: 1.75, marginBottom: j < section.body.split('\n\n').length - 1 ? 10 : 0 }}>
-                  {para}
-                </p>
-              ))}
-            </div>
+      <div className="noise-hiw" />
+      <div style={{ position: 'fixed', top: '-15%', right: '-10%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(147,197,235,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'fixed', bottom: '-10%', left: '-5%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(180,210,240,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      {/* Progress bar */}
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 2, background: 'rgba(26,42,58,0.08)' }}>
+        <div style={{ height: '100%', width: `${progress}%`, background: 'rgba(26,42,58,0.3)', transition: 'width 0.4s ease' }} />
+      </div>
+
+      {/* Top bar */}
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px' }}>
+        <div style={{ fontSize: 10, letterSpacing: '0.25em', color: 'rgba(26,42,58,0.4)', fontWeight: 500 }}>HOW IT WORKS</div>
+        <button onClick={onClose} style={{ background: 'none', border: 'none', fontSize: 16, color: 'rgba(26,42,58,0.35)', cursor: 'pointer', padding: 4, lineHeight: 1 }}>✕</button>
+      </div>
+
+      {/* Step dots */}
+      <div style={{ display: 'flex', gap: 6, marginBottom: 40 }} onClick={e => e.stopPropagation()}>
+        {HOW_IT_WORKS.map((_, i) => (
+          <div
+            key={i}
+            onClick={() => { setAnimate(false); setTimeout(() => { setStep(i); setAnimate(true) }, 160) }}
+            style={{
+              width: i === step ? 20 : 6, height: 6, borderRadius: 3,
+              background: i <= step ? 'rgba(26,42,58,0.5)' : 'rgba(26,42,58,0.12)',
+              transition: 'all 0.3s ease', cursor: 'pointer',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Card */}
+      <div className={`hiw-card${animate ? ' visible' : ''}`} style={{ width: '100%', maxWidth: 420 }} onClick={e => e.stopPropagation()}>
+        <div style={{ fontSize: 9, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.4)', fontWeight: 500, marginBottom: 14 }}>
+          {current.eyebrow}
+        </div>
+        <div style={{ fontSize: 26, fontWeight: 400, color: '#1a2a3a', lineHeight: 1.25, marginBottom: 20, fontFamily: "'DM Sans', sans-serif", letterSpacing: '-0.02em' }}>
+          {current.heading}
+        </div>
+        <div style={{ marginBottom: 36 }}>
+          {current.body.split('\n\n').map((para, i, arr) => (
+            <p key={i} style={{ fontSize: 14, color: 'rgba(26,42,58,0.65)', lineHeight: 1.8, marginBottom: i < arr.length - 1 ? 14 : 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}>
+              {para}
+            </p>
           ))}
         </div>
 
-        {/* Footer */}
-        <div style={{ padding: '16px 24px 24px', borderTop: '1px solid #1a1a1a', textAlign: 'center' }}>
-          <button
-            onClick={onClose}
-            style={{
-              background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 4,
-              padding: '12px 32px', fontSize: 11, color: '#555', cursor: 'pointer',
-              letterSpacing: '0.1em', fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            GOT IT
-          </button>
+        {/* Nav buttons */}
+        <div style={{ display: 'flex', gap: 10 }}>
+          {!isFirst && (
+            <button className="hiw-btn-ghost" onClick={() => go(-1)} style={{ flex: 1 }}>← BACK</button>
+          )}
+          {!isLast ? (
+            <button className="hiw-btn" onClick={() => go(1)} style={{ flex: isFirst ? 1 : 2 }}>NEXT →</button>
+          ) : (
+            <button className="hiw-btn" onClick={onClose} style={{ flex: isFirst ? 1 : 2 }}>DONE →</button>
+          )}
         </div>
       </div>
     </div>
