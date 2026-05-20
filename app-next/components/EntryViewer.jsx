@@ -173,9 +173,19 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
         border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600,
         color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed',
         letterSpacing: '0.08em', fontFamily: "\'Inter\',sans-serif",
-        opacity: submitting ? 0.6 : 1,
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
       }}>
-        {submitting ? 'SENDING...' : error ? 'RETRY' : 'SUBMIT'}
+        {submitting ? (
+          <>
+            {[0,1,2].map(i => (
+              <span key={i} style={{
+                width: 5, height: 5, borderRadius: '50%', background: '#0a0a0a', display: 'inline-block',
+                animation: `fbDot 1.2s ease-in-out ${i * 0.2}s infinite`,
+              }} />
+            ))}
+            <style>{`@keyframes fbDot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }`}</style>
+          </>
+        ) : error ? 'RETRY' : 'SUBMIT'}
       </button>
     </div>
   )
