@@ -475,7 +475,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     userId={userId}
                     accent={ACCENT}
                     theme={T}
-                    onSubmit={() => setShowEntryFeedback(false)}
+                    onSubmit={() => setTimeout(() => setShowEntryFeedback(false), 3000)}
                   />
                 )}
 
