@@ -104,6 +104,7 @@ export default function OnboardingPage() {
         name: name.trim(),
         onboarding_complete: true,
       }).eq('id', user.id)
+      sessionStorage.removeItem('welcomed')
       router.push('/')
       return
     }
