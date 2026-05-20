@@ -490,7 +490,7 @@ export default function HomePage() {
       })()}
 
       {/* Header */}
-      <div style={{ maxWidth: 720, margin: '0 auto', borderBottom: '1px solid #333' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
 
         {/* Row 1 — wordmark */}
         <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -523,29 +523,27 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Divider */}
-        <div style={{ height: '1px', background: '#333', margin: '0 24px' }} />
-
         {/* Row 2 — action bar, scrollable */}
         <div style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '10px 24px 12px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6,
+          padding: '10px 24px 20px',
           overflowX: 'auto', scrollbarWidth: 'none',
         }}>
           <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
 
-          {/* Feedback group */}
-          <button onClick={() => setShowBug(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
-          <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
-          <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {/* Feedback group */}
+            <button onClick={() => setShowBug(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
+            <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
+            <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
 
-          {/* Separator dot */}
-          <span style={{ color: '#333', fontSize: 14, flexShrink: 0, margin: '0 4px' }}>·</span>
+            {/* Account group */}
+            {isAdmin && (
+              <button onClick={() => router.push('/admin')} style={{ background: '#1a1a1a', border: '1px solid #47FFE844', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
+            )}
+          </div>
 
-          {/* Account group */}
-          {isAdmin && (
-            <button onClick={() => router.push('/admin')} style={{ background: '#1a1a1a', border: '1px solid #47FFE844', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
-          )}
+          {/* Sign out pushed to right */}
           <button onClick={handleSignOut} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
