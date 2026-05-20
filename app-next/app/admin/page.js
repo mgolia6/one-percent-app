@@ -326,7 +326,10 @@ export default function AdminPage() {
         {/* Users tab */}
         {tab === 'users' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
+            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 8, fontWeight: 600 }}>USERS ({users.length})</div>
+            <div style={{ fontSize: 10, color: '#FF4778', background: '#1a0a0a', border: '1px solid #FF417833', borderRadius: 4, padding: '8px 12px', marginBottom: 16, fontFamily: 'monospace', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
+              DEBUG: {JSON.stringify(users.map(u => ({ id: u.id?.slice(0,8), email: u.email, is_admin: u.is_admin, onboarded: u.onboarding_complete })), null, 2)}
+            </div>
             {users.map(u => (
               <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
