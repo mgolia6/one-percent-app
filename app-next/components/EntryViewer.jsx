@@ -84,6 +84,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const [comment, setComment] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+  const [error, setError] = useState(null)
 
   const allRated = ratings.topic && ratings.clarity && ratings.quiz
 
@@ -91,15 +92,21 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
     if (!allRated) return
     setSubmitting(true)
     const { supabase } = await import('@/lib/supabase')
-    await supabase.from('feedback').insert({
+    const { error } = await supabase.from('feedback').insert({
       user_id: userId,
       feedback_type: 'post_entry',
       entry_number: entryNumber,
-      topic_rating: ratings.topic,
+      relevance_rating: ratings.topic,
       clarity_rating: ratings.clarity,
       quiz_rating: ratings.quiz,
       comment: comment.trim() || null,
     })
+    if (error) {
+      console.error('Feedback insert failed:', error)
+      setSubmitting(false)
+      setError('Something went wrong — tap to retry.')
+      return
+    }
     setDone(true)
     if (onSubmit) onSubmit()
   }
@@ -149,6 +156,9 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
           outline: 'none', marginBottom: 14, marginTop: 8,
         }}
       />
+      {error && (
+        <div style={{ fontSize: 11, color: '#f87171', marginBottom: 8, textAlign: 'center', letterSpacing: '0.05em' }}>{error}</div>
+      )}
       <button onClick={submit} disabled={!allRated || submitting} style={{
         width: '100%', padding: '12px 0',
         background: allRated ? accent : '#1a1a1a',
@@ -157,7 +167,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
         letterSpacing: '0.08em', fontFamily: "\'Inter\',sans-serif",
         opacity: submitting ? 0.6 : 1,
       }}>
-        {submitting ? 'SENDING...' : 'SUBMIT'}
+        {submitting ? 'SENDING...' : error ? 'RETRY' : 'SUBMIT'}
       </button>
     </div>
   )
