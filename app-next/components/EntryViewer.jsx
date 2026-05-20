@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { BookOpen, Lightbulb, Award } from 'lucide-react'
 
-function Celebration({ score, accent }) {
+function Celebration({ score, accent, onDone }) {
   const canvasRef = useRef(null)
   const animRef = useRef(null)
   useEffect(() => {
@@ -53,7 +53,7 @@ function Celebration({ score, accent }) {
           ctx.font = "bold 28px 'Inter',sans-serif"; ctx.textAlign = 'center'; ctx.fillText('LOCKED IN', cx, cy + 60); ctx.restore()
         }
         frame++
-        if (frame < 140) animRef.current = requestAnimationFrame(tick)
+        if (frame < 140) { animRef.current = requestAnimationFrame(tick) } else { if (onDone) onDone() }
       }
       animRef.current = requestAnimationFrame(tick)
     } else {
@@ -67,7 +67,7 @@ function Celebration({ score, accent }) {
         ctx.strokeStyle = accent; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.shadowColor = accent; ctx.shadowBlur = 10; ctx.stroke()
         ctx.fillStyle = '#fff'; ctx.font = "bold 24px 'Inter',sans-serif"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('2/3', 0, 0)
         ctx.restore(); frame++
-        if (frame < 80) animRef.current = requestAnimationFrame(tickArc)
+        if (frame < 80) { animRef.current = requestAnimationFrame(tickArc) } else { if (onDone) onDone() }
       }
       animRef.current = requestAnimationFrame(tickArc)
     }
@@ -78,7 +78,8 @@ function Celebration({ score, accent }) {
 }
 
 
-function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
+function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
+  const T = theme
   const [ratings, setRatings] = useState({ topic: 0, clarity: 0, quiz: 0 })
   const [comment, setComment] = useState('')
   const [submitting, setSubmitting] = useState(false)
@@ -106,16 +107,16 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
   const RatingRow = ({ label, sublabel, field }) => (
     <div style={{ marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', fontWeight: 600 }}>{label}</div>
-        <div style={{ fontSize: 10, color: '#333' }}>{sublabel}</div>
+        <div style={{ fontSize: 11, color: T.textDim, letterSpacing: '0.1em', fontWeight: 600 }}>{label}</div>
+        <div style={{ fontSize: 10, color: T.textDim }}>{sublabel}</div>
       </div>
       <div style={{ display: 'flex', gap: 6 }}>
         {[1,2,3,4,5].map(n => (
           <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
             flex: 1, padding: '10px 0', borderRadius: 3,
-            border: `1px solid ${ratings[field] >= n ? accent : '#222'}`,
-            background: ratings[field] >= n ? accent + '22' : '#111',
-            color: ratings[field] >= n ? accent : '#444',
+            border: `1px solid ${ratings[field] >= n ? accent : T.borderMid}`,
+            background: ratings[field] >= n ? accent + '22' : T.surface,
+            color: ratings[field] >= n ? accent : T.textDim,
             fontSize: 13, cursor: 'pointer', fontFamily: "\'Inter\',sans-serif",
             transition: 'all 0.15s',
           }}>{n}</button>
@@ -125,15 +126,15 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
   )
 
   if (done) return (
-    <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginTop: 12, textAlign: 'center' }}>
-      <div style={{ fontSize: 13, color: '#555', letterSpacing: '0.08em' }}>FEEDBACK LOGGED — THANKS 🙏</div>
+    <div style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12, textAlign: 'center' }}>
+      <div style={{ fontSize: 13, color: T.textDim, letterSpacing: '0.08em' }}>FEEDBACK LOGGED — THANKS 🙏</div>
     </div>
   )
 
   return (
-    <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginTop: 12 }}>
-      <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>QUICK FEEDBACK</div>
-      <div style={{ fontSize: 13, color: '#666', marginBottom: 20, lineHeight: 1.5 }}>Rate this entry — helps shape what comes next.</div>
+    <div style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
+      <div style={{ fontSize: 10, color: T.textDim, letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>QUICK FEEDBACK</div>
+      <div style={{ fontSize: 13, color: T.textMid, marginBottom: 20, lineHeight: 1.5 }}>Rate this entry — helps shape what comes next.</div>
       <RatingRow label="TOPIC" sublabel="Interesting / relevant?" field="topic" />
       <RatingRow label="CONTENT" sublabel="Clear and useful?" field="clarity" />
       <RatingRow label="QUIZ" sublabel="Testing the right things?" field="quiz" />
@@ -142,8 +143,8 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
         onChange={e => setComment(e.target.value)}
         placeholder="Anything else? (optional)"
         style={{
-          width: '100%', background: '#0a0a0a', border: '1px solid #1a1a1a',
-          borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb',
+          width: '100%', background: T.inputBg, border: `1px solid ${T.borderMid}`,
+          borderRadius: 4, padding: '12px 14px', fontSize: 13, color: T.textMid,
           fontFamily: "\'Inter\',sans-serif", resize: 'vertical', minHeight: 64,
           outline: 'none', marginBottom: 14, marginTop: 8,
         }}
@@ -311,7 +312,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         .op-src-link:hover{text-decoration:underline}
       `}</style>
 
-      {showCelebration && <Celebration score={score} accent={ACCENT} />}
+      {showCelebration && <Celebration score={score} accent={ACCENT} onDone={() => setShowCelebration(false)} />}
 
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px 12px', borderBottom: `1px solid ${T.border}`, background: T.headerBg, backdropFilter: 'blur(8px)', position: 'sticky', top: 0, zIndex: 10, transition: 'background 0.6s ease, border-color 0.4s ease' }}>
@@ -433,6 +434,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     entryNumber={entry.entry}
                     userId={userId}
                     accent={ACCENT}
+                    theme={T}
                     onSubmit={() => setShowEntryFeedback(false)}
                   />
                 )}
