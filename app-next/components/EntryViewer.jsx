@@ -233,21 +233,21 @@ const THEMES = {
     bodyBg: '#13151c',
   },
   evening: {
-    bg: '#dadada',
-    bgSolid: '#dadada',
-    surface: '#111',
-    surfaceBorder: '#1a1a1a',
-    text: '#0a0a0a',
-    textMid: '#222',
-    textDim: '#444',
-    textFaint: '#666',
-    border: '#141414',
-    borderMid: '#222',
-    headerBg: '#dadada',
-    quizOpt: '#111',
-    quizOptHover: '#141414',
-    inputBg: '#0a0a0a',
-    bodyBg: '#dadada',
+    bg: 'linear-gradient(160deg, #0f1015 0%, #0A0A0A 50%, #080808 100%)',
+    bgSolid: '#0A0A0A',
+    surface: 'rgba(255,255,255,0.04)',
+    surfaceBorder: 'rgba(255,255,255,0.06)',
+    text: '#e0e2e8',
+    textMid: 'rgba(224,226,232,0.70)',
+    textDim: 'rgba(224,226,232,0.50)',
+    textFaint: 'rgba(224,226,232,0.30)',
+    border: 'rgba(255,255,255,0.05)',
+    borderMid: 'rgba(255,255,255,0.08)',
+    headerBg: 'rgba(10,10,10,0.97)',
+    quizOpt: 'rgba(255,255,255,0.04)',
+    quizOptHover: 'rgba(255,255,255,0.08)',
+    inputBg: 'rgba(255,255,255,0.04)',
+    bodyBg: '#0A0A0A',
   },
 }
 
@@ -486,7 +486,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     VIEW SOURCES
                   </button>
                   {score < 3 && (
-                    <div style={{ fontSize: 12, color: '#333', textAlign: 'center', marginTop: 14, lineHeight: 1.6 }}>
+                    <div style={{ fontSize: 12, color: T.textDim, textAlign: 'center', marginTop: 14, lineHeight: 1.6 }}>
                       Retake the quiz anytime — it stays live in your library.
                     </div>
                   )}
