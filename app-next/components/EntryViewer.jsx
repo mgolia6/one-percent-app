@@ -105,7 +105,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
     if (error) {
       console.error('Feedback insert failed:', error)
       setSubmitting(false)
-      setError('Something went wrong — tap to retry.')
+      setError(`Error: ${error.code} — ${error.message}${error.details ? ' | ' + error.details : ''}`)
       return
     }
     setDone(true)
