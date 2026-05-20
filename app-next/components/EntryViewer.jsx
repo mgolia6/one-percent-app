@@ -97,7 +97,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       user_id: userId,
       feedback_type: 'post_entry',
       entry_number: entryNumber,
-      relevance_rating: ratings.topic,
+      topic_rating: ratings.topic,
       clarity_rating: ratings.clarity,
       quiz_rating: ratings.quiz,
       comment: comment.trim() || null,

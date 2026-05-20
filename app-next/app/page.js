@@ -49,7 +49,7 @@ function FeedbackModal({ userId, onClose }) {
     await supabase.from('feedback').insert({
       user_id: userId,
       feedback_type: 'landing',
-      rating,
+      overall_rating: rating,
       comment: comment.trim() || null,
     })
     setDone(true)
