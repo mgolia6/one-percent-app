@@ -77,12 +77,98 @@ function Celebration({ score, accent }) {
   return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 9999 }} />
 }
 
-export default function EntryViewer({ entry, onComplete, onBack, userStats }) {
+
+function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
+  const [ratings, setRatings] = useState({ topic: 0, clarity: 0, quiz: 0 })
+  const [comment, setComment] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [done, setDone] = useState(false)
+
+  const allRated = ratings.topic && ratings.clarity && ratings.quiz
+
+  const submit = async () => {
+    if (!allRated) return
+    setSubmitting(true)
+    const { supabase } = await import('@/lib/supabase')
+    await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'post_entry',
+      entry_number: entryNumber,
+      topic_rating: ratings.topic,
+      clarity_rating: ratings.clarity,
+      quiz_rating: ratings.quiz,
+      comment: comment.trim() || null,
+    })
+    setDone(true)
+    if (onSubmit) onSubmit()
+  }
+
+  const RatingRow = ({ label, sublabel, field }) => (
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', fontWeight: 600 }}>{label}</div>
+        <div style={{ fontSize: 10, color: '#333' }}>{sublabel}</div>
+      </div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3,
+            border: `1px solid ${ratings[field] >= n ? accent : '#222'}`,
+            background: ratings[field] >= n ? accent + '22' : '#111',
+            color: ratings[field] >= n ? accent : '#444',
+            fontSize: 13, cursor: 'pointer', fontFamily: "\'Inter\',sans-serif",
+            transition: 'all 0.15s',
+          }}>{n}</button>
+        ))}
+      </div>
+    </div>
+  )
+
+  if (done) return (
+    <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginTop: 12, textAlign: 'center' }}>
+      <div style={{ fontSize: 13, color: '#555', letterSpacing: '0.08em' }}>FEEDBACK LOGGED — THANKS 🙏</div>
+    </div>
+  )
+
+  return (
+    <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginTop: 12 }}>
+      <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>QUICK FEEDBACK</div>
+      <div style={{ fontSize: 13, color: '#666', marginBottom: 20, lineHeight: 1.5 }}>Rate this entry — helps shape what comes next.</div>
+      <RatingRow label="TOPIC" sublabel="Interesting / relevant?" field="topic" />
+      <RatingRow label="CONTENT" sublabel="Clear and useful?" field="clarity" />
+      <RatingRow label="QUIZ" sublabel="Testing the right things?" field="quiz" />
+      <textarea
+        value={comment}
+        onChange={e => setComment(e.target.value)}
+        placeholder="Anything else? (optional)"
+        style={{
+          width: '100%', background: '#0a0a0a', border: '1px solid #1a1a1a',
+          borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb',
+          fontFamily: "\'Inter\',sans-serif", resize: 'vertical', minHeight: 64,
+          outline: 'none', marginBottom: 14, marginTop: 8,
+        }}
+      />
+      <button onClick={submit} disabled={!allRated || submitting} style={{
+        width: '100%', padding: '12px 0',
+        background: allRated ? accent : '#1a1a1a',
+        border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600,
+        color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed',
+        letterSpacing: '0.08em', fontFamily: "\'Inter\',sans-serif",
+        opacity: submitting ? 0.6 : 1,
+      }}>
+        {submitting ? 'SENDING...' : 'SUBMIT'}
+      </button>
+    </div>
+  )
+}
+
+export default function EntryViewer({ entry, onComplete, onBack, userStats, userId }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
   const [srcOpen, setSrcOpen] = useState(false)
+  const [showEntryFeedback, setShowEntryFeedback] = useState(false)
   const [startTime] = useState(Date.now())
   const scoreRef = useRef(null)
   const completionRef = useRef(null)
@@ -111,6 +197,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats }) {
     const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
     setSubmitted(true)
     if (score >= 2) setShowCelebration(true)
+    setShowEntryFeedback(true)
     setTimeout(() => scoreRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
     setTimeout(() => completionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 800)
     if (onComplete) onComplete({ score, timeToQuiz, answers })
@@ -280,6 +367,16 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats }) {
                   <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? '#fff' : '#888', marginTop: 6 }}>{scoreLabel}</div>
                   <div style={{ fontSize: 12, color: '#555', marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
                 </div>
+
+                {/* Post-entry feedback */}
+                {submitted && showEntryFeedback && (
+                  <PostEntryFeedback
+                    entryNumber={entry.entry}
+                    userId={userId}
+                    accent={ACCENT}
+                    onSubmit={() => setShowEntryFeedback(false)}
+                  />
+                )}
 
                 {/* Completion action card */}
                 <div ref={completionRef} className="op-completion-card">

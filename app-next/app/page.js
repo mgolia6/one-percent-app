@@ -177,6 +177,13 @@ export default function HomePage() {
         const { data: newProf } = await supabase.from('profiles').insert({ id: session.user.id, email: session.user.email, signup_date: new Date().toISOString() }).select().single()
         prof = newProf
       }
+
+      // New users go through onboarding first
+      if (!prof?.onboarding_complete) {
+        router.push('/onboarding')
+        return
+      }
+
       setProfile(prof)
 
       const { data: comps } = await supabase.from('completions').select('entry_number, score, time_to_quiz').eq('user_id', session.user.id)
