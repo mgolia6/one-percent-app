@@ -6,6 +6,103 @@ import { supabase } from '@/lib/supabase'
 import { isUnlocked } from '@/lib/unlock'
 import EntryViewer from '@/components/EntryViewer'
 
+function WeeklyFeedbackModal({ userId, onClose }) {
+  const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
+  const [wouldRecommend, setWouldRecommend] = useState(null)
+  const [missing, setMissing] = useState('')
+  const [biggestWin, setBiggestWin] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [done, setDone] = useState(false)
+
+  const allRated = ratings.clarity && ratings.relevance && ratings.quiz && wouldRecommend !== null
+
+  const submit = async () => {
+    if (!allRated) return
+    setSubmitting(true)
+    await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'weekly',
+      clarity_rating: ratings.clarity,
+      relevance_rating: ratings.relevance,
+      quiz_rating: ratings.quiz,
+      would_recommend: wouldRecommend,
+      missing_topics: missing.trim() || null,
+      biggest_win: biggestWin.trim() || null,
+    })
+    setDone(true)
+    setTimeout(onClose, 2000)
+  }
+
+  const RatingRow = ({ label, field }) => (
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${ratings[field] >= n ? '#47FFE8' : '#222'}`,
+            background: ratings[field] >= n ? '#47FFE822' : '#111', color: ratings[field] >= n ? '#47FFE8' : '#555',
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
+          }}>{n}</button>
+        ))}
+      </div>
+    </div>
+  )
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24, overflowY: 'auto' }}>
+      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 440, width: '100%', margin: 'auto' }}>
+        {done ? (
+          <div style={{ textAlign: 'center', padding: '24px 0' }}>
+            <div style={{ fontSize: 20, marginBottom: 8 }}>🙏</div>
+            <div style={{ fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>FEEDBACK RECEIVED</div>
+            <div style={{ fontSize: 12, color: '#555', marginTop: 8 }}>This helps a lot. For real.</div>
+          </div>
+        ) : (
+          <>
+            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN</div>
+            <div style={{ fontSize: 18, color: '#fff', fontWeight: 600, marginBottom: 6 }}>One week in. Be honest.</div>
+            <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
+
+            <RatingRow label="CLARITY — How clear is the content?" field="clarity" />
+            <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" />
+            <RatingRow label="QUIZ — Is it testing the right things?" field="quiz" />
+
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {['Yes', 'Not yet', 'No'].map(v => (
+                  <button key={v} onClick={() => setWouldRecommend(v)} style={{
+                    flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${wouldRecommend === v ? '#47FFE8' : '#222'}`,
+                    background: wouldRecommend === v ? '#47FFE822' : '#111', color: wouldRecommend === v ? '#47FFE8' : '#555',
+                    fontSize: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", fontWeight: 500
+                  }}>{v}</button>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT'S MISSING OR SHOULD BE DIFFERENT?</div>
+              <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+            </div>
+
+            <div style={{ marginBottom: 24 }}>
+              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN SO FAR — anything you actually used?</div>
+              <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+            </div>
+
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SKIP FOR NOW</button>
+              <button onClick={submit} disabled={!allRated || submitting} style={{ flex: 2, padding: '12px 0', background: allRated ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+                {submitting ? 'SENDING...' : 'SUBMIT FEEDBACK'}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function EntryPage() {
   const router = useRouter()
   const params = useParams()
@@ -17,32 +114,40 @@ export default function EntryPage() {
   const [userStats, setUserStats] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [showWeeklyFeedback, setShowWeeklyFeedback] = useState(false)
 
   useEffect(() => {
     async function init() {
-      // Auth check
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/login'); return }
       setUser(session.user)
 
-      // Load profile
-      const { data: prof } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', session.user.id)
-        .single()
-
+      const { data: prof } = await supabase.from('profiles').select('*').eq('id', session.user.id).single()
       if (!prof) { router.push('/'); return }
       setProfile(prof)
 
-      // Check unlock
       const entryNum = parseInt(entryId)
-      if (!isUnlocked(entryNum, prof.signup_date)) {
+      const isAdmin = prof.is_admin || false
+      if (!isUnlocked(entryNum, prof.signup_date, isAdmin, 16)) {
         router.push('/')
         return
       }
 
-      // Load entry JSON
+      // Check if weekly feedback is due (every 7 days from signup)
+      const signupDate = new Date(prof.signup_date)
+      const daysSinceSignup = Math.floor((Date.now() - signupDate) / 86400000)
+      if (daysSinceSignup > 0 && daysSinceSignup % 7 === 0) {
+        // Check if weekly feedback already submitted this week
+        const weekStart = new Date()
+        weekStart.setDate(weekStart.getDate() - 1)
+        const { data: recentWeekly } = await supabase.from('feedback')
+          .select('id').eq('user_id', session.user.id).eq('feedback_type', 'weekly')
+          .gte('created_at', weekStart.toISOString()).limit(1)
+        if (!recentWeekly || recentWeekly.length === 0) {
+          setShowWeeklyFeedback(true)
+        }
+      }
+
       try {
         const res = await fetch(`/entries/${entryId}.json`)
         if (!res.ok) throw new Error('Entry not found')
@@ -54,15 +159,7 @@ export default function EntryPage() {
         return
       }
 
-      // Load existing completion if any
-      const { data: comp } = await supabase
-        .from('completions')
-        .select('*')
-        .eq('user_id', session.user.id)
-        .eq('entry_number', entryId)
-        .single()
-
-      // Load streak
+      const { data: comp } = await supabase.from('completions').select('*').eq('user_id', session.user.id).eq('entry_number', entryId).single()
       const streak = prof.current_streak || 0
       setUserStats({ answers: comp?.answers || null, streak })
       setLoading(false)
@@ -72,31 +169,25 @@ export default function EntryPage() {
 
   const handleComplete = async ({ score, timeToQuiz, answers }) => {
     if (!user) return
-
-    // Upsert completion
     await supabase.from('completions').upsert({
-      user_id: user.id,
-      entry_number: entryId,
-      score,
-      time_to_quiz: timeToQuiz,
-      answers,
+      user_id: user.id, entry_number: entryId, score, time_to_quiz: timeToQuiz, answers,
       completed_at: new Date().toISOString()
     }, { onConflict: 'user_id,entry_number' })
 
-    // Update streak in profile
     const today = new Date().toDateString()
     const lastActive = profile?.last_active_date
     let newStreak = profile?.current_streak || 0
-
     if (lastActive !== today) {
       const yesterday = new Date(Date.now() - 86400000).toDateString()
       newStreak = lastActive === yesterday ? newStreak + 1 : 1
       await supabase.from('profiles').update({
-        current_streak: newStreak,
-        last_active_date: today,
+        current_streak: newStreak, last_active_date: today,
         longest_streak: Math.max(newStreak, profile?.longest_streak || 0)
       }).eq('id', user.id)
     }
+
+    // Prompt quick daily feedback after quiz (5% of the time to not be annoying)
+    // This is handled by a post-completion card in EntryViewer
   }
 
   if (loading) return (
@@ -113,7 +204,7 @@ export default function EntryPage() {
 
   return (
     <div>
-      {/* Back nav */}
+      {showWeeklyFeedback && <WeeklyFeedbackModal userId={user?.id} onClose={() => setShowWeeklyFeedback(false)} />}
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '16px 24px 0' }}>
         <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: '#555', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", padding: 0 }}>
           ← LIBRARY
