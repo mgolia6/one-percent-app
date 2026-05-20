@@ -22,6 +22,14 @@ const STEPS = [
     commitment: null,
   },
   {
+    id: 'daily',
+    eyebrow: 'THE MOST IMPORTANT ASK',
+    heading: 'Rate every entry. Every day.',
+    body: 'After each quiz, you\'ll get three quick ratings — the topic, the content, the quiz itself. Takes 20 seconds.\n\nThis is not optional. This daily signal is the whole point of having beta users. Without it, I\'m building blind.\n\nDon\'t save it for later. Don\'t batch it. Do it right after you finish the entry while it\'s fresh.',
+    cta: 'I\'LL RATE EVERY ONE →',
+    commitment: 'Daily entry feedback — committed.',
+  },
+  {
     id: 'checkin',
     eyebrow: 'WHAT I\'M ASKING',
     heading: 'Day 15: a quick check-in.',
