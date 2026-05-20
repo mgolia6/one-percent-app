@@ -5,6 +5,50 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { getUnlockedCount } from '@/lib/unlock'
 
+const GREETINGS = [
+  "Sharp minds don't take days off.",
+  "One concept. Every day. That's the edge.",
+  "What you learn today compounds.",
+  "Show up. Do the work. That's it.",
+  "Consistency is the only strategy that works.",
+  "Today's concept is tomorrow's instinct.",
+  "The reps are what matter.",
+  "You're here. That counts.",
+  "Small inputs. Long-term outputs.",
+  "One percent better. Again.",
+  "The work doesn't care how you feel.",
+  "Keep going.",
+  "Most people stop. You didn't.",
+  "This is how it adds up.",
+  "Do the reading. Apply the thing.",
+]
+
+function getDailyGreeting(name) {
+  const dayIndex = new Date().getDay() * 3 + new Date().getDate()
+  const greeting = GREETINGS[dayIndex % GREETINGS.length]
+  return { name: name || 'there', line: greeting }
+}
+
+function ThinkingDots() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+      {[0, 1, 2].map(i => (
+        <div key={i} style={{
+          width: 5, height: 5, borderRadius: '50%',
+          background: '#333',
+          animation: `pulse 1.2s ease-in-out ${i * 0.2}s infinite`,
+        }} />
+      ))}
+      <style>{`
+        @keyframes pulse {
+          0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+          40% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 const TOTAL_ENTRIES = 17
 
 const CATEGORY_COLORS = {
@@ -202,7 +246,7 @@ export default function HomePage() {
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 11, color: '#333', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
+      <ThinkingDots />
     </div>
   )
 
@@ -249,6 +293,21 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+
+        {/* Daily greeting */}
+        {(() => {
+          const { name, line } = getDailyGreeting(profile?.name)
+          return (
+            <div style={{ marginBottom: 28, paddingBottom: 20, borderBottom: '1px solid #141414' }}>
+              <div style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>
+                Hey, {name}.
+              </div>
+              <div style={{ fontSize: 12, color: '#444', lineHeight: 1.6, letterSpacing: '0.02em' }}>
+                {line}
+              </div>
+            </div>
+          )
+        })()}
 
         {/* Admin link */}
         {isAdmin && (
