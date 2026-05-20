@@ -144,12 +144,13 @@ export default function AdminPage() {
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px' }}>
 
         {/* Summary stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', gap: 8, padding: '24px 0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', gap: 8, padding: '24px 0' }}>
           {[
             { label: 'USERS', value: users.length },
             { label: 'ENTRY FB', value: postEntryFb.length },
             { label: 'WEEKLY', value: weeklyFb.length },
             { label: 'END OF BETA', value: endOfBetaFb.length },
+            { label: 'INSTANT', value: landingFb.length },
             { label: 'BUGS', value: bugs.length },
           ].map(s => (
             <div key={s.label} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 4, padding: '14px 8px', textAlign: 'center' }}>
@@ -162,7 +163,7 @@ export default function AdminPage() {
         {/* Tabs */}
         <div style={{ display: 'flex', borderBottom: '1px solid #141414', gap: 4, marginBottom: 24, overflowX: 'auto' }}>
           {[
-            ['feedback', 'ENTRY FEEDBACK'],
+            ['feedback', 'POST-LESSON'],
             ['weekly', 'WEEKLY'],
             ['endbeta', 'END OF BETA'],
             ['instant', 'INSTANT'],
@@ -177,7 +178,7 @@ export default function AdminPage() {
         {tab === 'feedback' && (
           <div>
             <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>
-              ENTRY RATINGS — {postEntryFb.length} SUBMISSIONS ACROSS {entryNums.length} ENTRIES
+              POST-LESSON RATINGS — {postEntryFb.length} SUBMISSIONS ACROSS {entryNums.length} ENTRIES
             </div>
             {postEntryFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No entry feedback yet.</div>}
             {entryNums.map(num => {
