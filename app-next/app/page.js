@@ -410,9 +410,13 @@ export default function HomePage() {
       if (!session) { router.push('/login'); return }
       setUser(session.user)
 
-      let { data: prof } = await supabase.from('profiles').select('*').eq('id', session.user.id).single()
-      if (!prof) {
-        const { data: newProf } = await supabase.from('profiles').insert({ id: session.user.id, email: session.user.email, signup_date: new Date().toISOString() }).select().single()
+      let { data: prof, error: profError } = await supabase.from('profiles').select('*').eq('id', session.user.id).maybeSingle()
+      if (!prof && profError?.code !== 'PGRST116') {
+        console.error('Profile fetch error:', profError)
+      }
+      if (!prof && !profError) {
+        // Genuinely no profile row — create one
+        const { data: newProf } = await supabase.from('profiles').insert({ id: session.user.id, email: session.user.email, signup_date: new Date().toISOString() }).select().maybeSingle()
         prof = newProf
       }
 
