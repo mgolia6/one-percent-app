@@ -140,30 +140,11 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
     </div>
   )
 
-  if (done) return (
-    <div ref={formRef} style={{
-      background: T.surface, border: `1px solid ${accent}44`,
-      borderRadius: 6, padding: '32px 20px', marginTop: 12,
-      textAlign: 'center',
-    }}>
-      <style>{`
-        @keyframes loggedPulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(0.97); }
-        }
-      `}</style>
-      <div style={{
-        fontSize: 28, fontWeight: 600, color: accent,
-        letterSpacing: '-0.01em', marginBottom: 10,
-        animation: 'loggedPulse 1.8s ease-in-out infinite',
-      }}>
-        LOGGED.
-      </div>
-      <div style={{ fontSize: 13, color: T.textDim, letterSpacing: '0.04em', lineHeight: 1.7 }}>
-        That helps. For real.
-      </div>
-    </div>
-  )
+  if (done) {
+    // Scroll to top so overlay is in view
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return null
+  }
 
   return (
     <div ref={formRef} style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
@@ -472,7 +453,10 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     userId={userId}
                     accent={ACCENT}
                     theme={T}
-                    onSubmit={() => setShowEntryFeedback(false)}
+                    onSubmit={() => {
+                      setShowEntryFeedback(false)
+                      if (onFeedbackDone) onFeedbackDone(ACCENT)
+                    }}
                   />
                 )}
 
