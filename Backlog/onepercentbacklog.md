@@ -240,3 +240,29 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
 *Next generation: SC.2.2 — Sales Craft, second slot, cycle 2.*
+
+---
+
+## App Feature Backlog (non-content)
+
+*Logged here until a dedicated product backlog file is created.*
+
+### In Progress / Next Up
+- [ ] **Button audit** — all buttons need loading/disabled/feedback states. Sign out flagged May 20.
+- [ ] **Entry 017 verify audit** — interactive step-by-step, not a data dump. Quote flag: "about themselves" vs "themselves."
+- [ ] **Entry 018 generation** — AI.3.1. Candidates: RAG, AI Agents, Temperature/Sampling.
+
+### Profile & Identity
+- [ ] **Profile page** `/profile` — editable first name, last name, phone. Email read-only. Access from library header.
+- [ ] **Profile picture** — upload via Supabase Storage or external URL. Display on profile page + optionally library header.
+
+### Badges & Gamification
+- [ ] **Founder's Club badge** — permanent badge for all beta testers. `is_founder` boolean on profiles. Auto-grant or admin-controlled TBD.
+- [ ] **Streak badges** — 3-day, 7-day, 30-day, 100-day. Awarded on streak milestone.
+- [ ] **Usage badges** — First entry, first 3/3, 10 entries, 25 entries, all 7 categories, perfect week.
+- [ ] **Badge system schema** — `badges` table + `user_badges` join table. Display on profile page.
+
+### Known Issues (app)
+- [ ] ISSUE-002 — Weekly feedback trigger broken for backdated/admin signups
+- [ ] ISSUE-003 — Multi-threading bug (parallel entry loading) — not yet investigated
+- [ ] ISSUE-004 — Sign out button has no visual feedback
