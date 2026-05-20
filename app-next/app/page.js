@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { getUnlockedCount } from '@/lib/unlock'
@@ -403,6 +403,7 @@ export default function HomePage() {
   const [showWelcome, setShowWelcome] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [filter, setFilter] = useState('All')
+  const libraryRef = useRef(null)
 
   useEffect(() => {
     async function init() {
@@ -581,37 +582,40 @@ export default function HomePage() {
         <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 600 }}>YOUR LIBRARY</div>
         
         {/* Category filter tabs */}
-        <div style={{ display: 'flex', gap: 4, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none' }}>
-          <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
+        <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
+        <div className="filter-tabs" style={{ display: 'flex', gap: 0, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
           {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
             const isSelected = filter === cat
             const categoryColor = CATEGORY_COLORS[cat]
             const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
-            
+            const accentColor = isSystemTab ? '#555' : categoryColor
+
             return (
               <button
                 key={cat}
-                onClick={() => setFilter(cat)}
+                onClick={() => {
+                  setFilter(cat)
+                  setTimeout(() => {
+                    libraryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }, 50)
+                }}
                 style={{
-                  background: isSelected 
-                    ? (isSystemTab ? '#1a1a1a' : categoryColor)
-                    : 'transparent',
-                  color: isSelected 
-                    ? (isSystemTab ? '#fff' : '#0a0a0a')
-                    : (categoryColor || '#555'),
-                  border: isSelected ? 'none' : `1px solid ${categoryColor || '#333'}`,
-                  borderRadius: isSelected ? '6px 6px 0 0' : '4px',
-                  padding: isSelected ? '6px 12px 8px' : '4px 10px',
+                  background: 'transparent',
+                  color: isSelected ? (isSystemTab ? '#0a0a0a' : categoryColor) : (accentColor || '#555'),
+                  border: 'none',
+                  borderBottom: isSelected ? `2px solid ${isSystemTab ? '#0a0a0a' : categoryColor}` : '2px solid transparent',
+                  borderRadius: 0,
+                  padding: '6px 12px 8px',
                   fontSize: 9,
-                  fontWeight: 600,
+                  fontWeight: isSelected ? 700 : 500,
                   letterSpacing: '0.08em',
                   cursor: 'pointer',
                   fontFamily: "'Inter',sans-serif",
                   whiteSpace: 'nowrap',
                   flexShrink: 0,
-                  position: 'relative',
-                  transform: isSelected ? 'translateY(2px)' : 'none',
+                  opacity: isSelected ? 1 : 0.45,
                   transition: 'all 0.15s ease',
+                  marginBottom: -1,
                 }}
               >
                 {cat.toUpperCase()}
@@ -620,7 +624,7 @@ export default function HomePage() {
           })}
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div ref={libraryRef} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {ENTRIES
             .filter((e, idx) => {
               const entryNum = idx + 1
