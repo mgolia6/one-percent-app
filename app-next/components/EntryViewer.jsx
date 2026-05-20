@@ -162,6 +162,61 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit }) {
   )
 }
 
+
+const THEMES = {
+  morning: {
+    bg: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%)',
+    bgSolid: '#f0f4f8',
+    surface: 'rgba(255,255,255,0.7)',
+    surfaceBorder: 'rgba(26,42,58,0.1)',
+    text: '#1a2a3a',
+    textMid: 'rgba(26,42,58,0.65)',
+    textDim: 'rgba(26,42,58,0.35)',
+    textFaint: 'rgba(26,42,58,0.2)',
+    border: 'rgba(26,42,58,0.1)',
+    borderMid: 'rgba(26,42,58,0.15)',
+    headerBg: 'rgba(240,244,248,0.9)',
+    quizOpt: 'rgba(255,255,255,0.6)',
+    quizOptHover: 'rgba(255,255,255,0.9)',
+    inputBg: 'rgba(255,255,255,0.5)',
+    bodyBg: '#0A0A0A',
+  },
+  midday: {
+    bg: 'linear-gradient(160deg, #1a1a12 0%, #1e1c10 50%, #22200e 100%)',
+    bgSolid: '#1a1a12',
+    surface: '#242218',
+    surfaceBorder: 'rgba(232,200,80,0.12)',
+    text: '#f5f0dc',
+    textMid: 'rgba(245,240,220,0.7)',
+    textDim: 'rgba(245,240,220,0.35)',
+    textFaint: 'rgba(245,240,220,0.15)',
+    border: 'rgba(245,240,220,0.1)',
+    borderMid: 'rgba(245,240,220,0.15)',
+    headerBg: 'rgba(26,26,18,0.95)',
+    quizOpt: '#242218',
+    quizOptHover: '#2e2c1e',
+    inputBg: '#1a1a12',
+    bodyBg: '#1a1a12',
+  },
+  evening: {
+    bg: '#0A0A0A',
+    bgSolid: '#0A0A0A',
+    surface: '#111',
+    surfaceBorder: '#1a1a1a',
+    text: '#fff',
+    textMid: '#bbb',
+    textDim: '#555',
+    textFaint: '#333',
+    border: '#141414',
+    borderMid: '#222',
+    headerBg: '#0A0A0A',
+    quizOpt: '#111',
+    quizOptHover: '#141414',
+    inputBg: '#0a0a0a',
+    bodyBg: '#0A0A0A',
+  },
+}
+
 export default function EntryViewer({ entry, onComplete, onBack, userStats, userId }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
@@ -169,7 +224,10 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const [showCelebration, setShowCelebration] = useState(false)
   const [srcOpen, setSrcOpen] = useState(false)
   const [showEntryFeedback, setShowEntryFeedback] = useState(false)
+  const [themeKey, setThemeKey] = useState('morning')
   const [startTime] = useState(Date.now())
+
+  const T = THEMES[themeKey]
   const scoreRef = useRef(null)
   const completionRef = useRef(null)
   const isFirst = useRef(true)
@@ -187,6 +245,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   useEffect(() => {
     if (isFirst.current) { isFirst.current = false; return }
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    setThemeKey(tab)
   }, [tab])
 
   const allAnswered = entry.quiz.every((_, i) => answers[i] !== undefined)
@@ -216,23 +275,23 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const scoreSub = score === 3 ? "You've got this one locked in." : score === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
 
   return (
-    <div style={{ background: '#0A0A0A', minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff', maxWidth: 720, margin: '0 auto', paddingBottom: 80 }}>
+    <div style={{ background: T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, transition: 'background 0.6s ease, color 0.4s ease' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-        body{background:#0A0A0A;font-family:'Inter',sans-serif;}
+        body{background:${T.bgSolid};font-family:'Inter',sans-serif;transition:background 0.6s ease;}
         @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
         @keyframes popIn{0%{transform:scale(0.85);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
         @keyframes pulseBorder{0%,100%{box-shadow:0 0 0 0 ${ACCENT}44}50%{box-shadow:0 0 0 8px ${ACCENT}11}}
         @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         .fade-in{animation:fadeIn 0.28s ease forwards}
-        .op-tab-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;padding:10px 14px;color:#555;transition:color 0.2s;border-bottom:2px solid transparent;display:flex;align-items:center}
-        .op-tab-btn:hover{color:#aaa}
+        .op-tab-btn{background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;padding:10px 14px;color:${T.textDim};transition:color 0.3s;border-bottom:2px solid transparent;display:flex;align-items:center}
+        .op-tab-btn:hover{color:${T.textMid}}
         .op-tab-btn.active{color:${ACCENT};border-bottom-color:${ACCENT}}
         .op-next-btn{display:block;width:100%;margin-top:32px;padding:14px 20px;background:${ACCENT};color:#0A0A0A;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;cursor:pointer;text-align:center;transition:opacity 0.2s}
         .op-next-btn:hover{opacity:0.85}
-        .op-quiz-opt{background:#111;border:1px solid #222;border-radius:4px;padding:14px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:#999;margin-bottom:8px;transition:all 0.18s;text-align:left;width:100%;line-height:1.6}
-        .op-quiz-opt:hover:not(:disabled){border-color:${ACCENT}44;color:#ddd;background:#141414}
+        .op-quiz-opt{background:${T.quizOpt};border:1px solid ${T.borderMid};border-radius:4px;padding:14px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:${T.textMid};margin-bottom:8px;transition:all 0.18s;text-align:left;width:100%;line-height:1.6}
+        .op-quiz-opt:hover:not(:disabled){border-color:${ACCENT}44;color:${T.text};background:${T.quizOptHover}}
         .op-quiz-opt.selected{border-color:${ACCENT};background:${ACCENT}22;color:#eee}
         .op-quiz-opt.correct{border-color:#4ade80;color:#4ade80;background:#4ade8011}
         .op-quiz-opt.wrong{border-color:#f87171;color:#f87171;background:#f8717111}
@@ -240,14 +299,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         .op-submit-btn:disabled{opacity:0.3;cursor:not-allowed}
         .op-score-box{border-radius:6px;padding:28px 20px;text-align:center;margin:24px 0;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards}
         .op-score-perfect{background:${ACCENT}0f;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards,pulseBorder 1.8s ease-in-out 0.4s 3}
-        .op-score-close{background:#1a1a1a}
-        .op-score-low{background:#111}
-        .op-completion-card{background:#111;border:1px solid #1a1a1a;border-radius:6px;padding:20px;margin-top:8px;animation:slideUp 0.35s ease forwards}
+        .op-score-close{background:${T.surface}}
+        .op-score-low{background:${T.surface}}
+        .op-completion-card{background:${T.surface};border:1px solid ${T.surfaceBorder};border-radius:6px;padding:20px;margin-top:8px;animation:slideUp 0.35s ease forwards}
         .op-action-primary{display:block;width:100%;background:${ACCENT};color:#0A0A0A;border:none;border-radius:4px;padding:14px;font-size:12px;font-weight:600;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;text-align:center;margin-bottom:8px}
-        .op-action-secondary{display:block;width:100%;background:none;color:#555;border:1px solid #222;border-radius:4px;padding:12px;font-size:11px;font-weight:500;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;text-align:center}
-        .op-action-secondary:hover{color:#999;border-color:#444}
-        .op-src-toggle{background:none;border:1px solid #222;padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:#555;cursor:pointer;border-radius:3px;letter-spacing:0.08em}
-        .op-src-toggle:hover{color:#999;border-color:#444}
+        .op-action-secondary{display:block;width:100%;background:none;color:${T.textDim};border:1px solid ${T.borderMid};border-radius:4px;padding:12px;font-size:11px;font-weight:500;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;text-align:center}
+        .op-action-secondary:hover{color:${T.textMid};border-color:${T.border}}
+        .op-src-toggle{background:none;border:1px solid ${T.borderMid};padding:7px 14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:${T.textDim};cursor:pointer;border-radius:3px;letter-spacing:0.08em}
+        .op-src-toggle:hover{color:${T.textMid};border-color:${T.border}}
         .op-src-link{color:${ACCENT};text-decoration:none;font-size:12px;display:block;margin-bottom:4px;font-family:'Inter',sans-serif;font-weight:500}
         .op-src-link:hover{text-decoration:underline}
       `}</style>
@@ -255,30 +314,30 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
       {showCelebration && <Celebration score={score} accent={ACCENT} />}
 
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px 12px', borderBottom: '1px solid #141414' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px 12px', borderBottom: `1px solid ${T.border}`, background: T.headerBg, backdropFilter: 'blur(8px)', position: 'sticky', top: 0, zIndex: 10, transition: 'background 0.6s ease, border-color 0.4s ease' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 11, letterSpacing: '0.15em', color: '#fff', fontWeight: 600 }}>ONE PERCENT</span>
-          <span style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em', fontWeight: 500 }}>#{entry.entry}</span>
+          <span style={{ fontSize: 11, letterSpacing: '0.15em', color: T.text, fontWeight: 600, transition: 'color 0.4s ease' }}>ONE PERCENT</span>
+          <span style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', fontWeight: 500, transition: 'color 0.4s ease' }}>#{entry.entry}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          {userStats?.streak > 0 && <span style={{ fontSize: 11, color: '#aaa', fontWeight: 500 }}>🔥 {userStats.streak}</span>}
+          {userStats?.streak > 0 && <span style={{ fontSize: 11, color: T.textMid, fontWeight: 500, transition: 'color 0.4s ease' }}>🔥 {userStats.streak}</span>}
           <span style={{ fontSize: 9, letterSpacing: '0.12em', padding: '4px 9px', borderRadius: 3, fontWeight: 600, background: ACCENT, color: '#0A0A0A' }}>{entry.categoryTag}</span>
         </div>
       </div>
 
       {/* Datebar */}
-      <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em', padding: '8px 24px', borderBottom: '1px solid #0f0f0f', fontWeight: 500 }}>
+      <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', padding: '8px 24px', borderBottom: `1px solid ${T.border}`, fontWeight: 500, transition: 'color 0.4s ease, border-color 0.4s ease' }}>
         {entry.editionId} · {entry.concept}
       </div>
 
       {/* Concept */}
       <div style={{ padding: '28px 24px 0' }}>
-        <div style={{ fontSize: 32, fontWeight: 600, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.1 }}>{entry.concept}</div>
+        <div style={{ fontSize: 32, fontWeight: 600, color: T.text, letterSpacing: '-0.02em', lineHeight: 1.1, transition: 'color 0.4s ease' }}>{entry.concept}</div>
         <div style={{ width: 40, height: 3, background: ACCENT, marginTop: 12 }} />
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', borderBottom: '1px solid #141414', marginTop: 20, padding: '0 12px', gap: 4 }}>
+      <div style={{ display: 'flex', borderBottom: `1px solid ${T.border}`, marginTop: 20, padding: '0 12px', gap: 4, transition: 'border-color 0.4s ease' }}>
         {tabs.map(t => {
           const Icon = t.icon
           return (
@@ -296,19 +355,19 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         {tab === 'morning' && (
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING BRIEF</div>
-            <div style={{ fontSize: 20, color: '#fff', lineHeight: 1.5, fontWeight: 400, marginBottom: 20, letterSpacing: '-0.01em' }}>{entry.morning.hook}</div>
+            <div style={{ fontSize: 20, color: T.text, lineHeight: 1.5, fontWeight: 400, marginBottom: 20, letterSpacing: '-0.01em' }}>{entry.morning.hook}</div>
             <div style={{ marginBottom: 20 }}>
               {entry.morning.explanation_paragraphs.map((p, i) => (
-                <p key={i} style={{ fontSize: 15, color: '#bbb', lineHeight: 1.8, marginBottom: i < entry.morning.explanation_paragraphs.length - 1 ? 16 : 0 }}>{p}</p>
+                <p key={i} style={{ fontSize: 15, color: T.textMid, lineHeight: 1.8, marginBottom: i < entry.morning.explanation_paragraphs.length - 1 ? 16 : 0 }}>{p}</p>
               ))}
             </div>
             <div style={{ background: ACCENT_DIM, border: `1px solid ${ACCENT}33`, borderRadius: 4, padding: '16px 18px', marginBottom: 20 }}>
               <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>WHY TODAY</div>
-              <div style={{ fontSize: 14, color: '#bbb', lineHeight: 1.7 }}>{entry.morning.why_today}</div>
+              <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.7 }}>{entry.morning.why_today}</div>
             </div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
               <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING CHALLENGE</div>
-              <div style={{ fontSize: 14, color: '#999', lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
+              <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
             </div>
             <button className="op-next-btn" onClick={() => setTab('midday')}>MIDDAY</button>
           </div>
@@ -319,19 +378,19 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MIDDAY REFRAME</div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
-              <div style={{ fontSize: 17, color: '#fff', lineHeight: 1.5, fontWeight: 500 }}>{entry.midday.reframe}</div>
+              <div style={{ fontSize: 17, color: T.text, lineHeight: 1.5, fontWeight: 500 }}>{entry.midday.reframe}</div>
             </div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 14, fontWeight: 600, textTransform: 'uppercase', color: '#555' }}>{entry.midday.itw_label}</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 14, fontWeight: 600, textTransform: 'uppercase', color: T.textDim }}>{entry.midday.itw_label}</div>
             <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 16, marginBottom: 20 }}>
               {entry.midday.itw_paragraphs.map((p, i) => (
-                <p key={i} style={{ fontSize: 15, color: '#bbb', lineHeight: 1.8, marginBottom: i < entry.midday.itw_paragraphs.length - 1 ? 16 : 0 }}>{p}</p>
+                <p key={i} style={{ fontSize: 15, color: T.textMid, lineHeight: 1.8, marginBottom: i < entry.midday.itw_paragraphs.length - 1 ? 16 : 0 }}>{p}</p>
               ))}
             </div>
             <div style={{ border: `1px solid ${ACCENT}44`, borderRadius: 4, padding: '16px 18px', marginBottom: 20, background: ACCENT_DIM }}>
-              <div style={{ fontSize: 15, color: '#ddd', lineHeight: 1.7, fontStyle: 'italic', marginBottom: 10 }}>"{entry.midday.quote}"</div>
-              <div style={{ fontSize: 12, color: '#666', letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
+              <div style={{ fontSize: 15, color: T.text, lineHeight: 1.7, fontStyle: 'italic', marginBottom: 10 }}>"{entry.midday.quote}"</div>
+              <div style={{ fontSize: 12, color: T.textDim, letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
             </div>
-            <div style={{ fontSize: 14, color: '#777', lineHeight: 1.7, borderTop: '1px solid #141414', paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
+            <div style={{ fontSize: 14, color: T.textDim, lineHeight: 1.7, borderTop: `1px solid ${T.border}`, paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
             <button className="op-next-btn" onClick={() => setTab('evening')}>EVENING</button>
           </div>
         )}
@@ -342,7 +401,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>TEST YOURSELF</div>
             {entry.quiz.map((q, qi) => (
               <div key={qi} style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 14, color: '#ccc', lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
+                <div style={{ fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
                 {q.options.map((opt, ai) => {
                   let cls = 'op-quiz-opt'
                   if (submitted && ai === q.correct) cls += ' correct'
@@ -354,7 +413,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     </button>
                   )
                 })}
-                {submitted && <div style={{ fontSize: 13, color: '#666', lineHeight: 1.7, marginTop: 10, paddingLeft: 4 }}>{q.explanation}</div>}
+                {submitted && <div style={{ fontSize: 13, color: T.textDim, lineHeight: 1.7, marginTop: 10, paddingLeft: 4 }}>{q.explanation}</div>}
               </div>
             ))}
 
@@ -364,8 +423,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <>
                 <div ref={scoreRef} className={`op-score-box ${scoreBg}`} style={{ border: `2px solid ${scoreBorder}` }}>
                   <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{score}/3</div>
-                  <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? '#fff' : '#888', marginTop: 6 }}>{scoreLabel}</div>
-                  <div style={{ fontSize: 12, color: '#555', marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
+                  <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? T.text : T.textDim, marginTop: 6 }}>{scoreLabel}</div>
+                  <div style={{ fontSize: 12, color: T.textDim, marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
                 </div>
 
                 {/* Post-entry feedback */}
@@ -380,7 +439,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
 
                 {/* Completion action card */}
                 <div ref={completionRef} className="op-completion-card">
-                  <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.12em', fontWeight: 600, marginBottom: 14 }}>WHAT'S NEXT</div>
+                  <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.12em', fontWeight: 600, marginBottom: 14 }}>WHAT'S NEXT</div>
                   {onBack && (
                     <button className="op-action-primary" onClick={onBack}>
                       BACK TO LIBRARY
@@ -398,24 +457,24 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               </>
             )}
 
-            <div style={{ fontSize: 14, color: '#aaa', borderTop: '1px solid #1a1a1a', paddingTop: 20, marginTop: 20, lineHeight: 1.8, fontStyle: 'italic' }}>{entry.closing}</div>
+            <div style={{ fontSize: 14, color: T.textMid, borderTop: `1px solid ${T.border}`, paddingTop: 20, marginTop: 20, lineHeight: 1.8, fontStyle: 'italic' }}>{entry.closing}</div>
           </div>
         )}
       </div>
 
       {/* Sources */}
       <div style={{ padding: '28px 24px 48px' }}>
-        <div style={{ borderTop: '1px solid #141414', marginBottom: 18 }} />
+        <div style={{ borderTop: `1px solid ${T.border}`, marginBottom: 18 }} />
         <button className="op-src-toggle" onClick={() => setSrcOpen(!srcOpen)}>{srcOpen ? 'HIDE SOURCES' : 'VIEW SOURCES'}</button>
         {srcOpen && (
           <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
             {entry.sources.map((s, i) => (
               <div key={i}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="op-src-link">{s.label}</a>
-                <div style={{ fontSize: 12, color: '#444', lineHeight: 1.6 }}>{s.detail}</div>
+                <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.6 }}>{s.detail}</div>
               </div>
             ))}
-            <div style={{ fontSize: 10, color: '#2a2a2a', letterSpacing: '0.1em', marginTop: 8, paddingTop: 12, borderTop: '1px solid #141414', fontWeight: 500 }}>
+            <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', marginTop: 8, paddingTop: 12, borderTop: `1px solid ${T.border}`, fontWeight: 500 }}>
               ALL SOURCES VERIFIED · ENTRY {entry.entry} · {entry.editionId}
             </div>
           </div>
