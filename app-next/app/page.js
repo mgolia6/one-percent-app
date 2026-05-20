@@ -558,7 +558,7 @@ export default function HomePage() {
           <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 3 }}>
             {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
           </div>
-          <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>
+          <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.1em' }}>
             THE DATA DOESN'T LIE
           </div>
         </div>
@@ -579,7 +579,7 @@ export default function HomePage() {
         </div>
 
         {/* Entry list */}
-        <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>YOUR LIBRARY</div>
+        <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>YOUR LIBRARY</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {ENTRIES.map((e, idx) => {
             const entryNum = idx + 1
@@ -603,7 +603,7 @@ export default function HomePage() {
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: completed ? accent : '#333', flexShrink: 0 }} />
                   <div>
                     <div style={{ fontSize: 14, color: unlocked ? '#fff' : '#555', fontWeight: 500, marginBottom: 2 }}>{e.concept}</div>
-                    <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.08em' }}>{e.editionId} · {e.category}</div>
+                    <div style={{ fontSize: 10, color: '#222', letterSpacing: '0.08em' }}>{e.editionId} · {e.category}</div>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
