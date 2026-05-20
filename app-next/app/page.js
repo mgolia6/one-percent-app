@@ -55,13 +55,13 @@ function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
 
   useEffect(() => {
     let i = 0
-    const speed = 55
+    const speed = 90
     const timer = setInterval(() => {
       i++
       setDisplayed(fullText.slice(0, i))
       if (i >= fullText.length) {
         clearInterval(timer)
-        setTimeout(() => setLineVisible(true), 200)
+        setTimeout(() => setLineVisible(true), 400)
       }
     }, speed)
     return () => clearInterval(timer)
@@ -287,8 +287,8 @@ export default function HomePage() {
       setCompletions(compMap)
       setLoading(false)
       setShowWelcome(true)
-      setTimeout(() => setWelcomeFading(true), 4200)
-      setTimeout(() => setShowWelcome(false), 4800)
+      setTimeout(() => setWelcomeFading(true), 6000)
+      setTimeout(() => setShowWelcome(false), 6700)
     }
     init()
   }, [router])
