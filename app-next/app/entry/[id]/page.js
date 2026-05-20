@@ -128,7 +128,7 @@ export default function EntryPage() {
 
       const entryNum = parseInt(entryId)
       const isAdmin = prof.is_admin || false
-      if (!isUnlocked(entryNum, prof.signup_date, isAdmin, 16)) {
+      if (!isUnlocked(entryNum, prof.signup_date, isAdmin, 17)) {
         router.push('/')
         return
       }
