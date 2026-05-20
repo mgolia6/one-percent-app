@@ -70,7 +70,6 @@ function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
   return (
     <div onClick={onDismiss} style={{
       position: 'fixed', inset: 0, zIndex: 999,
-      background: '#0A0A0A',
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       padding: 32, cursor: 'pointer',
       opacity: fading ? 0 : 1,
@@ -456,7 +455,7 @@ export default function HomePage() {
   }
 
   if (loading) return (
-    <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <ThinkingDots />
     </div>
   )
@@ -469,7 +468,7 @@ export default function HomePage() {
   const streak = profile?.current_streak || 0
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0A0A0A', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
+    <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}

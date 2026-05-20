@@ -233,8 +233,8 @@ const THEMES = {
     bodyBg: '#13151c',
   },
   evening: {
-    bg: '#0A0A0A',
-    bgSolid: '#0A0A0A',
+    bg: '#fafafa',
+    bgSolid: '#fafafa',
     surface: '#111',
     surfaceBorder: '#1a1a1a',
     text: '#fff',
@@ -243,11 +243,11 @@ const THEMES = {
     textFaint: '#555',
     border: '#141414',
     borderMid: '#222',
-    headerBg: '#0A0A0A',
+    headerBg: '#fafafa',
     quizOpt: '#111',
     quizOptHover: '#141414',
     inputBg: '#0a0a0a',
-    bodyBg: '#0A0A0A',
+    bodyBg: '#fafafa',
   },
 }
 

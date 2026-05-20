@@ -100,7 +100,7 @@ export default function AdminPage() {
   }
 
   if (loading) return (
-    <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ fontSize: 11, color: '#333', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
     </div>
   )
@@ -136,7 +136,7 @@ export default function AdminPage() {
   })
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0A0A0A', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
+    <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '20px 24px', borderBottom: '1px solid #141414', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
