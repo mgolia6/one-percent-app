@@ -23,7 +23,7 @@ function WeeklyFeedbackModal({ userId, onClose }) {
       user_id: userId,
       feedback_type: 'weekly',
       clarity_rating: ratings.clarity,
-      relevance_rating: ratings.relevance,
+      topic_rating: ratings.relevance,
       quiz_rating: ratings.quiz,
       would_recommend: wouldRecommend,
       missing_topics: missing.trim() || null,
