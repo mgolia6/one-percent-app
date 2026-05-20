@@ -36,12 +36,12 @@ Click any link to open the source directly. Use the "Where to find it" direction
 
 ## Quote
 
-- **Quote as used in entry:** "The goal is to know more about the company than they know about themselves."
-- **Attributed to:** Semir Jahic, CEO of Salesmotion, on the standard for multi-threaded account research, 2026
+- **Quote as used in entry:** "My ultimate goal is to know more about the company than they know themselves."
+- **Attributed to:** Jeff Dalo, Senior Director Business Development at Analytic Partners, quoted in Salesmotion article on multi-threaded account research
 - **Search query used:** `multi-threading sales multiple stakeholders research Gartner win rate`
 - **Confirming URL:** [Multi-Threading Sales: How to Win More Deals Faster](https://salesmotion.io/blog/multi-threading-sales-strategy)
-- **Where to find it:** Pull quote in article body — "My ultimate goal is to know more about the company than they know themselves."
-- **What to check:** Minor paraphrase in attribution — original says "themselves" not "about themselves." Verify exact wording. Consider adjusting quote to match verbatim: "My ultimate goal is to know more about the company than they know themselves."
+- **Where to find it:** Customer testimonial quote in article body — "My ultimate goal is to know more about the company than they know themselves."
+- **What to check:** Quote is exact match. Attribution corrected from original verify file which incorrectly stated Semir Jahic.
 
 ---
 
@@ -63,9 +63,11 @@ Click any link to open the source directly. Use the "Where to find it" direction
 | Source 1 — Gartner | Verified | [Open source](https://www.gartner.com/en/articles/why-multithreaded-engagements-are-the-secret-to-accelerating-revenue-growth) |
 | Source 2 — Aviso | Verified | [Open source](https://www.aviso.com/blog/4-tips-for-multi-threaded-conversations-to-boost-win-rate) |
 | Source 3 — Salesmotion | Verified | [Open source](https://salesmotion.io/blog/multi-threading-sales-strategy) |
-| Quote | Near-verbatim — check wording | [Open confirming page](https://salesmotion.io/blog/multi-threading-sales-strategy) |
+| Quote | Verified — corrected attribution | [Open confirming page](https://salesmotion.io/blog/multi-threading-sales-strategy) |
 | In the Wild | Type B — scenario is composite, LinkedIn tenure stat is verifiable | [Open primary source](https://www.landbase.com/blog/multi-threading-enterprise-deals-win-rate-2026) |
 
-**FLAG:** Quote — "about themselves" vs "themselves" — verify exact wording before publishing.
+**AUDIT COMPLETE — May 20, 2026**
+
+All claims verified. Quote attribution corrected from Semir Jahic to Jeff Dalo. Quote wording corrected to match source exactly.
 
 *Raw receipt for Matthew's review. Click any link above. Flag anything that doesn't match before posting.*
