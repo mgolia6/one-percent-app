@@ -586,7 +586,7 @@ export default function HomePage() {
           {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
             const isSelected = filter === cat
             const categoryColor = CATEGORY_COLORS[cat]
-            const isColoredTab = !!categoryColor
+            const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
             
             return (
               <button
@@ -594,12 +594,12 @@ export default function HomePage() {
                 onClick={() => setFilter(cat)}
                 style={{
                   background: isSelected 
-                    ? (isColoredTab ? categoryColor : '#1a1a1a')
+                    ? (isSystemTab ? '#1a1a1a' : categoryColor)
                     : 'transparent',
                   color: isSelected 
-                    ? (isColoredTab ? '#0a0a0a' : '#fff')
-                    : (isColoredTab ? categoryColor : '#555'),
-                  border: isSelected ? 'none' : `1px solid ${isColoredTab ? categoryColor : '#333'}`,
+                    ? (isSystemTab ? '#fff' : '#0a0a0a')
+                    : (categoryColor || '#555'),
+                  border: isSelected ? 'none' : `1px solid ${categoryColor || '#333'}`,
                   borderRadius: isSelected ? '6px 6px 0 0' : '4px',
                   padding: isSelected ? '6px 12px 8px' : '4px 10px',
                   fontSize: 9,
@@ -611,7 +611,7 @@ export default function HomePage() {
                   flexShrink: 0,
                   position: 'relative',
                   transform: isSelected ? 'translateY(2px)' : 'none',
-                  boxShadow: isSelected ? '0 -2px 4px rgba(0,0,0,0.1)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
                 {cat.toUpperCase()}
