@@ -58,7 +58,7 @@ function FeedbackModal({ userId, onClose }) {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(26,42,58,0.5)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
-      <div style={{ background: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 100%)', border: '1px solid rgba(26,42,58,0.1)', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(26,42,58,0.15)' }}>
+      <div style={{ background: 'linear-gradient(160deg, #dde4ed 0%, #d4dce8 100%)', border: '1px solid rgba(26,42,58,0.1)', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(26,42,58,0.15)' }}>
         {done ? (
           <div style={{ textAlign: 'center', fontSize: 13, color: '#1a2a3a', letterSpacing: '0.08em', fontFamily: "'DM Mono', monospace" }}>THANKS 🙏</div>
         ) : (
@@ -123,7 +123,7 @@ function BugModal({ userId, onClose }) {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(26,42,58,0.5)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
-      <div style={{ background: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 100%)', border: '1px solid rgba(26,42,58,0.1)', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(26,42,58,0.15)' }}>
+      <div style={{ background: 'linear-gradient(160deg, #dde4ed 0%, #d4dce8 100%)', border: '1px solid rgba(26,42,58,0.1)', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%', boxShadow: '0 20px 60px rgba(26,42,58,0.15)' }}>
         {done ? (
           <div style={{ textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em', fontFamily: "'DM Mono', monospace" }}>REPORTED — THANKS 🐛</div>
         ) : (
@@ -203,7 +203,7 @@ export default function HomePage() {
   }
 
   if (loading) return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #dde4ed 0%, #d4dce8 50%, #c9d4e3 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ fontSize: 10, color: 'rgba(26,42,58,0.3)', letterSpacing: '0.2em', fontFamily: "'DM Mono', monospace" }}>LOADING...</div>
     </div>
   )
@@ -217,18 +217,18 @@ export default function HomePage() {
   const firstName = profile?.name?.split(' ')[0] || null
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%)', fontFamily: "'DM Sans', sans-serif", color: '#1a2a3a', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #dde4ed 0%, #d4dce8 50%, #c9d4e3 100%)', fontFamily: "'DM Sans', sans-serif", color: '#1a2a3a', position: 'relative', overflow: 'hidden' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #f0f4f8; }
+        body { background: #dde4ed; }
         .noise-overlay {
           position: fixed; inset: 0; pointer-events: none; opacity: 0.025;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
           background-size: 200px 200px;
         }
         .entry-row {
-          background: rgba(255,255,255,0.55);
+          background: rgba(255,255,255,0.65);
           border: 1px solid rgba(26,42,58,0.08);
           border-radius: 6px;
           padding: 16px 18px;
@@ -247,7 +247,7 @@ export default function HomePage() {
         }
         .entry-row.locked { opacity: 0.4; }
         .stat-card {
-          background: rgba(255,255,255,0.55);
+          background: rgba(255,255,255,0.65);
           border: 1px solid rgba(26,42,58,0.08);
           border-radius: 6px;
           padding: 14px 12px;
