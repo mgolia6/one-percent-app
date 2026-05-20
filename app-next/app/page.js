@@ -250,6 +250,118 @@ function BugModal({ userId, onClose }) {
   )
 }
 
+const HOW_IT_WORKS = [
+  {
+    eyebrow: 'WELCOME',
+    heading: "You're in the beta.",
+    body: "One Percent is a daily micro-learning system — one concept, every day, across seven categories. Sales. AI. Language. Mental models. Philosophy. Neuroscience. Communication.\n\nVerified sources. Real content. No filler.",
+  },
+  {
+    eyebrow: 'WHAT YOU\'RE GETTING',
+    heading: '30 days. All seven categories. Daily.',
+    body: "Full access to everything — every category, every entry, unlocked one per day for 30 days.\n\nEach entry has three parts: a Morning Brief to start your day sharp, a Midday Reframe to apply it, and an Evening Quiz to lock it in.",
+  },
+  {
+    eyebrow: 'FEEDBACK — 1 OF 4',
+    heading: 'Something breaks — tell me.',
+    body: "There's a BUG button in the top right of your library. Hit it, describe what happened, pick which page it was on.\n\nThat's it. I get the report instantly. Don't hold bugs — they slow everything down.",
+  },
+  {
+    eyebrow: 'FEEDBACK — 2 OF 4',
+    heading: 'General feedback — anytime.',
+    body: "FEEDBACK button, same spot in the library header. Use it whenever something feels off, something lands well, or you have a thought that doesn't fit anywhere else.\n\nNot just for problems. If something works, that's signal too.",
+  },
+  {
+    eyebrow: 'FEEDBACK — 3 OF 4',
+    heading: 'Rate every entry. Every day.',
+    body: "After the quiz, you'll get three quick ratings — the topic, the content, the quiz itself. Takes 20 seconds.\n\nThis is not optional. This daily signal is the whole point of having beta users. Without it, I'm building blind.\n\nDon't save it for later. Do it right after you finish while it's fresh.",
+  },
+  {
+    eyebrow: 'FEEDBACK — 4 OF 4',
+    heading: 'Every 7 days: go deeper.',
+    body: "Every week, a check-in appears automatically when you open an entry. It asks about clarity, relevance, the quiz, whether you'd recommend it — and what's missing.\n\nThis one needs actual words. Be specific. Be honest. Nice feedback is useless feedback.",
+  },
+  {
+    eyebrow: 'END OF BETA',
+    heading: 'One more ask at the end.',
+    body: "At day 30, you'll get a final feedback form — same questions but zoomed out across the whole experience.\n\nIf you want to talk through it directly, I'm available for that too. No pressure on the call. The form is the real ask. But the offer stands.",
+  },
+]
+
+function HowItWorksModal({ onClose }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)',
+        display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
+        zIndex: 1000, padding: '24px 24px 48px', overflowY: 'auto',
+      }}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          background: '#111', border: '1px solid #222', borderRadius: 8,
+          maxWidth: 420, width: '100%', marginTop: 24,
+          fontFamily: "'Inter', sans-serif",
+        }}
+      >
+        {/* Modal header */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: '18px 24px', borderBottom: '1px solid #1a1a1a',
+        }}>
+          <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', fontWeight: 600 }}>HOW IT WORKS</div>
+          <button
+            onClick={onClose}
+            style={{ background: 'none', border: 'none', color: '#444', fontSize: 18, cursor: 'pointer', lineHeight: 1, padding: 0 }}
+          >✕</button>
+        </div>
+
+        {/* Sections */}
+        <div style={{ padding: '0 24px 32px' }}>
+          {HOW_IT_WORKS.map((section, i) => (
+            <div
+              key={i}
+              style={{
+                paddingTop: 28,
+                paddingBottom: 28,
+                borderBottom: i < HOW_IT_WORKS.length - 1 ? '1px solid #1a1a1a' : 'none',
+              }}
+            >
+              <div style={{ fontSize: 9, letterSpacing: '0.18em', color: '#444', fontWeight: 600, marginBottom: 10 }}>
+                {section.eyebrow}
+              </div>
+              <div style={{ fontSize: 17, color: '#fff', fontWeight: 500, lineHeight: 1.3, marginBottom: 14, letterSpacing: '-0.01em' }}>
+                {section.heading}
+              </div>
+              {section.body.split('\n\n').map((para, j) => (
+                <p key={j} style={{ fontSize: 13, color: '#666', lineHeight: 1.75, marginBottom: j < section.body.split('\n\n').length - 1 ? 10 : 0 }}>
+                  {para}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div style={{ padding: '16px 24px 24px', borderTop: '1px solid #1a1a1a', textAlign: 'center' }}>
+          <button
+            onClick={onClose}
+            style={{
+              background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 4,
+              padding: '12px 32px', fontSize: 11, color: '#555', cursor: 'pointer',
+              letterSpacing: '0.1em', fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            GOT IT
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function HomePage() {
   const router = useRouter()
   const [user, setUser] = useState(null)
@@ -258,6 +370,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showBug, setShowBug] = useState(false)
+  const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
 
@@ -320,6 +433,7 @@ export default function HomePage() {
 
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
+      {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
 
       {/* Welcome overlay */}
       {showWelcome && (() => {
@@ -344,6 +458,7 @@ export default function HomePage() {
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button onClick={() => setShowBug(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>BUG</button>
           <button onClick={() => setShowFeedback(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>FEEDBACK</button>
+          <button onClick={() => setShowHowItWorks(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>INFO</button>
           <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #222', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SIGN OUT</button>
         </div>
       </div>
