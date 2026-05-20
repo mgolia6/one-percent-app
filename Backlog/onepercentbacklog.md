@@ -1,6 +1,6 @@
 # One Percent — Concept Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: May 17, 2026 — v1.17 (7 categories, 9-slot rotation)
+Last updated: May 19, 2026 — v1.19 (Entry 017: Multi-Threading marked used) (7 categories, 9-slot rotation)
 
 This is the standing candidate list. Claude reads this before every generation, cross-references against the search signal, marks used concepts, and adds new candidates as they surface.
 
@@ -63,7 +63,7 @@ Target library: 365 entries (~40 full cycles)
 | SPIN Selling | Neil Rackham's 40,000-call research base. Still the most evidence-backed discovery methodology. Being revisited in context of complex enterprise deals. | candidate |
 | Challenger Sale methodology | Dixon & Adamson 2011. "Teach, Tailor, Take Control" — resurging as buyers become more informed and value-led. Relevant contrast to relationship selling. | candidate |
 | Loss aversion in sales | Kahneman/Tversky applied to buyer behavior. Distinct from anchoring entry. How framing a deal around loss vs. gain shifts close rates. | candidate |
-| Multi-threading / executive access | Getting above the champion to multiple stakeholders. Critical in enterprise sales, documented in win/loss data (Gong, Chorus). | candidate |
+| Multi-threading / executive access | Getting above the champion to multiple stakeholders. Critical in enterprise sales, documented in win/loss data (Gong, Chorus). | **used — SC.3.1** |
 | Pipeline velocity | The four levers: deal count, average deal size, win rate, sales cycle length. Measurable. Good Measurable Behavior Rule candidate. | candidate |
 | MEDDIC / MEDDPICC | Qualification framework. Widely adopted in enterprise SaaS. Strong source availability (John McMahon, Force Management). | candidate |
 | Objection handling as intelligence | Objections aren't resistance, they're data. How top reps use objections to diagnose deal health. Behavioral sourcing from Gong available. | candidate |

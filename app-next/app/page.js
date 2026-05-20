@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { getUnlockedCount } from '@/lib/unlock'
 
-const TOTAL_ENTRIES = 16
+const TOTAL_ENTRIES = 17
 
 const CATEGORY_COLORS = {
   'AI': '#47FFE8',
@@ -34,6 +34,7 @@ const ENTRIES = [
   { entry: '014', editionId: 'NC.1', concept: 'Neuroplasticity', category: 'Neuroscience & Cognition' },
   { entry: '015', editionId: 'SC.2.2', concept: 'Tactical Empathy', category: 'Sales Craft' },
   { entry: '016', editionId: 'CM.1', concept: 'Active Listening', category: 'Communication' },
+  { entry: '017', editionId: 'SC.3.1', concept: 'Multi-Threading', category: 'Sales Craft' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
