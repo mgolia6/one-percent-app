@@ -146,8 +146,8 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   )
 
   if (done) {
-    // Scroll to top so overlay is in view
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Wait a tick then scroll to top so success overlay is in view
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     return null
   }
 
@@ -277,7 +277,6 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   }, [userStats])
 
   useEffect(() => {
-    if (isFirst.current) { isFirst.current = false; return }
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setThemeKey(tab)
   }, [tab])
