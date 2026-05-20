@@ -53,7 +53,6 @@ function WeeklyFeedbackModal({ userId, onClose }) {
       <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 440, width: '100%', margin: 'auto' }}>
         {done ? (
           <div style={{ textAlign: 'center', padding: '24px 0' }}>
-            <div style={{ fontSize: 20, marginBottom: 8 }}>🙏</div>
             <div style={{ fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>FEEDBACK RECEIVED</div>
             <div style={{ fontSize: 12, color: '#555', marginTop: 8 }}>This helps a lot. For real.</div>
           </div>
