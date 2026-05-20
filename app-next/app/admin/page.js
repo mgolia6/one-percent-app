@@ -110,52 +110,103 @@ export default function AdminPage() {
         </div>
 
         {/* Feedback tab */}
-        {tab === 'feedback' && (
-          <div>
-            {weeklyFb.length > 0 && (
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>WEEKLY DEEP FEEDBACK ({weeklyFb.length})</div>
-                {weeklyFb.map(f => (
-                  <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '20px', marginBottom: 12 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                      <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
-                      <span style={{ fontSize: 10, color: '#333' }}>{timeAgo(f.created_at)}</span>
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
-                      {[['Clarity', f.clarity_rating], ['Relevance', f.relevance_rating], ['Quiz', f.quiz_rating]].map(([l, r]) => (
-                        <div key={l}>
-                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 4 }}>{l.toUpperCase()}</div>
-                          <div style={{ fontSize: 13, color: '#47FFE8' }}>{stars(r)}</div>
-                        </div>
-                      ))}
-                    </div>
-                    {f.would_recommend && <div style={{ fontSize: 12, color: '#888', marginBottom: 8 }}>Recommend: <span style={{ color: '#fff' }}>{f.would_recommend}</span></div>}
-                    {f.biggest_win && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', marginBottom: 8, fontSize: 13, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>BIGGEST WIN</span>{f.biggest_win}</div>}
-                    {f.missing_topics && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', fontSize: 13, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>MISSING / CHANGE</span>{f.missing_topics}</div>}
-                  </div>
-                ))}
-              </div>
-            )}
+        {tab === 'feedback' && (() => {
+          // Aggregate post_entry feedback by entry number
+          const postEntryFb = feedback.filter(f => f.feedback_type === 'post_entry')
+          const entryNums = [...new Set(postEntryFb.map(f => f.entry_number))].sort()
+          const avg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : '—'
+          const bar = val => {
+            if (!val || val === '—') return '—'
+            const filled = Math.round(val)
+            return '█'.repeat(filled) + '░'.repeat(5 - filled) + ' ' + val
+          }
 
+          return (
             <div>
-              <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>QUICK FEEDBACK ({dailyFb.length})</div>
-              {dailyFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No quick feedback yet.</div>}
-              {dailyFb.map(f => (
-                <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: f.comment ? 8 : 0 }}>
-                      <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
-                      {(f.overall_rating || f.topic_rating) && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.overall_rating || f.topic_rating}/5</span>}
-                      <span style={{ fontSize: 9, color: '#333', letterSpacing: '0.08em' }}>{f.feedback_type?.toUpperCase()}</span>
+              {/* Post-entry aggregated by entry */}
+              <div style={{ marginBottom: 32 }}>
+                <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>ENTRY RATINGS — {postEntryFb.length} SUBMISSIONS ACROSS {entryNums.length} ENTRIES</div>
+                {postEntryFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No entry feedback yet.</div>}
+                {entryNums.map(num => {
+                  const entries = postEntryFb.filter(f => f.entry_number === num)
+                  const topics = entries.map(f => f.topic_rating).filter(Boolean)
+                  const clarity = entries.map(f => f.clarity_rating).filter(Boolean)
+                  const quiz = entries.map(f => f.quiz_rating).filter(Boolean)
+                  const comments = entries.map(f => f.comment).filter(Boolean)
+                  return (
+                    <div key={num} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+                        <span style={{ fontSize: 13, color: '#fff', fontWeight: 500 }}>Entry {num}</span>
+                        <span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em' }}>{entries.length} {entries.length === 1 ? 'RESPONSE' : 'RESPONSES'}</span>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: comments.length ? 14 : 0 }}>
+                        {[['TOPIC', avg(topics)], ['CONTENT', avg(clarity)], ['QUIZ', avg(quiz)]].map(([label, val]) => (
+                          <div key={label}>
+                            <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 6 }}>{label}</div>
+                            <div style={{ fontSize: 13, color: '#47FFE8', fontFamily: 'monospace', letterSpacing: '-0.02em' }}>{bar(val)}</div>
+                          </div>
+                        ))}
+                      </div>
+                      {comments.length > 0 && (
+                        <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 12 }}>
+                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 8 }}>COMMENTS</div>
+                          {comments.map((c, i) => (
+                            <div key={i} style={{ fontSize: 12, color: '#888', lineHeight: 1.7, marginBottom: i < comments.length - 1 ? 6 : 0, paddingLeft: 8, borderLeft: '2px solid #222' }}>{c}</div>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    {f.comment && <div style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}
-                  </div>
-                  <span style={{ fontSize: 10, color: '#333', flexShrink: 0 }}>{timeAgo(f.created_at)}</span>
+                  )
+                })}
+              </div>
+
+              {/* Weekly deep feedback — separate */}
+              {weeklyFb.length > 0 && (
+                <div style={{ marginBottom: 32 }}>
+                  <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>WEEKLY CHECK-INS ({weeklyFb.length})</div>
+                  {weeklyFb.map(f => (
+                    <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '20px', marginBottom: 12 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+                        <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
+                        <span style={{ fontSize: 10, color: '#333' }}>{timeAgo(f.created_at)}</span>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
+                        {[['Topic', f.topic_rating], ['Clarity', f.clarity_rating], ['Quiz', f.quiz_rating]].map(([l, r]) => (
+                          <div key={l}>
+                            <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 4 }}>{l.toUpperCase()}</div>
+                            <div style={{ fontSize: 13, color: '#47FFE8' }}>{stars(r)}</div>
+                          </div>
+                        ))}
+                      </div>
+                      {f.would_recommend && <div style={{ fontSize: 12, color: '#888', marginBottom: 8 }}>Recommend: <span style={{ color: '#fff' }}>{f.would_recommend}</span></div>}
+                      {f.biggest_win && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', marginBottom: 8, fontSize: 12, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>BIGGEST WIN</span>{f.biggest_win}</div>}
+                      {f.missing_topics && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', fontSize: 12, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>MISSING / CHANGE</span>{f.missing_topics}</div>}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
+
+              {/* Landing/anytime feedback */}
+              {feedback.filter(f => f.feedback_type === 'landing').length > 0 && (
+                <div>
+                  <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>ANYTIME FEEDBACK ({feedback.filter(f => f.feedback_type === 'landing').length})</div>
+                  {feedback.filter(f => f.feedback_type === 'landing').map(f => (
+                    <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: f.comment ? 8 : 0 }}>
+                          <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
+                          {f.overall_rating && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.overall_rating}/5</span>}
+                        </div>
+                        {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}
+                      </div>
+                      <span style={{ fontSize: 10, color: '#333', flexShrink: 0 }}>{timeAgo(f.created_at)}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          )
+        })()}
 
         {/* Bugs tab */}
         {tab === 'bugs' && (

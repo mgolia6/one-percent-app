@@ -89,7 +89,11 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const [error, setError] = useState(null)
   const formRef = useRef(null)
   useEffect(() => {
-    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 1200)
+    setTimeout(() => {
+      if (!formRef.current) return
+      const top = formRef.current.getBoundingClientRect().top + window.scrollY - 16
+      window.scrollTo({ top, behavior: 'smooth' })
+    }, 1200)
   }, [])
 
   const allRated = ratings.topic && ratings.clarity && ratings.quiz
@@ -156,7 +160,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
         placeholder="Anything else? (optional)"
         style={{
           width: '100%', background: T.inputBg, border: `1px solid ${T.borderMid}`,
-          borderRadius: 4, padding: '12px 14px', fontSize: 13, color: T.textMid,
+          borderRadius: 4, padding: '12px 14px', fontSize: 16, color: T.textMid,
           fontFamily: "\'Inter\',sans-serif", resize: 'vertical', minHeight: 64,
           outline: 'none', marginBottom: 14, marginTop: 8,
         }}
