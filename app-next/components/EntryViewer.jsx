@@ -140,33 +140,11 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
     </div>
   )
 
-  if (done) return (
-    <div style={{
-      position: 'fixed', inset: 0, zIndex: 998,
-      background: '#0A0A0A',
-      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      padding: 32,
-      animation: 'fadeInOverlay 0.4s ease forwards',
-    }}>
-      <style>{`
-        @keyframes fadeInOverlay {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-      `}</style>
-      <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 32 }}>ONE PERCENT</div>
-      <div style={{ fontSize: 36, fontWeight: 500, color: '#fff', letterSpacing: '-0.02em', marginBottom: 16, textAlign: 'center', lineHeight: 1.2 }}>
-        Logged.
-      </div>
-      <div style={{ fontSize: 13, color: '#444', letterSpacing: '0.04em', textAlign: 'center', maxWidth: 260, lineHeight: 1.8 }}>
-        That helps. For real.
-      </div>
-      <div style={{
-        marginTop: 20, width: 32, height: 2, borderRadius: 1,
-        background: accent, opacity: 0.6,
-      }} />
-    </div>
-  )
+  if (done) {
+    // Scroll to top so overlay is in view
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return null
+  }
 
   return (
     <div ref={formRef} style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
@@ -258,7 +236,7 @@ const THEMES = {
   },
 }
 
-export default function EntryViewer({ entry, onComplete, onBack, userStats, userId }) {
+export default function EntryViewer({ entry, onComplete, onBack, userStats, userId, onFeedbackDone }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -475,7 +453,10 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     userId={userId}
                     accent={ACCENT}
                     theme={T}
-                    onSubmit={() => setTimeout(() => setShowEntryFeedback(false), 3000)}
+                    onSubmit={() => {
+                      setShowEntryFeedback(false)
+                      if (onFeedbackDone) onFeedbackDone(ACCENT)
+                    }}
                   />
                 )}
 
