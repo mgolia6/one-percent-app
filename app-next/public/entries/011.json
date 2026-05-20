@@ -1,0 +1,84 @@
+{
+  "entry": "011",
+  "editionId": "MM.2",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "Second-Order Thinking",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "Most decisions fail not because the first move was wrong, but because nobody asked what happens after the first move works.",
+    "explanation_paragraphs": [
+      "Second-order thinking is the discipline of asking 'And then what?' — not once, but twice. First-order thinking is what everyone does: it's fast, it's obvious, and it points to the most direct path between problem and solution.",
+      "Howard Marks, founder of Oaktree Capital, named this gap: first-level thinking is accessible to anyone, which is exactly why acting on it alone puts you in the same lane as everyone else. The second-order thinker doesn't just ask what an action will produce — they ask what that outcome will produce, and what happens in the ecosystem around it.",
+      "Every decision lands in a system. Systems react. Those reactions become the real consequences, and they often arrive later, bigger, and harder to reverse than the first-order effect ever was."
+    ],
+    "why_today": "The decisions you're most confident about today — the ones with an obvious, clean answer — are exactly where second-order thinking pays off. The obvious answer is cheap because everyone can see it.",
+    "morning_challenge": "Find one decision you're facing this week — something you already have a first-order answer to.\n\nMap it out:\n— What is the immediate effect? (First order)\n— What happens because of that effect? (Second order)\n— Who else in the system is affected, and how will they respond? (Third order)\n\nThen run this prompt:\n\n\"I'm considering [describe the decision]. My first-order reasoning is [your obvious answer]. Act as a second-order thinker. List 5 second and third-order consequences I might not be accounting for — including unintended effects on people, incentives, and systems. Flag which ones are most likely to matter and which I can't easily reverse.\"\n\nIf the output changes what you do, that's the model working."
+  },
+  "midday": {
+    "reframe": "Second-order effects don't arrive gradually — they arrive after a delay and then all at once. By the time they're visible, the first-order decision is locked.",
+    "itw_label": "IN THE WILD — TYPE B · HANOI RAT BOUNTY 1902",
+    "itw_paragraphs": [
+      "In 1902, the French colonial government in Hanoi offered a bounty for rats to control an infestation. Payment was made per rat tail. The policy worked immediately — dead rat tails flooded in, and officials congratulated themselves.",
+      "What they couldn't see: rat catchers were catching rats, cutting off their tails, and releasing the animals back into the sewer system to breed. More rats meant more tails, more tails meant more income. By the time officials noticed rats roaming the city with no tails, the incentive had been running for months and the rat population had grown.",
+      "This is the second-order structure: the first-order effect (tails submitted) was real and visible immediately. The second-order effect (breeding incentivized by the bounty) was invisible until it was already embedded in behavior. They saw the first order. They never asked what came after it."
+    ],
+    "quote": "First-level thinking is simplistic and superficial, and just about everyone can do it (a bad sign for anything involving an attempt at superiority).",
+    "attribution": "Howard Marks, The Most Important Thing, Columbia University Press, 2011",
+    "midday_nudge": "Think about a decision you made in the last 90 days where you had a clear, obvious first-order answer. What did the second-order play out as? Did you see it coming?"
+  },
+  "quiz": [
+    {
+      "question": "Howard Marks defined second-level thinking in contrast to first-level thinking. What is the core distinction?",
+      "options": [
+        "First-level thinking uses intuition; second-level thinking uses data and analysis",
+        "First-level thinking is simplistic and focuses on the obvious immediate outcome; second-level thinking accounts for what happens after that outcome, including how others will respond",
+        "First-level thinking is reactive; second-level thinking requires slowing down and always choosing the contrarian position",
+        "Second-level thinking is reserved for complex decisions; first-level thinking is appropriate for routine ones"
+      ],
+      "correct": 1,
+      "explanation": "The core distinction is depth and system awareness, not intuition vs. data. Marks' point is that first-level answers are available to everyone, which means acting on them alone can't produce above-average outcomes. Second-order thinkers ask: what will happen after the first effect, and how will the system react?"
+    },
+    {
+      "question": "The Hanoi rat bounty (1902) demonstrates a specific failure mode of first-order thinking. Which best describes what went wrong?",
+      "options": [
+        "The bounty was set too low to incentivize behavior change",
+        "Officials measured the wrong thing — tails instead of live rat population",
+        "The policy solved the first-order problem (rats submitted) while creating a second-order consequence (breeding incentivized) that made the underlying problem worse",
+        "The government failed to communicate the policy clearly, so rat catchers misunderstood it"
+      ],
+      "correct": 2,
+      "explanation": "The bounty worked perfectly at the first order — it changed behavior immediately. But the second-order consequence was that it created an incentive to breed the very thing being eliminated. The policy solved a visible metric while worsening the underlying reality. This is the failure pattern second-order thinking is designed to catch."
+    },
+    {
+      "question": "You're a team lead. To speed up delivery, you announce that whoever closes the most tickets this sprint gets a bonus. Output increases significantly. What does second-order thinking predict is likely happening — and what should you check?",
+      "options": [
+        "Nothing — the incentive is working as intended; high output is the goal and it's being achieved",
+        "The team is cutting corners on testing or documentation, or closing easy tickets ahead of complex ones — audit quality and backlog composition, not just velocity",
+        "The bonus is probably too small; second-order thinking would suggest increasing it to sustain the behavior change",
+        "Team morale will improve because recognition motivates people; the second-order effect is positive"
+      ],
+      "correct": 1,
+      "explanation": "Ticket velocity is the first-order metric. The second-order consequence: when people are rewarded for volume, they route toward easy wins, defer hard problems, or reduce quality to close faster. The metric goes up; the system degrades. Second-order thinking says: check what's NOT being counted, not just what is."
+    }
+  ],
+  "closing": "Pick the decision you're most confident about this week — and ask what happens after your obvious answer works.",
+  "sources": [
+    {
+      "label": "Marks, Howard — The Most Important Thing, Columbia University Press, 2011",
+      "detail": "Defines second-level thinking and its application to investment and decision-making. The distinction between first and second-order thinking is developed throughout chapters 1–3.",
+      "url": "https://www.columbiauniversitypress.com/catalog/9780231153683/the-most-important-thing"
+    },
+    {
+      "label": "Vann, Michael — Of Rats, Rice, and Race: The Great Hanoi Rat Massacre, French Colonial History, Vol. 4, 2003",
+      "detail": "Academic documentation of the 1902 Hanoi rat bounty — the canonical real-world example of second-order effects in policy.",
+      "url": "https://muse.jhu.edu/article/42110"
+    },
+    {
+      "label": "Munger, Charles — Poor Charlie's Almanack, Donning Company, 2005",
+      "detail": "Munger's framework for thinking through consequences — the 'And then what?' discipline applied across investing and life decisions.",
+      "url": "https://www.amazon.com/Poor-Charlies-Almanack-Charles-Expanded/dp/1578645018"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "entry": "012",
+  "editionId": "AI.2.2",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "Hallucination",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "The model isn't lying. It doesn't know how. That's exactly what makes it dangerous.",
+    "explanation_paragraphs": [
+      "LLMs don't retrieve facts from a database. They predict the next token based on statistical patterns learned from training data. When the model encounters a gap — a question where training data is thin, conflicting, or absent — it doesn't stop. It generates the most statistically probable continuation.",
+      "That continuation is often grammatically perfect, confidently stated, and factually wrong. Meta named this during the 2022 BlenderBot release: hallucinations are 'confident statements that are not true.'",
+      "The academic community calls it confabulation — borrowed from neuropsychology, where patients with memory damage fill narrative gaps with invented detail they genuinely believe is real. The machine version works the same way: it isn't guessing in the sense of knowing it might be wrong. It's producing the output that fits the pattern.",
+      "The confidence is structural, not epistemic. The model has no internal mechanism to distinguish between what it knows and what it's fabricating. That's the trap."
+    ],
+    "why_today": "Every AI output you trust without verification is a hallucination you didn't catch. The model has no way to flag what it doesn't know — because it doesn't know what it doesn't know.",
+    "morning_challenge": "Pick one AI-assisted output you've used or sent in the last week — a summary, a draft, a data point, a cited fact.\n\nAsk:\n— Did I verify the specific claim, or did I trust the confidence?\n— Was there a citation, a number, or a named source in there? Did I check it?\n— If this output was wrong, what would the blast radius be?\n\nThen run this prompt on your next AI research task:\n\n\"You are a fact-checking layer. Flag every specific claim, name, citation, number, or stated fact that could be hallucinated, and explain why each needs external verification before I use it.\"\n\nThis is the mitigation workflow: use AI to interrogate AI."
+  },
+  "midday": {
+    "reframe": "The attorney didn't think he was doing anything wrong. That's the actual lesson.",
+    "itw_label": "IN THE WILD — TYPE A · MATA V. AVIANCA 2023",
+    "itw_paragraphs": [
+      "In early 2023, attorney Steven Schwartz used ChatGPT to research a motion in a personal injury case against Avianca. ChatGPT returned six case citations — complete with procedural histories, quoted passages, and named judges as authors. All six were entirely fabricated.",
+      "When opposing counsel flagged they couldn't locate the cases, Schwartz asked ChatGPT to confirm they were real. ChatGPT confirmed they were. Schwartz submitted them again. When Judge P. Kevin Castel ordered copies of the opinions, what came back was — in the court's own word — 'gibberish.' The six fake opinions had been attributed to real judges who had no connection to the invented cases.",
+      "Judge Castel sanctioned the attorneys $5,000 and required corrective letters to every judge named in the fabricated rulings. The model produced exactly what it was asked to produce. The attorney assumed the output was grounded. Nobody checked."
+    ],
+    "quote": "I just was not thinking that the case could be fabricated, so I was not looking at it from that point of view.",
+    "attribution": "Steven Schwartz, testimony — Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. 2023)",
+    "midday_nudge": "Where in your current workflow are you accepting AI output with the same assumption Schwartz had — that the model couldn't possibly be making it up?"
+  },
+  "quiz": [
+    {
+      "question": "Why do LLMs produce hallucinations even when they appear confident? What is the mechanical cause?",
+      "options": [
+        "The model intentionally fills gaps with plausible-sounding content to avoid admitting it lacks information",
+        "LLMs are knowledge retrieval systems, and hallucinations occur when the database hasn't been updated recently",
+        "LLMs predict the next token based on statistical patterns in training data — when the signal is weak or absent, the model generates the most probable continuation regardless of whether it is factually grounded",
+        "Hallucinations occur primarily due to insufficient training data volume — larger models hallucinate less"
+      ],
+      "correct": 2,
+      "explanation": "LLMs are not knowledge retrieval systems. They generate token sequences by predicting what comes next based on learned patterns. A weak training signal doesn't produce a refusal — it produces the most statistically likely output anyway. This is why the model presents fabrications with the same confidence as accurate statements."
+    },
+    {
+      "question": "In Mata v. Avianca (2023), Schwartz asked ChatGPT to confirm the cases were real and ChatGPT confirmed they were. What does this illustrate?",
+      "options": [
+        "ChatGPT intentionally misled the attorney to avoid appearing wrong",
+        "The model confirmed the citations because they were stored incorrectly in its database",
+        "Asking the model that generated a hallucination to verify it is not a valid mitigation strategy — the model produces probable continuations, including confirmations, not independent factual checks",
+        "The result demonstrates a known bug in early ChatGPT versions that has since been corrected"
+      ],
+      "correct": 2,
+      "explanation": "When Schwartz asked ChatGPT to confirm the cases existed, the model generated a confirmation — because that was the statistically probable response, not because it had checked an external source. This is the closed-loop trap: the model that produced the hallucination cannot serve as the ground truth."
+    },
+    {
+      "question": "You're using AI to draft patient-facing FAQs about drug interactions. The output is clear and confident. What is the correct mitigation before publishing?",
+      "options": [
+        "Run the same prompt twice — if both answers agree, the information is likely accurate",
+        "Every specific clinical claim must be verified against authoritative medical sources by a qualified reviewer; the AI draft is structure, not a factual source",
+        "Use a larger, more recent AI model — newer models have significantly lower hallucination rates",
+        "Add a disclaimer stating it was AI-generated, which transfers responsibility to the reader"
+      ],
+      "correct": 1,
+      "explanation": "Running the same prompt twice doesn't catch hallucinations — consistent outputs can be consistently wrong. Disclaimers don't make fabricated clinical information safe. Newer models still hallucinate. The only reliable mitigation is external verification by a domain expert against authoritative sources."
+    }
+  ],
+  "closing": "Where in your work are you accepting confident AI output as verified fact — and what would it cost if it's wrong?",
+  "sources": [
+    {
+      "label": "Ji et al. — Survey of Hallucination in Natural Language Generation, ACM Computing Surveys 55(12), 2023",
+      "detail": "Landmark survey. Covers definition, mechanical causes, and mitigation strategies. Open access at arXiv.",
+      "url": "https://arxiv.org/abs/2202.03629"
+    },
+    {
+      "label": "Hallucination (artificial intelligence) — Wikipedia (primary: Meta/BlenderBot 2022)",
+      "detail": "Documents Meta's 2022 definition — 'confident statements that are not true.'",
+      "url": "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)"
+    },
+    {
+      "label": "Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. June 22, 2023)",
+      "detail": "Full court ruling. Six fabricated AI citations, $5,000 sanction, and Schwartz's testimony verbatim.",
+      "url": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/"
+    }
+  ]
+}

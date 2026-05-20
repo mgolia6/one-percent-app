@@ -1,0 +1,84 @@
+{
+  "entry": "008",
+  "editionId": "AI.2.1",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "Chain-of-Thought Prompting",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "You're asking AI to answer. You should be asking it to think.",
+    "explanation_paragraphs": [
+      "When you send a prompt, the model generates the most statistically likely next token — then the next — all the way to the answer. If you skip straight to asking for the answer, the model skips straight to giving you one, without the intermediate reasoning steps that would actually improve it.",
+      "Chain-of-thought prompting changes that. By prompting the model to work through a problem step by step before answering, you force it to surface intermediate reasoning — and that reasoning both catches errors and produces better conclusions.",
+      "Wei et al. tested this across three major language models on arithmetic, commonsense, and symbolic reasoning tasks. For complex multi-step problems, CoT dramatically outperformed standard prompting — but only in large models. Below ~100B parameters, the models produced reasoning that was fluent and confident but logically broken. The chain looked right. The answer was wrong."
+    ],
+    "why_today": "Applies to standard models: GPT-4o, Claude Sonnet (non-thinking mode), Gemini Flash. Dedicated reasoning models — o3, Claude with extended thinking, DeepSeek R1 — run CoT internally; explicitly prompting them for it adds cost without gains. Know which tier you're in.",
+    "morning_challenge": "Pick a real decision, evaluation, or analysis task you're working through today — something with at least two or three moving parts.\n\nInstead of asking the model for the answer directly, use this prompt structure:\n\n\"I need you to think through this step by step before giving me your final answer. Here's the situation: [your actual situation]. Walk me through your reasoning — what factors matter, what the tradeoffs are, what's uncertain — and then give me your recommendation at the end.\"\n\nCompare the output to what you'd normally get asking the same question directly. Notice whether the reasoning surfaces anything the direct answer would have buried."
+  },
+  "midday": {
+    "reframe": "Chain-of-thought prompting isn't about getting the model to explain itself — it's about making the model do harder work before it answers.",
+    "itw_label": "IN THE WILD — TYPE A · KOJIMA ET AL. NEURIPS 2022",
+    "itw_paragraphs": [
+      "Kojima et al. (NeurIPS 2022) ran a follow-up experiment that flips everything you might assume about how CoT prompting works. Wei et al. had used few-shot CoT: carefully crafted examples showing the model how to reason step by step. Kojima's team asked: what if you strip all the examples out?",
+      "No demonstrations. No engineering. Just add the phrase 'Let's think step by step' before the model's answer. On MultiArith — a benchmark of multi-step math word problems — accuracy jumped from 17.7% to 78.7%. With a single sentence.",
+      "This doesn't just confirm that CoT works. It reframes what the mechanism actually is: you're not teaching the model to reason by showing it examples. You're unlocking reasoning that's already latent in a large enough model, simply by signaling that reasoning is expected."
+    ],
+    "quote": "Standard prompting only provides a lower bound on the capabilities of large language models.",
+    "attribution": "Jason Wei et al., Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, NeurIPS 2022",
+    "midday_nudge": "If one sentence can unlock a 4x accuracy improvement, what are you leaving on the table every time you send a prompt that just asks for an answer?"
+  },
+  "quiz": [
+    {
+      "question": "According to Wei et al. (NeurIPS 2022), chain-of-thought prompting consistently improves model performance only in models above approximately what size?",
+      "options": [
+        "7B parameters — most instruction-tuned models meet this threshold",
+        "20B parameters — the cutoff for commercial deployment",
+        "~100B parameters — below this, CoT produces fluent but illogical reasoning",
+        "500B parameters — only frontier models benefit meaningfully"
+      ],
+      "correct": 2,
+      "explanation": "Wei et al. found CoT is an emergent ability of scale. Below ~100B parameters, models produce chains of thought that sound coherent but are logically broken — leading to lower accuracy than standard prompting."
+    },
+    {
+      "question": "Why does chain-of-thought prompting improve output quality in large models — what is the actual mechanism?",
+      "options": [
+        "CoT forces models to access a different part of their training data — one optimized for reasoning tasks",
+        "Breaking a problem into explicit intermediate steps shapes the probability landscape so each subsequent token is generated with more relevant context",
+        "CoT activates the model's fact-retrieval mode, which reduces hallucination by cross-referencing stored knowledge",
+        "The model interprets step-by-step instructions as a signal to increase response length, which statistically correlates with accuracy"
+      ],
+      "correct": 1,
+      "explanation": "Each step in a chain of thought becomes context for the next token. Explicit intermediate reasoning keeps the model on track through multi-step problems instead of jumping directly to a likely-but-wrong answer."
+    },
+    {
+      "question": "You're using a frontier LLM to evaluate which of three market expansion strategies your team should pursue. You ask: 'Which strategy should we choose?' The model picks Strategy B with a short rationale. What would chain-of-thought prompting change about this workflow?",
+      "options": [
+        "You'd ask for the answer in a different format — bullet points instead of prose — so the reasoning is easier to scan",
+        "You'd add 'think carefully' to the prompt, signaling the model to draw from more of its training data before answering",
+        "You'd instruct the model to work through each strategy's tradeoffs, risks, and assumptions before committing to a recommendation — surfacing the reasoning rather than just the conclusion",
+        "You'd run the same prompt three times and take the most common answer, which statistically reflects the model's highest-confidence output"
+      ],
+      "correct": 2,
+      "explanation": "CoT is about making the reasoning explicit before the answer. Asking for the recommendation directly buries whatever intermediate analysis might have changed the answer — or revealed why it shouldn't be trusted."
+    }
+  ],
+  "closing": "The reasoning you don't see is the reasoning that can't be challenged.",
+  "sources": [
+    {
+      "label": "Wei, J. et al. — Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, NeurIPS 2022",
+      "detail": "Foundational CoT paper. Tested on 3 LLMs across arithmetic, commonsense, and symbolic reasoning. CoT is emergent above ~100B parameters; smaller models produce fluent but illogical chains.",
+      "url": "https://arxiv.org/abs/2201.11903"
+    },
+    {
+      "label": "Kojima, T. et al. — Large Language Models are Zero-Shot Reasoners, NeurIPS 2022",
+      "detail": "Zero-shot CoT: single phrase 'Let's think step by step' boosts MultiArith from 17.7% to 78.7% accuracy with InstructGPT (175B). No examples required.",
+      "url": "https://arxiv.org/abs/2205.11916"
+    },
+    {
+      "label": "Wei, J. — Language Models Perform Reasoning via Chain of Thought, Google Research Blog, 2022",
+      "detail": "Official Google Research explainer on the Wei et al. NeurIPS findings, covering the emergent nature of CoT and the scale requirement.",
+      "url": "https://research.google/blog/language-models-perform-reasoning-via-chain-of-thought/"
+    }
+  ]
+}

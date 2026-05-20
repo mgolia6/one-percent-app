@@ -833,3 +833,96 @@ LinkedIn Document Title: One Percent #[entry] — [Concept Name]
 - Every entry grounded in now — no outdated framing
 - Neuroscience: research-grounded, not pop psychology
 - Communication: practical and immediately applicable, not theoretical
+
+---
+
+## App Build — State as of May 19, 2026
+
+### Stack
+- **Framework:** Next.js 16 (App Router)
+- **Auth + DB:** Supabase (`uuzdlubbynavybttlmeh` — project `one-percent-better`)
+- **Hosting:** Vercel — `https://one-percent-app.vercel.app`
+- **Repo:** `mgolia6/one-percent-app` — app lives in `/app-next/` subdirectory
+
+### Architecture
+- **`/app-next/components/EntryViewer.jsx`** — single shared UI component. Receives entry data as props. Handles all tabs, quiz, celebration, completion card, sources.
+- **`/app-next/public/entries/[NNN].json`** — one JSON file per entry. This is the content source of truth for the app. NOT the JSX files.
+- **`/app-next/lib/supabase.js`** — lazy Supabase client
+- **`/app-next/lib/unlock.js`** — day-based unlock logic (Option A: entry N unlocks on day N of membership)
+- **`/app-next/app/page.js`** — library/home view with stats bar and entry list
+- **`/app-next/app/login/page.js`** — magic link login
+- **`/app-next/app/entry/[id]/page.js`** — entry page, loads JSON, saves completion to Supabase
+
+### Supabase Schema (applied)
+Two tables:
+- **`profiles`** — id, email, signup_date, current_streak, longest_streak, last_active_date
+- **`completions`** — user_id, entry_number, score, time_to_quiz, answers (jsonb), completed_at
+
+RLS enabled on both. Users can only read/write their own rows.
+
+### Entry JSON Format (canonical)
+Every entry JSON in `public/entries/` must have:
+```json
+{
+  "entry": "001",
+  "editionId": "AI.1.1",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "Context Window",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "...",
+    "explanation_paragraphs": ["...", "...", "..."],
+    "why_today": "...",
+    "morning_challenge": "..."
+  },
+  "midday": {
+    "reframe": "...",
+    "itw_label": "IN THE WILD — TYPE X · SOURCE",
+    "itw_paragraphs": ["...", "...", "..."],
+    "quote": "...",
+    "attribution": "...",
+    "midday_nudge": "..."
+  },
+  "quiz": [
+    {
+      "question": "...",
+      "options": ["...", "...", "...", "..."],
+      "correct": 0,
+      "explanation": "..."
+    }
+  ],
+  "closing": "...",
+  "sources": [
+    { "label": "...", "detail": "...", "url": "..." }
+  ]
+}
+```
+
+### Content Status
+All 16 entries have JSON files in `public/entries/`:
+001 (AI — Context Window) · 002 (VL — Framing Effect) · 003 (SC — Discovery Questions) · 004 (MM — Inversion) · 005 (PH — Premeditatio Malorum) · 006 (AI — Prompt Sensitivity) · 007 (SC — Talk/Listen Ratio) · 008 (AI — Chain-of-Thought) · 009 (VL — Euphemism Treadmill) · 010 (SC — Anchoring) · 011 (MM — Second-Order Thinking) · 012 (AI — Hallucination) · 013 (PH — Dichotomy of Control) · 014 (SC — Tactical Empathy) · 015 (NC — Neuroplasticity) · 016 (CM — Active Listening)
+
+### Entry Manifest (home page)
+`/app-next/app/page.js` has a hardcoded `ENTRIES` array with all 16 entries for the library view. Update this array when new entries are added.
+
+### Known Issues / Next Steps for App
+1. **Post-completion UX** — completion card with "BACK TO LIBRARY" and "VIEW SOURCES" buttons added and deployed
+2. **Library polish** — basic list view works, no visual upgrade yet
+3. **Streak logic** — implemented client-side in entry page, saves to Supabase profiles table
+4. **No entry manifest JSON** — entries array is hardcoded in page.js; should eventually be data-driven
+5. **No new entry flow** — to add entry 017+: create JSON in public/entries/, add to ENTRIES array in page.js, commit and push
+
+### Adding New Entries
+1. Generate content per v1.19 instructions
+2. Create `public/entries/[NNN].json` using the canonical JSON format above
+3. Add entry to `ENTRIES` array in `app/page.js`
+4. Commit and push — Vercel auto-deploys
+5. Also add `Editions/[NNN-Category-Concept]/` folder in repo for JSX/carousel/post/verify files per existing protocol
+
+### Env Vars (Vercel — already set)
+```
+NEXT_PUBLIC_SUPABASE_URL=https://uuzdlubbynavybttlmeh.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1emRsdWJieW5hdnlidHRsbWVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTAzMDQsImV4cCI6MjA5NDc4NjMwNH0.Wtd0HkesOp1n3CMUdxeX_AqPpv0s5oiBcvfKkTLM-p0
+```

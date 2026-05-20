@@ -1,0 +1,85 @@
+{
+  "entry": "016",
+  "editionId": "CM.1",
+  "category": "Communication",
+  "categoryTag": "COMM",
+  "concept": "Active Listening",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
+  "morning": {
+    "hook": "Most people in a conversation are not listening. They're waiting to talk. Those two things are not the same.",
+    "explanation_paragraphs": [
+      "In 1957, psychologists Carl Rogers and Richard Farson published a paper that named something most people do badly and almost no one has been taught: active listening. Not the passive kind — the nod-while-thinking-about-your-next-point kind most of us default to. Active listening is a deliberate practice of full attention. It means listening to understand, not to respond.",
+      "It has specific components: giving undivided attention, withholding judgment while the other person is speaking, reflecting back what you heard before you respond, asking questions to deepen understanding, and staying present rather than preparing your rebuttal.",
+      "The reason this is hard isn't distraction or bad intentions. It's structural. The average person speaks at 125-175 words per minute, but the brain can process language at roughly 400 words per minute. That gap — your spare cognitive capacity — is where your mind drafts your response, judges what's being said, and drifts to unrelated thoughts.",
+      "Active listening is the intentional practice of filling that gap with attention rather than noise. It's a skill, not a personality trait. Ralph Nichols, who spent forty years studying listening at the University of Minnesota, called it the most underdeveloped professional skill in the workforce."
+    ],
+    "why_today": "Only 51% of corporate employees say they feel listened to by their managers — dropping to 42% among deskless and frontline workers. The Kenan Institute called this a 'listening crisis' in 2025. Active listening is now among the top three communication skills employers actively recruit for — but it's rarely taught.",
+    "morning_challenge": "In your next conversation — a 1:1, a meeting, a call — run this experiment:\n\nBefore you respond to anything, pause for two seconds.\n\nUse that pause to:\n— Confirm you actually heard what was said (not what you assumed)\n— Notice the emotion behind it, not just the content\n— Ask one clarifying question before offering any opinion or solution\n\nThen notice: how often does your first instinct to respond turn out to be a response to what you thought they said rather than what they actually said?\n\nThat gap is where most communication breaks down."
+  },
+  "midday": {
+    "reframe": "Half of your team doesn't think you're listening. And they're probably right.",
+    "itw_label": "IN THE WILD — TYPE A · KENAN INSTITUTE 2025 / PERCEPTYX 2026",
+    "itw_paragraphs": [
+      "Across the 2025-2026 wave of workforce research, one number keeps appearing: only about half of employees report feeling genuinely listened to by their managers. HR Executive's November 2025 analysis puts it at 51% for corporate employees — and 42% for deskless and frontline workers.",
+      "The Kenan Institute's June 2025 analysis named it explicitly: a 'listening crisis' reshaping communication across industries. HR.com's 2025 State of Employee Productivity found that active listening was the second most cited behavior — after regular feedback — through which managers most effectively boost engagement.",
+      "Perceptyx's 2026 research found that when employees don't see their input lead to change, they become 2.5 times more likely to question whether senior leaders' actions align with stated values. Not listening isn't neutral. It actively erodes trust at a measurable rate."
+    ],
+    "quote": "The most basic of all human needs is the need to understand and be understood. The best way to understand people is to listen to them.",
+    "attribution": "Dr. Ralph Nichols, 'father of listening,' University of Minnesota",
+    "midday_nudge": "Who on your team is least likely to feel heard right now? What would it take to change that — not in a program or a policy, but in your next conversation with them?"
+  },
+  "quiz": [
+    {
+      "question": "Active listening is described as listening to understand rather than listening to respond. What is the structural basis for why this is difficult to do consistently?",
+      "options": [
+        "The brain processes emotional content before rational content, making it hard to stay neutral while listening to anything that triggers a reaction",
+        "The brain can process language at roughly 400 words per minute, but people speak at 125-175 — the spare cognitive capacity defaults to response-drafting, judgment, and distraction rather than deeper attention",
+        "Working memory is too limited to simultaneously process speech and formulate a response, so the brain prioritizes one at the expense of the other",
+        "Active listening requires sustained focus, which depletes faster than most cognitive tasks due to the high emotional load of interpersonal communication"
+      ],
+      "correct": 1,
+      "explanation": "The processing speed gap is the core structural challenge. Your brain has cognitive capacity to spare while listening — and without intentional discipline, that capacity fills itself with your own mental activity rather than deeper attention to the speaker. This is why active listening is a practice, not just an attitude."
+    },
+    {
+      "question": "A direct report says: 'I feel like no one on this team actually values what I contribute.' Which response best demonstrates active listening?",
+      "options": [
+        "'I hear you — but you got recognized in last month's all-hands, so the team definitely values you.'",
+        "'That sounds really frustrating. Can you tell me more about what's been making you feel that way?'",
+        "'I understand. Let me think about what we can do to give you more visibility — maybe a project lead role.'",
+        "'I appreciate you sharing this. I'll make sure to mention your work more in team meetings.'"
+      ],
+      "correct": 1,
+      "explanation": "Option A defends and contradicts — the opposite of listening. Option C jumps to solution before understanding. Option D commits to an action without understanding the actual problem. Option B reflects the emotion back without judgment and opens the conversation with a question rather than closing it with an answer."
+    },
+    {
+      "question": "Research shows that employees who don't feel heard disengage faster and leave sooner. What does this imply about listening as a management skill?",
+      "options": [
+        "Listening is primarily an interpersonal courtesy — its impact on retention is indirect and hard to measure compared to compensation or career development",
+        "Listening is a leadership competency with direct, measurable impact on engagement and retention — not a soft skill peripheral to management effectiveness, but a performance lever central to it",
+        "The listening gap is primarily a structural problem — individual managers can't meaningfully close it without systemic support and formal communication programs",
+        "Listening skills matter most in conflict situations — in day-to-day management, other factors like clear expectations and feedback frequency have a stronger effect"
+      ],
+      "correct": 1,
+      "explanation": "HR.com's 2025 data found active listening was the second most cited behavior through which managers boost engagement. Perceptyx found that when employees feel unheard, they become 2.5x more likely to question leadership's integrity. These are performance and retention numbers, not culture metrics. Listening is a lever, not a courtesy."
+    }
+  ],
+  "closing": "In your next conversation today: are you listening to understand, or listening to respond?",
+  "sources": [
+    {
+      "label": "Rogers, C. & Farson, R.E. — Active Listening, Industrial Relations Center, University of Chicago, 1957",
+      "detail": "The paper that coined the term. Established active listening as a deliberate, teachable practice.",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK442015/"
+    },
+    {
+      "label": "Active Listening — StatPearls / NIH NLM (Ghanate & Bordoni, updated Sept 2023)",
+      "detail": "Peer-reviewed clinical reference. Defines active listening, its components, and professional applications. Open access at NIH NLM.",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK442015/"
+    },
+    {
+      "label": "HR Executive — The State of HR Communications in 2025 and What's Ahead in 2026, Nov 5, 2025",
+      "detail": "Documents the 51% listening gap. Only 51% of corporate employees feel listened to by managers (42% deskless/frontline). Frames it as a major risk to engagement and retention.",
+      "url": "https://hrexecutive.com/the-state-of-hr-communications-in-2025-and-whats-ahead-in-2026/"
+    }
+  ]
+}

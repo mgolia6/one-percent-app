@@ -1,0 +1,85 @@
+{
+  "entry": "015",
+  "editionId": "NC.1",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEURO",
+  "concept": "Neuroplasticity",
+  "accent": "#47C8FF",
+  "accentDim": "rgba(71,200,255,0.10)",
+  "morning": {
+    "hook": "Your brain is not fixed. Every skill you practice is physically reshaping it. Every skill you don't practice is being pruned away.",
+    "explanation_paragraphs": [
+      "For most of the twentieth century, neuroscientists believed the adult brain was essentially hardwired — a fixed structure that declined over time. That model is wrong. What we now know is that the brain remains structurally malleable throughout life.",
+      "Neuroplasticity is the nervous system's ability to reorganize its structure, functions, and connections in response to experience. When you learn something new, neurons that activate together form stronger synaptic connections. When you stop using a skill, those connections weaken and are pruned.",
+      "The mechanism isn't metaphorical. It's physical. New synaptic connections form. Existing ones strengthen or weaken. Grey matter volume in specific brain regions changes. The brain you have right now has been literally shaped by what you have and haven't practiced.",
+      "Passive repetition produces weak plasticity. Deliberate, effortful practice with feedback produces strong, durable rewiring. This is the scientific basis for why how you practice matters as much as whether you practice."
+    ],
+    "why_today": "A December 2025 peer-reviewed study published in MDPI Sustainability developed the first psychometric scale for measuring neuroplasticity literacy as a workplace competency — establishing it as a measurable professional skill, not just a pop science concept.",
+    "morning_challenge": "Pick one skill you're actively trying to build right now.\n\nAsk:\n— Am I practicing it in a way that activates plasticity? (Effortful, varied, feedback-rich)\n— Or am I going through the motions? (Same repetition, no resistance, no feedback)\n\nFind the thing you find genuinely difficult about this skill. That difficulty is the signal. That's where the rewiring happens. Spend 15 minutes there today."
+  },
+  "midday": {
+    "reframe": "The London cab drivers didn't just get better at navigation. Their brains grew.",
+    "itw_label": "IN THE WILD — TYPE A · MAGUIRE ET AL. 2000",
+    "itw_paragraphs": [
+      "In 2000, neuroscientist Eleanor Maguire and her team at University College London ran structural MRI scans on 16 licensed London taxi drivers and compared them to matched controls. London cabbies are required to pass 'The Knowledge' — memorizing 25,000 streets and 20,000 landmarks across a 10-kilometer radius. It typically takes 2-4 years to pass.",
+      "What Maguire found: the posterior hippocampi of taxi drivers were significantly larger than those of controls. More striking — hippocampal volume correlated positively with the number of years spent driving. The longer they'd been doing it, the larger that region had grown.",
+      "When drivers retired and stopped using the knowledge, the changes partially reversed. The brain wasn't just working differently. It was physically different. What you practice doesn't just make you better — it makes you structurally distinct from someone who doesn't."
+    ],
+    "quote": "Neurons that fire together, wire together.",
+    "attribution": "Paraphrase of Hebb's postulate (1949), attributed to neuroscientist Carla Shatz. Popularized in Norman Doidge, The Brain That Changes Itself (2007).",
+    "midday_nudge": "What are you practicing right now — and is it building the brain you actually want? You can use AI tools to design a spaced practice schedule for any skill; the research on timing is clear enough that a structured plan beats random repetition every time."
+  },
+  "quiz": [
+    {
+      "question": "Neuroplasticity describes the brain's ability to reorganize its structure and connections in response to experience. What does this imply about the relationship between practice and skill acquisition?",
+      "options": [
+        "Skill acquisition is primarily determined by innate ability; practice activates potential that was already there but cannot create capability that wasn't",
+        "Any form of repetitive practice produces equivalent neuroplastic change — the key variable is volume, not type",
+        "Practice literally changes the physical structure of the brain; effortful practice with feedback produces stronger synaptic connections than passive repetition, making the type of practice as important as the amount",
+        "Neuroplasticity is most active in childhood — adult skill acquisition relies more on existing neural pathways"
+      ],
+      "correct": 2,
+      "explanation": "Neuroplasticity operates throughout life, but the strength of structural change depends heavily on the quality of practice. Effortful, varied practice that pushes past current capability — with feedback — activates stronger plasticity than passive repetition. Volume matters, but type matters too."
+    },
+    {
+      "question": "The Maguire et al. (2000) taxi driver study found hippocampal volume correlated positively with years of experience. What does this establish about neuroplasticity?",
+      "options": [
+        "People with naturally larger hippocampi are more likely to pursue careers requiring spatial memory",
+        "Structural brain changes from experience are measurable, cumulative over time, and partially reversible when practice stops — the brain is physically shaped by sustained use",
+        "Navigation training is uniquely effective at producing brain changes, unlike other professional skills",
+        "Neuroplasticity in adults is limited to spatial reasoning tasks processed in the hippocampus"
+      ],
+      "correct": 1,
+      "explanation": "The critical finding: the difference scaled with years of experience and partially reversed after retirement. This establishes that neuroplastic changes are acquired, cumulative, and use-dependent. Direct evidence that the brain you have has been physically shaped by what you've practiced."
+    },
+    {
+      "question": "You're designing onboarding for new sales reps covering discovery skills. Applying neuroplasticity research, which approach produces the most durable skill development?",
+      "options": [
+        "10 hours of recorded top-performer calls — passive observation activates mirror neurons efficiently",
+        "Read the discovery playbook twice then a written knowledge assessment",
+        "Spaced role plays at escalating difficulty, immediate feedback after each, brief reviews at 24 and 72 hours to leverage memory consolidation",
+        "Maximum live calls in 30 days — high volume is the most reliable driver"
+      ],
+      "correct": 2,
+      "explanation": "Passive observation produces minimal plasticity. Reading and testing creates declarative memory but weak procedural skill. High volume without structure can entrench bad habits. Spaced practice with escalating difficulty, immediate feedback, and timed review sessions directly applies what neuroscience knows about durable skill formation."
+    }
+  ],
+  "closing": "Where in your current work are you practicing comfortably when you should be practicing at the edge?",
+  "sources": [
+    {
+      "label": "Puderbaugh & Emmady — Neuroplasticity, StatPearls / NIH NLM, 2026",
+      "detail": "Peer-reviewed clinical reference. Defines neuroplasticity as 'the ability of the nervous system to change its activity in response to intrinsic or extrinsic stimuli.' Open access at NIH NLM.",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557811/"
+    },
+    {
+      "label": "Maguire et al. — Navigation-related structural change in hippocampi of taxi drivers, PNAS 97(8), 2000",
+      "detail": "Landmark study. MRI scans of London taxi drivers showed significantly larger posterior hippocampi vs. controls; volume correlated with years of experience. Full text open access at PMC.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC18253/"
+    },
+    {
+      "label": "Caglın — Neuroplasticity Literacy and Sustainable Learning at Work, Sustainability 17(24), MDPI, Dec 2025",
+      "detail": "First psychometric scale for neuroplasticity-related behaviors at work. Peer-reviewed Dec 2025.",
+      "url": "https://www.mdpi.com/2071-1050/17/24/11059"
+    }
+  ]
+}

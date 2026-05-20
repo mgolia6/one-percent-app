@@ -1,0 +1,84 @@
+{
+  "entry": "003",
+  "editionId": "SC.1.1",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "Discovery Questions",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "The rep who asks the best questions doesn't just gather information — they shape how the buyer understands their own problem.",
+    "explanation_paragraphs": [
+      "Most reps treat discovery like a checklist: budget, authority, timeline, need. That's not discovery — that's intake. Real discovery is the cognitive work of helping a buyer move from vague discomfort to vivid, felt pain.",
+      "Rackham's 12-year study of 35,000 sales calls found one thing that separated top performers from average ones — not their pitches, not their closing techniques. It was the type of questions they asked. Specifically: Implication questions. The questions that make a prospect feel the downstream cost of doing nothing.",
+      "If your discovery is just a fact-finding sprint before you demo, you're leaving deals on the table. The best question doesn't inform the rep — it transforms the buyer."
+    ],
+    "why_today": "In 2026, when buyers have already Googled your product and read three competitor reviews before picking up the phone, surface-level situation questions are a waste of everyone's time.",
+    "morning_challenge": "Pull up a deal in your pipeline right now — one that's stalled, slow, or where you're not sure the buyer really feels the urgency.\n\nRun this prompt:\n\n\"I'm a sales rep working a deal with [role/company type]. The buyer's problem is [problem]. They seem engaged but aren't moving. Generate 5 implication questions I can ask on our next call — questions that help them feel the real cost of staying where they are. Make them conversational, not interrogative. Don't include any question they can answer with a yes or no.\"\n\nPick the two that scare you a little. Those are the right ones."
+  },
+  "midday": {
+    "reframe": "You're not asking questions to learn — you're asking questions to help the buyer teach themselves.",
+    "itw_label": "IN THE WILD — TYPE A · RACKHAM SPIN SELLING 1988",
+    "itw_paragraphs": [
+      "Rackham's research didn't just identify what top performers did differently — it quantified it. Across 35,000 observed sales calls, top performers asked four times more implication questions than their average peers.",
+      "Not better situation questions. Not more polished pitches. Four times more questions about consequences. The finding held across industries and company sizes.",
+      "Average reps were diagnosing the problem and jumping to the solution. Top performers were staying in the problem — letting the buyer feel the weight of it — before ever moving toward an answer. That gap in question type, not question count, was the measurable difference between performers."
+    ],
+    "quote": "Humble Inquiry is the fine art of drawing someone out, of asking questions to which you do not already know the answer, of building a relationship based on curiosity and interest in the other person.",
+    "attribution": "Edgar H. Schein, Humble Inquiry, Berrett-Koehler, 2013",
+    "midday_nudge": "Think about your last discovery call. How many of your questions were really just statements with a question mark at the end?"
+  },
+  "quiz": [
+    {
+      "question": "According to Rackham's SPIN research, which question type is most associated with success in major sales?",
+      "options": [
+        "Situation questions — establish context early and thoroughly before anything else",
+        "Problem questions — identify what the buyer is explicitly struggling with",
+        "Implication questions — surface the downstream cost of the problem and make it felt",
+        "Need-payoff questions — confirm the buyer wants your specific solution"
+      ],
+      "correct": 2,
+      "explanation": "Rackham found that Implication questions were the single strongest predictor of success in major sales — they transform a stated problem into felt urgency. Top performers asked far more of them than average performers. Situation and Problem questions are necessary but not differentiating."
+    },
+    {
+      "question": "A buyer says, 'Our reporting is a bit slow but we manage.' What's the best next move in discovery?",
+      "options": [
+        "Pivot to the demo — they've confirmed a problem exists and that's your cue",
+        "Ask how long it's been slow — get more situation context before moving forward",
+        "Ask what happens when a decision-maker needs a number they can't pull fast — make the cost vivid",
+        "Offer a feature that directly addresses reporting speed"
+      ],
+      "correct": 2,
+      "explanation": "The buyer has named an implied need. The discovery move is to develop it into felt pain — asking about consequences makes the problem real and expensive in the buyer's mind, which is what drives urgency. Demoing here skips the most important step."
+    },
+    {
+      "question": "Tamir & Mitchell's 2012 neuroscience research suggests that in discovery, opinion-based questions outperform fact-based questions because:",
+      "options": [
+        "Facts are harder for buyers to remember accurately under pressure",
+        "Sharing opinions activates reward centers in the brain, making buyers more engaged and open",
+        "Opinion questions signal that you've done your research on their business",
+        "Fact-based questions are more likely to be answered defensively or inaccurately"
+      ],
+      "correct": 1,
+      "explanation": "Tamir & Mitchell found that self-disclosure activates the mesolimbic dopamine system — the same reward circuitry triggered by food and money. Buyers aren't just more comfortable sharing opinions; it literally feels good to them. That's why 'What do you think is causing this?' lands better than 'How many users do you have?'"
+    }
+  ],
+  "closing": "On your next discovery call: count how many questions you asked that had a real answer you didn't already know.",
+  "sources": [
+    {
+      "label": "Rackham, N. — SPIN Selling, McGraw-Hill, 1988",
+      "detail": "The foundational research on major-sale questioning — 35,000 calls across 12 years establishing Situation, Problem, Implication, and Need-payoff question types.",
+      "url": "https://www.amazon.com/SPIN-Selling-Neil-Rackham/dp/0070511136"
+    },
+    {
+      "label": "Tamir & Mitchell — Disclosing information about the self is intrinsically rewarding, PNAS 109(21), 2012",
+      "detail": "Neuroscience evidence that self-disclosure activates the mesolimbic dopamine system — explains why opinion-based discovery questions engage buyers more deeply than fact-based ones.",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.1202129109"
+    },
+    {
+      "label": "Schein, E.H. — Humble Inquiry, Berrett-Koehler, 2013",
+      "detail": "Frames the cultural bias toward telling over asking — and defines the posture of genuine curiosity that makes discovery questions land.",
+      "url": "https://www.penguinrandomhouse.com/books/786686/humble-inquiry-3rd-edition-by-edgar-h-schein-and-peter-a-schein/"
+    }
+  ]
+}
