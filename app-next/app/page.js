@@ -478,17 +478,42 @@ export default function HomePage() {
       })()}
 
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', borderBottom: '1px solid #141414', maxWidth: 720, margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 11, letterSpacing: '0.2em', fontWeight: 600 }}>ONE PERCENT</span>
-          {isAdmin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>}
+      <div style={{ maxWidth: 720, margin: '0 auto', borderBottom: '1px solid #141414' }}>
+
+        {/* Row 1 — wordmark */}
+        <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
+          {isAdmin && (
+            <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
+          )}
         </div>
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <button onClick={() => setShowBug(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>BUG</button>
-          <button onClick={() => setShowFeedback(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>FEEDBACK</button>
-          <button onClick={() => setShowHowItWorks(true)} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>INFO</button>
-          <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #222', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SIGN OUT</button>
+
+        {/* Divider */}
+        <div style={{ height: '1px', background: '#141414', margin: '0 24px' }} />
+
+        {/* Row 2 — action bar, scrollable */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          padding: '10px 24px 12px',
+          overflowX: 'auto', scrollbarWidth: 'none',
+        }}>
+          <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
+
+          {/* Feedback group */}
+          <button onClick={() => setShowBug(true)} style={{ background: 'none', border: '1px solid #2a1a1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
+          <button onClick={() => setShowFeedback(true)} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
+          <button onClick={() => setShowHowItWorks(true)} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
+
+          {/* Separator dot */}
+          <span style={{ color: '#2a2a2a', fontSize: 14, flexShrink: 0, margin: '0 4px' }}>·</span>
+
+          {/* Account group */}
+          {isAdmin && (
+            <button onClick={() => router.push('/admin')} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
+          )}
+          <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
+
       </div>
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '24px 24px 80px' }}>
@@ -517,14 +542,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-
-        {/* Admin link */}
-        {isAdmin && (
-          <div style={{ marginBottom: 24, padding: '12px 16px', background: '#47FFE808', border: '1px solid #47FFE822', borderRadius: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: 11, color: '#47FFE8', letterSpacing: '0.1em' }}>ADMIN MODE — all entries unlocked</span>
-            <button onClick={() => router.push('/admin')} style={{ background: 'none', border: '1px solid #47FFE844', borderRadius: 3, padding: '4px 10px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>VIEW FEEDBACK →</button>
-          </div>
-        )}
 
         {/* Entry list */}
         <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>YOUR LIBRARY</div>
