@@ -581,30 +581,43 @@ export default function HomePage() {
         <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 600 }}>YOUR LIBRARY</div>
         
         {/* Category filter tabs */}
-        <div style={{ display: 'flex', gap: 6, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none' }}>
+        <div style={{ display: 'flex', gap: 4, marginBottom: 16, overflowX: 'auto', scrollbarWidth: 'none' }}>
           <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
-          {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy'].map(cat => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              style={{
-                background: filter === cat ? (CATEGORY_COLORS[cat] || '#1a1a1a') : 'transparent',
-                color: filter === cat ? '#0a0a0a' : '#555',
-                border: `1px solid ${filter === cat ? 'transparent' : '#333'}`,
-                borderRadius: 3,
-                padding: '4px 10px',
-                fontSize: 9,
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                cursor: 'pointer',
-                fontFamily: "'Inter',sans-serif",
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
-              }}
-            >
-              {cat.toUpperCase()}
-            </button>
-          ))}
+          {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
+            const isSelected = filter === cat
+            const categoryColor = CATEGORY_COLORS[cat]
+            const isColoredTab = !!categoryColor
+            
+            return (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                style={{
+                  background: isSelected 
+                    ? (isColoredTab ? categoryColor : '#1a1a1a')
+                    : 'transparent',
+                  color: isSelected 
+                    ? (isColoredTab ? '#0a0a0a' : '#fff')
+                    : (isColoredTab ? categoryColor : '#555'),
+                  border: isSelected ? 'none' : `1px solid ${isColoredTab ? categoryColor : '#333'}`,
+                  borderRadius: isSelected ? '6px 6px 0 0' : '4px',
+                  padding: isSelected ? '6px 12px 8px' : '4px 10px',
+                  fontSize: 9,
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  cursor: 'pointer',
+                  fontFamily: "'Inter',sans-serif",
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  position: 'relative',
+                  transform: isSelected ? 'translateY(2px)' : 'none',
+                  boxShadow: isSelected ? '0 -2px 4px rgba(0,0,0,0.1)' : 'none',
+                }}
+              >
+                {cat.toUpperCase()}
+              </button>
+            )
+          })}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
