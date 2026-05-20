@@ -26,7 +26,7 @@ export default function AdminPage() {
       const [{ data: fb }, { data: br }, { data: us, error: usError }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
-        supabase.from('profiles').select('id, email, name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
+        supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
       ])
 
       console.log('[admin] users fetch:', us, usError)
@@ -39,7 +39,7 @@ export default function AdminPage() {
   }, [router])
 
   const refreshUsers = async () => {
-    const { data: us } = await supabase.from('profiles').select('id, email, name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false })
+    const { data: us } = await supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false })
     setUsers(us || [])
   }
 
@@ -50,7 +50,7 @@ export default function AdminPage() {
     const [{ data: fb, error: e1 }, { data: br, error: e2 }, { data: us, error: e3 }] = await Promise.all([
       supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
       supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
-      supabase.from('profiles').select('id, email, name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
+      supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
     ])
     if (e1) console.error('feedback fetch:', e1)
     if (e2) console.error('bug_reports fetch:', e2)
@@ -326,16 +326,17 @@ export default function AdminPage() {
         {/* Users tab */}
         {tab === 'users' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 8, fontWeight: 600 }}>USERS ({users.length})</div>
-            <div style={{ fontSize: 10, color: '#FF4778', background: '#1a0a0a', border: '1px solid #FF417833', borderRadius: 4, padding: '8px 12px', marginBottom: 16, fontFamily: 'monospace', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
-              DEBUG: {JSON.stringify(users.map(u => ({ id: u.id?.slice(0,8), email: u.email, is_admin: u.is_admin, onboarded: u.onboarding_complete })), null, 2)}
-            </div>
+            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
+
             {users.map(u => (
               <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                   <div>
                     <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-                      {u.name ? `${u.name} ` : ''}<span style={{ color: '#555', fontWeight: 400 }}>{u.email}</span>
+                      {u.first_name || u.last_name
+                          ? <span>{u.first_name || ''}{u.first_name && u.last_name ? ' ' : ''}{u.last_name || ''}&nbsp;</span>
+                          : u.name ? `${u.name} ` : ''
+                        }<span style={{ color: '#555', fontWeight: 400 }}>{u.email}</span>
                       {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
                     </div>
                     <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.06em' }}>
@@ -344,6 +345,7 @@ export default function AdminPage() {
                       <span style={{ color: u.onboarding_complete ? '#555' : '#FF4778' }}>
                         {u.onboarding_complete ? 'Onboarded' : 'Not onboarded'}
                       </span>
+                      {u.phone && <span style={{ color: '#444' }}>{' · '}{u.phone}</span>}
                     </div>
                   </div>
                   <div style={{ fontSize: 10, color: '#333', flexShrink: 0 }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
