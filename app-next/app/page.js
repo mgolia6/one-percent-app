@@ -49,6 +49,55 @@ function ThinkingDots() {
   )
 }
 
+function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
+  const [displayed, setDisplayed] = useState('')
+  const [lineVisible, setLineVisible] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const speed = 55
+    const timer = setInterval(() => {
+      i++
+      setDisplayed(fullText.slice(0, i))
+      if (i >= fullText.length) {
+        clearInterval(timer)
+        setTimeout(() => setLineVisible(true), 200)
+      }
+    }, speed)
+    return () => clearInterval(timer)
+  }, [fullText])
+
+  return (
+    <div onClick={onDismiss} style={{
+      position: 'fixed', inset: 0, zIndex: 999,
+      background: '#0A0A0A',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      padding: 32, cursor: 'pointer',
+      opacity: fading ? 0 : 1,
+      transition: 'opacity 0.6s ease',
+    }}>
+      <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 32 }}>ONE PERCENT</div>
+      <div style={{
+        fontSize: 36, fontWeight: 500, color: '#fff',
+        letterSpacing: '-0.02em', textAlign: 'center', lineHeight: 1.2,
+        marginBottom: 20, minHeight: 88,
+        fontFamily: "'Inter', sans-serif",
+      }}>
+        {displayed}
+        <span style={{ opacity: lineVisible ? 0 : 1, transition: 'opacity 0.3s', borderRight: '2px solid #fff', marginLeft: 2 }}>&nbsp;</span>
+      </div>
+      <div style={{
+        fontSize: 13, color: '#444', letterSpacing: '0.04em',
+        textAlign: 'center', maxWidth: 260, lineHeight: 1.8,
+        opacity: lineVisible ? 1 : 0,
+        transition: 'opacity 0.6s ease',
+      }}>
+        {line}
+      </div>
+    </div>
+  )
+}
+
 const TOTAL_ENTRIES = 17
 
 const CATEGORY_COLORS = {
@@ -238,8 +287,8 @@ export default function HomePage() {
       setCompletions(compMap)
       setLoading(false)
       setShowWelcome(true)
-      setTimeout(() => setWelcomeFading(true), 1800)
-      setTimeout(() => setShowWelcome(false), 2400)
+      setTimeout(() => setWelcomeFading(true), 4200)
+      setTimeout(() => setShowWelcome(false), 4800)
     }
     init()
   }, [router])
@@ -271,24 +320,15 @@ export default function HomePage() {
 
       {/* Welcome overlay */}
       {showWelcome && (() => {
-        const { name, line } = getDailyGreeting(profile?.name)
+        const { line } = getDailyGreeting(profile?.name)
+        const fullText = `Welcome back, ${profile?.name || 'there'}.`
         return (
-          <div onClick={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 400) }} style={{
-            position: 'fixed', inset: 0, zIndex: 999,
-            background: '#0A0A0A',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: 32, cursor: 'pointer',
-            opacity: welcomeFading ? 0 : 1,
-            transition: 'opacity 0.5s ease',
-          }}>
-            <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 28 }}>ONE PERCENT</div>
-            <div style={{ fontSize: 28, fontWeight: 500, color: '#fff', letterSpacing: '-0.02em', marginBottom: 14, textAlign: 'center', lineHeight: 1.2 }}>
-              Welcome back,<br />{profile?.name || 'there'}.
-            </div>
-            <div style={{ fontSize: 13, color: '#444', letterSpacing: '0.04em', textAlign: 'center', maxWidth: 280, lineHeight: 1.7 }}>
-              {line}
-            </div>
-          </div>
+          <WelcomeOverlay
+            fullText={fullText}
+            line={line}
+            fading={welcomeFading}
+            onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }}
+          />
         )
       })()}
 
