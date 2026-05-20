@@ -490,12 +490,12 @@ export default function HomePage() {
       })()}
 
       {/* Header */}
-      <div style={{ maxWidth: 720, margin: '0 auto', borderBottom: '1px solid #141414' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto', borderBottom: '1px solid #333' }}>
 
         {/* Row 1 — wordmark */}
         <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
+            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
             <span style={{ fontSize: 9, background: '#E8FF4722', color: '#E8FF47', border: '1px solid #E8FF4744', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
             {isAdmin && (
               <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
@@ -509,13 +509,13 @@ export default function HomePage() {
               height: 32,
               borderRadius: '50%',
               background: '#1a1a1a',
-              border: '1px solid #2a2a2a',
+              border: '1px solid #333',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
               fontSize: 14,
-              color: '#666',
+              color: '#999',
               padding: 0,
             }}
           >
@@ -524,7 +524,7 @@ export default function HomePage() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: '1px', background: '#141414', margin: '0 24px' }} />
+        <div style={{ height: '1px', background: '#333', margin: '0 24px' }} />
 
         {/* Row 2 — action bar, scrollable */}
         <div style={{
@@ -535,18 +535,18 @@ export default function HomePage() {
           <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
 
           {/* Feedback group */}
-          <button onClick={() => setShowBug(true)} style={{ background: 'none', border: '1px solid #2a1a1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
-          <button onClick={() => setShowFeedback(true)} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
-          <button onClick={() => setShowHowItWorks(true)} style={{ background: 'none', border: '1px solid #1e1e1e', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
+          <button onClick={() => setShowBug(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
+          <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
+          <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#ddd', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
 
           {/* Separator dot */}
-          <span style={{ color: '#2a2a2a', fontSize: 14, flexShrink: 0, margin: '0 4px' }}>·</span>
+          <span style={{ color: '#333', fontSize: 14, flexShrink: 0, margin: '0 4px' }}>·</span>
 
           {/* Account group */}
           {isAdmin && (
-            <button onClick={() => router.push('/admin')} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
+            <button onClick={() => router.push('/admin')} style={{ background: '#1a1a1a', border: '1px solid #47FFE844', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
           )}
-          <button onClick={handleSignOut} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
+          <button onClick={handleSignOut} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#888', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
       </div>
@@ -603,7 +603,7 @@ export default function HomePage() {
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: completed ? accent : '#333', flexShrink: 0 }} />
                   <div>
                     <div style={{ fontSize: 14, color: unlocked ? '#fff' : '#555', fontWeight: 500, marginBottom: 2 }}>{e.concept}</div>
-                    <div style={{ fontSize: 10, color: '#222', letterSpacing: '0.08em' }}>{e.editionId} · {e.category}</div>
+                    <div style={{ fontSize: 10, color: accent, letterSpacing: '0.08em', opacity: 0.8 }}>{e.editionId} · {e.category}</div>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
