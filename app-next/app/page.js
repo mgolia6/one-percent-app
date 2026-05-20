@@ -307,6 +307,16 @@ export default function HomePage() {
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '24px 24px 80px' }}>
 
+        {/* Analytics label */}
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 3 }}>
+            {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
+          </div>
+          <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>
+            THE DATA DOESN'T LIE
+          </div>
+        </div>
+
         {/* Stats bar */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 32 }}>
           {[
@@ -320,16 +330,6 @@ export default function HomePage() {
               <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.12em' }}>{s.label}</div>
             </div>
           ))}
-        </div>
-
-        {/* Analytics label */}
-        <div style={{ marginBottom: 24 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 3 }}>
-            {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
-          </div>
-          <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>
-            THE DATA DOESN'T LIE
-          </div>
         </div>
 
         {/* Admin link */}
