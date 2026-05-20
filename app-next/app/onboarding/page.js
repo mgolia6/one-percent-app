@@ -224,15 +224,6 @@ export default function OnboardingPage() {
         <div style={{ height: '100%', width: `${progress}%`, background: 'rgba(26,42,58,0.3)', transition: 'width 0.4s ease' }} />
       </div>
 
-      {/* Bottom reference note — appears from step 2 onward */}
-      {step > 0 && (
-        <div style={{ position: 'fixed', bottom: committed.length > 0 ? 80 : 28, left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}>
-          <div style={{ fontSize: 10, color: 'rgba(26,42,58,0.3)', letterSpacing: '0.08em', fontFamily: "'DM Mono', monospace" }}>
-            You can revisit this anytime — tap <span style={{ color: 'rgba(26,42,58,0.5)', fontWeight: 500 }}>INFO</span> in your library.
-          </div>
-        </div>
-      )}
-
       {/* Committed pills */}
       {committed.length > 0 && (
         <div style={{ position: 'fixed', bottom: 28, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 8, flexWrap: 'wrap', padding: '0 24px' }}>
@@ -302,6 +293,15 @@ export default function OnboardingPage() {
         {current.commitment && (
           <div style={{ marginTop: 14, fontSize: 11, color: 'rgba(26,42,58,0.35)', fontFamily: "'DM Mono', monospace", letterSpacing: '0.05em', textAlign: 'center' }}>
             Tapping commits you to this.
+          </div>
+        )}
+
+        {step > 0 && (
+          <div style={{ marginTop: current.commitment ? 28 : 24, textAlign: 'center' }}>
+            <div style={{ display: 'inline-block', fontSize: 10, color: 'rgba(26,42,58,0.28)', letterSpacing: '0.06em', fontFamily: "'DM Mono', monospace", lineHeight: 1.6 }}>
+              You can revisit this anytime —{' '}
+              <span style={{ color: 'rgba(26,42,58,0.42)' }}>INFO</span> in your library.
+            </div>
           </div>
         )}
       </div>
