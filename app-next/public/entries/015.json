@@ -1,85 +1,85 @@
 {
-  "entry": "015",
-  "editionId": "NC.1",
-  "category": "Neuroscience & Cognition",
-  "categoryTag": "NEURO",
-  "concept": "Neuroplasticity",
-  "accent": "#47C8FF",
-  "accentDim": "rgba(71,200,255,0.10)",
+  "entry": "014",
+  "editionId": "SC.2.2",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "Tactical Empathy",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
   "morning": {
-    "hook": "Your brain is not fixed. Every skill you practice is physically reshaping it. Every skill you don't practice is being pruned away.",
+    "hook": "The rep who wins on price is playing the wrong game. The rep who wins on understanding is playing the only game that matters.",
     "explanation_paragraphs": [
-      "For most of the twentieth century, neuroscientists believed the adult brain was essentially hardwired — a fixed structure that declined over time. That model is wrong. What we now know is that the brain remains structurally malleable throughout life.",
-      "Neuroplasticity is the nervous system's ability to reorganize its structure, functions, and connections in response to experience. When you learn something new, neurons that activate together form stronger synaptic connections. When you stop using a skill, those connections weaken and are pruned.",
-      "The mechanism isn't metaphorical. It's physical. New synaptic connections form. Existing ones strengthen or weaken. Grey matter volume in specific brain regions changes. The brain you have right now has been literally shaped by what you have and haven't practiced.",
-      "Passive repetition produces weak plasticity. Deliberate, effortful practice with feedback produces strong, durable rewiring. This is the scientific basis for why how you practice matters as much as whether you practice."
+      "Chris Voss spent decades as the FBI's lead international kidnapping negotiator. What he learned — and what he's been teaching sales organizations since 2016 — is that negotiation isn't a logic problem. It's an emotional one. People make decisions based on how they feel, then justify them with facts.",
+      "The tool he built for navigating this is tactical empathy. His definition is precise: understanding the feelings and mindset of another in the moment, and also hearing what is behind those feelings. Note what it isn't. It's not sympathy. It's not rapport-building small talk. It's not being nice.",
+      "It's the deliberate act of identifying and articulating the emotional reality your counterpart is operating from — so you can meet them where they actually are, not where you assume they are.",
+      "In sales, this changes everything about how you run discovery. The rep who asks 'what's your budget?' gathers data. The rep who asks 'what does a failed implementation cost you?' — and then listens for what's behind the answer — is practicing tactical empathy. They're different conversations with different outcomes."
     ],
-    "why_today": "A December 2025 peer-reviewed study published in MDPI Sustainability developed the first psychometric scale for measuring neuroplasticity literacy as a workplace competency — establishing it as a measurable professional skill, not just a pop science concept.",
-    "morning_challenge": "Pick one skill you're actively trying to build right now.\n\nAsk:\n— Am I practicing it in a way that activates plasticity? (Effortful, varied, feedback-rich)\n— Or am I going through the motions? (Same repetition, no resistance, no feedback)\n\nFind the thing you find genuinely difficult about this skill. That difficulty is the signal. That's where the rewiring happens. Spend 15 minutes there today."
+    "why_today": "A 2024 Forrester Consulting benchmark found that mid-market companies using tactical empathy and calibrated questions in their sales approach saw a 22% improvement in quota attainment within 6 months. This is not a soft skill. It's a performance lever.",
+    "morning_challenge": "Pull up your next discovery call or your most recent one.\n\nAsk: how much of that conversation was me gathering data, and how much was me actually understanding what's behind what they said?\n\nOn your next call, when the prospect says something important — a problem, a concern, a hesitation — don't respond with a solution. Label it instead:\n\n'It sounds like this has been going on longer than it should.'\n'It seems like the last vendor left you holding the bag.'\n\nThen stop. Let them respond. What they say next is the thing that actually matters."
   },
   "midday": {
-    "reframe": "The London cab drivers didn't just get better at navigation. Their brains grew.",
-    "itw_label": "IN THE WILD — TYPE A · MAGUIRE ET AL. 2000",
+    "reframe": "The price objection isn't about price. It never was.",
+    "itw_label": "IN THE WILD — TYPE C · THE PRICE OBJECTION",
     "itw_paragraphs": [
-      "In 2000, neuroscientist Eleanor Maguire and her team at University College London ran structural MRI scans on 16 licensed London taxi drivers and compared them to matched controls. London cabbies are required to pass 'The Knowledge' — memorizing 25,000 streets and 20,000 landmarks across a 10-kilometer radius. It typically takes 2-4 years to pass.",
-      "What Maguire found: the posterior hippocampi of taxi drivers were significantly larger than those of controls. More striking — hippocampal volume correlated positively with the number of years spent driving. The longer they'd been doing it, the larger that region had grown.",
-      "When drivers retired and stopped using the knowledge, the changes partially reversed. The brain wasn't just working differently. It was physically different. What you practice doesn't just make you better — it makes you structurally distinct from someone who doesn't."
+      "Here's how the tactical empathy failure typically plays out in a sales call. The prospect says: 'Your pricing is too high.' The average rep responds with one of three moves: they defend the price, they discount, or they pivot to ROI math.",
+      "Voss would say all three are wrong — not because the moves are bad tactics, but because the rep is responding to the surface, not to what's underneath it. 'Your pricing is too high' almost always means something else: 'I'm afraid I can't justify this to my CFO.' 'The last vendor burned me and I got blamed.' 'I don't yet trust that this will work.' None of those are price objections. They're emotional obstacles wearing a price tag.",
+      "The tactical empathy response isn't to answer the objection — it's to label it: 'It sounds like you've been burned before on something like this.' That one sentence invites the real conversation. The rep who gets there closes more deals at better margins — not because they're better at arguing, but because they stopped arguing and started listening."
     ],
-    "quote": "Neurons that fire together, wire together.",
-    "attribution": "Paraphrase of Hebb's postulate (1949), attributed to neuroscientist Carla Shatz. Popularized in Norman Doidge, The Brain That Changes Itself (2007).",
-    "midday_nudge": "What are you practicing right now — and is it building the brain you actually want? You can use AI tools to design a spaced practice schedule for any skill; the research on timing is clear enough that a structured plan beats random repetition every time."
+    "quote": "Tactical empathy is understanding the feelings and mindset of another in the moment and also hearing what is behind those feelings so you increase your influence in all the moments that follow.",
+    "attribution": "Chris Voss, Never Split the Difference, Chapter 3 (HarperBusiness, 2016)",
+    "midday_nudge": "On your next call where pricing comes up: before you respond, ask yourself — do I know what's actually behind this? If not, label before you answer."
   },
   "quiz": [
     {
-      "question": "Neuroplasticity describes the brain's ability to reorganize its structure and connections in response to experience. What does this imply about the relationship between practice and skill acquisition?",
+      "question": "Voss defines tactical empathy as 'understanding the feelings and mindset of another in the moment and also hearing what is behind those feelings.' What distinguishes this from sympathy?",
       "options": [
-        "Skill acquisition is primarily determined by innate ability; practice activates potential that was already there but cannot create capability that wasn't",
-        "Any form of repetitive practice produces equivalent neuroplastic change — the key variable is volume, not type",
-        "Practice literally changes the physical structure of the brain; effortful practice with feedback produces stronger synaptic connections than passive repetition, making the type of practice as important as the amount",
-        "Neuroplasticity is most active in childhood — adult skill acquisition relies more on existing neural pathways"
-      ],
-      "correct": 2,
-      "explanation": "Neuroplasticity operates throughout life, but the strength of structural change depends heavily on the quality of practice. Effortful, varied practice that pushes past current capability — with feedback — activates stronger plasticity than passive repetition. Volume matters, but type matters too."
-    },
-    {
-      "question": "The Maguire et al. (2000) taxi driver study found hippocampal volume correlated positively with years of experience. What does this establish about neuroplasticity?",
-      "options": [
-        "People with naturally larger hippocampi are more likely to pursue careers requiring spatial memory",
-        "Structural brain changes from experience are measurable, cumulative over time, and partially reversible when practice stops — the brain is physically shaped by sustained use",
-        "Navigation training is uniquely effective at producing brain changes, unlike other professional skills",
-        "Neuroplasticity in adults is limited to spatial reasoning tasks processed in the hippocampus"
+        "Sympathy requires genuine emotional connection; tactical empathy is performed, making it more ethical to use sympathy in professional contexts",
+        "Tactical empathy is about understanding and articulating the counterpart's emotional reality without necessarily agreeing with it — sympathy involves feeling what they feel. The distinction matters because tactical empathy keeps you oriented toward the conversation while sympathy can cloud your judgment",
+        "There is no meaningful distinction — both require listening carefully and acknowledging the other person's perspective",
+        "Sympathy is passive; tactical empathy is aggressive and should be used carefully to avoid damaging trust"
       ],
       "correct": 1,
-      "explanation": "The critical finding: the difference scaled with years of experience and partially reversed after retirement. This establishes that neuroplastic changes are acquired, cumulative, and use-dependent. Direct evidence that the brain you have has been physically shaped by what you've practiced."
+      "explanation": "Voss is explicit: empathy is understanding the other person's perspective; sympathy is feeling it. In sales, this matters because a rep who feels a prospect's budget pain might discount reflexively. A rep who understands it can acknowledge it and redirect — same emotional acknowledgment, completely different outcome."
     },
     {
-      "question": "You're designing onboarding for new sales reps covering discovery skills. Applying neuroplasticity research, which approach produces the most durable skill development?",
+      "question": "A prospect says: 'We'll probably go with whoever gives us the best price.' Which response best demonstrates tactical empathy?",
       "options": [
-        "10 hours of recorded top-performer calls — passive observation activates mirror neurons efficiently",
-        "Read the discovery playbook twice then a written knowledge assessment",
-        "Spaced role plays at escalating difficulty, immediate feedback after each, brief reviews at 24 and 72 hours to leverage memory consolidation",
-        "Maximum live calls in 30 days — high volume is the most reliable driver"
+        "'I completely understand — price is always a major factor. Let me show you our ROI calculator.'",
+        "'We're actually very competitive on pricing. Can I ask what range you're working with?'",
+        "'It sounds like price has become the deciding factor — I'm curious what's behind that. Have past vendors made it hard to justify anything beyond the lowest number?'",
+        "'That's a fair approach. We'd love to compete on price — what would we need to hit?'"
       ],
       "correct": 2,
-      "explanation": "Passive observation produces minimal plasticity. Reading and testing creates declarative memory but weak procedural skill. High volume without structure can entrench bad habits. Spaced practice with escalating difficulty, immediate feedback, and timed review sessions directly applies what neuroscience knows about durable skill formation."
+      "explanation": "Option A jumps to ROI defense before understanding what's underneath. Option B gathers data without addressing emotion. Option D concedes the framing entirely. Option C labels the emotional reality and asks what's behind it — which is exactly the Voss move. The question it opens is the kind of answer that changes the whole conversation."
+    },
+    {
+      "question": "Your biggest deal is stalling. The champion goes quiet for two weeks, then says 'we're going to need to pause — internal priorities have shifted.' Applying tactical empathy, what's your first move?",
+      "options": [
+        "Send a detailed recap of the business case and ROI analysis to remind them of the value",
+        "Ask directly: 'What changed? Is there a budget issue or is someone new involved?'",
+        "Label what you're hearing: 'It sounds like something shifted internally that's making this harder to move forward right now' — then stay quiet and let them tell you what actually happened",
+        "Offer a reduced scope or phased approach to lower the barrier"
+      ],
+      "correct": 2,
+      "explanation": "You don't know what happened yet. 'Internal priorities shifted' is the surface. Labeling it invites them to tell you the real thing: a new executive, a budget freeze, a competing project. You can't solve a problem you haven't heard yet. Label first. Respond second."
     }
   ],
-  "closing": "Where in your current work are you practicing comfortably when you should be practicing at the edge?",
+  "closing": "On your next call: what are your prospects actually saying underneath what they say?",
   "sources": [
     {
-      "label": "Puderbaugh & Emmady — Neuroplasticity, StatPearls / NIH NLM, 2026",
-      "detail": "Peer-reviewed clinical reference. Defines neuroplasticity as 'the ability of the nervous system to change its activity in response to intrinsic or extrinsic stimuli.' Open access at NIH NLM.",
-      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557811/"
+      "label": "Voss, Chris & Raz, Tahl — Never Split the Difference, HarperBusiness, 2016",
+      "detail": "Primary source. Tactical Empathy defined in Chapter 3. ISBN 9780062407801.",
+      "url": "https://www.blackswanltd.com/never-split-the-difference"
     },
     {
-      "label": "Maguire et al. — Navigation-related structural change in hippocampi of taxi drivers, PNAS 97(8), 2000",
-      "detail": "Landmark study. MRI scans of London taxi drivers showed significantly larger posterior hippocampi vs. controls; volume correlated with years of experience. Full text open access at PMC.",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC18253/"
+      "label": "Black Swan Group — blackswanltd.com (active 2025-2026)",
+      "detail": "Voss's training organization. Tactical Empathy is a registered trademark. Ongoing training and 2025 companion book Fight Less Win More.",
+      "url": "https://www.blackswanltd.com"
     },
     {
-      "label": "Caglın — Neuroplasticity Literacy and Sustainable Learning at Work, Sustainability 17(24), MDPI, Dec 2025",
-      "detail": "First psychometric scale for neuroplasticity-related behaviors at work. Peer-reviewed Dec 2025.",
-      "url": "https://www.mdpi.com/2071-1050/17/24/11059"
+      "label": "R.O. Hammer / Forrester Consulting 2024 Benchmark",
+      "detail": "22% quota attainment improvement in 6 months for companies using tactical empathy and calibrated questions.",
+      "url": "https://www.rohammer.com/blog/changing-the-game-how-chris-vosss-never-split-the-difference-is-reshaping-sales-negotiation-strategies"
     }
   ]
 }
