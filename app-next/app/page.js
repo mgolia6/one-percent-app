@@ -209,6 +209,8 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showBug, setShowBug] = useState(false)
+  const [showWelcome, setShowWelcome] = useState(false)
+  const [welcomeFading, setWelcomeFading] = useState(false)
 
   useEffect(() => {
     async function init() {
@@ -235,6 +237,9 @@ export default function HomePage() {
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
       setLoading(false)
+      setShowWelcome(true)
+      setTimeout(() => setWelcomeFading(true), 1800)
+      setTimeout(() => setShowWelcome(false), 2400)
     }
     init()
   }, [router])
@@ -263,6 +268,29 @@ export default function HomePage() {
 
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
+
+      {/* Welcome overlay */}
+      {showWelcome && (() => {
+        const { name, line } = getDailyGreeting(profile?.name)
+        return (
+          <div onClick={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 400) }} style={{
+            position: 'fixed', inset: 0, zIndex: 999,
+            background: '#0A0A0A',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: 32, cursor: 'pointer',
+            opacity: welcomeFading ? 0 : 1,
+            transition: 'opacity 0.5s ease',
+          }}>
+            <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 28 }}>ONE PERCENT</div>
+            <div style={{ fontSize: 28, fontWeight: 500, color: '#fff', letterSpacing: '-0.02em', marginBottom: 14, textAlign: 'center', lineHeight: 1.2 }}>
+              Welcome back,<br />{profile?.name || 'there'}.
+            </div>
+            <div style={{ fontSize: 13, color: '#444', letterSpacing: '0.04em', textAlign: 'center', maxWidth: 280, lineHeight: 1.7 }}>
+              {line}
+            </div>
+          </div>
+        )
+      })()}
 
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', borderBottom: '1px solid #141414', maxWidth: 720, margin: '0 auto' }}>
@@ -294,20 +322,15 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Daily greeting */}
-        {(() => {
-          const { name, line } = getDailyGreeting(profile?.name)
-          return (
-            <div style={{ marginBottom: 28, paddingBottom: 20, borderBottom: '1px solid #141414' }}>
-              <div style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>
-                Hey, {name}.
-              </div>
-              <div style={{ fontSize: 12, color: '#444', lineHeight: 1.6, letterSpacing: '0.02em' }}>
-                {line}
-              </div>
-            </div>
-          )
-        })()}
+        {/* Analytics label */}
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 3 }}>
+            {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
+          </div>
+          <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em' }}>
+            THE DATA DOESN'T LIE
+          </div>
+        </div>
 
         {/* Admin link */}
         {isAdmin && (
