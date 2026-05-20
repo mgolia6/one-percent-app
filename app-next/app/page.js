@@ -286,9 +286,12 @@ export default function HomePage() {
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
       setLoading(false)
-      setShowWelcome(true)
-      setTimeout(() => setWelcomeFading(true), 6000)
-      setTimeout(() => setShowWelcome(false), 6700)
+      if (!sessionStorage.getItem('welcomed')) {
+        sessionStorage.setItem('welcomed', '1')
+        setShowWelcome(true)
+        setTimeout(() => setWelcomeFading(true), 6000)
+        setTimeout(() => setShowWelcome(false), 6700)
+      }
     }
     init()
   }, [router])
