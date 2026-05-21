@@ -38,7 +38,7 @@ Log reviewed · Last: Entry 018 / RAG (AI.3.1) · Next: VL (Vocab & Language) ·
 - Claim: AI-heavy manuscripts showed heavier nominalization density, lower readability, and 1.28 SD drop in writing quality by January 2026
 - Confirming URL: https://www.thebrighterside.news/post/ai-is-flooding-peer-review-and-editors-say-its-making-science-harder-to-judge/
 - Key data: "higher AI scores went with lower readability... rely more heavily on nominalizations, the abstract noun forms that can turn plain actions into bureaucratic fog"
-- Data point confirmed: "by January 2026, submission writing quality sat 1.28 standard deviations below its January 2021 level"
+- Data point confirmed: "by January 2026, submission writing quality sat 1.28 standard deviations below its January 2021 level" — confirmed via page fetch; may appear in chart caption. Not independently verified by Matthew in article body. All other claims verified by Matthew directly.
 - Status: ✅ Verified
 
 ---
