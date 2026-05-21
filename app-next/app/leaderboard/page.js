@@ -9,7 +9,7 @@ const METRICS = [
   { id: 'score',     label: 'QUIZ SCORE', description: 'Total points earned across all entries' },
   { id: 'streak',    label: 'STREAK',     description: 'Current active streak (days)' },
   { id: 'longest',   label: 'BEST STREAK',description: 'Longest streak ever achieved' },
-  { id: 'completed', label: 'ENTRIES',    description: 'Total entries completed' },
+  { id: 'completed', label: 'LESSONS',    description: 'Total lessons completed' },
   { id: 'comments',  label: 'COMMENTS',   description: 'Feedback comments submitted' },
   { id: 'speed',     label: 'SPEED',      description: 'Avg time-to-quiz (lower = faster)' },
 ]
@@ -110,11 +110,12 @@ export default function LeaderboardPage() {
       setCurrentUser(prof)
       setIsAdmin(prof.is_admin || false)
 
-      // Fetch all profiles
+      // Fetch all profiles — exclude admins from user-facing view
       const { data: profiles } = await supabase
         .from('profiles')
         .select('id, first_name, last_name, name, current_streak, longest_streak, is_admin')
         .eq('onboarding_complete', true)
+        .eq('is_admin', false)
 
       // Fetch all completions
       const { data: completions } = await supabase
@@ -229,7 +230,7 @@ export default function LeaderboardPage() {
 
   const BREAKDOWN = (s) => [
     { id: 'score',     label: 'Quiz Score',   value: `${s.score} pts`,          bar: s.norm.score,     color: COLORS.score,     note: 'Total points earned across all quizzes' },
-    { id: 'completed', label: 'Entries Done', value: `${s.completed}`,           bar: s.norm.completed, color: COLORS.completed, note: 'Number of entries completed' },
+    { id: 'completed', label: 'Lessons Completed', value: `${s.completed}`,           bar: s.norm.completed, color: COLORS.completed, note: 'Number of lessons completed' },
     { id: 'streak',    label: 'Streak',       value: `${s.streak} days`,         bar: s.norm.streak,    color: COLORS.streak,    note: 'Current active daily streak' },
     { id: 'longest',   label: 'Best Streak',  value: `${s.longest} days`,        bar: s.norm.longest,   color: COLORS.longest,   note: 'Longest streak ever achieved' },
     { id: 'comments',  label: 'Comments',     value: `${s.comments}`,            bar: s.norm.comments,  color: COLORS.comments,  note: 'Feedback comments submitted' },
@@ -348,7 +349,7 @@ export default function LeaderboardPage() {
                         {name}
                       </div>
                       <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
-                        {metric !== 'completed' && <span style={{ fontSize: 10, color: '#444' }}>{s.completed} entries</span>}
+                        <span style={{ fontSize: 10, color: '#444' }}>{s.completed} lessons</span>
                         {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {s.streak}</span>}
                         {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
                       </div>
