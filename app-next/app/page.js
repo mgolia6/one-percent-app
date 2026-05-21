@@ -97,7 +97,7 @@ function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
   )
 }
 
-const TOTAL_ENTRIES = 18
+const TOTAL_ENTRIES = 19
 
 const CATEGORY_COLORS = {
   'AI': '#47FFE8',
@@ -128,6 +128,7 @@ const ENTRIES = [
   { entry: '016', editionId: 'CM.1', concept: 'Active Listening', category: 'Communication' },
   { entry: '017', editionId: 'SC.3.1', concept: 'Multi-Threading', category: 'Sales Craft' },
   { entry: '018', editionId: 'AI.3.1', concept: 'RAG (Retrieval-Augmented Generation)', category: 'AI' },
+  { entry: '019', editionId: 'VL.3', concept: 'Nominalization', category: 'Vocab & Language' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
