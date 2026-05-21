@@ -583,38 +583,36 @@ export default function HomePage() {
         
         {/* Category filter tabs */}
         <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
-        <div style={{ background: '#111', borderRadius: 8, padding: '4px 4px', marginBottom: 16 }}>
-          <div className="filter-tabs" style={{ display: 'flex', gap: 0, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+        <div style={{ background: '#1e1e1e', borderRadius: 8, padding: '4px', marginBottom: 16 }}>
+          <div className="filter-tabs" style={{ display: 'flex', gap: 0, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
               const isSelected = filter === cat
               const categoryColor = CATEGORY_COLORS[cat]
               const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
-              const accentColor = isSystemTab ? '#888' : categoryColor
+              const activeColor = isSystemTab ? '#fff' : categoryColor
+              const restColor = isSystemTab ? '#bbb' : categoryColor
 
               return (
                 <button
                   key={cat}
-                  onClick={() => {
-                    setFilter(cat)
-                    setTimeout(() => {
-                      libraryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    }, 50)
-                  }}
+                  onClick={() => setFilter(cat)}
                   style={{
-                    background: isSelected ? (isSystemTab ? '#2a2a2a' : `${categoryColor}18`) : 'transparent',
-                    color: isSelected ? (isSystemTab ? '#fff' : categoryColor) : (accentColor || '#888'),
+                    background: 'transparent',
+                    color: isSelected ? activeColor : restColor,
                     border: 'none',
-                    borderRadius: 6,
-                    padding: '6px 12px',
+                    borderBottom: isSelected ? `2px solid ${activeColor}` : '2px solid transparent',
+                    borderRadius: 0,
+                    padding: '7px 12px 6px',
                     fontSize: 9,
-                    fontWeight: isSelected ? 700 : 500,
+                    fontWeight: isSelected ? 700 : 400,
                     letterSpacing: '0.08em',
                     cursor: 'pointer',
                     fontFamily: "'Inter',sans-serif",
                     whiteSpace: 'nowrap',
                     flexShrink: 0,
-                    opacity: isSelected ? 1 : 0.55,
+                    opacity: isSelected ? 1 : 0.5,
                     transition: 'all 0.15s ease',
+                    marginBottom: -1,
                   }}
                 >
                   {cat.toUpperCase()}
