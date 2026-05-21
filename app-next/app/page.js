@@ -555,13 +555,28 @@ export default function HomePage() {
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px 80px' }}>
 
         {/* Analytics label */}
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 3 }}>
-            {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
+        <div style={{ marginBottom: 16, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 3 }}>
+              {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
+            </div>
+            <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.1em' }}>
+              THE DATA DOESN'T LIE
+            </div>
           </div>
-          <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.1em' }}>
-            THE DATA DOESN'T LIE
-          </div>
+          <button
+            onClick={() => router.push('/leaderboard')}
+            style={{
+              background: '#1e1e1e', border: 'none', borderRadius: 6,
+              padding: '8px 14px', fontSize: 9, color: '#E8FF47',
+              cursor: 'pointer', letterSpacing: '0.1em',
+              fontFamily: "'Inter',sans-serif", fontWeight: 600,
+              display: 'flex', alignItems: 'center', gap: 6,
+              flexShrink: 0,
+            }}
+          >
+            🏆 LEADERBOARD
+          </button>
         </div>
 
         {/* Stats bar */}

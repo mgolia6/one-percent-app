@@ -76,7 +76,8 @@ export default function OnboardingPage() {
   const router = useRouter()
   const [step, setStep] = useState(0)
   const [user, setUser] = useState(null)
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [committed, setCommitted] = useState([])
   const [submitting, setSubmitting] = useState(false)
   const [animate, setAnimate] = useState(true)
@@ -98,10 +99,12 @@ export default function OnboardingPage() {
 
   const advance = async () => {
     if (isLast) {
-      if (!name.trim()) return
+      if (!firstName.trim() || !lastName.trim()) return
       setSubmitting(true)
       await supabase.from('profiles').update({
-        name: name.trim(),
+        first_name: firstName.trim(),
+        last_name: lastName.trim(),
+        name: `${firstName.trim()} ${lastName.trim()}`,
         onboarding_complete: true,
       }).eq('id', user.id)
       sessionStorage.removeItem('welcomed')
@@ -120,7 +123,7 @@ export default function OnboardingPage() {
     }, 180)
   }
 
-  const canAdvance = isLast ? name.trim().length > 0 : true
+  const canAdvance = isLast ? firstName.trim().length > 0 && lastName.trim().length > 0 : true
   const progress = (step / (STEPS.length - 1)) * 100
 
   return (
@@ -268,21 +271,32 @@ export default function OnboardingPage() {
         )}
 
         {current.isNameStep && (
-          <div style={{ marginBottom: 28 }}>
-            <input
-              className="ob-input"
-              type="text"
-              placeholder="First name is fine"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && canAdvance && advance()}
-              autoFocus
-            />
-            {user?.email && (
-              <div style={{ fontSize: 11, color: 'rgba(26,42,58,0.35)', marginTop: 10, fontFamily: "'DM Mono', monospace", letterSpacing: '0.05em' }}>
-                {user.email}
-              </div>
-            )}
+          <div style={{ marginBottom: 28, display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div>
+              <input
+                className="ob-input"
+                type="text"
+                placeholder="First name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && document.getElementById('ob-last')?.focus()}
+                autoFocus
+              />
+            </div>
+            <div>
+              <input
+                id="ob-last"
+                className="ob-input"
+                type="text"
+                placeholder="Last name"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && canAdvance && advance()}
+              />
+            </div>
+            <div style={{ fontSize: 11, color: 'rgba(26,42,58,0.35)', fontFamily: "'DM Mono', monospace", letterSpacing: '0.05em' }}>
+              Both required — shows on the leaderboard as First L.
+            </div>
           </div>
         )}
 
