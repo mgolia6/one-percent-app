@@ -30,13 +30,13 @@ function displayName(p, currentUserId) {
 }
 
 function normalize(value, min, max, lowerIsBetter = false) {
-  if (max === min) return 50
+  // Everyone tied — give everyone full credit rather than an arbitrary 50
+  if (max === min) return 100
   const raw = (value - min) / (max - min) * 100
   return lowerIsBetter ? 100 - raw : raw
 }
 
 function computeScores(users) {
-  // Extract raw metrics
   const metrics = users.map(u => ({
     id: u.id,
     score: u.total_score || 0,
@@ -44,6 +44,7 @@ function computeScores(users) {
     longest: u.longest_streak || 0,
     completed: u.completed_count || 0,
     comments: u.comment_count || 0,
+    // Filter speeds under 20s (test runs) before averaging
     speed: u.avg_speed != null ? u.avg_speed : 99999,
   }))
 
@@ -132,7 +133,7 @@ export default function LeaderboardPage() {
         const userComps = (completions || []).filter(c => c.user_id === p.id)
         const total_score = userComps.reduce((a, c) => a + (c.score || 0), 0)
         const completed_count = userComps.length
-        const speeds = userComps.map(c => c.time_to_quiz).filter(t => t != null && t > 0)
+        const speeds = userComps.map(c => c.time_to_quiz).filter(t => t != null && t >= 20)
         const avg_speed = speeds.length ? speeds.reduce((a, b) => a + b, 0) / speeds.length : null
 
         const userFeedback = (feedbackRaw || []).filter(f => f.user_id === p.id)
@@ -157,14 +158,30 @@ export default function LeaderboardPage() {
       .filter(u => u._score)
       .sort((a, b) => {
         const sa = a._score, sb = b._score
-        if (metric === 'overall')   return sb.overall - sa.overall
-        if (metric === 'score')     return sb.score - sa.score
-        if (metric === 'streak')    return sb.streak - sa.streak
-        if (metric === 'longest')   return sb.longest - sa.longest
-        if (metric === 'completed') return sb.completed - sa.completed
-        if (metric === 'comments')  return sb.comments - sa.comments
-        if (metric === 'speed') {
-          // lower is better; push 99999 (no data) to bottom
+
+        let primary = 0
+        if (metric === 'overall')   primary = sb.overall - sa.overall
+        else if (metric === 'score')     primary = sb.score - sa.score
+        else if (metric === 'streak')    primary = sb.streak - sa.streak
+        else if (metric === 'longest')   primary = sb.longest - sa.longest
+        else if (metric === 'completed') primary = sb.completed - sa.completed
+        else if (metric === 'comments')  primary = sb.comments - sa.comments
+        else if (metric === 'speed') {
+          if (sa.speed >= 99999 && sb.speed >= 99999) primary = 0
+          else if (sa.speed >= 99999) primary = 1
+          else if (sb.speed >= 99999) primary = -1
+          else primary = sa.speed - sb.speed
+        }
+
+        if (primary !== 0) return primary
+
+        // Tiebreaker 1: score
+        if (metric !== 'score') {
+          const scoreDiff = sb.score - sa.score
+          if (scoreDiff !== 0) return scoreDiff
+        }
+        // Tiebreaker 2: speed (lower wins; no-data goes last)
+        if (metric !== 'speed') {
           if (sa.speed >= 99999 && sb.speed >= 99999) return 0
           if (sa.speed >= 99999) return 1
           if (sb.speed >= 99999) return -1
