@@ -74,7 +74,7 @@ Platform upgrades — no content generation this session.
 ---
 
 ## Changelog entry
-Version 0.4 inserted into Supabase changelog table (published = false). Awaiting Matthew approval.
+Version 0.3 inserted into Supabase changelog table (published = false). Awaiting Matthew approval.
 
 ---
 
