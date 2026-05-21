@@ -15,7 +15,7 @@
 
 **What to find:** arXiv page for paper 2005.11401. Title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks." Authors include Patrick Lewis, Ethan Perez, et al. Accepted at NeurIPS 2020. Abstract states: "RAG models generate more specific, diverse and factual language than a state-of-the-art parametric-only seq2seq baseline."
 
-**Status:** ✅ Ready for Matthew verification
+**Status:** ✅ VERIFIED by Matthew — May 20, 2026
 
 ---
 
@@ -31,7 +31,7 @@
 
 **Note:** This is a secondary source citing Gartner. Primary Gartner report is likely paywalled. Flag as "Gartner projects, via Techment" if Matthew prefers conservative attribution.
 
-**Status:** ✅ Ready for Matthew verification — secondary source confirmed, Gartner attribution noted
+**Status:** ✅ VERIFIED by Matthew — May 20, 2026 (secondary source, Gartner attribution noted)
 
 ---
 
@@ -47,7 +47,7 @@
 
 **Note:** Quote is cited via Wikipedia's reference to Ars Technica. If Matthew wants primary source verification, search Ars Technica directly for the original article.
 
-**Status:** ✅ Ready for Matthew verification
+**Status:** ✅ VERIFIED by Matthew — May 20, 2026
 
 ---
 
@@ -73,7 +73,7 @@ Say **Dead Drop** in chat to begin the interactive step-by-step verification.
 | Temporal relevance | ✅ Dominant enterprise AI architecture topic, May 2026 |
 | Backlog status | ✅ RAG was candidate — marked used |
 | Sources identified | ✅ 3 sources |
-| Quote verified against source | ⏳ Pending Matthew verification |
+| Quote verified against source | ✅ Verified by Matthew — May 20, 2026 |
 | AI nudge check | N/A — AI category entry |
 | In the Wild type | Type B — Documented Pattern |
 | Midday escalation | ✅ Included in midday nudge |
