@@ -191,6 +191,40 @@ function FeedbackModal({ userId, onClose }) {
   )
 }
 
+function WhatsNewModal({ entry, onDismiss }) {
+  const bullets = entry.description.split('\n').filter(l => l.trim())
+  const preview = bullets.slice(0, 4)
+  const remaining = bullets.length - 4
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.88)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
+      <div style={{ background: '#111', border: '1px solid #E8FF4733', borderRadius: 12, padding: 28, maxWidth: 400, width: '100%' }}>
+        <div style={{ fontSize: 9, color: '#E8FF47', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 6, fontFamily: "'Inter',sans-serif" }}>
+          WHAT'S NEW — v{entry.version}
+        </div>
+        <div style={{ fontSize: 18, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 20, lineHeight: 1.3, fontFamily: "'Inter',sans-serif" }}>
+          {entry.title}
+        </div>
+        {preview.map((line, i) => (
+          <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 10, alignItems: 'flex-start' }}>
+            <div style={{ color: '#E8FF47', fontSize: 10, marginTop: 3, flexShrink: 0 }}>•</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, fontFamily: "'Inter',sans-serif" }}>{line.replace(/^•\s*/, '')}</div>
+          </div>
+        ))}
+        {remaining > 0 && (
+          <div style={{ fontSize: 11, color: '#444', marginTop: 4, marginLeft: 20, fontFamily: "'Inter',sans-serif" }}>+{remaining} more in the changelog</div>
+        )}
+        <button
+          onClick={onDismiss}
+          style={{ width: '100%', marginTop: 24, background: '#E8FF47', border: 'none', borderRadius: 6, padding: '13px', fontSize: 11, fontWeight: 700, color: '#0a0a0a', cursor: 'pointer', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif" }}
+        >
+          GOT IT
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function BugModal({ userId, onClose }) {
   const [description, setDescription] = useState('')
   const [page, setPage] = useState('Library')
@@ -404,6 +438,9 @@ export default function HomePage() {
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [filter, setFilter] = useState('All')
   const [signingOut, setSigningOut] = useState(false)
+  const [showWhatsNew, setShowWhatsNew] = useState(false)
+  const [whatsNewEntry, setWhatsNewEntry] = useState(null)
+  const [hasUnseenChangelog, setHasUnseenChangelog] = useState(false)
   const libraryRef = useRef(null)
 
   useEffect(() => {
@@ -441,6 +478,24 @@ export default function HomePage() {
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
+
+      // Check for unseen changelog entries
+      const { data: latestChangelog } = await supabase
+        .from('changelog')
+        .select('version, title, description, show_modal')
+        .eq('published', true)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+
+      if (latestChangelog && latestChangelog.version !== prof.last_seen_changelog_version) {
+        setHasUnseenChangelog(true)
+        if (latestChangelog.show_modal) {
+          setWhatsNewEntry(latestChangelog)
+          setShowWhatsNew(true)
+        }
+      }
+
       setLoading(false)
       if (!sessionStorage.getItem('welcomed')) {
         sessionStorage.setItem('welcomed', '1')
@@ -456,6 +511,26 @@ export default function HomePage() {
     setSigningOut(true)
     await supabase.auth.signOut()
     window.location.href = '/login'
+  }
+
+  const markChangelogSeen = async () => {
+    if (!profile || !hasUnseenChangelog) return
+    const { data: latest } = await supabase
+      .from('changelog')
+      .select('version')
+      .eq('published', true)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
+    if (latest) {
+      await supabase.from('profiles').update({ last_seen_changelog_version: latest.version }).eq('id', profile.id)
+      setHasUnseenChangelog(false)
+    }
+  }
+
+  const dismissWhatsNew = async () => {
+    setShowWhatsNew(false)
+    await markChangelogSeen()
   }
 
   if (loading) return (
@@ -478,6 +553,7 @@ export default function HomePage() {
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
+      {showWhatsNew && whatsNewEntry && <WhatsNewModal entry={whatsNewEntry} onDismiss={dismissWhatsNew} />}
 
       {/* Welcome overlay */}
       {showWelcome && (() => {
@@ -533,7 +609,10 @@ export default function HomePage() {
           }}>
             <div style={{ display: 'flex', gap: 0 }}>
               <button onClick={() => router.push('/about')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>ABOUT</button>
-              <button onClick={() => router.push('/changelog')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>CHANGELOG</button>
+              <button onClick={() => { router.push('/changelog'); markChangelogSeen() }} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: hasUnseenChangelog ? '#E8FF47' : '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: hasUnseenChangelog ? 600 : 400, opacity: 0.85, transition: 'opacity 0.15s ease', position: 'relative' }}>
+                CHANGELOG
+                {hasUnseenChangelog && <span style={{ position: 'absolute', top: 4, right: 4, width: 5, height: 5, borderRadius: '50%', background: '#E8FF47', display: 'block' }} />}
+              </button>
               <button onClick={() => setShowBug(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>BUG</button>
               <button onClick={() => setShowFeedback(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>FEEDBACK</button>
               <button onClick={() => setShowHowItWorks(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>INFO</button>
