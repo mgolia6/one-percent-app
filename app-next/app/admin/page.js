@@ -208,7 +208,7 @@ export default function AdminPage() {
       const [{ data: fb }, { data: br }, { data: us, error: usError }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
-        supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
+        supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
       ])
 
       console.log('[admin] users fetch:', us, usError)
@@ -221,7 +221,7 @@ export default function AdminPage() {
   }, [router])
 
   const refreshUsers = async () => {
-    const { data: us } = await supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false })
+    const { data: us } = await supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false })
     setUsers(us || [])
   }
 
@@ -232,7 +232,7 @@ export default function AdminPage() {
     const [{ data: fb, error: e1 }, { data: br, error: e2 }, { data: us, error: e3 }] = await Promise.all([
       supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
       supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
-      supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin').order('signup_date', { ascending: false }),
+      supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
     ])
     if (e1) console.error('feedback fetch:', e1)
     if (e2) console.error('bug_reports fetch:', e2)
@@ -346,6 +346,7 @@ export default function AdminPage() {
               ['instant', 'INSTANT'],
               ['bugs', 'BUGS'],
               ['users', 'USERS'],
+              ['leaderboard', 'LEADERBOARD'],
               ['surveys', 'SURVEYS ↗'],
             ].map(([id, label]) => {
               const active = tab === id
@@ -603,6 +604,78 @@ export default function AdminPage() {
             ))}
           </div>
         )}
+
+        {/* Leaderboard tab — all users including admins, emails visible */}
+        {tab === 'leaderboard' && (() => {
+          const formatSpeed = (s) => {
+            if (!s || s >= 99999) return '—'
+            if (s < 60) return `${Math.round(s)}s`
+            return `${Math.floor(s / 60)}m ${Math.round(s % 60)}s`
+          }
+
+          // Aggregate completions and feedback per user
+          const enriched = users.map(u => {
+            const comps = [] // completions not available in admin state — show what we have from profiles
+            const total_score = 0
+            return u
+          })
+
+          // Build rows from users + feedback data
+          const rows = users.map(u => {
+            const name = u.first_name
+              ? `${u.first_name}${u.last_name ? ' ' + u.last_name : ''}`
+              : u.name || u.email
+            const userFb = feedback.filter(f => f.user_id === u.id)
+            const commentCount = userFb.filter(f => f.comment && f.comment.trim().length > 0).length
+            return {
+              ...u,
+              displayName: name,
+              commentCount,
+            }
+          }).sort((a, b) => (b.current_streak || 0) - (a.current_streak || 0))
+
+          return (
+            <div>
+              <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 4, fontWeight: 600 }}>LEADERBOARD — ALL USERS</div>
+              <div style={{ fontSize: 12, color: '#555', marginBottom: 20, lineHeight: 1.6 }}>Full view including admins. Emails visible. Sorted by streak.</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {rows.map((u, i) => (
+                  <div key={u.id} style={{ background: '#111', border: `1px solid ${u.is_admin ? '#47FFE822' : '#1a1a1a'}`, borderRadius: 6, padding: '16px 20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        {u.avatar_url
+                          ? <img src={u.avatar_url} alt="" style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover', border: '1px solid #222' }} />
+                          : <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1a1a1a', border: '1px solid #222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14 }}>👤</div>
+                        }
+                        <div>
+                          <div style={{ fontSize: 13, color: '#fff', fontWeight: 500 }}>
+                            {u.displayName}
+                            {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em', marginLeft: 8 }}>ADMIN</span>}
+                          </div>
+                          <div style={{ fontSize: 10, color: '#555', marginTop: 2 }}>{u.email}</div>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: 11, color: '#444', flexShrink: 0 }}>#{i + 1}</div>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10 }}>
+                      {[
+                        { label: 'STREAK', value: `🔥 ${u.current_streak || 0}`, color: '#FF8C47' },
+                        { label: 'BEST', value: `${u.longest_streak || 0} days`, color: '#C847FF' },
+                        { label: 'COMMENTS', value: u.commentCount, color: '#FF8C00' },
+                        { label: 'LAST ACTIVE', value: u.last_active_date || '—', color: '#666' },
+                      ].map(s => (
+                        <div key={s.label} style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 10px' }}>
+                          <div style={{ fontSize: 8, color: '#444', letterSpacing: '0.1em', marginBottom: 4 }}>{s.label}</div>
+                          <div style={{ fontSize: 12, color: s.color, fontWeight: 500 }}>{s.value}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })()}
 
         {/* Surveys tab — live testable forms */}
         {tab === 'surveys' && (
