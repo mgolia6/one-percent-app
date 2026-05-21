@@ -498,9 +498,9 @@ export default function HomePage() {
         <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
-            <span style={{ fontSize: 9, background: '#E8FF4722', color: '#E8FF47', border: '1px solid #E8FF4744', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
+            <span style={{ fontSize: 9, background: '#1a1a1a', color: '#E8FF47', border: '1px solid #E8FF4766', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
             {isAdmin && (
-              <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
+              <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
             )}
           </div>
           {/* Profile avatar */}
@@ -534,7 +534,8 @@ export default function HomePage() {
             overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch',
           }}>
             <div style={{ display: 'flex', gap: 0 }}>
-              {/* Feedback group */}
+              <button onClick={() => router.push('/about')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>ABOUT</button>
+              <button onClick={() => router.push('/changelog')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>CHANGELOG</button>
               <button onClick={() => setShowBug(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>BUG</button>
               <button onClick={() => setShowFeedback(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>FEEDBACK</button>
               <button onClick={() => setShowHowItWorks(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>INFO</button>
