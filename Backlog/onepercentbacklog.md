@@ -174,6 +174,7 @@ Target library: 365 entries (~40 full cycles)
 | Negative utilitarianism | Minimize suffering rather than maximize happiness — and why that framing changes everything. | candidate |
 | Kairos vs. Chronos | Greek distinction between clock time and opportune/meaningful time. Relevant to how we think about timing, urgency, and readiness. | candidate |
 | Eudaimonia | Aristotelian flourishing — not pleasure, but living in accordance with your highest nature. Foundational concept, broadly accessible. | candidate |
+| Meditation / Contemplative practice | The philosophy and neuroscience of deliberate mental stillness. Sits at the intersection of PH and NC — could work in either category. Matthew flagged May 20, 2026. | candidate |
 
 ---
 
