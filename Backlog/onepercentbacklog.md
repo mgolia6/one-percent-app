@@ -1,6 +1,6 @@
 # One Percent — Concept Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: May 19, 2026 — v1.19 (Entry 017: Multi-Threading marked used) (7 categories, 9-slot rotation)
+Last updated: May 20, 2026 — Entry 018 generated (AI.3.1 RAG). Next: VL (Vocab & Language, slot 3)
 
 This is the standing candidate list. Claude reads this before every generation, cross-references against the search signal, marks used concepts, and adds new candidates as they surface.
 
@@ -87,7 +87,7 @@ Target library: 365 entries (~40 full cycles)
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| RAG (Retrieval-Augmented Generation) | How LLMs connect to external knowledge bases. Critical for anyone building AI-powered tools or evaluating vendor claims. Active 2026 architecture topic. | candidate |
+| RAG (Retrieval-Augmented Generation) | How LLMs connect to external knowledge bases. Critical for anyone building AI-powered tools or evaluating vendor claims. Active 2026 architecture topic. | **used — AI.3.1** |
 | AI Agents and tool use | Models that take actions, not just generate text. Rapidly evolving in 2026 — agentic workflows are the current frontier. High relevance, verifiable sources. | candidate |
 | Temperature and sampling | What controls model "creativity" vs. predictability. Practical for prompt engineers and anyone building with AI APIs. | candidate |
 | Fine-tuning vs. prompting | When you need a custom model vs. better prompts. Decision framework relevant to any org deploying AI. | candidate |
@@ -239,7 +239,7 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 ---
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
-*Next generation: SC.2.2 — Sales Craft, second slot, cycle 2.*
+*Next generation: VL — Vocab & Language. Rotation slot 3. Candidates: Loaded Language, Semantic Satiation, Overton Window, Code-Switching.*
 
 ---
 
@@ -250,7 +250,7 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 ### In Progress / Next Up
 - [ ] **Button audit** — all buttons need loading/disabled/feedback states. Sign out flagged May 20.
 - [ ] **Entry 017 verify audit** — interactive step-by-step, not a data dump. Quote flag: "about themselves" vs "themselves."
-- [ ] **Entry 018 generation** — AI.3.1. Candidates: RAG, AI Agents, Temperature/Sampling.
+- [x] **Entry 018 generation** — AI.3.1 RAG (Retrieval-Augmented Generation) ✅ Done May 20, 2026
 
 ### Profile & Identity
 - [ ] **Profile page** `/profile` — editable first name, last name, phone. Email read-only. Access from library header.
