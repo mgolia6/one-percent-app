@@ -509,21 +509,17 @@ export default function HomePage() {
           <button
             onClick={() => router.push('/profile')}
             style={{
-              width: 32,
-              height: 32,
-              borderRadius: '50%',
-              background: '#1a1a1a',
-              border: '1px solid #333',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              fontSize: 14,
-              color: '#999',
-              padding: 0,
+              width: 32, height: 32, borderRadius: '50%',
+              background: '#1a1a1a', border: '1px solid #333',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', fontSize: 14, color: '#999',
+              padding: 0, overflow: 'hidden', flexShrink: 0,
             }}
           >
-            👤
+            {profile?.avatar_url
+              ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              : '👤'
+            }
           </button>
         </div>
 

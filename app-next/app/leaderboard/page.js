@@ -113,7 +113,7 @@ export default function LeaderboardPage() {
       // Fetch all profiles — exclude admins from user-facing view
       const { data: profiles } = await supabase
         .from('profiles')
-        .select('id, first_name, last_name, name, current_streak, longest_streak, is_admin')
+        .select('id, first_name, last_name, name, current_streak, longest_streak, is_admin, avatar_url')
         .eq('onboarding_complete', true)
         .eq('is_admin', false)
 
@@ -344,14 +344,19 @@ export default function LeaderboardPage() {
                     <div style={{ width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Medal rank={rank} />
                     </div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 13, fontWeight: isYou ? 600 : 400, color: isYou ? '#fff' : '#ccc', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {name}
+                    <div style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: 10 }}>
+                      <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: '#1a1a1a', border: '1px solid #222', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12 }}>
+                        {u.avatar_url ? <img src={u.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '👤'}
                       </div>
-                      <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 10, color: '#444' }}>{s.completed} lessons</span>
-                        {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {s.streak}</span>}
-                        {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: 13, fontWeight: isYou ? 600 : 400, color: isYou ? '#fff' : '#ccc', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {name}
+                        </div>
+                        <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: 10, color: '#444' }}>{s.completed} lessons</span>
+                          {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {s.streak}</span>}
+                          {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
+                        </div>
                       </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>

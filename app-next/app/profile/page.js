@@ -11,6 +11,8 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
   const [message, setMessage] = useState(null)
+  const [avatarUrl, setAvatarUrl] = useState(null)
+  const [uploadingAvatar, setUploadingAvatar] = useState(false)
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -44,6 +46,7 @@ export default function ProfilePage() {
       setFirstName(data.first_name || '')
       setLastName(data.last_name || '')
       setEmail(data.email || user.email || '')
+      setAvatarUrl(data.avatar_url || null)
     }
 
     setLoading(false)
@@ -80,7 +83,42 @@ export default function ProfilePage() {
     }, 1500)
   }
 
-  const handleSignOut = async () => {
+  const handleAvatarUpload = async (e) => {
+    const file = e.target.files?.[0]
+    if (!file || !profile) return
+
+    setUploadingAvatar(true)
+    setMessage(null)
+
+    const ext = file.name.split('.').pop()
+    const path = `${profile.id}/avatar.${ext}`
+
+    // Remove old avatar first
+    await supabase.storage.from('avatars').remove([path])
+
+    const { error: uploadError } = await supabase.storage
+      .from('avatars')
+      .upload(path, file, { upsert: true, contentType: file.type })
+
+    if (uploadError) {
+      setMessage({ type: 'error', text: 'Upload failed — try again' })
+      setUploadingAvatar(false)
+      return
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('avatars')
+      .getPublicUrl(path)
+
+    // Bust cache with timestamp
+    const urlWithBust = `${publicUrl}?t=${Date.now()}`
+
+    await supabase.from('profiles').update({ avatar_url: urlWithBust }).eq('id', profile.id)
+
+    setAvatarUrl(urlWithBust)
+    setMessage({ type: 'success', text: 'Photo updated' })
+    setUploadingAvatar(false)
+  }
     setSigningOut(true)
     await supabase.auth.signOut()
     window.location.href = '/login'
@@ -118,6 +156,48 @@ export default function ProfilePage() {
         <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", marginBottom: 32 }}>
           ← BACK
         </button>
+
+        {/* Avatar */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 40 }}>
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <div style={{
+              width: 72, height: 72, borderRadius: '50%',
+              background: '#111', border: '1px solid #1a1a1a',
+              overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              {avatarUrl
+                ? <img src={avatarUrl} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                : <span style={{ fontSize: 28 }}>👤</span>
+              }
+            </div>
+            {uploadingAvatar && (
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: 16, height: 16, border: '2px solid #333', borderTopColor: '#E8FF47', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+              </div>
+            )}
+          </div>
+          <div>
+            <label style={{
+              display: 'inline-block', fontSize: 10, color: '#E8FF47',
+              border: '1px solid #E8FF4733', borderRadius: 4,
+              padding: '7px 14px', letterSpacing: '0.08em',
+              cursor: uploadingAvatar ? 'default' : 'pointer',
+              fontFamily: "'Inter',sans-serif", fontWeight: 500,
+              opacity: uploadingAvatar ? 0.5 : 1,
+            }}>
+              {uploadingAvatar ? 'UPLOADING...' : avatarUrl ? 'CHANGE PHOTO' : 'UPLOAD PHOTO'}
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={handleAvatarUpload}
+                disabled={uploadingAvatar}
+                style={{ display: 'none' }}
+              />
+            </label>
+            <div style={{ fontSize: 10, color: '#444', marginTop: 6, letterSpacing: '0.02em' }}>JPG, PNG or WebP · Max 2MB</div>
+          </div>
+        </div>
+        <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
