@@ -218,16 +218,23 @@ export default function LeaderboardPage() {
   const currentMetric = METRICS.find(m => m.id === metric)
   const sorted = getSortedUsers()
   const myRank = sorted.findIndex(u => u.id === currentUser?.id) + 1
+  const [expandedId, setExpandedId] = useState(null)
 
-  const accentColor = {
-    overall:   '#E8FF47',
-    score:     '#47FFE8',
-    streak:    '#FF8C47',
-    longest:   '#C847FF',
-    completed: '#47C8FF',
-    comments:  '#FF8C00',
-    speed:     '#FF4778',
-  }[metric]
+  const COLORS = {
+    overall:'#E8FF47', score:'#47FFE8', streak:'#FF8C47',
+    longest:'#C847FF', completed:'#47C8FF', comments:'#FF8C00', speed:'#FF4778',
+  }
+
+  const accentColor = COLORS[metric]
+
+  const BREAKDOWN = (s) => [
+    { id: 'score',     label: 'Quiz Score',   value: `${s.score} pts`,          bar: s.norm.score,     color: COLORS.score,     note: 'Total points earned across all quizzes' },
+    { id: 'completed', label: 'Entries Done', value: `${s.completed}`,           bar: s.norm.completed, color: COLORS.completed, note: 'Number of entries completed' },
+    { id: 'streak',    label: 'Streak',       value: `${s.streak} days`,         bar: s.norm.streak,    color: COLORS.streak,    note: 'Current active daily streak' },
+    { id: 'longest',   label: 'Best Streak',  value: `${s.longest} days`,        bar: s.norm.longest,   color: COLORS.longest,   note: 'Longest streak ever achieved' },
+    { id: 'comments',  label: 'Comments',     value: `${s.comments}`,            bar: s.norm.comments,  color: COLORS.comments,  note: 'Feedback comments submitted' },
+    { id: 'speed',     label: 'Avg Speed',    value: formatSpeed(s.speed),       bar: s.norm.speed,     color: COLORS.speed,     note: 'Avg time from open to quiz start — lower is faster' },
+  ]
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -312,47 +319,95 @@ export default function LeaderboardPage() {
             const barVal = getBarValue(u)
             const displayVal = getDisplayValue(u)
             const name = displayName(u, currentUser?.id)
+            const isExpanded = expandedId === u.id
+            const s = u._score
+            const breakdown = BREAKDOWN(s)
 
             return (
               <div
                 key={u.id}
-                className="lb-row"
                 style={{
                   background: isYou ? '#0f0f0f' : '#0a0a0a',
-                  border: `1px solid ${isYou ? accentColor + '33' : '#141414'}`,
-                  borderRadius: 8, padding: '14px 16px',
+                  border: `1px solid ${isExpanded ? accentColor + '44' : isYou ? accentColor + '22' : '#141414'}`,
+                  borderRadius: 8,
+                  overflow: 'hidden',
                   transition: 'border-color 0.2s',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-                  <div style={{ width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Medal rank={rank} />
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: isYou ? 600 : 400, color: isYou ? '#fff' : '#ccc', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {name}
+                {/* Main row — tappable */}
+                <div
+                  onClick={() => setExpandedId(isExpanded ? null : u.id)}
+                  style={{ padding: '14px 16px', cursor: 'pointer' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+                    <div style={{ width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Medal rank={rank} />
                     </div>
-                    {/* Sub-stats */}
-                    <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
-                      {metric !== 'completed' && <span style={{ fontSize: 10, color: '#444' }}>{u._score.completed} entries</span>}
-                      {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {u._score.streak}</span>}
-                      {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{u._score.score} pts</span>}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 13, fontWeight: isYou ? 600 : 400, color: isYou ? '#fff' : '#ccc', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {name}
+                      </div>
+                      <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
+                        {metric !== 'completed' && <span style={{ fontSize: 10, color: '#444' }}>{s.completed} entries</span>}
+                        {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {s.streak}</span>}
+                        {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                      <div style={{ fontSize: 15, fontWeight: 600, color: accentColor, transition: 'color 0.2s' }}>
+                        {displayVal}
+                      </div>
+                      <div style={{ fontSize: 10, color: '#444', transition: 'transform 0.2s', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</div>
                     </div>
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: accentColor, flexShrink: 0, transition: 'color 0.2s' }}>
-                    {displayVal}
+
+                  {/* Primary bar */}
+                  <div style={{ height: 3, background: '#1a1a1a', borderRadius: 2, overflow: 'hidden' }}>
+                    <div style={{
+                      height: '100%', width: `${Math.max(barVal, 2)}%`,
+                      background: accentColor, borderRadius: 2,
+                      transition: 'width 0.4s ease, background 0.2s ease',
+                    }} />
                   </div>
                 </div>
 
-                {/* Bar */}
-                <div style={{ height: 3, background: '#1a1a1a', borderRadius: 2, overflow: 'hidden' }}>
-                  <div style={{
-                    height: '100%', width: `${Math.max(barVal, 2)}%`,
-                    background: accentColor,
-                    borderRadius: 2,
-                    transition: 'width 0.4s ease, background 0.2s ease',
-                  }} />
-                </div>
+                {/* Expanded breakdown */}
+                {isExpanded && (
+                  <div style={{ borderTop: '1px solid #1a1a1a', padding: '16px 16px 20px' }}>
+                    <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 14, fontWeight: 600 }}>FULL BREAKDOWN</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      {breakdown.map(b => (
+                        <div key={b.id}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 5 }}>
+                            <div>
+                              <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{b.label}</span>
+                              <span style={{ fontSize: 10, color: '#444', marginLeft: 8 }}>{b.note}</span>
+                            </div>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: b.color, flexShrink: 0, marginLeft: 12 }}>{b.value}</span>
+                          </div>
+                          <div style={{ height: 3, background: '#1a1a1a', borderRadius: 2, overflow: 'hidden' }}>
+                            <div style={{
+                              height: '100%',
+                              width: `${Math.max(b.bar, 2)}%`,
+                              background: b.color,
+                              borderRadius: 2,
+                              transition: 'width 0.5s ease',
+                            }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Overall score */}
+                    <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.12em', marginBottom: 2 }}>OVERALL SCORE</div>
+                        <div style={{ fontSize: 10, color: '#444' }}>Normalized rank across all 6 metrics</div>
+                      </div>
+                      <div style={{ fontSize: 20, fontWeight: 600, color: COLORS.overall }}>{Math.round(s.overall)}</div>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}
