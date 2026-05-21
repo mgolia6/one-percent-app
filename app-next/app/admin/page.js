@@ -283,7 +283,7 @@ export default function AdminPage() {
 
   if (loading) return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 11, color: '#333', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
+      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
     </div>
   )
 
@@ -309,33 +309,68 @@ export default function AdminPage() {
     return '█'.repeat(filled) + '░'.repeat(5 - filled) + ' ' + val
   }
 
-  const tabStyle = id => ({
-    background: 'none', border: 'none',
-    borderBottom: `2px solid ${tab === id ? '#47FFE8' : 'transparent'}`,
-    padding: '10px 14px', fontSize: 11, fontWeight: 500, letterSpacing: '0.08em',
-    color: tab === id ? '#47FFE8' : '#555', cursor: 'pointer',
-    fontFamily: "'Inter',sans-serif",
-  })
 
   return (
-    <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
+    <div style={{ minHeight: '100vh', background: '#dadada', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0;}
+        .admin-tabs::-webkit-scrollbar { display: none; }
+      `}</style>
 
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '20px 24px', borderBottom: '1px solid #141414', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <div style={{ fontSize: 11, letterSpacing: '0.2em', fontWeight: 600 }}>ONE PERCENT</div>
-          <div style={{ fontSize: 9, color: '#47FFE8', letterSpacing: '0.15em', marginTop: 2 }}>ADMIN DASHBOARD</div>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+
+        {/* Row 1 — wordmark */}
+        <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
+            <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
+          </div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button onClick={refreshAll} disabled={refreshing} style={{ background: 'none', border: '1px solid #47FFE833', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 500 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #33333366', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 8 }}>
-          <button onClick={refreshAll} disabled={refreshing} style={{ background: 'none', border: '1px solid #47FFE822', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
-          <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #222', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+
+        {/* Row 2 — tab bar (dark pill, matches library) */}
+        <div style={{ padding: '0 24px 10px' }}>
+          <div className="admin-tabs" style={{
+            background: '#1e1e1e', borderRadius: 8, padding: '4px',
+            display: 'flex', alignItems: 'center', gap: 0,
+            overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch',
+          }}>
+            {[
+              ['feedback', 'POST-LESSON'],
+              ['weekly', 'WEEKLY'],
+              ['endbeta', 'END OF BETA'],
+              ['instant', 'INSTANT'],
+              ['bugs', 'BUGS'],
+              ['users', 'USERS'],
+              ['surveys', 'SURVEYS ↗'],
+            ].map(([id, label]) => {
+              const active = tab === id
+              return (
+                <button key={id} onClick={() => setTab(id)} style={{
+                  background: active ? 'rgba(255,255,255,0.07)' : 'transparent',
+                  border: 'none', borderRadius: 6,
+                  padding: '7px 12px', fontSize: 9,
+                  color: active ? '#fff' : '#bbb',
+                  cursor: 'pointer', letterSpacing: '0.08em',
+                  fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap',
+                  flexShrink: 0, fontWeight: active ? 500 : 400,
+                  transition: 'all 0.15s ease',
+                }}>{label}</button>
+              )
+            })}
+          </div>
         </div>
+
       </div>
 
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '16px 24px 0' }}>
 
         {/* Summary stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', gap: 8, padding: '24px 0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr', gap: 8, marginBottom: 24 }}>
           {[
             { label: 'USERS', value: users.length },
             { label: 'ENTRY FB', value: postEntryFb.length },
@@ -346,33 +381,18 @@ export default function AdminPage() {
           ].map(s => (
             <div key={s.label} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 4, padding: '14px 8px', textAlign: 'center' }}>
               <div style={{ fontSize: 20, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{s.value}</div>
-              <div style={{ fontSize: 8, color: '#444', letterSpacing: '0.1em' }}>{s.label}</div>
+              <div style={{ fontSize: 8, color: '#888', letterSpacing: '0.1em' }}>{s.label}</div>
             </div>
           ))}
-        </div>
-
-        {/* Tabs */}
-        <div style={{ display: 'flex', borderBottom: '1px solid #141414', gap: 4, marginBottom: 24, overflowX: 'auto' }}>
-          {[\
-            ['feedback', 'POST-LESSON'],\
-            ['weekly', 'WEEKLY'],\
-            ['endbeta', 'END OF BETA'],\
-            ['instant', 'INSTANT'],\
-            ['bugs', 'BUGS'],\
-            ['users', 'USERS'],\
-            ['surveys', 'SURVEYS ↗'],\
-          ].map(([id, label]) => (\
-            <button key={id} onClick={() => setTab(id)} style={tabStyle(id)}>{label}</button>\
-          ))}\
         </div>
 
         {/* Entry feedback tab */}
         {tab === 'feedback' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>
               POST-LESSON RATINGS — {postEntryFb.length} SUBMISSIONS ACROSS {entryNums.length} ENTRIES
             </div>
-            {postEntryFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No entry feedback yet.</div>}
+            {postEntryFb.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No entry feedback yet.</div>}
             {entryNums.map(num => {
               const rows = postEntryFb.filter(f => f.entry_number === num)
               const comments = rows.map(r => r.comment).filter(Boolean)
@@ -408,13 +428,13 @@ export default function AdminPage() {
         {/* Weekly tab */}
         {tab === 'weekly' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>WEEKLY CHECK-INS ({weeklyFb.length})</div>
-            {weeklyFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No weekly feedback yet.</div>}
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>WEEKLY CHECK-INS ({weeklyFb.length})</div>
+            {weeklyFb.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No weekly feedback yet.</div>}
             {weeklyFb.map(f => (
               <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
                   <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
-                  <span style={{ fontSize: 10, color: '#333' }}>{timeAgo(f.created_at)}</span>
+                  <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
                   {[['Clarity', f.clarity_rating], ['Relevance', f.topic_rating], ['Quiz', f.quiz_rating]].map(([l, r]) => (
@@ -435,13 +455,13 @@ export default function AdminPage() {
         {/* End of beta tab */}
         {tab === 'endbeta' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>END OF BETA SURVEYS ({endOfBetaFb.length})</div>
-            {endOfBetaFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No end-of-beta feedback yet.</div>}
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>END OF BETA SURVEYS ({endOfBetaFb.length})</div>
+            {endOfBetaFb.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No end-of-beta feedback yet.</div>}
             {endOfBetaFb.map(f => (
               <div key={f.id} style={{ background: '#111', border: '1px solid #FF477822', borderRadius: 6, padding: 20, marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
                   <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
-                  <span style={{ fontSize: 10, color: '#333' }}>{timeAgo(f.created_at)}</span>
+                  <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
                 </div>
                 {f.overall_rating && (
                   <div style={{ marginBottom: 12 }}>
@@ -469,8 +489,8 @@ export default function AdminPage() {
         {/* Instant/landing feedback tab */}
         {tab === 'instant' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>INSTANT FEEDBACK ({landingFb.length})</div>
-            {landingFb.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No instant feedback yet.</div>}
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>INSTANT FEEDBACK ({landingFb.length})</div>
+            {landingFb.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No instant feedback yet.</div>}
             {landingFb.map(f => (
               <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
                 <div style={{ flex: 1 }}>
@@ -480,7 +500,7 @@ export default function AdminPage() {
                   </div>
                   {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}
                 </div>
-                <span style={{ fontSize: 10, color: '#333', flexShrink: 0 }}>{timeAgo(f.created_at)}</span>
+                <span style={{ fontSize: 10, color: '#666', flexShrink: 0 }}>{timeAgo(f.created_at)}</span>
               </div>
             ))}
           </div>
@@ -489,8 +509,8 @@ export default function AdminPage() {
         {/* Bugs tab */}
         {tab === 'bugs' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>BUG REPORTS ({bugs.length})</div>
-            {bugs.length === 0 && <div style={{ fontSize: 13, color: '#333', padding: '24px 0' }}>No bugs reported. 🎉</div>}
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>BUG REPORTS ({bugs.length})</div>
+            {bugs.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No bugs reported. 🎉</div>}
             {bugs.map(b => (
               <div key={b.id} style={{ background: '#111', border: '1px solid #FF417822', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
@@ -498,7 +518,7 @@ export default function AdminPage() {
                     <span style={{ fontSize: 10, background: '#FF417822', color: '#FF4778', padding: '2px 7px', borderRadius: 3, letterSpacing: '0.08em' }}>{b.page}</span>
                     <span style={{ fontSize: 11, color: '#555' }}>{b.profiles?.email || 'Unknown'}</span>
                   </div>
-                  <span style={{ fontSize: 10, color: '#333' }}>{timeAgo(b.created_at)}</span>
+                  <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(b.created_at)}</span>
                 </div>
                 <div style={{ fontSize: 13, color: '#bbb', lineHeight: 1.6 }}>{b.description}</div>
               </div>
@@ -509,7 +529,7 @@ export default function AdminPage() {
         {/* Users tab */}
         {tab === 'users' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
 
             {users.map(u => (
               <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
@@ -531,7 +551,7 @@ export default function AdminPage() {
                       {u.phone && <span style={{ color: '#444' }}>{' · '}{u.phone}</span>}
                     </div>
                   </div>
-                  <div style={{ fontSize: 10, color: '#333', flexShrink: 0 }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
+                  <div style={{ fontSize: 10, color: '#666', flexShrink: 0 }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
                 </div>
 
                 {/* Reset controls */}
@@ -583,7 +603,7 @@ export default function AdminPage() {
         {/* Surveys tab — live testable forms */}
         {tab === 'surveys' && (
           <div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 4, fontWeight: 600 }}>SURVEY TEST LAB</div>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 4, fontWeight: 600 }}>SURVEY TEST LAB</div>
             <div style={{ fontSize: 12, color: '#555', marginBottom: 20, lineHeight: 1.6 }}>Fill and submit each form to verify it writes correctly to Supabase. Submissions appear in their respective tabs immediately after. Hit RESET to clear and test again.</div>
 
             {/* Sub-tabs */}
