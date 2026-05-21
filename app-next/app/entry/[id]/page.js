@@ -118,12 +118,16 @@ export default function EntryPage() {
   const [feedbackAccent, setFeedbackAccent] = useState('#47FFE8')
 
   useEffect(() => {
+    let cancelled = false
+
     async function init() {
       const { data: { session } } = await supabase.auth.getSession()
+      if (cancelled) return
       if (!session) { router.push('/login'); return }
       setUser(session.user)
 
       const { data: prof } = await supabase.from('profiles').select('*').eq('id', session.user.id).single()
+      if (cancelled) return
       if (!prof) { router.push('/'); return }
       setProfile(prof)
 
@@ -135,17 +139,20 @@ export default function EntryPage() {
       }
 
       // Check if weekly feedback is due (every 7 days from signup)
-      const signupDate = new Date(prof.signup_date)
-      const daysSinceSignup = Math.floor((Date.now() - signupDate) / 86400000)
-      if (daysSinceSignup > 0 && daysSinceSignup % 7 === 0) {
-        // Check if weekly feedback already submitted this week
-        const weekStart = new Date()
-        weekStart.setDate(weekStart.getDate() - 1)
-        const { data: recentWeekly } = await supabase.from('feedback')
-          .select('id').eq('user_id', session.user.id).eq('feedback_type', 'weekly')
-          .gte('created_at', weekStart.toISOString()).limit(1)
-        if (!recentWeekly || recentWeekly.length === 0) {
-          setShowWeeklyFeedback(true)
+      // Guard: if signup_date is missing, skip entirely
+      if (prof.signup_date) {
+        const signupDate = new Date(prof.signup_date)
+        const daysSinceSignup = Math.floor((Date.now() - signupDate) / 86400000)
+        // Fire on day 7, 14, 21... — must be past day 0 and on a 7-day boundary
+        if (daysSinceSignup > 0 && daysSinceSignup % 7 === 0) {
+          // Check if weekly feedback already submitted in the last 7 days
+          const sevenDaysAgo = new Date(Date.now() - 7 * 86400000)
+          const { data: recentWeekly } = await supabase.from('feedback')
+            .select('id').eq('user_id', session.user.id).eq('feedback_type', 'weekly')
+            .gte('created_at', sevenDaysAgo.toISOString()).limit(1)
+          if (!cancelled && (!recentWeekly || recentWeekly.length === 0)) {
+            setShowWeeklyFeedback(true)
+          }
         }
       }
 
@@ -153,19 +160,23 @@ export default function EntryPage() {
         const res = await fetch(`/entries/${entryId}.json`)
         if (!res.ok) throw new Error('Entry not found')
         const data = await res.json()
+        if (cancelled) return
         setEntry(data)
       } catch (e) {
+        if (cancelled) return
         setError('Entry not found')
         setLoading(false)
         return
       }
 
       const { data: comp } = await supabase.from('completions').select('*').eq('user_id', session.user.id).eq('entry_number', entryId).single()
+      if (cancelled) return
       const streak = prof.current_streak || 0
       setUserStats({ answers: comp?.answers || null, streak })
       setLoading(false)
     }
     init()
+    return () => { cancelled = true }
   }, [entryId, router])
 
   const handleComplete = async ({ score, timeToQuiz, answers }) => {

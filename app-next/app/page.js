@@ -403,6 +403,7 @@ export default function HomePage() {
   const [showWelcome, setShowWelcome] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [filter, setFilter] = useState('All')
+  const [signingOut, setSigningOut] = useState(false)
   const libraryRef = useRef(null)
 
   useEffect(() => {
@@ -452,6 +453,7 @@ export default function HomePage() {
   }, [router])
 
   const handleSignOut = async () => {
+    setSigningOut(true)
     await supabase.auth.signOut()
     window.location.href = '/login'
   }
@@ -544,7 +546,7 @@ export default function HomePage() {
               )}
             </div>
             {/* Sign out pushed to right */}
-            <button onClick={handleSignOut} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>SIGN OUT</button>
+            <button onClick={handleSignOut} disabled={signingOut} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: signingOut ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: signingOut ? 0.4 : 0.85, transition: 'opacity 0.15s ease' }}>{signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}</button>
           </div>
         </div>
 

@@ -4,13 +4,193 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
+// ── Weekly feedback survey (same modal users see) ──────────────────────────
+function WeeklySurveyTest({ userId, onDone }) {
+  const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
+  const [wouldRecommend, setWouldRecommend] = useState(null)
+  const [missing, setMissing] = useState('')
+  const [biggestWin, setBiggestWin] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [result, setResult] = useState(null) // 'ok' | 'error'
+
+  const allRated = ratings.clarity && ratings.relevance && ratings.quiz && wouldRecommend !== null
+
+  const submit = async () => {
+    if (!allRated) return
+    setSubmitting(true)
+    const { error } = await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'weekly',
+      clarity_rating: ratings.clarity,
+      topic_rating: ratings.relevance,
+      quiz_rating: ratings.quiz,
+      would_recommend: wouldRecommend,
+      missing_topics: missing.trim() || null,
+      biggest_win: biggestWin.trim() || null,
+    })
+    setSubmitting(false)
+    setResult(error ? 'error' : 'ok')
+    if (!error) setTimeout(onDone, 1500)
+  }
+
+  const RatingRow = ({ label, field }) => (
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${ratings[field] >= n ? '#47FFE8' : '#222'}`,
+            background: ratings[field] >= n ? '#47FFE822' : '#111', color: ratings[field] >= n ? '#47FFE8' : '#555',
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
+          }}>{n}</button>
+        ))}
+      </div>
+    </div>
+  )
+
+  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>✓ WRITTEN TO SUPABASE</div>
+  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778' }}>✗ INSERT FAILED — check console</div>
+
+  return (
+    <div>
+      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN — LIVE TEST</div>
+      <div style={{ fontSize: 16, color: '#fff', fontWeight: 600, marginBottom: 6 }}>One week in. Be honest.</div>
+      <div style={{ fontSize: 13, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
+      <RatingRow label="CLARITY — How clear is the content?" field="clarity" />
+      <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" />
+      <RatingRow label="QUIZ — Is it testing the right things?" field="quiz" />
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          {['Yes', 'Not yet', 'No'].map(v => (
+            <button key={v} onClick={() => setWouldRecommend(v)} style={{
+              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${wouldRecommend === v ? '#47FFE8' : '#222'}`,
+              background: wouldRecommend === v ? '#47FFE822' : '#111', color: wouldRecommend === v ? '#47FFE8' : '#555',
+              fontSize: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", fontWeight: 500
+            }}>{v}</button>
+          ))}
+        </div>
+      </div>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT'S MISSING OR SHOULD BE DIFFERENT?</div>
+        <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+      </div>
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN SO FAR — anything you actually used?</div>
+        <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+      </div>
+      <button onClick={submit} disabled={!allRated || submitting} style={{ width: '100%', padding: '14px 0', background: allRated ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+        {submitting ? 'WRITING TO SUPABASE...' : 'SUBMIT & VERIFY WRITE'}
+      </button>
+    </div>
+  )
+}
+
+// ── End of beta survey (not yet user-facing — test here) ───────────────────
+function EndOfBetaSurveyTest({ userId, onDone }) {
+  const [overall, setOverall] = useState(0)
+  const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
+  const [wouldRecommend, setWouldRecommend] = useState(null)
+  const [missing, setMissing] = useState('')
+  const [biggestWin, setBiggestWin] = useState('')
+  const [comment, setComment] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [result, setResult] = useState(null)
+
+  const allRated = overall && ratings.clarity && ratings.relevance && ratings.quiz && wouldRecommend !== null
+
+  const submit = async () => {
+    if (!allRated) return
+    setSubmitting(true)
+    const { error } = await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'end_of_beta',
+      overall_rating: overall,
+      clarity_rating: ratings.clarity,
+      topic_rating: ratings.relevance,
+      quiz_rating: ratings.quiz,
+      would_recommend: wouldRecommend,
+      missing_topics: missing.trim() || null,
+      biggest_win: biggestWin.trim() || null,
+      comment: comment.trim() || null,
+    })
+    setSubmitting(false)
+    setResult(error ? 'error' : 'ok')
+    if (!error) setTimeout(onDone, 1500)
+  }
+
+  const RatingRow = ({ label, field, accent }) => (
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => {
+          const val = field === 'overall' ? overall : ratings[field]
+          const active = val >= n
+          return (
+            <button key={n} onClick={() => field === 'overall' ? setOverall(n) : setRatings(r => ({ ...r, [field]: n }))} style={{
+              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${active ? accent : '#222'}`,
+              background: active ? `${accent}22` : '#111', color: active ? accent : '#555',
+              fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
+            }}>{n}</button>
+          )
+        })}
+      </div>
+    </div>
+  )
+
+  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em' }}>✓ WRITTEN TO SUPABASE</div>
+  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778' }}>✗ INSERT FAILED — check console</div>
+
+  return (
+    <div>
+      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>END OF BETA — LIVE TEST</div>
+      <div style={{ fontSize: 16, color: '#fff', fontWeight: 600, marginBottom: 6 }}>30 days in. Zoom out.</div>
+      <div style={{ fontSize: 13, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>Same questions as the weekly check-in, but across the full experience. Be specific — this one shapes v1.</div>
+      <RatingRow label="OVERALL — How would you rate One Percent?" field="overall" accent="#FF4778" />
+      <RatingRow label="CLARITY — How clear was the content overall?" field="clarity" accent="#FF4778" />
+      <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" accent="#FF4778" />
+      <RatingRow label="QUIZ — Was it testing the right things?" field="quiz" accent="#FF4778" />
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          {['Yes', 'Not yet', 'No'].map(v => (
+            <button key={v} onClick={() => setWouldRecommend(v)} style={{
+              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${wouldRecommend === v ? '#FF4778' : '#222'}`,
+              background: wouldRecommend === v ? '#FF477822' : '#111', color: wouldRecommend === v ? '#FF4778' : '#555',
+              fontSize: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", fontWeight: 500
+            }}>{v}</button>
+          ))}
+        </div>
+      </div>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT WAS MISSING OR SHOULD BE DIFFERENT?</div>
+        <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+      </div>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN — anything you actually used?</div>
+        <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+      </div>
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>ANYTHING ELSE?</div>
+        <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder="Open floor." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
+      </div>
+      <button onClick={submit} disabled={!allRated || submitting} style={{ width: '100%', padding: '14px 0', background: allRated ? '#FF4778' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: allRated ? '#fff' : '#333', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+        {submitting ? 'WRITING TO SUPABASE...' : 'SUBMIT & VERIFY WRITE'}
+      </button>
+    </div>
+  )
+}
+
 export default function AdminPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [feedback, setFeedback] = useState([])
   const [bugs, setBugs] = useState([])
   const [users, setUsers] = useState([])
+  const [userId, setUserId] = useState(null)
   const [tab, setTab] = useState('feedback')
+  const [surveyTab, setSurveyTab] = useState('weekly') // sub-tab inside surveys
+  const [surveyKey, setSurveyKey] = useState(0) // bump to reset survey form
   const [resetting, setResetting] = useState(null)
   const [resetConfirm, setResetConfirm] = useState(null) // 'data' | 'hard' per email key: `${email}-data` | `${email}-hard`
 
@@ -22,6 +202,8 @@ export default function AdminPage() {
       const { data: prof, error: profError } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).maybeSingle()
       console.log('[admin] profile fetch:', prof, profError)
       if (profError || !prof?.is_admin) { router.push('/'); return }
+
+      setUserId(session.user.id)
 
       const [{ data: fb }, { data: br }, { data: us, error: usError }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
@@ -171,16 +353,17 @@ export default function AdminPage() {
 
         {/* Tabs */}
         <div style={{ display: 'flex', borderBottom: '1px solid #141414', gap: 4, marginBottom: 24, overflowX: 'auto' }}>
-          {[
-            ['feedback', 'POST-LESSON'],
-            ['weekly', 'WEEKLY'],
-            ['endbeta', 'END OF BETA'],
-            ['instant', 'INSTANT'],
-            ['bugs', 'BUGS'],
-            ['users', 'USERS'],
-          ].map(([id, label]) => (
-            <button key={id} onClick={() => setTab(id)} style={tabStyle(id)}>{label}</button>
-          ))}
+          {[\
+            ['feedback', 'POST-LESSON'],\
+            ['weekly', 'WEEKLY'],\
+            ['endbeta', 'END OF BETA'],\
+            ['instant', 'INSTANT'],\
+            ['bugs', 'BUGS'],\
+            ['users', 'USERS'],\
+            ['surveys', 'SURVEYS ↗'],\
+          ].map(([id, label]) => (\
+            <button key={id} onClick={() => setTab(id)} style={tabStyle(id)}>{label}</button>\
+          ))}\
         </div>
 
         {/* Entry feedback tab */}
@@ -394,6 +577,46 @@ export default function AdminPage() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Surveys tab — live testable forms */}
+        {tab === 'surveys' && (
+          <div>
+            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.15em', marginBottom: 4, fontWeight: 600 }}>SURVEY TEST LAB</div>
+            <div style={{ fontSize: 12, color: '#555', marginBottom: 20, lineHeight: 1.6 }}>Fill and submit each form to verify it writes correctly to Supabase. Submissions appear in their respective tabs immediately after. Hit RESET to clear and test again.</div>
+
+            {/* Sub-tabs */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
+              {[['weekly', 'WEEKLY CHECK-IN', '#47FFE8'], ['endbeta', 'END OF BETA', '#FF4778']].map(([id, label, color]) => (
+                <button key={id} onClick={() => { setSurveyTab(id); setSurveyKey(k => k + 1) }} style={{
+                  padding: '8px 16px', borderRadius: 4, border: `1px solid ${surveyTab === id ? color : '#222'}`,
+                  background: surveyTab === id ? `${color}11` : 'none', color: surveyTab === id ? color : '#555',
+                  fontSize: 11, cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 500,
+                }}>{label}</button>
+              ))}
+            </div>
+
+            <div style={{ background: '#111', border: `1px solid ${surveyTab === 'weekly' ? '#47FFE822' : '#FF477822'}`, borderRadius: 8, padding: 28 }}>
+              {surveyTab === 'weekly' && (
+                <WeeklySurveyTest
+                  key={surveyKey}
+                  userId={userId}
+                  onDone={() => setSurveyKey(k => k + 1)}
+                />
+              )}
+              {surveyTab === 'endbeta' && (
+                <EndOfBetaSurveyTest
+                  key={surveyKey}
+                  userId={userId}
+                  onDone={() => setSurveyKey(k => k + 1)}
+                />
+              )}
+            </div>
+
+            <button onClick={() => setSurveyKey(k => k + 1)} style={{ marginTop: 16, background: 'none', border: '1px solid #222', borderRadius: 4, padding: '8px 16px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+              ↺ RESET FORM
+            </button>
           </div>
         )}
 

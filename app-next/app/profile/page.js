@@ -9,6 +9,7 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [signingOut, setSigningOut] = useState(false)
   const [message, setMessage] = useState(null)
 
   const [firstName, setFirstName] = useState('')
@@ -80,6 +81,7 @@ export default function ProfilePage() {
   }
 
   const handleSignOut = async () => {
+    setSigningOut(true)
     await supabase.auth.signOut()
     window.location.href = '/login'
   }
@@ -236,6 +238,7 @@ export default function ProfilePage() {
           {/* Sign out button */}
           <button
             onClick={handleSignOut}
+            disabled={signingOut}
             style={{
               width: '100%',
               background: 'none',
@@ -246,11 +249,12 @@ export default function ProfilePage() {
               fontSize: 11,
               fontWeight: 500,
               letterSpacing: '0.08em',
-              cursor: 'pointer',
+              cursor: signingOut ? 'default' : 'pointer',
               fontFamily: "'Inter',sans-serif",
+              opacity: signingOut ? 0.5 : 1,
             }}
           >
-            SIGN OUT
+            {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
           </button>
 
         </div>
