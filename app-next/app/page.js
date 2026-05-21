@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 
 const GREETINGS = [
@@ -97,7 +98,7 @@ function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
   )
 }
 
-const TOTAL_ENTRIES = 19
+// TOTAL_ENTRIES imported from @/lib/config
 
 const CATEGORY_COLORS = {
   'AI': '#47FFE8',

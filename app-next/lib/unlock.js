@@ -1,7 +1,7 @@
 // Returns how many entries are unlocked for a user
 // Admins (is_admin = true) get all entries unlocked regardless of signup date
 
-export function getUnlockedCount(signupDate, isAdmin = false, totalEntries = 16) {
+export function getUnlockedCount(signupDate, isAdmin = false, totalEntries = 19) {
   if (isAdmin) return totalEntries
   const now = new Date()
   const signup = new Date(signupDate)
@@ -12,7 +12,7 @@ export function getUnlockedCount(signupDate, isAdmin = false, totalEntries = 16)
   return Math.min(diffDays + 1, totalEntries)
 }
 
-export function isUnlocked(entryNumber, signupDate, isAdmin = false, totalEntries = 16) {
+export function isUnlocked(entryNumber, signupDate, isAdmin = false, totalEntries = 19) {
   return entryNumber <= getUnlockedCount(signupDate, isAdmin, totalEntries)
 }
 

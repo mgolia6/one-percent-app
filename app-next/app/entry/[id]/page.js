@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { TOTAL_ENTRIES } from '@/lib/config'
 import { isUnlocked } from '@/lib/unlock'
 import EntryViewer from '@/components/EntryViewer'
 
@@ -130,7 +131,7 @@ export default function EntryPage() {
 
       const entryNum = parseInt(entryId)
       const isAdmin = prof.is_admin || false
-      if (!isUnlocked(entryNum, prof.signup_date, isAdmin, 19)) {
+      if (!isUnlocked(entryNum, prof.signup_date, isAdmin, TOTAL_ENTRIES)) {
         router.push('/')
         return
       }
