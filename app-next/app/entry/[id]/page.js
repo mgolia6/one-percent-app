@@ -89,12 +89,9 @@ function WeeklyFeedbackModal({ userId, onClose }) {
               <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
             </div>
 
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SKIP FOR NOW</button>
-              <button onClick={submit} disabled={!allRated || submitting} style={{ flex: 2, padding: '12px 0', background: allRated ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
-                {submitting ? 'SENDING...' : 'SUBMIT FEEDBACK'}
-              </button>
-            </div>
+            <button onClick={submit} disabled={!allRated || submitting} style={{ width: '100%', padding: '12px 0', background: allRated ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+              {submitting ? 'SENDING...' : 'SUBMIT FEEDBACK'}
+            </button>
           </>
         )}
       </div>
