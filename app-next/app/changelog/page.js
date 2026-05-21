@@ -86,8 +86,10 @@ export default function ChangelogPage() {
                 <div style={{ fontSize: 13, color: '#fff', fontWeight: 600, letterSpacing: '-0.01em', marginBottom: 8 }}>
                   {entry.title}
                 </div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}>
-                  {entry.description}
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
+                  {entry.description.split('\n').filter(l => l.trim()).map((line, j) => (
+                    <div key={j} style={{ marginBottom: 4 }}>{line}</div>
+                  ))}
                 </div>
               </div>
             ))}
