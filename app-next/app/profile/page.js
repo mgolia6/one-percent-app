@@ -119,6 +119,8 @@ export default function ProfilePage() {
     setMessage({ type: 'success', text: 'Photo updated' })
     setUploadingAvatar(false)
   }
+
+  const handleSignOut = async () => {
     setSigningOut(true)
     await supabase.auth.signOut()
     window.location.href = '/login'
