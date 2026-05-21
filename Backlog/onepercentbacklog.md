@@ -1,6 +1,6 @@
 # One Percent — Concept Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: May 20, 2026 — Entry 018 generated (AI.3.1 RAG). Next: VL (Vocab & Language, slot 3)
+Last updated: May 21, 2026 — Entry 019 generated (VL.3 Nominalization). Next: SC (Sales Craft, slot 4)
 
 This is the standing candidate list. Claude reads this before every generation, cross-references against the search signal, marks used concepts, and adds new candidates as they surface.
 
@@ -120,7 +120,7 @@ Target library: 365 entries (~40 full cycles)
 | Jargon as power | How technical language creates in-group/out-group dynamics. Who benefits from impenetrable jargon — and who gets excluded. | candidate |
 | The Overton Window | The range of ideas politically or socially acceptable at any given time. How it shifts — and who moves it. Active in 2026 discourse. | candidate |
 | Code-switching | Adapting language, tone, and register across social contexts. Professional and cultural dimensions. | candidate |
-| Nominalization | Turning verbs into nouns to obscure agency. "A decision was made" vs. "I decided." Common in corporate and political language. | candidate |
+| Nominalization | Turning verbs into nouns to obscure agency. "A decision was made" vs. "I decided." Common in corporate and political language. | **used — VL.3** |
 | Metalanguage | Language used to talk about language. How framing the conversation shapes the conversation itself. | candidate |
 
 ---
@@ -240,7 +240,7 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 ---
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
-*Next generation: VL — Vocab & Language. Rotation slot 3. Candidates: Loaded Language, Semantic Satiation, Overton Window, Code-Switching.*
+*Next generation: SC — Sales Craft. Rotation slot 4. Candidates: Mirroring, Labeling, Calibrated Questions (Black Swan/Voss series).*
 
 ---
 
