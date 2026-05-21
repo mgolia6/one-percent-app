@@ -527,7 +527,7 @@ export default function HomePage() {
 
         {/* Row 2 — action bar, scrollable */}
         <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
-        <div style={{ padding: '0 24px 20px' }}>
+        <div style={{ padding: '0 24px 10px' }}>
           <div className="action-bar" style={{
             background: '#1e1e1e', borderRadius: 8, padding: '4px',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 0,
@@ -549,7 +549,7 @@ export default function HomePage() {
 
       </div>
 
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '24px 24px 80px' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px 80px' }}>
 
         {/* Analytics label */}
         <div style={{ marginBottom: 16 }}>
