@@ -556,7 +556,7 @@ export default function HomePage() {
 
         {/* Analytics label */}
         <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', marginBottom: 3 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 3 }}>
             {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
           </div>
           <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.1em' }}>

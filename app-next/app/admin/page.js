@@ -395,15 +395,15 @@ export default function AdminPage() {
             {postEntryFb.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No entry feedback yet.</div>}
             {entryNums.map(num => {
               const rows = postEntryFb.filter(f => f.entry_number === num)
-              const comments = rows.map(r => r.comment).filter(Boolean)
               return (
                 <div key={num} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginBottom: 12 }}>
                   <div style={{ fontSize: 10, color: '#47FFE8', letterSpacing: '0.15em', marginBottom: 14, fontWeight: 600 }}>ENTRY {num} — {rows.length} RATING{rows.length !== 1 ? 'S' : ''}</div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: comments.length ? 16 : 0 }}>
+                  {/* Aggregate */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
                     {[
-                      ['TOPIC', avg(rows.map(r => r.topic_rating).filter(Boolean))],
-                      ['CONTENT', avg(rows.map(r => r.clarity_rating).filter(Boolean))],
-                      ['QUIZ', avg(rows.map(r => r.quiz_rating).filter(Boolean))],
+                      ['TOPIC AVG', avg(rows.map(r => r.topic_rating).filter(Boolean))],
+                      ['CONTENT AVG', avg(rows.map(r => r.clarity_rating).filter(Boolean))],
+                      ['QUIZ AVG', avg(rows.map(r => r.quiz_rating).filter(Boolean))],
                     ].map(([l, v]) => (
                       <div key={l}>
                         <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 4 }}>{l}</div>
@@ -411,14 +411,18 @@ export default function AdminPage() {
                       </div>
                     ))}
                   </div>
-                  {comments.length > 0 && (
-                    <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 12 }}>
-                      <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 8 }}>COMMENTS</div>
-                      {comments.map((c, i) => (
-                        <div key={i} style={{ fontSize: 12, color: '#888', lineHeight: 1.7, marginBottom: i < comments.length - 1 ? 6 : 0, paddingLeft: 8, borderLeft: '2px solid #222' }}>{c}</div>
-                      ))}
-                    </div>
-                  )}
+                  {/* Individual submissions */}
+                  <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {rows.map((f, i) => (
+                      <div key={f.id || i} style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: f.comment ? 8 : 0 }}>
+                          <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{f.profiles?.email || 'Unknown'}</span>
+                          <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
+                        </div>
+                        {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6, paddingLeft: 8, borderLeft: '2px solid #222' }}>{f.comment}</div>}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )
             })}
@@ -433,7 +437,7 @@ export default function AdminPage() {
             {weeklyFb.map(f => (
               <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: 20, marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                  <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
+                  <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{f.profiles?.email || 'Unknown'}</span>
                   <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 16 }}>
@@ -460,7 +464,7 @@ export default function AdminPage() {
             {endOfBetaFb.map(f => (
               <div key={f.id} style={{ background: '#111', border: '1px solid #FF477822', borderRadius: 6, padding: 20, marginBottom: 12 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-                  <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
+                  <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{f.profiles?.email || 'Unknown'}</span>
                   <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
                 </div>
                 {f.overall_rating && (
@@ -495,7 +499,7 @@ export default function AdminPage() {
               <div key={f.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: f.comment ? 8 : 0 }}>
-                    <span style={{ fontSize: 11, color: '#555' }}>{f.profiles?.email || 'Unknown'}</span>
+                    <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{f.profiles?.email || 'Unknown'}</span>
                     {f.overall_rating && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.overall_rating}/5</span>}
                   </div>
                   {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}
@@ -516,7 +520,7 @@ export default function AdminPage() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                   <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                     <span style={{ fontSize: 10, background: '#FF417822', color: '#FF4778', padding: '2px 7px', borderRadius: 3, letterSpacing: '0.08em' }}>{b.page}</span>
-                    <span style={{ fontSize: 11, color: '#555' }}>{b.profiles?.email || 'Unknown'}</span>
+                    <span style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{b.profiles?.email || 'Unknown'}</span>
                   </div>
                   <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(b.created_at)}</span>
                 </div>
