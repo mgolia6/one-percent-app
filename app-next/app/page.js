@@ -526,27 +526,25 @@ export default function HomePage() {
         </div>
 
         {/* Row 2 — action bar, scrollable */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6,
-          padding: '10px 24px 20px',
-          overflowX: 'auto', scrollbarWidth: 'none',
-        }}>
-          <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
-
-          <div style={{ display: 'flex', gap: 6 }}>
-            {/* Feedback group */}
-            <button onClick={() => setShowBug(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>BUG</button>
-            <button onClick={() => setShowFeedback(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>FEEDBACK</button>
-            <button onClick={() => setShowHowItWorks(true)} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>INFO</button>
-
-            {/* Account group */}
-            {isAdmin && (
-              <button onClick={() => router.push('/admin')} style={{ background: '#1a1a1a', border: '1px solid #47FFE844', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>ADMIN →</button>
-            )}
+        <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
+        <div style={{ padding: '0 24px 20px' }}>
+          <div className="action-bar" style={{
+            background: '#1e1e1e', borderRadius: 8, padding: '4px',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 0,
+            overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch',
+          }}>
+            <div style={{ display: 'flex', gap: 0 }}>
+              {/* Feedback group */}
+              <button onClick={() => setShowBug(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>BUG</button>
+              <button onClick={() => setShowFeedback(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>FEEDBACK</button>
+              <button onClick={() => setShowHowItWorks(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>INFO</button>
+              {isAdmin && (
+                <button onClick={() => router.push('/admin')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>ADMIN →</button>
+              )}
+            </div>
+            {/* Sign out pushed to right */}
+            <button onClick={handleSignOut} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>SIGN OUT</button>
           </div>
-
-          {/* Sign out pushed to right */}
-          <button onClick={handleSignOut} style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 3, padding: '5px 11px', fontSize: 10, color: '#fff', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0 }}>SIGN OUT</button>
         </div>
 
       </div>
