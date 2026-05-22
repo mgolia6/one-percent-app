@@ -602,6 +602,7 @@ export default function AdminPage() {
                           <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(f.created_at)}</span>
                         </div>
                         {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6, paddingLeft: 8, borderLeft: '2px solid #222' }}>{f.comment}</div>}
+                        {f.image_url && <a href={f.image_url} target="_blank" rel="noopener noreferrer"><img src={f.image_url} alt="screenshot" style={{ marginTop: 8, maxWidth: '100%', maxHeight: 160, borderRadius: 4, border: '1px solid #333', objectFit: 'cover', display: 'block' }} /></a>}
                       </div>
                     ))}
                   </div>
@@ -667,6 +668,7 @@ export default function AdminPage() {
                 {f.biggest_win && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', marginBottom: 8, fontSize: 12, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>BIGGEST WIN</span>{f.biggest_win}</div>}
                 {f.missing_topics && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', marginBottom: 8, fontSize: 12, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>MISSING / CHANGE</span>{f.missing_topics}</div>}
                 {f.comment && <div style={{ background: '#0a0a0a', borderRadius: 4, padding: '10px 12px', fontSize: 12, color: '#bbb', lineHeight: 1.6 }}><span style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', display: 'block', marginBottom: 4 }}>COMMENT</span>{f.comment}</div>}
+                {f.image_url && <a href={f.image_url} target="_blank" rel="noopener noreferrer"><img src={f.image_url} alt="screenshot" style={{ marginTop: 8, maxWidth: '100%', maxHeight: 160, borderRadius: 4, border: '1px solid #333', objectFit: 'cover', display: 'block' }} /></a>}
               </div>
             ))}
           </div>
@@ -685,6 +687,7 @@ export default function AdminPage() {
                     {f.overall_rating && <span style={{ fontSize: 12, color: '#47FFE8' }}>{f.overall_rating}/5</span>}
                   </div>
                   {f.comment && <div style={{ fontSize: 12, color: '#888', lineHeight: 1.6 }}>{f.comment}</div>}
+                  {f.image_url && <a href={f.image_url} target="_blank" rel="noopener noreferrer"><img src={f.image_url} alt="screenshot" style={{ marginTop: 8, maxWidth: '100%', maxHeight: 160, borderRadius: 4, border: '1px solid #333', objectFit: 'cover', display: 'block' }} /></a>}
                 </div>
                 <span style={{ fontSize: 10, color: '#666', flexShrink: 0 }}>{timeAgo(f.created_at)}</span>
               </div>
@@ -707,6 +710,7 @@ export default function AdminPage() {
                   <span style={{ fontSize: 10, color: '#666' }}>{timeAgo(b.created_at)}</span>
                 </div>
                 <div style={{ fontSize: 13, color: '#bbb', lineHeight: 1.6 }}>{b.description}</div>
+                {b.image_url && <a href={b.image_url} target="_blank" rel="noopener noreferrer"><img src={b.image_url} alt="screenshot" style={{ marginTop: 10, maxWidth: '100%', maxHeight: 200, borderRadius: 4, border: '1px solid #333', objectFit: 'cover', display: 'block' }} /></a>}
               </div>
             ))}
           </div>

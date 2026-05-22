@@ -136,17 +136,37 @@ const ENTRIES = [
 function FeedbackModal({ userId, onClose }) {
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+  const [imageFile, setImageFile] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    setImageFile(file)
+    setImagePreview(URL.createObjectURL(file))
+  }
 
   const submit = async () => {
     if (!rating) return
     setSubmitting(true)
+    let image_url = null
+    if (imageFile) {
+      const ext = imageFile.name.split('.').pop()
+      const path = `feedback/${userId}-${Date.now()}.${ext}`
+      const { error: uploadError } = await supabase.storage.from('screenshots').upload(path, imageFile)
+      if (!uploadError) {
+        const { data } = supabase.storage.from('screenshots').getPublicUrl(path)
+        image_url = data.publicUrl
+      }
+    }
     await supabase.from('feedback').insert({
       user_id: userId,
       feedback_type: 'landing',
       overall_rating: rating,
       comment: comment.trim() || null,
+      image_url,
     })
     setDone(true)
     setTimeout(onClose, 1500)
@@ -181,6 +201,12 @@ function FeedbackModal({ userId, onClose }) {
               placeholder="Anything specific? (optional)"
               style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 80, outline: 'none' }}
             />
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
+              <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
+              <span style={{ fontSize: 11, color: '#555', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>📎 ATTACH SCREENSHOT</span>
+              {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
+            </label>
 
             <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
               <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
@@ -232,17 +258,37 @@ function WhatsNewModal({ entry, onDismiss }) {
 function BugModal({ userId, onClose }) {
   const [description, setDescription] = useState('')
   const [page, setPage] = useState('Library')
+  const [imageFile, setImageFile] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
+
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    setImageFile(file)
+    setImagePreview(URL.createObjectURL(file))
+  }
 
   const submit = async () => {
     if (!description.trim()) return
     setSubmitting(true)
+    let image_url = null
+    if (imageFile) {
+      const ext = imageFile.name.split('.').pop()
+      const path = `bugs/${userId}-${Date.now()}.${ext}`
+      const { error: uploadError } = await supabase.storage.from('screenshots').upload(path, imageFile)
+      if (!uploadError) {
+        const { data } = supabase.storage.from('screenshots').getPublicUrl(path)
+        image_url = data.publicUrl
+      }
+    }
     await supabase.from('bug_reports').insert({
       user_id: userId,
       page,
       description: description.trim(),
       browser_info: navigator.userAgent,
+      image_url,
     })
     setDone(true)
     setTimeout(onClose, 1500)
@@ -275,6 +321,12 @@ function BugModal({ userId, onClose }) {
               placeholder="Describe what happened..."
               style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 100, outline: 'none' }}
             />
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
+              <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
+              <span style={{ fontSize: 11, color: '#555', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>📎 ATTACH SCREENSHOT</span>
+              {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
+            </label>
 
             <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
               <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
