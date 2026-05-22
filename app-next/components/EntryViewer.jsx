@@ -396,7 +396,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         .op-tab-btn.active{color:${ACCENT};border-bottom-color:${ACCENT}}
         .op-next-btn{display:block;width:100%;margin-top:32px;padding:14px 20px;background:${ACCENT};color:#0A0A0A;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;cursor:pointer;text-align:center;transition:opacity 0.2s}
         .op-next-btn:hover{opacity:0.85}
-        .op-quiz-opt{background:${T.quizOpt};border:1px solid ${T.borderMid};border-radius:4px;padding:14px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:${T.textMid};margin-bottom:8px;transition:all 0.18s;text-align:left;width:100%;line-height:1.6}
+        .op-quiz-opt{background:${T.quizOpt};border:1px solid ${T.borderMid};border-radius:4px;padding:14px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:${T.textMid};margin-bottom:8px;transition:all 0.18s;text-align:left;width:100%;line-height:1.6;-webkit-tap-highlight-color:transparent}
         .op-quiz-opt:hover:not(:disabled){border-color:${ACCENT}44;color:${T.text};background:${T.quizOptHover}}
         .op-quiz-opt.selected{border-color:${ACCENT};background:${ACCENT}22;color:#eee}
         .op-quiz-opt.correct{border-color:#4ade80;color:#4ade80;background:#4ade8011}
