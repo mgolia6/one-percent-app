@@ -250,7 +250,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Card */}
-      <div className={`ob-card${animate ? ' visible' : ''}`} style={{ width: '100%', maxWidth: 420 }}>
+      <div className={`ob-card${animate ? ' visible' : ''}`} style={{ width: '100%', maxWidth: 420, paddingBottom: committed.length > 0 ? committed.length * 36 + 16 : 0 }}>
 
         <div style={{ fontSize: 9, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.4)', fontWeight: 500, marginBottom: 14 }}>
           {current.eyebrow}

@@ -458,6 +458,24 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                   <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{score}/3</div>
                   <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? T.text : T.textDim, marginTop: 6 }}>{scoreLabel}</div>
                   <div style={{ fontSize: 12, color: T.textDim, marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
+                  {score < 3 && (
+                    <div style={{ marginTop: 18 }}>
+                      <button
+                        onClick={() => { setAnswers({}); setSubmitted(false); setShowCelebration(false); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50) }}
+                        style={{
+                          background: 'none', border: `1px solid ${ACCENT}44`, borderRadius: 4,
+                          padding: '9px 20px', fontSize: 11, color: ACCENT, cursor: 'pointer',
+                          letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", fontWeight: 600,
+                          transition: 'border-color 0.15s',
+                        }}
+                      >
+                        RETRY QUIZ
+                      </button>
+                      <div style={{ fontSize: 11, color: T.textFaint, marginTop: 10, lineHeight: 1.6 }}>
+                        Your first attempt score is saved to the leaderboard.
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Post-entry feedback */}
@@ -485,11 +503,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                   <button className="op-action-secondary" onClick={() => { setSrcOpen(true); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }) }}>
                     VIEW SOURCES
                   </button>
-                  {score < 3 && (
-                    <div style={{ fontSize: 12, color: T.textDim, textAlign: 'center', marginTop: 14, lineHeight: 1.6 }}>
-                      Retake the quiz anytime — it stays live in your library.
-                    </div>
-                  )}
+
                 </div>
               </>
             )}

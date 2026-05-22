@@ -73,6 +73,7 @@ function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
       position: 'fixed', inset: 0, zIndex: 999,
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       padding: 32, cursor: 'pointer',
+      background: '#0a0a0a',
       opacity: fading ? 0 : 1,
       transition: 'opacity 0.6s ease',
     }}>
