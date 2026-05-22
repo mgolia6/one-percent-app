@@ -783,10 +783,9 @@ export default function AdminPage() {
                           const btn = document.getElementById(`welcome-${u.id}`)
                           if (btn) { btn.textContent = 'SENDING...'; btn.disabled = true }
                           try {
-                            const { data: { session } } = await supabase.auth.getSession()
                             const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
                               method: 'POST',
-                              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session?.access_token}` },
+                              headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }),
                             })
                             if (btn) { btn.textContent = res.ok ? '✓ SENT' : '✗ FAILED'; btn.style.color = res.ok ? '#4ade80' : '#f87171' }
