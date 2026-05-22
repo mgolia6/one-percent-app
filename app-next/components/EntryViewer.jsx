@@ -265,6 +265,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const scoreRef = useRef(null)
   const completionRef = useRef(null)
   const isFirst = useRef(true)
+  const feedbackShown = useRef(false)
 
   const ACCENT = entry.accent
   const ACCENT_DIM = entry.accentDim
@@ -289,7 +290,10 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
     setSubmitted(true)
     if (score >= 2) setShowCelebration(true)
-    setShowEntryFeedback(true)
+    if (!feedbackShown.current) {
+      feedbackShown.current = true
+      setShowEntryFeedback(true)
+    }
     setTimeout(() => scoreRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
     setTimeout(() => completionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 800)
     if (onComplete) onComplete({ score, timeToQuiz, answers })
