@@ -190,6 +190,8 @@ export default function AdminPage() {
   const [userId, setUserId] = useState(null)
   const [tab, setTab] = useState('feedback')
   const [surveyTab, setSurveyTab] = useState('weekly') // sub-tab inside surveys
+  const [emailSending, setEmailSending] = useState(false)
+  const [emailResult, setEmailResult] = useState(null)
   const [surveyKey, setSurveyKey] = useState(0) // bump to reset survey form
   const [resetting, setResetting] = useState(null)
   const [resetConfirm, setResetConfirm] = useState(null) // 'data' | 'hard' per email key: `${email}-data` | `${email}-hard`
@@ -348,6 +350,7 @@ export default function AdminPage() {
               ['users', 'USERS'],
               ['leaderboard', 'LEADERBOARD'],
               ['surveys', 'SURVEYS ↗'],
+              ['email', 'EMAIL'],
             ].map(([id, label]) => {
               const active = tab === id
               return (
@@ -714,6 +717,73 @@ export default function AdminPage() {
             <button onClick={() => setSurveyKey(k => k + 1)} style={{ marginTop: 16, background: 'none', border: '1px solid #222', borderRadius: 4, padding: '8px 16px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
               ↺ RESET FORM
             </button>
+          </div>
+        )}
+
+        {/* Email tab */}
+        {tab === 'email' && (
+          <div>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 4, fontWeight: 600 }}>EMAIL REMINDERS</div>
+            <div style={{ fontSize: 12, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>
+              Manually trigger the daily reminder email. Sends to all users with onboarding complete who haven't completed an entry today. Smart-send logic applies — no duplicates.
+            </div>
+
+            {/* Recipient preview */}
+            <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: '20px 24px', marginBottom: 24 }}>
+              <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 600 }}>CURRENT RECIPIENTS</div>
+              {users.filter(u => u.onboarding_complete).map(u => (
+                <div key={u.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid #1a1a1a' }}>
+                  <div style={{ fontSize: 12, color: '#ccc' }}>{u.first_name || u.name || 'Unknown'}</div>
+                  <div style={{ fontSize: 11, color: '#555' }}>{u.email}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Send button */}
+            <button
+              onClick={async () => {
+                setEmailSending(true)
+                setEmailResult(null)
+                try {
+                  const res = await fetch('https://uuzdlubbynavybttlmeh.supabase.co/functions/v1/send-daily-reminder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({}),
+                  })
+                  const data = await res.json()
+                  setEmailResult(data)
+                } catch (e) {
+                  setEmailResult({ error: e.message })
+                } finally {
+                  setEmailSending(false)
+                }
+              }}
+              disabled={emailSending}
+              style={{
+                background: emailSending ? '#1a1a1a' : '#f0f0f0',
+                border: 'none', borderRadius: 4,
+                padding: '13px 28px', fontSize: 11, fontWeight: 700,
+                color: emailSending ? '#333' : '#0a0a0a',
+                cursor: emailSending ? 'not-allowed' : 'pointer',
+                letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif",
+                transition: 'all 0.15s',
+              }}
+            >
+              {emailSending ? 'SENDING...' : '✉ SEND DAILY REMINDER'}
+            </button>
+
+            {/* Result */}
+            {emailResult && (
+              <div style={{ marginTop: 20, background: '#111', border: `1px solid ${emailResult.error ? '#f8717133' : '#4ade8033'}`, borderRadius: 6, padding: '16px 20px' }}>
+                {emailResult.error ? (
+                  <div style={{ fontSize: 12, color: '#f87171' }}>Error: {emailResult.error}</div>
+                ) : (
+                  <div style={{ fontSize: 12, color: '#4ade80', lineHeight: 1.8 }}>
+                    ✓ Sent: {emailResult.sent} &nbsp;·&nbsp; Skipped (already done today): {emailResult.skipped} &nbsp;·&nbsp; Total eligible: {emailResult.total}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
