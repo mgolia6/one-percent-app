@@ -267,3 +267,15 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 - [ ] ISSUE-002 — Weekly feedback trigger broken for backdated/admin signups
 - [ ] ISSUE-003 — Multi-threading bug (parallel entry loading) — not yet investigated
 - [ ] ISSUE-004 — Sign out button has no visual feedback
+
+---
+
+## Notification System
+
+### Email reminders — Resend + Supabase Edge Function
+- 7-day copy rotation drafted (see `Directions/one-percent-email-rotation.md` or outputs)
+- Send from `matthew@mpgink.com` for beta
+- Requires SPF/DKIM DNS setup on mpgink.com via Resend
+- Smart send: skip if user already completed today's entry
+- **Near end of beta: add `email_reminders boolean default true` to `profiles` table + unsubscribe link in footer** — CAN-SPAM requirement before any public launch
+- Future: `phone` column on `profiles` for SMS via Twilio
