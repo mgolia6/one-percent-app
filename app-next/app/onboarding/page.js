@@ -107,6 +107,21 @@ export default function OnboardingPage() {
         name: `${firstName.trim()} ${lastName.trim()}`,
         onboarding_complete: true,
       }).eq('id', user.id)
+
+      // Fire welcome email — non-blocking, don't await
+      const { data: { session } } = await supabase.auth.getSession()
+      fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session?.access_token}`,
+        },
+        body: JSON.stringify({
+          first_name: firstName.trim(),
+          email: user.email,
+        }),
+      }).catch(() => {}) // silent fail — don't block onboarding
+
       sessionStorage.removeItem('welcomed')
       router.push('/')
       return
