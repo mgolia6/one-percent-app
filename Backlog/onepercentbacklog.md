@@ -265,6 +265,7 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 
 ### Known Issues (app)
 - [ ] ISSUE-002 — Weekly feedback trigger broken for backdated/admin signups
+- [ ] **PRE-7-DAY:** Revise weekly check-in and end-of-beta survey questions — current questions not capturing what we need to know from testers
 - [ ] ISSUE-003 — Multi-threading bug (parallel entry loading) — not yet investigated
 - [ ] ISSUE-004 — Sign out button has no visual feedback
 
