@@ -56,3 +56,23 @@
 
 - `7227293` — Add welcome email edge function + trigger on onboarding complete
 - `f32c89e` — Profile: add stats grid, category breakdown, badges tab with progress
+
+---
+
+## Addendum — Post-Wrap Issues Found
+
+### Welcome Email Button in Admin — BROKEN
+- Admin users tab has WELCOME EMAIL button per user
+- Button fires but Edge Function returns 500
+- Root cause: Resend domain verification for mpgink.com is FAILED in Resend dashboard
+- Resend requires its own DNS records in GoDaddy (separate from Zoho MX records) — never added
+- Fix first thing next session: go to resend.com/domains → mpgink.com → copy required DNS records → add to GoDaddy → hit Restart verification
+
+### Next Session Priorities (in order)
+1. Fix Resend DNS in GoDaddy — get mpgink.com verified in Resend
+2. Test welcome email button in admin — confirm sends
+3. Send retroactive welcome emails to existing testers (Erin, Robbo, Brian)
+4. Admin button states audit — all buttons need proper loading/disabled/feedback states
+5. Profile page layout revisit
+6. ISSUE-002 — Weekly trigger broken for backdated signups
+7. ISSUE-003 — Multi-threading bug
