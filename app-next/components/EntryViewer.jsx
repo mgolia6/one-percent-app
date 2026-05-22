@@ -82,21 +82,60 @@ import { supabase as _supabase } from '@/lib/supabase'
 
 function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   const T = theme
-  const [ratings, setRatings] = useState({ topic: 0, clarity: 0, quiz: 0 })
+  // Section-specific ratings mapped to existing DB columns
+  // morning → topic_rating, reframe → clarity_rating, quiz → quiz_rating
+  const [ratings, setRatings] = useState({ morning: 0, reframe: 0, quiz: 0 })
   const [comment, setComment] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState(null)
+  const [listening, setListening] = useState(false)
+  const [voiceSupported, setVoiceSupported] = useState(false)
+  const recognitionRef = useRef(null)
   const formRef = useRef(null)
+
   useEffect(() => {
     setTimeout(() => {
       if (!formRef.current) return
       const top = formRef.current.getBoundingClientRect().top + window.scrollY - 16
       window.scrollTo({ top, behavior: 'smooth' })
     }, 1200)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (SpeechRecognition) setVoiceSupported(true)
   }, [])
 
-  const allRated = ratings.topic && ratings.clarity && ratings.quiz
+  const toggleVoice = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!SpeechRecognition) return
+    if (listening) {
+      recognitionRef.current?.stop()
+      setListening(false)
+      return
+    }
+    const recognition = new SpeechRecognition()
+    recognition.continuous = true
+    recognition.interimResults = true
+    recognition.lang = 'en-US'
+    let finalTranscript = comment
+    recognition.onresult = (e) => {
+      let interim = ''
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) finalTranscript += e.results[i][0].transcript + ' '
+        else interim = e.results[i][0].transcript
+      }
+      setComment(finalTranscript + interim)
+    }
+    recognition.onend = () => {
+      setComment(finalTranscript.trim())
+      setListening(false)
+    }
+    recognition.onerror = () => setListening(false)
+    recognitionRef.current = recognition
+    recognition.start()
+    setListening(true)
+  }
+
+  const allRated = ratings.morning && ratings.reframe && ratings.quiz
 
   const submit = async () => {
     if (!allRated) return
@@ -109,8 +148,8 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       user_id: userId,
       feedback_type: 'post_entry',
       entry_number: entryNumber,
-      topic_rating: ratings.topic,
-      clarity_rating: ratings.clarity,
+      topic_rating: ratings.morning,
+      clarity_rating: ratings.reframe,
       quiz_rating: ratings.quiz,
       comment: comment.trim() || null,
     })
@@ -124,11 +163,17 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
     setTimeout(() => { if (onSubmit) onSubmit() }, 2800)
   }
 
-  const RatingRow = ({ label, sublabel, field }) => (
-    <div style={{ marginBottom: 16 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <div style={{ fontSize: 11, color: T.textDim, letterSpacing: '0.1em', fontWeight: 600 }}>{label}</div>
-        <div style={{ fontSize: 10, color: T.textDim }}>{sublabel}</div>
+  const SECTIONS = [
+    { field: 'morning', label: 'MORNING BRIEF',  question: 'Did this click for you?' },
+    { field: 'reframe', label: 'MIDDAY REFRAME', question: 'Did it shift how you think about it?' },
+    { field: 'quiz',    label: 'EVENING QUIZ',   question: 'Could you explain this to someone else now?' },
+  ]
+
+  const RatingRow = ({ field, label, question }) => (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 6 }}>
+        <div style={{ fontSize: 9, color: accent, letterSpacing: '0.15em', fontWeight: 700, marginBottom: 2 }}>{label}</div>
+        <div style={{ fontSize: 13, color: T.textMid, lineHeight: 1.4 }}>{question}</div>
       </div>
       <div style={{ display: 'flex', gap: 6 }}>
         {[1,2,3,4,5].map(n => (
@@ -137,7 +182,7 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
             border: `1px solid ${ratings[field] >= n ? accent : T.borderMid}`,
             background: ratings[field] >= n ? accent + '22' : T.surface,
             color: ratings[field] >= n ? accent : T.textDim,
-            fontSize: 13, cursor: 'pointer', fontFamily: "\'Inter\',sans-serif",
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif",
             transition: 'all 0.15s',
           }}>{n}</button>
         ))}
@@ -146,29 +191,57 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   )
 
   if (done) {
-    // Wait a tick then scroll to top so success overlay is in view
     setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
     return null
   }
 
   return (
     <div ref={formRef} style={{ background: T.surface, border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: 20, marginTop: 12 }}>
-      <div style={{ fontSize: 10, color: T.textDim, letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>QUICK FEEDBACK</div>
-      <div style={{ fontSize: 13, color: T.textMid, marginBottom: 20, lineHeight: 1.5 }}>Rate this entry — helps shape what comes next.</div>
-      <RatingRow label="TOPIC" sublabel="Interesting / relevant?" field="topic" />
-      <RatingRow label="CONTENT" sublabel="Clear and useful?" field="clarity" />
-      <RatingRow label="QUIZ" sublabel="Testing the right things?" field="quiz" />
-      <textarea
-        value={comment}
-        onChange={e => setComment(e.target.value)}
-        placeholder="Anything else? (optional)"
-        style={{
-          width: '100%', background: T.inputBg, border: `1px solid ${T.borderMid}`,
-          borderRadius: 4, padding: '12px 14px', fontSize: 16, color: T.textMid,
-          fontFamily: "\'Inter\',sans-serif", resize: 'vertical', minHeight: 64,
-          outline: 'none', marginBottom: 14, marginTop: 8,
-        }}
-      />
+      <style>{`
+        @keyframes fbDot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }
+        @keyframes micPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+      `}</style>
+      <div style={{ fontSize: 10, color: T.textDim, letterSpacing: '0.15em', fontWeight: 600, marginBottom: 4 }}>SECTION FEEDBACK</div>
+      <div style={{ fontSize: 13, color: T.textMid, marginBottom: 20, lineHeight: 1.5 }}>Rate each part of today's entry.</div>
+
+      {SECTIONS.map(s => <RatingRow key={s.field} {...s} />)}
+
+      <div style={{ position: 'relative', marginTop: 4, marginBottom: 14 }}>
+        <textarea
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+          placeholder={listening ? 'Listening...' : 'Anything else? Tap the mic to speak. (optional)'}
+          style={{
+            width: '100%', background: T.inputBg, border: `1px solid ${listening ? accent : T.borderMid}`,
+            borderRadius: 4, padding: '12px 44px 12px 14px', fontSize: 16, color: T.textMid,
+            fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 64,
+            outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s',
+          }}
+        />
+        {voiceSupported && (
+          <button
+            onClick={toggleVoice}
+            title={listening ? 'Stop recording' : 'Speak your feedback'}
+            style={{
+              position: 'absolute', right: 10, top: 10,
+              background: listening ? accent + '33' : 'transparent',
+              border: `1px solid ${listening ? accent : T.borderMid}`,
+              borderRadius: 4, padding: '5px 7px', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              animation: listening ? 'micPulse 1.2s ease-in-out infinite' : 'none',
+              transition: 'all 0.2s',
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={listening ? accent : T.textDim} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="9" y="2" width="6" height="12" rx="3"/>
+              <path d="M5 10a7 7 0 0 0 14 0"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </button>
+        )}
+      </div>
+
       {error && (
         <div style={{ fontSize: 11, color: '#f87171', marginBottom: 8, textAlign: 'center', letterSpacing: '0.05em' }}>{error}</div>
       )}
@@ -177,25 +250,21 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
         background: allRated ? accent : '#1a1a1a',
         border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600,
         color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed',
-        letterSpacing: '0.08em', fontFamily: "\'Inter\',sans-serif",
+        letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif",
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
       }}>
         {submitting ? (
-          <>
-            {[0,1,2].map(i => (
-              <span key={i} style={{
-                width: 5, height: 5, borderRadius: '50%', background: '#0a0a0a', display: 'inline-block',
-                animation: `fbDot 1.2s ease-in-out ${i * 0.2}s infinite`,
-              }} />
-            ))}
-            <style>{`@keyframes fbDot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }`}</style>
-          </>
+          [0,1,2].map(i => (
+            <span key={i} style={{
+              width: 5, height: 5, borderRadius: '50%', background: '#0a0a0a', display: 'inline-block',
+              animation: `fbDot 1.2s ease-in-out ${i * 0.2}s infinite`,
+            }} />
+          ))
         ) : error ? 'RETRY' : 'SUBMIT'}
       </button>
     </div>
   )
 }
-
 
 const THEMES = {
   morning: {

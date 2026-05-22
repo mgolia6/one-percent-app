@@ -327,6 +327,203 @@ const HOW_IT_WORKS = [
   },
 ]
 
+// ── Weekly survey modal (fires at day 7, 14, 21) ─────────────────────────
+const SURVEY_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
+
+function WkChipRow({ label, options, value, onChange }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {options.map(opt => (
+          <button key={opt} onClick={() => onChange(opt)} style={{
+            padding: '8px 14px', borderRadius: 3, fontSize: 12, cursor: 'pointer',
+            fontFamily: "'Inter',sans-serif", fontWeight: 500,
+            border: '1px solid ' + (value === opt ? '#47FFE8' : '#222'),
+            background: value === opt ? '#47FFE822' : '#0a0a0a',
+            color: value === opt ? '#47FFE8' : '#555', transition: 'all 0.15s',
+          }}>{opt}</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function WkRatingRow({ label, question, value, onChange }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 9, color: '#47FFE8', letterSpacing: '0.15em', fontWeight: 700, marginBottom: 3 }}>{label}</div>
+      {question && <div style={{ fontSize: 13, color: '#888', marginBottom: 8, lineHeight: 1.4 }}>{question}</div>}
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <button key={n} onClick={() => onChange(n)} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3,
+            border: '1px solid ' + (value >= n ? '#47FFE8' : '#222'),
+            background: value >= n ? '#47FFE822' : '#0a0a0a',
+            color: value >= n ? '#47FFE8' : '#555',
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif", transition: 'all 0.15s',
+          }}>{n}</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function WkOpenText({ label, value, onChange, placeholder, minHeight }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      {label && <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
+      <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder || 'Be specific.'} style={{
+        width: '100%', background: '#060606', border: '1px solid #222', borderRadius: 4,
+        padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif",
+        resize: 'vertical', minHeight: minHeight || 64, outline: 'none', boxSizing: 'border-box',
+      }} />
+    </div>
+  )
+}
+
+function WkSection({ title }) {
+  return <div style={{ fontSize: 9, color: '#333', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
+}
+
+function WeeklySurveyModal({ userId, weekNumber, onClose }) {
+  const [entriesCompleted, setEntriesCompleted] = useState(null)
+  const [timeOfDay, setTimeOfDay] = useState(null)
+  const [device, setDevice] = useState(null)
+  const [clarityRating, setClarityRating] = useState(0)
+  const [relevanceRating, setRelevanceRating] = useState(0)
+  const [quizRating, setQuizRating] = useState(0)
+  const [mostUsefulCat, setMostUsefulCat] = useState(null)
+  const [leastRelevantCat, setLeastRelevantCat] = useState(null)
+  const [topicsWanted, setTopicsWanted] = useState('')
+  const [appliedLearning, setAppliedLearning] = useState(null)
+  const [appliedDetail, setAppliedDetail] = useState('')
+  const [frictionFreq, setFrictionFreq] = useState(null)
+  const [frictionDetail, setFrictionDetail] = useState('')
+  const [leaderboard, setLeaderboard] = useState(null)
+  const [emailReceived, setEmailReceived] = useState(null)
+  const [nameResonate, setNameResonate] = useState(null)
+  const [nameSuggestion, setNameSuggestion] = useState('')
+  const [pitch, setPitch] = useState('')
+  const [whoNeedsIt, setWhoNeedsIt] = useState('')
+  const [wouldContinue, setWouldContinue] = useState(null)
+  const [openMore, setOpenMore] = useState('')
+  const [anythingElse, setAnythingElse] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [done, setDone] = useState(false)
+
+  const coreReady = entriesCompleted && timeOfDay && device && clarityRating && relevanceRating && quizRating && mostUsefulCat && appliedLearning && frictionFreq && wouldContinue
+
+  const submit = async () => {
+    if (!coreReady) return
+    setSubmitting(true)
+    const parts = [
+      entriesCompleted && ('entries:' + entriesCompleted),
+      timeOfDay && ('time:' + timeOfDay),
+      device && ('device:' + device),
+      mostUsefulCat && ('most_useful:' + mostUsefulCat),
+      leastRelevantCat && ('least_relevant:' + leastRelevantCat),
+      topicsWanted && ('topics_wanted:' + topicsWanted),
+      appliedLearning && ('applied:' + appliedLearning),
+      appliedDetail && ('applied_detail:' + appliedDetail),
+      frictionFreq && ('friction:' + frictionFreq),
+      frictionDetail && ('friction_detail:' + frictionDetail),
+      leaderboard && ('leaderboard:' + leaderboard),
+      emailReceived && ('email:' + emailReceived),
+      nameResonate && ('name:' + nameResonate),
+      nameSuggestion && ('name_suggestion:' + nameSuggestion),
+      pitch && ('pitch:' + pitch),
+      whoNeedsIt && ('who_needs_it:' + whoNeedsIt),
+      openMore && ('open_more:' + openMore),
+    ].filter(Boolean)
+    await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'weekly',
+      clarity_rating: clarityRating,
+      topic_rating: relevanceRating,
+      quiz_rating: quizRating,
+      would_recommend: wouldContinue,
+      missing_topics: parts.join(' | '),
+      biggest_win: anythingElse || null,
+    })
+    // Mark survey taken for this week
+    const dayNumber = weekNumber * 7
+    await supabase.from('profiles').update({ last_weekly_survey_day: dayNumber }).eq('id', userId)
+    setSubmitting(false)
+    setDone(true)
+    setTimeout(onClose, 2000)
+  }
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', zIndex: 1000, overflowY: 'auto', padding: '24px 16px' }}>
+      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 10, padding: 28, maxWidth: 480, width: '100%', marginTop: 'auto', marginBottom: 'auto' }}>
+        {done ? (
+          <div style={{ padding: '40px 0', textAlign: 'center' }}>
+            <div style={{ fontSize: 24, marginBottom: 12 }}>✓</div>
+            <div style={{ fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>CHECK-IN LOGGED. THANKS.</div>
+          </div>
+        ) : (
+          <>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
+              <div>
+                <div style={{ fontSize: 9, color: '#47FFE8', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 6 }}>WEEK {weekNumber} CHECK-IN</div>
+                <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 4 }}>How's it landing?</div>
+                <div style={{ fontSize: 12, color: '#555', lineHeight: 1.5 }}>Don't be nice — be useful. This shapes what's next.</div>
+              </div>
+              <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#444', fontSize: 20, cursor: 'pointer', padding: '0 0 0 16px', lineHeight: 1 }}>×</button>
+            </div>
+
+            <WkSection title="USAGE" />
+            <WkChipRow label="HOW MANY ENTRIES DID YOU COMPLETE THIS WEEK?" options={['0', '1-2', '3-4', '5+']} value={entriesCompleted} onChange={setEntriesCompleted} />
+            <WkChipRow label="WHEN DO YOU USUALLY OPEN THE APP?" options={['Morning', 'Midday', 'Evening', 'No pattern']} value={timeOfDay} onChange={setTimeOfDay} />
+            <WkChipRow label="PRIMARY DEVICE?" options={['Phone', 'Desktop', 'Both equally']} value={device} onChange={setDevice} />
+
+            <WkSection title="CONTENT" />
+            <WkRatingRow label="CLARITY" question="How clear is the content?" value={clarityRating} onChange={setClarityRating} />
+            <WkRatingRow label="RELEVANCE" question="How useful to your actual work?" value={relevanceRating} onChange={setRelevanceRating} />
+            <WkRatingRow label="QUIZ QUALITY" question="Is it testing the right things?" value={quizRating} onChange={setQuizRating} />
+            <WkChipRow label="MOST USEFUL CATEGORY?" options={SURVEY_CATS} value={mostUsefulCat} onChange={setMostUsefulCat} />
+            <WkChipRow label="LEAST RELEVANT TO YOU?" options={[...SURVEY_CATS, 'Too early to say']} value={leastRelevantCat} onChange={setLeastRelevantCat} />
+            <WkOpenText label="WHAT TOPICS DO YOU WANT TO SEE NEXT?" value={topicsWanted} onChange={setTopicsWanted} placeholder="No topic too niche." />
+            <WkChipRow label="HAS ANYTHING YOU LEARNED COME UP IN YOUR ACTUAL WORK THIS WEEK?" options={['Yes - tell us', 'Not yet', "Doesn't apply"]} value={appliedLearning} onChange={setAppliedLearning} />
+            {appliedLearning === 'Yes - tell us' && <WkOpenText value={appliedDetail} onChange={setAppliedDetail} placeholder="What happened?" />}
+
+            <WkSection title="EXPERIENCE" />
+            <WkChipRow label="HOW OFTEN DID YOU HIT FRICTION?" options={['Never', 'Once', 'A few times', 'Often']} value={frictionFreq} onChange={setFrictionFreq} />
+            {frictionFreq && frictionFreq !== 'Never' && <WkOpenText value={frictionDetail} onChange={setFrictionDetail} placeholder="Describe it." />}
+            <WkChipRow label="THE LEADERBOARD?" options={['Motivates me', 'Irrelevant', 'Creates pressure', "Haven't noticed it"]} value={leaderboard} onChange={setLeaderboard} />
+            <WkChipRow label="DID THE DAILY REMINDER EMAIL REACH YOU?" options={['Yes', 'No', "Haven't seen one"]} value={emailReceived} onChange={setEmailReceived} />
+
+            <WkSection title="POSITIONING" />
+            <WkChipRow label='"ONE PERCENT" — DOES THE NAME RESONATE?' options={['Yes it clicks', "It's fine", 'Not really', 'I have a better idea']} value={nameResonate} onChange={setNameResonate} />
+            {nameResonate === 'I have a better idea' && <WkOpenText value={nameSuggestion} onChange={setNameSuggestion} placeholder="What would you call it?" />}
+            <WkOpenText label="HOW WOULD YOU DESCRIBE THIS APP TO A COLLEAGUE IN ONE SENTENCE?" value={pitch} onChange={setPitch} placeholder="Be natural." />
+            <WkOpenText label="WHO SPECIFICALLY COMES TO MIND — WHO NEEDS THIS?" value={whoNeedsIt} onChange={setWhoNeedsIt} placeholder="Name, role, or type." />
+
+            <WkSection title="SIGNAL" />
+            <WkChipRow label="WOULD YOU KEEP USING THIS AFTER THE BETA?" options={['Definitely', 'Probably', 'Not sure', 'Probably not']} value={wouldContinue} onChange={setWouldContinue} />
+            <WkOpenText label="WHAT WOULD MAKE YOU OPEN THE APP MORE CONSISTENTLY?" value={openMore} onChange={setOpenMore} placeholder="Be specific." />
+            <WkOpenText label="ANYTHING ELSE?" value={anythingElse} onChange={setAnythingElse} placeholder="Optional." />
+
+            <div style={{ marginTop: 8, display: 'flex', gap: 8 }}>
+              <button onClick={onClose} style={{ padding: '12px 20px', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SKIP</button>
+              <button onClick={submit} disabled={!coreReady || submitting} style={{
+                flex: 1, padding: '12px 0', background: coreReady ? '#47FFE8' : '#1a1a1a',
+                border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600,
+                color: '#0a0a0a', cursor: coreReady ? 'pointer' : 'not-allowed',
+                letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1,
+              }}>
+                {submitting ? 'SUBMITTING...' : 'SUBMIT CHECK-IN'}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+
 function HowItWorksModal({ onClose }) {
   const [step, setStep] = useState(0)
   const [animate, setAnimate] = useState(true)
@@ -445,6 +642,8 @@ export default function HomePage() {
   const [showWhatsNew, setShowWhatsNew] = useState(false)
   const [whatsNewEntry, setWhatsNewEntry] = useState(null)
   const [hasUnseenChangelog, setHasUnseenChangelog] = useState(false)
+  const [showWeeklySurvey, setShowWeeklySurvey] = useState(false)
+  const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
   const libraryRef = useRef(null)
 
   useEffect(() => {
@@ -500,6 +699,20 @@ export default function HomePage() {
         }
       }
 
+      // Weekly survey trigger: fires at day 7, 14, 21 (skip 28, handled by day 30)
+      if (prof?.signup_date) {
+        const daysSince = Math.floor((Date.now() - new Date(prof.signup_date).getTime()) / 86400000)
+        const lastSurveyDay = prof.last_weekly_survey_day || 0
+        const SURVEY_DAYS = [7, 14, 21]
+        for (const d of SURVEY_DAYS) {
+          if (daysSince >= d && lastSurveyDay < d) {
+            const weekNum = d / 7
+            setWeeklyWeekNumber(weekNum)
+            setTimeout(() => setShowWeeklySurvey(true), 2000)
+            break
+          }
+        }
+      }
       setLoading(false)
       if (!sessionStorage.getItem('welcomed')) {
         sessionStorage.setItem('welcomed', '1')
@@ -554,6 +767,7 @@ export default function HomePage() {
     <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
+      {showWeeklySurvey && <WeeklySurveyModal userId={user?.id} weekNumber={weeklyWeekNumber} onClose={() => setShowWeeklySurvey(false)} />}
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}

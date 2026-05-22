@@ -4,182 +4,360 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
-// ── Weekly feedback survey (same modal users see) ──────────────────────────
-function WeeklySurveyTest({ userId, onDone }) {
-  const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
-  const [wouldRecommend, setWouldRecommend] = useState(null)
-  const [missing, setMissing] = useState('')
-  const [biggestWin, setBiggestWin] = useState('')
-  const [submitting, setSubmitting] = useState(false)
-  const [result, setResult] = useState(null) // 'ok' | 'error'
+// ── Shared survey helpers ────────────────────────────────────────────────────
+const WEEKLY_ACCENT = '#47FFE8'
+const BETA_ACCENT = '#FF4778'
+const SURVEY_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
 
-  const allRated = ratings.clarity && ratings.relevance && ratings.quiz && wouldRecommend !== null
-
-  const submit = async () => {
-    if (!allRated) return
-    setSubmitting(true)
-    const { error } = await supabase.from('feedback').insert({
-      user_id: userId,
-      feedback_type: 'weekly',
-      clarity_rating: ratings.clarity,
-      topic_rating: ratings.relevance,
-      quiz_rating: ratings.quiz,
-      would_recommend: wouldRecommend,
-      missing_topics: missing.trim() || null,
-      biggest_win: biggestWin.trim() || null,
-    })
-    setSubmitting(false)
-    setResult(error ? 'error' : 'ok')
-    if (!error) setTimeout(onDone, 1500)
-  }
-
-  const RatingRow = ({ label, field }) => (
-    <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
+function SvRatingRow({ label, question, value, onChange, accent }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 9, color: accent, letterSpacing: '0.15em', fontWeight: 700, marginBottom: 3 }}>{label}</div>
+      {question && <div style={{ fontSize: 13, color: '#aaa', marginBottom: 8, lineHeight: 1.4 }}>{question}</div>}
       <div style={{ display: 'flex', gap: 6 }}>
         {[1,2,3,4,5].map(n => (
-          <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
-            flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${ratings[field] >= n ? '#47FFE8' : '#222'}`,
-            background: ratings[field] >= n ? '#47FFE822' : '#111', color: ratings[field] >= n ? '#47FFE8' : '#555',
-            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
+          <button key={n} onClick={() => onChange(n)} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3,
+            border: '1px solid ' + (value >= n ? accent : '#222'),
+            background: value >= n ? accent + '22' : '#111',
+            color: value >= n ? accent : '#555',
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif", transition: 'all 0.15s',
           }}>{n}</button>
         ))}
       </div>
     </div>
   )
+}
 
-  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>✓ WRITTEN TO SUPABASE</div>
-  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778' }}>✗ INSERT FAILED — check console</div>
-
+function SvChipRow({ label, options, value, onChange, accent }) {
   return (
-    <div>
-      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN — LIVE TEST</div>
-      <div style={{ fontSize: 16, color: '#fff', fontWeight: 600, marginBottom: 6 }}>One week in. Be honest.</div>
-      <div style={{ fontSize: 13, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
-      <RatingRow label="CLARITY — How clear is the content?" field="clarity" />
-      <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" />
-      <RatingRow label="QUIZ — Is it testing the right things?" field="quiz" />
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
-        <div style={{ display: 'flex', gap: 8 }}>
-          {['Yes', 'Not yet', 'No'].map(v => (
-            <button key={v} onClick={() => setWouldRecommend(v)} style={{
-              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${wouldRecommend === v ? '#47FFE8' : '#222'}`,
-              background: wouldRecommend === v ? '#47FFE822' : '#111', color: wouldRecommend === v ? '#47FFE8' : '#555',
-              fontSize: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", fontWeight: 500
-            }}>{v}</button>
-          ))}
-        </div>
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {options.map(opt => (
+          <button key={opt} onClick={() => onChange(opt)} style={{
+            padding: '8px 14px', borderRadius: 3, fontSize: 12, cursor: 'pointer',
+            fontFamily: "'Inter',sans-serif", fontWeight: 500,
+            border: '1px solid ' + (value === opt ? accent : '#222'),
+            background: value === opt ? accent + '22' : '#111',
+            color: value === opt ? accent : '#555', transition: 'all 0.15s',
+          }}>{opt}</button>
+        ))}
       </div>
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT'S MISSING OR SHOULD BE DIFFERENT?</div>
-        <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
-      </div>
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN SO FAR — anything you actually used?</div>
-        <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
-      </div>
-      <button onClick={submit} disabled={!allRated || submitting} style={{ width: '100%', padding: '14px 0', background: allRated ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
-        {submitting ? 'WRITING TO SUPABASE...' : 'SUBMIT & VERIFY WRITE'}
-      </button>
     </div>
   )
 }
 
-// ── End of beta survey (not yet user-facing — test here) ───────────────────
-function EndOfBetaSurveyTest({ userId, onDone }) {
-  const [overall, setOverall] = useState(0)
-  const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
-  const [wouldRecommend, setWouldRecommend] = useState(null)
-  const [missing, setMissing] = useState('')
-  const [biggestWin, setBiggestWin] = useState('')
-  const [comment, setComment] = useState('')
+function SvOpenText({ label, value, onChange, placeholder, minHeight }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      {label && <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
+      <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder || 'Be specific.'} style={{
+        width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4,
+        padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif",
+        resize: 'vertical', minHeight: minHeight || 64, outline: 'none', boxSizing: 'border-box',
+      }} />
+    </div>
+  )
+}
+
+function SvSection({ title }) {
+  return <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
+}
+
+// ── Weekly check-in survey ───────────────────────────────────────────────────
+function WeeklySurveyTest({ userId, onDone }) {
+  const [entriesCompleted, setEntriesCompleted] = useState(null)
+  const [timeOfDay, setTimeOfDay] = useState(null)
+  const [device, setDevice] = useState(null)
+  const [clarityRating, setClarityRating] = useState(0)
+  const [relevanceRating, setRelevanceRating] = useState(0)
+  const [quizRating, setQuizRating] = useState(0)
+  const [mostUsefulCat, setMostUsefulCat] = useState(null)
+  const [leastRelevantCat, setLeastRelevantCat] = useState(null)
+  const [topicsWanted, setTopicsWanted] = useState('')
+  const [appliedLearning, setAppliedLearning] = useState(null)
+  const [appliedDetail, setAppliedDetail] = useState('')
+  const [frictionFreq, setFrictionFreq] = useState(null)
+  const [frictionDetail, setFrictionDetail] = useState('')
+  const [leaderboard, setLeaderboard] = useState(null)
+  const [emailReceived, setEmailReceived] = useState(null)
+  const [nameResonate, setNameResonate] = useState(null)
+  const [nameSuggestion, setNameSuggestion] = useState('')
+  const [pitch, setPitch] = useState('')
+  const [whoNeedsIt, setWhoNeedsIt] = useState('')
+  const [wouldContinue, setWouldContinue] = useState(null)
+  const [openMore, setOpenMore] = useState('')
+  const [anythingElse, setAnythingElse] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState(null)
 
-  const allRated = overall && ratings.clarity && ratings.relevance && ratings.quiz && wouldRecommend !== null
+  const coreReady = entriesCompleted && timeOfDay && device && clarityRating && relevanceRating && quizRating && mostUsefulCat && appliedLearning && frictionFreq && wouldContinue
 
   const submit = async () => {
-    if (!allRated) return
+    if (!coreReady) return
     setSubmitting(true)
+    const parts = [
+      entriesCompleted && ('entries:' + entriesCompleted),
+      timeOfDay && ('time:' + timeOfDay),
+      device && ('device:' + device),
+      mostUsefulCat && ('most_useful:' + mostUsefulCat),
+      leastRelevantCat && ('least_relevant:' + leastRelevantCat),
+      topicsWanted && ('topics_wanted:' + topicsWanted),
+      appliedLearning && ('applied:' + appliedLearning),
+      appliedDetail && ('applied_detail:' + appliedDetail),
+      frictionFreq && ('friction:' + frictionFreq),
+      frictionDetail && ('friction_detail:' + frictionDetail),
+      leaderboard && ('leaderboard:' + leaderboard),
+      emailReceived && ('email:' + emailReceived),
+      nameResonate && ('name:' + nameResonate),
+      nameSuggestion && ('name_suggestion:' + nameSuggestion),
+      pitch && ('pitch:' + pitch),
+      whoNeedsIt && ('who_needs_it:' + whoNeedsIt),
+      openMore && ('open_more:' + openMore),
+    ].filter(Boolean)
     const { error } = await supabase.from('feedback').insert({
       user_id: userId,
-      feedback_type: 'end_of_beta',
-      overall_rating: overall,
-      clarity_rating: ratings.clarity,
-      topic_rating: ratings.relevance,
-      quiz_rating: ratings.quiz,
-      would_recommend: wouldRecommend,
-      missing_topics: missing.trim() || null,
-      biggest_win: biggestWin.trim() || null,
-      comment: comment.trim() || null,
+      feedback_type: 'weekly',
+      clarity_rating: clarityRating,
+      topic_rating: relevanceRating,
+      quiz_rating: quizRating,
+      would_recommend: wouldContinue,
+      missing_topics: parts.join(' | '),
+      biggest_win: anythingElse || null,
     })
     setSubmitting(false)
     setResult(error ? 'error' : 'ok')
     if (!error) setTimeout(onDone, 1500)
   }
 
-  const RatingRow = ({ label, field, accent }) => (
-    <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
-      <div style={{ display: 'flex', gap: 6 }}>
-        {[1,2,3,4,5].map(n => {
-          const val = field === 'overall' ? overall : ratings[field]
-          const active = val >= n
-          return (
-            <button key={n} onClick={() => field === 'overall' ? setOverall(n) : setRatings(r => ({ ...r, [field]: n }))} style={{
-              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${active ? accent : '#222'}`,
-              background: active ? `${accent}22` : '#111', color: active ? accent : '#555',
-              fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
-            }}>{n}</button>
-          )
-        })}
-      </div>
-    </div>
-  )
-
-  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em' }}>✓ WRITTEN TO SUPABASE</div>
-  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: '#FF4778' }}>✗ INSERT FAILED — check console</div>
+  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: WEEKLY_ACCENT, letterSpacing: '0.08em' }}>checkmark WRITTEN TO SUPABASE</div>
+  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: BETA_ACCENT }}>X INSERT FAILED</div>
 
   return (
     <div>
-      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>END OF BETA — LIVE TEST</div>
-      <div style={{ fontSize: 16, color: '#fff', fontWeight: 600, marginBottom: 6 }}>30 days in. Zoom out.</div>
-      <div style={{ fontSize: 13, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>Same questions as the weekly check-in, but across the full experience. Be specific — this one shapes v1.</div>
-      <RatingRow label="OVERALL — How would you rate One Percent?" field="overall" accent="#FF4778" />
-      <RatingRow label="CLARITY — How clear was the content overall?" field="clarity" accent="#FF4778" />
-      <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" accent="#FF4778" />
-      <RatingRow label="QUIZ — Was it testing the right things?" field="quiz" accent="#FF4778" />
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
-        <div style={{ display: 'flex', gap: 8 }}>
-          {['Yes', 'Not yet', 'No'].map(v => (
-            <button key={v} onClick={() => setWouldRecommend(v)} style={{
-              flex: 1, padding: '10px 0', borderRadius: 3, border: `1px solid ${wouldRecommend === v ? '#FF4778' : '#222'}`,
-              background: wouldRecommend === v ? '#FF477822' : '#111', color: wouldRecommend === v ? '#FF4778' : '#555',
-              fontSize: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", fontWeight: 500
-            }}>{v}</button>
-          ))}
-        </div>
-      </div>
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT WAS MISSING OR SHOULD BE DIFFERENT?</div>
-        <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
-      </div>
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN — anything you actually used?</div>
-        <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
-      </div>
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>ANYTHING ELSE?</div>
-        <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder="Open floor." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
-      </div>
-      <button onClick={submit} disabled={!allRated || submitting} style={{ width: '100%', padding: '14px 0', background: allRated ? '#FF4778' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: allRated ? '#fff' : '#333', cursor: allRated ? 'pointer' : 'not-allowed', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN — LIVE TEST</div>
+      <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 6 }}>One week in. Be honest.</div>
+      <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
+
+      <SvSection title="USAGE" />
+      <SvChipRow label="HOW MANY ENTRIES DID YOU COMPLETE THIS WEEK?" options={['0', '1-2', '3-4', '5+']} value={entriesCompleted} onChange={setEntriesCompleted} accent={WEEKLY_ACCENT} />
+      <SvChipRow label="WHEN DO YOU USUALLY OPEN THE APP?" options={['Morning', 'Midday', 'Evening', 'No pattern']} value={timeOfDay} onChange={setTimeOfDay} accent={WEEKLY_ACCENT} />
+      <SvChipRow label="PRIMARY DEVICE?" options={['Phone', 'Desktop', 'Both equally']} value={device} onChange={setDevice} accent={WEEKLY_ACCENT} />
+
+      <SvSection title="CONTENT" />
+      <SvRatingRow label="CLARITY" question="How clear is the content?" value={clarityRating} onChange={setClarityRating} accent={WEEKLY_ACCENT} />
+      <SvRatingRow label="RELEVANCE" question="How useful to your actual work?" value={relevanceRating} onChange={setRelevanceRating} accent={WEEKLY_ACCENT} />
+      <SvRatingRow label="QUIZ QUALITY" question="Is it testing the right things?" value={quizRating} onChange={setQuizRating} accent={WEEKLY_ACCENT} />
+      <SvChipRow label="WHICH CATEGORY HAS BEEN MOST USEFUL?" options={SURVEY_CATS} value={mostUsefulCat} onChange={setMostUsefulCat} accent={WEEKLY_ACCENT} />
+      <SvChipRow label="WHICH CATEGORY FEELS LEAST RELEVANT TO YOU?" options={[...SURVEY_CATS, 'Too early to say']} value={leastRelevantCat} onChange={setLeastRelevantCat} accent={WEEKLY_ACCENT} />
+      <SvOpenText label="WHAT TOPICS DO YOU WANT TO SEE NEXT?" value={topicsWanted} onChange={setTopicsWanted} placeholder="No topic too niche." />
+      <SvChipRow label="HAS ANYTHING YOU LEARNED COME UP IN YOUR ACTUAL WORK OR LIFE THIS WEEK?" options={['Yes - tell us', 'Not yet', "Doesn't apply"]} value={appliedLearning} onChange={setAppliedLearning} accent={WEEKLY_ACCENT} />
+      {appliedLearning === 'Yes - tell us' && <SvOpenText value={appliedDetail} onChange={setAppliedDetail} placeholder="What happened?" />}
+
+      <SvSection title="EXPERIENCE" />
+      <SvChipRow label="HOW OFTEN DID YOU HIT FRICTION?" options={['Never', 'Once', 'A few times', 'Often']} value={frictionFreq} onChange={setFrictionFreq} accent={WEEKLY_ACCENT} />
+      {frictionFreq && frictionFreq !== 'Never' && <SvOpenText value={frictionDetail} onChange={setFrictionDetail} placeholder="Describe it." />}
+      <SvChipRow label="THE LEADERBOARD?" options={['Motivates me', 'Irrelevant', 'Creates pressure', "Haven't noticed it"]} value={leaderboard} onChange={setLeaderboard} accent={WEEKLY_ACCENT} />
+      <SvChipRow label="DID THE DAILY REMINDER EMAIL REACH YOU?" options={['Yes', 'No', "Haven't seen one"]} value={emailReceived} onChange={setEmailReceived} accent={WEEKLY_ACCENT} />
+
+      <SvSection title="POSITIONING" />
+      <SvChipRow label='"ONE PERCENT" — DOES THE NAME RESONATE?' options={['Yes it clicks', "It's fine", 'Not really', 'I have a better idea']} value={nameResonate} onChange={setNameResonate} accent={WEEKLY_ACCENT} />
+      {nameResonate === 'I have a better idea' && <SvOpenText value={nameSuggestion} onChange={setNameSuggestion} placeholder="What would you call it?" />}
+      <SvOpenText label="HOW WOULD YOU DESCRIBE THIS APP TO A COLLEAGUE IN ONE SENTENCE?" value={pitch} onChange={setPitch} placeholder="Be natural." />
+      <SvOpenText label="WHO SPECIFICALLY COMES TO MIND — WHO NEEDS THIS?" value={whoNeedsIt} onChange={setWhoNeedsIt} placeholder="Name, role, or type." />
+
+      <SvSection title="SIGNAL" />
+      <SvChipRow label="WOULD YOU KEEP USING THIS AFTER THE BETA?" options={['Definitely', 'Probably', 'Not sure', 'Probably not']} value={wouldContinue} onChange={setWouldContinue} accent={WEEKLY_ACCENT} />
+      <SvOpenText label="WHAT WOULD MAKE YOU OPEN THE APP MORE CONSISTENTLY?" value={openMore} onChange={setOpenMore} placeholder="Be specific." />
+      <SvOpenText label="ANYTHING ELSE?" value={anythingElse} onChange={setAnythingElse} placeholder="Optional." />
+
+      <button onClick={submit} disabled={!coreReady || submitting} style={{
+        width: '100%', padding: '14px 0', marginTop: 8,
+        background: coreReady ? WEEKLY_ACCENT : '#1a1a1a', border: 'none', borderRadius: 4,
+        fontSize: 11, fontWeight: 600, color: '#0a0a0a',
+        cursor: coreReady ? 'pointer' : 'not-allowed', letterSpacing: '0.1em',
+        fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1,
+      }}>
         {submitting ? 'WRITING TO SUPABASE...' : 'SUBMIT & VERIFY WRITE'}
       </button>
     </div>
   )
 }
+
+// ── End of beta survey ───────────────────────────────────────────────────────
+function EndOfBetaSurveyTest({ userId, onDone }) {
+  const [overallRating, setOverallRating] = useState(0)
+  const [perceptionChange, setPerceptionChange] = useState(null)
+  const [whyStopped, setWhyStopped] = useState('')
+  const [clarityRating, setClarityRating] = useState(0)
+  const [relevanceRating, setRelevanceRating] = useState(0)
+  const [quizRating, setQuizRating] = useState(0)
+  const [mostValueCat, setMostValueCat] = useState(null)
+  const [couldCutCat, setCouldCutCat] = useState(null)
+  const [structureVerdict, setStructureVerdict] = useState(null)
+  const [structureDetail, setStructureDetail] = useState('')
+  const [commitment, setCommitment] = useState(null)
+  const [topicToAdd, setTopicToAdd] = useState('')
+  const [peakStreak, setPeakStreak] = useState(null)
+  const [openDriver, setOpenDriver] = useState(null)
+  const [skipReason, setSkipReason] = useState('')
+  const [leaderboardEffect, setLeaderboardEffect] = useState(null)
+  const [mustChange, setMustChange] = useState('')
+  const [mustKeep, setMustKeep] = useState('')
+  const [brokenThing, setBrokenThing] = useState('')
+  const [devicePref, setDevicePref] = useState(null)
+  const [nameVerdict, setNameVerdict] = useState(null)
+  const [nameSuggestion, setNameSuggestion] = useState('')
+  const [publicPitch, setPublicPitch] = useState('')
+  const [notFor, setNotFor] = useState('')
+  const [wouldPay, setWouldPay] = useState(null)
+  const [priceRange, setPriceRange] = useState(null)
+  const [wouldRefer, setWouldRefer] = useState(null)
+  const [referDetail, setReferDetail] = useState('')
+  const [launchModel, setLaunchModel] = useState(null)
+  const [sixMonth, setSixMonth] = useState(0)
+  const [toTen, setToTen] = useState('')
+  const [biggestWin, setBiggestWin] = useState('')
+  const [ifYouWereMe, setIfYouWereMe] = useState('')
+  const [anythingElse, setAnythingElse] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [result, setResult] = useState(null)
+
+  const coreReady = overallRating && perceptionChange && clarityRating && relevanceRating && quizRating && mostValueCat && structureVerdict && commitment && peakStreak && openDriver && leaderboardEffect && mustChange && mustKeep && devicePref && nameVerdict && wouldPay && wouldRefer && launchModel && sixMonth && biggestWin && ifYouWereMe
+
+  const submit = async () => {
+    if (!coreReady) return
+    setSubmitting(true)
+    const parts = [
+      perceptionChange && ('perception:' + perceptionChange),
+      whyStopped && ('why_stopped:' + whyStopped),
+      mostValueCat && ('most_value:' + mostValueCat),
+      couldCutCat && ('could_cut:' + couldCutCat),
+      structureVerdict && ('structure:' + structureVerdict),
+      structureDetail && ('structure_detail:' + structureDetail),
+      commitment && ('commitment:' + commitment),
+      topicToAdd && ('topic_add:' + topicToAdd),
+      peakStreak && ('peak_streak:' + peakStreak),
+      openDriver && ('open_driver:' + openDriver),
+      skipReason && ('skip_reason:' + skipReason),
+      leaderboardEffect && ('leaderboard:' + leaderboardEffect),
+      mustChange && ('must_change:' + mustChange),
+      mustKeep && ('must_keep:' + mustKeep),
+      brokenThing && ('broken:' + brokenThing),
+      devicePref && ('device:' + devicePref),
+      nameVerdict && ('name:' + nameVerdict),
+      nameSuggestion && ('name_suggestion:' + nameSuggestion),
+      publicPitch && ('pitch:' + publicPitch),
+      notFor && ('not_for:' + notFor),
+      wouldPay && ('would_pay:' + wouldPay),
+      priceRange && ('price:' + priceRange),
+      referDetail && ('refer_detail:' + referDetail),
+      launchModel && ('launch_model:' + launchModel),
+      sixMonth && ('six_month:' + sixMonth),
+      toTen && ('to_ten:' + toTen),
+      ifYouWereMe && ('if_you_were_me:' + ifYouWereMe),
+    ].filter(Boolean)
+    const { error } = await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'end_of_beta',
+      overall_rating: overallRating,
+      clarity_rating: clarityRating,
+      topic_rating: relevanceRating,
+      quiz_rating: quizRating,
+      would_recommend: wouldRefer,
+      missing_topics: parts.join(' | '),
+      biggest_win: biggestWin || null,
+      comment: anythingElse || null,
+    })
+    setSubmitting(false)
+    setResult(error ? 'error' : 'ok')
+    if (!error) setTimeout(onDone, 1500)
+  }
+
+  if (result === 'ok') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: BETA_ACCENT, letterSpacing: '0.08em' }}>checkmark WRITTEN TO SUPABASE</div>
+  if (result === 'error') return <div style={{ padding: '24px 0', textAlign: 'center', fontSize: 13, color: BETA_ACCENT }}>X INSERT FAILED</div>
+
+  return (
+    <div>
+      <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>END OF BETA — LIVE TEST</div>
+      <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 6 }}>30 days in. Zoom out.</div>
+      <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>This is the full debrief. Be specific — this one shapes v1.</div>
+
+      <SvSection title="OVERALL" />
+      <SvRatingRow label="OVERALL RATING" question="How would you rate One Percent?" value={overallRating} onChange={setOverallRating} accent={BETA_ACCENT} />
+      <SvChipRow label="COMPARED TO DAY 1, HOW HAS YOUR PERCEPTION CHANGED?" options={['Much better', 'Somewhat better', 'About the same', 'Worse', 'I stopped using it']} value={perceptionChange} onChange={setPerceptionChange} accent={BETA_ACCENT} />
+      {(perceptionChange === 'Worse' || perceptionChange === 'I stopped using it') && <SvOpenText value={whyStopped} onChange={setWhyStopped} placeholder="What happened?" />}
+
+      <SvSection title="CONTENT AND DEPTH" />
+      <SvRatingRow label="CLARITY" question="How clear was the content overall?" value={clarityRating} onChange={setClarityRating} accent={BETA_ACCENT} />
+      <SvRatingRow label="RELEVANCE" question="How useful to your actual work?" value={relevanceRating} onChange={setRelevanceRating} accent={BETA_ACCENT} />
+      <SvRatingRow label="QUIZ QUALITY" question="Was it testing the right things?" value={quizRating} onChange={setQuizRating} accent={BETA_ACCENT} />
+      <SvChipRow label="WHICH CATEGORY DELIVERED THE MOST VALUE?" options={SURVEY_CATS} value={mostValueCat} onChange={setMostValueCat} accent={BETA_ACCENT} />
+      <SvChipRow label="WHICH CATEGORY COULD BE CUT WITHOUT YOU NOTICING?" options={[...SURVEY_CATS, 'None']} value={couldCutCat} onChange={setCouldCutCat} accent={BETA_ACCENT} />
+      <SvChipRow label="WAS THE MORNING BRIEF / MIDDAY REFRAME / EVENING QUIZ STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} accent={BETA_ACCENT} />
+      {structureVerdict && structureVerdict !== 'Yes — keep it' && <SvOpenText value={structureDetail} onChange={setStructureDetail} placeholder="What would you change?" />}
+      <SvChipRow label="WAS 10 MINUTES THE RIGHT COMMITMENT?" options={['Too short', 'Just right', 'Too long', 'Inconsistent']} value={commitment} onChange={setCommitment} accent={BETA_ACCENT} />
+      <SvOpenText label="WHAT TOPIC DO YOU MOST WANT ADDED BEFORE PUBLIC LAUNCH?" value={topicToAdd} onChange={setTopicToAdd} placeholder="Be specific." />
+
+      <SvSection title="HABIT AND RETENTION" />
+      <SvChipRow label="AT YOUR PEAK, HOW MANY DAYS IN A ROW DID YOU USE IT?" options={['1', '2-3', '4-6', '7+', 'Every day']} value={peakStreak} onChange={setPeakStreak} accent={BETA_ACCENT} />
+      <SvChipRow label="BIGGEST DRIVER OF OPENING THE APP ON ANY GIVEN DAY?" options={['Reminder email', 'Habit', 'Curiosity', 'Streak', 'Nothing consistent']} value={openDriver} onChange={setOpenDriver} accent={BETA_ACCENT} />
+      <SvOpenText label="BIGGEST REASON YOU SKIPPED A DAY?" value={skipReason} onChange={setSkipReason} placeholder="Honest answer." />
+      <SvChipRow label="DID THE LEADERBOARD AFFECT YOUR BEHAVIOR?" options={['Yes — kept me coming back', 'Yes — made me feel behind', 'No effect', 'I ignored it']} value={leaderboardEffect} onChange={setLeaderboardEffect} accent={BETA_ACCENT} />
+
+      <SvSection title="PRODUCT AND UX" />
+      <SvOpenText label="ONE THING THAT NEEDS TO CHANGE BEFORE PUBLIC LAUNCH?" value={mustChange} onChange={setMustChange} placeholder="Non-negotiable." />
+      <SvOpenText label="ONE THING YOU'D FIGHT TO KEEP EXACTLY AS IT IS?" value={mustKeep} onChange={setMustKeep} placeholder="Don't lose this." />
+      <SvOpenText label="ANYTHING EVER FEEL BROKEN, CONFUSING, OR OUT OF PLACE?" value={brokenThing} onChange={setBrokenThing} placeholder="Optional but valuable." />
+      <SvChipRow label="MOBILE OR DESKTOP — WHICH FELT BETTER?" options={['Mobile', 'Desktop', 'Equal', 'I only used one']} value={devicePref} onChange={setDevicePref} accent={BETA_ACCENT} />
+
+      <SvSection title="POSITIONING AND NAME" />
+      <SvChipRow label="ONE PERCENT — DOES THE NAME WORK FOR PUBLIC LAUNCH?" options={["Yes it's strong", "It's fine", 'No — needs work', 'I have a suggestion']} value={nameVerdict} onChange={setNameVerdict} accent={BETA_ACCENT} />
+      {nameVerdict === 'I have a suggestion' && <SvOpenText value={nameSuggestion} onChange={setNameSuggestion} placeholder="What would you call it?" />}
+      <SvOpenText label="HOW WOULD YOU PITCH THIS TO SOMEONE WHO'S NEVER HEARD OF IT?" value={publicPitch} onChange={setPublicPitch} placeholder="How you'd actually say it." />
+      <SvOpenText label="WHAT KIND OF PERSON IS THIS NOT FOR?" value={notFor} onChange={setNotFor} placeholder="Be direct." />
+
+      <SvSection title="GTM SIGNAL" />
+      <SvChipRow label="WOULD YOU PAY FOR THIS?" options={['Yes', 'No', 'Depends on the price']} value={wouldPay} onChange={setWouldPay} accent={BETA_ACCENT} />
+      {wouldPay === 'Yes' && <SvChipRow label="WHAT MONTHLY PRICE FEELS FAIR?" options={['Under $5', '$5-10', '$10-20', '$20+']} value={priceRange} onChange={setPriceRange} accent={BETA_ACCENT} />}
+      <SvChipRow label="WOULD YOU REFER THIS TO SOMEONE SPECIFIC?" options={['Yes — who and why', 'No', 'Maybe']} value={wouldRefer} onChange={setWouldRefer} accent={BETA_ACCENT} />
+      {wouldRefer === 'Yes — who and why' && <SvOpenText value={referDetail} onChange={setReferDetail} placeholder="Who and why?" />}
+      <SvChipRow label="WHICH LAUNCH MODEL WOULD MAKE YOU MOST LIKELY TO SHARE IT?" options={['Free with premium tier', 'One-time purchase', 'Subscription', 'Free forever', "Doesn't matter"]} value={launchModel} onChange={setLaunchModel} accent={BETA_ACCENT} />
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>HOW LIKELY ARE YOU TO STILL BE USING THIS IN 6 MONTHS? (1-10)</div>
+        <div style={{ display: 'flex', gap: 4 }}>
+          {[1,2,3,4,5,6,7,8,9,10].map(n => (
+            <button key={n} onClick={() => setSixMonth(n)} style={{
+              flex: 1, padding: '8px 0', borderRadius: 3,
+              border: '1px solid ' + (sixMonth >= n ? BETA_ACCENT : '#222'),
+              background: sixMonth >= n ? BETA_ACCENT + '22' : '#111',
+              color: sixMonth >= n ? BETA_ACCENT : '#555',
+              fontSize: 11, cursor: 'pointer', fontFamily: "'Inter',sans-serif",
+            }}>{n}</button>
+          ))}
+        </div>
+      </div>
+      <SvOpenText label="WHAT WOULD HAVE TO BE TRUE FOR YOUR ANSWER TO BE A 10?" value={toTen} onChange={setToTen} placeholder="Specific is better." />
+
+      <SvSection title="FINAL WORD" />
+      <SvOpenText label="BIGGEST PERSONAL WIN FROM THE BETA" value={biggestWin} onChange={setBiggestWin} placeholder="Something you learned, used, or now think differently about." minHeight={80} />
+      <SvOpenText label="IF YOU WERE ME, WHAT WOULD YOU DO NEXT?" value={ifYouWereMe} onChange={setIfYouWereMe} placeholder="Don't hold back." minHeight={80} />
+      <SvOpenText label="ANYTHING ELSE." value={anythingElse} onChange={setAnythingElse} placeholder="Optional." />
+
+      <button onClick={submit} disabled={!coreReady || submitting} style={{
+        width: '100%', padding: '14px 0', marginTop: 8,
+        background: coreReady ? BETA_ACCENT : '#1a1a1a', border: 'none', borderRadius: 4,
+        fontSize: 11, fontWeight: 600, color: coreReady ? '#fff' : '#333',
+        cursor: coreReady ? 'pointer' : 'not-allowed', letterSpacing: '0.1em',
+        fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1,
+      }}>
+        {submitting ? 'WRITING TO SUPABASE...' : 'SUBMIT & VERIFY WRITE'}
+      </button>
+    </div>
+  )
+}
+
 
 export default function AdminPage() {
   const router = useRouter()
