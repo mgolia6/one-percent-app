@@ -16,24 +16,19 @@ function buildHtml(firstName: string) {
 
           <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">Hey ${firstName},</p>
 
-          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">My name is Matthew — I built One Percent.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">I'm Matthew — I built One Percent.</p>
 
-          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">I built it because I kept watching smart people plateau. Not from lack of talent, but from lack of consistent input. The people who keep growing aren't working harder — they're just never fully off. One concept at a time, compounding quietly in the background.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">Honestly, this all started as a way to grow instead of scroll. I kept picking up my phone in the in-between moments — waiting, commuting, winding down — and watching the time disappear into a feed that gave nothing back. I wanted something that did.</p>
 
-          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">That's the whole idea.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">So I built it.</p>
 
-          <p style="margin:0 0 8px 0;font-size:15px;color:#999;line-height:1.7;">A few things worth knowing:</p>
-          <ul style="margin:0 0 16px 0;padding-left:20px;font-size:15px;color:#999;line-height:1.9;">
-            <li>The quiz isn't a test. It's a retention tool. Take it seriously.</li>
-            <li>The leaderboard is real. Other testers are in here with you.</li>
-            <li>If something feels off — a bug, a concept that didn't land, anything — there's a feedback button in the app. I read all of it.</li>
-          </ul>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">You're one of the first people using it outside of me. That means a lot — and it means you are essential to this. If you find a bug, log it. If something doesn't feel right, log it. If a concept lands weird or a quiz question is off, log it. There's a feedback button right in the app. Every single thing you submit goes directly to me. This only gets better because of you.</p>
 
           <div style="margin-top:32px;">
             <a href="${APP_URL}" style="display:inline-block;background:#E8FF47;color:#0a0a0a;font-size:12px;font-weight:700;letter-spacing:0.1em;text-decoration:none;padding:13px 28px;border-radius:4px;text-transform:uppercase;">Open One Percent →</a>
           </div>
 
-          <p style="margin:32px 0 0 0;font-size:15px;color:#999;line-height:1.7;">P.S. — What made you say yes to this? What are you hoping gets better?<br><br>Hit reply and tell me. I read every one.</p>
+          <p style="margin:32px 0 0 0;font-size:15px;color:#999;line-height:1.7;">P.S. — Hit reply and tell me what made you say yes to this. I'm genuinely curious.</p>
 
           <div style="margin-top:40px;padding-top:24px;border-top:1px solid #1e1e1e;font-size:11px;color:#444;line-height:1.7;">
             — Matthew<br>
@@ -79,7 +74,7 @@ serve(async (req) => {
         from: 'Matthew @ One Percent <matthew@mpgink.com>',
         reply_to: 'matthew@mpgink.com',
         to: email,
-        subject: "You're in.",
+        subject: "Welcome to the Founders Club | One Percent",
         html,
       }),
     })
