@@ -27,18 +27,18 @@ function buildHtml(firstName: string) {
 
           <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">So I built it.</p>
 
-          <p style="margin:0 0 8px 0;font-size:15px;color:#999;line-height:1.7;">You're one of the first people using it outside of me. That means a lot — and it means you are essential to this.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">You're one of the first people using it outside of me. That means a lot — and it means you are essential to this.</p>
 
-          <p style="margin:0 0 8px 0;font-size:15px;color:#999;line-height:1.7;">If you find a bug, log it. If something doesn't feel right, log it. If a concept lands weird or a quiz question is off, log it.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">If you find a bug, log it. If something doesn't feel right, log it. If a concept lands weird or a quiz question is off, log it. There's a feedback button right in the app. Every single thing you submit goes directly to me. This only gets better because of you.</p>
 
-          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">There's a feedback button right in the app. Every single thing you submit goes directly to me. This only gets better because of you.</p>
+          <p style="margin:0 0 16px 0;font-size:15px;color:#999;line-height:1.7;">I built this for me — I hope it becomes something for you too.</p>
 
           <div style="margin-top:32px;">
             <a href="${APP_URL}" style="display:inline-block;background:#E8FF47;color:#0a0a0a;font-size:12px;font-weight:700;letter-spacing:0.1em;text-decoration:none;padding:13px 28px;border-radius:4px;text-transform:uppercase;">Open One Percent →</a>
           </div>
 
           <div style="margin-top:40px;padding-top:24px;border-top:1px solid #1e1e1e;font-size:15px;color:#999;line-height:1.7;">
-            Mahalo,<br><br>
+            Mahalo, and welcome to the Founders Club.<br><br>
             — Matthew<br>
             <a href="https://mpgink.com" style="color:#555;text-decoration:none;font-size:11px;">mpgink.com</a>
           </div>
