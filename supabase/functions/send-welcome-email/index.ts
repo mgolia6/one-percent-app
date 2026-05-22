@@ -3,6 +3,11 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')!
 const APP_URL = 'https://one-percent-app.vercel.app'
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 function buildHtml(firstName: string) {
   return `<!DOCTYPE html>
 <html>
@@ -43,25 +48,23 @@ function buildHtml(firstName: string) {
 }
 
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
+  }
+
   try {
-    // Supabase webhook sends the new row as JSON body
     const payload = await req.json()
-
-    // Support both direct calls and Supabase DB webhook format
     const record = payload.record ?? payload
-
     const firstName = record.first_name || 'there'
     const email = record.email
 
     if (!email) {
       return new Response(JSON.stringify({ error: 'No email in payload' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
-    // Skip if onboarding not complete (webhook may fire before onboarding)
-    // We handle this by calling the function explicitly after onboarding completes
     const html = buildHtml(firstName)
 
     const res = await fetch('https://api.resend.com/emails', {
@@ -74,7 +77,7 @@ serve(async (req) => {
         from: 'Matthew @ One Percent <matthew@mpgink.com>',
         reply_to: 'matthew@mpgink.com',
         to: email,
-        subject: "Welcome to the Founders Club | One Percent",
+        subject: 'Welcome to the Founders Club | One Percent',
         html,
       }),
     })
@@ -83,17 +86,17 @@ serve(async (req) => {
       const err = await res.text()
       return new Response(JSON.stringify({ error: err }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
     return new Response(JSON.stringify({ sent: true, to: email }), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (err: any) {
     return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
 })
