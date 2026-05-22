@@ -37,12 +37,14 @@ function buildHtml(firstName: string) {
             <a href="${APP_URL}" style="display:inline-block;background:#E8FF47;color:#0a0a0a;font-size:12px;font-weight:700;letter-spacing:0.1em;text-decoration:none;padding:13px 28px;border-radius:4px;text-transform:uppercase;">Open One Percent →</a>
           </div>
 
-          <p style="margin:32px 0 0 0;font-size:15px;color:#999;line-height:1.7;">P.S. — Hit reply and tell me what made you say yes to this. I'm genuinely curious.</p>
-
-          <div style="margin-top:40px;padding-top:24px;border-top:1px solid #1e1e1e;font-size:11px;color:#444;line-height:1.7;">
+          <div style="margin-top:40px;padding-top:24px;border-top:1px solid #1e1e1e;font-size:15px;color:#999;line-height:1.7;">
+            Mahalo,<br><br>
             — Matthew<br>
-            <a href="https://mpgink.com" style="color:#555;text-decoration:none;">mpgink.com</a>
+            <a href="https://mpgink.com" style="color:#555;text-decoration:none;font-size:11px;">mpgink.com</a>
           </div>
+
+          <p style="margin:24px 0 0 0;font-size:15px;color:#999;line-height:1.7;">P.S. — Hit reply and tell me what made you say yes to this. I'm genuinely curious.</p>
+
         </td></tr>
       </table>
     </td></tr>
