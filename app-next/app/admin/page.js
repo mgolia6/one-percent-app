@@ -366,7 +366,7 @@ export default function AdminPage() {
   const [bugs, setBugs] = useState([])
   const [users, setUsers] = useState([])
   const [userId, setUserId] = useState(null)
-  const [tab, setTab] = useState('feedback')
+  const [tab, setTab] = useState('users')
   const [surveyTab, setSurveyTab] = useState('weekly') // sub-tab inside surveys
   const [emailSending, setEmailSending] = useState(false)
   const [emailResult, setEmailResult] = useState(null)
@@ -520,12 +520,12 @@ export default function AdminPage() {
             overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch',
           }}>
             {[
+              ['users', 'USERS'],
+              ['bugs', 'BUGS'],
               ['feedback', 'POST-LESSON'],
+              ['instant', 'INSTANT'],
               ['weekly', 'WEEKLY'],
               ['endbeta', 'END OF BETA'],
-              ['instant', 'INSTANT'],
-              ['bugs', 'BUGS'],
-              ['users', 'USERS'],
               ['leaderboard', 'LEADERBOARD'],
               ['surveys', 'SURVEYS ↗'],
               ['email', 'EMAIL'],
