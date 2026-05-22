@@ -778,6 +778,27 @@ export default function AdminPage() {
                         style={{ padding: '6px 14px', background: 'none', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
                         HARD RESET
                       </button>
+                      <button
+                        onClick={async () => {
+                          const btn = document.getElementById(`welcome-${u.id}`)
+                          if (btn) { btn.textContent = 'SENDING...'; btn.disabled = true }
+                          try {
+                            const { data: { session } } = await supabase.auth.getSession()
+                            const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session?.access_token}` },
+                              body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }),
+                            })
+                            if (btn) { btn.textContent = res.ok ? '✓ SENT' : '✗ FAILED'; btn.style.color = res.ok ? '#4ade80' : '#f87171' }
+                          } catch {
+                            if (btn) { btn.textContent = '✗ ERROR'; btn.style.color = '#f87171' }
+                          }
+                          setTimeout(() => { if (btn) { btn.textContent = 'WELCOME EMAIL'; btn.disabled = false; btn.style.color = '#47FFE8' } }, 3000)
+                        }}
+                        id={`welcome-${u.id}`}
+                        style={{ padding: '6px 14px', background: 'none', border: '1px solid #47FFE844', borderRadius: 3, fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+                        WELCOME EMAIL
+                      </button>
                     </>
                   )}
                 </div>
