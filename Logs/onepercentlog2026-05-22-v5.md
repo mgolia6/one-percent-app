@@ -68,3 +68,14 @@
 - **GitHub:** Git CLI via bash, token in project instructions (expires ~Aug 17 2026)
 - **Vercel:** MCP connected — use for runtime logs if needed
 - **Google Drive:** MCP connected — Matthew exports GoDaddy DNS zone files here for review
+
+---
+
+## Addendum — Feature Added to Backlog
+
+### Lesson Reminder Email
+- When a tester starts a lesson, fire a contextual reminder email tied to that lesson's content
+- Not a generic "new lesson" ping — pulls from the entry's actual asks/practice prompts
+- Goal: reinforce application, not just consumption
+- Fires at lesson start (not a day after)
+- Build out spec next session before implementation
