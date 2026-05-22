@@ -179,6 +179,8 @@ export default function EntryPage() {
 
   const handleComplete = async ({ score, timeToQuiz, answers }) => {
     if (!user) return
+    // Guard: only write first attempt — don't overwrite if record already exists
+    if (userStats?.answers) return
     await supabase.from('completions').upsert({
       user_id: user.id, entry_number: entryId, score, time_to_quiz: timeToQuiz, answers,
       completed_at: new Date().toISOString()
