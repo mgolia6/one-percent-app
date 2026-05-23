@@ -1,6 +1,6 @@
 # One Percent — Concept Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: May 21, 2026 — Entry 019 generated (VL.3 Nominalization). Next: SC (Sales Craft, slot 4)
+Last updated: May 23, 2026 — Entry 020 generated (NC.2 Meditation and the Brain, backfill). Next: SC.4.1 (standard rotation resumes)
 
 This is the standing candidate list. Claude reads this before every generation, cross-references against the search signal, marks used concepts, and adds new candidates as they surface.
 
@@ -174,7 +174,7 @@ Target library: 365 entries (~40 full cycles)
 | Negative utilitarianism | Minimize suffering rather than maximize happiness — and why that framing changes everything. | candidate |
 | Kairos vs. Chronos | Greek distinction between clock time and opportune/meaningful time. Relevant to how we think about timing, urgency, and readiness. | candidate |
 | Eudaimonia | Aristotelian flourishing — not pleasure, but living in accordance with your highest nature. Foundational concept, broadly accessible. | candidate |
-| Meditation / Contemplative practice | The philosophy and neuroscience of deliberate mental stillness. Sits at the intersection of PH and NC — could work in either category. Matthew flagged May 20, 2026. | candidate |
+| Meditation / Contemplative practice | The philosophy and neuroscience of deliberate mental stillness. Sits at the intersection of PH and NC — could work in either category. Matthew flagged May 20, 2026. | **used — NC.2** |
 
 ---
 
