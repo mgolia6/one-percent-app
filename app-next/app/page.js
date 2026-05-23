@@ -1023,7 +1023,7 @@ export default function HomePage() {
                   {completed && <span style={{ fontSize: 11, color: accent, fontWeight: 600 }}>{comp.score}/3</span>}
                   {!unlocked && <span style={{ fontSize: 10, color: '#333' }}>🔒</span>}
                   {unlocked && !completed && <span style={{ fontSize: 10, color: accent, letterSpacing: '0.08em' }}>START →</span>}
-                  {completed && <span style={{ fontSize: 10, color: '#444', letterSpacing: '0.08em' }}>REVIEW →</span>}
+                  {completed && <span style={{ fontSize: 10, color: '#888', letterSpacing: '0.08em' }}>REVIEW →</span>}
                 </div>
               </div>
             )

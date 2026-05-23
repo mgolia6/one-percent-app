@@ -508,7 +508,7 @@ export default function AdminPage() {
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={refreshAll} disabled={refreshing} style={{ background: 'none', border: '1px solid #47FFE833', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 500 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
-            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #33333366', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #33333366', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#aaa', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
           </div>
         </div>
 

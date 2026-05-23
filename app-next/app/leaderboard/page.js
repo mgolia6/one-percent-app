@@ -264,7 +264,7 @@ export default function LeaderboardPage() {
             <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
             <span style={{ fontSize: 9, background: '#1a1a1a', color: accentColor, border: `1px solid ${accentColor}44`, borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600, transition: 'color 0.2s, border-color 0.2s' }}>LEADERBOARD</span>
           </div>
-          <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#aaa', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
         </div>
 
         {/* Your rank callout */}
