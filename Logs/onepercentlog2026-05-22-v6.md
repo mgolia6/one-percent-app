@@ -178,3 +178,25 @@ Key points:
 | send-weekly-wrap | 11:00 UTC daily | Week recap email |
 | send-daily-reminder | 12:00 UTC daily | Come back nudge |
 | send-practice-reminder | Every hour | 6hr post-completion practice nudge |
+
+---
+
+## Addendum — Next Session Items (End of Session)
+
+### Zero-Completion Edge Case — Not Yet Built
+- Weekly wrap in-app modal currently fires even if user has zero completions that week
+- Weekly wrap email already skips zero-completion users (good)
+- Need to gate the in-app modal the same way — if no completions, don't show wrap
+- For Andrew and Landon (never activated): they should get a re-engagement experience instead of a wrap of nothing
+- Define what that re-engagement looks like next session before building
+- Log this as ISSUE-004
+
+### Practice Reminder Email Test
+- Matthew's signup_date is 1/1 — weekly wrap will trigger naturally on next entry load
+- Practice reminder will fire 6hrs after next completion
+- No manual test needed — will fire in the wild
+
+### Weekly Wrap Modal — No-Completion Gate
+- Add: if weekComps.length === 0, don't setShowWeeklyWrap(true)
+- Instead: consider a "you haven't started yet" nudge modal or just skip entirely
+- Decide next session
