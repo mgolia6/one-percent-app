@@ -280,3 +280,19 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 - Smart send: skip if user already completed today's entry
 - **Near end of beta: add `email_reminders boolean default true` to `profiles` table + unsubscribe link in footer** — CAN-SPAM requirement before any public launch
 - Future: `phone` column on `profiles` for SMS via Twilio
+
+---
+
+## Platform Upgrade Notes — May 23, 2026
+
+Captured from Matthew's session notes.
+
+| # | Item | Notes |
+|---|------|-------|
+| PU-001 | Admin portal library — fix loading/refresh issue | "hurting and refresh" — likely a data fetch or state issue |
+| PU-002 | Weekly survey — update notifications section | Unclear scope — needs clarification next session |
+| PU-003 | Admin — add progress report section | New tab or tile in admin dashboard |
+| PU-004 | Leaderboard — trophy emoji next to heading | Simple UI tweak |
+| PU-005 | Profile — restructure to 3 tabs | Suggested: Progress, Badges, Info (topics move to Progress tab, personal info to Info tab) |
+| PU-006 | Admin users section — expandable cards | Collapse by default, expand to reveal action buttons — prevents accidental clicks |
+
