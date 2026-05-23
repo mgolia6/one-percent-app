@@ -151,3 +151,30 @@ Key points:
 - Claude should always search before saying something "wasn't discussed"
 - Search is keyword-based, not perfect recall — explicit "check past chats for X" triggers a deliberate search
 - This does NOT work in standard Claude outside of a Project context
+
+---
+
+## Addendum — Email & Wrap System Built
+
+### Practice Reminder Email
+- `reminder_sent` boolean added to `completions` table
+- `send-practice-reminder` edge function deployed — fires 6hrs after completion, pulls `morning_challenge` from entry JSON, sends personalized email
+- pg_cron scheduled hourly (`0 * * * *`)
+- All 10 existing completions marked `reminder_sent = true` to prevent retroactive sends
+- Subject: "You learned [Concept] today. Did you try it?"
+
+### Weekly Wrap
+- `WeeklyWrapModal` component added to `entry/[id]/page.js`
+- Shows each entry completed that week: category color, concept, hook, quiz score
+- Fires before weekly check-in modal — dismiss wrap → check-in triggers
+- `send-weekly-wrap` edge function deployed — runs daily at 11:00 UTC
+- Checks who hit day 7/14/21 boundary, fetches entry metadata, sends recap email
+- Subject: "Week X wrap — N concepts in the vault"
+- pg_cron scheduled daily at 11:00 UTC
+
+### Cron Schedule (full)
+| Job | Schedule | Purpose |
+|---|---|---|
+| send-weekly-wrap | 11:00 UTC daily | Week recap email |
+| send-daily-reminder | 12:00 UTC daily | Come back nudge |
+| send-practice-reminder | Every hour | 6hr post-completion practice nudge |
