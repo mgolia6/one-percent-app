@@ -522,7 +522,7 @@ function WeeklySurveyModal({ userId, weekNumber, onClose }) {
                 <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 4 }}>How's it landing?</div>
                 <div style={{ fontSize: 12, color: '#555', lineHeight: 1.5 }}>Don't be nice — be useful. This shapes what's next.</div>
               </div>
-              <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#444', fontSize: 20, cursor: 'pointer', padding: '0 0 0 16px', lineHeight: 1 }}>×</button>
+
             </div>
 
             <WkSection title="USAGE" />
@@ -557,10 +557,9 @@ function WeeklySurveyModal({ userId, weekNumber, onClose }) {
             <WkOpenText label="WHAT WOULD MAKE YOU OPEN THE APP MORE CONSISTENTLY?" value={openMore} onChange={setOpenMore} placeholder="Be specific." />
             <WkOpenText label="ANYTHING ELSE?" value={anythingElse} onChange={setAnythingElse} placeholder="Optional." />
 
-            <div style={{ marginTop: 8, display: 'flex', gap: 8 }}>
-              <button onClick={onClose} style={{ padding: '12px 20px', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#444', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>SKIP</button>
+            <div style={{ marginTop: 8 }}>
               <button onClick={submit} disabled={!coreReady || submitting} style={{
-                flex: 1, padding: '12px 0', background: coreReady ? '#47FFE8' : '#1a1a1a',
+                width: '100%', padding: '12px 0', background: coreReady ? '#47FFE8' : '#1a1a1a',
                 border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600,
                 color: '#0a0a0a', cursor: coreReady ? 'pointer' : 'not-allowed',
                 letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1,
