@@ -7,6 +7,33 @@ import { TOTAL_ENTRIES } from '@/lib/config'
 import { isUnlocked } from '@/lib/unlock'
 import EntryViewer from '@/components/EntryViewer'
 
+function ReengagementModal({ onClose, onStart }) {
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 12, padding: 40, maxWidth: 400, width: '100%', textAlign: 'center' }}>
+        <div style={{ fontSize: 32, marginBottom: 16 }}>👋</div>
+        <div style={{ fontSize: 13, color: '#888', letterSpacing: '0.15em', fontFamily: "'Inter',sans-serif", marginBottom: 12 }}>WEEK ONE CHECK-IN</div>
+        <div style={{ fontSize: 22, color: '#fff', fontFamily: "'Inter',sans-serif", fontWeight: 600, marginBottom: 16, lineHeight: 1.3 }}>You haven't started yet.</div>
+        <div style={{ fontSize: 14, color: '#666', fontFamily: "'Inter',sans-serif", lineHeight: 1.6, marginBottom: 32 }}>
+          That's okay — but the vault's sitting empty. Entry 001 takes about 5 minutes. Start there.
+        </div>
+        <button
+          onClick={onStart}
+          style={{ background: '#47FFE8', color: '#000', border: 'none', borderRadius: 8, padding: '14px 32px', fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", cursor: 'pointer', width: '100%', marginBottom: 12 }}
+        >
+          START ENTRY 001
+        </button>
+        <button
+          onClick={onClose}
+          style={{ background: 'none', border: 'none', color: '#444', fontSize: 12, fontFamily: "'Inter',sans-serif", cursor: 'pointer', letterSpacing: '0.08em' }}
+        >
+          MAYBE LATER
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function WeeklyWrapModal({ userId, weekEntries, onClose }) {
   const CATEGORY_COLORS = {
     'AI': '#47FFE8',
@@ -173,6 +200,7 @@ export default function EntryPage() {
   const [error, setError] = useState(null)
   const [showWeeklyFeedback, setShowWeeklyFeedback] = useState(false)
   const [showWeeklyWrap, setShowWeeklyWrap] = useState(false)
+  const [showReengagement, setShowReengagement] = useState(false)
   const [weekEntries, setWeekEntries] = useState([])
   const [showFeedbackOverlay, setShowFeedbackOverlay] = useState(false)
   const [feedbackAccent, setFeedbackAccent] = useState('#47FFE8')
@@ -232,8 +260,12 @@ export default function EntryPage() {
               } catch (_) {}
             }
             if (!cancelled) {
-              setWeekEntries(entries)
-              setShowWeeklyWrap(true)
+              if (entries.length === 0) {
+                setShowReengagement(true)
+              } else {
+                setWeekEntries(entries)
+                setShowWeeklyWrap(true)
+              }
             }
           }
         }
@@ -303,6 +335,7 @@ export default function EntryPage() {
     <div>
       {showWeeklyWrap && <WeeklyWrapModal userId={user?.id} weekEntries={weekEntries} onClose={() => { setShowWeeklyWrap(false); setShowWeeklyFeedback(true) }} />}
       {showWeeklyFeedback && <WeeklyFeedbackModal userId={user?.id} onClose={() => setShowWeeklyFeedback(false)} />}
+      {showReengagement && <ReengagementModal onClose={() => setShowReengagement(false)} onStart={() => { setShowReengagement(false); router.push('/entry/1') }} />}
       <div style={{ position: 'sticky', top: 0, zIndex: 20, background: '#0A0A0A', borderBottom: '1px solid #141414' }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px' }}>
           <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, color: '#555', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", padding: 0 }}>

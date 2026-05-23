@@ -828,7 +828,8 @@ export default function HomePage() {
       {/* Welcome overlay */}
       {showWelcome && (() => {
         const { line } = getDailyGreeting(profile?.name)
-        const fullText = `Welcome back, ${profile?.name || 'there'}.`
+        const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : 'there')
+        const fullText = `Welcome back, ${firstName}.`
         return (
           <WelcomeOverlay
             fullText={fullText}
