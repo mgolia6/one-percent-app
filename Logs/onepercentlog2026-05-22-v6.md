@@ -139,3 +139,15 @@ These were discussed in an earlier session (chat: b66e8f50) but the session wrap
 - **GitHub:** Git CLI via bash, token in project instructions (expires ~Aug 17 2026)
 - **Vercel:** MCP connected
 - **Google Drive:** MCP connected
+
+---
+
+## Addendum — Claude Project Cross-Chat Capability
+
+Matthew confirmed he wasn't aware that Claude can search past conversations within this Project. Added to instructions (v1_28).
+
+Key points:
+- We are in a Claude Project — Claude can search prior chats via `conversation_search`
+- Claude should always search before saying something "wasn't discussed"
+- Search is keyword-based, not perfect recall — explicit "check past chats for X" triggers a deliberate search
+- This does NOT work in standard Claude outside of a Project context
