@@ -75,7 +75,8 @@
 
 ## Workflow Notes
 
-- Instructions file: `Directions/onepercentinstructions-v1_29.md` (current)
-- Backlog: `Backlog/onepercentbacklog.md`
+- Instructions file: `Directions/onepercentinstructions-v1_30.md` (current)
+- Content backlog: `Backlog/onepercentbacklog.md`
+- Product backlog: `Backlog/onepercentproductbacklog.md`
 - Session logs: `Logs/`
 - **Read order at session start:** This file → latest log → begin work
