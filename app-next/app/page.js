@@ -953,6 +953,7 @@ export default function HomePage() {
               const activeColor = isSystemTab ? '#fff' : categoryColor
               const restColor = isSystemTab ? '#bbb' : categoryColor
 
+
               return (
                 <button
                   key={cat}
@@ -971,7 +972,7 @@ export default function HomePage() {
                     fontFamily: "'Inter',sans-serif",
                     whiteSpace: 'nowrap',
                     flexShrink: 0,
-                    opacity: isSelected ? 1 : 0.5,
+                    opacity: isSelected ? 1 : 0.75,
                     transition: 'background 0.15s ease, color 0.15s ease, opacity 0.15s ease',
                   }}
                 >
