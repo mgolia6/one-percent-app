@@ -57,3 +57,26 @@ Log reviewed · Last: VL.3 / Nominalization (019) · Next: NC (backfill per Matt
 - ISSUE-002 — Weekly trigger broken for backdated signups
 - Zero-completion gate on weekly wrap in-app modal
 - Admin button states audit
+
+---
+
+## Wrap-Up Additions
+
+**PU-001 clarified:** Library page refresh button — broken/unexpected behavior. Not admin portal.
+
+**HITL Icon:** Went through 9 iterations. v9 approved as "works for now" — circle with human silhouette inside, directional arrowhead on circle. Saved as `hitl-icon-v9.jsx`. Next step: integrate into app (entry card badge + entry viewer). Commit to repo next session.
+
+**Resend API key:** Matthew confirmed key was already in memory — no new exposure.
+
+**Instructions updated to v1_29:** Publish gate added. No commit before verification. Dead Drop one claim at a time. Human sign-off required on verify receipt before push.
+
+**Entry 020 verified by Matthew:** 2 of 3 claims confirmed. AUC numbers removed (unverified). Human sign-off logged in verify receipt.
+
+**Platform upgrade notes:** PU-001 through PU-006 added to backlog.
+
+## Next Session Priorities
+1. Integrate HITL icon (v9) into app — entry card + entry viewer
+2. PU-001 — Library refresh button fix
+3. PU-006 — Admin users expandable cards
+4. SC.4.1 — Next entry (Mirroring, standard rotation resumes)
+5. Remaining PU items per capacity

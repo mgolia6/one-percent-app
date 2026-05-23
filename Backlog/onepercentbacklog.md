@@ -289,7 +289,7 @@ Captured from Matthew's session notes.
 
 | # | Item | Notes |
 |---|------|-------|
-| PU-001 | Admin portal library — fix loading/refresh issue | "hurting and refresh" — likely a data fetch or state issue |
+| PU-001 | Library page — fix loading/refresh button | Refresh button on library page is broken or behaving unexpectedly |
 | PU-002 | Weekly survey — update notifications section | Unclear scope — needs clarification next session |
 | PU-003 | Admin — add progress report section | New tab or tile in admin dashboard |
 | PU-004 | Leaderboard — trophy emoji next to heading | Simple UI tweak |
