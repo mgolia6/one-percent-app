@@ -818,7 +818,7 @@ export default function HomePage() {
     <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
-      {showWeeklySurvey && <WeeklySurveyModal userId={user?.id} weekNumber={weeklyWeekNumber} onClose={() => setShowWeeklySurvey(false)} />}
+      {showWeeklySurvey && <WeeklySurveyModal userId={user?.id} weekNumber={weeklyWeekNumber} onClose={async () => { setShowWeeklySurvey(false); await supabase.from('profiles').update({ last_weekly_survey_day: weeklyWeekNumber * 7 }).eq('id', user.id) }} />}
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
