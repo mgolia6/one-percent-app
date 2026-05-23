@@ -7,6 +7,66 @@ import { TOTAL_ENTRIES } from '@/lib/config'
 import { isUnlocked } from '@/lib/unlock'
 import EntryViewer from '@/components/EntryViewer'
 
+function WeeklyWrapModal({ userId, weekEntries, onClose }) {
+  const CATEGORY_COLORS = {
+    'AI': '#47FFE8',
+    'Sales Craft': '#FFE047',
+    'Vocab & Language': '#FF47A3',
+    'Mental Models': '#47A3FF',
+    'Philosophy': '#A347FF',
+    'Neuroscience & Cognition': '#FF8347',
+    'Communication': '#47FF83',
+  }
+
+  const weekNum = Math.ceil(weekEntries.length > 0 ? 1 : 1)
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24, overflowY: 'auto' }}>
+      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 440, width: '100%', margin: 'auto' }}>
+        <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY WRAP</div>
+        <div style={{ fontSize: 22, color: '#fff', fontWeight: 600, marginBottom: 6, lineHeight: 1.3 }}>Here's what you learned this week.</div>
+        <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>
+          {weekEntries.length} concept{weekEntries.length !== 1 ? 's' : ''}. One percent at a time.
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
+          {weekEntries.map((e, i) => {
+            const accent = CATEGORY_COLORS[e.category] || '#47FFE8'
+            return (
+              <div key={i} style={{ background: '#0a0a0a', border: '1px solid #1a1a1a', borderLeft: `3px solid ${accent}`, borderRadius: 4, padding: '14px 16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
+                  <div>
+                    <div style={{ fontSize: 11, color: accent, letterSpacing: '0.08em', marginBottom: 4 }}>{e.category}</div>
+                    <div style={{ fontSize: 14, color: '#eee', fontWeight: 500 }}>{e.concept}</div>
+                    <div style={{ fontSize: 12, color: '#555', marginTop: 4, lineHeight: 1.5 }}>{e.hook}</div>
+                  </div>
+                  {e.score !== null && (
+                    <div style={{ flexShrink: 0, fontSize: 11, color: '#444', textAlign: 'right' }}>
+                      <div style={{ fontSize: 16, color: e.score >= 2 ? '#4ade80' : '#f87171', fontWeight: 600 }}>{e.score}/3</div>
+                      <div style={{ fontSize: 9, letterSpacing: '0.08em', color: '#444', marginTop: 2 }}>QUIZ</div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        <div style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginBottom: 24, paddingTop: 16, borderTop: '1px solid #1a1a1a' }}>
+          Every concept you learned this week is a tool you can use today. The reps compound.
+        </div>
+
+        <button
+          onClick={onClose}
+          style={{ width: '100%', padding: '13px 0', background: '#f0f0f0', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 700, color: '#0a0a0a', cursor: 'pointer', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif" }}
+        >
+          ON TO WEEK {Math.floor(weekEntries.length / 7) + 2} →
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function WeeklyFeedbackModal({ userId, onClose }) {
   const [ratings, setRatings] = useState({ clarity: 0, relevance: 0, quiz: 0 })
   const [wouldRecommend, setWouldRecommend] = useState(null)
@@ -112,6 +172,8 @@ export default function EntryPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [showWeeklyFeedback, setShowWeeklyFeedback] = useState(false)
+  const [showWeeklyWrap, setShowWeeklyWrap] = useState(false)
+  const [weekEntries, setWeekEntries] = useState([])
   const [showFeedbackOverlay, setShowFeedbackOverlay] = useState(false)
   const [feedbackAccent, setFeedbackAccent] = useState('#47FFE8')
 
@@ -136,20 +198,43 @@ export default function EntryPage() {
         return
       }
 
-      // Check if weekly feedback is due (every 7 days from signup)
-      // Guard: if signup_date is missing, skip entirely
+      // Check if weekly wrap + feedback is due (every 7 days from signup)
       if (prof.signup_date) {
         const signupDate = new Date(prof.signup_date)
         const daysSinceSignup = Math.floor((Date.now() - signupDate) / 86400000)
-        // Fire on day 7, 14, 21... — must be past day 0 and on a 7-day boundary
         if (daysSinceSignup > 0 && daysSinceSignup % 7 === 0) {
-          // Check if weekly feedback already submitted in the last 7 days
           const sevenDaysAgo = new Date(Date.now() - 7 * 86400000)
           const { data: recentWeekly } = await supabase.from('feedback')
             .select('id').eq('user_id', session.user.id).eq('feedback_type', 'weekly')
             .gte('created_at', sevenDaysAgo.toISOString()).limit(1)
           if (!cancelled && (!recentWeekly || recentWeekly.length === 0)) {
-            setShowWeeklyFeedback(true)
+            // Load this week's completions for the wrap modal
+            const { data: weekComps } = await supabase.from('completions')
+              .select('entry_number, score')
+              .eq('user_id', session.user.id)
+              .gte('completed_at', sevenDaysAgo.toISOString())
+              .order('completed_at', { ascending: true })
+            // Fetch entry metadata for each completion
+            const entries = []
+            for (const comp of (weekComps || [])) {
+              try {
+                const entryNum = comp.entry_number.toString().padStart(3, '0')
+                const res = await fetch(`/entries/${entryNum}.json`)
+                if (res.ok) {
+                  const data = await res.json()
+                  entries.push({
+                    concept: data.concept,
+                    category: data.category,
+                    hook: data.morning?.hook || '',
+                    score: comp.score,
+                  })
+                }
+              } catch (_) {}
+            }
+            if (!cancelled) {
+              setWeekEntries(entries)
+              setShowWeeklyWrap(true)
+            }
           }
         }
       }
@@ -216,6 +301,7 @@ export default function EntryPage() {
 
   return (
     <div>
+      {showWeeklyWrap && <WeeklyWrapModal userId={user?.id} weekEntries={weekEntries} onClose={() => { setShowWeeklyWrap(false); setShowWeeklyFeedback(true) }} />}
       {showWeeklyFeedback && <WeeklyFeedbackModal userId={user?.id} onClose={() => setShowWeeklyFeedback(false)} />}
       <div style={{ position: 'sticky', top: 0, zIndex: 20, background: '#0A0A0A', borderBottom: '1px solid #141414' }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px' }}>
