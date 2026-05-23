@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { BookOpen, Lightbulb, Award } from 'lucide-react'
+import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
 
 function Celebration({ score, accent, onDone }) {
   const canvasRef = useRef(null)
@@ -273,9 +273,9 @@ const THEMES = {
     surface: 'rgba(255,255,255,0.06)',
     surfaceBorder: 'rgba(255,255,255,0.08)',
     text: '#f0f2f5',
-    textMid: 'rgba(240,242,245,0.70)',
-    textDim: 'rgba(240,242,245,0.50)',
-    textFaint: 'rgba(240,242,245,0.30)',
+    textMid: 'rgba(240,242,245,0.85)',
+    textDim: 'rgba(240,242,245,0.65)',
+    textFaint: 'rgba(240,242,245,0.45)',
     border: 'rgba(255,255,255,0.07)',
     borderMid: 'rgba(255,255,255,0.1)',
     headerBg: 'rgba(34,37,46,0.92)',
@@ -290,9 +290,9 @@ const THEMES = {
     surface: 'rgba(255,255,255,0.05)',
     surfaceBorder: 'rgba(255,255,255,0.07)',
     text: '#e8eaf0',
-    textMid: 'rgba(232,234,240,0.70)',
-    textDim: 'rgba(232,234,240,0.50)',
-    textFaint: 'rgba(232,234,240,0.30)',
+    textMid: 'rgba(232,234,240,0.85)',
+    textDim: 'rgba(232,234,240,0.65)',
+    textFaint: 'rgba(232,234,240,0.45)',
     border: 'rgba(255,255,255,0.06)',
     borderMid: 'rgba(255,255,255,0.09)',
     headerBg: 'rgba(22,24,32,0.95)',
@@ -307,9 +307,9 @@ const THEMES = {
     surface: 'rgba(255,255,255,0.04)',
     surfaceBorder: 'rgba(255,255,255,0.06)',
     text: '#e0e2e8',
-    textMid: 'rgba(224,226,232,0.70)',
-    textDim: 'rgba(224,226,232,0.50)',
-    textFaint: 'rgba(224,226,232,0.30)',
+    textMid: 'rgba(224,226,232,0.85)',
+    textDim: 'rgba(224,226,232,0.65)',
+    textFaint: 'rgba(224,226,232,0.45)',
     border: 'rgba(255,255,255,0.05)',
     borderMid: 'rgba(255,255,255,0.08)',
     headerBg: 'rgba(10,10,10,0.97)',
@@ -426,7 +426,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           <span style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', fontWeight: 500, transition: 'color 0.4s ease' }}>#{entry.entry}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          {userStats?.streak > 0 && <span style={{ fontSize: 11, color: T.textMid, fontWeight: 500, transition: 'color 0.4s ease' }}>🔥 {userStats.streak}</span>}
+          {userStats?.streak > 0 && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, fontSize: 11, color: T.textMid, fontWeight: 500, transition: 'color 0.4s ease' }}><Flame size={11} strokeWidth={1.5} />{userStats.streak}</span>}
           <span style={{ fontSize: 9, letterSpacing: '0.12em', padding: '4px 9px', borderRadius: 3, fontWeight: 600, background: ACCENT, color: '#0A0A0A' }}>{entry.categoryTag}</span>
         </div>
       </div>

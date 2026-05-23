@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { Paperclip, Flame } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 
@@ -204,7 +205,7 @@ function FeedbackModal({ userId, onClose }) {
 
             <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
               <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
-              <span style={{ fontSize: 11, color: '#555', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>📎 ATTACH SCREENSHOT</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
               {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
             </label>
 
@@ -298,7 +299,7 @@ function BugModal({ userId, onClose }) {
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
       <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%' }}>
         {done ? (
-          <div style={{ textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em' }}>REPORTED — THANKS 🐛</div>
+          <div style={{ textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em' }}>REPORTED — THANKS</div>
         ) : (
           <>
             <div style={{ fontSize: 11, letterSpacing: '0.15em', color: '#555', marginBottom: 8, fontWeight: 600 }}>REPORT A BUG</div>
@@ -324,7 +325,7 @@ function BugModal({ userId, onClose }) {
 
             <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
               <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
-              <span style={{ fontSize: 11, color: '#555', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>📎 ATTACH SCREENSHOT</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
               {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
             </label>
 

@@ -11,7 +11,7 @@ function ReengagementModal({ onClose, onStart }) {
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
       <div style={{ background: '#111', border: '1px solid #222', borderRadius: 12, padding: 40, maxWidth: 400, width: '100%', textAlign: 'center' }}>
-        <div style={{ fontSize: 32, marginBottom: 16 }}>👋</div>
+        
         <div style={{ fontSize: 13, color: '#888', letterSpacing: '0.15em', fontFamily: "'Inter',sans-serif", marginBottom: 12 }}>WEEK ONE CHECK-IN</div>
         <div style={{ fontSize: 22, color: '#fff', fontFamily: "'Inter',sans-serif", fontWeight: 600, marginBottom: 16, lineHeight: 1.3 }}>You haven't started yet.</div>
         <div style={{ fontSize: 14, color: '#666', fontFamily: "'Inter',sans-serif", lineHeight: 1.6, marginBottom: 32 }}>

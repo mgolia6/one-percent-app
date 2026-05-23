@@ -1,4 +1,5 @@
 'use client'
+import { Flame, User } from 'lucide-react'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -74,9 +75,9 @@ function computeScores(users) {
 }
 
 function Medal({ rank }) {
-  if (rank === 1) return <span style={{ fontSize: 16 }}>🥇</span>
-  if (rank === 2) return <span style={{ fontSize: 16 }}>🥈</span>
-  if (rank === 3) return <span style={{ fontSize: 16 }}>🥉</span>
+  if (rank === 1) return <span style={{ fontSize: 13, fontWeight: 700, color: '#E8FF47', letterSpacing: '-0.01em' }}>#1</span>
+  if (rank === 2) return <span style={{ fontSize: 13, fontWeight: 700, color: '#aaa', letterSpacing: '-0.01em' }}>#2</span>
+  if (rank === 3) return <span style={{ fontSize: 13, fontWeight: 700, color: '#FF8C47', letterSpacing: '-0.01em' }}>#3</span>
   return <span style={{ fontSize: 12, color: '#555', fontWeight: 600, minWidth: 20, textAlign: 'center' }}>#{rank}</span>
 }
 
@@ -346,7 +347,7 @@ export default function LeaderboardPage() {
                     </div>
                     <div style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: 10 }}>
                       <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: '#1a1a1a', border: '1px solid #222', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12 }}>
-                        {u.avatar_url ? <img src={u.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '👤'}
+                        {u.avatar_url ? <img src={u.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <User size={16} strokeWidth={1.5} color='#555' />}
                       </div>
                       <div style={{ minWidth: 0 }}>
                         <div style={{ fontSize: 13, fontWeight: isYou ? 600 : 400, color: isYou ? '#fff' : '#ccc', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -354,7 +355,7 @@ export default function LeaderboardPage() {
                         </div>
                         <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
                           <span style={{ fontSize: 10, color: '#444' }}>{s.completed} lessons</span>
-                          {metric !== 'streak' && <span style={{ fontSize: 10, color: '#444' }}>🔥 {s.streak}</span>}
+                          {metric !== 'streak' && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 10, color: '#666' }}><Flame size={10} strokeWidth={1.5} />{s.streak}</span>}
                           {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
                         </div>
                       </div>

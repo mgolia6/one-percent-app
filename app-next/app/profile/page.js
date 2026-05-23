@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem, User } from 'lucide-react'
 
 const CATEGORY_COLORS = {
   'AI': '#47FFE8',
@@ -38,25 +39,25 @@ const ENTRIES = [
 
 const BADGES = [
   // Founder
-  { id: 'founder', label: "Founder's Club", desc: 'Beta tester from day one', emoji: '🏴', color: '#E8FF47', check: ({ profile }) => !!profile?.onboarding_complete, progress: null },
+  { id: 'founder', label: "Founder's Club", desc: 'Beta tester from day one', icon: 'Shield', color: '#E8FF47', check: ({ profile }) => !!profile?.onboarding_complete, progress: null },
   // First entry
-  { id: 'first_entry', label: 'First Step', desc: 'Complete your first entry', emoji: '👣', color: '#47FFE8', check: ({ completedCount }) => completedCount >= 1, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 1), max: 1 }) },
+  { id: 'first_entry', label: 'First Step', desc: 'Complete your first entry', icon: 'Footprints', color: '#47FFE8', check: ({ completedCount }) => completedCount >= 1, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 1), max: 1 }) },
   // First 3/3
-  { id: 'perfect_score', label: 'Perfect Score', desc: 'Get 3/3 on a quiz', emoji: '🎯', color: '#47FFE8', check: ({ completions }) => Object.values(completions).some(c => c.score === 3), progress: null },
+  { id: 'perfect_score', label: 'Perfect Score', desc: 'Get 3/3 on a quiz', icon: 'Target', color: '#47FFE8', check: ({ completions }) => Object.values(completions).some(c => c.score === 3), progress: null },
   // 10 entries
-  { id: 'ten_entries', label: 'Ten Deep', desc: 'Complete 10 entries', emoji: '🔟', color: '#C847FF', check: ({ completedCount }) => completedCount >= 10, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 10), max: 10 }) },
+  { id: 'ten_entries', label: 'Ten Deep', desc: 'Complete 10 entries', icon: 'Layers', color: '#C847FF', check: ({ completedCount }) => completedCount >= 10, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 10), max: 10 }) },
   // 25 entries
-  { id: 'twenty_five', label: 'Quarter Century', desc: 'Complete 25 entries', emoji: '⚡', color: '#C847FF', check: ({ completedCount }) => completedCount >= 25, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 25), max: 25 }) },
+  { id: 'twenty_five', label: 'Quarter Century', desc: 'Complete 25 entries', icon: 'Zap', color: '#C847FF', check: ({ completedCount }) => completedCount >= 25, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 25), max: 25 }) },
   // All 7 categories
-  { id: 'all_cats', label: 'Full Spectrum', desc: 'Complete at least one entry in every category', emoji: '🌈', color: '#FF8C47', check: ({ catBreakdown }) => Object.keys(catBreakdown).length >= 7, progress: ({ catBreakdown }) => ({ value: Object.keys(catBreakdown).length, max: 7 }) },
+  { id: 'all_cats', label: 'Full Spectrum', desc: 'Complete at least one entry in every category', icon: 'Grid3X3', color: '#FF8C47', check: ({ catBreakdown }) => Object.keys(catBreakdown).length >= 7, progress: ({ catBreakdown }) => ({ value: Object.keys(catBreakdown).length, max: 7 }) },
   // 3-day streak
-  { id: 'streak_3', label: '3-Day Streak', desc: 'Keep a 3-day streak', emoji: '🔥', color: '#FF8C47', check: ({ profile }) => (profile?.longest_streak || 0) >= 3, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 3), max: 3 }) },
+  { id: 'streak_3', label: '3-Day Streak', desc: 'Keep a 3-day streak', icon: 'Flame', color: '#FF8C47', check: ({ profile }) => (profile?.longest_streak || 0) >= 3, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 3), max: 3 }) },
   // 7-day streak
-  { id: 'streak_7', label: 'Week Strong', desc: 'Keep a 7-day streak', emoji: '🔥', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 7, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 7), max: 7 }) },
+  { id: 'streak_7', label: 'Week Strong', desc: 'Keep a 7-day streak', icon: 'Flame', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 7, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 7), max: 7 }) },
   // 30-day streak
-  { id: 'streak_30', label: 'Monthly', desc: 'Keep a 30-day streak', emoji: '🔥', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 30, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 30), max: 30 }) },
+  { id: 'streak_30', label: 'Monthly', desc: 'Keep a 30-day streak', icon: 'Flame', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 30, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 30), max: 30 }) },
   // Perfect week
-  { id: 'perfect_week', label: 'Perfect Week', desc: '7 entries in 7 days', emoji: '💎', color: '#47C8FF', check: ({ completedCount }) => completedCount >= 7, progress: null },
+  { id: 'perfect_week', label: 'Perfect Week', desc: '7 entries in 7 days', icon: 'Gem', color: '#47C8FF', check: ({ completedCount }) => completedCount >= 7, progress: null },
 ]
 
 function StatCard({ label, value }) {
@@ -98,7 +99,16 @@ function BadgeCard({ badge, earned, progressData }) {
       transition: 'opacity 0.2s',
     }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-        <div style={{ fontSize: 22, lineHeight: 1, filter: earned ? 'none' : 'grayscale(1)' }}>{badge.emoji}</div>
+        <div style={{ width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', color: earned ? badge.color : '#444', flexShrink: 0 }}>
+          {badge.icon === 'Shield' && <Shield size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Footprints' && <Footprints size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Target' && <Target size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Layers' && <Layers size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Zap' && <Zap size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Grid3X3' && <Grid3X3 size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Flame' && <Flame size={20} strokeWidth={1.5} />}
+          {badge.icon === 'Gem' && <Gem size={20} strokeWidth={1.5} />}
+        </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: earned ? '#fff' : '#555', letterSpacing: '0.01em' }}>{badge.label}</div>
