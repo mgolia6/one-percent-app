@@ -62,7 +62,7 @@ const BADGES = [
 function StatCard({ label, value }) {
   return (
     <div style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 8, padding: '16px 14px', flex: 1, minWidth: 0 }}>
-      <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.1em', marginBottom: 6, fontWeight: 500 }}>{label}</div>
+      <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', marginBottom: 6, fontWeight: 500 }}>{label}</div>
       <div style={{ fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>{value}</div>
     </div>
   )
@@ -78,7 +78,7 @@ function CategoryBar({ category, completed, total }) {
           <div style={{ width: 7, height: 7, borderRadius: '50%', background: color, flexShrink: 0 }} />
           <div style={{ fontSize: 11, color: '#aaa', letterSpacing: '0.02em' }}>{category}</div>
         </div>
-        <div style={{ fontSize: 11, color: '#555' }}>{completed}/{total}</div>
+        <div style={{ fontSize: 11, color: '#888' }}>{completed}/{total}</div>
       </div>
       <div style={{ height: 3, background: '#1a1a1a', borderRadius: 2, overflow: 'hidden' }}>
         <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 2, transition: 'width 0.4s ease' }} />
@@ -104,12 +104,12 @@ function BadgeCard({ badge, earned, progressData }) {
             <div style={{ fontSize: 12, fontWeight: 600, color: earned ? '#fff' : '#555', letterSpacing: '0.01em' }}>{badge.label}</div>
             {earned && <div style={{ fontSize: 9, background: badge.color + '22', color: badge.color, borderRadius: 3, padding: '1px 5px', letterSpacing: '0.08em', fontWeight: 600 }}>EARNED</div>}
           </div>
-          <div style={{ fontSize: 11, color: '#555', lineHeight: 1.4 }}>{badge.desc}</div>
+          <div style={{ fontSize: 11, color: '#999', lineHeight: 1.4 }}>{badge.desc}</div>
           {!earned && progressData && (
             <div style={{ marginTop: 8 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                <div style={{ fontSize: 10, color: '#444' }}>{progressData.value}/{progressData.max}</div>
-                <div style={{ fontSize: 10, color: '#444' }}>{Math.round((progressData.value / progressData.max) * 100)}%</div>
+                <div style={{ fontSize: 10, color: '#777' }}>{progressData.value}/{progressData.max}</div>
+                <div style={{ fontSize: 10, color: '#777' }}>{Math.round((progressData.value / progressData.max) * 100)}%</div>
               </div>
               <div style={{ height: 2, background: '#1a1a1a', borderRadius: 1 }}>
                 <div style={{ height: '100%', width: `${(progressData.value / progressData.max) * 100}%`, background: badge.color, borderRadius: 1 }} />
@@ -235,7 +235,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ fontSize: 13, color: '#333', letterSpacing: '0.1em' }}>LOADING...</div>
+        <div style={{ fontSize: 13, color: '#888', letterSpacing: '0.1em' }}>LOADING...</div>
       </div>
     )
   }
@@ -260,7 +260,7 @@ export default function ProfilePage() {
       <div style={{ maxWidth: 520, margin: '0 auto', padding: '40px 24px 60px' }}>
 
         {/* Back */}
-        <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", marginBottom: 28 }}>
+        <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #1a1a1a', borderRadius: 3, padding: '6px 12px', fontSize: 10, color: '#aaa', cursor: 'pointer', letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", marginBottom: 28 }}>
           ← BACK
         </button>
 
@@ -278,7 +278,7 @@ export default function ProfilePage() {
           </div>
           <div>
             <div style={{ fontSize: 20, fontWeight: 600, color: '#fff', marginBottom: 2 }}>{profile.first_name || 'Beta Tester'}</div>
-            <div style={{ fontSize: 11, color: '#555' }}>Member since {memberSince}</div>
+            <div style={{ fontSize: 11, color: '#888' }}>Member since {memberSince}</div>
           </div>
         </div>
 
@@ -295,7 +295,7 @@ export default function ProfilePage() {
         {/* Category breakdown */}
         {touchedCats.length > 0 && (
           <div style={{ marginBottom: 28 }}>
-            <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 14 }}>CATEGORY PROGRESS</div>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 14 }}>CATEGORY PROGRESS</div>
             {Object.keys(catTotal).map(cat => (
               <CategoryBar key={cat} category={cat} completed={catBreakdown[cat] || 0} total={catTotal[cat]} />
             ))}
@@ -308,7 +308,7 @@ export default function ProfilePage() {
             <button key={t} onClick={() => setTab(t)} style={{
               flex: 1, padding: '8px 0', background: tab === t ? 'rgba(255,255,255,0.07)' : 'transparent',
               border: 'none', borderRadius: 4, fontSize: 10, fontWeight: 600,
-              color: tab === t ? '#fff' : '#555', cursor: 'pointer',
+              color: tab === t ? '#fff' : '#aaa', cursor: 'pointer',
               letterSpacing: '0.1em', fontFamily: "'Inter',sans-serif", textTransform: 'uppercase',
               transition: 'all 0.15s ease',
             }}>{t}</button>
@@ -324,7 +324,7 @@ export default function ProfilePage() {
               {uploadingAvatar ? 'UPLOADING...' : avatarUrl ? 'CHANGE PHOTO' : 'UPLOAD PHOTO'}
               <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleAvatarUpload} disabled={uploadingAvatar} style={{ display: 'none' }} />
             </label>
-            <div style={{ fontSize: 10, color: '#444', marginTop: -12, letterSpacing: '0.02em' }}>JPG, PNG or WebP · Max 2MB</div>
+            <div style={{ fontSize: 10, color: '#666', marginTop: -12, letterSpacing: '0.02em' }}>JPG, PNG or WebP · Max 2MB</div>
 
             {/* First Name */}
             <div>
@@ -342,7 +342,7 @@ export default function ProfilePage() {
             <div>
               <label style={{ display: 'block', fontSize: 11, color: '#888', letterSpacing: '0.08em', marginBottom: 8, fontWeight: 500 }}>EMAIL</label>
               <input type="email" value={email} readOnly style={{ width: '100%', background: '#0a0a0a', border: '1px solid #141414', borderRadius: 4, padding: '12px 14px', fontSize: 15, color: '#555', fontFamily: "'Inter',sans-serif", outline: 'none', cursor: 'not-allowed' }} />
-              <div style={{ fontSize: 11, color: '#444', marginTop: 6 }}>Email cannot be changed</div>
+              <div style={{ fontSize: 11, color: '#666', marginTop: 6 }}>Email cannot be changed</div>
             </div>
 
             {message && (
@@ -368,7 +368,7 @@ export default function ProfilePage() {
           <div>
             {earnedBadges.length > 0 && (
               <div style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 12 }}>EARNED · {earnedBadges.length}</div>
+                <div style={{ fontSize: 10, color: '#aaa', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 12 }}>EARNED · {earnedBadges.length}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {earnedBadges.map(b => <BadgeCard key={b.id} badge={b} earned={true} progressData={null} />)}
                 </div>
@@ -376,7 +376,7 @@ export default function ProfilePage() {
             )}
             {lockedBadges.length > 0 && (
               <div>
-                <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 12 }}>LOCKED · {lockedBadges.length}</div>
+                <div style={{ fontSize: 10, color: '#aaa', letterSpacing: '0.1em', fontWeight: 500, marginBottom: 12 }}>LOCKED · {lockedBadges.length}</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {lockedBadges.map(b => {
                     const progressData = b.progress ? b.progress(badgeCtx) : null
