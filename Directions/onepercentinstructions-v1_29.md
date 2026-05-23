@@ -78,6 +78,10 @@ Enhancements logged for future sessions. Not prioritized yet.
 | ENH-003 | Weekly quiz | Standalone quiz mode with no access to entry content. Tests retention across the week's concepts without re-reading. |
 | ENH-004 | Audio lessons | Text-to-speech or recorded audio for Morning Brief content. Users can listen instead of read. |
 | ENH-005 | Admin changelog UI | Simple write form in admin panel — title, version, description, publish toggle. So Matthew can add entries without touching Supabase directly. |
+| ENH-006 | User feedback & bug history | Let regular users view their own submitted feedback and bug reports. Currently insert-only — no read-back. Needs RLS read policy + UI surface (profile page likely). |
+| ENH-007 | Email allowlist for beta access | Closed beta gate — only pre-approved emails can sign in. Matthew adds emails to an allowlist before sending invites. Anyone not on the list gets blocked at auth, even if they have the URL. |
+| ENH-008 | Gate entry JSON behind auth | Move entries out of /public and serve via authenticated API. Currently anyone can read entry content without logging in. Post-beta, pre-launch priority. |
+| ENH-009 | Rate limiting on feedback & bug submissions | No throttling on feedback/bug report endpoints. Fine for closed beta with known testers — needs addressing before public launch. |
 
 ---
 
