@@ -132,6 +132,7 @@ const ENTRIES = [
   { entry: '017', editionId: 'SC.3.1', concept: 'Multi-Threading', category: 'Sales Craft' },
   { entry: '018', editionId: 'AI.3.1', concept: 'RAG (Retrieval-Augmented Generation)', category: 'AI' },
   { entry: '019', editionId: 'VL.3', concept: 'Nominalization', category: 'Vocab & Language' },
+  { entry: '020', editionId: 'NC.2', concept: 'Meditation and the Brain', category: 'Neuroscience & Cognition' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
