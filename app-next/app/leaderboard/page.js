@@ -300,7 +300,7 @@ export default function LeaderboardPage() {
                 <button key={m.id} onClick={() => setMetric(m.id)} style={{
                   background: active ? 'rgba(255,255,255,0.07)' : 'transparent',
                   border: 'none', borderRadius: 6, padding: '7px 11px',
-                  fontSize: 9, color: active ? mColor : '#888',
+                  fontSize: 9, color: active ? mColor : '#aaa',
                   cursor: 'pointer', letterSpacing: '0.08em',
                   fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap',
                   flexShrink: 0, fontWeight: active ? 600 : 400,

@@ -972,7 +972,7 @@ export default function HomePage() {
                     fontFamily: "'Inter',sans-serif",
                     whiteSpace: 'nowrap',
                     flexShrink: 0,
-                    opacity: isSelected ? 1 : 0.75,
+                    opacity: isSelected ? 1 : 0.9,
                     transition: 'background 0.15s ease, color 0.15s ease, opacity 0.15s ease',
                   }}
                 >
