@@ -10,7 +10,7 @@
 | v1.0–v1.22 | 2026-05-05 to 2026-05-20 | See v1.22 for full history |
 | v1.25 | 2026-05-20 | Changelog workflow added. About + Changelog pages added to app. Enhancement backlog seeded. Bug status column added. Action bar redesigned (dark pill). Tab system redesigned (dark pill, no float). Badge visibility fixed. Gap between nav and stats reduced. |
 | v1.26 | 2026-05-21 | Changelog description format: bullet points required. TOTAL_ENTRIES centralized in lib/config.js. |
-| v1.30 | 2026-05-23 | Session start optimized: State Snapshot file added (`State/onepercentstate.md`). Read order is now: state snapshot → latest log → begin. Wrap It Up Protocol updated to regenerate state snapshot at every session close. |
+| v1.30 | 2026-05-23 | Session start optimized: State Snapshot file added (`State/onepercentstate.md`). Read order is now: state snapshot → latest log → begin. Wrap It Up Protocol updated to regenerate state snapshot at every session close. Backlog split into content (`onepercentbacklog.md`) and product (`onepercentproductbacklog.md`). |
 
 ---
 
@@ -54,7 +54,7 @@ When Matthew says "Let's Wrap It Up":
 2. Insert it into Supabase `changelog` table with `published = false`
 3. Tell Matthew what it says — he approves or edits, then you flip `published = true`
 4. Commit session log to `Logs/`
-5. Update backlog if any concepts were added or consumed
+5. Update backlogs — content backlog if concepts were added or consumed; product backlog if issues, upgrades, or builds changed
 6. Write new instructions version if anything changed
 7. **Regenerate `State/onepercentstate.md`** — update all fields to reflect end-of-session state (last entry, next entry, open issues, priorities, approved builds)
 8. Push everything to GitHub
@@ -152,7 +152,9 @@ One Percent is building toward a beta launch. Target library: **365 entries** �
 one-percent-app/
 ├── Logs/
 ├── Directions/
-├── Backlog/onepercentbacklog.md
+├── Backlog/onepercentbacklog.md         — content candidates only
+├── Backlog/onepercentproductbacklog.md  — features, bugs, upgrades, infra
+├── State/onepercentstate.md             — session start snapshot (always current)
 ├── Archive-Original-JSX/
 ├── Editions/[NNN-CategorySlug-ConceptSlug]/
 └── app-next/

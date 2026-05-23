@@ -1,6 +1,8 @@
-# One Percent — Concept Backlog
+# One Percent — Content Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
 Last updated: May 23, 2026 — Entry 020 generated (NC.2 Meditation and the Brain, backfill). Next: SC.4.1 (standard rotation resumes)
+
+> **Content candidates only.** Features, bugs, platform upgrades, and infrastructure live in `Backlog/onepercentproductbacklog.md`.
 
 This is the standing candidate list. Claude reads this before every generation, cross-references against the search signal, marks used concepts, and adds new candidates as they surface.
 
@@ -237,62 +239,11 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 - **Dwell time as a content metric** — LinkedIn algorithm is now weighting time spent, not just clicks. Platform-relevant but probably too meta for One Percent content.
 - **Cognitive flexibility** — distinct from neuroplasticity, more behavioral. Could fit Mental Models or Neuroscience.
 
+
 ---
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
+*Product backlog (features, bugs, upgrades): `Backlog/onepercentproductbacklog.md`*
 *Next generation: SC — Sales Craft. Rotation slot 4. Candidates: Mirroring, Labeling, Calibrated Questions (Black Swan/Voss series).*
 
----
-
-## App Feature Backlog (non-content)
-
-*Logged here until a dedicated product backlog file is created.*
-
-### In Progress / Next Up
-- [ ] **Button audit** — all buttons need loading/disabled/feedback states. Sign out flagged May 20.
-- [ ] **Entry 017 verify audit** — interactive step-by-step, not a data dump. Quote flag: "about themselves" vs "themselves."
-- [x] **Entry 018 generation** — AI.3.1 RAG (Retrieval-Augmented Generation) ✅ Done May 20, 2026
-
-### Profile & Identity
-- [ ] **Profile page** `/profile` — editable first name, last name, phone. Email read-only. Access from library header.
-- [ ] **Profile picture** — upload via Supabase Storage or external URL. Display on profile page + optionally library header.
-
-### Badges & Gamification
-- [ ] **Founder's Club badge** — permanent badge for all beta testers. `is_founder` boolean on profiles. Auto-grant or admin-controlled TBD.
-- [ ] **Streak badges** — 3-day, 7-day, 30-day, 100-day. Awarded on streak milestone.
-- [ ] **Usage badges** — First entry, first 3/3, 10 entries, 25 entries, all 7 categories, perfect week.
-- [ ] **Badge system schema** — `badges` table + `user_badges` join table. Display on profile page.
-
-### Known Issues (app)
-- [ ] ISSUE-002 — Weekly feedback trigger broken for backdated/admin signups
-- [ ] **PRE-7-DAY:** Revise weekly check-in and end-of-beta survey questions — current questions not capturing what we need to know from testers
-- [ ] ISSUE-003 — Multi-threading bug (parallel entry loading) — not yet investigated
-- [ ] ISSUE-004 — Sign out button has no visual feedback
-
----
-
-## Notification System
-
-### Email reminders — Resend + Supabase Edge Function
-- 7-day copy rotation drafted (see `Directions/one-percent-email-rotation.md` or outputs)
-- Send from `matthew@mpgink.com` for beta
-- Requires SPF/DKIM DNS setup on mpgink.com via Resend
-- Smart send: skip if user already completed today's entry
-- **Near end of beta: add `email_reminders boolean default true` to `profiles` table + unsubscribe link in footer** — CAN-SPAM requirement before any public launch
-- Future: `phone` column on `profiles` for SMS via Twilio
-
----
-
-## Platform Upgrade Notes — May 23, 2026
-
-Captured from Matthew's session notes.
-
-| # | Item | Notes |
-|---|------|-------|
-| PU-001 | Library page — fix loading/refresh button | Refresh button on library page is broken or behaving unexpectedly |
-| PU-002 | Weekly survey — update notifications section | Unclear scope — needs clarification next session |
-| PU-003 | Admin — add progress report section | New tab or tile in admin dashboard |
-| PU-004 | Leaderboard — trophy emoji next to heading | Simple UI tweak |
-| PU-005 | Profile — restructure to 3 tabs | Suggested: Progress, Badges, Info (topics move to Progress tab, personal info to Info tab) |
-| PU-006 | Admin users section — expandable cards | Collapse by default, expand to reveal action buttons — prevents accidental clicks |
 
