@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { Paperclip, Flame } from 'lucide-react'
+import { Paperclip, User } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 
@@ -865,7 +865,7 @@ export default function HomePage() {
           >
             {profile?.avatar_url
               ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              : '👤'
+              : <User size={16} strokeWidth={1.5} color='#555' />
             }
           </button>
         </div>
@@ -928,7 +928,7 @@ export default function HomePage() {
         {/* Stats bar */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 32 }}>
           {[
-            { label: 'STREAK', value: streak > 0 ? `🔥 ${streak}` : '—' },
+            { label: 'STREAK', value: streak > 0 ? `${streak} day${streak !== 1 ? 's' : ''}` : '—' },
             { label: 'COMPLETED', value: `${completedCount}/${unlockedCount}` },
             { label: 'AVG SCORE', value: avgScore !== '—' ? `${avgScore}/3` : '—' },
             { label: 'UNLOCKED', value: `${unlockedCount}` },

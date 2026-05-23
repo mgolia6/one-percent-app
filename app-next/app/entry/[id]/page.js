@@ -14,7 +14,7 @@ function ReengagementModal({ onClose, onStart }) {
         
         <div style={{ fontSize: 13, color: '#888', letterSpacing: '0.15em', fontFamily: "'Inter',sans-serif", marginBottom: 12 }}>WEEK ONE CHECK-IN</div>
         <div style={{ fontSize: 22, color: '#fff', fontFamily: "'Inter',sans-serif", fontWeight: 600, marginBottom: 16, lineHeight: 1.3 }}>You haven't started yet.</div>
-        <div style={{ fontSize: 14, color: '#666', fontFamily: "'Inter',sans-serif", lineHeight: 1.6, marginBottom: 32 }}>
+        <div style={{ fontSize: 14, color: '#999', fontFamily: "'Inter',sans-serif", lineHeight: 1.6, marginBottom: 32 }}>
           That's okay — but the vault's sitting empty. Entry 001 takes about 5 minutes. Start there.
         </div>
         <button
@@ -25,7 +25,7 @@ function ReengagementModal({ onClose, onStart }) {
         </button>
         <button
           onClick={onClose}
-          style={{ background: 'none', border: 'none', color: '#444', fontSize: 12, fontFamily: "'Inter',sans-serif", cursor: 'pointer', letterSpacing: '0.08em' }}
+          style={{ background: 'none', border: 'none', color: '#777', fontSize: 12, fontFamily: "'Inter',sans-serif", cursor: 'pointer', letterSpacing: '0.08em' }}
         >
           MAYBE LATER
         </button>

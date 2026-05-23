@@ -354,9 +354,9 @@ export default function LeaderboardPage() {
                           {name}
                         </div>
                         <div style={{ display: 'flex', gap: 10, marginTop: 3, flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: 10, color: '#444' }}>{s.completed} lessons</span>
+                          <span style={{ fontSize: 10, color: '#777' }}>{s.completed} lessons</span>
                           {metric !== 'streak' && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 2, fontSize: 10, color: '#666' }}><Flame size={10} strokeWidth={1.5} />{s.streak}</span>}
-                          {metric !== 'score' && <span style={{ fontSize: 10, color: '#444' }}>{s.score} pts</span>}
+                          {metric !== 'score' && <span style={{ fontSize: 10, color: '#777' }}>{s.score} pts</span>}
                         </div>
                       </div>
                     </div>

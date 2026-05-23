@@ -278,7 +278,7 @@ export default function ProfilePage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 32 }}>
           <div style={{ position: 'relative', flexShrink: 0 }}>
             <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#111', border: '1px solid #1a1a1a', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {avatarUrl ? <img src={avatarUrl} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ fontSize: 24 }}>👤</span>}
+              {avatarUrl ? <img src={avatarUrl} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <User size={28} strokeWidth={1} color='#444' />}
             </div>
             {uploadingAvatar && (
               <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
