@@ -4,8 +4,8 @@
 ---
 
 ## Last Updated
-**Date:** May 23, 2026
-**Session:** Progress report + workflow optimization
+**Date:** May 24, 2026
+**Session:** Workflow optimization shipped (state snapshot, backlog split, instructions v1_30). LinkedIn beta recruitment post drafted and finalized.
 
 ---
 
