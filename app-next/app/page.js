@@ -445,6 +445,253 @@ function WkSection({ title }) {
   return <div style={{ fontSize: 9, color: '#333', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
 }
 
+// ── End-of-Beta Survey components ───────────────────────────────────────────
+const EOB_ACCENT = '#FF4778'
+const EOB_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
+
+function EobRatingRow({ label, question, value, onChange }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 9, color: EOB_ACCENT, letterSpacing: '0.15em', fontWeight: 700, marginBottom: 3 }}>{label}</div>
+      {question && <div style={{ fontSize: 13, color: '#aaa', marginBottom: 8, lineHeight: 1.4 }}>{question}</div>}
+      <div style={{ display: 'flex', gap: 6 }}>
+        {[1,2,3,4,5].map(n => (
+          <button key={n} onClick={() => onChange(n)} style={{
+            flex: 1, padding: '10px 0', borderRadius: 3,
+            border: '1px solid ' + (value >= n ? EOB_ACCENT : '#222'),
+            background: value >= n ? EOB_ACCENT + '22' : '#111',
+            color: value >= n ? EOB_ACCENT : '#555',
+            fontSize: 13, cursor: 'pointer', fontFamily: "'Inter',sans-serif", transition: 'all 0.15s',
+          }}>{n}</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function EobChipRow({ label, options, value, onChange }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        {options.map(opt => (
+          <button key={opt} onClick={() => onChange(opt)} style={{
+            padding: '8px 14px', borderRadius: 3, fontSize: 12, cursor: 'pointer',
+            fontFamily: "'Inter',sans-serif", fontWeight: 500,
+            border: '1px solid ' + (value === opt ? EOB_ACCENT : '#222'),
+            background: value === opt ? EOB_ACCENT + '22' : '#111',
+            color: value === opt ? EOB_ACCENT : '#555', transition: 'all 0.15s',
+          }}>{opt}</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function EobOpenText({ label, value, onChange, placeholder, minHeight }) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      {label && <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
+      <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder || 'Be specific.'} style={{
+        width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4,
+        padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif",
+        resize: 'vertical', minHeight: minHeight || 64, outline: 'none', boxSizing: 'border-box',
+      }} />
+    </div>
+  )
+}
+
+function EobSection({ title }) {
+  return <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
+}
+
+function EndOfBetaModal({ userId, onClose }) {
+  const [overallRating, setOverallRating] = useState(0)
+  const [perceptionChange, setPerceptionChange] = useState(null)
+  const [whyStopped, setWhyStopped] = useState('')
+  const [clarityRating, setClarityRating] = useState(0)
+  const [relevanceRating, setRelevanceRating] = useState(0)
+  const [quizRating, setQuizRating] = useState(0)
+  const [mostValueCat, setMostValueCat] = useState(null)
+  const [couldCutCat, setCouldCutCat] = useState(null)
+  const [structureVerdict, setStructureVerdict] = useState(null)
+  const [structureDetail, setStructureDetail] = useState('')
+  const [commitment, setCommitment] = useState(null)
+  const [topicToAdd, setTopicToAdd] = useState('')
+  const [peakStreak, setPeakStreak] = useState(null)
+  const [openDriver, setOpenDriver] = useState(null)
+  const [skipReason, setSkipReason] = useState('')
+  const [leaderboardEffect, setLeaderboardEffect] = useState(null)
+  const [mustChange, setMustChange] = useState('')
+  const [mustKeep, setMustKeep] = useState('')
+  const [brokenThing, setBrokenThing] = useState('')
+  const [devicePref, setDevicePref] = useState(null)
+  const [nameVerdict, setNameVerdict] = useState(null)
+  const [nameSuggestion, setNameSuggestion] = useState('')
+  const [publicPitch, setPublicPitch] = useState('')
+  const [notFor, setNotFor] = useState('')
+  const [wouldPay, setWouldPay] = useState(null)
+  const [priceRange, setPriceRange] = useState(null)
+  const [wouldRefer, setWouldRefer] = useState(null)
+  const [referDetail, setReferDetail] = useState('')
+  const [launchModel, setLaunchModel] = useState(null)
+  const [sixMonth, setSixMonth] = useState(0)
+  const [toTen, setToTen] = useState('')
+  const [biggestWin, setBiggestWin] = useState('')
+  const [ifYouWereMe, setIfYouWereMe] = useState('')
+  const [anythingElse, setAnythingElse] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [done, setDone] = useState(false)
+
+  const coreReady = overallRating && perceptionChange && clarityRating && relevanceRating && quizRating && mostValueCat && structureVerdict && commitment && peakStreak && openDriver && leaderboardEffect && mustChange && mustKeep && devicePref && nameVerdict && wouldPay && wouldRefer && launchModel && sixMonth && biggestWin && ifYouWereMe
+
+  const submit = async () => {
+    if (!coreReady) return
+    setSubmitting(true)
+    const parts = [
+      perceptionChange && ('perception:' + perceptionChange),
+      whyStopped && ('why_stopped:' + whyStopped),
+      mostValueCat && ('most_value:' + mostValueCat),
+      couldCutCat && ('could_cut:' + couldCutCat),
+      structureVerdict && ('structure:' + structureVerdict),
+      structureDetail && ('structure_detail:' + structureDetail),
+      commitment && ('commitment:' + commitment),
+      topicToAdd && ('topic_add:' + topicToAdd),
+      peakStreak && ('peak_streak:' + peakStreak),
+      openDriver && ('open_driver:' + openDriver),
+      skipReason && ('skip_reason:' + skipReason),
+      leaderboardEffect && ('leaderboard:' + leaderboardEffect),
+      mustChange && ('must_change:' + mustChange),
+      mustKeep && ('must_keep:' + mustKeep),
+      brokenThing && ('broken:' + brokenThing),
+      devicePref && ('device:' + devicePref),
+      nameVerdict && ('name:' + nameVerdict),
+      nameSuggestion && ('name_suggestion:' + nameSuggestion),
+      publicPitch && ('pitch:' + publicPitch),
+      notFor && ('not_for:' + notFor),
+      wouldPay && ('would_pay:' + wouldPay),
+      priceRange && ('price:' + priceRange),
+      referDetail && ('refer_detail:' + referDetail),
+      launchModel && ('launch_model:' + launchModel),
+      sixMonth && ('six_month:' + sixMonth),
+      toTen && ('to_ten:' + toTen),
+      ifYouWereMe && ('if_you_were_me:' + ifYouWereMe),
+    ].filter(Boolean)
+    const { error } = await supabase.from('feedback').insert({
+      user_id: userId,
+      feedback_type: 'end_of_beta',
+      overall_rating: overallRating,
+      clarity_rating: clarityRating,
+      topic_rating: relevanceRating,
+      quiz_rating: quizRating,
+      would_recommend: wouldRefer,
+      missing_topics: parts.join(' | '),
+      biggest_win: biggestWin || null,
+      comment: anythingElse || null,
+    })
+    if (!error) {
+      await supabase.from('profiles').update({ end_of_beta_survey_done: true }).eq('id', userId)
+    }
+    setSubmitting(false)
+    if (!error) setDone(true)
+  }
+
+  return (
+    <div style={{
+      position: 'fixed', inset: 0, zIndex: 1000, background: '#0a0a0a',
+      overflowY: 'auto', fontFamily: "'Inter',sans-serif",
+    }}>
+      <div style={{ maxWidth: 600, margin: '0 auto', padding: '48px 24px 80px' }}>
+        {done ? (
+          <div style={{ textAlign: 'center', paddingTop: 80 }}>
+            <div style={{ fontSize: 32, marginBottom: 16 }}>✓</div>
+            <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 8 }}>Done. Thank you.</div>
+            <div style={{ fontSize: 13, color: '#555', marginBottom: 32 }}>This shapes what comes next.</div>
+            <button onClick={onClose} style={{ background: EOB_ACCENT, border: 'none', borderRadius: 4, padding: '12px 32px', fontSize: 11, fontWeight: 600, color: '#fff', cursor: 'pointer', letterSpacing: '0.1em' }}>BACK TO APP</button>
+          </div>
+        ) : (
+          <>
+            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: EOB_ACCENT, marginBottom: 6, fontWeight: 600 }}>END OF BETA</div>
+            <div style={{ fontSize: 24, color: '#fff', fontWeight: 700, marginBottom: 6 }}>All done. Zoom out.</div>
+            <div style={{ fontSize: 13, color: '#555', marginBottom: 32, lineHeight: 1.6 }}>This is the full debrief. Be specific — this one shapes v1.</div>
+
+            <EobSection title="OVERALL" />
+            <EobRatingRow label="OVERALL RATING" question="How would you rate One Percent?" value={overallRating} onChange={setOverallRating} />
+            <EobChipRow label="COMPARED TO DAY 1, HOW HAS YOUR PERCEPTION CHANGED?" options={['Much better', 'Somewhat better', 'About the same', 'Worse', 'I stopped using it']} value={perceptionChange} onChange={setPerceptionChange} />
+            {(perceptionChange === 'Worse' || perceptionChange === 'I stopped using it') && <EobOpenText value={whyStopped} onChange={setWhyStopped} placeholder="What happened?" />}
+
+            <EobSection title="CONTENT AND DEPTH" />
+            <EobRatingRow label="CLARITY" question="How clear was the content overall?" value={clarityRating} onChange={setClarityRating} />
+            <EobRatingRow label="RELEVANCE" question="How useful to your actual work?" value={relevanceRating} onChange={setRelevanceRating} />
+            <EobRatingRow label="QUIZ QUALITY" question="Was it testing the right things?" value={quizRating} onChange={setQuizRating} />
+            <EobChipRow label="WHICH CATEGORY DELIVERED THE MOST VALUE?" options={EOB_CATS} value={mostValueCat} onChange={setMostValueCat} />
+            <EobChipRow label="WHICH CATEGORY COULD BE CUT WITHOUT YOU NOTICING?" options={[...EOB_CATS, 'None']} value={couldCutCat} onChange={setCouldCutCat} />
+            <EobChipRow label="WAS THE MORNING BRIEF / MIDDAY REFRAME / EVENING QUIZ STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} />
+            {structureVerdict && structureVerdict !== 'Yes — keep it' && <EobOpenText value={structureDetail} onChange={setStructureDetail} placeholder="What would you change?" />}
+            <EobChipRow label="WAS 10 MINUTES THE RIGHT COMMITMENT?" options={['Too short', 'Just right', 'Too long', 'Inconsistent']} value={commitment} onChange={setCommitment} />
+            <EobOpenText label="WHAT TOPIC DO YOU MOST WANT ADDED BEFORE PUBLIC LAUNCH?" value={topicToAdd} onChange={setTopicToAdd} placeholder="Be specific." />
+
+            <EobSection title="HABIT AND RETENTION" />
+            <EobChipRow label="AT YOUR PEAK, HOW MANY DAYS IN A ROW DID YOU USE IT?" options={['1', '2-3', '4-6', '7+', 'Every day']} value={peakStreak} onChange={setPeakStreak} />
+            <EobChipRow label="BIGGEST DRIVER OF OPENING THE APP ON ANY GIVEN DAY?" options={['Reminder email', 'Habit', 'Curiosity', 'Streak', 'Nothing consistent']} value={openDriver} onChange={setOpenDriver} />
+            <EobOpenText label="BIGGEST REASON YOU SKIPPED A DAY?" value={skipReason} onChange={setSkipReason} placeholder="Honest answer." />
+            <EobChipRow label="DID THE LEADERBOARD AFFECT YOUR BEHAVIOR?" options={['Yes — kept me coming back', 'Yes — made me feel behind', 'No effect', 'I ignored it']} value={leaderboardEffect} onChange={setLeaderboardEffect} />
+
+            <EobSection title="PRODUCT AND UX" />
+            <EobOpenText label="ONE THING THAT NEEDS TO CHANGE BEFORE PUBLIC LAUNCH?" value={mustChange} onChange={setMustChange} placeholder="Non-negotiable." />
+            <EobOpenText label="ONE THING YOU'D FIGHT TO KEEP EXACTLY AS IT IS?" value={mustKeep} onChange={setMustKeep} placeholder="Don't lose this." />
+            <EobOpenText label="ANYTHING EVER FEEL BROKEN, CONFUSING, OR OUT OF PLACE?" value={brokenThing} onChange={setBrokenThing} placeholder="Optional but valuable." />
+            <EobChipRow label="MOBILE OR DESKTOP — WHICH FELT BETTER?" options={['Mobile', 'Desktop', 'Equal', 'I only used one']} value={devicePref} onChange={setDevicePref} />
+
+            <EobSection title="POSITIONING AND NAME" />
+            <EobChipRow label="ONE PERCENT — DOES THE NAME WORK FOR PUBLIC LAUNCH?" options={["Yes it's strong", "It's fine", 'No — needs work', 'I have a suggestion']} value={nameVerdict} onChange={setNameVerdict} />
+            {nameVerdict === 'I have a suggestion' && <EobOpenText value={nameSuggestion} onChange={setNameSuggestion} placeholder="What would you call it?" />}
+            <EobOpenText label="HOW WOULD YOU PITCH THIS TO SOMEONE WHO'S NEVER HEARD OF IT?" value={publicPitch} onChange={setPublicPitch} placeholder="How you'd actually say it." />
+            <EobOpenText label="WHAT KIND OF PERSON IS THIS NOT FOR?" value={notFor} onChange={setNotFor} placeholder="Be direct." />
+
+            <EobSection title="GTM SIGNAL" />
+            <EobChipRow label="WOULD YOU PAY FOR THIS?" options={['Yes', 'No', 'Depends on the price']} value={wouldPay} onChange={setWouldPay} />
+            {wouldPay === 'Yes' && <EobChipRow label="WHAT MONTHLY PRICE FEELS FAIR?" options={['Under $5', '$5-10', '$10-20', '$20+']} value={priceRange} onChange={setPriceRange} />}
+            <EobChipRow label="WOULD YOU REFER THIS TO SOMEONE SPECIFIC?" options={['Yes — who and why', 'No', 'Maybe']} value={wouldRefer} onChange={setWouldRefer} />
+            {wouldRefer === 'Yes — who and why' && <EobOpenText value={referDetail} onChange={setReferDetail} placeholder="Who and why?" />}
+            <EobChipRow label="WHICH LAUNCH MODEL WOULD MAKE YOU MOST LIKELY TO SHARE IT?" options={['Free with premium tier', 'One-time purchase', 'Subscription', 'Free forever', "Doesn't matter"]} value={launchModel} onChange={setLaunchModel} />
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>HOW LIKELY ARE YOU TO STILL BE USING THIS IN 6 MONTHS? (1-10)</div>
+              <div style={{ display: 'flex', gap: 4 }}>
+                {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                  <button key={n} onClick={() => setSixMonth(n)} style={{
+                    flex: 1, padding: '8px 0', borderRadius: 3,
+                    border: '1px solid ' + (sixMonth >= n ? EOB_ACCENT : '#222'),
+                    background: sixMonth >= n ? EOB_ACCENT + '22' : '#111',
+                    color: sixMonth >= n ? EOB_ACCENT : '#555',
+                    fontSize: 11, cursor: 'pointer', fontFamily: "'Inter',sans-serif",
+                  }}>{n}</button>
+                ))}
+              </div>
+            </div>
+            <EobOpenText label="WHAT WOULD HAVE TO BE TRUE FOR YOUR ANSWER TO BE A 10?" value={toTen} onChange={setToTen} placeholder="Specific is better." />
+
+            <EobSection title="FINAL WORD" />
+            <EobOpenText label="BIGGEST PERSONAL WIN FROM THE BETA" value={biggestWin} onChange={setBiggestWin} placeholder="Something you learned, used, or now think differently about." minHeight={80} />
+            <EobOpenText label="IF YOU WERE ME, WHAT WOULD YOU DO NEXT?" value={ifYouWereMe} onChange={setIfYouWereMe} placeholder="Don't hold back." minHeight={80} />
+            <EobOpenText label="ANYTHING ELSE." value={anythingElse} onChange={setAnythingElse} placeholder="Optional." />
+
+            <button onClick={submit} disabled={!coreReady || submitting} style={{
+              width: '100%', padding: '14px 0', marginTop: 8,
+              background: coreReady ? EOB_ACCENT : '#1a1a1a', border: 'none', borderRadius: 4,
+              fontSize: 11, fontWeight: 600, color: coreReady ? '#fff' : '#333',
+              cursor: coreReady ? 'pointer' : 'not-allowed', letterSpacing: '0.1em',
+              fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1,
+            }}>
+              {submitting ? 'SUBMITTING...' : 'SUBMIT FINAL SURVEY'}
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
 function WeeklySurveyModal({ userId, weekNumber, onClose }) {
   const [entriesCompleted, setEntriesCompleted] = useState(null)
   const [timeOfDay, setTimeOfDay] = useState(null)
@@ -701,6 +948,7 @@ export default function HomePage() {
   const [whatsNewEntry, setWhatsNewEntry] = useState(null)
   const [hasUnseenChangelog, setHasUnseenChangelog] = useState(false)
   const [showWeeklySurvey, setShowWeeklySurvey] = useState(false)
+  const [showEndOfBeta, setShowEndOfBeta] = useState(false)
   const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
   const libraryRef = useRef(null)
 
@@ -757,7 +1005,7 @@ export default function HomePage() {
         }
       }
 
-      // Weekly survey trigger: fires at day 7, 14, 21 (skip 28, handled by day 30)
+      // Weekly survey trigger: fires at day 7, 14, 21 (skip 28, handled by end-of-beta)
       if (prof?.signup_date) {
         const daysSince = Math.floor((Date.now() - new Date(prof.signup_date).getTime()) / 86400000)
         const lastSurveyDay = prof.last_weekly_survey_day || 0
@@ -769,6 +1017,14 @@ export default function HomePage() {
             setTimeout(() => setShowWeeklySurvey(true), 2000)
             break
           }
+        }
+      }
+
+      // End-of-beta trigger: fires once when all entries are completed
+      if (!prof?.end_of_beta_survey_done) {
+        const { data: completionRows } = await supabase.from('completions').select('entry_number').eq('user_id', session.user.id)
+        if (completionRows && completionRows.length >= TOTAL_ENTRIES) {
+          setTimeout(() => setShowEndOfBeta(true), 2000)
         }
       }
       setLoading(false)
@@ -825,6 +1081,7 @@ export default function HomePage() {
     <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
+      {showEndOfBeta && <EndOfBetaModal userId={user?.id} onClose={() => setShowEndOfBeta(false)} />}
       {showWeeklySurvey && <WeeklySurveyModal userId={user?.id} weekNumber={weeklyWeekNumber} onClose={async () => { setShowWeeklySurvey(false); await supabase.from('profiles').update({ last_weekly_survey_day: weeklyWeekNumber * 7 }).eq('id', user.id) }} />}
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
