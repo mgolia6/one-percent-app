@@ -520,7 +520,7 @@ export default function AdminPage() {
 
 
   return (
-    <div style={{ minHeight: '100vh', background: '#dadada', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
@@ -532,12 +532,12 @@ export default function AdminPage() {
         {/* Row 1 — wordmark */}
         <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
+            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#fff' }}>ONE PERCENT</span>
             <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={refreshAll} disabled={refreshing} style={{ background: '#47FFE811', border: '1px solid #47FFE866', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 600 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
-            <button onClick={() => router.push('/')} style={{ background: '#ffffff0f', border: '1px solid #ffffff33', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#ccc', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 500 }}>← LIBRARY</button>
+            <button onClick={refreshAll} disabled={refreshing} style={{ background: '#47FFE822', border: '1px solid #47FFE8', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 700 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #555', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#aaa', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 500 }}>← LIBRARY</button>
           </div>
         </div>
 
@@ -787,7 +787,7 @@ export default function AdminPage() {
                     onClick={() => setExpandedUser(isExpanded ? null : u.email)}
                     style={{ padding: '14px 20px', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', userSelect: 'none' }}
                   >
-                    <div style={{ fontSize: 10, color: '#444', flexShrink: 0, transition: 'transform 0.15s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</div>
+                    <div style={{ fontSize: 16, color: '#444', flexShrink: 0, lineHeight: 1, fontWeight: 300 }}>{isExpanded ? '−' : '+'}</div>
 
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3, flexWrap: 'wrap' }}>
@@ -801,7 +801,7 @@ export default function AdminPage() {
                     {/* Single right-side stat: lessons */}
                     <div style={{ flexShrink: 0, textAlign: 'right' }}>
                       <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LESSONS</div>
-                      <div style={{ fontSize: 13, color: comp.count > 0 ? '#47FFE8' : '#444', fontWeight: 700 }}>{comp.count}<span style={{ fontSize: 10, color: '#444', fontWeight: 400 }}>/{TOTAL_ENTRIES}</span></div>
+                      <div style={{ fontSize: 13, color: '#fff', fontWeight: 700 }}>{comp.count}<span style={{ fontSize: 11, color: '#555', fontWeight: 400 }}>/{TOTAL_ENTRIES}</span></div>
                     </div>
                   </div>
 
