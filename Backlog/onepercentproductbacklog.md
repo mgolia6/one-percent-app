@@ -1,6 +1,6 @@
 # One Percent — Product Backlog
 **onepercentproductbacklog.md | Living file — updated each session**
-Last updated: May 23, 2026
+Last updated: May 27, 2026
 
 This file tracks all non-content work: features, bugs, platform upgrades, infrastructure, and notifications. Content concept candidates live in `onepercentbacklog.md`.
 
@@ -14,8 +14,8 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | PU-002 | Weekly survey — update notifications section | Unclear scope — needs clarification |
 | PU-003 | Admin — add progress report section | New tab or tile in admin dashboard |
 | PU-004 | Leaderboard — trophy emoji next to heading | Simple UI tweak |
-| PU-005 | Profile — restructure to 3 tabs | Progress, Badges, Info. Topics move to Progress tab, personal info to Info tab |
-| PU-006 | Admin users section — expandable cards | Collapse by default, expand to reveal action buttons — prevents accidental clicks |
+| ~~PU-005~~ | ~~Profile — restructure to 3 tabs~~ | ✅ Done May 27 |
+| ~~PU-006~~ | ~~Admin users section — expandable cards~~ | ✅ Done May 27 |
 
 ---
 
@@ -49,10 +49,10 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 
 | ID | Summary | Status | Flagged |
 |---|---|---|---|
-| ISSUE-002 | Weekly feedback trigger broken for backdated/admin signups | Open | May 20 |
-| ISSUE-003 | Multi-threading bug (parallel entry loading) — not yet investigated | Open | May 20 |
-| ISSUE-004 | Weekly wrap modal fires for zero-completion users | Open | May 22 |
-| ISSUE-005 | Onboarding text overlap on mobile — last few cards (iPhone/Chrome iOS) | Open | May 20 |
+| ISSUE-002 | Weekly feedback trigger broken for backdated/admin signups | ✅ Fixed May 27 | May 20 |
+| ISSUE-003 | Multi-threading bug (parallel entry loading) | ✅ Closed — no parallel loading code exists, ghost issue | May 20 |
+| ISSUE-004 | Weekly wrap modal fires for zero-completion users | ✅ Fixed May 27 (same fix as ISSUE-002) | May 22 |
+| ISSUE-005 | Onboarding text overlap on mobile — last few cards (iPhone/Chrome iOS) | ✅ Fixed May 27 | May 20 |
 
 ---
 
