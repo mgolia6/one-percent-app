@@ -186,16 +186,18 @@ export default function LeaderboardPage() {
         .metric-tabs::-webkit-scrollbar { display: none; }
       `}</style>
 
-      <div style={{ maxWidth: 600, margin: '0 auto', padding: '20px 20px 60px' }}>
-
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+      {/* Sticky back nav */}
+      <div style={{ position: 'sticky', top: 0, zIndex: 20, background: BG, borderBottom: `1px solid ${BORDER_FAINT}` }}>
+        <div style={{ maxWidth: 600, margin: '0 auto', padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.secondary, letterSpacing: '0.08em', padding: 0 }}>
             <ChevronLeft size={13} strokeWidth={2} />
             LIBRARY
           </button>
-          <span style={{ fontSize: 9, color: accentColor, border: `1px solid ${accentColor}44`, borderRadius: 3, padding: '3px 8px', letterSpacing: '0.12em', fontWeight: 600, transition: 'color 0.2s, border-color 0.2s' }}>LEADERBOARD</span>
+          <span style={{ fontSize: 9, color: accentColor, border: `1px solid ${accentColor}44`, borderRadius: 3, padding: '3px 8px', letterSpacing: '0.12em', fontWeight: 600 }}>LEADERBOARD</span>
         </div>
+      </div>
+
+      <div style={{ maxWidth: 600, margin: '0 auto', padding: '20px 20px 60px' }}>
 
         {/* Your rank callout */}
         {myRank > 0 && me && (

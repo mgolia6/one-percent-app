@@ -222,13 +222,17 @@ export default function ProfilePage() {
         @keyframes spin { to { transform: rotate(360deg) } }
       `}</style>
 
-      <div style={{ maxWidth: 520, margin: '0 auto', padding: '20px 20px 60px' }}>
+      {/* Sticky back nav */}
+      <div style={{ position: 'sticky', top: 0, zIndex: 20, background: BG, borderBottom: `1px solid ${BORDER_FAINT}` }}>
+        <div style={{ maxWidth: 520, margin: '0 auto', padding: '12px 20px' }}>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.secondary, letterSpacing: '0.08em', padding: 0 }}>
+            <ChevronLeft size={13} strokeWidth={2} />
+            LIBRARY
+          </button>
+        </div>
+      </div>
 
-        {/* Back */}
-        <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.secondary, letterSpacing: '0.08em', padding: 0, marginBottom: 24 }}>
-          <ChevronLeft size={13} strokeWidth={2} />
-          LIBRARY
-        </button>
+      <div style={{ maxWidth: 520, margin: '0 auto', padding: '20px 20px 60px' }}>
 
         {/* Header — avatar/name left, rank right */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
