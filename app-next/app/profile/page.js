@@ -24,17 +24,23 @@ const ENTRIES = [
   { entry: '006', category: 'AI' },
   { entry: '007', category: 'Sales Craft' },
   { entry: '008', category: 'AI' },
-  { entry: '009', category: 'Vocab & Language' },
-  { entry: '010', category: 'Sales Craft' },
-  { entry: '011', category: 'Mental Models' },
-  { entry: '012', category: 'AI' },
-  { entry: '013', category: 'Philosophy' },
-  { entry: '014', category: 'Neuroscience & Cognition' },
+  { entry: '009', category: 'Mental Models' },
+  { entry: '010', category: 'Communication' },
+  { entry: '011', category: 'Philosophy' },
+  { entry: '012', category: 'Communication' },
+  { entry: '013', category: 'Neuroscience & Cognition' },
+  { entry: '014', category: 'Vocab & Language' },
   { entry: '015', category: 'Sales Craft' },
-  { entry: '016', category: 'Communication' },
-  { entry: '017', category: 'Sales Craft' },
-  { entry: '018', category: 'AI' },
-  { entry: '019', category: 'Vocab & Language' },
+  { entry: '016', category: 'Mental Models' },
+  { entry: '017', category: 'AI' },
+  { entry: '018', category: 'Philosophy' },
+  { entry: '019', category: 'Neuroscience & Cognition' },
+  { entry: '020', category: 'Sales Craft' },
+  { entry: '021', category: 'Communication' },
+  { entry: '022', category: 'Sales Craft' },
+  { entry: '023', category: 'AI' },
+  { entry: '024', category: 'Vocab & Language' },
+  { entry: '025', category: 'Neuroscience & Cognition' },
 ]
 
 const BADGES = [
@@ -103,7 +109,7 @@ export default function ProfilePage() {
   const [message, setMessage] = useState(null)
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploadingAvatar, setUploadingAvatar] = useState(false)
-  const [tab, setTab] = useState('profile')
+  const [tab, setTab] = useState('progress')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -280,91 +286,54 @@ export default function ProfilePage() {
           ))}
         </div>
 
-        {/* Tabs */}
-        <div style={{ display: 'flex', marginBottom: 24, borderBottom: `1px solid ${BORDER_FAINT}` }}>
-          {['profile', 'badges'].map(t => (
-            <button key={t} onClick={() => setTab(t)} style={{
+        {/* Tabs — PROGRESS | BADGES | PROFILE */}
+        <div style={{ display: 'flex', marginBottom: 28, borderBottom: `1px solid ${BORDER_FAINT}` }}>
+          {[
+            { key: 'progress', label: 'PROGRESS' },
+            { key: 'badges', label: 'BADGES' },
+            { key: 'profile', label: 'PROFILE' },
+          ].map(t => (
+            <button key={t.key} onClick={() => setTab(t.key)} style={{
               background: 'none', border: 'none', cursor: 'pointer',
               padding: '8px 20px 8px 0', fontSize: 11,
-              fontWeight: tab === t ? 600 : 400,
-              color: tab === t ? T.primary : T.tertiary,
+              fontWeight: tab === t.key ? 600 : 400,
+              color: tab === t.key ? T.primary : T.tertiary,
               letterSpacing: '0.1em',
-              borderBottom: tab === t ? `1px solid ${T.primary}` : '1px solid transparent',
+              borderBottom: tab === t.key ? `1px solid ${T.primary}` : '1px solid transparent',
               marginBottom: -1, fontFamily: "'Inter',sans-serif",
             }}>
-              {t.toUpperCase()}
+              {t.label}
             </button>
           ))}
         </div>
 
-        {/* PROFILE TAB */}
-        {tab === 'profile' && (
-          <div>
-            {/* Category progress */}
-            <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 16 }}>CATEGORY PROGRESS</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
+        {/* PROGRESS TAB */}
+        {tab === 'progress' && (
+          <div style={{ paddingBottom: 40 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               {Object.keys(catTotal).map(cat => {
                 const color = CATEGORY_COLORS[cat] || '#fff'
                 const done = catBreakdown[cat] || 0
                 const total = catTotal[cat]
+                const pct = Math.round((done / total) * 100)
                 return (
                   <div key={cat}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 7 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: done > 0 ? color : T.faint, flexShrink: 0 }} />
-                        <div style={{ fontSize: 13, color: done > 0 ? T.secondary : T.faint }}>{cat}</div>
+                        <div style={{ width: 7, height: 7, borderRadius: '50%', background: done > 0 ? color : T.faint, flexShrink: 0 }} />
+                        <div style={{ fontSize: 13, color: done > 0 ? T.secondary : T.faint, fontWeight: done > 0 ? 500 : 400 }}>{cat}</div>
                       </div>
-                      <div style={{ fontSize: 11, color: done > 0 ? T.tertiary : T.faint }}>{done}/{total}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ fontSize: 10, color: done > 0 ? color : T.faint, fontWeight: 600, letterSpacing: '0.05em' }}>{pct}%</div>
+                        <div style={{ fontSize: 11, color: T.faint }}>{done}/{total}</div>
+                      </div>
                     </div>
-                    <div style={{ height: 2, background: BORDER_FAINT, borderRadius: 1 }}>
-                      <div style={{ height: '100%', width: `${(done / total) * 100}%`, background: color, borderRadius: 1 }} />
+                    <div style={{ height: 3, background: BORDER_FAINT, borderRadius: 2 }}>
+                      <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 2, transition: 'width 0.4s ease' }} />
                     </div>
                   </div>
                 )
               })}
-            </div>
-
-            {/* Account */}
-            <div style={{ paddingTop: 24, borderTop: `1px solid ${BORDER_FAINT}` }}>
-              <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 16 }}>ACCOUNT</div>
-              {[
-                { label: 'FIRST NAME', value: firstName, onChange: setFirstName, editable: true },
-                { label: 'LAST NAME', value: lastName, onChange: setLastName, editable: true },
-                { label: 'EMAIL', value: email, onChange: null, editable: false },
-              ].map(field => (
-                <div key={field.label} style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.14em', marginBottom: 6, fontWeight: 600 }}>{field.label}</div>
-                  <input
-                    type="text" value={field.value}
-                    onChange={field.onChange ? e => field.onChange(e.target.value) : undefined}
-                    readOnly={!field.editable}
-                    style={{
-                      width: '100%', background: 'transparent', border: 'none',
-                      borderBottom: `1px solid ${field.editable ? BORDER : BORDER_FAINT}`,
-                      padding: '10px 0', fontSize: 14,
-                      color: field.editable ? T.primary : T.faint,
-                      fontFamily: "'Inter',sans-serif", outline: 'none',
-                      cursor: field.editable ? 'text' : 'default',
-                    }}
-                  />
-                  {!field.editable && <div style={{ fontSize: 10, color: T.faint, marginTop: 4 }}>Email cannot be changed</div>}
-                </div>
-              ))}
-
-              {message && (
-                <div style={{ fontSize: 12, color: message.type === 'success' ? '#4ade80' : '#f87171', textAlign: 'center', padding: '10px', background: message.type === 'success' ? '#4ade8011' : '#f8717111', borderRadius: 4, letterSpacing: '0.05em', marginBottom: 12 }}>
-                  {message.text}
-                </div>
-              )}
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 20 }}>
-                <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 4, padding: '13px', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
-                  {saving ? 'SAVING...' : 'SAVE CHANGES'}
-                </button>
-                <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#f87171', border: '1px solid #2a1a1e', borderRadius: 4, padding: '12px', fontSize: 11, fontWeight: 500, letterSpacing: '0.08em', cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
-                  {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
-                </button>
-              </div>
             </div>
           </div>
         )}
@@ -387,6 +356,51 @@ export default function ProfilePage() {
                 })}
               </div>
             )}
+          </div>
+        )}
+
+        {/* PROFILE TAB */}
+        {tab === 'profile' && (
+          <div style={{ paddingBottom: 40 }}>
+            <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 16 }}>ACCOUNT</div>
+            {[
+              { label: 'FIRST NAME', value: firstName, onChange: setFirstName, editable: true },
+              { label: 'LAST NAME', value: lastName, onChange: setLastName, editable: true },
+              { label: 'EMAIL', value: email, onChange: null, editable: false },
+            ].map(field => (
+              <div key={field.label} style={{ marginBottom: 20 }}>
+                <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.14em', marginBottom: 6, fontWeight: 600 }}>{field.label}</div>
+                <input
+                  type="text" value={field.value}
+                  onChange={field.onChange ? e => field.onChange(e.target.value) : undefined}
+                  readOnly={!field.editable}
+                  style={{
+                    width: '100%', background: 'transparent', border: 'none',
+                    borderBottom: `1px solid ${field.editable ? BORDER : BORDER_FAINT}`,
+                    padding: '10px 0', fontSize: 14,
+                    color: field.editable ? T.primary : T.faint,
+                    fontFamily: "'Inter',sans-serif", outline: 'none',
+                    cursor: field.editable ? 'text' : 'default',
+                  }}
+                />
+                {!field.editable && <div style={{ fontSize: 10, color: T.faint, marginTop: 4 }}>Email cannot be changed</div>}
+              </div>
+            ))}
+
+            {message && (
+              <div style={{ fontSize: 12, color: message.type === 'success' ? '#4ade80' : '#f87171', textAlign: 'center', padding: '10px', background: message.type === 'success' ? '#4ade8011' : '#f8717111', borderRadius: 4, letterSpacing: '0.05em', marginBottom: 12 }}>
+                {message.text}
+              </div>
+            )}
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 24 }}>
+              <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 4, padding: '13px', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
+                {saving ? 'SAVING...' : 'SAVE CHANGES'}
+              </button>
+              <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#f87171', border: '1px solid #2a1a1e', borderRadius: 4, padding: '12px', fontSize: 11, fontWeight: 500, letterSpacing: '0.08em', cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
+                {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
+              </button>
+            </div>
           </div>
         )}
 
