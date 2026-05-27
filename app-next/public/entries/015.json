@@ -6,20 +6,20 @@
   "accent": "#E8FF47",
   "accentDim": "rgba(232,255,71,0.10)",
   "morning": {
-    "hook": "Whoever names a number first controls the negotiation \u2014 even if the number is wrong.",
+    "hook": "Whoever names a number first controls the negotiation — even if the number is wrong.",
     "explanation_paragraphs": [
-      "Anchoring is one of the most documented effects in behavioral economics. The first number introduced in any price conversation becomes the cognitive reference point that every subsequent number is judged against. The other party adjusts from your anchor \u2014 not from some objective sense of fair value, not from what they were planning to pay, not from what they think you'll accept. From your number.",
-      "Galinsky and Mussweiler tested this across three experiments: whichever party \u2014 buyer or seller \u2014 made the first offer obtained a better final outcome. First offers were a strong predictor of settlement price.",
+      "Anchoring is one of the most documented effects in behavioral economics. The first number introduced in any price conversation becomes the cognitive reference point that every subsequent number is judged against. The other party adjusts from your anchor — not from some objective sense of fair value, not from what they were planning to pay, not from what they think you'll accept. From your number.",
+      "Galinsky and Mussweiler tested this across three experiments: whichever party — buyer or seller — made the first offer obtained a better final outcome. First offers were a strong predictor of settlement price.",
       "The rep waiting for the prospect to name a price first is playing defense in a game where offense has a structural advantage. Most salespeople wait. They worry about anchoring too high and insulting the buyer, or anchoring too low and leaving money. Meanwhile, the research says: the party who names the number wins."
     ],
-    "why_today": "Every pricing conversation, renewal, and procurement negotiation you're in this week has an anchor moment. If you're not setting it, the buyer is \u2014 and they're not setting it in your favor.",
-    "morning_challenge": "Look at your next pricing conversation or renewal coming up this week. Find the anchor moment \u2014 the first time a number is likely to enter the conversation.\n\nBefore that call:\n1. Pull comparable deal data: what have you closed similar deals for? What's the high end of your range? What's the value delivered in real terms?\n2. Decide your anchor \u2014 it should be ambitious but defensible, and precise.\n3. Commit to naming it first.\n\nThen run this prompt:\n\n\"I'm preparing for a renewal negotiation with [describe the account type, deal size range, and what value they've received]. Build me a precise, defensible anchor price for this conversation \u2014 not a round number \u2014 with 3 supporting rationale points I can use if they push back.\"\n\nBring that number and those rationale points into the call. Name your number first."
+    "why_today": "Every pricing conversation, renewal, and procurement negotiation you're in this week has an anchor moment. If you're not setting it, the buyer is — and they're not setting it in your favor.",
+    "morning_challenge": "Look at your next pricing conversation or renewal coming up this week. Find the anchor moment — the first time a number is likely to enter the conversation.\n\nBefore that call:\n1. Pull comparable deal data: what have you closed similar deals for? What's the high end of your range? What's the value delivered in real terms?\n2. Decide your anchor — it should be ambitious but defensible, and precise.\n3. Commit to naming it first.\n\nThen run this prompt:\n\n\"I'm preparing for a renewal negotiation with [describe the account type, deal size range, and what value they've received]. Build me a precise, defensible anchor price for this conversation — not a round number — with 3 supporting rationale points I can use if they push back.\"\n\nBring that number and those rationale points into the call. Name your number first."
   },
   "midday": {
     "reframe": "Going first is only half the insight. The other half is in the decimal places.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 LOSCHELDER ET AL. 2017",
+    "itw_label": "IN THE WILD — TYPE A · LOSCHELDER ET AL. 2017",
     "itw_paragraphs": [
-      "Research on anchoring revealed something that most reps never use: precise anchors outperform round numbers. A rep who opens at $47,250 gets a better outcome than one who opens at $47,000 or $50,000 \u2014 even if the precise number is slightly higher than what they'd have accepted.",
+      "Research on anchoring revealed something that most reps never use: precise anchors outperform round numbers. A rep who opens at $47,250 gets a better outcome than one who opens at $47,000 or $50,000 — even if the precise number is slightly higher than what they'd have accepted.",
       "Why? Precise numbers signal that the figure was calculated, not guessed. The other party infers expertise and data behind the number, which makes them less willing to challenge it aggressively. And because the number isn't round, they tend to adjust in smaller increments when they counteroffer.",
       "Round numbers feel like placeholders, like there's obvious room to move. Precise numbers feel like they arrived from somewhere. Loschelder and colleagues documented this in 2017: more ambitious anchors produced better outcomes AND highly precise offers led recipients to make smaller counteroffers. Two findings that compound. Go first. Go high. Go specific."
     ],
@@ -32,52 +32,53 @@
       "question": "Galinsky and Mussweiler (2001) tested first offers across three experiments in buyer-seller negotiations. What did they find?",
       "options": [
         "Sellers who made the first offer got better outcomes, but buyers who made the first offer were at a disadvantage",
-        "First offers had minimal impact \u2014 final outcomes were primarily driven by BATNA strength",
-        "Whichever party \u2014 buyer or seller \u2014 made the first offer obtained a better final outcome; first offers strongly predicted settlement price",
+        "First offers had minimal impact — final outcomes were primarily driven by BATNA strength",
+        "Whichever party — buyer or seller — made the first offer obtained a better final outcome; first offers strongly predicted settlement price",
         "First offers only mattered in single-issue negotiations; multi-issue deals showed no anchoring advantage"
       ],
       "correct": 2,
-      "explanation": "The advantage holds regardless of which side goes first. Buyer or seller \u2014 whoever anchors pulls the final number toward their opening position. This is why waiting for the prospect to name a price is a structural concession before the negotiation has even started."
+      "explanation": "The advantage holds regardless of which side goes first. Buyer or seller — whoever anchors pulls the final number toward their opening position. This is why waiting for the prospect to name a price is a structural concession before the negotiation has even started."
     },
     {
       "question": "Research on anchoring precision found that $47,250 outperforms $47,000 or $50,000 as a first offer. Why does precision make an anchor more effective?",
       "options": [
         "Odd numbers are psychologically harder to refuse than round numbers",
-        "Precise numbers signal calculation and expertise, leading counterparts to infer a data-backed rationale \u2014 so they adjust in smaller increments",
+        "Precise numbers signal calculation and expertise, leading counterparts to infer a data-backed rationale — so they adjust in smaller increments",
         "Precise numbers are more memorable, which makes them harder to ignore during concession-making",
         "Round numbers trigger loss aversion more strongly, making buyers more resistant to the anchor"
       ],
       "correct": 1,
-      "explanation": "Precision implies the number was derived from somewhere \u2014 a model, market data, a calculation. That perceived legitimacy constrains the adjustment. Round numbers feel like placeholders with obvious room to move. Precise numbers feel final."
+      "explanation": "Precision implies the number was derived from somewhere — a model, market data, a calculation. That perceived legitimacy constrains the adjustment. Round numbers feel like placeholders with obvious room to move. Precise numbers feel final."
     },
     {
       "question": "You're heading into a SaaS renewal negotiation. The customer hasn't mentioned price yet. You expect pushback. Based on anchoring research, what should you do?",
       "options": [
-        "Let the customer name a number first \u2014 understanding their budget anchor helps you calibrate your position",
+        "Let the customer name a number first — understanding their budget anchor helps you calibrate your position",
         "Open with a round number slightly above list price so there's room to concede to list and make them feel they won",
-        "Name your anchor first \u2014 an ambitious, precise number with defensible rationale \u2014 before they introduce any figure into the conversation",
+        "Name your anchor first — an ambitious, precise number with defensible rationale — before they introduce any figure into the conversation",
         "Anchor with a range rather than a specific number to avoid seeming inflexible"
       ],
       "correct": 2,
-      "explanation": "Every moment you wait is a moment the customer is thinking about their number \u2014 which is lower than yours. Once they name it, it's in the room. Go first with a precise, ambitious anchor backed by value delivered. Even if they push back, the entire negotiation will happen in reference to your number, not theirs."
+      "explanation": "Every moment you wait is a moment the customer is thinking about their number — which is lower than yours. Once they name it, it's in the room. Go first with a precise, ambitious anchor backed by value delivered. Even if they push back, the entire negotiation will happen in reference to your number, not theirs."
     }
   ],
-  "closing": "Find your next pricing conversation and decide \u2014 are you naming the number first, or leaving that to the buyer?",
+  "closing": "Find your next pricing conversation and decide — are you naming the number first, or leaving that to the buyer?",
   "sources": [
     {
-      "label": "Tversky & Kahneman \u2014 Judgment under Uncertainty: Heuristics and Biases, Science (1974)",
-      "detail": "Vol. 185, No. 4157, pp. 1124\u20131131. Founding identification of the anchoring heuristic \u2014 the tendency to rely on the first number introduced when making estimates under uncertainty.",
+      "label": "Tversky & Kahneman — Judgment under Uncertainty: Heuristics and Biases, Science (1974)",
+      "detail": "Vol. 185, No. 4157, pp. 1124–1131. Founding identification of the anchoring heuristic — the tendency to rely on the first number introduced when making estimates under uncertainty.",
       "url": "https://www.science.org/doi/10.1126/science.185.4157.1124"
     },
     {
-      "label": "Galinsky & Mussweiler \u2014 First Offers as Anchors, Journal of Personality and Social Psychology (2001)",
-      "detail": "Vol. 81, No. 4, pp. 657\u2013669. Three experiments: whichever party made the first offer obtained a better outcome. First offers were a strong predictor of final settlement price.",
+      "label": "Galinsky & Mussweiler — First Offers as Anchors, Journal of Personality and Social Psychology (2001)",
+      "detail": "Vol. 81, No. 4, pp. 657–669. Three experiments: whichever party made the first offer obtained a better outcome. First offers were a strong predictor of final settlement price.",
       "url": "https://psycnet.apa.org/record/2001-07460-012"
     },
     {
-      "label": "Kahneman \u2014 Thinking, Fast and Slow, Farrar, Straus and Giroux (2011)",
+      "label": "Kahneman — Thinking, Fast and Slow, Farrar, Straus and Giroux (2011)",
       "detail": "Chapter 11 covers the anchoring effect, precision research, and the two-system mechanism behind why anchors are so hard to escape even when we know they're there.",
       "url": "https://us.macmillan.com/books/9780374533557/thinkingfastandslow"
     }
-  ]
+  ],
+  "ai_prompt": "I'm preparing for a negotiation — a deal, a salary conversation, a vendor contract, or something else where the first number matters. Help me think through my anchoring strategy: where to set the anchor, how to frame it, and what to do if the other side anchors first. Ask me about the deal, then help me plan. Here's the situation: [describe it]"
 }

@@ -8,33 +8,33 @@
   "morning": {
     "hook": "The kinder word you chose? It's already on borrowed time.",
     "explanation_paragraphs": [
-      "The euphemism treadmill is the cycle where a new word replaces a stigmatized one \u2014 and then picks up the same stigma. 'Moron' was a clinical term introduced to replace 'idiot.' 'Retarded' replaced 'moron.' 'Intellectually disabled' replaced 'retarded.' Each word started neutral, absorbed the weight of what it described, and became the thing people wanted to escape.",
-      "The treadmill never stops because the word isn't the problem \u2014 the underlying concept is. You can rename something all you want, but the new name inherits what the old one carried.",
-      "Understanding this changes how you communicate \u2014 not because you should stop caring about language, but because you should stop expecting a word swap to do what only a real change can do."
+      "The euphemism treadmill is the cycle where a new word replaces a stigmatized one — and then picks up the same stigma. 'Moron' was a clinical term introduced to replace 'idiot.' 'Retarded' replaced 'moron.' 'Intellectually disabled' replaced 'retarded.' Each word started neutral, absorbed the weight of what it described, and became the thing people wanted to escape.",
+      "The treadmill never stops because the word isn't the problem — the underlying concept is. You can rename something all you want, but the new name inherits what the old one carried.",
+      "Understanding this changes how you communicate — not because you should stop caring about language, but because you should stop expecting a word swap to do what only a real change can do."
     ],
-    "why_today": "In an era of accelerating language change \u2014 in media, in workplaces, in AI outputs \u2014 understanding why word swaps don't fix perception is one of the most practically useful things a communicator can know.",
-    "morning_challenge": "Pick one term in your industry or daily life that's already gone through at least one rename. Trace the chain. What did it replace \u2014 and does the new version still carry the weight?"
+    "why_today": "In an era of accelerating language change — in media, in workplaces, in AI outputs — understanding why word swaps don't fix perception is one of the most practically useful things a communicator can know.",
+    "morning_challenge": "Pick one term in your industry or daily life that's already gone through at least one rename. Trace the chain. What did it replace — and does the new version still carry the weight?"
   },
   "midday": {
     "reframe": "The treadmill isn't a language problem. It's a trust diagnostic: every spin of the wheel tells your audience you're managing optics, not solving problems.",
-    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 CORPORATE LAYOFF LANGUAGE",
+    "itw_label": "IN THE WILD — TYPE B · CORPORATE LAYOFF LANGUAGE",
     "itw_paragraphs": [
-      "Corporate layoff language ran the exact cycle. In the 1980s and early 90s, 'layoffs' became 'downsizing.' By 1995, HR professionals were already noting that 'downsizing' felt too negative \u2014 so 'rightsizing' emerged.",
+      "Corporate layoff language ran the exact cycle. In the 1980s and early 90s, 'layoffs' became 'downsizing.' By 1995, HR professionals were already noting that 'downsizing' felt too negative — so 'rightsizing' emerged.",
       "By the 2010s, 'rightsizing' had taken on its own cynical edge. Today, 'workforce optimization' and 'structural realignment' carry the same bitter read that 'layoffs' always did.",
-      "The Houston Chronicle documented the 'rightsizing' emergence in 1995, noting plainly: 'Downsizing became popular a few years ago to replace layoffs, but then people started thinking downsizing was too negative.' Nobody missed what was happening. The treadmill didn't protect anyone \u2014 it just marked the company as an organization that wouldn't say the hard thing directly."
+      "The Houston Chronicle documented the 'rightsizing' emergence in 1995, noting plainly: 'Downsizing became popular a few years ago to replace layoffs, but then people started thinking downsizing was too negative.' Nobody missed what was happening. The treadmill didn't protect anyone — it just marked the company as an organization that wouldn't say the hard thing directly."
     ],
     "quote": "The euphemism treadmill shows that concepts, not words, are in charge: give a concept a new name, and the name becomes colored by the concept; the concept does not become freshened by the name.",
     "attribution": "Steven Pinker, The Game of the Name, New York Times, 1994",
-    "midday_nudge": "What word are you or your organization currently cycling through \u2014 and what's the real thing that word is trying to avoid naming?"
+    "midday_nudge": "What word are you or your organization currently cycling through — and what's the real thing that word is trying to avoid naming?"
   },
   "quiz": [
     {
       "question": "Who coined the term 'euphemism treadmill' and in what year?",
       "options": [
-        "George Orwell, 1933 \u2014 in Down and Out in Paris and London",
-        "Steven Pinker, 1994 \u2014 in a New York Times op-ed",
-        "Noam Chomsky, 1965 \u2014 in Aspects of the Theory of Syntax",
-        "Deborah Tannen, 1990 \u2014 in You Just Don't Understand"
+        "George Orwell, 1933 — in Down and Out in Paris and London",
+        "Steven Pinker, 1994 — in a New York Times op-ed",
+        "Noam Chomsky, 1965 — in Aspects of the Theory of Syntax",
+        "Deborah Tannen, 1990 — in You Just Don't Understand"
       ],
       "correct": 1,
       "explanation": "Pinker named the phenomenon in 'The Game of the Name,' a 1994 NYT op-ed. He expanded on it in The Blank Slate (2002). Orwell observed the pattern without naming it; Pinker gave it the label."
@@ -44,40 +44,41 @@
       "options": [
         "Because new words are harder to pronounce and people revert to old ones",
         "Because the new word is phonetically similar to the old one, triggering the same associations",
-        "Because the underlying concept still carries the same social weight \u2014 the new word inherits it through association",
+        "Because the underlying concept still carries the same social weight — the new word inherits it through association",
         "Because audiences are too set in their habits to adopt new vocabulary"
       ],
       "correct": 2,
-      "explanation": "Pinker's core point: concepts are primary, words are downstream. The new word doesn't change perception of the concept \u2014 it just gets colored by it. The treadmill restarts because the real issue was never the word."
+      "explanation": "Pinker's core point: concepts are primary, words are downstream. The new word doesn't change perception of the concept — it just gets colored by it. The treadmill restarts because the real issue was never the word."
     },
     {
       "question": "You're writing a company announcement about eliminating 200 roles. Your manager suggests using 'workforce realignment' instead of 'layoffs.' Based on the euphemism treadmill, what should you do?",
       "options": [
-        "Use 'workforce realignment' \u2014 the softer term will reduce negative reactions",
+        "Use 'workforce realignment' — the softer term will reduce negative reactions",
         "Combine both: 'layoff-driven workforce realignment' so it's transparent and softened",
         "Replace both with a more abstract phrase like 'organizational evolution' to maximize distance from the concept",
-        "Name the reality plainly \u2014 'workforce realignment' will read as spin, eroding the trust you need from the employees who remain"
+        "Name the reality plainly — 'workforce realignment' will read as spin, eroding the trust you need from the employees who remain"
       ],
       "correct": 3,
-      "explanation": "The treadmill predicts that the euphemism will acquire the same negative read as the thing it replaces \u2014 often faster when the stakes are high and audiences know exactly what's being avoided. Plain language preserves credibility with the audience that matters most: the people still there."
+      "explanation": "The treadmill predicts that the euphemism will acquire the same negative read as the thing it replaces — often faster when the stakes are high and audiences know exactly what's being avoided. Plain language preserves credibility with the audience that matters most: the people still there."
     }
   ],
-  "closing": "The next word you choose to soften something \u2014 notice what you're actually trying to avoid naming.",
+  "closing": "The next word you choose to soften something — notice what you're actually trying to avoid naming.",
   "sources": [
     {
-      "label": "Steven Pinker \u2014 The Game of the Name, New York Times, April 3, 1994",
+      "label": "Steven Pinker — The Game of the Name, New York Times, April 3, 1994",
       "detail": "Pinker coins the term 'euphemism treadmill' and establishes the core mechanism: concepts lead, words follow.",
       "url": "https://stevenpinker.com/files/pinker/files/1994_04_03_newyorktimes.pdf"
     },
     {
-      "label": "Pinker \u2014 The Blank Slate, Viking Penguin, 2002",
+      "label": "Pinker — The Blank Slate, Viking Penguin, 2002",
       "detail": "Expands the euphemism treadmill argument with additional examples across clinical, corporate, and political language.",
       "url": "https://en.wikipedia.org/wiki/The_Blank_Slate"
     },
     {
-      "label": "L. M. Sixel \u2014 New Terms, Old Ideas, Houston Chronicle, May 8, 1995",
-      "detail": "Documents the layoffs \u2192 downsizing \u2192 rightsizing transition as it was happening in real time.",
+      "label": "L. M. Sixel — New Terms, Old Ideas, Houston Chronicle, May 8, 1995",
+      "detail": "Documents the layoffs → downsizing → rightsizing transition as it was happening in real time.",
       "url": "https://wordspy.com/words/rightsizing"
     }
-  ]
+  ],
+  "ai_prompt": "I want to catch the euphemism treadmill in action — either in language I'm using, in my industry, or in a communication I'm reviewing. Help me identify the original blunt term, the euphemism that replaced it, and whether the new term is already losing its softness. Ask me what context you're working in, then trace the treadmill. Here's what I want to examine: [describe it]"
 }

@@ -329,6 +329,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const [showEntryFeedback, setShowEntryFeedback] = useState(false)
   const [themeKey, setThemeKey] = useState('morning')
   const [startTime] = useState(Date.now())
+  const [promptCopied, setPromptCopied] = useState(false)
 
   const T = THEMES[themeKey]
   const scoreRef = useRef(null)
@@ -563,6 +564,49 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                       if (onFeedbackDone) onFeedbackDone(ACCENT)
                     }}
                   />
+                )}
+
+                {/* AI Prompt section */}
+                {entry.ai_prompt && (
+                  <div style={{
+                    background: `${ACCENT}0D`,
+                    border: `1px solid ${ACCENT}33`,
+                    borderRadius: 6,
+                    padding: '18px 18px 16px',
+                    marginTop: 20,
+                    marginBottom: 4,
+                  }}>
+                    <div style={{ fontSize: 10, letterSpacing: '0.12em', fontWeight: 600, textTransform: 'uppercase', color: ACCENT, marginBottom: 10 }}>
+                      AI PROMPT
+                    </div>
+                    <div style={{ fontSize: 13, color: T.textMid, lineHeight: 1.75, marginBottom: 14 }}>
+                      {entry.ai_prompt}
+                    </div>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(entry.ai_prompt).then(() => {
+                          setPromptCopied(true)
+                          setTimeout(() => setPromptCopied(false), 2000)
+                        })
+                      }}
+                      style={{
+                        background: promptCopied ? `${ACCENT}22` : 'none',
+                        border: `1px solid ${promptCopied ? ACCENT : ACCENT + '55'}`,
+                        borderRadius: 4,
+                        padding: '8px 16px',
+                        fontSize: 11,
+                        letterSpacing: '0.1em',
+                        fontWeight: 600,
+                        color: promptCopied ? ACCENT : T.textDim,
+                        cursor: 'pointer',
+                        fontFamily: "'Inter',sans-serif",
+                        transition: 'all 0.15s',
+                        width: '100%',
+                      }}
+                    >
+                      {promptCopied ? '✓ COPIED' : 'COPY PROMPT'}
+                    </button>
+                  </div>
                 )}
 
                 {/* Completion action card */}

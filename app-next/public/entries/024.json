@@ -6,79 +6,80 @@
   "accent": "#FF8C47",
   "accentDim": "rgba(255,140,71,0.10)",
   "morning": {
-    "hook": "Someone made a decision. Someone caused a failure. Someone fired people. But in the sentence you just read, nobody did anything \u2014 and that was the point.",
+    "hook": "Someone made a decision. Someone caused a failure. Someone fired people. But in the sentence you just read, nobody did anything — and that was the point.",
     "explanation_paragraphs": [
-      "Nominalization is what happens when you take a verb \u2014 an action \u2014 and convert it into a noun. Decide becomes decision. Fail becomes failure. Terminate becomes termination. The action still exists in the sentence. But the person doing it has vanished. George Orwell named this pattern in 1946 and called it one of the primary tools of evasive political writing. It hasn't gone anywhere.",
-      "Here's the mechanism in practice. 'We decided to cut the budget' names who acted and what they did. 'A budget decision was reached' says the same thing, except now no one decided anything \u2014 a decision simply materialized, like weather. The facts are identical. The accountability is not. The nominalized version lets whoever is writing it off the hook before you've finished reading the sentence.",
-      "It's not always intentional. Academic writing, legal documents, and corporate communications have used nominalization so long that it has become a default register \u2014 the sound of institutional authority. The suffix trail is the tell: any -tion, -ment, -ance, -ity, or -al word that used to be a verb is a nominalization. 'The implementation of the new policy led to an improvement in compliance' has five of them in twelve words. Translated: 'Implementing the new policy made people comply more.' Same sentence. Completely different feel.",
-      "The reason this matters isn't stylistic. It's functional. When you remove the actor from the action, you remove the question of who is responsible. 'Mistakes were made' \u2014 the most famous nominalization in American political history, used by at least four presidents to acknowledge wrongdoing without admitting they did anything wrong \u2014 is the pattern at its most naked. The mistake happened. No one made it."
+      "Nominalization is what happens when you take a verb — an action — and convert it into a noun. Decide becomes decision. Fail becomes failure. Terminate becomes termination. The action still exists in the sentence. But the person doing it has vanished. George Orwell named this pattern in 1946 and called it one of the primary tools of evasive political writing. It hasn't gone anywhere.",
+      "Here's the mechanism in practice. 'We decided to cut the budget' names who acted and what they did. 'A budget decision was reached' says the same thing, except now no one decided anything — a decision simply materialized, like weather. The facts are identical. The accountability is not. The nominalized version lets whoever is writing it off the hook before you've finished reading the sentence.",
+      "It's not always intentional. Academic writing, legal documents, and corporate communications have used nominalization so long that it has become a default register — the sound of institutional authority. The suffix trail is the tell: any -tion, -ment, -ance, -ity, or -al word that used to be a verb is a nominalization. 'The implementation of the new policy led to an improvement in compliance' has five of them in twelve words. Translated: 'Implementing the new policy made people comply more.' Same sentence. Completely different feel.",
+      "The reason this matters isn't stylistic. It's functional. When you remove the actor from the action, you remove the question of who is responsible. 'Mistakes were made' — the most famous nominalization in American political history, used by at least four presidents to acknowledge wrongdoing without admitting they did anything wrong — is the pattern at its most naked. The mistake happened. No one made it."
     ],
-    "why_today": "A 2026 analysis of 6,957 academic submissions to the journal Organization Science found that AI-assisted papers showed significantly heavier use of nominalizations than non-AI-assisted papers \u2014 and those papers had lower readability scores and higher rejection rates. LLMs are trained on decades of institutional prose, which means they produce nominalization by default. The pattern Orwell flagged in 1946 is now being automated at scale.",
-    "morning_challenge": "Take any email, memo, or announcement you've received this week \u2014 from a manager, a company, a news source.\n\nHunt the nominalizations. The -tion, -ment, -ance words. Find them, then do the translation:\n\n\u2014 'A determination was made' \u2192 'Someone decided'\n\u2014 'The team reached an agreement' \u2192 'The team agreed'\n\u2014 'There was a failure in execution' \u2192 'We failed to execute'\n\u2014 'Consideration will be given to your request' \u2192 'We might consider your request'\n\nOnce you've translated: who disappeared from the original? That's the person the nominalization was protecting."
+    "why_today": "A 2026 analysis of 6,957 academic submissions to the journal Organization Science found that AI-assisted papers showed significantly heavier use of nominalizations than non-AI-assisted papers — and those papers had lower readability scores and higher rejection rates. LLMs are trained on decades of institutional prose, which means they produce nominalization by default. The pattern Orwell flagged in 1946 is now being automated at scale.",
+    "morning_challenge": "Take any email, memo, or announcement you've received this week — from a manager, a company, a news source.\n\nHunt the nominalizations. The -tion, -ment, -ance words. Find them, then do the translation:\n\n— 'A determination was made' → 'Someone decided'\n— 'The team reached an agreement' → 'The team agreed'\n— 'There was a failure in execution' → 'We failed to execute'\n— 'Consideration will be given to your request' → 'We might consider your request'\n\nOnce you've translated: who disappeared from the original? That's the person the nominalization was protecting."
   },
   "midday": {
     "reframe": "The nominalization doesn't hide what happened. It hides who did it.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 ORGANIZATION SCIENCE / ORWELL FOUNDATION",
+    "itw_label": "IN THE WILD — TYPE A · ORGANIZATION SCIENCE / ORWELL FOUNDATION",
     "itw_paragraphs": [
-      "Orwell's 1946 essay 'Politics and the English Language' identified nominalization as the core mechanism of what he called 'the defense of the indefensible' in political writing. His argument wasn't about style \u2014 it was about accountability. When actions become nouns, actors disappear. You can condemn an event without naming a cause. You can acknowledge a failure without admitting anyone failed.",
-      "In 2026, the pattern has a new delivery mechanism. An AI Task Force analysis of submissions to the journal Organization Science \u2014 covering 6,957 papers submitted between January 2021 and February 2026 \u2014 found that AI-heavy manuscripts showed heavier reliance on nominalizations, higher reading grade levels, and lower Flesch readability scores. By January 2026, submission writing quality sat 1.28 standard deviations below the January 2021 baseline. The tools are trained on institutional prose; they produce institutional prose. Nominalization isn't a choice the AI is making \u2014 it's a pattern the AI inherited, and now reproduces at scale.",
-      "This matters practically for anyone reading AI-drafted communications in 2026: the evasion Orwell described isn't going away. It's getting faster. A sentence that took a PR team an afternoon to craft in 1980 now takes a model two seconds. The responsible reader's job is the same as it always was \u2014 find the verb, find the actor, ask who did it."
+      "Orwell's 1946 essay 'Politics and the English Language' identified nominalization as the core mechanism of what he called 'the defense of the indefensible' in political writing. His argument wasn't about style — it was about accountability. When actions become nouns, actors disappear. You can condemn an event without naming a cause. You can acknowledge a failure without admitting anyone failed.",
+      "In 2026, the pattern has a new delivery mechanism. An AI Task Force analysis of submissions to the journal Organization Science — covering 6,957 papers submitted between January 2021 and February 2026 — found that AI-heavy manuscripts showed heavier reliance on nominalizations, higher reading grade levels, and lower Flesch readability scores. By January 2026, submission writing quality sat 1.28 standard deviations below the January 2021 baseline. The tools are trained on institutional prose; they produce institutional prose. Nominalization isn't a choice the AI is making — it's a pattern the AI inherited, and now reproduces at scale.",
+      "This matters practically for anyone reading AI-drafted communications in 2026: the evasion Orwell described isn't going away. It's getting faster. A sentence that took a PR team an afternoon to craft in 1980 now takes a model two seconds. The responsible reader's job is the same as it always was — find the verb, find the actor, ask who did it."
     ],
     "quote": "The passive voice is wherever possible used in preference to the active, and noun constructions are used instead of gerunds. The range of verbs is further cut down... and banal statements are given an appearance of profundity.",
     "attribution": "George Orwell, 'Politics and the English Language,' Horizon, April 1946",
-    "midday_nudge": "Look at something you've written this week \u2014 an email, a Slack message, a doc. Find one nominalization. Translate it back to a verb. Does the sentence change? Does your accountability in it change?"
+    "midday_nudge": "Look at something you've written this week — an email, a Slack message, a doc. Find one nominalization. Translate it back to a verb. Does the sentence change? Does your accountability in it change?"
   },
   "quiz": [
     {
       "question": "What is the core difference between 'We failed to deliver on time' and 'There was a failure in delivery execution'?",
       "options": [
-        "The second version is more specific \u2014 'delivery execution' names the exact part of the process that broke down, making it more informative than the first",
-        "The first names an actor who failed; the second nominalizes 'failure' and 'execution,' removing any actor from the sentence \u2014 the same event is described but no one is responsible for it",
-        "Both sentences convey identical meaning and accountability \u2014 nominalization is a stylistic choice that affects tone but not substance",
-        "The second version is passive voice, which is a grammatically distinct issue from nominalization \u2014 the two patterns have different effects on accountability"
+        "The second version is more specific — 'delivery execution' names the exact part of the process that broke down, making it more informative than the first",
+        "The first names an actor who failed; the second nominalizes 'failure' and 'execution,' removing any actor from the sentence — the same event is described but no one is responsible for it",
+        "Both sentences convey identical meaning and accountability — nominalization is a stylistic choice that affects tone but not substance",
+        "The second version is passive voice, which is a grammatically distinct issue from nominalization — the two patterns have different effects on accountability"
       ],
       "correct": 1,
-      "explanation": "'We failed' names who did it and what they did. 'There was a failure in delivery execution' turns the action into a noun and removes any actor \u2014 the failure simply existed. No one failed. This is the core mechanism Orwell identified: nominalization doesn't change the facts, it changes who can be held responsible for them."
+      "explanation": "'We failed' names who did it and what they did. 'There was a failure in delivery execution' turns the action into a noun and removes any actor — the failure simply existed. No one failed. This is the core mechanism Orwell identified: nominalization doesn't change the facts, it changes who can be held responsible for them."
     },
     {
       "question": "Orwell's 1946 essay argued that nominalization was most dangerous in political and institutional writing. Which of the following best explains why?",
       "options": [
-        "Political writing reaches a large audience \u2014 so bad stylistic habits in that context influence how millions of people write and think about language",
-        "Political actors deliberately choose nominalization to obscure their role in decisions \u2014 it's a calculated persuasion strategy, not an accidental stylistic preference",
-        "Institutional writing is read by people who don't have time to analyze it carefully \u2014 nominalization exploits that inattention to slip past scrutiny",
-        "Nominalization removes actors from actions \u2014 in political and institutional contexts, where accountability for decisions is exactly what's at stake, erasing the actor is not a stylistic preference, it's a structural evasion of responsibility"
+        "Political writing reaches a large audience — so bad stylistic habits in that context influence how millions of people write and think about language",
+        "Political actors deliberately choose nominalization to obscure their role in decisions — it's a calculated persuasion strategy, not an accidental stylistic preference",
+        "Institutional writing is read by people who don't have time to analyze it carefully — nominalization exploits that inattention to slip past scrutiny",
+        "Nominalization removes actors from actions — in political and institutional contexts, where accountability for decisions is exactly what's at stake, erasing the actor is not a stylistic preference, it's a structural evasion of responsibility"
       ],
       "correct": 3,
-      "explanation": "Orwell's argument was functional, not aesthetic. The problem isn't that nominalized prose sounds bad \u2014 it's that it does a specific job: it lets institutions acknowledge events without acknowledging agency. 'Mistakes were made' is grammatically complete. It is also a perfect erasure of whoever made them. That's the move Orwell was naming."
+      "explanation": "Orwell's argument was functional, not aesthetic. The problem isn't that nominalized prose sounds bad — it's that it does a specific job: it lets institutions acknowledge events without acknowledging agency. 'Mistakes were made' is grammatically complete. It is also a perfect erasure of whoever made them. That's the move Orwell was naming."
     },
     {
-      "question": "A 2026 analysis found that AI-assisted academic papers showed significantly heavier nominalization than non-AI papers \u2014 and lower readability scores. What does this reveal about how AI generates institutional prose?",
+      "question": "A 2026 analysis found that AI-assisted academic papers showed significantly heavier nominalization than non-AI papers — and lower readability scores. What does this reveal about how AI generates institutional prose?",
       "options": [
-        "AI tools are poorly designed for academic writing \u2014 the nominalization problem is a fixable product issue, not a structural feature of how LLMs work",
-        "AI models generate nominalization by default because they are trained on decades of institutional prose that already uses it heavily \u2014 the evasion pattern is inherited, not chosen, and is now being produced at scale",
-        "The study reflects a correlation, not causation \u2014 lower-quality writers are simply more likely to use AI assistance, which explains both the nominalization and the rejection rates",
-        "Nominalization in AI output is primarily a readability problem \u2014 it makes writing harder to parse, but doesn't carry the same accountability implications it does in human-authored institutional writing"
+        "AI tools are poorly designed for academic writing — the nominalization problem is a fixable product issue, not a structural feature of how LLMs work",
+        "AI models generate nominalization by default because they are trained on decades of institutional prose that already uses it heavily — the evasion pattern is inherited, not chosen, and is now being produced at scale",
+        "The study reflects a correlation, not causation — lower-quality writers are simply more likely to use AI assistance, which explains both the nominalization and the rejection rates",
+        "Nominalization in AI output is primarily a readability problem — it makes writing harder to parse, but doesn't carry the same accountability implications it does in human-authored institutional writing"
       ],
       "correct": 1,
-      "explanation": "LLMs are trained on everything humans have written \u2014 which includes decades of corporate reports, government documents, legal filings, and academic papers all nominalized within an inch of their lives. The model doesn't choose evasion. It reproduces what it learned. The result is that a pattern Orwell identified as politically dangerous in 1946 is now being generated automatically, at scale, in seconds. The responsible reader's job hasn't changed \u2014 find the verb, find the actor."
+      "explanation": "LLMs are trained on everything humans have written — which includes decades of corporate reports, government documents, legal filings, and academic papers all nominalized within an inch of their lives. The model doesn't choose evasion. It reproduces what it learned. The result is that a pattern Orwell identified as politically dangerous in 1946 is now being generated automatically, at scale, in seconds. The responsible reader's job hasn't changed — find the verb, find the actor."
     }
   ],
-  "closing": "Next time you read something institutional \u2014 find the -tion words. Translate them back to verbs. Then ask: who's missing from this sentence?",
+  "closing": "Next time you read something institutional — find the -tion words. Translate them back to verbs. Then ask: who's missing from this sentence?",
   "sources": [
     {
-      "label": "Orwell, G. \u2014 'Politics and the English Language.' Horizon, no. 76, April 1946, pp. 252\u2013264",
+      "label": "Orwell, G. — 'Politics and the English Language.' Horizon, no. 76, April 1946, pp. 252–264",
       "detail": "Primary source. Identifies nominalization and passive voice as the core tools of evasive institutional writing. Argues that turning actions into nouns allows institutions to acknowledge events while erasing accountability. Freely available at orwellfoundation.com.",
       "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
     },
     {
-      "label": "Williams, J.M. \u2014 Style: Ten Lessons in Clarity and Grace. Scott Foresman, 1981 (multiple editions through 2014)",
+      "label": "Williams, J.M. — Style: Ten Lessons in Clarity and Grace. Scott Foresman, 1981 (multiple editions through 2014)",
       "detail": "Secondary academic source. Defines nominalization ('smothered verbs'), explains its structural effect on readability and accountability, and provides the clearest taxonomy of when nominalization obscures agency vs. when it serves a legitimate stylistic function.",
       "url": "https://college.lclark.edu/live/files/10252-active"
     },
     {
-      "label": "Organization Science AI Task Force \u2014 Analysis of 6,957 submissions, January 2021\u2013February 2026 (reported May 2026)",
+      "label": "Organization Science AI Task Force — Analysis of 6,957 submissions, January 2021–February 2026 (reported May 2026)",
       "detail": "In the Wild source. Found that AI-heavy manuscripts showed heavier nominalization density, higher reading grade levels, lower Flesch readability scores, and higher rejection rates. By January 2026, submission quality sat 1.28 standard deviations below the January 2021 baseline.",
       "url": "https://www.thebrighterside.news/post/ai-is-flooding-peer-review-and-editors-say-its-making-science-harder-to-judge/"
     }
-  ]
+  ],
+  "ai_prompt": "I want to spot and fix nominalization in my own writing — places where I've turned strong verbs into abstract nouns and drained the life out of the sentence. Share a piece of writing I've done and help me hunt for nominalizations, then rewrite the worst offenders. Here's the text: [paste it]"
 }

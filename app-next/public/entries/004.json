@@ -6,26 +6,26 @@
   "accent": "#C847FF",
   "accentDim": "rgba(200,71,255,0.10)",
   "morning": {
-    "hook": "Stop asking how to succeed. Ask what would guarantee failure \u2014 then don't do those things.",
+    "hook": "Stop asking how to succeed. Ask what would guarantee failure — then don't do those things.",
     "explanation_paragraphs": [
-      "Inversion is the practice of approaching a problem backward. Instead of asking 'how do I achieve X?', you ask 'what would make X impossible \u2014 or guarantee the opposite?' Charlie Munger picked this up from the 19th-century mathematician Carl Jacobi, who famously counseled: invert, always invert.",
+      "Inversion is the practice of approaching a problem backward. Instead of asking 'how do I achieve X?', you ask 'what would make X impossible — or guarantee the opposite?' Charlie Munger picked this up from the 19th-century mathematician Carl Jacobi, who famously counseled: invert, always invert.",
       "The logic is simple: forward thinking is optimistic and tends to miss the landmines. Backward thinking forces you to confront the specific ways things actually break.",
-      "Most smart people can tell you what good looks like. Fewer can tell you, in granular detail, what disaster looks like. The ones who can \u2014 and who systematically avoid those conditions \u2014 build remarkably durable outcomes."
+      "Most smart people can tell you what good looks like. Fewer can tell you, in granular detail, what disaster looks like. The ones who can — and who systematically avoid those conditions — build remarkably durable outcomes."
     ],
     "why_today": "In a world of endless advice on what to do, inversion is a cheat code: it shrinks the problem to a list of things to avoid, which turns out to be far more actionable than a list of things to pursue.",
-    "morning_challenge": "Pick one decision you're sitting on \u2014 a plan you're about to execute, a pitch you're about to make, a project you're about to greenlight.\n\nRun this prompt:\n\n\"I'm planning to [describe your plan or decision]. Invert this for me: describe in specific detail how this plan would most likely fail. What are the 5 most plausible paths to a bad outcome? Don't be optimistic. Be the skeptic in the room. After listing the failure modes, flag which ones I have any actual control over.\"\n\nTake the top two failure modes you have control over. Fix them before you move."
+    "morning_challenge": "Pick one decision you're sitting on — a plan you're about to execute, a pitch you're about to make, a project you're about to greenlight.\n\nRun this prompt:\n\n\"I'm planning to [describe your plan or decision]. Invert this for me: describe in specific detail how this plan would most likely fail. What are the 5 most plausible paths to a bad outcome? Don't be optimistic. Be the skeptic in the room. After listing the failure modes, flag which ones I have any actual control over.\"\n\nTake the top two failure modes you have control over. Fix them before you move."
   },
   "midday": {
-    "reframe": "Wisdom isn't knowing how to win. It's knowing exactly where the floors are \u2014 and staying well above them.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 KLEIN HBR 2007 / MITCHELL ET AL. 1989",
+    "reframe": "Wisdom isn't knowing how to win. It's knowing exactly where the floors are — and staying well above them.",
+    "itw_label": "IN THE WILD — TYPE A · KLEIN HBR 2007 / MITCHELL ET AL. 1989",
     "itw_paragraphs": [
-      "In 2007, psychologist Gary Klein published the premortem technique in Harvard Business Review \u2014 a direct application of inversion to project planning. Before a project launches, the team imagines it's a year later and the project has failed spectacularly. Then they ask: what went wrong?",
-      "Klein's method draws on research by Mitchell, Russo, and Pennington (1989) showing that prospective hindsight \u2014 treating a future failure as already having occurred \u2014 improves the ability to identify real failure modes by roughly 30% compared to conventional risk assessment.",
+      "In 2007, psychologist Gary Klein published the premortem technique in Harvard Business Review — a direct application of inversion to project planning. Before a project launches, the team imagines it's a year later and the project has failed spectacularly. Then they ask: what went wrong?",
+      "Klein's method draws on research by Mitchell, Russo, and Pennington (1989) showing that prospective hindsight — treating a future failure as already having occurred — improves the ability to identify real failure modes by roughly 30% compared to conventional risk assessment.",
       "The key insight: humans are dramatically better at explaining a failure that has already happened than predicting one that might. Inversion borrows that cognitive advantage and applies it to the future. The technique has since been adopted in corporate boardrooms, military planning, and major tech organizations as standard pre-launch protocol."
     ],
     "quote": "All I want to know is where I'm going to die so I'll never go there.",
     "attribution": "Charlie Munger, Poor Charlie's Almanack, 2005",
-    "midday_nudge": "What's a current plan or commitment where you've been thinking almost entirely about the upside \u2014 and haven't seriously mapped the specific ways it could blow up?"
+    "midday_nudge": "What's a current plan or commitment where you've been thinking almost entirely about the upside — and haven't seriously mapped the specific ways it could blow up?"
   },
   "quiz": [
     {
@@ -33,22 +33,22 @@
       "options": [
         "Analyzing the best-case outcome of a decision before committing to it",
         "Identifying what you want, then listing the sequential steps to get there",
-        "Flipping the problem \u2014 asking what would cause failure instead of what would cause success",
+        "Flipping the problem — asking what would cause failure instead of what would cause success",
         "Seeking a second opinion before acting on any significant decision"
       ],
       "correct": 2,
-      "explanation": "Inversion means reasoning backward from failure rather than forward toward success. It's useful precisely because humans are better at explaining why something went wrong than predicting what will go right \u2014 so you borrow that cognitive advantage before the fact."
+      "explanation": "Inversion means reasoning backward from failure rather than forward toward success. It's useful precisely because humans are better at explaining why something went wrong than predicting what will go right — so you borrow that cognitive advantage before the fact."
     },
     {
-      "question": "According to research by Mitchell, Russo, and Pennington (1989), prospective hindsight \u2014 treating a future failure as already occurred \u2014 improves failure-mode identification by approximately:",
+      "question": "According to research by Mitchell, Russo, and Pennington (1989), prospective hindsight — treating a future failure as already occurred — improves failure-mode identification by approximately:",
       "options": [
-        "10% \u2014 a modest but statistically significant improvement",
-        "30% \u2014 a substantial improvement over conventional risk assessment",
-        "50% \u2014 roughly doubling the accuracy of risk identification",
+        "10% — a modest but statistically significant improvement",
+        "30% — a substantial improvement over conventional risk assessment",
+        "50% — roughly doubling the accuracy of risk identification",
         "There was no significant improvement over standard forward planning"
       ],
       "correct": 1,
-      "explanation": "Klein cites the Mitchell et al. finding in his HBR premortem article: prospective hindsight improves the ability to correctly identify reasons for future outcomes by 30%. This is the empirical basis for why the premortem works \u2014 and why inversion is more than a philosophical preference."
+      "explanation": "Klein cites the Mitchell et al. finding in his HBR premortem article: prospective hindsight improves the ability to correctly identify reasons for future outcomes by 30%. This is the empirical basis for why the premortem works — and why inversion is more than a philosophical preference."
     },
     {
       "question": "Munger's inversion principle is most useful when applied to which type of situation?",
@@ -65,19 +65,20 @@
   "closing": "Name one thing you're currently not doing that, if you did it, would most reliably wreck something you care about. That's your inversion.",
   "sources": [
     {
-      "label": "Munger / Kaufman \u2014 Poor Charlie's Almanack, Donning Company, 2005",
-      "detail": "Primary source for Munger's inversion framework \u2014 tracing Jacobi's maxim through investing, life decisions, and the practice of avoiding stupidity as a path to durable success.",
+      "label": "Munger / Kaufman — Poor Charlie's Almanack, Donning Company, 2005",
+      "detail": "Primary source for Munger's inversion framework — tracing Jacobi's maxim through investing, life decisions, and the practice of avoiding stupidity as a path to durable success.",
       "url": "https://www.amazon.com/Poor-Charlies-Almanack-Charles-Expanded/dp/1578645018"
     },
     {
-      "label": "Klein, G. \u2014 Performing a Project Premortem, Harvard Business Review, 85(9), 2007",
-      "detail": "Formalizes inversion as a team planning tool \u2014 the premortem method. Documents real-world adoption and cites the 30% improvement in failure-mode identification.",
+      "label": "Klein, G. — Performing a Project Premortem, Harvard Business Review, 85(9), 2007",
+      "detail": "Formalizes inversion as a team planning tool — the premortem method. Documents real-world adoption and cites the 30% improvement in failure-mode identification.",
       "url": "https://hbr.org/2007/09/performing-a-project-premortem"
     },
     {
-      "label": "Mitchell, Russo, Pennington \u2014 Back to the Future: Temporal Perspective in the Explanation of Events, Journal of Behavioral Decision Making, 2(1), 1989",
+      "label": "Mitchell, Russo, Pennington — Back to the Future: Temporal Perspective in the Explanation of Events, Journal of Behavioral Decision Making, 2(1), 1989",
       "detail": "The empirical basis for the premortem: prospective hindsight improves identification of the reasons for future outcomes by roughly 30%.",
       "url": "https://doi.org/10.1002/bdm.3960020103"
     }
-  ]
+  ],
+  "ai_prompt": "I want to apply inversion thinking to a goal or problem I'm working on. Instead of asking how to succeed, help me map out every way this could fail — then use that to pressure-test my plan. Ask me what I'm trying to achieve, then walk me through the inversion. Here's the goal or challenge: [describe it]"
 }

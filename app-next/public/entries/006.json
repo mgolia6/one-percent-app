@@ -6,25 +6,25 @@
   "accent": "#47FFE8",
   "accentDim": "rgba(71,255,232,0.10)",
   "morning": {
-    "hook": "You didn't get a bad answer. You wrote a bad question \u2014 and the difference can be 76 accuracy points.",
+    "hook": "You didn't get a bad answer. You wrote a bad question — and the difference can be 76 accuracy points.",
     "explanation_paragraphs": [
-      "AI models are not neutral interpreters. The same underlying question, asked with different formatting, different word order, or different option arrangement, can produce dramatically different outputs \u2014 without any change in meaning.",
+      "AI models are not neutral interpreters. The same underlying question, asked with different formatting, different word order, or different option arrangement, can produce dramatically different outputs — without any change in meaning.",
       "Researchers at the University of Washington demonstrated accuracy swings of up to 76 percentage points on the same task just by adjusting how prompts were formatted, with no change to the actual content or intent.",
-      "This isn't a bug that will be patched out. It's a structural property of how large language models process tokens. The model doesn't read your prompt the way you do \u2014 it reads the probability landscape your words create.",
+      "This isn't a bug that will be patched out. It's a structural property of how large language models process tokens. The model doesn't read your prompt the way you do — it reads the probability landscape your words create.",
       "Which means the craft of prompting is real, it's learnable, and most people are leaving significant output quality on the table every single day."
     ],
-    "why_today": "As AI gets embedded in real workflows \u2014 drafting, analysis, decisions \u2014 prompt quality stops being a curiosity and starts being an output multiplier. Knowing this exists is the first step to working around it.",
-    "morning_challenge": "Take one prompt you use regularly \u2014 something you've run more than once. Could be a weekly report, a draft you keep asking AI to improve, an analysis you run.\n\nRun this:\n\n\"Here is a prompt I use regularly: [paste your prompt]. Rewrite it three different ways \u2014 varying structure, word order, and level of context \u2014 while keeping the intent identical. Show me all three versions and flag which structural choices you made in each.\"\n\nRun all three versions on the same input. Compare outputs. The gap between best and worst is your current prompt tax."
+    "why_today": "As AI gets embedded in real workflows — drafting, analysis, decisions — prompt quality stops being a curiosity and starts being an output multiplier. Knowing this exists is the first step to working around it.",
+    "morning_challenge": "Take one prompt you use regularly — something you've run more than once. Could be a weekly report, a draft you keep asking AI to improve, an analysis you run.\n\nRun this:\n\n\"Here is a prompt I use regularly: [paste your prompt]. Rewrite it three different ways — varying structure, word order, and level of context — while keeping the intent identical. Show me all three versions and flag which structural choices you made in each.\"\n\nRun all three versions on the same input. Compare outputs. The gap between best and worst is your current prompt tax."
   },
   "midday": {
-    "reframe": "The AI isn't failing you. Your prompt is \u2014 and unlike the model, that part you can actually control.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 SCLAR ET AL. 2023 / GUAN ET AL. 2025",
+    "reframe": "The AI isn't failing you. Your prompt is — and unlike the model, that part you can actually control.",
+    "itw_label": "IN THE WILD — TYPE A · SCLAR ET AL. 2023 / GUAN ET AL. 2025",
     "itw_paragraphs": [
-      "In 2023, researchers at the University of Washington ran a systematic study on prompt formatting across widely used open-source language models. The question: how much does formatting alone \u2014 not content, not intent, just structural presentation \u2014 affect model output?",
+      "In 2023, researchers at the University of Washington ran a systematic study on prompt formatting across widely used open-source language models. The question: how much does formatting alone — not content, not intent, just structural presentation — affect model output?",
       "The answer was severe. On LLaMA-2-13B, they documented accuracy differences of up to 76 percentage points between prompt variants that were semantically identical. Same task. Same meaning. Different format. Wildly different results.",
-      "A separate 2025 study found similar effects in closed-source models including GPT-4 class systems \u2014 shuffled input order produced measurable accuracy declines across multiple task types. The implication: every time you paste a prompt without thinking about its structure, you're rolling dice on output quality."
+      "A separate 2025 study found similar effects in closed-source models including GPT-4 class systems — shuffled input order produced measurable accuracy declines across multiple task types. The implication: every time you paste a prompt without thinking about its structure, you're rolling dice on output quality."
     ],
-    "quote": "Choices in prompt design can strongly influence model behavior \u2014 this design process is critical in effectively using any modern pre-trained generative language model.",
+    "quote": "Choices in prompt design can strongly influence model behavior — this design process is critical in effectively using any modern pre-trained generative language model.",
     "attribution": "Melanie Sclar et al., arXiv:2310.11324, University of Washington, 2023",
     "midday_nudge": "What's a decision or output you've been trusting from AI without ever questioning whether the prompt that generated it was actually well-constructed?"
   },
@@ -32,53 +32,54 @@
     {
       "question": "University of Washington researchers found that meaning-preserving formatting changes to prompts could cause accuracy swings of up to:",
       "options": [
-        "5\u201310 percentage points \u2014 noticeable but manageable",
-        "20\u201330 percentage points \u2014 significant but explainable by task difficulty",
-        "76 percentage points \u2014 on the same task with no change in content or intent",
+        "5–10 percentage points — noticeable but manageable",
+        "20–30 percentage points — significant but explainable by task difficulty",
+        "76 percentage points — on the same task with no change in content or intent",
         "The study found no significant effect from formatting changes alone"
       ],
       "correct": 2,
-      "explanation": "76 accuracy points \u2014 on the same task, with meaning-preserving formatting changes only. This is the core finding: prompt structure is not cosmetic. It materially changes model output in ways that have nothing to do with the quality of your underlying question."
+      "explanation": "76 accuracy points — on the same task, with meaning-preserving formatting changes only. This is the core finding: prompt structure is not cosmetic. It materially changes model output in ways that have nothing to do with the quality of your underlying question."
     },
     {
       "question": "Why does prompt formatting affect model output even when the meaning doesn't change?",
       "options": [
         "Models are poorly trained and inconsistent by nature",
-        "LLMs process token sequences and probability distributions, not meaning \u2014 so structural changes alter the probability landscape the model operates on",
+        "LLMs process token sequences and probability distributions, not meaning — so structural changes alter the probability landscape the model operates on",
         "Formatting signals intent to the model, which interprets styled text as higher quality",
         "The effect is a known bug being corrected in newer model versions"
       ],
       "correct": 1,
-      "explanation": "LLMs don't read prompts the way humans do. They process sequences of tokens and predict what comes next based on probability distributions shaped by training. The same semantic content in different structural arrangements creates different probability landscapes \u2014 which is why formatting changes output even when meaning doesn't change."
+      "explanation": "LLMs don't read prompts the way humans do. They process sequences of tokens and predict what comes next based on probability distributions shaped by training. The same semantic content in different structural arrangements creates different probability landscapes — which is why formatting changes output even when meaning doesn't change."
     },
     {
       "question": "You're running the same AI-assisted analysis weekly. Your outputs have been inconsistent. Based on prompt sensitivity research, what's the most productive first step?",
       "options": [
-        "Switch to a different AI model \u2014 inconsistency signals the current model isn't suited to the task",
-        "Add more context and detail to your prompt \u2014 longer prompts perform more reliably",
+        "Switch to a different AI model — inconsistency signals the current model isn't suited to the task",
+        "Add more context and detail to your prompt — longer prompts perform more reliably",
         "Create two or three structurally different versions of your prompt, run them on the same input, and compare outputs to identify which structure produces the most reliable results",
         "Wait for model providers to address sensitivity in their next update"
       ],
       "correct": 2,
-      "explanation": "The research suggests that no single prompt format is reliably optimal. Testing variants and comparing outputs is the practical response to sensitivity \u2014 it converts a hidden variable into a visible one you can act on. Waiting for models to fix it is passive; prompt testing is in your control today."
+      "explanation": "The research suggests that no single prompt format is reliably optimal. Testing variants and comparing outputs is the practical response to sensitivity — it converts a hidden variable into a visible one you can act on. Waiting for models to fix it is passive; prompt testing is in your control today."
     }
   ],
-  "closing": "Think about the last AI output you trusted without question \u2014 and whether the prompt that produced it was actually any good.",
+  "closing": "Think about the last AI output you trusted without question — and whether the prompt that produced it was actually any good.",
   "sources": [
     {
-      "label": "Sclar et al. \u2014 Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design, arXiv:2310.11324, 2023",
+      "label": "Sclar et al. — Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design, arXiv:2310.11324, 2023",
       "detail": "University of Washington / UC Berkeley. Documented up to 76 accuracy-point swings from meaning-preserving formatting changes alone. Foundational empirical work on prompt sensitivity.",
       "url": "https://arxiv.org/abs/2310.11324"
     },
     {
-      "label": "Guan et al. \u2014 The Order Effect: Investigating Prompt Sensitivity to Input Order in LLMs, arXiv:2502.04134, 2025",
-      "detail": "Extends sensitivity research to closed-source LLMs \u2014 shows shuffled input order produces measurable accuracy declines across multiple task types.",
+      "label": "Guan et al. — The Order Effect: Investigating Prompt Sensitivity to Input Order in LLMs, arXiv:2502.04134, 2025",
+      "detail": "Extends sensitivity research to closed-source LLMs — shows shuffled input order produces measurable accuracy declines across multiple task types.",
       "url": "https://arxiv.org/abs/2502.04134"
     },
     {
-      "label": "Ko et al. \u2014 Large Language Models Sensitivity to The Order of Options in Multiple-Choice Questions, arXiv:2308.11483, 2023",
+      "label": "Ko et al. — Large Language Models Sensitivity to The Order of Options in Multiple-Choice Questions, arXiv:2308.11483, 2023",
       "detail": "Shows GPT-4 changes its answers based on answer option order. Order-calibration techniques improve performance by up to 8 percentage points.",
       "url": "https://arxiv.org/abs/2308.11483"
     }
-  ]
+  ],
+  "ai_prompt": "I want to understand how prompt sensitivity is affecting the AI outputs I'm getting. Pick something I'm using AI for regularly and help me run a small experiment: we'll reword the same request two or three ways and I'll test them. Ask me what task I'm working on, then help me write the variants. Here's what I'm trying to get AI to do: [describe the task]"
 }

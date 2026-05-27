@@ -8,37 +8,37 @@
   "morning": {
     "hook": "Your best champion just went quiet. If they're your only thread into the deal, it's already over.",
     "explanation_paragraphs": [
-      "Multi-threading is the practice of building relationships with multiple stakeholders inside a target account simultaneously \u2014 not waiting until your champion introduces you, and not relying on one person to carry your deal through an organization you can't see into.",
-      "The mechanism is simple: enterprise buying decisions are no longer made by one person. Gartner research consistently shows that complex B2B deals involve 6\u201310 decision-makers, each with different priorities, different veto power, and different timelines. Your champion understands the problem. The economic buyer controls the budget. The technical evaluator has to sign off on risk. The end user has to actually use the thing. None of them automatically agrees with each other.",
-      "Single-threading \u2014 connecting with only one contact and hoping they sell internally for you \u2014 puts the entire deal on a single point of failure. If they go dark, get promoted, leave the company, or simply don't have enough internal influence, the deal stalls or dies. And according to LinkedIn data, 78% of sales reps are still doing it this way.",
-      "Multi-threading isn't about spamming an account. It's about building a coalition. The goal is that by the time you're in negotiation, multiple people inside that organization have already concluded they need what you're selling \u2014 and are advocating for it without you in the room."
+      "Multi-threading is the practice of building relationships with multiple stakeholders inside a target account simultaneously — not waiting until your champion introduces you, and not relying on one person to carry your deal through an organization you can't see into.",
+      "The mechanism is simple: enterprise buying decisions are no longer made by one person. Gartner research consistently shows that complex B2B deals involve 6–10 decision-makers, each with different priorities, different veto power, and different timelines. Your champion understands the problem. The economic buyer controls the budget. The technical evaluator has to sign off on risk. The end user has to actually use the thing. None of them automatically agrees with each other.",
+      "Single-threading — connecting with only one contact and hoping they sell internally for you — puts the entire deal on a single point of failure. If they go dark, get promoted, leave the company, or simply don't have enough internal influence, the deal stalls or dies. And according to LinkedIn data, 78% of sales reps are still doing it this way.",
+      "Multi-threading isn't about spamming an account. It's about building a coalition. The goal is that by the time you're in negotiation, multiple people inside that organization have already concluded they need what you're selling — and are advocating for it without you in the room."
     ],
-    "why_today": "Buying committees have grown significantly over the past decade and show no signs of shrinking. In 2026, the average enterprise deal involves more than 11 stakeholders. The reps closing at the highest rates aren't the most charming \u2014 they're the ones who've built the widest internal footprint before the final call.",
+    "why_today": "Buying committees have grown significantly over the past decade and show no signs of shrinking. In 2026, the average enterprise deal involves more than 11 stakeholders. The reps closing at the highest rates aren't the most charming — they're the ones who've built the widest internal footprint before the final call.",
     "morning_challenge": "Pull up one active deal where you have only one contact. Map the buying committee: who's the economic buyer, the technical evaluator, the end user, the executive sponsor? Name them specifically. If you don't know who they are, that's the gap. Ask your champion today: 'Who else will weigh in on this decision?'"
   },
   "midday": {
     "reframe": "Your champion isn't selling your deal internally. They're hoping the deal sells itself. Multi-threading is how you stop relying on hope.",
-    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 DOCUMENTED PATTERN",
+    "itw_label": "IN THE WILD — TYPE B · DOCUMENTED PATTERN",
     "itw_paragraphs": [
       "A mid-market AE at a SaaS company had spent four months building a strong relationship with a Director of Operations at a target account. The director was bought in. She had internal credibility, used the product in a sandbox, and kept saying the deal was on track.",
       "Then she left the company. New role, better offer, two weeks notice. The AE had no other contacts at the account. The incoming Director had no context, no relationship, no reason to prioritize an evaluation his predecessor had started. The deal reset to zero.",
-      "This is the most common way enterprise deals die \u2014 not competition, not price, not product gaps. Contact attrition. According to LinkedIn Workforce data, average tenure in a B2B tech role is 2.5 to 3 years. In a six-month enterprise sales cycle, the probability of your champion changing roles before you close is not trivial. Multi-threading isn't just a win-rate strategy. It's deal insurance."
+      "This is the most common way enterprise deals die — not competition, not price, not product gaps. Contact attrition. According to LinkedIn Workforce data, average tenure in a B2B tech role is 2.5 to 3 years. In a six-month enterprise sales cycle, the probability of your champion changing roles before you close is not trivial. Multi-threading isn't just a win-rate strategy. It's deal insurance."
     ],
     "quote": "My ultimate goal is to know more about the company than they know themselves.",
     "attribution": "Jeff Dalo, Senior Director Business Development at Analytic Partners, on multi-threaded account research standards",
-    "midday_nudge": "On your next discovery call: ask 'Who else will be involved in evaluating and approving this?' then ask your champion to make the introduction. You can use AI to map the org before the call \u2014 run the company name through a tool like LinkedIn Sales Navigator or ask Claude to surface likely stakeholder roles by function."
+    "midday_nudge": "On your next discovery call: ask 'Who else will be involved in evaluating and approving this?' then ask your champion to make the introduction. You can use AI to map the org before the call — run the company name through a tool like LinkedIn Sales Navigator or ask Claude to surface likely stakeholder roles by function."
   },
   "quiz": [
     {
       "question": "According to Gartner research, approximately how many stakeholders are involved in a complex B2B buying decision?",
       "options": [
-        "2\u20133 decision-makers",
-        "6\u201310 decision-makers",
-        "1\u20132 economic buyers",
+        "2–3 decision-makers",
+        "6–10 decision-makers",
+        "1–2 economic buyers",
         "It depends entirely on company size"
       ],
       "correct": 1,
-      "explanation": "Gartner consistently cites 6\u201310 stakeholders in complex B2B deals, with the number growing over the past decade. Enterprise deals can involve 11 or more."
+      "explanation": "Gartner consistently cites 6–10 stakeholders in complex B2B deals, with the number growing over the past decade. Enterprise deals can involve 11 or more."
     },
     {
       "question": "What is the primary risk of single-threading a deal?",
@@ -49,36 +49,37 @@
         "It slows down the sales cycle by focusing on one stakeholder"
       ],
       "correct": 2,
-      "explanation": "Single-threading creates a single point of failure. If your champion goes silent, changes roles, or loses internal influence, the deal stalls \u2014 and you have no backup."
+      "explanation": "Single-threading creates a single point of failure. If your champion goes silent, changes roles, or loses internal influence, the deal stalls — and you have no backup."
     },
     {
       "question": "You have one active deal with a single contact. Your champion seems fully bought in. What's the most effective next move?",
       "options": [
-        "Wait \u2014 don't risk the relationship by pushing for more contacts",
+        "Wait — don't risk the relationship by pushing for more contacts",
         "Go around your champion and reach out to executives directly",
         "Ask your champion: 'Who else will be involved in this decision?' and request introductions",
         "Escalate through your own executive sponsor first"
       ],
       "correct": 2,
-      "explanation": "The champion introduction is the right path \u2014 it positions multi-threading as collaborative, not threatening. Going around them or waiting both carry higher risk than asking directly."
+      "explanation": "The champion introduction is the right path — it positions multi-threading as collaborative, not threatening. Going around them or waiting both carry higher risk than asking directly."
     }
   ],
   "closing": "On your current pipeline: which deals survive if your champion disappears tomorrow?",
   "sources": [
     {
-      "label": "Gartner \u2014 B2B Buying Behavior Research",
+      "label": "Gartner — B2B Buying Behavior Research",
       "detail": "Gartner research on buying committee size, multithreaded engagement strategies, and revenue growth projections for organizations that adopt multi-threading.",
       "url": "https://www.gartner.com/en/sales/trends/commercial-strategy-guide"
     },
     {
-      "label": "Aviso \u2014 Multi-Threading Win Rate Analysis",
-      "detail": "Aviso's analysis showing multi-threaded conversations increase deal win odds by 42% and reduce sales cycle length by 53\u201378 days depending on deal size.",
+      "label": "Aviso — Multi-Threading Win Rate Analysis",
+      "detail": "Aviso's analysis showing multi-threaded conversations increase deal win odds by 42% and reduce sales cycle length by 53–78 days depending on deal size.",
       "url": "https://www.aviso.com/blog/4-tips-for-multi-threaded-conversations-to-boost-win-rate"
     },
     {
-      "label": "LinkedIn / Salesmotion \u2014 Stakeholder Data",
+      "label": "LinkedIn / Salesmotion — Stakeholder Data",
       "detail": "LinkedIn data showing 78% of sales reps are single-threaded in most deals. Salesmotion analysis: single-threaded deals close at 5%, multi-threaded at 30%.",
       "url": "https://salesmotion.io/blog/multi-threading-sales-strategy"
     }
-  ]
+  ],
+  "ai_prompt": "I'm trying to build a stronger network of champions inside an account — or I'm being blocked by a single gatekeeper and need to get around it. Help me map the stakeholders, identify who else has influence, and build a multi-threading strategy. Ask me about the account and what I know, then help me plan. Here's the situation: [describe it]"
 }
