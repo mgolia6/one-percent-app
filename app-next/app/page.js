@@ -1006,16 +1006,21 @@ export default function HomePage() {
       }
 
       // Weekly survey trigger: fires at day 7, 14, 21 (skip 28, handled by end-of-beta)
-      if (prof?.signup_date) {
-        const daysSince = Math.floor((Date.now() - new Date(prof.signup_date).getTime()) / 86400000)
-        const lastSurveyDay = prof.last_weekly_survey_day || 0
-        const SURVEY_DAYS = [7, 14, 21]
-        for (const d of SURVEY_DAYS) {
-          if (daysSince >= d && lastSurveyDay < d) {
-            const weekNum = d / 7
-            setWeeklyWeekNumber(weekNum)
-            setTimeout(() => setShowWeeklySurvey(true), 2000)
-            break
+      // Skipped for admins. Requires at least one completion to prevent firing for zero-activity users.
+      if (prof?.signup_date && !prof?.is_admin) {
+        const { data: anyComps } = await supabase.from('completions').select('entry_number').eq('user_id', session.user.id).limit(1)
+        const hasCompletions = anyComps && anyComps.length > 0
+        if (hasCompletions) {
+          const daysSince = Math.floor((Date.now() - new Date(prof.signup_date).getTime()) / 86400000)
+          const lastSurveyDay = prof.last_weekly_survey_day || 0
+          const SURVEY_DAYS = [7, 14, 21]
+          for (const d of SURVEY_DAYS) {
+            if (daysSince >= d && lastSurveyDay < d) {
+              const weekNum = d / 7
+              setWeeklyWeekNumber(weekNum)
+              setTimeout(() => setShowWeeklySurvey(true), 2000)
+              break
+            }
           }
         }
       }
