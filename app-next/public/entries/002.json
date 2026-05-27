@@ -1,5 +1,4 @@
 {
-  "entry": "002",
   "editionId": "VL.1",
   "category": "Vocab & Language",
   "categoryTag": "VOCAB",
@@ -10,19 +9,19 @@
     "hook": "The words you choose don't describe reality. They shape how people experience it.",
     "explanation_paragraphs": [
       "In 1981, Amos Tversky and Daniel Kahneman published one of the most replicated findings in cognitive psychology: the same information, presented in different words, produces systematically different decisions. They called it the framing effect.",
-      "In their classic study, participants were told 600 people would die in a disease outbreak. One group was offered a program that would 'save 200 lives.' Another was offered a program where '400 people will die.' Mathematically identical. Behaviorally, they're not — the first option was chosen overwhelmingly more often.",
-      "The framing effect works because the brain doesn't process information neutrally. It processes it relative to a reference point, and the reference point is set by language. 'Saves 200' anchors on gain. '400 will die' anchors on loss. Loss aversion — the tendency to weight losses more heavily than equivalent gains — does the rest.",
+      "In their classic study, participants were told 600 people would die in a disease outbreak. One group was offered a program that would 'save 200 lives.' Another was offered a program where '400 people will die.' Mathematically identical. Behaviorally, they're not \u2014 the first option was chosen overwhelmingly more often.",
+      "The framing effect works because the brain doesn't process information neutrally. It processes it relative to a reference point, and the reference point is set by language. 'Saves 200' anchors on gain. '400 will die' anchors on loss. Loss aversion \u2014 the tendency to weight losses more heavily than equivalent gains \u2014 does the rest.",
       "This isn't a quirk or a weakness. It's structural. The frame always exists. The only question is whether you're setting it deliberately or letting someone else set it for you."
     ],
-    "why_today": "In an era of algorithmic feeds, political communication, and AI-generated content, framing is being deployed at unprecedented scale and speed. Understanding it isn't an academic exercise — it's basic media literacy and a core communication skill.",
-    "morning_challenge": "Find something you need to communicate today — an ask, a proposal, a status update, a difficult message.\n\nWrite two versions:\n— Version A: framed around what is lost, risked, or avoided\n— Version B: framed around what is gained, achieved, or protected\n\nThen ask: which version actually moves the person I'm talking to? And which one am I defaulting to — and why?"
+    "why_today": "In an era of algorithmic feeds, political communication, and AI-generated content, framing is being deployed at unprecedented scale and speed. Understanding it isn't an academic exercise \u2014 it's basic media literacy and a core communication skill.",
+    "morning_challenge": "Find something you need to communicate today \u2014 an ask, a proposal, a status update, a difficult message.\n\nWrite two versions:\n\u2014 Version A: framed around what is lost, risked, or avoided\n\u2014 Version B: framed around what is gained, achieved, or protected\n\nThen ask: which version actually moves the person I'm talking to? And which one am I defaulting to \u2014 and why?"
   },
   "midday": {
     "reframe": "You're not presenting facts. You're presenting a frame. The question is whether you're doing it consciously.",
-    "itw_label": "IN THE WILD — TYPE B · ECONOMIC & CLINICAL FRAMING",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 ECONOMIC & CLINICAL FRAMING",
     "itw_paragraphs": [
       "Watch how the same economic data gets reported differently across outlets covering the same jobs report: one leads with 'unemployment falls to 4.2%,' another with 'hiring slows as 40,000 fewer jobs added than expected.' Same numbers. Different frames. Different emotional responses.",
-      "In sales and negotiations, framing is the invisible variable in every conversation. Research from Galinsky and Mussweiler (2001) showed that first offers anchor the entire negotiation — whoever sets the frame first shapes what 'reasonable' looks like for everything that follows.",
+      "In sales and negotiations, framing is the invisible variable in every conversation. Research from Galinsky and Mussweiler (2001) showed that first offers anchor the entire negotiation \u2014 whoever sets the frame first shapes what 'reasonable' looks like for everything that follows.",
       "Healthcare communication research shows that patients make meaningfully different treatment decisions based on whether outcomes are described as survival rates versus mortality rates. '90% survival rate' and '10% mortality rate' are the same fact. They don't feel the same."
     ],
     "quote": "The frame around an idea, not the idea itself, is often what determines how it lands.",
@@ -33,13 +32,13 @@
     {
       "question": "In Tversky and Kahneman's framing effect research, participants chose differently between 'saves 200 lives' and '400 people will die' even though both describe identical outcomes. What cognitive mechanism explains this?",
       "options": [
-        "Confirmation bias — participants interpreted each framing to confirm their pre-existing beliefs about risk",
-        "Loss aversion — the brain weights losses more heavily than equivalent gains, so 'deaths' triggers stronger negative affect than 'lives saved' triggers positive affect",
-        "Anchoring — the specific numbers (200 vs. 400) created different reference points unrelated to actual probabilities",
-        "The availability heuristic — 'deaths' brought more vivid mental images to mind, overriding rational probability assessment"
+        "Confirmation bias \u2014 participants interpreted each framing to confirm their pre-existing beliefs about risk",
+        "Loss aversion \u2014 the brain weights losses more heavily than equivalent gains, so 'deaths' triggers stronger negative affect than 'lives saved' triggers positive affect",
+        "Anchoring \u2014 the specific numbers (200 vs. 400) created different reference points unrelated to actual probabilities",
+        "The availability heuristic \u2014 'deaths' brought more vivid mental images to mind, overriding rational probability assessment"
       ],
       "correct": 1,
-      "explanation": "Loss aversion is the key mechanism. Kahneman and Tversky found that losses are weighted approximately twice as heavily as equivalent gains. 'Saves 200 lives' is processed as a gain and feels moderate. '400 people will die' is processed as a loss and feels catastrophic — even though the actual expected outcome is identical. The frame shifts which cognitive system engages."
+      "explanation": "Loss aversion is the key mechanism. Kahneman and Tversky found that losses are weighted approximately twice as heavily as equivalent gains. 'Saves 200 lives' is processed as a gain and feels moderate. '400 people will die' is processed as a loss and feels catastrophic \u2014 even though the actual expected outcome is identical. The frame shifts which cognitive system engages."
     },
     {
       "question": "A product manager is presenting a feature that has an 85% success rate in beta testing. Which framing is likely to generate more stakeholder support?",
@@ -50,34 +49,34 @@
         "'This feature has a 15% failure rate, which is within acceptable thresholds for our launch criteria'"
       ],
       "correct": 1,
-      "explanation": "Option B anchors on success and uses concrete numbers (85 out of 100) rather than a percentage, which feels more tangible. Options A and D lead with failure and loss — triggering loss aversion. The data is identical across all framings; the frame determines whether the audience's first cognitive response is 'this works' or 'this fails.'"
+      "explanation": "Option B anchors on success and uses concrete numbers (85 out of 100) rather than a percentage, which feels more tangible. Options A and D lead with failure and loss \u2014 triggering loss aversion. The data is identical across all framings; the frame determines whether the audience's first cognitive response is 'this works' or 'this fails.'"
     },
     {
       "question": "You're aware that a negotiation counterpart has framed an opening offer in a way that anchors the discussion at a disadvantageous point for you. What is the most effective response, based on framing research?",
       "options": [
-        "Accept the frame but negotiate hard within it — challenging the frame directly is confrontational and damages rapport",
+        "Accept the frame but negotiate hard within it \u2014 challenging the frame directly is confrontational and damages rapport",
         "Ignore the anchor entirely and focus only on your own position without referencing their number",
         "Explicitly re-anchor by introducing a counter-frame with your own reference point before engaging with their specific number",
         "Ask clarifying questions about their number to signal you take it seriously, which is the first step in moving them"
       ],
       "correct": 2,
-      "explanation": "Research by Galinsky and Mussweiler (2001) showed that the most effective counter to an anchor is to introduce a competing reference point — a counter-anchor — before engaging with the original number. Ignoring the anchor doesn't neutralize it; the brain is already processing it. Re-framing replaces the reference point with one more favorable to your position."
+      "explanation": "Research by Galinsky and Mussweiler (2001) showed that the most effective counter to an anchor is to introduce a competing reference point \u2014 a counter-anchor \u2014 before engaging with the original number. Ignoring the anchor doesn't neutralize it; the brain is already processing it. Re-framing replaces the reference point with one more favorable to your position."
     }
   ],
   "closing": "What frame are you unconsciously accepting in the most important conversation you're having right now?",
   "sources": [
     {
-      "label": "Tversky, A. & Kahneman, D. — The Framing of Decisions and the Psychology of Choice, Science 211(4481), 1981",
+      "label": "Tversky, A. & Kahneman, D. \u2014 The Framing of Decisions and the Psychology of Choice, Science 211(4481), 1981",
       "detail": "The foundational framing effect paper. One of the most cited studies in behavioral economics.",
       "url": "https://psycnet.apa.org/record/1981-07257-001"
     },
     {
-      "label": "Kahneman, D. — Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
+      "label": "Kahneman, D. \u2014 Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
       "detail": "Full treatment of framing, loss aversion, and System 1/2 thinking. Chapter 34 covers framing effects in depth.",
       "url": "https://us.macmillan.com/books/9780374533557/thinkingfastandslow"
     },
     {
-      "label": "Galinsky, A. & Mussweiler, T. — First Offers as Anchors, Journal of Personality and Social Psychology 81(4), 2001",
+      "label": "Galinsky, A. & Mussweiler, T. \u2014 First Offers as Anchors, Journal of Personality and Social Psychology 81(4), 2001",
       "detail": "Research on anchoring in negotiations. Documents the strategic value of counter-framing in price negotiations.",
       "url": "https://psycnet.apa.org/record/2001-18988-001"
     }

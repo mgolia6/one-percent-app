@@ -1,84 +1,94 @@
 {
-  "entry": "011",
-  "editionId": "MM.2",
-  "category": "Mental Models",
-  "categoryTag": "MENTAL MODELS",
-  "concept": "Second-Order Thinking",
-  "accent": "#C847FF",
-  "accentDim": "rgba(200,71,255,0.10)",
+  "editionId": "PH.3",
+  "category": "Philosophy",
+  "categoryTag": "PHILOSOPHY",
+  "concept": "Amor Fati",
+  "accent": "#FF4778",
+  "accentDim": "rgba(255,71,120,0.10)",
   "morning": {
-    "hook": "Most decisions fail not because the first move was wrong, but because nobody asked what happens after the first move works.",
+    "hook": "Most people tolerate what they can't change. A few have figured out how to love it. That's not the same thing.",
     "explanation_paragraphs": [
-      "Second-order thinking is the discipline of asking 'And then what?' — not once, but twice. First-order thinking is what everyone does: it's fast, it's obvious, and it points to the most direct path between problem and solution.",
-      "Howard Marks, founder of Oaktree Capital, named this gap: first-level thinking is accessible to anyone, which is exactly why acting on it alone puts you in the same lane as everyone else. The second-order thinker doesn't just ask what an action will produce — they ask what that outcome will produce, and what happens in the ecosystem around it.",
-      "Every decision lands in a system. Systems react. Those reactions become the real consequences, and they often arrive later, bigger, and harder to reverse than the first-order effect ever was."
+      "In 1888, Friedrich Nietzsche wrote what he called his formula for human greatness: amor fati \u2014 love of fate. 'That one wants nothing to be different, not forward, not backward, not in all eternity. Not merely bear what is necessary, still less conceal it \u2014 but love it.' He wasn't describing resignation. He was describing something far more demanding: an active, unconditional embrace of everything that happens to you, including the worst of it.",
+      "The distinction matters. Acceptance says: this happened, I'll deal with it. Amor fati says: this happened, and I want it to have happened, because it is part of what I am. Where acceptance is passive, amor fati is generative. It treats adversity not as an obstacle to endure but as material to work with.",
+      "Ryan Holiday tells the story of Thomas Edison, who at 67 watched his entire laboratory complex burn to the ground \u2014 years of work, irreplaceable prototypes, a lifetime of accumulated research. His response, reportedly delivered to his son as they watched the flames: 'Go get your mother and all her friends. They'll never see a fire like this again.' Within weeks, Edison had rebuilt. The fire wasn't something that happened to him. It was something he used.",
+      "The Stoics had a version of this too \u2014 Marcus Aurelius wrote that 'a blazing fire makes flame and brightness out of everything that is thrown into it.' But Nietzsche's formulation goes further than Stoic equanimity. It isn't enough to remain unmoved by hardship. Amor fati asks you to actually want it \u2014 to see the struggle as not just necessary but as the thing that makes a life worth calling your own."
     ],
-    "why_today": "The decisions you're most confident about today — the ones with an obvious, clean answer — are exactly where second-order thinking pays off. The obvious answer is cheap because everyone can see it.",
-    "morning_challenge": "Find one decision you're facing this week — something you already have a first-order answer to.\n\nMap it out:\n— What is the immediate effect? (First order)\n— What happens because of that effect? (Second order)\n— Who else in the system is affected, and how will they respond? (Third order)\n\nThen run this prompt:\n\n\"I'm considering [describe the decision]. My first-order reasoning is [your obvious answer]. Act as a second-order thinker. List 5 second and third-order consequences I might not be accounting for — including unintended effects on people, incentives, and systems. Flag which ones are most likely to matter and which I can't easily reverse.\"\n\nIf the output changes what you do, that's the model working."
+    "why_today": "Amor fati has moved from philosophical concept to active area of psychological research. In 2025, Edmund Chang at the University of Michigan published peer-reviewed work in the Journal of Humanistic Psychology treating amor fati as a distinct, measurable psychological construct \u2014 one that accounts for mental health outcomes beyond resilience and authenticity alone. The concept is no longer just philosophy. It's being studied as a variable in human flourishing.",
+    "morning_challenge": "Think of something in your life right now that you're tolerating \u2014 a circumstance, a setback, a constraint you didn't choose.\n\nNow try Nietzsche's frame: not 'how do I get through this' but 'what does this make possible that nothing else could?'\n\nYou don't have to believe it yet. Just see what happens when you ask the question differently."
   },
   "midday": {
-    "reframe": "Second-order effects don't arrive gradually — they arrive after a delay and then all at once. By the time they're visible, the first-order decision is locked.",
-    "itw_label": "IN THE WILD — TYPE B · HANOI RAT BOUNTY 1902",
+    "reframe": "You can spend your energy wishing things were different, or you can spend it on what's actually in front of you. Not both.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 CHANG, JOURNAL OF HUMANISTIC PSYCHOLOGY (2025) / DAILY STOIC",
     "itw_paragraphs": [
-      "In 1902, the French colonial government in Hanoi offered a bounty for rats to control an infestation. Payment was made per rat tail. The policy worked immediately — dead rat tails flooded in, and officials congratulated themselves.",
-      "What they couldn't see: rat catchers were catching rats, cutting off their tails, and releasing the animals back into the sewer system to breed. More rats meant more tails, more tails meant more income. By the time officials noticed rats roaming the city with no tails, the incentive had been running for months and the rat population had grown.",
-      "This is the second-order structure: the first-order effect (tails submitted) was real and visible immediately. The second-order effect (breeding incentivized by the bounty) was invisible until it was already embedded in behavior. They saw the first order. They never asked what came after it."
+      "In 2025, Edmund Chang at the University of Michigan published research in the Journal of Humanistic Psychology examining amor fati as a standalone psychological construct \u2014 distinct from resilience, coping, and authenticity \u2014 and found it accounts for mental health outcomes independently. The study, part of a broader series on positive existential psychology, found that living by amor fati was among the strongest predictors of wellbeing in college students, outperforming resilience alone. The concept has measurable psychological weight.",
+      "Ryan Holiday, who has done more than anyone to bring Stoic philosophy into mainstream professional discourse, frames amor fati as the operating system underneath all other Stoic practices. Without it \u2014 without genuinely wanting what happens rather than merely accepting it \u2014 the other practices become brittle under real pressure. You can practice negative visualization when things are fine. Amor fati is what holds when they're not.",
+      "Robert Greene, who collaborated with Holiday on the concept, put it plainly: 'The power that you can have in life of accepting your fate is so immense that it's almost hard to fathom. You feel that everything happens for a purpose, and that it is up to you to make this purpose something positive and active.' That last part is the key \u2014 amor fati isn't passivity dressed up as wisdom. It's the decision to be the one who determines what the hardship was for."
     ],
-    "quote": "First-level thinking is simplistic and superficial, and just about everyone can do it (a bad sign for anything involving an attempt at superiority).",
-    "attribution": "Howard Marks, The Most Important Thing, Columbia University Press, 2011",
-    "midday_nudge": "Think about a decision you made in the last 90 days where you had a clear, obvious first-order answer. What did the second-order play out as? Did you see it coming?"
+    "quote": "My formula for greatness in a human being is amor fati: that one wants nothing to be different, not forward, not backward, not in all eternity. Not merely bear what is necessary, still less conceal it \u2014 but love it.",
+    "attribution": "Friedrich Nietzsche, Ecce Homo (1888)",
+    "midday_nudge": "What's one thing you've been treating as something to get through that you could instead treat as something to use?"
   },
   "quiz": [
     {
-      "question": "Howard Marks defined second-level thinking in contrast to first-level thinking. What is the core distinction?",
+      "question": "Nietzsche's amor fati is often compared to Stoic acceptance \u2014 but there's a meaningful difference between the two. What is it?",
       "options": [
-        "First-level thinking uses intuition; second-level thinking uses data and analysis",
-        "First-level thinking is simplistic and focuses on the obvious immediate outcome; second-level thinking accounts for what happens after that outcome, including how others will respond",
-        "First-level thinking is reactive; second-level thinking requires slowing down and always choosing the contrarian position",
-        "Second-level thinking is reserved for complex decisions; first-level thinking is appropriate for routine ones"
+        "Stoicism is a Greek tradition while amor fati is German \u2014 the difference is cultural origin, not philosophical content",
+        "Stoic acceptance is about remaining emotionally neutral toward hardship; amor fati goes further, asking you to actively want what happens \u2014 to love it, not just endure it",
+        "Amor fati applies only to external events, while Stoicism also addresses internal states like desire and emotion",
+        "Stoicism requires a community of practice to sustain; amor fati is an individual commitment that doesn't depend on social reinforcement"
       ],
       "correct": 1,
-      "explanation": "The core distinction is depth and system awareness, not intuition vs. data. Marks' point is that first-level answers are available to everyone, which means acting on them alone can't produce above-average outcomes. Second-order thinkers ask: what will happen after the first effect, and how will the system react?"
+      "explanation": "The distinction is between passive and active. Stoic equanimity asks you to remain unmoved \u2014 to not let circumstances disturb your inner state. Amor fati asks for something more demanding: to genuinely want what happens, to say 'yes' to it completely. Marcus Aurelius comes close, but Nietzsche's formulation is an affirmation, not just a posture of endurance."
     },
     {
-      "question": "The Hanoi rat bounty (1902) demonstrates a specific failure mode of first-order thinking. Which best describes what went wrong?",
+      "question": "The Edison fire story illustrates amor fati in action. What specifically makes his response an example of the concept rather than just a display of resilience?",
       "options": [
-        "The bounty was set too low to incentivize behavior change",
-        "Officials measured the wrong thing — tails instead of live rat population",
-        "The policy solved the first-order problem (rats submitted) while creating a second-order consequence (breeding incentivized) that made the underlying problem worse",
-        "The government failed to communicate the policy clearly, so rat catchers misunderstood it"
+        "Edison recovered quickly \u2014 the speed of his recovery is what distinguishes amor fati from ordinary resilience",
+        "Edison had insurance, so the financial loss was manageable \u2014 his response was possible because the material stakes were lower than they appeared",
+        "Edison treated the fire not as an obstacle to overcome but as something to actively engage with \u2014 calling it a spectacle, rebuilding immediately, using it rather than recovering from it",
+        "Edison's response was performed for his son \u2014 the real lesson is that projecting calm under pressure is a leadership skill, not a philosophical stance"
       ],
       "correct": 2,
-      "explanation": "The bounty worked perfectly at the first order — it changed behavior immediately. But the second-order consequence was that it created an incentive to breed the very thing being eliminated. The policy solved a visible metric while worsening the underlying reality. This is the failure pattern second-order thinking is designed to catch."
+      "explanation": "Resilience says: I'll get through this. Amor fati says: I want this. Edison's response \u2014 'Go get your mother, they'll never see a fire like this again' \u2014 isn't stoic neutrality. It's active embrace. He treated the destruction as something worth seeing, then rebuilt within weeks. He didn't recover from the fire. He used it."
     },
     {
-      "question": "You're a team lead. To speed up delivery, you announce that whoever closes the most tickets this sprint gets a bonus. Output increases significantly. What does second-order thinking predict is likely happening — and what should you check?",
+      "question": "You're facing a significant professional setback \u2014 a project cancelled, a role eliminated, a deal lost. How does applying amor fati differ from simply 'staying positive'?",
       "options": [
-        "Nothing — the incentive is working as intended; high output is the goal and it's being achieved",
-        "The team is cutting corners on testing or documentation, or closing easy tickets ahead of complex ones — audit quality and backlog composition, not just velocity",
-        "The bonus is probably too small; second-order thinking would suggest increasing it to sustain the behavior change",
-        "Team morale will improve because recognition motivates people; the second-order effect is positive"
+        "Staying positive means suppressing negative emotions; amor fati means expressing them openly and then moving forward",
+        "They're essentially the same \u2014 both involve reframing a negative event as an opportunity, just using different vocabulary",
+        "Staying positive is a mood management strategy that leaves the event as something bad that happened; amor fati is a philosophical stance that treats the event as something you actively want to have happened \u2014 and asks what it makes possible",
+        "Amor fati is more extreme \u2014 it requires you to feel genuinely grateful for the setback, while staying positive only requires that you don't dwell on it"
       ],
-      "correct": 1,
-      "explanation": "Ticket velocity is the first-order metric. The second-order consequence: when people are rewarded for volume, they route toward easy wins, defer hard problems, or reduce quality to close faster. The metric goes up; the system degrades. Second-order thinking says: check what's NOT being counted, not just what is."
+      "correct": 2,
+      "explanation": "'Staying positive' is still a reaction to something unwanted \u2014 you're managing your response to a bad event. Amor fati reframes the event itself: not 'this is bad but I'll stay positive' but 'this happened, I want it to have happened, now what does it make possible?' The distinction is between managing your feelings about a circumstance and changing your relationship to the circumstance entirely."
     }
   ],
-  "closing": "Pick the decision you're most confident about this week — and ask what happens after your obvious answer works.",
+  "closing": "Not merely bear what is necessary \u2014 love it.",
+  "ai_prompt": "I'm going through something difficult \u2014 a setback, a loss, a situation I didn't choose and can't change. I want to try applying the concept of amor fati: not just accepting it, but finding a way to genuinely want it to have happened. Help me work through this using Nietzsche's frame. Ask me what happened, then help me explore what this situation makes possible that nothing else could. Don't tell me to look on the bright side \u2014 help me find a real answer. Here's what's going on: [describe your situation]",
   "sources": [
     {
-      "label": "Marks, Howard — The Most Important Thing, Columbia University Press, 2011",
-      "detail": "Defines second-level thinking and its application to investment and decision-making. The distinction between first and second-order thinking is developed throughout chapters 1–3.",
-      "url": "https://www.columbiauniversitypress.com/catalog/9780231153683/the-most-important-thing"
+      "label": "Nietzsche, F. \u2014 Ecce Homo. 1888. Translation: Walter Kaufmann, Vintage Books, 1967.",
+      "detail": "Primary source for the amor fati quote and Nietzsche's framing of it as his 'formula for greatness.' The Kaufmann translation is the standard English edition.",
+      "url": "https://dailystoic.com/amor-fati/",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Vann, Michael — Of Rats, Rice, and Race: The Great Hanoi Rat Massacre, French Colonial History, Vol. 4, 2003",
-      "detail": "Academic documentation of the 1902 Hanoi rat bounty — the canonical real-world example of second-order effects in policy.",
-      "url": "https://muse.jhu.edu/article/42110"
+      "label": "Holiday, R. \u2014 The Unfathomable Power of Amor Fati. Thrive Global / Medium, 2017. Also: The Obstacle Is the Way. Portfolio/Penguin, 2014.",
+      "detail": "Holiday's account of amor fati including the Edison fire story and Robert Greene's quote on the concept's power. Greene's quote also sourced from: Daily Stoic \u2014 An Interview with the Master: Robert Greene on Stoicism (dailystoic.com/robert-greene-interview/).",
+      "url": "https://medium.com/thrive-global/the-unfathomable-power-of-amor-fati-ed947f660ad9",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Munger, Charles — Poor Charlie's Almanack, Donning Company, 2005",
-      "detail": "Munger's framework for thinking through consequences — the 'And then what?' discipline applied across investing and life decisions.",
-      "url": "https://www.amazon.com/Poor-Charlies-Almanack-Charles-Expanded/dp/1578645018"
+      "label": "Chang, E.C. \u2014 Is living by amor fati, coping resiliently, or being authentic most important for explaining mental health in college students? Journal of Humanistic Psychology. Advance online publication, 2025.",
+      "detail": "Peer-reviewed research treating amor fati as a distinct, measurable psychological construct. Found amor fati accounts for mental health outcomes independently of resilience and authenticity.",
+      "url": "https://doi.org/10.1177/00221678251351800",
+      "verified": true,
+      "verified_by": "Matthew"
     }
-  ]
+  ],
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-05-26"
 }

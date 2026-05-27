@@ -1,0 +1,84 @@
+{
+  "editionId": "AI.3.1",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "RAG (Retrieval-Augmented Generation)",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "Your AI tool is only as current as its training data. RAG is how it reads the room.",
+    "explanation_paragraphs": [
+      "Retrieval-Augmented Generation \u2014 RAG \u2014 is a technique that gives AI language models access to external knowledge at the moment they generate a response. Instead of relying only on what was baked into the model during training, a RAG system retrieves relevant documents, files, or data from an outside source first, then uses that retrieved content to inform and ground the answer.",
+      "Here's the core problem RAG solves: large language models have a knowledge cutoff. They know what they were trained on, nothing more. Ask one about your company's internal policies, last quarter's financials, a contract signed three weeks ago, or a news event from this morning \u2014 and it either guesses or admits it doesn't know. Neither is useful when real decisions are on the line.",
+      "The mechanics: when a user submits a question, the system converts it into a mathematical representation (an embedding), searches a vector database of your actual documents for the most relevant chunks, and feeds those chunks into the model alongside the original question. The model then generates a response grounded in what was retrieved \u2014 not what it vaguely remembers from training.",
+      "The term RAG was coined in a 2020 paper by Patrick Lewis and colleagues at Meta AI, published at NeurIPS. The paper showed that models using retrieval produced responses that were more specific, more diverse, and more factual than models relying on parameters alone. In 2026, that research has scaled from a lab result to enterprise infrastructure."
+    ],
+    "why_today": "By 2026, Gartner projects that over 70% of enterprise generative AI initiatives will require structured retrieval pipelines to address hallucination and compliance risk. RAG is no longer a feature \u2014 it's the architecture that makes AI safe to deploy at work. If your company is evaluating or building any AI tool, RAG is the mechanism that determines whether it gets facts from your actual data or confabulates them.",
+    "morning_challenge": "Think of an AI tool you use at work or use for work research. Does it have access to your internal documents, your company's systems, or real-time information \u2014 or is it working only from its training data? If you're not sure, that's the gap. Ask the vendor or check the docs: is this RAG-powered, or is it a closed model with a cutoff date?"
+  },
+  "midday": {
+    "reframe": "A language model without retrieval is a very well-read colleague who's been offline for a year. RAG is how you bring them back up to speed before every conversation.",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 DOCUMENTED PATTERN",
+    "itw_paragraphs": [
+      "A legal team at a mid-size enterprise deployed an AI assistant to help attorneys search case history and surface relevant precedents. Initial results were impressive in demos \u2014 the model was articulate, structured, and fast. But in production, the attorneys started catching errors: citations to cases that didn't exist, slightly wrong holdings, statutes described with confident inaccuracy.",
+      "The root cause was the model's training cutoff combined with no access to the firm's actual case database. It was generating answers from memory, not retrieval. When a jurisdiction updated its rules or a recent ruling changed the standard, the model didn't know. And crucially, it didn't know what it didn't know.",
+      "The firm rebuilt the system with a RAG pipeline: documents indexed, embeddings generated, retrieval grounded to actual case files. Hallucinations dropped significantly. More importantly, every answer now cited a retrievable source \u2014 attorneys could verify rather than trust. This is the pattern playing out across professional services in 2026: RAG isn't a performance upgrade, it's a trust architecture."
+    ],
+    "quote": "RAG is a way of improving LLM performance \u2014 in essence by blending the LLM process with a web search or other document look-up process to help LLMs stick to the facts.",
+    "attribution": "Ars Technica, on how RAG grounds AI responses in verifiable sources",
+    "midday_nudge": "If you're evaluating an AI vendor or building a use case internally: ask one question before anything else \u2014 'Where does the answer come from?' A model that answers from its weights only is a different product than one with a RAG pipeline. The answer to that question tells you everything about reliability, data recency, and hallucination risk."
+  },
+  "quiz": [
+    {
+      "question": "What fundamental limitation of large language models does RAG directly solve?",
+      "options": [
+        "Models are too slow to respond in real time",
+        "Models rely on static training data with a knowledge cutoff, unable to access current or proprietary information",
+        "Models can only process text, not documents",
+        "Models require too much computing power for enterprise use"
+      ],
+      "correct": 1,
+      "explanation": "LLMs are trained on a fixed dataset and frozen at a cutoff date. RAG solves this by retrieving relevant, up-to-date documents at inference time \u2014 before the model generates its response."
+    },
+    {
+      "question": "In a RAG system, what happens between the user's question and the model's response?",
+      "options": [
+        "The model searches the internet directly",
+        "The question is stored and the model is retrained on it",
+        "The question is converted to an embedding, matched against a document index, and relevant chunks are retrieved and fed to the model",
+        "The model generates multiple answers and picks the most confident one"
+      ],
+      "correct": 2,
+      "explanation": "RAG works by: (1) converting the query to a vector embedding, (2) searching a knowledge base for the most semantically relevant documents, (3) feeding those documents alongside the original query to the model. The model generates its answer from that grounded context."
+    },
+    {
+      "question": "You're evaluating an AI tool that gives confident, well-structured answers about your company's products. What's the most important question to ask?",
+      "options": [
+        "How many parameters does the model have?",
+        "Does it have access to your actual company documents and data, or is it working only from its training?",
+        "Which AI company built the underlying model?",
+        "Can it generate images as well as text?"
+      ],
+      "correct": 1,
+      "explanation": "Confident, articulate answers don't indicate grounded answers. A model working from training data alone may hallucinate product details, policies, or pricing. Knowing whether RAG is in play tells you whether the answers come from your actual data or the model's imperfect memory."
+    }
+  ],
+  "closing": "The AI tools your company trusts with real decisions \u2014 do they know your actual data, or are they working from memory?",
+  "sources": [
+    {
+      "label": "Lewis et al. \u2014 Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (NeurIPS 2020)",
+      "detail": "The original RAG paper from Meta AI, UCL, and NYU, introducing the retrieval-augmented generation framework and demonstrating that RAG models produce more specific, diverse, and factual outputs than parametric-only models. arXiv:2005.11401.",
+      "url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "label": "Gartner \u2014 Enterprise RAG and Hallucination Risk (2026 Projection)",
+      "detail": "Gartner projects that by 2026, over 70% of enterprise generative AI initiatives will require structured retrieval pipelines to mitigate hallucination and compliance risk.",
+      "url": "https://www.techment.com/blogs/rag-architectures-enterprise-use-cases-2026/"
+    },
+    {
+      "label": "Wikipedia / Ars Technica \u2014 Retrieval-Augmented Generation",
+      "detail": "Overview of RAG with Ars Technica attribution on RAG as a document look-up process that helps LLMs stick to facts.",
+      "url": "https://en.wikipedia.org/wiki/Retrieval-augmented_generation"
+    }
+  ]
+}

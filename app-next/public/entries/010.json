@@ -1,84 +1,94 @@
 {
-  "entry": "010",
-  "editionId": "SC.2.1",
-  "category": "Sales Craft",
-  "categoryTag": "SALES CRAFT",
-  "concept": "Anchoring in Negotiation",
-  "accent": "#E8FF47",
-  "accentDim": "rgba(232,255,71,0.10)",
+  "editionId": "CM.2",
+  "category": "Communication",
+  "categoryTag": "COMM",
+  "concept": "Feedback That Lands",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
   "morning": {
-    "hook": "Whoever names a number first controls the negotiation — even if the number is wrong.",
+    "hook": "Most feedback doesn't fail because it's dishonest. It fails because the person on the receiving end can't hear it.",
     "explanation_paragraphs": [
-      "Anchoring is one of the most documented effects in behavioral economics. The first number introduced in any price conversation becomes the cognitive reference point that every subsequent number is judged against. The other party adjusts from your anchor — not from some objective sense of fair value, not from what they were planning to pay, not from what they think you'll accept. From your number.",
-      "Galinsky and Mussweiler tested this across three experiments: whichever party — buyer or seller — made the first offer obtained a better final outcome. First offers were a strong predictor of settlement price.",
-      "The rep waiting for the prospect to name a price first is playing defense in a game where offense has a structural advantage. Most salespeople wait. They worry about anchoring too high and insulting the buyer, or anchoring too low and leaving money. Meanwhile, the research says: the party who names the number wins."
+      "Most professionals know they should give feedback. Far fewer know how to give feedback that actually changes behavior \u2014 which is the only kind that matters. The gap between feedback given and feedback received is where most managerial communication breaks down.",
+      "In 2017, Kim Scott published Radical Candor, which maps feedback behavior across four quadrants. The model has four quadrants, but two failure modes dominate workplace feedback: ruinous empathy (you care too much to say the hard thing, so you say nothing useful) and obnoxious aggression (you say the hard thing without caring enough about the person receiving it). Both break communication. The fix isn't a personality trait \u2014 it's a structure. Caring personally while challenging directly is a practice, not a disposition.",
+      "The most durable framework for delivering that structure is the SBI model, developed by the Center for Creative Leadership: Situation, Behavior, Impact. You describe the specific situation in which the behavior occurred. You name the observable behavior \u2014 not the person's character, not your interpretation, the behavior itself. Then you describe the impact it had. No judgment, no labels, no story about who they are. Just what happened and what it caused.",
+      "A 2025 study in the Journal of Applied Psychology (Welsh & Henderson) found that feedback framed in performance-oriented and helping-focused terms produced better outcomes for both the giver and receiver \u2014 the recipient was more likely to act on it, more likely to feel positively about the interaction, and more likely to improve. The framing wasn't a courtesy. It was a performance variable."
     ],
-    "why_today": "Every pricing conversation, renewal, and procurement negotiation you're in this week has an anchor moment. If you're not setting it, the buyer is — and they're not setting it in your favor.",
-    "morning_challenge": "Look at your next pricing conversation or renewal coming up this week. Find the anchor moment — the first time a number is likely to enter the conversation.\n\nBefore that call:\n1. Pull comparable deal data: what have you closed similar deals for? What's the high end of your range? What's the value delivered in real terms?\n2. Decide your anchor — it should be ambitious but defensible, and precise.\n3. Commit to naming it first.\n\nThen run this prompt:\n\n\"I'm preparing for a renewal negotiation with [describe the account type, deal size range, and what value they've received]. Build me a precise, defensible anchor price for this conversation — not a round number — with 3 supporting rationale points I can use if they push back.\"\n\nBring that number and those rationale points into the call. Name your number first."
+    "why_today": "Feedback quality is measurable and it's declining. McLean's HR Trends Survey 2025 found that only 26% of employees believe annual performance reviews are effective. HR Dive's April 2026 analysis found that employees who clearly understand their job expectations \u2014 which requires real feedback, not evaluation theater \u2014 are 8.6 times more likely to be engaged. Feedback that lands is now a retention lever, not a management nicety.",
+    "morning_challenge": "Think of a piece of feedback you've been meaning to give \u2014 or have already given \u2014 that didn't land the way you intended.\n\nRun it through SBI:\n\u2014 What was the specific Situation?\n\u2014 What was the observable Behavior? (Not your interpretation of it \u2014 the behavior itself.)\n\u2014 What was the actual Impact? (On the team, the project, the relationship \u2014 something concrete.)\n\nNotice which part is hardest to answer cleanly. That's usually where the feedback broke down."
   },
   "midday": {
-    "reframe": "Going first is only half the insight. The other half is in the decimal places.",
-    "itw_label": "IN THE WILD — TYPE A · LOSCHELDER ET AL. 2017",
+    "reframe": "Ruinous empathy isn't kindness. It's conflict avoidance dressed up as care.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 WELSH & HENDERSON, JOURNAL OF APPLIED PSYCHOLOGY (2025) / McLEAN HR TRENDS 2026",
     "itw_paragraphs": [
-      "Research on anchoring revealed something that most reps never use: precise anchors outperform round numbers. A rep who opens at $47,250 gets a better outcome than one who opens at $47,000 or $50,000 — even if the precise number is slightly higher than what they'd have accepted.",
-      "Why? Precise numbers signal that the figure was calculated, not guessed. The other party infers expertise and data behind the number, which makes them less willing to challenge it aggressively. And because the number isn't round, they tend to adjust in smaller increments when they counteroffer.",
-      "Round numbers feel like placeholders, like there's obvious room to move. Precise numbers feel like they arrived from somewhere. Loschelder and colleagues documented this in 2017: more ambitious anchors produced better outcomes AND highly precise offers led recipients to make smaller counteroffers. Two findings that compound. Go first. Go high. Go specific."
+      "Welsh and Henderson's 2025 study in the Journal of Applied Psychology tested two feedback framing styles and their effects on givers and receivers. Feedback framed as performance-oriented and helper-focused \u2014 rather than critical or evaluative \u2014 produced measurably better outcomes on both sides: receivers were more likely to act on it and feel positively about the exchange; givers felt better about having delivered it. The framing changed the outcome without changing the content.",
+      "McLean's HR Trends Survey 2026 found that employees who clearly understand job expectations are 8.6 times more likely to be engaged \u2014 and that organizations failing to create positive employee experiences see voluntary turnover 40% higher than those that do. Feedback is the mechanism through which expectations get understood. When it doesn't land, the expectation doesn't transfer.",
+      "The most common failure mode in the field isn't malicious feedback \u2014 it's withheld feedback. The manager who says nothing because they don't want to upset someone, who gives vague praise to avoid conflict, who saves the real concern for the annual review. Kim Scott named this ruinous empathy: it feels kind in the moment, but it leaves people without the information they need to grow."
     ],
-    "quote": "Any number that you're asked to consider as a possible solution to an estimation problem will induce an anchoring effect.",
-    "attribution": "Daniel Kahneman, Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
-    "midday_nudge": "Think about the last time you named a price in a negotiation. Was it a round number? Did you go first or wait for the prospect to move? What do you think the outcome would have been if you'd flipped both of those?"
+    "quote": "Feedback is a gift. It costs nothing to give and can be invaluable to receive \u2014 but only if it's delivered in a way the other person can actually use.",
+    "attribution": "Kim Scott, Radical Candor (2017)",
+    "midday_nudge": "Who on your team is operating without accurate feedback right now \u2014 not because you haven't thought about it, but because you haven't said it in a way they could hear?"
   },
   "quiz": [
     {
-      "question": "Galinsky and Mussweiler (2001) tested first offers across three experiments in buyer-seller negotiations. What did they find?",
+      "question": "Kim Scott identified two primary failure modes in workplace feedback. What are they, and what does each one get wrong?",
       "options": [
-        "Sellers who made the first offer got better outcomes, but buyers who made the first offer were at a disadvantage",
-        "First offers had minimal impact — final outcomes were primarily driven by BATNA strength",
-        "Whichever party — buyer or seller — made the first offer obtained a better final outcome; first offers strongly predicted settlement price",
-        "First offers only mattered in single-issue negotiations; multi-issue deals showed no anchoring advantage"
+        "Positive feedback (praise without substance) and negative feedback (criticism without solution) \u2014 both fail because they lack actionable direction",
+        "Formal feedback (annual reviews) and informal feedback (hallway comments) \u2014 both fail because they lack the right context and preparation",
+        "Ruinous empathy (withholding hard truths out of misplaced kindness) and obnoxious aggression (delivering hard truths without genuine care for the person) \u2014 both break the feedback relationship from opposite directions",
+        "Evaluative feedback (judging past performance) and developmental feedback (guiding future improvement) \u2014 both fail when they're delivered without psychological safety"
       ],
       "correct": 2,
-      "explanation": "The advantage holds regardless of which side goes first. Buyer or seller — whoever anchors pulls the final number toward their opening position. This is why waiting for the prospect to name a price is a structural concession before the negotiation has even started."
+      "explanation": "Scott's model maps two axes: caring personally and challenging directly. Ruinous empathy scores high on care but low on challenge \u2014 you protect the relationship at the cost of honesty. Obnoxious aggression scores high on challenge but low on care \u2014 you say the thing but damage the relationship in the process. Radical Candor is the intersection: honest because you care, not despite it."
     },
     {
-      "question": "Research on anchoring precision found that $47,250 outperforms $47,000 or $50,000 as a first offer. Why does precision make an anchor more effective?",
+      "question": "The SBI model structures feedback as Situation, Behavior, Impact. A manager gives this feedback: 'You always check out in meetings. It's really disrespectful and I don't think you take this team seriously.' Which element of SBI is most clearly missing?",
       "options": [
-        "Odd numbers are psychologically harder to refuse than round numbers",
-        "Precise numbers signal calculation and expertise, leading counterparts to infer a data-backed rationale — so they adjust in smaller increments",
-        "Precise numbers are more memorable, which makes them harder to ignore during concession-making",
-        "Round numbers trigger loss aversion more strongly, making buyers more resistant to the anchor"
+        "Situation \u2014 the feedback doesn't reference a specific context when the behavior occurred",
+        "Behavior \u2014 'check out' is an interpretation, not an observable behavior, and 'always' is a generalization that replaces the specific incident",
+        "Impact \u2014 the feedback doesn't describe any concrete effect on the team or project",
+        "All three \u2014 the feedback fails at every stage of the SBI model simultaneously"
       ],
       "correct": 1,
-      "explanation": "Precision implies the number was derived from somewhere — a model, market data, a calculation. That perceived legitimacy constrains the adjustment. Round numbers feel like placeholders with obvious room to move. Precise numbers feel final."
+      "explanation": "The feedback skips Situation entirely and replaces observable Behavior with an interpretive label ('check out') and a generalization ('always'). 'Disrespectful' and 'don't take this seriously' are character judgments, not impacts. SBI requires specificity at every step \u2014 not to protect the giver's feelings, but because vague feedback gives the receiver nothing to act on."
     },
     {
-      "question": "You're heading into a SaaS renewal negotiation. The customer hasn't mentioned price yet. You expect pushback. Based on anchoring research, what should you do?",
+      "question": "Welsh and Henderson's 2025 Journal of Applied Psychology study found that how feedback is framed affects whether it lands. What was the key finding?",
       "options": [
-        "Let the customer name a number first — understanding their budget anchor helps you calibrate your position",
-        "Open with a round number slightly above list price so there's room to concede to list and make them feel they won",
-        "Name your anchor first — an ambitious, precise number with defensible rationale — before they introduce any figure into the conversation",
-        "Anchor with a range rather than a specific number to avoid seeming inflexible"
+        "Feedback delivered in writing is significantly more likely to be acted on than verbal feedback, regardless of framing",
+        "The timing of feedback matters more than the framing \u2014 feedback delivered within 24 hours of an event produces better outcomes than delayed feedback",
+        "Feedback framed as performance-oriented and helping-focused produced better outcomes for both givers and receivers \u2014 higher likelihood of action, more positive emotional response, and greater improvement",
+        "Positive feedback produces stronger behavioral change than corrective feedback, regardless of how either is delivered"
       ],
       "correct": 2,
-      "explanation": "Every moment you wait is a moment the customer is thinking about their number — which is lower than yours. Once they name it, it's in the room. Go first with a precise, ambitious anchor backed by value delivered. Even if they push back, the entire negotiation will happen in reference to your number, not theirs."
+      "explanation": "Welsh and Henderson found that framing \u2014 not just content \u2014 changed outcomes measurably. When feedback was delivered as 'I'm trying to help you perform better' rather than 'here's what you did wrong,' both parties came away better: receivers were more likely to act and feel good about it; givers felt better about having delivered it. Framing isn't a courtesy. It's the mechanism."
     }
   ],
-  "closing": "Find your next pricing conversation and decide — are you naming the number first, or leaving that to the buyer?",
+  "closing": "Feedback that doesn't land isn't feedback \u2014 it's noise. The SBI model doesn't make the conversation easier. It makes it useful.",
   "sources": [
     {
-      "label": "Tversky & Kahneman — Judgment under Uncertainty: Heuristics and Biases, Science (1974)",
-      "detail": "Vol. 185, No. 4157, pp. 1124–1131. Founding identification of the anchoring heuristic — the tendency to rely on the first number introduced when making estimates under uncertainty.",
-      "url": "https://www.science.org/doi/10.1126/science.185.4157.1124"
+      "label": "Scott, K. \u2014 Radical Candor: Be a Kickass Boss Without Losing Your Humanity. St. Martin's Press, 2017.",
+      "detail": "Primary source for the Radical Candor framework (Care Personally, Challenge Directly) and the four-quadrant model including ruinous empathy and obnoxious aggression.",
+      "url": "https://www.radicalcandor.com/our-approach",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Galinsky & Mussweiler — First Offers as Anchors, Journal of Personality and Social Psychology (2001)",
-      "detail": "Vol. 81, No. 4, pp. 657–669. Three experiments: whichever party made the first offer obtained a better outcome. First offers were a strong predictor of final settlement price.",
-      "url": "https://psycnet.apa.org/record/2001-07460-012"
+      "label": "Welsh, E.T. & Henderson, K.E. \u2014 Win, Win, Win: Framing Feedback for Better Giver and Receiver Outcomes. Journal of Applied Psychology, 55, 817\u2013831 (2025).",
+      "detail": "Peer-reviewed study finding that performance-oriented, helping-focused feedback framing improves outcomes for both givers and receivers \u2014 higher likelihood of action, more positive affect, greater improvement.",
+      "url": "https://halopsychology.com/2026/01/12/7-frameworks-to-help-you-give-effective-feedback-with-examples/",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Kahneman — Thinking, Fast and Slow, Farrar, Straus and Giroux (2011)",
-      "detail": "Chapter 11 covers the anchoring effect, precision research, and the two-system mechanism behind why anchors are so hard to escape even when we know they're there.",
-      "url": "https://us.macmillan.com/books/9780374533557/thinkingfastandslow"
+      "label": "McLean & Company \u2014 HR Trends Survey 2025/2026, cited in HR Dive, April 7, 2026.",
+      "detail": "Employees who clearly understand job expectations are 8.6 times more likely to be engaged. Organizations without positive employee experiences see 40% higher voluntary turnover.",
+      "url": "https://www.hrdive.com/news/employers-provide-clear-feedback-see-higher-engagement/816821/",
+      "verified": true,
+      "verified_by": "Matthew"
     }
-  ]
+  ],
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-05-26",
+  "ai_prompt": "I need to deliver a piece of feedback to someone and I want it to actually land. Help me structure it using the SBI model \u2014 Situation, Behavior, Impact. Ask me what happened, then help me turn my instinct into feedback that's specific, observable, and focused on impact rather than character or intent. Here's the situation: [describe who you need to give feedback to and what happened]"
 }

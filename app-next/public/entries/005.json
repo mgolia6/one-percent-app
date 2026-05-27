@@ -1,5 +1,4 @@
 {
-  "entry": "005",
   "editionId": "PH.1",
   "category": "Philosophy",
   "categoryTag": "PHILOSOPHY",
@@ -9,19 +8,19 @@
   "morning": {
     "hook": "You have already suffered most of the bad things that will happen to you today. None of them have occurred yet.",
     "explanation_paragraphs": [
-      "Premeditatio malorum — the premeditation of evils — is a Stoic practice rooted in a precise observation: most human suffering happens before the thing itself. Seneca noticed that we pay the emotional price of a disaster many times over in anticipation, while the actual event, when it arrives, is almost always more survivable than the mental rehearsal.",
-      "The practice isn't pessimism — it's the opposite. By facing what could go wrong directly and clearly, you drain it of its power to terrorize you from a distance.",
+      "Premeditatio malorum \u2014 the premeditation of evils \u2014 is a Stoic practice rooted in a precise observation: most human suffering happens before the thing itself. Seneca noticed that we pay the emotional price of a disaster many times over in anticipation, while the actual event, when it arrives, is almost always more survivable than the mental rehearsal.",
+      "The practice isn't pessimism \u2014 it's the opposite. By facing what could go wrong directly and clearly, you drain it of its power to terrorize you from a distance.",
       "The Stoics weren't trying to suffer more. They were trying to suffer less, and only once."
     ],
-    "why_today": "In an era of ambient anxiety — news cycles, status comparison, uncertainty about the future — most people are running a continuous background simulation of worst cases. Premeditatio malorum is the antidote: face it once, clearly, then release it.",
-    "morning_challenge": "Name the thing you've been dreading most this week. Not vaguely — specifically. Write it down in one sentence.\n\nNow answer these three questions in writing:\n— What is the actual worst outcome?\n— How likely is that outcome, honestly?\n— If it happened, what would you do next?\n\nYou've just done the practice. The dread lives in the unexamined space. Once you've looked at it directly, it shrinks to its actual size."
+    "why_today": "In an era of ambient anxiety \u2014 news cycles, status comparison, uncertainty about the future \u2014 most people are running a continuous background simulation of worst cases. Premeditatio malorum is the antidote: face it once, clearly, then release it.",
+    "morning_challenge": "Name the thing you've been dreading most this week. Not vaguely \u2014 specifically. Write it down in one sentence.\n\nNow answer these three questions in writing:\n\u2014 What is the actual worst outcome?\n\u2014 How likely is that outcome, honestly?\n\u2014 If it happened, what would you do next?\n\nYou've just done the practice. The dread lives in the unexamined space. Once you've looked at it directly, it shrinks to its actual size."
   },
   "midday": {
     "reframe": "Fear is not a warning about the future. It's a tax you pay in advance on something that may never arrive.",
-    "itw_label": "IN THE WILD — TYPE B · WILSON & GILBERT 2003",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 WILSON & GILBERT 2003",
     "itw_paragraphs": [
-      "In 2003, psychologists Timothy Wilson and Daniel Gilbert published research on what they called the 'impact bias' — the systematic tendency for people to overestimate how intensely and how long a negative future event will make them feel bad.",
-      "Across populations that included college students, sports fans, and registered voters, people consistently predicted their emotional responses to negative events would be more severe and more lasting than they actually turned out to be. The dread before the hard conversation, the medical result, the job loss — always felt larger in anticipation than in the living of it.",
+      "In 2003, psychologists Timothy Wilson and Daniel Gilbert published research on what they called the 'impact bias' \u2014 the systematic tendency for people to overestimate how intensely and how long a negative future event will make them feel bad.",
+      "Across populations that included college students, sports fans, and registered voters, people consistently predicted their emotional responses to negative events would be more severe and more lasting than they actually turned out to be. The dread before the hard conversation, the medical result, the job loss \u2014 always felt larger in anticipation than in the living of it.",
       "This isn't because the events weren't hard. It's because human beings dramatically underestimate their own capacity to adapt, cope, and keep going. Seneca was writing about the same phenomenon nearly 2,000 years earlier. Wilson and Gilbert put a name to it and measured it."
     ],
     "quote": "There are more things, Lucilius, likely to frighten us than there are to crush us; we suffer more often in imagination than in reality.",
@@ -34,11 +33,11 @@
       "options": [
         "Expecting the worst makes you a more realistic thinker",
         "Visualizing failure helps you avoid it through better planning",
-        "Most suffering happens in anticipation — facing what could go wrong directly drains it of its power to terrorize you",
+        "Most suffering happens in anticipation \u2014 facing what could go wrong directly drains it of its power to terrorize you",
         "Negative thinking is a form of intellectual honesty"
       ],
       "correct": 2,
-      "explanation": "The practice isn't about pessimism or planning — it's about confronting anticipated suffering directly so it loses its ambient, unexamined power. Seneca's insight: you pay the emotional price of a disaster many times in imagination; the actual event is almost always more survivable."
+      "explanation": "The practice isn't about pessimism or planning \u2014 it's about confronting anticipated suffering directly so it loses its ambient, unexamined power. Seneca's insight: you pay the emotional price of a disaster many times in imagination; the actual event is almost always more survivable."
     },
     {
       "question": "Wilson & Gilbert's 'impact bias' research found that people consistently:",
@@ -49,12 +48,12 @@
         "Feel worse after negative events than they expected"
       ],
       "correct": 2,
-      "explanation": "The impact bias is the documented tendency to overestimate — not underestimate — how severely and how long a bad event will affect you. People are systematically worse at predicting their own resilience than the actual experience warrants."
+      "explanation": "The impact bias is the documented tendency to overestimate \u2014 not underestimate \u2014 how severely and how long a bad event will affect you. People are systematically worse at predicting their own resilience than the actual experience warrants."
     },
     {
       "question": "The Stoic practice of premeditatio malorum is best described as:",
       "options": [
-        "Catastrophizing — dwelling on worst cases to motivate action",
+        "Catastrophizing \u2014 dwelling on worst cases to motivate action",
         "Deliberate, clear-eyed confrontation of what could go wrong in order to reduce its power over you",
         "A form of pessimism that accepts failure as inevitable",
         "A planning tool for identifying and preventing bad outcomes"
@@ -63,21 +62,21 @@
       "explanation": "Premeditatio malorum is distinct from catastrophizing (which amplifies fear) and from planning (which is forward-looking problem-solving). It's the practice of looking directly at what you're avoiding so that the unexamined dread loses its grip. Face it once, clearly. Then release it."
     }
   ],
-  "closing": "Think of one thing you've been dreading — and ask whether the suffering is happening in your life or in your head.",
+  "closing": "Think of one thing you've been dreading \u2014 and ask whether the suffering is happening in your life or in your head.",
   "sources": [
     {
-      "label": "Seneca — Moral Letters to Lucilius, Letter 13: On Groundless Fears, c. AD 65",
-      "detail": "Primary Stoic source on anticipatory suffering. Letter 13 is Seneca's systematic treatment of imagined vs. actual fear — the philosophical foundation of the concept.",
+      "label": "Seneca \u2014 Moral Letters to Lucilius, Letter 13: On Groundless Fears, c. AD 65",
+      "detail": "Primary Stoic source on anticipatory suffering. Letter 13 is Seneca's systematic treatment of imagined vs. actual fear \u2014 the philosophical foundation of the concept.",
       "url": "https://en.wikisource.org/wiki/Moral_letters_to_Lucilius/Letter_13"
     },
     {
-      "label": "Wilson & Gilbert — Affective Forecasting, Advances in Experimental Social Psychology, Vol. 35, 2003",
-      "detail": "Coined 'impact bias' — people overestimate the intensity and duration of negative emotional reactions. Documented across college students, sports fans, and registered voters.",
+      "label": "Wilson & Gilbert \u2014 Affective Forecasting, Advances in Experimental Social Psychology, Vol. 35, 2003",
+      "detail": "Coined 'impact bias' \u2014 people overestimate the intensity and duration of negative emotional reactions. Documented across college students, sports fans, and registered voters.",
       "url": "https://journals.sagepub.com/doi/10.1111/j.0963-7214.2005.00355.x"
     },
     {
-      "label": "Wilson & Gilbert — Affective Forecasting: Knowing What to Want, Current Directions in Psychological Science, 14(3), 2005",
-      "detail": "Extends impact bias research — identifies 'immune neglect' as a key mechanism: people underestimate their own psychological capacity to adapt and recover.",
+      "label": "Wilson & Gilbert \u2014 Affective Forecasting: Knowing What to Want, Current Directions in Psychological Science, 14(3), 2005",
+      "detail": "Extends impact bias research \u2014 identifies 'immune neglect' as a key mechanism: people underestimate their own psychological capacity to adapt and recover.",
       "url": "https://journals.sagepub.com/doi/10.1111/j.0963-7214.2005.00355.x"
     }
   ]

@@ -1,84 +1,95 @@
 {
-  "entry": "009",
-  "editionId": "VL.2",
-  "category": "Vocab & Language",
-  "categoryTag": "VOCAB",
-  "concept": "Euphemism Treadmill",
-  "accent": "#FF8C47",
-  "accentDim": "rgba(255,140,71,0.10)",
+  "editionId": "MM.3",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "Survivorship Bias",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
   "morning": {
-    "hook": "The kinder word you chose? It's already on borrowed time.",
+    "hook": "You can't learn much from success stories alone. The failures aren't here to tell you what went wrong.",
     "explanation_paragraphs": [
-      "The euphemism treadmill is the cycle where a new word replaces a stigmatized one — and then picks up the same stigma. 'Moron' was a clinical term introduced to replace 'idiot.' 'Retarded' replaced 'moron.' 'Intellectually disabled' replaced 'retarded.' Each word started neutral, absorbed the weight of what it described, and became the thing people wanted to escape.",
-      "The treadmill never stops because the word isn't the problem — the underlying concept is. You can rename something all you want, but the new name inherits what the old one carried.",
-      "Understanding this changes how you communicate — not because you should stop caring about language, but because you should stop expecting a word swap to do what only a real change can do."
+      "During World War II, the U.S. military was losing too many bombers to enemy fire. They brought in a team of statisticians from Columbia University \u2014 the Statistical Research Group \u2014 and asked them to figure out where to add armor to the planes. The team mapped the bullet holes on every bomber that returned from a mission. The damage clustered heavily on the wings and fuselage. The obvious conclusion: reinforce those areas.",
+      "A Hungarian mathematician named Abraham Wald told them they had it exactly backwards. The planes they were studying were the ones that made it home. The bullet holes on returning aircraft showed where a plane could take damage and still survive. The planes that didn't come back \u2014 the ones destroyed \u2014 had taken hits somewhere else. The empty spots on the diagram weren't undamaged areas. They were the fatal zones. Wald recommended reinforcing the areas with the fewest bullet holes. The military followed his advice.",
+      "This is survivorship bias: the systematic error of drawing conclusions from the survivors in a dataset while ignoring the ones that didn't make it \u2014 because the failures aren't visible. You're studying a filtered sample without realizing it's filtered.",
+      "It shows up everywhere. Business books study successful companies and reverse-engineer their habits \u2014 but thousands of companies followed the same habits and failed. You don't hear about them. An investor who got rich taking concentrated bets tells you concentration is the key. The investors who went broke on the same strategy aren't writing books. A startup founder shares their origin story of sleeping on the floor and grinding through adversity \u2014 what you're not hearing is how many founders slept on the floor and never shipped."
     ],
-    "why_today": "In an era of accelerating language change — in media, in workplaces, in AI outputs — understanding why word swaps don't fix perception is one of the most practically useful things a communicator can know.",
-    "morning_challenge": "Pick one term in your industry or daily life that's already gone through at least one rename. Trace the chain. What did it replace — and does the new version still carry the weight?"
+    "why_today": "Survivorship bias has become one of the most cited distortions in business strategy, investing, and organizational decision-making. BBC Worklife has called it one of the most pervasive \u2014 and least recognized \u2014 cognitive traps in professional environments. The problem is structural: social platforms, business media, and leadership culture all amplify success stories and filter out failure almost entirely. The data you see has already been sorted.",
+    "morning_challenge": "Think of a strategy, habit, or belief you hold that's based primarily on the success of people you've observed or read about.\n\nNow ask Wald's question: where are the ones who tried the same thing and it didn't work?\n\nIf you can't answer that \u2014 if the failures aren't visible to you \u2014 you may be reinforcing the wings."
   },
   "midday": {
-    "reframe": "The treadmill isn't a language problem. It's a trust diagnostic: every spin of the wheel tells your audience you're managing optics, not solving problems.",
-    "itw_label": "IN THE WILD — TYPE B · CORPORATE LAYOFF LANGUAGE",
+    "reframe": "The most dangerous data is the data that's already been filtered by outcome before you see it.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 PEOPLE + SCIENCE (OCT 2025) / BBC WORKLIFE (2020)",
     "itw_paragraphs": [
-      "Corporate layoff language ran the exact cycle. In the 1980s and early 90s, 'layoffs' became 'downsizing.' By 1995, HR professionals were already noting that 'downsizing' felt too negative — so 'rightsizing' emerged.",
-      "By the 2010s, 'rightsizing' had taken on its own cynical edge. Today, 'workforce optimization' and 'structural realignment' carry the same bitter read that 'layoffs' always did.",
-      "The Houston Chronicle documented the 'rightsizing' emergence in 1995, noting plainly: 'Downsizing became popular a few years ago to replace layoffs, but then people started thinking downsizing was too negative.' Nobody missed what was happening. The treadmill didn't protect anyone — it just marked the company as an organization that wouldn't say the hard thing directly."
+      "People + Science's October 2025 analysis mapped survivorship bias directly onto modern organizational strategy. The pattern appears in product development (studying your successful products to find the 'secret sauce,' while ignoring the failed ones that had the same features), in hiring (modeling new hires on your top performers, without examining what your top performers share with employees who washed out), and in strategic planning (emulating competitors who survived market shifts, without studying the ones that didn't).",
+      "The same distortion runs through how organizations interpret customer feedback. The customers who stayed and gave you data are, by definition, the ones who didn't leave. The people who churned \u2014 who had the most critical signal \u2014 aren't in your dataset. You're listening to the survivors.",
+      "BBC Worklife illustrates the bias with a familiar example: Bill Gates and Mark Zuckerberg achieved enormous success without finishing university, and their stories have attracted massive media attention \u2014 Peter Thiel even launched a program paying young people $100,000 to drop out. The implied lesson is that skipping a degree is a viable path to outsized success. But that conclusion is built entirely on the survivors. When you look at the full population of non-graduates rather than the famous exceptions, a different picture emerges: in the UK, graduate employment runs at 88% versus 72% for non-graduates, with a median salary gap of roughly \u00a310,000 annually. The survivors are visible and celebrated. The rest are just data.",
+      "The distortion has intensified in the social media era \u2014 not because the bias is new, but because the visibility asymmetry is wider than ever. You see people succeeding. When there is failure, it's presented by an observer, not from the perspective of the person who failed. The dataset you're consuming has already been sorted before it reaches you."
     ],
-    "quote": "The euphemism treadmill shows that concepts, not words, are in charge: give a concept a new name, and the name becomes colored by the concept; the concept does not become freshened by the name.",
-    "attribution": "Steven Pinker, The Game of the Name, New York Times, 1994",
-    "midday_nudge": "What word are you or your organization currently cycling through — and what's the real thing that word is trying to avoid naming?"
+    "quote": "The absent data is often more informative than the data you have. The question is whether you notice it's missing.",
+    "attribution": "Adapted from Abraham Wald's work with the Statistical Research Group, Columbia University, 1943",
+    "midday_nudge": "What decision are you currently making \u2014 or have recently made \u2014 where the people or examples informing it are pre-filtered by success? What would you need to look at to see the full picture?"
   },
   "quiz": [
     {
-      "question": "Who coined the term 'euphemism treadmill' and in what year?",
+      "question": "Abraham Wald recommended reinforcing the areas of returning bombers that had the fewest bullet holes \u2014 the opposite of what the military initially planned. What was the reasoning that made his approach correct?",
       "options": [
-        "George Orwell, 1933 — in Down and Out in Paris and London",
-        "Steven Pinker, 1994 — in a New York Times op-ed",
-        "Noam Chomsky, 1965 — in Aspects of the Theory of Syntax",
-        "Deborah Tannen, 1990 — in You Just Don't Understand"
+        "Fewer bullet holes in certain areas indicated that enemy gunners were deliberately avoiding those zones, suggesting they were decoys or less structurally critical",
+        "The areas with the fewest holes represented where damage was most likely to be fatal \u2014 planes hit there didn't return, so those spots never appeared in the data on surviving aircraft",
+        "Reinforcing undamaged areas was more cost-effective, since those surfaces were easier to access and required less structural modification than already-damaged zones",
+        "Wald's statistical models showed that bullet distribution was random, so the clustering on wings and fuselage was a coincidence that shouldn't drive reinforcement decisions"
       ],
       "correct": 1,
-      "explanation": "Pinker named the phenomenon in 'The Game of the Name,' a 1994 NYT op-ed. He expanded on it in The Blank Slate (2002). Orwell observed the pattern without naming it; Pinker gave it the label."
+      "explanation": "The planes in Wald's dataset were the survivors \u2014 already filtered by the fact that they made it back. Bullet holes on returning aircraft showed where a plane could absorb damage and still fly. The empty areas weren't undamaged \u2014 they were the zones where damage was fatal. Planes hit there didn't return and weren't in the data. Wald's insight was recognizing what the missing data implied."
     },
     {
-      "question": "Why does replacing a stigmatized word with a euphemism ultimately fail to solve the perception problem?",
+      "question": "A team is analyzing why their last three product launches succeeded and trying to identify the common factors to replicate. What survivorship bias risk does this approach carry?",
       "options": [
-        "Because new words are harder to pronounce and people revert to old ones",
-        "Because the new word is phonetically similar to the old one, triggering the same associations",
-        "Because the underlying concept still carries the same social weight — the new word inherits it through association",
-        "Because audiences are too set in their habits to adopt new vocabulary"
+        "The team may over-index on qualitative factors like design and narrative, which are harder to replicate than quantitative factors like pricing and distribution",
+        "The analysis only examines launches that succeeded, so any factors shared with failed launches \u2014 which aren't being studied \u2014 may appear to be success drivers when they aren't",
+        "Looking backward at past launches is generally less useful than forward-looking market research, regardless of whether the launches succeeded or failed",
+        "Three data points are too few to draw conclusions, so the team needs to study at least ten launches before patterns become statistically meaningful"
       ],
-      "correct": 2,
-      "explanation": "Pinker's core point: concepts are primary, words are downstream. The new word doesn't change perception of the concept — it just gets colored by it. The treadmill restarts because the real issue was never the word."
+      "correct": 1,
+      "explanation": "If the factors you identify as 'success drivers' were also present in failed launches, they're not actually drivers \u2014 they're just common features. By studying only successful launches, the team has no way to distinguish between factors that correlate with success and factors that were simply present. The missing failures are where the real signal lives."
     },
     {
-      "question": "You're writing a company announcement about eliminating 200 roles. Your manager suggests using 'workforce realignment' instead of 'layoffs.' Based on the euphemism treadmill, what should you do?",
+      "question": "Which of the following is the most accurate description of why survivorship bias is difficult to counteract, even when people know it exists?",
       "options": [
-        "Use 'workforce realignment' — the softer term will reduce negative reactions",
-        "Combine both: 'layoff-driven workforce realignment' so it's transparent and softened",
-        "Replace both with a more abstract phrase like 'organizational evolution' to maximize distance from the concept",
-        "Name the reality plainly — 'workforce realignment' will read as spin, eroding the trust you need from the employees who remain"
+        "People are trained to focus on positive outcomes, so they instinctively study success even when they know the failures are more informative",
+        "The failures are structurally invisible \u2014 they leave the dataset, the industry, or the conversation, making it genuinely difficult to access the information needed to correct the bias",
+        "Survivorship bias only affects large-scale decisions, so it feels irrelevant to the everyday choices where it actually has the most impact",
+        "Most people misidentify survivorship bias as confirmation bias, so they apply the wrong correction and the distortion persists"
       ],
-      "correct": 3,
-      "explanation": "The treadmill predicts that the euphemism will acquire the same negative read as the thing it replaces — often faster when the stakes are high and audiences know exactly what's being avoided. Plain language preserves credibility with the audience that matters most: the people still there."
+      "correct": 1,
+      "explanation": "The core problem is structural, not attitudinal. Failed companies close. Failed products get discontinued. Failed strategies get abandoned and forgotten. The information you'd need to correct the bias has often literally left the room. Knowing the bias exists doesn't automatically surface the missing data \u2014 you have to actively seek out what isn't there, which requires deliberate effort and often external sources."
     }
   ],
-  "closing": "The next word you choose to soften something — notice what you're actually trying to avoid naming.",
+  "closing": "Before you study the winners, ask Wald's question: where are the planes that didn't come back?",
   "sources": [
     {
-      "label": "Steven Pinker — The Game of the Name, New York Times, April 3, 1994",
-      "detail": "Pinker coins the term 'euphemism treadmill' and establishes the core mechanism: concepts lead, words follow.",
-      "url": "https://stevenpinker.com/files/pinker/files/1994_04_03_newyorktimes.pdf"
+      "label": "Survivorship Bias \u2014 Encyclopaedia Britannica (primary definition and Wald account). BBC Worklife \u2014 How 'survivorship bias' can cause you to make mistakes, 2020.",
+      "detail": "Britannica covers the Wald story and definition. BBC Worklife piece illustrates survivorship bias via the tech dropout example (Zuckerberg, Gates, Dell).",
+      "url": "https://www.britannica.com/science/survivorship-bias",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Pinker — The Blank Slate, Viking Penguin, 2002",
-      "detail": "Expands the euphemism treadmill argument with additional examples across clinical, corporate, and political language.",
-      "url": "https://en.wikipedia.org/wiki/The_Blank_Slate"
+      "label": "Michelsen, M.W. Jr. \u2014 Making Aircraft Survivable: Abraham Wald's Counterintuitive Armor Theory. Vintage Aviation News, February 13, 2026.",
+      "detail": "Recent detailed account of Wald's WWII work and the Statistical Research Group at Columbia University.",
+      "url": "https://vintageaviationnews.com/warbird-articles/making-aircraft-survivable-abraham-walds-counterintuitive-armor-theory.html",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "L. M. Sixel — New Terms, Old Ideas, Houston Chronicle, May 8, 1995",
-      "detail": "Documents the layoffs → downsizing → rightsizing transition as it was happening in real time.",
-      "url": "https://wordspy.com/words/rightsizing"
+      "label": "People + Science \u2014 The Missing Bullet Holes: How a WWII Statistician's Insight Can Save Your Strategy. October 21, 2025.",
+      "detail": "Modern business strategy application of survivorship bias \u2014 product development, hiring, strategic planning, and customer feedback as domains where the bias actively distorts decisions.",
+      "url": "https://peopleplusscience.com/the-missing-bullet-holes-how-a-wwii-statisticians-insight-can-save-your-strategy/",
+      "verified": true,
+      "verified_by": "Matthew"
     }
-  ]
+  ],
+  "ai_prompt": "I'm going to describe a decision, strategy, or belief I hold. I want you to help me identify where survivorship bias might be distorting my thinking \u2014 specifically, what the 'planes that didn't come back' might look like in my situation. Ask me clarifying questions if needed, then help me see what the missing failures might tell me that the visible successes can't. Here's my situation: [describe your decision or strategy]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-05-26"
 }

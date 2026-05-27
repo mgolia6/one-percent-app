@@ -1,85 +1,84 @@
 {
-  "entry": "019",
-  "editionId": "VL.3",
-  "category": "Vocab & Language",
-  "categoryTag": "V&L",
-  "concept": "Nominalization",
-  "accent": "#FF8C47",
-  "accentDim": "rgba(255,140,71,0.10)",
+  "editionId": "NC.1",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEURO",
+  "concept": "Neuroplasticity",
+  "accent": "#47C8FF",
+  "accentDim": "rgba(71,200,255,0.10)",
   "morning": {
-    "hook": "Someone made a decision. Someone caused a failure. Someone fired people. But in the sentence you just read, nobody did anything — and that was the point.",
+    "hook": "Your brain is not fixed. Every skill you practice is physically reshaping it. Every skill you don't practice is being pruned away.",
     "explanation_paragraphs": [
-      "Nominalization is what happens when you take a verb — an action — and convert it into a noun. Decide becomes decision. Fail becomes failure. Terminate becomes termination. The action still exists in the sentence. But the person doing it has vanished. George Orwell named this pattern in 1946 and called it one of the primary tools of evasive political writing. It hasn't gone anywhere.",
-      "Here's the mechanism in practice. 'We decided to cut the budget' names who acted and what they did. 'A budget decision was reached' says the same thing, except now no one decided anything — a decision simply materialized, like weather. The facts are identical. The accountability is not. The nominalized version lets whoever is writing it off the hook before you've finished reading the sentence.",
-      "It's not always intentional. Academic writing, legal documents, and corporate communications have used nominalization so long that it has become a default register — the sound of institutional authority. The suffix trail is the tell: any -tion, -ment, -ance, -ity, or -al word that used to be a verb is a nominalization. 'The implementation of the new policy led to an improvement in compliance' has five of them in twelve words. Translated: 'Implementing the new policy made people comply more.' Same sentence. Completely different feel.",
-      "The reason this matters isn't stylistic. It's functional. When you remove the actor from the action, you remove the question of who is responsible. 'Mistakes were made' — the most famous nominalization in American political history, used by at least four presidents to acknowledge wrongdoing without admitting they did anything wrong — is the pattern at its most naked. The mistake happened. No one made it."
+      "For most of the twentieth century, neuroscientists believed the adult brain was essentially hardwired \u2014 a fixed structure that declined over time. That model is wrong. What we now know is that the brain remains structurally malleable throughout life.",
+      "Neuroplasticity is the nervous system's ability to reorganize its structure, functions, and connections in response to experience. When you learn something new, neurons that activate together form stronger synaptic connections. When you stop using a skill, those connections weaken and are pruned.",
+      "The mechanism isn't metaphorical. It's physical. New synaptic connections form. Existing ones strengthen or weaken. Grey matter volume in specific brain regions changes. The brain you have right now has been literally shaped by what you have and haven't practiced.",
+      "Passive repetition produces weak plasticity. Deliberate, effortful practice with feedback produces strong, durable rewiring. This is the scientific basis for why how you practice matters as much as whether you practice."
     ],
-    "why_today": "A 2026 analysis of 6,957 academic submissions to the journal Organization Science found that AI-assisted papers showed significantly heavier use of nominalizations than non-AI-assisted papers — and those papers had lower readability scores and higher rejection rates. LLMs are trained on decades of institutional prose, which means they produce nominalization by default. The pattern Orwell flagged in 1946 is now being automated at scale.",
-    "morning_challenge": "Take any email, memo, or announcement you've received this week — from a manager, a company, a news source.\n\nHunt the nominalizations. The -tion, -ment, -ance words. Find them, then do the translation:\n\n— 'A determination was made' → 'Someone decided'\n— 'The team reached an agreement' → 'The team agreed'\n— 'There was a failure in execution' → 'We failed to execute'\n— 'Consideration will be given to your request' → 'We might consider your request'\n\nOnce you've translated: who disappeared from the original? That's the person the nominalization was protecting."
+    "why_today": "A December 2025 peer-reviewed study published in MDPI Sustainability developed the first psychometric scale for measuring neuroplasticity literacy as a workplace competency \u2014 establishing it as a measurable professional skill, not just a pop science concept.",
+    "morning_challenge": "Pick one skill you're actively trying to build right now.\n\nAsk:\n\u2014 Am I practicing it in a way that activates plasticity? (Effortful, varied, feedback-rich)\n\u2014 Or am I going through the motions? (Same repetition, no resistance, no feedback)\n\nFind the thing you find genuinely difficult about this skill. That difficulty is the signal. That's where the rewiring happens. Spend 15 minutes there today."
   },
   "midday": {
-    "reframe": "The nominalization doesn't hide what happened. It hides who did it.",
-    "itw_label": "IN THE WILD — TYPE A · ORGANIZATION SCIENCE / ORWELL FOUNDATION",
+    "reframe": "The London cab drivers didn't just get better at navigation. Their brains grew.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 MAGUIRE ET AL. 2000",
     "itw_paragraphs": [
-      "Orwell's 1946 essay 'Politics and the English Language' identified nominalization as the core mechanism of what he called 'the defense of the indefensible' in political writing. His argument wasn't about style — it was about accountability. When actions become nouns, actors disappear. You can condemn an event without naming a cause. You can acknowledge a failure without admitting anyone failed.",
-      "In 2026, the pattern has a new delivery mechanism. An AI Task Force analysis of submissions to the journal Organization Science — covering 6,957 papers submitted between January 2021 and February 2026 — found that AI-heavy manuscripts showed heavier reliance on nominalizations, higher reading grade levels, and lower Flesch readability scores. By January 2026, submission writing quality sat 1.28 standard deviations below the January 2021 baseline. The tools are trained on institutional prose; they produce institutional prose. Nominalization isn't a choice the AI is making — it's a pattern the AI inherited, and now reproduces at scale.",
-      "This matters practically for anyone reading AI-drafted communications in 2026: the evasion Orwell described isn't going away. It's getting faster. A sentence that took a PR team an afternoon to craft in 1980 now takes a model two seconds. The responsible reader's job is the same as it always was — find the verb, find the actor, ask who did it."
+      "In 2000, neuroscientist Eleanor Maguire and her team at University College London ran structural MRI scans on 16 licensed London taxi drivers and compared them to matched controls. London cabbies are required to pass 'The Knowledge' \u2014 memorizing 25,000 streets and 20,000 landmarks across a 10-kilometer radius. It typically takes 2-4 years to pass.",
+      "What Maguire found: the posterior hippocampi of taxi drivers were significantly larger than those of controls. More striking \u2014 hippocampal volume correlated positively with the number of years spent driving. The longer they'd been doing it, the larger that region had grown.",
+      "When drivers retired and stopped using the knowledge, the changes partially reversed. The brain wasn't just working differently. It was physically different. What you practice doesn't just make you better \u2014 it makes you structurally distinct from someone who doesn't."
     ],
-    "quote": "The passive voice is wherever possible used in preference to the active, and noun constructions are used instead of gerunds. The range of verbs is further cut down... and banal statements are given an appearance of profundity.",
-    "attribution": "George Orwell, 'Politics and the English Language,' Horizon, April 1946",
-    "midday_nudge": "Look at something you've written this week — an email, a Slack message, a doc. Find one nominalization. Translate it back to a verb. Does the sentence change? Does your accountability in it change?"
+    "quote": "Neurons that fire together, wire together.",
+    "attribution": "Paraphrase of Hebb's postulate (1949), attributed to neuroscientist Carla Shatz. Popularized in Norman Doidge, The Brain That Changes Itself (2007).",
+    "midday_nudge": "What are you practicing right now \u2014 and is it building the brain you actually want? You can use AI tools to design a spaced practice schedule for any skill; the research on timing is clear enough that a structured plan beats random repetition every time."
   },
   "quiz": [
     {
-      "question": "What is the core difference between 'We failed to deliver on time' and 'There was a failure in delivery execution'?",
+      "question": "Neuroplasticity describes the brain's ability to reorganize its structure and connections in response to experience. What does this imply about the relationship between practice and skill acquisition?",
       "options": [
-        "The second version is more specific — 'delivery execution' names the exact part of the process that broke down, making it more informative than the first",
-        "The first names an actor who failed; the second nominalizes 'failure' and 'execution,' removing any actor from the sentence — the same event is described but no one is responsible for it",
-        "Both sentences convey identical meaning and accountability — nominalization is a stylistic choice that affects tone but not substance",
-        "The second version is passive voice, which is a grammatically distinct issue from nominalization — the two patterns have different effects on accountability"
+        "Skill acquisition is primarily determined by innate ability; practice activates potential that was already there but cannot create capability that wasn't",
+        "Any form of repetitive practice produces equivalent neuroplastic change \u2014 the key variable is volume, not type",
+        "Practice literally changes the physical structure of the brain; effortful practice with feedback produces stronger synaptic connections than passive repetition, making the type of practice as important as the amount",
+        "Neuroplasticity is most active in childhood \u2014 adult skill acquisition relies more on existing neural pathways"
       ],
-      "correct": 1,
-      "explanation": "'We failed' names who did it and what they did. 'There was a failure in delivery execution' turns the action into a noun and removes any actor — the failure simply existed. No one failed. This is the core mechanism Orwell identified: nominalization doesn't change the facts, it changes who can be held responsible for them."
+      "correct": 2,
+      "explanation": "Neuroplasticity operates throughout life, but the strength of structural change depends heavily on the quality of practice. Effortful, varied practice that pushes past current capability \u2014 with feedback \u2014 activates stronger plasticity than passive repetition. Volume matters, but type matters too."
     },
     {
-      "question": "Orwell's 1946 essay argued that nominalization was most dangerous in political and institutional writing. Which of the following best explains why?",
+      "question": "The Maguire et al. (2000) taxi driver study found hippocampal volume correlated positively with years of experience. What does this establish about neuroplasticity?",
       "options": [
-        "Political writing reaches a large audience — so bad stylistic habits in that context influence how millions of people write and think about language",
-        "Political actors deliberately choose nominalization to obscure their role in decisions — it's a calculated persuasion strategy, not an accidental stylistic preference",
-        "Institutional writing is read by people who don't have time to analyze it carefully — nominalization exploits that inattention to slip past scrutiny",
-        "Nominalization removes actors from actions — in political and institutional contexts, where accountability for decisions is exactly what's at stake, erasing the actor is not a stylistic preference, it's a structural evasion of responsibility"
-      ],
-      "correct": 3,
-      "explanation": "Orwell's argument was functional, not aesthetic. The problem isn't that nominalized prose sounds bad — it's that it does a specific job: it lets institutions acknowledge events without acknowledging agency. 'Mistakes were made' is grammatically complete. It is also a perfect erasure of whoever made them. That's the move Orwell was naming."
-    },
-    {
-      "question": "A 2026 analysis found that AI-assisted academic papers showed significantly heavier nominalization than non-AI papers — and lower readability scores. What does this reveal about how AI generates institutional prose?",
-      "options": [
-        "AI tools are poorly designed for academic writing — the nominalization problem is a fixable product issue, not a structural feature of how LLMs work",
-        "AI models generate nominalization by default because they are trained on decades of institutional prose that already uses it heavily — the evasion pattern is inherited, not chosen, and is now being produced at scale",
-        "The study reflects a correlation, not causation — lower-quality writers are simply more likely to use AI assistance, which explains both the nominalization and the rejection rates",
-        "Nominalization in AI output is primarily a readability problem — it makes writing harder to parse, but doesn't carry the same accountability implications it does in human-authored institutional writing"
+        "People with naturally larger hippocampi are more likely to pursue careers requiring spatial memory",
+        "Structural brain changes from experience are measurable, cumulative over time, and partially reversible when practice stops \u2014 the brain is physically shaped by sustained use",
+        "Navigation training is uniquely effective at producing brain changes, unlike other professional skills",
+        "Neuroplasticity in adults is limited to spatial reasoning tasks processed in the hippocampus"
       ],
       "correct": 1,
-      "explanation": "LLMs are trained on everything humans have written — which includes decades of corporate reports, government documents, legal filings, and academic papers all nominalized within an inch of their lives. The model doesn't choose evasion. It reproduces what it learned. The result is that a pattern Orwell identified as politically dangerous in 1946 is now being generated automatically, at scale, in seconds. The responsible reader's job hasn't changed — find the verb, find the actor."
+      "explanation": "The critical finding: the difference scaled with years of experience and partially reversed after retirement. This establishes that neuroplastic changes are acquired, cumulative, and use-dependent. Direct evidence that the brain you have has been physically shaped by what you've practiced."
+    },
+    {
+      "question": "You're designing onboarding for new sales reps covering discovery skills. Applying neuroplasticity research, which approach produces the most durable skill development?",
+      "options": [
+        "10 hours of recorded top-performer calls \u2014 passive observation activates mirror neurons efficiently",
+        "Read the discovery playbook twice then a written knowledge assessment",
+        "Spaced role plays at escalating difficulty, immediate feedback after each, brief reviews at 24 and 72 hours to leverage memory consolidation",
+        "Maximum live calls in 30 days \u2014 high volume is the most reliable driver"
+      ],
+      "correct": 2,
+      "explanation": "Passive observation produces minimal plasticity. Reading and testing creates declarative memory but weak procedural skill. High volume without structure can entrench bad habits. Spaced practice with escalating difficulty, immediate feedback, and timed review sessions directly applies what neuroscience knows about durable skill formation."
     }
   ],
-  "closing": "Next time you read something institutional — find the -tion words. Translate them back to verbs. Then ask: who's missing from this sentence?",
+  "closing": "Where in your current work are you practicing comfortably when you should be practicing at the edge?",
   "sources": [
     {
-      "label": "Orwell, G. — 'Politics and the English Language.' Horizon, no. 76, April 1946, pp. 252–264",
-      "detail": "Primary source. Identifies nominalization and passive voice as the core tools of evasive institutional writing. Argues that turning actions into nouns allows institutions to acknowledge events while erasing accountability. Freely available at orwellfoundation.com.",
-      "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
+      "label": "Puderbaugh & Emmady \u2014 Neuroplasticity, StatPearls / NIH NLM, 2026",
+      "detail": "Peer-reviewed clinical reference. Defines neuroplasticity as 'the ability of the nervous system to change its activity in response to intrinsic or extrinsic stimuli.' Open access at NIH NLM.",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557811/"
     },
     {
-      "label": "Williams, J.M. — Style: Ten Lessons in Clarity and Grace. Scott Foresman, 1981 (multiple editions through 2014)",
-      "detail": "Secondary academic source. Defines nominalization ('smothered verbs'), explains its structural effect on readability and accountability, and provides the clearest taxonomy of when nominalization obscures agency vs. when it serves a legitimate stylistic function.",
-      "url": "https://college.lclark.edu/live/files/10252-active"
+      "label": "Maguire et al. \u2014 Navigation-related structural change in hippocampi of taxi drivers, PNAS 97(8), 2000",
+      "detail": "Landmark study. MRI scans of London taxi drivers showed significantly larger posterior hippocampi vs. controls; volume correlated with years of experience. Full text open access at PMC.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC18253/"
     },
     {
-      "label": "Organization Science AI Task Force — Analysis of 6,957 submissions, January 2021–February 2026 (reported May 2026)",
-      "detail": "In the Wild source. Found that AI-heavy manuscripts showed heavier nominalization density, higher reading grade levels, lower Flesch readability scores, and higher rejection rates. By January 2026, submission quality sat 1.28 standard deviations below the January 2021 baseline.",
-      "url": "https://www.thebrighterside.news/post/ai-is-flooding-peer-review-and-editors-say-its-making-science-harder-to-judge/"
+      "label": "Cagl\u0131n \u2014 Neuroplasticity Literacy and Sustainable Learning at Work, Sustainability 17(24), MDPI, Dec 2025",
+      "detail": "First psychometric scale for neuroplasticity-related behaviors at work. Peer-reviewed Dec 2025.",
+      "url": "https://www.mdpi.com/2071-1050/17/24/11059"
     }
   ]
 }

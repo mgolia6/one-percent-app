@@ -1,84 +1,94 @@
 {
-  "entry": "013",
-  "editionId": "PH.2",
-  "category": "Philosophy",
-  "categoryTag": "PHILOSOPHY",
-  "concept": "Dichotomy of Control",
-  "accent": "#FF4778",
-  "accentDim": "rgba(255,71,120,0.10)",
+  "editionId": "NC.3",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEURO & COGNITION",
+  "concept": "Dopamine & Motivation",
+  "accent": "#00E5FF",
+  "accentDim": "rgba(0,229,255,0.10)",
   "morning": {
-    "hook": "Most anxiety comes from trying to control what you can't. The Stoics had a framework for that.",
+    "hook": "Dopamine isn't the pleasure chemical. It's the wanting chemical. And that distinction changes everything about how motivation actually works.",
     "explanation_paragraphs": [
-      "The Dichotomy of Control is a Stoic principle that divides all concerns into two categories: things you control (your thoughts, actions, judgments) and things you don't (other people's opinions, outcomes, external events). The insight is simple but transformative — most anxiety comes from trying to control what you can't.",
-      "Epictetus, a Stoic philosopher who lived as a slave before gaining freedom, put it directly: focus entirely on what's in your power, and accept everything else with indifference. This doesn't mean passivity — it means directing energy where it actually matters. You can control your preparation for a pitch, but not whether the client signs. You can control how you respond to feedback, but not whether you receive it.",
-      "The practical application is a question you ask before reacting to anything: Is this within my control? If yes, act. If no, let it go. This framework doesn't eliminate difficulty — it eliminates wasted effort on things you were never going to change anyway."
+      "The popular understanding of dopamine goes like this: do something good, get a dopamine hit, feel pleasure. It's the brain's reward signal. Which is why people talk about dopamine spikes from social media likes, sugar, and Netflix. The problem is this understanding is mostly wrong \u2014 and the accurate version is far more useful.",
+      "In the 1990s, neuroscientist Wolfram Schultz made a foundational discovery studying dopamine neurons in primates. He found that dopamine doesn't fire at the moment of reward \u2014 it fires in anticipation of reward. When an animal learned that a stimulus predicted a reward, dopamine activity shifted backward in time to the moment the cue appeared, not when the reward arrived. The brain was firing on expectation, not satisfaction.",
+      "Kent Berridge at the University of Michigan pushed this further with what he called the wanting/liking distinction. Dopamine drives wanting \u2014 the motivation to pursue, the drive to act, the pull toward a goal. Liking \u2014 the actual hedonic pleasure of getting the thing \u2014 runs on a different neurochemical system entirely, primarily opioids. You can want something intensely and not particularly enjoy it once you have it. You can like something and not be especially motivated to pursue it. They're separate systems.",
+      "The practical implication is significant. If dopamine is about anticipation, then motivation is built in the approach \u2014 not the arrival. The person who is deeply engaged with their work isn't necessarily experiencing more pleasure from the output. They're experiencing more wanting during the process. Setting clear goals, creating visible progress markers, and building in moments of anticipation aren't just productivity tricks. They're dopaminergic architecture."
     ],
-    "why_today": "Stoicism has seen a resurgence in professional contexts over the past five years, with major business publications and leadership training programs adopting frameworks like the Dichotomy of Control as practical tools for decision-making under uncertainty. What was ancient philosophy is now applied psychology.",
-    "morning_challenge": "Think about something that's been bothering you lately — a stalled deal, a difficult conversation, an outcome you're waiting on.\n\nAsk yourself: What part of this is actually within my control?\n\nWrite down the controllable elements. Then write down what you're going to do about those, specifically. Everything else — the part you can't control — acknowledge it exists, then redirect your attention back to the list of things you can actually affect.\n\nThat's the practice."
+    "why_today": "In 2025, Robinson and Berridge published a 30-year retrospective on incentive sensitization theory in the Annual Review of Psychology \u2014 one of the field's most rigorous journals. The wanting/liking distinction has now been active in peer-reviewed research for three decades and continues to generate new findings about motivation, addiction, and decision-making. Understanding it correctly is more relevant than ever in a world designed to trigger wanting without delivering much liking.",
+    "morning_challenge": "Think about something you're currently procrastinating on \u2014 a project, a conversation, a task.\n\nNow ask: have you built any anticipation into it? Is there a clear next step that creates a pull, or is the whole thing sitting as an undifferentiated obligation?\n\nMotivation is upstream of action. If the wanting isn't there, the doing usually isn't either. What would make this thing feel like something to move toward?"
   },
   "midday": {
-    "reframe": "Stockdale survived seven years as a POW by knowing exactly what he could and couldn't control.",
-    "itw_label": "IN THE WILD — TYPE B · STOCKDALE PARADOX",
+    "reframe": "You don't lack discipline. You may just lack dopaminergic architecture \u2014 clear goals, visible progress, and something to anticipate.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 ROBINSON & BERRIDGE, ANNUAL REVIEW OF PSYCHOLOGY (2025) / SCHULTZ REWARD PREDICTION ERROR",
     "itw_paragraphs": [
-      "Admiral James Stockdale spent seven years as a prisoner of war in North Vietnam. He credited his survival to the Stoic principle he'd studied before capture — the Dichotomy of Control. While imprisoned, he couldn't control his captors, his release date, or the war's outcome. But he could control his mental discipline, his resistance methods, and how he supported fellow prisoners.",
-      "Stockdale described watching optimists around him set release dates in their minds — 'We'll be out by Christmas' — only to have their hope crushed when the date passed. They died of broken hearts. Stockdale's approach was different: accept the brutal reality of the situation (outside his control) while maintaining absolute faith in his ability to endure and act with integrity (within his control).",
-      "His survival framework, later termed the Stockdale Paradox, was pure Dichotomy of Control in practice — confront the harshest facts of your reality while refusing to surrender agency over the one thing no one can take: your response."
+      "Robinson and Berridge's 2025 paper in the Annual Review of Psychology \u2014 a 30-year retrospective on incentive sensitization theory \u2014 consolidates three decades of research on the wanting/liking distinction. The core finding holds: dopamine drives the motivation to pursue rewards, not the pleasure of receiving them. The two systems are neurochemically distinct, and conflating them produces a systematically wrong model of why people do what they do.",
+      "Schultz's reward prediction error framework adds a second layer. Dopamine neurons don't just fire on anticipation \u2014 they fire specifically on unexpected reward. When a reward is fully predicted, dopamine activity flattens. The brain has already priced it in. This is why novelty and uncertainty are motivationally potent \u2014 they keep the prediction error signal alive. It's also why routine, even positive routine, can feel demotivating over time. The dopamine system habituates to the expected.",
+      "The design implications are direct. Environments built to maximize wanting \u2014 variable reward schedules, unpredictable notifications, endless scroll \u2014 exploit the prediction error system deliberately. Understanding this doesn't make the pull go away, but it makes it legible. You can recognize when your wanting is being manufactured versus when it's pointing at something that actually matters to you."
     ],
-    "quote": "Some things are in our control and others not. Things in our control are opinion, pursuit, desire, aversion, and, in a word, whatever are our own actions. Things not in our control are body, property, reputation, command, and, in one word, whatever are not our own actions.",
-    "attribution": "Epictetus, Enchiridion (The Manual), c. 135 CE",
-    "midday_nudge": "On your next difficult situation: pause before reacting and ask — is this within my control? If not, what is? Direct your energy there."
+    "quote": "Dopamine makes you want things. Other brain systems make you like them. The two are not the same, and they are not always in agreement.",
+    "attribution": "Adapted from Kent Berridge, University of Michigan \u2014 wanting/liking distinction research, 1996\u20132025",
+    "midday_nudge": "Where in your work right now is wanting high but liking low \u2014 or liking high but wanting mysteriously absent? What does that tell you?"
   },
   "quiz": [
     {
-      "question": "According to the Dichotomy of Control, which of these is within your control in a sales situation where a prospect is evaluating your proposal against two competitors?",
+      "question": "Wolfram Schultz's research on dopamine neurons in primates revealed something unexpected about when dopamine fires. What did he find, and why does it matter?",
       "options": [
-        "Whether your manager approves your proposal before you submit it",
-        "How thoroughly you research the prospect's business and customize your approach based on what you learn",
-        "Whether the prospect's decision-making committee includes someone who previously worked with a competitor",
-        "How your competitors position their pricing and value proposition"
+        "Dopamine fires most strongly during the consumption of a reward \u2014 the moment of peak pleasure \u2014 which explains why pleasant experiences feel reinforcing",
+        "Dopamine fires in anticipation of a predicted reward, not at the moment of reward delivery \u2014 meaning the brain's motivational signal is about expectation, not satisfaction",
+        "Dopamine fires in response to pain and discomfort as a protective signal, which is why challenging experiences can feel motivating over time",
+        "Dopamine fires uniformly across all positive experiences, with intensity scaling to the subjective value of the reward rather than its timing"
       ],
       "correct": 1,
-      "explanation": "Your research depth and the quality of your customization are entirely within your control. Manager approval, committee composition, and competitor actions are not — though your preparation may influence outcomes, you don't control them directly. The Stoic insight: focus your energy on what you can actually affect."
+      "explanation": "Schultz found that once an animal learned a cue predicted a reward, dopamine activity shifted to fire at the cue \u2014 not the reward. The brain was responding to anticipated reward, not delivered reward. This is the reward prediction error framework: dopamine signals the gap between what was expected and what happened. When a reward is fully predicted, dopamine flattens. When it's unexpected, dopamine spikes. Motivation lives in anticipation, not arrival."
     },
     {
-      "question": "A client cancels a major deal at the last minute due to an internal budget freeze. Applying the Dichotomy of Control, which response demonstrates mastery of the principle?",
+      "question": "Berridge's wanting/liking distinction separates two systems that are often assumed to be the same. How does understanding this distinction change how you'd approach a motivation problem?",
       "options": [
-        "Immediately call your executive sponsor to see if they can override the freeze — sometimes persistence changes outcomes",
-        "Spend time analyzing whether you missed early warning signs so you can avoid this in future deals",
-        "Accept that the budget freeze is outside your control, then focus on what you can control: maintaining the relationship, documenting lessons learned, and identifying which active deals might face similar risks",
-        "Let the deal go entirely and move on to the next opportunity without looking back"
+        "It suggests that increasing enjoyment of a task \u2014 making it more pleasant \u2014 is the most reliable way to increase motivation to do it",
+        "It means motivation and enjoyment are the same experience processed by different brain regions, so interventions targeting either one will affect both",
+        "It reveals that wanting (the drive to pursue) and liking (the pleasure of having) run on separate neurochemical systems \u2014 so boosting anticipation and clear goals targets motivation directly, independent of whether the task is inherently enjoyable",
+        "It implies that people who are highly motivated are also experiencing more pleasure from their work, since the two systems are correlated even if distinct"
       ],
       "correct": 2,
-      "explanation": "Option C demonstrates the full principle: accept what's outside your control (the freeze), then immediately redirect energy to what is within your control (relationship maintenance, learning, risk assessment). Option A wastes energy trying to change the unchangeable. Option B focuses only on the past. Option D misses the learning and relationship opportunities you do control."
+      "explanation": "Wanting runs primarily on dopamine; liking runs primarily on opioid systems. They're separable \u2014 you can want something and not enjoy it, or enjoy something without being particularly motivated to pursue it. This means motivation interventions should target the wanting system directly: clear goals, visible progress, anticipation, novelty. Waiting until a task becomes enjoyable before expecting motivation is working on the wrong system."
     },
     {
-      "question": "You're preparing for a high-stakes presentation. A colleague criticizes your deck the night before. The presentation is in 12 hours. How do you apply the Dichotomy of Control?",
+      "question": "The dopamine system habituates to expected rewards \u2014 when a reward is fully predicted, dopamine activity flattens. What does this suggest about how to sustain motivation over time on a long project?",
       "options": [
-        "Ignore the feedback — you can't control their opinion and changing the deck now introduces risk",
-        "Stay up all night revising to address every concern they raised",
-        "Evaluate whether the feedback improves your outcome. If it does, revise what you can in the time available. Either way, you control the decision and the execution — not their opinion or the audience's ultimate reaction.",
-        "Ask them to present with you so they share responsibility for the outcome"
+        "Sustained motivation requires increasingly larger rewards over time, since the brain requires escalating stimulation to maintain the same dopamine response",
+        "Long projects should be broken into phases with distinct milestones and occasional unexpected wins, so the prediction error signal stays active rather than habituating to a flat expectation of eventual completion",
+        "The best approach is to remove all intermediate rewards and focus entirely on the end goal, so the dopamine system fires maximally at project completion",
+        "Motivation naturally declines on long projects regardless of structure, so the solution is willpower and discipline rather than environmental design"
       ],
-      "correct": 2,
-      "explanation": "You don't control their opinion or the audience's reaction. You do control: your evaluation of the feedback, your revision decision, and your execution quality. The Stoic move is to separate signal from noise, act on what you control, and accept what you don't."
+      "correct": 1,
+      "explanation": "If the dopamine system habituates to the expected, then a long project with a single distant outcome offers almost no ongoing motivational signal \u2014 the brain has priced in the eventual completion and stopped firing. Breaking the work into phases with visible milestones, celebrating unexpected progress, and introducing novelty keeps the prediction error system engaged. This isn't gamification for its own sake \u2014 it's working with the neurochemistry of anticipation rather than against it."
     }
   ],
-  "closing": "Where in your current work are you spending energy trying to control outcomes instead of inputs?",
+  "closing": "Motivation isn't about wanting to want. It's about building the conditions where the wanting shows up on its own.",
+  "ai_prompt": "I want to understand why I'm motivated \u2014 or not motivated \u2014 toward something specific in my life right now. Using the neuroscience of dopamine and the wanting/liking distinction, help me diagnose what's actually going on. Ask me about what I'm trying to do, how I've structured it, and what anticipation or progress signals exist. Then help me figure out whether I'm dealing with a wanting problem, a liking problem, or a design problem. Here's what I'm working on: [describe the goal or task]",
   "sources": [
     {
-      "label": "Epictetus — Enchiridion (The Manual), c. 135 CE",
-      "detail": "Stoic manual on the dichotomy of control. Public domain; full text widely available.",
-      "url": "https://www.gutenberg.org/ebooks/45109"
+      "label": "Schultz, W., Dayan, P., & Montague, P.R. \u2014 A Neural Substrate of Prediction and Reward. Science, 275(5306), 1593\u20131599 (1997).",
+      "detail": "Foundational paper establishing the reward prediction error framework \u2014 dopamine neurons fire on anticipated reward, shifting activity from reward delivery to the predictive cue. One of the most cited papers in neuroscience.",
+      "url": "https://www.science.org/doi/10.1126/science.275.5306.1593",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Stockdale, James — Courage Under Fire: Testing Epictetus's Doctrines in a Laboratory of Human Behavior, Hoover Institution, 1993",
-      "detail": "POW survival and Stoic philosophy application. Essay archived at Hoover Institution.",
-      "url": "https://www.hoover.org/research/courage-under-fire-testing-epictetus-doctrines-laboratory-human-behavior"
+      "label": "Robinson, T.E. & Berridge, K.C. \u2014 The incentive sensitization theory of addiction: 30 years on. Annual Review of Psychology, 76: 29\u201358 (2025).",
+      "detail": "Thirty-year retrospective on the wanting/liking distinction and incentive sensitization theory. Consolidates the neurochemical separation of dopamine-driven wanting from opioid-driven liking.",
+      "url": "https://sites.lsa.umich.edu/berridge-lab/publications/",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Irvine, William B. — A Guide to the Good Life: The Ancient Art of Stoic Joy, Oxford University Press, 2008",
-      "detail": "Modern interpretation of Stoic practices including dichotomy of control.",
-      "url": "https://global.oup.com/academic/product/a-guide-to-the-good-life-9780195374612"
+      "label": "Berridge, K.C. & Robinson, T.E. \u2014 What is the role of dopamine in reward: hedonic impact, reward learning, or incentive salience? Brain Research Reviews, 28(3), 309\u2013369 (1998).",
+      "detail": "Primary source for the wanting/liking distinction. Establishes that dopamine mediates incentive salience (wanting) rather than hedonic pleasure (liking), which are neurochemically dissociable.",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0165017398000198",
+      "verified": true,
+      "verified_by": "Matthew"
     }
-  ]
+  ],
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-05-26"
 }

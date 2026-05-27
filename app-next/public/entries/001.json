@@ -1,5 +1,4 @@
 {
-  "entry": "001",
   "editionId": "AI.1.1",
   "category": "AI",
   "categoryTag": "AI",
@@ -9,37 +8,37 @@
   "morning": {
     "hook": "Every AI conversation is an amnesiac. What you put in the window is everything it knows.",
     "explanation_paragraphs": [
-      "The context window is the total amount of text — your prompt, the conversation history, any documents you've loaded — that a model can 'see' at once. When you hit the limit, the earliest content falls off. This isn't a bug; it's the architecture.",
+      "The context window is the total amount of text \u2014 your prompt, the conversation history, any documents you've loaded \u2014 that a model can 'see' at once. When you hit the limit, the earliest content falls off. This isn't a bug; it's the architecture.",
       "For enterprise AI deployment, this is the single most misunderstood constraint. Teams build workflows assuming AI has persistent memory. It doesn't. Each call is stateless. The window is the whole world.",
-      "Context windows are measured in tokens — roughly 0.75 words each. Modern models range from tens of thousands to over a million tokens. But size isn't the only variable: research shows that information in the middle of a long context window is recalled less reliably than information at the beginning or end — the 'lost in the middle' problem.",
-      "Understanding the context window changes how you work with AI. Long threads degrade. Important instructions belong at the top. Complex tasks should be broken into sessions. The model isn't forgetting — it never knew."
+      "Context windows are measured in tokens \u2014 roughly 0.75 words each. Modern models range from tens of thousands to over a million tokens. But size isn't the only variable: research shows that information in the middle of a long context window is recalled less reliably than information at the beginning or end \u2014 the 'lost in the middle' problem.",
+      "Understanding the context window changes how you work with AI. Long threads degrade. Important instructions belong at the top. Complex tasks should be broken into sessions. The model isn't forgetting \u2014 it never knew."
     ],
-    "why_today": "In 2026, models like Claude and GPT-4o have 128K–1M token windows — but enterprise teams are still designing AI workflows as if context is infinite, and burning budget on hallucinations caused by truncated context.",
-    "morning_challenge": "Open your current AI workflow or prompt. What information are you assuming the model already knows?\n\nWrite down the three things you never explicitly tell it — and add at least one of them to your next prompt.\n\nFor any ongoing AI task: start a new session and paste in only the critical context. Compare the output quality. The fresh window usually wins."
+    "why_today": "In 2026, models like Claude and GPT-4o have 128K\u20131M token windows \u2014 but enterprise teams are still designing AI workflows as if context is infinite, and burning budget on hallucinations caused by truncated context.",
+    "morning_challenge": "Open your current AI workflow or prompt. What information are you assuming the model already knows?\n\nWrite down the three things you never explicitly tell it \u2014 and add at least one of them to your next prompt.\n\nFor any ongoing AI task: start a new session and paste in only the critical context. Compare the output quality. The fresh window usually wins."
   },
   "midday": {
-    "reframe": "Context windows aren't a memory limit — they're a forcing function for clarity.",
-    "itw_label": "IN THE WILD — TYPE B · KLARNA 2024",
+    "reframe": "Context windows aren't a memory limit \u2014 they're a forcing function for clarity.",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 KLARNA 2024",
     "itw_paragraphs": [
-      "Klarna's AI customer service deployment, which handled millions of conversations in 2024, succeeded in part because their engineers were obsessive about context hygiene — structuring exactly what went into the window per query type.",
+      "Klarna's AI customer service deployment, which handled millions of conversations in 2024, succeeded in part because their engineers were obsessive about context hygiene \u2014 structuring exactly what went into the window per query type.",
       "Teams that just 'paste in everything' saw accuracy drop as conversations got longer. The constraint made them think harder about signal vs. noise.",
-      "The same pattern shows up in enterprise RAG deployments: the teams getting the best results aren't the ones stuffing the largest context windows — they're the ones being ruthless about what actually belongs in the window for each specific query."
+      "The same pattern shows up in enterprise RAG deployments: the teams getting the best results aren't the ones stuffing the largest context windows \u2014 they're the ones being ruthless about what actually belongs in the window for each specific query."
     ],
     "quote": "Clarity about what you're trying to do is 90% of the problem.",
     "attribution": "Jensen Huang, NVIDIA CEO",
-    "midday_nudge": "If your AI output degrades over a long conversation, where's the real problem — the model, or what you're feeding it?"
+    "midday_nudge": "If your AI output degrades over a long conversation, where's the real problem \u2014 the model, or what you're feeding it?"
   },
   "quiz": [
     {
       "question": "What happens to a language model's context when a conversation exceeds the context window limit?",
       "options": [
         "The model summarizes earlier content automatically to make room",
-        "The earliest tokens are dropped from the active context — the model no longer has access to them",
+        "The earliest tokens are dropped from the active context \u2014 the model no longer has access to them",
         "The model saves context to external memory and retrieves it when needed",
         "Processing stops and an error is returned to the user"
       ],
       "correct": 1,
-      "explanation": "Most transformer-based models use a sliding or truncating window — older tokens simply fall out of scope. Some systems add summarization layers on top, but the base model itself has no persistent memory. This is why long conversations degrade: the model is literally working with less information about earlier exchanges."
+      "explanation": "Most transformer-based models use a sliding or truncating window \u2014 older tokens simply fall out of scope. Some systems add summarization layers on top, but the base model itself has no persistent memory. This is why long conversations degrade: the model is literally working with less information about earlier exchanges."
     },
     {
       "question": "A sales ops team's AI-powered deal summary tool works great for short deals but gives inaccurate outputs on deals with 3 months of email history. The most likely cause is:",
@@ -50,35 +49,35 @@
         "The model needs a higher temperature setting for longer documents"
       ],
       "correct": 2,
-      "explanation": "Long histories frequently exceed what the model can effectively attend to. The fix is usually chunking, retrieval-augmented generation (RAG), or strategic summarization — not prompt wording or model settings. The architecture is working as designed; the workflow isn't designed for the architecture."
+      "explanation": "Long histories frequently exceed what the model can effectively attend to. The fix is usually chunking, retrieval-augmented generation (RAG), or strategic summarization \u2014 not prompt wording or model settings. The architecture is working as designed; the workflow isn't designed for the architecture."
     },
     {
       "question": "You're designing an AI workflow for territory planning. Deals have rich histories. Which approach best addresses context window limitations?",
       "options": [
         "Use a model with the largest available context window and load all deal history into every prompt",
-        "Implement RAG — retrieve only the most relevant deal fragments per query, keeping context lean and targeted",
+        "Implement RAG \u2014 retrieve only the most relevant deal fragments per query, keeping context lean and targeted",
         "Summarize all historical data into one document before every API call",
         "Run multiple parallel prompts and manually reconcile the outputs afterward"
       ],
       "correct": 1,
-      "explanation": "RAG (Retrieval-Augmented Generation) is the production-grade answer. It keeps context tight and relevant by dynamically fetching only what matters for each query — rather than bloating the window with everything and hoping the model handles it. Option A sounds powerful but runs into the 'lost in the middle' problem even with large windows."
+      "explanation": "RAG (Retrieval-Augmented Generation) is the production-grade answer. It keeps context tight and relevant by dynamically fetching only what matters for each query \u2014 rather than bloating the window with everything and hoping the model handles it. Option A sounds powerful but runs into the 'lost in the middle' problem even with large windows."
     }
   ],
-  "closing": "The sharpest AI workflows aren't built by people who know the most — they're built by people who know what to leave out. What are you over-loading into your prompts right now?",
+  "closing": "The sharpest AI workflows aren't built by people who know the most \u2014 they're built by people who know what to leave out. What are you over-loading into your prompts right now?",
   "sources": [
     {
-      "label": "Anthropic — Claude Model Documentation",
+      "label": "Anthropic \u2014 Claude Model Documentation",
       "detail": "Official documentation on context window sizes, token limits, and how context is managed across Claude model variants.",
       "url": "https://docs.anthropic.com/en/docs/about-claude/models/overview"
     },
     {
-      "label": "Lewis et al. — Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, NeurIPS 2020",
-      "detail": "The foundational RAG paper from Meta AI — the architecture that resolves context window constraints in production AI systems. Open access at arXiv.",
+      "label": "Lewis et al. \u2014 Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, NeurIPS 2020",
+      "detail": "The foundational RAG paper from Meta AI \u2014 the architecture that resolves context window constraints in production AI systems. Open access at arXiv.",
       "url": "https://arxiv.org/abs/2005.11401"
     },
     {
-      "label": "Klarna — AI in Customer Service: First Results (2024)",
-      "detail": "Klarna's public reporting on deploying AI at scale — context design decisions were central to their accuracy outcomes.",
+      "label": "Klarna \u2014 AI in Customer Service: First Results (2024)",
+      "detail": "Klarna's public reporting on deploying AI at scale \u2014 context design decisions were central to their accuracy outcomes.",
       "url": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/"
     }
   ]

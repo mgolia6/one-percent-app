@@ -106,3 +106,7 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 ---
 
 *Maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
+
+## PU-007 — AI Prompt Component
+**Added:** May 26, 2026
+Each entry now has an `ai_prompt` field in the JSON. Need a UI component in EntryViewer that displays the prompt with a one-tap copy button. Stretch goal: "Open in Claude" deep link. All categories benefit; Mental Models and Communication are highest priority. Backfill ai_prompt to existing entries 001–020 in a dedicated pass.

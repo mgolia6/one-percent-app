@@ -1,85 +1,84 @@
 {
-  "entry": "017",
-  "editionId": "SC.3.1",
-  "category": "Sales Craft",
-  "categoryTag": "SALES CRAFT",
-  "concept": "Multi-Threading",
-  "accent": "#E8FF47",
-  "accentDim": "rgba(232,255,71,0.10)",
+  "editionId": "AI.2.2",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "Hallucination",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
   "morning": {
-    "hook": "Your best champion just went quiet. If they're your only thread into the deal, it's already over.",
+    "hook": "The model isn't lying. It doesn't know how. That's exactly what makes it dangerous.",
     "explanation_paragraphs": [
-      "Multi-threading is the practice of building relationships with multiple stakeholders inside a target account simultaneously — not waiting until your champion introduces you, and not relying on one person to carry your deal through an organization you can't see into.",
-      "The mechanism is simple: enterprise buying decisions are no longer made by one person. Gartner research consistently shows that complex B2B deals involve 6–10 decision-makers, each with different priorities, different veto power, and different timelines. Your champion understands the problem. The economic buyer controls the budget. The technical evaluator has to sign off on risk. The end user has to actually use the thing. None of them automatically agrees with each other.",
-      "Single-threading — connecting with only one contact and hoping they sell internally for you — puts the entire deal on a single point of failure. If they go dark, get promoted, leave the company, or simply don't have enough internal influence, the deal stalls or dies. And according to LinkedIn data, 78% of sales reps are still doing it this way.",
-      "Multi-threading isn't about spamming an account. It's about building a coalition. The goal is that by the time you're in negotiation, multiple people inside that organization have already concluded they need what you're selling — and are advocating for it without you in the room."
+      "LLMs don't retrieve facts from a database. They predict the next token based on statistical patterns learned from training data. When the model encounters a gap \u2014 a question where training data is thin, conflicting, or absent \u2014 it doesn't stop. It generates the most statistically probable continuation.",
+      "That continuation is often grammatically perfect, confidently stated, and factually wrong. Meta named this during the 2022 BlenderBot release: hallucinations are 'confident statements that are not true.'",
+      "The academic community calls it confabulation \u2014 borrowed from neuropsychology, where patients with memory damage fill narrative gaps with invented detail they genuinely believe is real. The machine version works the same way: it isn't guessing in the sense of knowing it might be wrong. It's producing the output that fits the pattern.",
+      "The confidence is structural, not epistemic. The model has no internal mechanism to distinguish between what it knows and what it's fabricating. That's the trap."
     ],
-    "why_today": "Buying committees have grown significantly over the past decade and show no signs of shrinking. In 2026, the average enterprise deal involves more than 11 stakeholders. The reps closing at the highest rates aren't the most charming — they're the ones who've built the widest internal footprint before the final call.",
-    "morning_challenge": "Pull up one active deal where you have only one contact. Map the buying committee: who's the economic buyer, the technical evaluator, the end user, the executive sponsor? Name them specifically. If you don't know who they are, that's the gap. Ask your champion today: 'Who else will weigh in on this decision?'"
+    "why_today": "Every AI output you trust without verification is a hallucination you didn't catch. The model has no way to flag what it doesn't know \u2014 because it doesn't know what it doesn't know.",
+    "morning_challenge": "Pick one AI-assisted output you've used or sent in the last week \u2014 a summary, a draft, a data point, a cited fact.\n\nAsk:\n\u2014 Did I verify the specific claim, or did I trust the confidence?\n\u2014 Was there a citation, a number, or a named source in there? Did I check it?\n\u2014 If this output was wrong, what would the blast radius be?\n\nThen run this prompt on your next AI research task:\n\n\"You are a fact-checking layer. Flag every specific claim, name, citation, number, or stated fact that could be hallucinated, and explain why each needs external verification before I use it.\"\n\nThis is the mitigation workflow: use AI to interrogate AI."
   },
   "midday": {
-    "reframe": "Your champion isn't selling your deal internally. They're hoping the deal sells itself. Multi-threading is how you stop relying on hope.",
-    "itw_label": "IN THE WILD — TYPE B · DOCUMENTED PATTERN",
+    "reframe": "The attorney didn't think he was doing anything wrong. That's the actual lesson.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 MATA V. AVIANCA 2023",
     "itw_paragraphs": [
-      "A mid-market AE at a SaaS company had spent four months building a strong relationship with a Director of Operations at a target account. The director was bought in. She had internal credibility, used the product in a sandbox, and kept saying the deal was on track.",
-      "Then she left the company. New role, better offer, two weeks notice. The AE had no other contacts at the account. The incoming Director had no context, no relationship, no reason to prioritize an evaluation his predecessor had started. The deal reset to zero.",
-      "This is the most common way enterprise deals die — not competition, not price, not product gaps. Contact attrition. According to LinkedIn Workforce data, average tenure in a B2B tech role is 2.5 to 3 years. In a six-month enterprise sales cycle, the probability of your champion changing roles before you close is not trivial. Multi-threading isn't just a win-rate strategy. It's deal insurance."
+      "In early 2023, attorney Steven Schwartz used ChatGPT to research a motion in a personal injury case against Avianca. ChatGPT returned six case citations \u2014 complete with procedural histories, quoted passages, and named judges as authors. All six were entirely fabricated.",
+      "When opposing counsel flagged they couldn't locate the cases, Schwartz asked ChatGPT to confirm they were real. ChatGPT confirmed they were. Schwartz submitted them again. When Judge P. Kevin Castel ordered copies of the opinions, what came back was \u2014 in the court's own word \u2014 'gibberish.' The six fake opinions had been attributed to real judges who had no connection to the invented cases.",
+      "Judge Castel sanctioned the attorneys $5,000 and required corrective letters to every judge named in the fabricated rulings. The model produced exactly what it was asked to produce. The attorney assumed the output was grounded. Nobody checked."
     ],
-    "quote": "My ultimate goal is to know more about the company than they know themselves.",
-    "attribution": "Jeff Dalo, Senior Director Business Development at Analytic Partners, on multi-threaded account research standards",
-    "midday_nudge": "On your next discovery call: ask 'Who else will be involved in evaluating and approving this?' then ask your champion to make the introduction. You can use AI to map the org before the call — run the company name through a tool like LinkedIn Sales Navigator or ask Claude to surface likely stakeholder roles by function."
+    "quote": "I just was not thinking that the case could be fabricated, so I was not looking at it from that point of view.",
+    "attribution": "Steven Schwartz, testimony \u2014 Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. 2023)",
+    "midday_nudge": "Where in your current workflow are you accepting AI output with the same assumption Schwartz had \u2014 that the model couldn't possibly be making it up?"
   },
   "quiz": [
     {
-      "question": "According to Gartner research, approximately how many stakeholders are involved in a complex B2B buying decision?",
+      "question": "Why do LLMs produce hallucinations even when they appear confident? What is the mechanical cause?",
       "options": [
-        "2–3 decision-makers",
-        "6–10 decision-makers",
-        "1–2 economic buyers",
-        "It depends entirely on company size"
+        "The model intentionally fills gaps with plausible-sounding content to avoid admitting it lacks information",
+        "LLMs are knowledge retrieval systems, and hallucinations occur when the database hasn't been updated recently",
+        "LLMs predict the next token based on statistical patterns in training data \u2014 when the signal is weak or absent, the model generates the most probable continuation regardless of whether it is factually grounded",
+        "Hallucinations occur primarily due to insufficient training data volume \u2014 larger models hallucinate less"
+      ],
+      "correct": 2,
+      "explanation": "LLMs are not knowledge retrieval systems. They generate token sequences by predicting what comes next based on learned patterns. A weak training signal doesn't produce a refusal \u2014 it produces the most statistically likely output anyway. This is why the model presents fabrications with the same confidence as accurate statements."
+    },
+    {
+      "question": "In Mata v. Avianca (2023), Schwartz asked ChatGPT to confirm the cases were real and ChatGPT confirmed they were. What does this illustrate?",
+      "options": [
+        "ChatGPT intentionally misled the attorney to avoid appearing wrong",
+        "The model confirmed the citations because they were stored incorrectly in its database",
+        "Asking the model that generated a hallucination to verify it is not a valid mitigation strategy \u2014 the model produces probable continuations, including confirmations, not independent factual checks",
+        "The result demonstrates a known bug in early ChatGPT versions that has since been corrected"
+      ],
+      "correct": 2,
+      "explanation": "When Schwartz asked ChatGPT to confirm the cases existed, the model generated a confirmation \u2014 because that was the statistically probable response, not because it had checked an external source. This is the closed-loop trap: the model that produced the hallucination cannot serve as the ground truth."
+    },
+    {
+      "question": "You're using AI to draft patient-facing FAQs about drug interactions. The output is clear and confident. What is the correct mitigation before publishing?",
+      "options": [
+        "Run the same prompt twice \u2014 if both answers agree, the information is likely accurate",
+        "Every specific clinical claim must be verified against authoritative medical sources by a qualified reviewer; the AI draft is structure, not a factual source",
+        "Use a larger, more recent AI model \u2014 newer models have significantly lower hallucination rates",
+        "Add a disclaimer stating it was AI-generated, which transfers responsibility to the reader"
       ],
       "correct": 1,
-      "explanation": "Gartner consistently cites 6–10 stakeholders in complex B2B deals, with the number growing over the past decade. Enterprise deals can involve 11 or more."
-    },
-    {
-      "question": "What is the primary risk of single-threading a deal?",
-      "options": [
-        "It creates too many competing relationships to manage",
-        "It makes the rep look like they don't understand the org",
-        "The entire deal depends on one person who can go dark, leave, or lack influence",
-        "It slows down the sales cycle by focusing on one stakeholder"
-      ],
-      "correct": 2,
-      "explanation": "Single-threading creates a single point of failure. If your champion goes silent, changes roles, or loses internal influence, the deal stalls — and you have no backup."
-    },
-    {
-      "question": "You have one active deal with a single contact. Your champion seems fully bought in. What's the most effective next move?",
-      "options": [
-        "Wait — don't risk the relationship by pushing for more contacts",
-        "Go around your champion and reach out to executives directly",
-        "Ask your champion: 'Who else will be involved in this decision?' and request introductions",
-        "Escalate through your own executive sponsor first"
-      ],
-      "correct": 2,
-      "explanation": "The champion introduction is the right path — it positions multi-threading as collaborative, not threatening. Going around them or waiting both carry higher risk than asking directly."
+      "explanation": "Running the same prompt twice doesn't catch hallucinations \u2014 consistent outputs can be consistently wrong. Disclaimers don't make fabricated clinical information safe. Newer models still hallucinate. The only reliable mitigation is external verification by a domain expert against authoritative sources."
     }
   ],
-  "closing": "On your current pipeline: which deals survive if your champion disappears tomorrow?",
+  "closing": "Where in your work are you accepting confident AI output as verified fact \u2014 and what would it cost if it's wrong?",
   "sources": [
     {
-      "label": "Gartner — B2B Buying Behavior Research",
-      "detail": "Gartner research on buying committee size, multithreaded engagement strategies, and revenue growth projections for organizations that adopt multi-threading.",
-      "url": "https://www.gartner.com/en/sales/trends/commercial-strategy-guide"
+      "label": "Ji et al. \u2014 Survey of Hallucination in Natural Language Generation, ACM Computing Surveys 55(12), 2023",
+      "detail": "Landmark survey. Covers definition, mechanical causes, and mitigation strategies. Open access at arXiv.",
+      "url": "https://arxiv.org/abs/2202.03629"
     },
     {
-      "label": "Aviso — Multi-Threading Win Rate Analysis",
-      "detail": "Aviso's analysis showing multi-threaded conversations increase deal win odds by 42% and reduce sales cycle length by 53–78 days depending on deal size.",
-      "url": "https://www.aviso.com/blog/4-tips-for-multi-threaded-conversations-to-boost-win-rate"
+      "label": "Hallucination (artificial intelligence) \u2014 Wikipedia (primary: Meta/BlenderBot 2022)",
+      "detail": "Documents Meta's 2022 definition \u2014 'confident statements that are not true.'",
+      "url": "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)"
     },
     {
-      "label": "LinkedIn / Salesmotion — Stakeholder Data",
-      "detail": "LinkedIn data showing 78% of sales reps are single-threaded in most deals. Salesmotion analysis: single-threaded deals close at 5%, multi-threaded at 30%.",
-      "url": "https://salesmotion.io/blog/multi-threading-sales-strategy"
+      "label": "Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. June 22, 2023)",
+      "detail": "Full court ruling. Six fabricated AI citations, $5,000 sanction, and Schwartz's testimony verbatim.",
+      "url": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/"
     }
   ]
 }

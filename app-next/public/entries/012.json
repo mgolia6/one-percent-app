@@ -1,85 +1,94 @@
 {
-  "entry": "012",
-  "editionId": "AI.2.2",
-  "category": "AI",
-  "categoryTag": "AI",
-  "concept": "Hallucination",
-  "accent": "#47FFE8",
-  "accentDim": "rgba(71,255,232,0.10)",
+  "editionId": "CM.3",
+  "category": "Communication",
+  "categoryTag": "COMM",
+  "concept": "The Ladder of Inference",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
   "morning": {
-    "hook": "The model isn't lying. It doesn't know how. That's exactly what makes it dangerous.",
+    "hook": "By the time most people act on a conclusion, they've forgotten they ever made an assumption.",
     "explanation_paragraphs": [
-      "LLMs don't retrieve facts from a database. They predict the next token based on statistical patterns learned from training data. When the model encounters a gap — a question where training data is thin, conflicting, or absent — it doesn't stop. It generates the most statistically probable continuation.",
-      "That continuation is often grammatically perfect, confidently stated, and factually wrong. Meta named this during the 2022 BlenderBot release: hallucinations are 'confident statements that are not true.'",
-      "The academic community calls it confabulation — borrowed from neuropsychology, where patients with memory damage fill narrative gaps with invented detail they genuinely believe is real. The machine version works the same way: it isn't guessing in the sense of knowing it might be wrong. It's producing the output that fits the pattern.",
-      "The confidence is structural, not epistemic. The model has no internal mechanism to distinguish between what it knows and what it's fabricating. That's the trap."
+      "Here's a scenario. A colleague doesn't respond to your message for two days. You notice it. You recall that last week's meeting felt a little tense. You conclude they're avoiding you \u2014 probably frustrated about something you said. You decide to give them space rather than push. Two days later you find out their inbox was buried and they hadn't seen the message. The whole story you built was fiction, but the behavior it produced was real.",
+      "This is what organizational psychologist Chris Argyris called the Ladder of Inference \u2014 a model he developed to explain how humans move from observable data to action, often without realizing they've skipped several steps in between. Peter Senge brought the framework to a wider audience in The Fifth Discipline Fieldbook (1994), where it became one of the core tools of organizational learning.",
+      "The ladder has seven rungs. At the bottom: reality \u2014 the raw, observable facts. Then: selected data (what you chose to pay attention to). Then: interpreted meaning (what you decided it meant). Then: assumptions (what you filled in without checking). Then: conclusions. Then: beliefs. Then, at the top: actions. Most people spend their time at the top of the ladder without realizing how much of the climb was unconscious.",
+      "The problem Argyris identified is what he called the reflexive loop: your beliefs at the top of the ladder influence which data you select at the bottom. You don't just climb the ladder once \u2014 you run it in a loop, constantly filtering new information through conclusions you've already reached. Over time, the ladder becomes invisible. You stop seeing it as reasoning and start seeing it as reality."
     ],
-    "why_today": "Every AI output you trust without verification is a hallucination you didn't catch. The model has no way to flag what it doesn't know — because it doesn't know what it doesn't know.",
-    "morning_challenge": "Pick one AI-assisted output you've used or sent in the last week — a summary, a draft, a data point, a cited fact.\n\nAsk:\n— Did I verify the specific claim, or did I trust the confidence?\n— Was there a citation, a number, or a named source in there? Did I check it?\n— If this output was wrong, what would the blast radius be?\n\nThen run this prompt on your next AI research task:\n\n\"You are a fact-checking layer. Flag every specific claim, name, citation, number, or stated fact that could be hallucinated, and explain why each needs external verification before I use it.\"\n\nThis is the mitigation workflow: use AI to interrogate AI."
+    "why_today": "The Ladder of Inference remains one of the most widely taught frameworks in organizational psychology and leadership development. Asana's March 2026 resource guide on the model identifies it as one of the most practical tools for reducing misunderstanding in team environments \u2014 particularly relevant as more communication happens asynchronously, where the absence of tone and body language gives the ladder more rungs to climb unchecked.",
+    "morning_challenge": "Think of a recent situation where you reacted to someone \u2014 a colleague, a partner, anyone \u2014 and later found out you'd misread it.\n\nTrace the ladder backward: What did you actually observe? What did you select from that observation? What meaning did you assign? What assumption did you make? What conclusion did you reach?\n\nAt which rung did you leave the facts behind?"
   },
   "midday": {
-    "reframe": "The attorney didn't think he was doing anything wrong. That's the actual lesson.",
-    "itw_label": "IN THE WILD — TYPE A · MATA V. AVIANCA 2023",
+    "reframe": "You're not reacting to what happened. You're reacting to your interpretation of what you selected from what happened.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 SENGE, THE FIFTH DISCIPLINE FIELDBOOK (1994) / ASANA (MARCH 2026)",
     "itw_paragraphs": [
-      "In early 2023, attorney Steven Schwartz used ChatGPT to research a motion in a personal injury case against Avianca. ChatGPT returned six case citations — complete with procedural histories, quoted passages, and named judges as authors. All six were entirely fabricated.",
-      "When opposing counsel flagged they couldn't locate the cases, Schwartz asked ChatGPT to confirm they were real. ChatGPT confirmed they were. Schwartz submitted them again. When Judge P. Kevin Castel ordered copies of the opinions, what came back was — in the court's own word — 'gibberish.' The six fake opinions had been attributed to real judges who had no connection to the invented cases.",
-      "Judge Castel sanctioned the attorneys $5,000 and required corrective letters to every judge named in the fabricated rulings. The model produced exactly what it was asked to produce. The attorney assumed the output was grounded. Nobody checked."
+      "In The Fifth Discipline Fieldbook, Senge's team wrote: 'We live in a world of self-generating beliefs which remain largely untested. We adopt those beliefs because they are based on conclusions, which are inferred from what we observe, plus our past experience.' The ladder describes the mechanism by which those untested beliefs form \u2014 and why they feel so certain once they do. By the time you reach a conclusion, the rungs below it have become invisible.",
+      "Asana's March 2026 guide on the model notes that the Ladder of Inference is especially consequential in team communication because misunderstandings compound. One person climbs the ladder based on an ambiguous message. They act on the conclusion. The other person observes that action, builds their own ladder from it, and acts on that. Two people are now operating from separate constructed realities, neither of which was ever checked against the facts.",
+      "The correction Argyris proposed wasn't to slow down all reasoning \u2014 that's not practical. It was to make the ladder visible as a shared tool: to be able to say 'here's the data I observed, here's the meaning I assigned, here's the assumption I made \u2014 does that match what you intended?' Making the climb explicit is what allows it to be corrected before it becomes action."
     ],
-    "quote": "I just was not thinking that the case could be fabricated, so I was not looking at it from that point of view.",
-    "attribution": "Steven Schwartz, testimony — Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. 2023)",
-    "midday_nudge": "Where in your current workflow are you accepting AI output with the same assumption Schwartz had — that the model couldn't possibly be making it up?"
+    "quote": "We live in a world of self-generating beliefs which remain largely untested. We adopt those beliefs because they are based on conclusions, which are inferred from what we observe, plus our past experience.",
+    "attribution": "Rick Ross, in Peter Senge et al., The Fifth Discipline Fieldbook (1994)",
+    "midday_nudge": "Where in a current situation are you acting on a conclusion that you haven't verified? What's the assumption underneath it, and what would it take to check it?"
   },
   "quiz": [
     {
-      "question": "Why do LLMs produce hallucinations even when they appear confident? What is the mechanical cause?",
+      "question": "Argyris identified what he called the 'reflexive loop' as one of the most dangerous features of the Ladder of Inference. What does it describe?",
       "options": [
-        "The model intentionally fills gaps with plausible-sounding content to avoid admitting it lacks information",
-        "LLMs are knowledge retrieval systems, and hallucinations occur when the database hasn't been updated recently",
-        "LLMs predict the next token based on statistical patterns in training data — when the signal is weak or absent, the model generates the most probable continuation regardless of whether it is factually grounded",
-        "Hallucinations occur primarily due to insufficient training data volume — larger models hallucinate less"
-      ],
-      "correct": 2,
-      "explanation": "LLMs are not knowledge retrieval systems. They generate token sequences by predicting what comes next based on learned patterns. A weak training signal doesn't produce a refusal — it produces the most statistically likely output anyway. This is why the model presents fabrications with the same confidence as accurate statements."
-    },
-    {
-      "question": "In Mata v. Avianca (2023), Schwartz asked ChatGPT to confirm the cases were real and ChatGPT confirmed they were. What does this illustrate?",
-      "options": [
-        "ChatGPT intentionally misled the attorney to avoid appearing wrong",
-        "The model confirmed the citations because they were stored incorrectly in its database",
-        "Asking the model that generated a hallucination to verify it is not a valid mitigation strategy — the model produces probable continuations, including confirmations, not independent factual checks",
-        "The result demonstrates a known bug in early ChatGPT versions that has since been corrected"
-      ],
-      "correct": 2,
-      "explanation": "When Schwartz asked ChatGPT to confirm the cases existed, the model generated a confirmation — because that was the statistically probable response, not because it had checked an external source. This is the closed-loop trap: the model that produced the hallucination cannot serve as the ground truth."
-    },
-    {
-      "question": "You're using AI to draft patient-facing FAQs about drug interactions. The output is clear and confident. What is the correct mitigation before publishing?",
-      "options": [
-        "Run the same prompt twice — if both answers agree, the information is likely accurate",
-        "Every specific clinical claim must be verified against authoritative medical sources by a qualified reviewer; the AI draft is structure, not a factual source",
-        "Use a larger, more recent AI model — newer models have significantly lower hallucination rates",
-        "Add a disclaimer stating it was AI-generated, which transfers responsibility to the reader"
+        "The tendency to repeat the same reasoning errors across similar situations, even after being corrected once",
+        "The way beliefs formed at the top of the ladder filter which data you select at the bottom \u2014 meaning your conclusions actively shape what you notice, creating a self-reinforcing cycle",
+        "The reflex to defend a conclusion once it's been stated publicly, making it harder to revise even when new data arrives",
+        "The pattern of inferring other people's intentions from their behavior without asking them directly"
       ],
       "correct": 1,
-      "explanation": "Running the same prompt twice doesn't catch hallucinations — consistent outputs can be consistently wrong. Disclaimers don't make fabricated clinical information safe. Newer models still hallucinate. The only reliable mitigation is external verification by a domain expert against authoritative sources."
+      "explanation": "The reflexive loop means the ladder isn't a one-time climb \u2014 it runs in a continuous cycle. The beliefs and conclusions you've already reached determine which data you pay attention to at the bottom of the ladder. You filter new information through old conclusions, which reinforces those conclusions, which further shapes your selection. Over time the ladder becomes invisible and the conclusions feel like facts."
+    },
+    {
+      "question": "A manager reads an email from a team member that says 'I'll get it done.' The manager interprets this as dismissive \u2014 the team member always says that and then misses the deadline. The manager decides not to follow up, assuming the team member finds it micromanaging. The deadline is missed. At which rung did the reasoning go wrong?",
+      "options": [
+        "At the bottom rung \u2014 the manager failed to observe the full situation because they only read part of the email",
+        "At the selected data rung \u2014 the manager chose to focus on the phrase 'I'll get it done' while ignoring other signals that might have been present",
+        "At the assumptions rung \u2014 the manager filled in a meaning ('dismissive') and a motive ('finds follow-up micromanaging') that were never verified, and acted on both",
+        "At the actions rung \u2014 the manager's decision not to follow up was the error, and better actions could have been taken even from the same conclusion"
+      ],
+      "correct": 2,
+      "explanation": "The manager had observable data: the phrase 'I'll get it done.' They selected it, assigned meaning (dismissive), made an assumption about the team member's attitude toward follow-up, and acted on that assumption. None of those rungs were checked. The assumption that the team member finds follow-up micromanaging was never verified \u2014 it was inferred from a pattern, filled in without confirmation, and treated as fact."
+    },
+    {
+      "question": "The Ladder of Inference is taught as a communication tool, not just a personal reasoning model. How does making the ladder explicit between two people change a conversation?",
+      "options": [
+        "It slows the conversation down enough that both people have time to reconsider their positions before committing to them",
+        "It gives one person a structured way to correct the other's faulty reasoning without appearing confrontational",
+        "It creates a shared vocabulary for tracing reasoning \u2014 both people can say 'here's the data I saw, here's what I assumed' \u2014 which allows mismatches to be identified and corrected before they become action",
+        "It removes emotion from the conversation by shifting the focus from what people feel to what they observe"
+      ],
+      "correct": 2,
+      "explanation": "Making the ladder explicit as a shared tool means both parties can show their work \u2014 not to win an argument, but to find where the reasoning diverged. 'Here's what I observed, here's the meaning I assigned, here's the assumption I made' gives the other person something specific to respond to. Misunderstandings that would otherwise compound into action can be caught at the assumption or interpretation rung, before they produce consequences."
     }
   ],
-  "closing": "Where in your work are you accepting confident AI output as verified fact — and what would it cost if it's wrong?",
+  "closing": "The conclusion felt obvious because you forgot you made an assumption to get there.",
+  "ai_prompt": "I'm trying to understand a situation where I think I may have climbed the Ladder of Inference \u2014 where I moved from an observation to a conclusion without fully checking my assumptions. Help me trace my reasoning rung by rung: what I actually observed, what I selected, what meaning I assigned, what I assumed, and what conclusion I reached. Then help me identify where I left the facts behind and what I'd need to verify before acting. Here's the situation: [describe what happened and how you reacted]",
   "sources": [
     {
-      "label": "Ji et al. — Survey of Hallucination in Natural Language Generation, ACM Computing Surveys 55(12), 2023",
-      "detail": "Landmark survey. Covers definition, mechanical causes, and mitigation strategies. Open access at arXiv.",
-      "url": "https://arxiv.org/abs/2202.03629"
+      "label": "Argyris, C. \u2014 Overcoming Organizational Defenses: Facilitating Organizational Learning. Allyn and Bacon, 1990.",
+      "detail": "Primary source for the Ladder of Inference framework. Argyris developed the model to explain how untested beliefs form and drive organizational behavior.",
+      "url": "https://asana.com/resources/ladder-of-inference",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Hallucination (artificial intelligence) — Wikipedia (primary: Meta/BlenderBot 2022)",
-      "detail": "Documents Meta's 2022 definition — 'confident statements that are not true.'",
-      "url": "https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)"
+      "label": "Senge, P., Kleiner, A., Roberts, C., Ross, R., & Smith, B. \u2014 The Fifth Discipline Fieldbook. Doubleday, 1994.",
+      "detail": "Popularized the Ladder of Inference for a broad organizational audience. Rick Ross's chapter (pp. 242\u2013246) contains the quote used in the midday section and the core illustration of the model.",
+      "url": "https://cdn.edreports.org/legacy/files/Ladder-of-Inference-OCDE.pdf",
+      "verified": true,
+      "verified_by": "Matthew"
     },
     {
-      "label": "Mata v. Avianca, Inc., 678 F.Supp.3d 443 (S.D.N.Y. June 22, 2023)",
-      "detail": "Full court ruling. Six fabricated AI citations, $5,000 sanction, and Schwartz's testimony verbatim.",
-      "url": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/"
+      "label": "Asana \u2014 How to Use the Ladder of Inference for Better Decisions. Asana Resources, March 14, 2026.",
+      "detail": "Contemporary application guide covering the model's seven rungs, the reflexive loop, and team communication implications \u2014 particularly for asynchronous environments.",
+      "url": "https://asana.com/resources/ladder-of-inference",
+      "verified": true,
+      "verified_by": "Matthew"
     }
-  ]
+  ],
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-05-26"
 }

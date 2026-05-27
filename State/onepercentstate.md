@@ -1,82 +1,56 @@
 # One Percent — State Snapshot
-> Auto-generated at session wrap. Claude reads this first, every session. Do not edit manually.
+**Generated:** 2026-05-26
 
 ---
 
-## Last Updated
-**Date:** May 24, 2026
-**Session:** Workflow optimization shipped (state snapshot, backlog split, instructions v1_30). LinkedIn beta recruitment post drafted and finalized.
+## Rotation Position
+- **Total entries:** 25
+- **Last entry generated:** CM.3 (Ladder of Inference) — position 012
+- **New entries added this session:** MM.3, CM.2, PH.3, CM.3, NC.3 (positions 009–013)
+- **Next entry due:** SC (Sales Craft) — SC.3.2 or similar
 
----
-
-## Content State
-
-| Field | Value |
+## Category Counts (post-session)
+| Category | Count |
 |---|---|
-| Entries live | 20 |
-| Last entry | 020 — NC.2 · Meditation and the Brain |
-| Next entry | 021 — SC.4.1 · (candidate: Mirroring, Labeling, or Calibrated Questions) |
-| Next category | Sales Craft (SC) — rotation slot 4 |
-| Cycle position | Cycle 3, Slot 1 of 9 |
+| Sales Craft | 6 |
+| AI | 5 |
+| Vocab & Language | 3 |
+| Mental Models | 3 |
+| Philosophy | 3 |
+| Neuroscience & Cognition | 3 |
+| Communication | 3 |
+
+Categories now balanced at 3 minimum across all. SC and AI remain heaviest per rotation design.
 
 ---
 
 ## Top Priorities
-
-1. **ENH-007** — Email allowlist (must complete before expanding beta)
-2. **SC.4.1** — Next entry generation
-3. **PU stack rank** — Matthew to prioritize PU-001 through PU-006 before building any
-
----
-
-## Active Issues
-
-| ID | Summary | Status |
-|---|---|---|
-| ISSUE-002 | Weekly feedback trigger broken for backdated signups | Open |
-| ISSUE-003 | Multi-threading bug (parallel entry loading) | Open |
-| ISSUE-004 | Weekly wrap modal fires for zero-completion users | Open |
-| ISSUE-005 | Onboarding text overlap on mobile (last few cards) | Open |
+1. **AI prompt UI component (PU-007)** — `ai_prompt` field now in all 5 new entries + backfill needed for entries 001–008 and 014–025. UI: copy button in EntryViewer, stretch: "Open in Claude" deep link.
+2. **Backfill `ai_prompt` to existing entries** — 001–008 and 014–025 need the field added.
+3. **Verify Jahic quote in Entry 017 (SC.3.1 Multi-Threading)** — still open from prior session.
+4. **LinkedIn carousel HTML for Entry 017** — deferred.
+5. **Weekly feedback test trigger for backdated signups** — product backlog.
 
 ---
 
-## Platform Upgrades Queued (unranked)
-
-| ID | Item |
-|---|---|
-| PU-001 | Library page — fix loading/refresh button |
-| PU-002 | Weekly survey — update notifications section |
-| PU-003 | Admin — add progress report section |
-| PU-004 | Leaderboard — trophy emoji next to heading |
-| PU-005 | Profile — restructure to 3 tabs |
-| PU-006 | Admin users section — expandable cards |
+## Open Issues
+- Tester progress as of 2026-05-26: You=20, T2=8, T3=6, T4=3, T5=2, T6=1. New entries inserted at 9–13 — T2 and T3 will hit new content next.
+- Multi-threading bug fix still open.
+- Day/night OS-following theme system deferred pending tester feedback.
 
 ---
 
-## Approved Builds (Not Yet Built)
-
-| Item | Notes |
-|---|---|
-| Quiz revamp | 4 section-specific questions replacing 1–5 sliders |
-| Voice feedback | Mic button → Web Speech API → populates comment field |
-| Zero-completion gate | Weekly wrap modal should not fire if no completions that week |
+## Key Decisions This Session
+- All 5 backfill entries verified (HITL) before commit.
+- `ai_prompt` field added to all new entries — new standard going forward.
+- PU-007 logged to product backlog: copy button + "Open in Claude" stretch goal.
+- Tester feedback applied to content: application-based quizzes, concrete morning examples, role-agnostic questions.
+- Entries inserted at positions 9–13 (safe for all testers — furthest behind tester was on entry 1).
 
 ---
 
-## Beta Status
-
-- **Testers:** Active beta, multiple testers onboarded
-- **App URL:** https://one-percent-app.vercel.app
-- **Last security audit:** May 23, 2026 — 6 areas reviewed, 4 enhancements logged
+## App / Repo
+- **URL:** one-percent-app.vercel.app
 - **Repo:** mgolia6/one-percent-app
-- **Supabase project:** uuzdlubbynavybttlmeh
-
----
-
-## Workflow Notes
-
-- Instructions file: `Directions/onepercentinstructions-v1_30.md` (current)
-- Content backlog: `Backlog/onepercentbacklog.md`
-- Product backlog: `Backlog/onepercentproductbacklog.md`
-- Session logs: `Logs/`
-- **Read order at session start:** This file → latest log → begin work
+- **Supabase:** uuzdlubbynavybttlmeh
+- **Instructions:** Directions/onepercentinstructions-v1_30.md
