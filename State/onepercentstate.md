@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-05-27
+**Generated:** 2026-05-27 (v3)
 
 ---
 
@@ -22,29 +22,30 @@
 ---
 
 ## Top Priorities
-1. **Design sprint — header presence** — next design session picks up here
+1. **Design sprint — header presence** — feels unheroic, needs weight without being a hero image
 2. **Design sprint — nail one moment** — quiz completion / "you got it" state is the candidate
-3. **Verify Jahic quote in Entry 017 (SC.3.1 Multi-Threading)** — still open
-4. **ai_prompt backfill** — entries 001–008 and 014–025 need the field added
-5. **PU-007** — copy button UI for ai_prompt field in EntryViewer
-6. **Early entry quiz backfill** — entries 001–008 still have old recall-based quiz format; testers hitting these
+3. **Early entry quiz backfill** — entries 001–008 still have old recall-based quiz format; testers hitting these
+4. **Verify Jahic quote in Entry 017 (SC.3.1 Multi-Threading)** — still open
 
 ---
 
 ## Open Issues
-All four known bugs fixed this session:
-- ~~ISSUE-002~~ ✅ Fixed — weekly survey skips admins, gates on ≥1 completion
-- ~~ISSUE-003~~ ✅ Closed — ghost issue, no parallel loading code exists
-- ~~ISSUE-004~~ ✅ Fixed — same fix as ISSUE-002
-- ~~ISSUE-005~~ ✅ Fixed — onboarding now scrollable on short viewports
+All known bugs resolved. No open issues.
 
 ## Tester Progress (as of 2026-05-27)
 You=14 (remapped), T2=8, T3=6, T4=3, T5=2, T6=1
 
 ---
 
+## AI Prompt — Fully Shipped
+- `ai_prompt` field now present on all 25 entries
+- Copy button in EntryViewer (after quiz submission, above WHAT'S NEXT card)
+- New onboarding screen (screen 3 of 9) introduces the feature
+- About page HOW IT WORKS section updated with fourth item
+- PU-007 closed
+
 ## Design Prototype Status
-Three prototype iterations produced this session (HTML files, not in repo):
+Three prototype iterations produced (HTML files, not in repo):
 - v1: dark, neon — too similar to current app
 - v2: sand palette, morph+reveal transitions, SMART goal flow
 - v3: dimensional today card, custom SVG tab icons, profile avatar header, legibility pass
@@ -52,7 +53,7 @@ Three prototype iterations produced this session (HTML files, not in repo):
 **Validated directions:**
 - Sand/warm off-white palette ✓
 - Reveal (screen lift) + morph (tab crossfade) transitions ✓
-- SMART goal commitment flow ✓ (validated by tester feedback — Brian accountability, Landon "who is this for")
+- SMART goal commitment flow ✓
 - Dimensional today card (shadow layering, category accent top edge) ✓
 - Custom SVG tab icons (sun/refresh/target) ✓
 - No emojis anywhere ✓
@@ -67,22 +68,20 @@ Three prototype iterations produced this session (HTML files, not in repo):
 
 ---
 
-## Feedback Summary (pulled live this session)
-- Quiz: Erin + Matthew flagged independently — application over recall. Already fixed in entries 009–025. Backfill needed for 001–008.
+## Feedback Summary
+- Quiz: Erin + Matthew flagged independently — application over recall. Fixed in 009–025. Backfill needed for 001–008.
 - Accountability gap: Brian flagged twice — goal feature addresses this
-- Audience clarity: Landon — "who is this for" — unresolved, onboarding/entry header problem
+- Audience clarity: Landon — "who is this for" — unresolved
 - Audio: Erin asked twice — post-beta (ENH-004)
-- AI prompt: Erin praised it explicitly — PU-007 copy button is right next move
-- Weekly check-in pending — more feedback expected soon
+- AI prompt: Erin praised it — PU-007 now fully shipped
+- Prompt library idea raised by Matthew — deferred pending tester signal
 
 ---
 
 ## Key Decisions This Session
-- All four known bugs fixed and closed
-- Backlog updated: ISSUE-002/003/004/005 closed, PU-005/006 marked done
-- Design direction confirmed: sand palette, reveal+morph transitions, goal feature
-- Admin section confirmed as design sandbox before rolling to full app
-- No product changes to live app without tester feedback first (standing rule)
+- PU-007 fully closed: backfill + UI + onboarding + about page all shipped
+- Prompt library deferred — no tester signal yet, standing rule applies
+- Onboarding integrity confirmed: progress indicator fully dynamic, 9 screens, nothing hardcoded
 
 ---
 
