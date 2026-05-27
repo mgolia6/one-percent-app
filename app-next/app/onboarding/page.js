@@ -22,6 +22,14 @@ const STEPS = [
     commitment: null,
   },
   {
+    id: 'ai_prompt',
+    eyebrow: 'BUILT IN',
+    heading: 'Every entry ends with an AI prompt.',
+    body: "After the quiz, you'll find a ready-to-use prompt at the bottom of each entry — built around that day's concept.\n\nCopy it. Paste it into Claude, ChatGPT, whatever you use. It's designed to turn the concept into a real conversation about something in your actual life.\n\nThis is where the learning goes from abstract to applied.",
+    cta: 'GOT IT →',
+    commitment: null,
+  },
+  {
     id: 'bug',
     eyebrow: 'FEEDBACK — 1 OF 4',
     heading: 'Something breaks — tell me.',

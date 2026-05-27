@@ -38,6 +38,7 @@ export default function AboutPage() {
             { color: '#E8FF47', label: 'MORNING BRIEF', body: 'A sharp, focused explanation of the day\'s concept. Read it, absorb it, move on.' },
             { color: '#47FFE8', label: 'MIDDAY REFRAME', body: 'A prompt to apply the concept to something real in your day. Takes 60 seconds.' },
             { color: '#FF4778', label: 'EVENING QUIZ', body: 'Three questions to lock it in. No grade, no pressure — just a signal for what stuck.' },
+            { color: '#C847FF', label: 'AI PROMPT', body: 'After the quiz, a ready-to-use prompt appears — built around the day\'s concept. Copy it into any AI and take the learning somewhere real.' },
           ].map(({ color, label, body }) => (
             <div key={label} style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
               <div style={{ width: 3, borderRadius: 2, background: color, flexShrink: 0 }} />
