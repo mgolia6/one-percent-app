@@ -536,7 +536,6 @@ export default function AdminPage() {
             <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={refreshAll} disabled={refreshing} style={{ background: '#1a1a1a', border: '1px solid #1a1a1a', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 700 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
             <button onClick={() => router.push('/')} style={{ background: '#1a1a1a', border: '1px solid #1a1a1a', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#ccc', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 500 }}>← LIBRARY</button>
           </div>
         </div>

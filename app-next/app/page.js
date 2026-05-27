@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { Paperclip, User } from 'lucide-react'
+import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 
@@ -1184,7 +1184,7 @@ export default function HomePage() {
               flexShrink: 0,
             }}
           >
-            🏆 LEADERBOARD
+            <Trophy size={11} style={{ flexShrink: 0 }} /> LEADERBOARD
           </button>
         </div>
 
