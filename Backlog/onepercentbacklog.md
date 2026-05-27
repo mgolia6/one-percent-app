@@ -1,6 +1,6 @@
 # One Percent — Content Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: May 23, 2026 — Entry 020 generated (NC.2 Meditation and the Brain, backfill). Next: SC.4.1 (standard rotation resumes)
+Last updated: May 26, 2026 — Entries 021–025 generated (MM.3, CM.2, PH.3, CM.3, NC.3 backfill). Total entries: 25. Next: SC (SC.3.2 or SC.4.1 — standard rotation resumes from position 26).
 
 > **Content candidates only.** Features, bugs, platform upgrades, and infrastructure live in `Backlog/onepercentproductbacklog.md`.
 
@@ -132,6 +132,7 @@ Target library: 365 entries (~40 full cycles)
 **Used:**
 - Inversion — MM.1
 - Second-Order Thinking — MM.2
+- Survivorship Bias — MM.3
 
 **Candidates:**
 
@@ -140,7 +141,7 @@ Target library: 365 entries (~40 full cycles)
 | First Principles Thinking | Breaking problems down to foundational truths rather than analogies. Musk made it mainstream; the concept predates him significantly (Aristotle, Descartes). Active in startup and innovation discourse. | candidate |
 | The Map Is Not the Territory | Korzybski. All models are simplifications — the danger is mistaking the model for reality. Foundational epistemology with enormous practical scope. | candidate |
 | Opportunity Cost | Every choice forecloses other choices. The invisible cost of decisions. Underused outside economics. | candidate |
-| Survivorship Bias | We study what survived, not what failed. Distorts our understanding of success across fields. Broad, high-impact, well-sourced. | candidate |
+| Survivorship Bias | We study what survived, not what failed. Distorts our understanding of success across fields. Broad, high-impact, well-sourced. | **used — MM.3** |
 | Hanlon's Razor | Never attribute to malice what can adequately be explained by stupidity (or incompetence). Reduces paranoia, improves diagnosis. | candidate |
 | The Overfitting Trap | Optimizing too hard for past data, losing generalizability. Applies beyond ML — relevant to strategy, hiring, product. | candidate |
 | Confirmation Bias | We seek information that confirms what we already believe. Most documented cognitive bias. Strong sourcing (Nickerson 1998, Kahneman). | candidate |
@@ -159,12 +160,13 @@ Target library: 365 entries (~40 full cycles)
 **Used:**
 - Premeditatio Malorum — PH.1
 - Dichotomy of Control — PH.2
+- Amor Fati — PH.3
 
 **Candidates:**
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| Amor Fati | Love of fate — not just accepting what happens, but embracing it. Nietzsche. Distinct from Stoic resignation. Active in resilience discourse. | candidate |
+| Amor Fati | Love of fate — not just accepting what happens, but embracing it. Nietzsche. Distinct from Stoic resignation. Active in resilience discourse. | **used — PH.3** |
 | Memento Mori | Remembering death as a clarifying force for how to live. Distinct from Premeditatio. Marcus Aurelius, Ryan Holiday 2025 Stoic series. | candidate |
 | The Ship of Theseus | Identity and continuity through change. Relevant to orgs, products, personal transformation. Classic paradox. | candidate |
 | Epistemic humility | Knowing the limits of what you can know. Foundational to good decision-making, scientific thinking, leadership. | candidate |
@@ -184,13 +186,16 @@ Target library: 365 entries (~40 full cycles)
 
 How the brain actually works: learning, memory, attention, habit, decision-making at the neural level. Research-grounded, not pop psychology. Connects to why the One Percent format itself works.
 
-**Used:** *(none yet — first NC entry is NC.1)*
+**Used:**
+- Neuroplasticity — NC.1
+- Meditation and the Brain — NC.2
+- Dopamine & Motivation — NC.3
 
 **Candidates:**
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| Neuroplasticity | **[PRIORITY — Matthew's request]** The brain's ability to rewire through experience. Foundation of all learning. Active in 2026 L&D research — multiple peer-reviewed papers Dec 2025/Jan 2026. | **used — NC.1** |
+| Neuroplasticity | The brain's ability to rewire through experience. Foundation of all learning. | **used — NC.1** |
 | Cognitive load theory | Sweller 1988, updated through 2020s. How working memory limits learning. Directly relevant to anyone designing or consuming information. | candidate |
 | Spaced repetition | The forgetting curve (Ebbinghaus) and how spacing practice dramatically improves retention. Why One Percent works as a daily format — meta-relevant. | candidate |
 | The default mode network | What the brain does when "idle" — creativity, consolidation, self-referential thought. Implications for rest, focus, creative work. | candidate |
@@ -200,6 +205,7 @@ How the brain actually works: learning, memory, attention, habit, decision-makin
 | Habit loops | Neural basis of habit: cue, routine, reward, basal ganglia. Duhigg built on Graybiel's MIT research. Distinct from philosophical habit discussion. | candidate |
 | Attention and deep work | Neural basis of focused attention vs. mind-wandering. Gloria Mark's distraction research (UC Irvine). Cal Newport's applied framework. | candidate |
 | Mirror neurons and empathy | Neural basis of social understanding. Rizzolatti's discovery, subsequent debate, what it actually explains about human connection. | candidate |
+| Dopamine & Motivation | Wanting vs. liking distinction. Schultz reward prediction error. Berridge incentive salience. | **used — NC.3** |
 | Retrieval practice effect | Testing yourself is more effective than re-reading. Roediger & Karpicke 2006. Why the quiz in One Percent is pedagogy, not decoration. Meta-relevant. | candidate |
 | Interleaving | Mixing practice across topics improves long-term retention even though it feels harder. Kornell & Bjork 2008. Counterintuitive and well-sourced. | candidate |
 
@@ -209,7 +215,10 @@ How the brain actually works: learning, memory, attention, habit, decision-makin
 
 How people get ideas across effectively — or fail to. Practical and immediately applicable. Distinct from Vocab & Language (how language works) — this is about how people actually communicate.
 
-**Used:** *(none yet — first CM entry is CM.1)*
+**Used:**
+- Active Listening — CM.1
+- Feedback That Lands — CM.2
+- The Ladder of Inference — CM.3
 
 **Candidates:**
 
@@ -217,13 +226,13 @@ How people get ideas across effectively — or fail to. Practical and immediatel
 |---|---|---|
 | Active listening | Beyond hearing — attending to what someone is actually saying. Research on listening vs. hearing. Relevant to sales, leadership, relationships. | **used — CM.1** |
 | Nonviolent communication (NVC) | Marshall Rosenberg's framework: observations, feelings, needs, requests. Widely used in conflict resolution and management. Strong sourcing. | candidate |
-| Feedback that lands | The difference between feedback people hear and feedback they don't. Kim Scott (Radical Candor), SBI model. Active in management discourse. | candidate |
+| Feedback that lands | The difference between feedback people hear and feedback they don't. Kim Scott (Radical Candor), SBI model. Active in management discourse. | **used — CM.2** |
 | Intent vs. impact | What you meant vs. what they received. Why good intent doesn't prevent bad impact — and what to do about it. | candidate |
 | Crucial conversations | Patterson et al. — what happens to communication when stakes are high, opinions differ, emotions run strong. | candidate |
 | Writing clearly under pressure | Inverted pyramid, plain language, why clarity is a form of respect. Orwell's six rules. Relevant to anyone writing at work. | candidate |
 | The BLUF principle | Bottom Line Up Front — military communication technique for getting to the point under pressure. Immediately applicable. | candidate |
 | Persuasion vs. manipulation | Where the ethical line is. Aristotle's rhetoric (ethos, pathos, logos) applied to modern professional communication. | candidate |
-| The ladder of inference | Argyris — how we move from raw data to conclusions without noticing the steps. Why two people see the same event and reach opposite conclusions. | candidate |
+| The ladder of inference | Argyris — how we move from raw data to conclusions without noticing the steps. Why two people see the same event and reach opposite conclusions. | **used — CM.3** |
 | Asking better questions | Closed vs. open vs. probing questions — why most professionals default to the weakest form. Universally framed (connects to but distinct from Sales Craft discovery). | candidate |
 | Psychological safety in communication | Amy Edmondson's research on team communication. Why people don't speak up — and what creates conditions where they do. | candidate |
 | Silence as communication | Pausing, waiting, and what silence signals in negotiation, feedback, and difficult conversations. | candidate |
@@ -244,6 +253,6 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
 *Product backlog (features, bugs, upgrades): `Backlog/onepercentproductbacklog.md`*
-*Next generation: SC — Sales Craft. Rotation slot 4. Candidates: Mirroring, Labeling, Calibrated Questions (Black Swan/Voss series).*
+*Next generation: SC — Sales Craft. Position 026. Candidates: Mirroring, Labeling, Calibrated Questions (Black Swan/Voss series).*
 
 
