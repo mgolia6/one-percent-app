@@ -38,6 +38,13 @@ Matthew raised the idea of a dedicated prompt library (all prompts in one place)
 ### Onboarding Integrity Check
 Audited progress indicator logic after adding the new screen. All dynamic — `STEPS.length` drives progress bar percentage, dot count, and `isLast` check. Nothing hardcoded. 9 screens, correct order, all required fields (`eyebrow`, `heading`, `cta`, `commitment`) present on every screen.
 
+### Changelog — v0.7
+Inserted directly to Supabase `changelog` table:
+- Version: 0.7
+- Title: "AI prompt — one more way to lock it in"
+- `show_modal: true` — modal fires for all testers who haven't seen this version
+- Framing: learning angle, not feature announcement
+
 ## Commits
 - `PU-007: ai_prompt field backfill (entries 001-008, 014-025) + copy button in EntryViewer`
 - `Add AI prompt to onboarding (new screen) and about page how-it-works section`
