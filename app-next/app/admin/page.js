@@ -756,87 +756,86 @@ export default function AdminPage() {
               const displayName = u.first_name || u.last_name
                 ? `${u.first_name || ''} ${u.last_name || ''}`.trim()
                 : u.name || '—'
-              const lastLesson = comp.lastDate
-                ? new Date(comp.lastDate).toLocaleDateString()
-                : 'Never'
-              const lastActive = u.last_active_date
-                ? new Date(u.last_active_date).toLocaleDateString()
-                : 'Never'
-              const joinDate = u.signup_date
-                ? new Date(u.signup_date).toLocaleDateString()
-                : '—'
+
+              // Compute feedback counts from global feedback array
+              const userFb = feedback.filter(f => f.user_id === u.id)
+              const userBugs = bugs.filter(b => b.user_id === u.id)
+              const surveysCompleted = userFb.filter(f => ['weekly', 'end_of_beta'].includes(f.feedback_type)).length
+              const instantFb = userFb.filter(f => f.feedback_type === 'instant').length
+              const bugsReported = userBugs.length
+
+              // Compute badge count from profile data
+              const ctx = { completedCount: comp.count, longestStreak: u.longest_streak || 0, onboarded: !!u.onboarding_complete }
+              let badgeCount = 0
+              if (ctx.onboarded) badgeCount++                        // Founder's Club
+              if (ctx.completedCount >= 1) badgeCount++              // First Step
+              if (ctx.completedCount >= 7) badgeCount++              // Perfect Week
+              if (ctx.completedCount >= 10) badgeCount++             // Ten Deep
+              if (ctx.completedCount >= 25) badgeCount++             // Quarter Century
+              if (ctx.longestStreak >= 3) badgeCount++               // 3-Day Streak
+              if (ctx.longestStreak >= 7) badgeCount++               // Week Strong
+              if (ctx.longestStreak >= 30) badgeCount++              // Monthly
+              // perfect_score and all_cats need deeper data — skip in admin approximation
+
+              const fmt = (d) => d ? new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—'
 
               return (
                 <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, marginBottom: 8, overflow: 'hidden' }}>
 
-                  {/* Collapsed row — always visible */}
+                  {/* Collapsed — name, email, lesson count pill */}
                   <div
                     onClick={() => setExpandedUser(isExpanded ? null : u.email)}
                     style={{ padding: '14px 20px', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', userSelect: 'none' }}
                   >
-                    {/* Expand chevron */}
-                    <div style={{ fontSize: 10, color: '#444', flexShrink: 0, transition: 'transform 0.2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</div>
+                    <div style={{ fontSize: 10, color: '#444', flexShrink: 0, transition: 'transform 0.15s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</div>
 
-                    {/* Name + email */}
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3, flexWrap: 'wrap' }}>
                         <span style={{ fontSize: 13, color: '#fff', fontWeight: 600 }}>{displayName}</span>
                         {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
                         {!u.onboarding_complete && <span style={{ fontSize: 9, background: '#FF477822', color: '#FF4778', border: '1px solid #FF477844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>NOT ONBOARDED</span>}
                       </div>
-                      <div style={{ fontSize: 10, color: '#555' }}>{u.email}</div>
+                      <div style={{ fontSize: 10, color: '#555', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.email}</div>
                     </div>
 
-                    {/* Key stats — right side */}
-                    <div style={{ display: 'flex', gap: 20, flexShrink: 0, textAlign: 'right' }}>
-                      <div>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>ONBOARDED</div>
-                        <div style={{ fontSize: 11, color: '#888' }}>{joinDate}</div>
-                      </div>
-                      <div>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LAST SIGN IN</div>
-                        <div style={{ fontSize: 11, color: '#888' }}>{lastActive}</div>
-                      </div>
-                      <div>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LAST LESSON</div>
-                        <div style={{ fontSize: 11, color: comp.lastDate ? '#47FFE8' : '#444' }}>{lastLesson}</div>
-                      </div>
-                      <div>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>DONE</div>
-                        <div style={{ fontSize: 11, color: '#fff', fontWeight: 600 }}>{comp.count}/{TOTAL_ENTRIES}</div>
-                      </div>
+                    {/* Single right-side stat: lessons */}
+                    <div style={{ flexShrink: 0, textAlign: 'right' }}>
+                      <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LESSONS</div>
+                      <div style={{ fontSize: 13, color: comp.count > 0 ? '#47FFE8' : '#444', fontWeight: 700 }}>{comp.count}<span style={{ fontSize: 10, color: '#444', fontWeight: 400 }}>/{TOTAL_ENTRIES}</span></div>
                     </div>
                   </div>
 
-                  {/* Expanded detail */}
+                  {/* Expanded */}
                   {isExpanded && (
                     <div style={{ borderTop: '1px solid #1a1a1a', padding: '16px 20px' }}>
 
-                      {/* Extra stats row */}
-                      <div style={{ display: 'flex', gap: 20, marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
-                        <div>
-                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>STREAK</div>
-                          <div style={{ fontSize: 11, color: '#888' }}>{u.current_streak || 0}</div>
-                        </div>
-                        <div>
-                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>BEST</div>
-                          <div style={{ fontSize: 11, color: '#888' }}>{u.longest_streak || 0}</div>
-                        </div>
-                        {u.phone && <div>
-                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>PHONE</div>
-                          <div style={{ fontSize: 11, color: '#888' }}>{u.phone}</div>
-                        </div>}
+                      {/* Stats grid */}
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
+                        {[
+                          { label: 'ONBOARDED', value: fmt(u.signup_date) },
+                          { label: 'LAST SIGN IN', value: fmt(u.last_active_date) },
+                          { label: 'LAST LESSON', value: fmt(comp.lastDate), highlight: !!comp.lastDate },
+                          { label: 'STREAK', value: u.current_streak || 0 },
+                          { label: 'BEST STREAK', value: u.longest_streak || 0 },
+                          { label: 'BADGES', value: `${badgeCount}/10` },
+                          { label: 'SURVEYS', value: surveysCompleted },
+                          { label: 'INSTANT FB', value: instantFb },
+                          { label: 'BUGS', value: bugsReported },
+                          { label: 'PHONE', value: u.phone || '—' },
+                        ].map(s => (
+                          <div key={s.label}>
+                            <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 3 }}>{s.label}</div>
+                            <div style={{ fontSize: 12, color: s.highlight ? '#47FFE8' : '#888', fontWeight: s.highlight ? 600 : 400 }}>{s.value}</div>
+                          </div>
+                        ))}
                       </div>
 
-                      {/* Reset controls */}
+                      {/* Actions */}
                       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                         {resetConfirm === `${u.email}-data` ? (
                           <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
                             <span style={{ fontSize: 11, color: '#888', flex: 1 }}>Delete completions + feedback. Keeps account + onboarding.</span>
-                            <button
-                              onClick={() => resetUserData(u.id, u.email)}
-                              disabled={resetting === `${u.email}-data`}
-                              style={{ padding: '6px 14px', background: '#FF417822', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: resetting === `${u.email}-data` ? 0.5 : 1 }}>
+                            <button onClick={() => resetUserData(u.id, u.email)} disabled={resetting === `${u.email}-data`} style={{ padding: '6px 14px', background: '#FF417822', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: resetting === `${u.email}-data` ? 0.5 : 1 }}>
                               {resetting === `${u.email}-data` ? 'RESETTING...' : 'CONFIRM'}
                             </button>
                             <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
@@ -844,40 +843,23 @@ export default function AdminPage() {
                         ) : resetConfirm === `${u.email}-hard` ? (
                           <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
                             <span style={{ fontSize: 11, color: '#FF4778', flex: 1 }}>Wipe everything. User re-experiences onboarding on next login.</span>
-                            <button
-                              onClick={() => hardResetUser(u.id, u.email)}
-                              disabled={resetting === `${u.email}-hard`}
-                              style={{ padding: '6px 14px', background: '#FF417844', border: '1px solid #FF4778', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 600, opacity: resetting === `${u.email}-hard` ? 0.5 : 1 }}>
+                            <button onClick={() => hardResetUser(u.id, u.email)} disabled={resetting === `${u.email}-hard`} style={{ padding: '6px 14px', background: '#FF417844', border: '1px solid #FF4778', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 600, opacity: resetting === `${u.email}-hard` ? 0.5 : 1 }}>
                               {resetting === `${u.email}-hard` ? 'RESETTING...' : 'CONFIRM HARD RESET'}
                             </button>
                             <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
                           </div>
                         ) : (
                           <>
-                            <button
-                              onClick={() => setResetConfirm(`${u.email}-data`)}
-                              style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
-                              RESET DATA
-                            </button>
-                            <button
-                              onClick={() => setResetConfirm(`${u.email}-hard`)}
-                              style={{ padding: '6px 14px', background: 'none', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
-                              HARD RESET
-                            </button>
+                            <button onClick={() => setResetConfirm(`${u.email}-data`)} style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>RESET DATA</button>
+                            <button onClick={() => setResetConfirm(`${u.email}-hard`)} style={{ padding: '6px 14px', background: 'none', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>HARD RESET</button>
                             <button
                               onClick={async () => {
                                 const btn = document.getElementById(`welcome-${u.id}`)
                                 if (btn) { btn.textContent = 'SENDING...'; btn.disabled = true }
                                 try {
-                                  const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }),
-                                  })
+                                  const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }) })
                                   if (btn) { btn.textContent = res.ok ? '✓ SENT' : '✗ FAILED'; btn.style.color = res.ok ? '#4ade80' : '#f87171' }
-                                } catch {
-                                  if (btn) { btn.textContent = '✗ ERROR'; btn.style.color = '#f87171' }
-                                }
+                                } catch { if (btn) { btn.textContent = '✗ ERROR'; btn.style.color = '#f87171' } }
                                 setTimeout(() => { if (btn) { btn.textContent = 'WELCOME EMAIL'; btn.disabled = false; btn.style.color = '#47FFE8' } }, 3000)
                               }}
                               id={`welcome-${u.id}`}
