@@ -810,7 +810,7 @@ export default function AdminPage() {
 
                       {/* Dates */}
                       <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 10 }}>DATES</div>
+                        <div style={{ fontSize: 10, color: '#fff', letterSpacing: '0.15em', fontWeight: 700, marginBottom: 10 }}>DATES</div>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                           {[
                             { label: 'ONBOARDED', value: fmt(u.signup_date) },
@@ -827,7 +827,7 @@ export default function AdminPage() {
 
                       {/* Metrics */}
                       <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
-                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 10 }}>METRICS</div>
+                        <div style={{ fontSize: 10, color: '#fff', letterSpacing: '0.15em', fontWeight: 700, marginBottom: 10 }}>METRICS</div>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                           {[
                             { label: 'LESSONS', value: `${comp.count}/${TOTAL_ENTRIES}` },
