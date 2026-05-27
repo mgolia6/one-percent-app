@@ -149,10 +149,11 @@ export default function OnboardingPage() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: '24px',
+      justifyContent: 'flex-start',
+      padding: '80px 24px 100px',
       position: 'relative',
-      overflow: 'hidden',
+      overflowX: 'hidden',
+      overflowY: 'auto',
     }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
@@ -253,6 +254,8 @@ export default function OnboardingPage() {
         </div>
       )}
 
+      <div style={{ flex: 1, minHeight: 0, maxHeight: 80 }} />
+
       {/* Step dots */}
       <div style={{ display: 'flex', gap: 6, marginBottom: 40 }}>
         {STEPS.map((_, i) => (
@@ -265,7 +268,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Card */}
-      <div className={`ob-card${animate ? ' visible' : ''}`} style={{ width: '100%', maxWidth: 420, paddingBottom: committed.length > 0 ? committed.length * 36 + 16 : 0 }}>
+      <div className={`ob-card${animate ? ' visible' : ''}`} style={{ width: '100%', maxWidth: 420 }}>
 
         <div style={{ fontSize: 9, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.4)', fontWeight: 500, marginBottom: 14 }}>
           {current.eyebrow}
