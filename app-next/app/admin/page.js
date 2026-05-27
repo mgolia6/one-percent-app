@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { TOTAL_ENTRIES } from '@/lib/config'
 
 // ── Shared survey helpers ────────────────────────────────────────────────────
 const WEEKLY_ACCENT = '#47FFE8'
@@ -373,6 +374,8 @@ export default function AdminPage() {
   const [surveyKey, setSurveyKey] = useState(0) // bump to reset survey form
   const [resetting, setResetting] = useState(null)
   const [resetConfirm, setResetConfirm] = useState(null) // 'data' | 'hard' per email key: `${email}-data` | `${email}-hard`
+  const [expandedUser, setExpandedUser] = useState(null)
+  const [userCompletions, setUserCompletions] = useState({})
 
   useEffect(() => {
     async function init() {
@@ -395,6 +398,20 @@ export default function AdminPage() {
       setFeedback(fb || [])
       setBugs(br || [])
       setUsers(us || [])
+
+      // Fetch completions summary per user
+      const { data: allCompletions } = await supabase.from('completions').select('user_id, completed_at')
+      if (allCompletions) {
+        const summary = {}
+        allCompletions.forEach(c => {
+          if (!summary[c.user_id]) summary[c.user_id] = { count: 0, lastDate: null }
+          summary[c.user_id].count++
+          if (!summary[c.user_id].lastDate || c.completed_at > summary[c.user_id].lastDate) {
+            summary[c.user_id].lastDate = c.completed_at
+          }
+        })
+        setUserCompletions(summary)
+      }
       setLoading(false)
     }
     init()
@@ -420,6 +437,18 @@ export default function AdminPage() {
     setFeedback(fb || [])
     setBugs(br || [])
     setUsers(us || [])
+    const { data: allCompletions } = await supabase.from('completions').select('user_id, completed_at')
+    if (allCompletions) {
+      const summary = {}
+      allCompletions.forEach(c => {
+        if (!summary[c.user_id]) summary[c.user_id] = { count: 0, lastDate: null }
+        summary[c.user_id].count++
+        if (!summary[c.user_id].lastDate || c.completed_at > summary[c.user_id].lastDate) {
+          summary[c.user_id].lastDate = c.completed_at
+        }
+      })
+      setUserCompletions(summary)
+    }
     setRefreshing(false)
   }
 
@@ -507,8 +536,8 @@ export default function AdminPage() {
             <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={refreshAll} disabled={refreshing} style={{ background: 'none', border: '1px solid #47FFE833', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 500 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
-            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid #33333366', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#aaa', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>← LIBRARY</button>
+            <button onClick={refreshAll} disabled={refreshing} style={{ background: '#47FFE811', border: '1px solid #47FFE866', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#47FFE8', cursor: refreshing ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: refreshing ? 0.5 : 1, fontWeight: 600 }}>{refreshing ? '...' : '↻ REFRESH'}</button>
+            <button onClick={() => router.push('/')} style={{ background: '#ffffff0f', border: '1px solid #ffffff33', borderRadius: 6, padding: '6px 12px', fontSize: 9, color: '#ccc', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 500 }}>← LIBRARY</button>
           </div>
         </div>
 
@@ -721,92 +750,148 @@ export default function AdminPage() {
           <div>
             <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>USERS ({users.length})</div>
 
-            {users.map(u => (
-              <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '16px 20px', marginBottom: 8 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
-                  <div>
-                    <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-                      {u.first_name || u.last_name
-                          ? <span>{u.first_name || ''}{u.first_name && u.last_name ? ' ' : ''}{u.last_name || ''}&nbsp;</span>
-                          : u.name ? `${u.name} ` : ''
-                        }<span style={{ color: '#555', fontWeight: 400 }}>{u.email}</span>
-                      {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
+            {users.map(u => {
+              const isExpanded = expandedUser === u.email
+              const comp = userCompletions[u.id] || { count: 0, lastDate: null }
+              const displayName = u.first_name || u.last_name
+                ? `${u.first_name || ''} ${u.last_name || ''}`.trim()
+                : u.name || '—'
+              const lastLesson = comp.lastDate
+                ? new Date(comp.lastDate).toLocaleDateString()
+                : 'Never'
+              const lastActive = u.last_active_date
+                ? new Date(u.last_active_date).toLocaleDateString()
+                : 'Never'
+              const joinDate = u.signup_date
+                ? new Date(u.signup_date).toLocaleDateString()
+                : '—'
+
+              return (
+                <div key={u.email} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, marginBottom: 8, overflow: 'hidden' }}>
+
+                  {/* Collapsed row — always visible */}
+                  <div
+                    onClick={() => setExpandedUser(isExpanded ? null : u.email)}
+                    style={{ padding: '14px 20px', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', userSelect: 'none' }}
+                  >
+                    {/* Expand chevron */}
+                    <div style={{ fontSize: 10, color: '#444', flexShrink: 0, transition: 'transform 0.2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</div>
+
+                    {/* Name + email */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                        <span style={{ fontSize: 13, color: '#fff', fontWeight: 600 }}>{displayName}</span>
+                        {u.is_admin && <span style={{ fontSize: 9, background: '#47FFE822', color: '#47FFE8', border: '1px solid #47FFE844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>ADMIN</span>}
+                        {!u.onboarding_complete && <span style={{ fontSize: 9, background: '#FF477822', color: '#FF4778', border: '1px solid #FF477844', borderRadius: 2, padding: '1px 5px', letterSpacing: '0.1em' }}>NOT ONBOARDED</span>}
+                      </div>
+                      <div style={{ fontSize: 10, color: '#555' }}>{u.email}</div>
                     </div>
-                    <div style={{ fontSize: 10, color: '#444', letterSpacing: '0.06em' }}>
-                      Joined {new Date(u.signup_date).toLocaleDateString()} · Streak: {u.current_streak || 0} · Best: {u.longest_streak || 0}
-                      {' · '}
-                      <span style={{ color: u.onboarding_complete ? '#555' : '#FF4778' }}>
-                        {u.onboarding_complete ? 'Onboarded' : 'Not onboarded'}
-                      </span>
-                      {u.phone && <span style={{ color: '#444' }}>{' · '}{u.phone}</span>}
+
+                    {/* Key stats — right side */}
+                    <div style={{ display: 'flex', gap: 20, flexShrink: 0, textAlign: 'right' }}>
+                      <div>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>ONBOARDED</div>
+                        <div style={{ fontSize: 11, color: '#888' }}>{joinDate}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LAST SIGN IN</div>
+                        <div style={{ fontSize: 11, color: '#888' }}>{lastActive}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>LAST LESSON</div>
+                        <div style={{ fontSize: 11, color: comp.lastDate ? '#47FFE8' : '#444' }}>{lastLesson}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>DONE</div>
+                        <div style={{ fontSize: 11, color: '#fff', fontWeight: 600 }}>{comp.count}/{TOTAL_ENTRIES}</div>
+                      </div>
                     </div>
                   </div>
-                  <div style={{ fontSize: 10, color: '#666', flexShrink: 0 }}>{u.last_active_date ? `Active ${u.last_active_date}` : 'Never active'}</div>
-                </div>
 
-                {/* Reset controls */}
-                <div style={{ paddingTop: 12, borderTop: '1px solid #1a1a1a', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {/* Expanded detail */}
+                  {isExpanded && (
+                    <div style={{ borderTop: '1px solid #1a1a1a', padding: '16px 20px' }}>
 
-                  {/* Data reset confirm flow */}
-                  {resetConfirm === `${u.email}-data` ? (
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
-                      <span style={{ fontSize: 11, color: '#888', flex: 1 }}>Delete completions + feedback. Keeps account + onboarding.</span>
-                      <button
-                        onClick={() => resetUserData(u.id, u.email)}
-                        disabled={resetting === `${u.email}-data`}
-                        style={{ padding: '6px 14px', background: '#FF417822', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: resetting === `${u.email}-data` ? 0.5 : 1 }}>
-                        {resetting === `${u.email}-data` ? 'RESETTING...' : 'CONFIRM'}
-                      </button>
-                      <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
+                      {/* Extra stats row */}
+                      <div style={{ display: 'flex', gap: 20, marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
+                        <div>
+                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>STREAK</div>
+                          <div style={{ fontSize: 11, color: '#888' }}>{u.current_streak || 0}</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>BEST</div>
+                          <div style={{ fontSize: 11, color: '#888' }}>{u.longest_streak || 0}</div>
+                        </div>
+                        {u.phone && <div>
+                          <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 2 }}>PHONE</div>
+                          <div style={{ fontSize: 11, color: '#888' }}>{u.phone}</div>
+                        </div>}
+                      </div>
+
+                      {/* Reset controls */}
+                      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                        {resetConfirm === `${u.email}-data` ? (
+                          <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+                            <span style={{ fontSize: 11, color: '#888', flex: 1 }}>Delete completions + feedback. Keeps account + onboarding.</span>
+                            <button
+                              onClick={() => resetUserData(u.id, u.email)}
+                              disabled={resetting === `${u.email}-data`}
+                              style={{ padding: '6px 14px', background: '#FF417822', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: resetting === `${u.email}-data` ? 0.5 : 1 }}>
+                              {resetting === `${u.email}-data` ? 'RESETTING...' : 'CONFIRM'}
+                            </button>
+                            <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
+                          </div>
+                        ) : resetConfirm === `${u.email}-hard` ? (
+                          <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+                            <span style={{ fontSize: 11, color: '#FF4778', flex: 1 }}>Wipe everything. User re-experiences onboarding on next login.</span>
+                            <button
+                              onClick={() => hardResetUser(u.id, u.email)}
+                              disabled={resetting === `${u.email}-hard`}
+                              style={{ padding: '6px 14px', background: '#FF417844', border: '1px solid #FF4778', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 600, opacity: resetting === `${u.email}-hard` ? 0.5 : 1 }}>
+                              {resetting === `${u.email}-hard` ? 'RESETTING...' : 'CONFIRM HARD RESET'}
+                            </button>
+                            <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
+                          </div>
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => setResetConfirm(`${u.email}-data`)}
+                              style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+                              RESET DATA
+                            </button>
+                            <button
+                              onClick={() => setResetConfirm(`${u.email}-hard`)}
+                              style={{ padding: '6px 14px', background: 'none', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+                              HARD RESET
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const btn = document.getElementById(`welcome-${u.id}`)
+                                if (btn) { btn.textContent = 'SENDING...'; btn.disabled = true }
+                                try {
+                                  const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }),
+                                  })
+                                  if (btn) { btn.textContent = res.ok ? '✓ SENT' : '✗ FAILED'; btn.style.color = res.ok ? '#4ade80' : '#f87171' }
+                                } catch {
+                                  if (btn) { btn.textContent = '✗ ERROR'; btn.style.color = '#f87171' }
+                                }
+                                setTimeout(() => { if (btn) { btn.textContent = 'WELCOME EMAIL'; btn.disabled = false; btn.style.color = '#47FFE8' } }, 3000)
+                              }}
+                              id={`welcome-${u.id}`}
+                              style={{ padding: '6px 14px', background: 'none', border: '1px solid #47FFE844', borderRadius: 3, fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
+                              WELCOME EMAIL
+                            </button>
+                          </>
+                        )}
+                      </div>
                     </div>
-                  ) : resetConfirm === `${u.email}-hard` ? (
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
-                      <span style={{ fontSize: 11, color: '#FF4778', flex: 1 }}>Wipe everything. User re-experiences onboarding on next login.</span>
-                      <button
-                        onClick={() => hardResetUser(u.id, u.email)}
-                        disabled={resetting === `${u.email}-hard`}
-                        style={{ padding: '6px 14px', background: '#FF417844', border: '1px solid #FF4778', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", fontWeight: 600, opacity: resetting === `${u.email}-hard` ? 0.5 : 1 }}>
-                        {resetting === `${u.email}-hard` ? 'RESETTING...' : 'CONFIRM HARD RESET'}
-                      </button>
-                      <button onClick={() => setResetConfirm(null)} style={{ padding: '6px 12px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
-                    </div>
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => setResetConfirm(`${u.email}-data`)}
-                        style={{ padding: '6px 14px', background: 'none', border: '1px solid #222', borderRadius: 3, fontSize: 10, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
-                        RESET DATA
-                      </button>
-                      <button
-                        onClick={() => setResetConfirm(`${u.email}-hard`)}
-                        style={{ padding: '6px 14px', background: 'none', border: '1px solid #FF417844', borderRadius: 3, fontSize: 10, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
-                        HARD RESET
-                      </button>
-                      <button
-                        onClick={async () => {
-                          const btn = document.getElementById(`welcome-${u.id}`)
-                          if (btn) { btn.textContent = 'SENDING...'; btn.disabled = true }
-                          try {
-                            const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/send-welcome-email`, {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({ first_name: u.first_name || u.name || 'there', email: u.email }),
-                            })
-                            if (btn) { btn.textContent = res.ok ? '✓ SENT' : '✗ FAILED'; btn.style.color = res.ok ? '#4ade80' : '#f87171' }
-                          } catch {
-                            if (btn) { btn.textContent = '✗ ERROR'; btn.style.color = '#f87171' }
-                          }
-                          setTimeout(() => { if (btn) { btn.textContent = 'WELCOME EMAIL'; btn.disabled = false; btn.style.color = '#47FFE8' } }, 3000)
-                        }}
-                        id={`welcome-${u.id}`}
-                        style={{ padding: '6px 14px', background: 'none', border: '1px solid #47FFE844', borderRadius: 3, fontSize: 10, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>
-                        WELCOME EMAIL
-                      </button>
-                    </>
                   )}
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
 
