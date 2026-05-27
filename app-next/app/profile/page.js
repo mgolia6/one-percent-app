@@ -335,6 +335,15 @@ export default function ProfilePage() {
                 )
               })}
             </div>
+
+            {/* Total */}
+            <div style={{ marginTop: 24, paddingTop: 16, borderTop: `1px solid ${BORDER_FAINT}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ fontSize: 11, color: T.tertiary, letterSpacing: '0.1em', fontWeight: 600 }}>TOTAL</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <div style={{ fontSize: 10, color: T.tertiary, fontWeight: 600, letterSpacing: '0.05em' }}>{Math.round((completedCount / Object.values(catTotal).reduce((a, b) => a + b, 0)) * 100)}%</div>
+                <div style={{ fontSize: 11, color: T.secondary, fontWeight: 600 }}>{completedCount}/{Object.values(catTotal).reduce((a, b) => a + b, 0)}</div>
+              </div>
+            </div>
           </div>
         )}
 
