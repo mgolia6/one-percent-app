@@ -808,25 +808,43 @@ export default function AdminPage() {
                   {isExpanded && (
                     <div style={{ borderTop: '1px solid #1a1a1a', padding: '16px 20px' }}>
 
-                      {/* Stats grid */}
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
-                        {[
-                          { label: 'ONBOARDED', value: fmt(u.signup_date) },
-                          { label: 'LAST SIGN IN', value: fmt(u.last_active_date) },
-                          { label: 'LAST LESSON', value: fmt(comp.lastDate), highlight: !!comp.lastDate },
-                          { label: 'STREAK', value: u.current_streak || 0 },
-                          { label: 'BEST STREAK', value: u.longest_streak || 0 },
-                          { label: 'BADGES', value: `${badgeCount}/10` },
-                          { label: 'SURVEYS', value: surveysCompleted },
-                          { label: 'INSTANT FB', value: instantFb },
-                          { label: 'BUGS', value: bugsReported },
-                          { label: 'PHONE', value: u.phone || '—' },
-                        ].map(s => (
-                          <div key={s.label}>
-                            <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.1em', marginBottom: 3 }}>{s.label}</div>
-                            <div style={{ fontSize: 12, color: s.highlight ? '#47FFE8' : '#888', fontWeight: s.highlight ? 600 : 400 }}>{s.value}</div>
-                          </div>
-                        ))}
+                      {/* Dates */}
+                      <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 10 }}>DATES</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+                          {[
+                            { label: 'ONBOARDED', value: fmt(u.signup_date) },
+                            { label: 'LAST SIGN IN', value: fmt(u.last_active_date) },
+                            { label: 'LAST LESSON', value: fmt(comp.lastDate), highlight: !!comp.lastDate },
+                          ].map(s => (
+                            <div key={s.label}>
+                              <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.08em', marginBottom: 3 }}>{s.label}</div>
+                              <div style={{ fontSize: 12, color: s.highlight ? '#47FFE8' : '#888', fontWeight: s.highlight ? 600 : 400 }}>{s.value}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Metrics */}
+                      <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid #1a1a1a' }}>
+                        <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.15em', fontWeight: 600, marginBottom: 10 }}>METRICS</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+                          {[
+                            { label: 'LESSONS', value: `${comp.count}/${TOTAL_ENTRIES}` },
+                            { label: 'STREAK', value: u.current_streak || 0 },
+                            { label: 'BEST STREAK', value: u.longest_streak || 0 },
+                            { label: 'BADGES', value: `${badgeCount}/10` },
+                            { label: 'SURVEYS', value: surveysCompleted },
+                            { label: 'INSTANT FB', value: instantFb },
+                            { label: 'BUGS', value: bugsReported },
+                            { label: 'PHONE', value: u.phone || '—' },
+                          ].map(s => (
+                            <div key={s.label}>
+                              <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.08em', marginBottom: 3 }}>{s.label}</div>
+                              <div style={{ fontSize: 12, color: '#888' }}>{s.value}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
                       {/* Actions */}
