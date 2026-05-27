@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-05-27 (v3)
+**Generated:** 2026-05-27 (v4)
 
 ---
 
@@ -79,9 +79,13 @@ Three prototype iterations produced (HTML files, not in repo):
 ---
 
 ## Key Decisions This Session
-- PU-007 fully closed: backfill + UI + onboarding + about page all shipped
-- Prompt library deferred — no tester signal yet, standing rule applies
-- Onboarding integrity confirmed: progress indicator fully dynamic, 9 screens, nothing hardcoded
+- Repo cleanup complete — no product changes, app untouched
+- Log convention locked: one file per day, session headers, no -v2 suffixes
+- Directions convention locked: active version in root only, old versions → Archive/
+- Editions convention locked: JSX source files live in Editions/ subfolders
+- Archive-Original-JSX deprecated and deleted — all JSX moved to Editions/
+- Claude Project instructions reviewed and confirmed accurate
+- Active instructions: Directions/onepercentinstructions-v1_34.md
 
 ---
 
@@ -89,4 +93,4 @@ Three prototype iterations produced (HTML files, not in repo):
 - **URL:** one-percent-app.vercel.app
 - **Repo:** mgolia6/one-percent-app
 - **Supabase:** uuzdlubbynavybttlmeh
-- **Instructions:** Directions/onepercentinstructions-v1_32.md
+- **Instructions:** Directions/onepercentinstructions-v1_34.md
