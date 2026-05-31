@@ -256,3 +256,7 @@ These came up during the research pass for Entry 013. Adding as candidates for f
 *Next generation: SC — Sales Craft. Position 026. Candidates: Mirroring, Labeling, Calibrated Questions (Black Swan/Voss series).*
 
 
+
+
+## Supabase Infrastructure
+- [ ] Supabase Data API change: add explicit GRANTs to table-creation flow before Oct 30, 2026 (public schema tables won't be exposed by default after that date)
