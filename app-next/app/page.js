@@ -1322,7 +1322,7 @@ export default function HomePage() {
                       style={{
                         background: 'none', border: 'none', padding: '2px 4px',
                         cursor: 'pointer', fontSize: 14, lineHeight: 1,
-                        color: bookmarks[e.entry] ? '#E8FF47' : '#333',
+                        color: bookmarks[e.entry] ? '#E8FF47' : '#555',
                         transition: 'color 0.15s',
                       }}
                       title={bookmarks[e.entry] ? 'Remove bookmark' : 'Bookmark this entry'}
