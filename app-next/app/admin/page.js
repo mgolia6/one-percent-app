@@ -366,6 +366,7 @@ export default function AdminPage() {
   const [feedback, setFeedback] = useState([])
   const [bugs, setBugs] = useState([])
   const [users, setUsers] = useState([])
+  const [betaCheckins, setBetaCheckins] = useState([])
   const [userId, setUserId] = useState(null)
   const [tab, setTab] = useState('users')
   const [surveyTab, setSurveyTab] = useState('weekly') // sub-tab inside surveys
@@ -388,16 +389,18 @@ export default function AdminPage() {
 
       setUserId(session.user.id)
 
-      const [{ data: fb }, { data: br }, { data: us, error: usError }] = await Promise.all([
+      const [{ data: fb }, { data: br }, { data: us, error: usError }, { data: bc }] = await Promise.all([
         supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
         supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
+        supabase.from('beta_checkin').select('*, profiles(email, first_name)').order('submitted_at', { ascending: false }),
       ])
 
       console.log('[admin] users fetch:', us, usError)
       setFeedback(fb || [])
       setBugs(br || [])
       setUsers(us || [])
+      setBetaCheckins(bc || [])
 
       // Fetch completions summary per user
       const { data: allCompletions } = await supabase.from('completions').select('user_id, completed_at')
@@ -426,10 +429,11 @@ export default function AdminPage() {
 
   const refreshAll = async () => {
     setRefreshing(true)
-    const [{ data: fb, error: e1 }, { data: br, error: e2 }, { data: us, error: e3 }] = await Promise.all([
+    const [{ data: fb, error: e1 }, { data: br, error: e2 }, { data: us, error: e3 }, { data: bc }] = await Promise.all([
       supabase.from('feedback').select('*, profiles(email)').order('created_at', { ascending: false }),
       supabase.from('bug_reports').select('*, profiles(email)').order('created_at', { ascending: false }),
       supabase.from('profiles').select('id, email, name, first_name, last_name, phone, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
+      supabase.from('beta_checkin').select('*, profiles(email, first_name)').order('submitted_at', { ascending: false }),
     ])
     if (e1) console.error('feedback fetch:', e1)
     if (e2) console.error('bug_reports fetch:', e2)
@@ -437,6 +441,7 @@ export default function AdminPage() {
     setFeedback(fb || [])
     setBugs(br || [])
     setUsers(us || [])
+    setBetaCheckins(bc || [])
     const { data: allCompletions } = await supabase.from('completions').select('user_id, completed_at')
     if (allCompletions) {
       const summary = {}
@@ -554,6 +559,7 @@ export default function AdminPage() {
               ['instant', 'INSTANT'],
               ['weekly', 'WEEKLY'],
               ['endbeta', 'END OF BETA'],
+              ['checkin', 'BETA CHECK-IN'],
               ['leaderboard', 'LEADERBOARD'],
               ['surveys', 'SURVEYS ↗'],
               ['email', 'EMAIL'],
@@ -886,6 +892,84 @@ export default function AdminPage() {
                           </>
                         )}
                       </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Beta Check-In tab */}
+        {tab === 'checkin' && (
+          <div>
+            <div style={{ fontSize: 10, color: '#888', letterSpacing: '0.15em', marginBottom: 16, fontWeight: 600 }}>BETA CHECK-IN RESPONSES ({betaCheckins.length})</div>
+            {betaCheckins.length === 0 && <div style={{ fontSize: 13, color: '#666', padding: '24px 0' }}>No check-in responses yet.</div>}
+            {betaCheckins.map(c => {
+              const name = c.profiles?.first_name || c.profiles?.email || 'Unknown'
+              const tierColor = c.tier === 'superuser' ? '#47FFE8' : c.tier === 'fence' ? '#E8FF47' : '#FF8C47'
+              return (
+                <div key={c.id} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 6, padding: '20px', marginBottom: 12 }}>
+                  {/* Header */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                    <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                      <span style={{ fontSize: 13, color: '#fff', fontWeight: 600 }}>{name}</span>
+                      {c.tier && <span style={{ fontSize: 9, color: tierColor, border: `1px solid ${tierColor}44`, borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em' }}>{c.tier.toUpperCase()}</span>}
+                    </div>
+                    <span style={{ fontSize: 10, color: '#555' }}>{timeAgo(c.submitted_at)}</span>
+                  </div>
+
+                  {/* Design preference */}
+                  {c.design_preference && (
+                    <div style={{ marginBottom: 12 }}>
+                      <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 4 }}>DESIGN PREFERENCE</div>
+                      <span style={{ fontSize: 12, color: c.design_preference === 'v3' ? '#47FFE8' : c.design_preference === 'current' ? '#FF4778' : '#888', fontWeight: 500 }}>
+                        {c.design_preference === 'v3' ? 'New direction' : c.design_preference === 'current' ? 'Keep current' : 'Either works'}
+                      </span>
+                      {c.design_comment && <div style={{ fontSize: 12, color: '#666', marginTop: 4, lineHeight: 1.6 }}>{c.design_comment}</div>}
+                    </div>
+                  )}
+
+                  {/* Prompt farm */}
+                  {c.prompt_farm_interest && (
+                    <div style={{ marginBottom: 12 }}>
+                      <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 4 }}>PROMPT FARM INTEREST</div>
+                      <span style={{ fontSize: 12, color: c.prompt_farm_interest === 'yes' ? '#47FFE8' : c.prompt_farm_interest === 'no' ? '#FF4778' : '#E8FF47', fontWeight: 500 }}>
+                        {c.prompt_farm_interest === 'yes' ? "Yes — would use regularly" : c.prompt_farm_interest === 'no' ? "Not their thing" : "Maybe — depends on prompts"}
+                      </span>
+                      {c.prompt_farm_comment && <div style={{ fontSize: 12, color: '#666', marginTop: 4, lineHeight: 1.6 }}>{c.prompt_farm_comment}</div>}
+                    </div>
+                  )}
+
+                  {/* Engagement friction */}
+                  {c.biggest_friction && (
+                    <div style={{ marginBottom: 12 }}>
+                      <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 4 }}>BIGGEST FRICTION</div>
+                      <span style={{ fontSize: 12, color: '#bbb' }}>{c.biggest_friction}</span>
+                      {c.what_would_bring_back && <div style={{ fontSize: 12, color: '#666', marginTop: 4, lineHeight: 1.6 }}>{c.what_would_bring_back}</div>}
+                    </div>
+                  )}
+
+                  {/* Feature priorities */}
+                  {c.feature_priorities && c.feature_priorities.length > 0 && (
+                    <div style={{ marginBottom: 12 }}>
+                      <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 6 }}>FEATURE PRIORITIES</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        {c.feature_priorities.map((f, i) => (
+                          <div key={i} style={{ fontSize: 12, color: '#bbb', display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                            <span style={{ color: '#E8FF47', fontSize: 10, marginTop: 2 }}>{i + 1}.</span>
+                            <span>{f}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Open comment */}
+                  {c.open_comment && (
+                    <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid #1a1a1a' }}>
+                      <div style={{ fontSize: 9, color: '#555', letterSpacing: '0.15em', marginBottom: 4 }}>OPEN COMMENT</div>
+                      <div style={{ fontSize: 13, color: '#bbb', lineHeight: 1.7, fontStyle: 'italic' }}>"{c.open_comment}"</div>
                     </div>
                   )}
                 </div>
