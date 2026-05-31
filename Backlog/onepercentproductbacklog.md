@@ -1,6 +1,6 @@
 # One Percent — Product Backlog
 **onepercentproductbacklog.md | Living file — updated each session**
-Last updated: May 27, 2026
+Last updated: May 30, 2026
 
 This file tracks all non-content work: features, bugs, platform upgrades, infrastructure, and notifications. Content concept candidates live in `onepercentbacklog.md`.
 
@@ -24,9 +24,10 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 
 | Item | Notes |
 |---|---|
-| Quiz revamp | Replace 1–5 sliders with 4 section-specific diagnostic questions. Approved May 22. |
-| Voice feedback | Mic button → Web Speech API → populates comment field. Approved May 22. |
+| ~~Quiz revamp~~ | ✅ Done — application-based questions replacing memorization/slider format |
+| ~~Voice feedback~~ | ✅ Done — audio recording added to feedback flow |
 | Zero-completion gate | Weekly wrap modal should not fire if user has no completions that week. Approved May 22. |
+| Entry bookmarking / favorites | User-flagged entries for deeper follow-up. Save a concept to revisit later. Approved May 30. |
 
 ---
 
@@ -37,12 +38,14 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | ENH-001 | Profile picture upload | Replace 👤 emoji. Supabase Storage likely needed. |
 | ENH-002 | Profile page build-out | Streak, completed count, category breakdown, joined date. |
 | ENH-003 | Weekly quiz | Standalone quiz mode, no entry content visible. Tests retention across the week. |
-| ENH-004 | Audio lessons | Text-to-speech or recorded audio for Morning Brief. |
+| ENH-004 | Audio lessons | Text-to-speech or recorded audio for Morning Brief. **User-requested x2 — future priority.** |
 | ENH-005 | Admin changelog UI | Write/publish entries without touching Supabase directly. |
 | ENH-006 | User feedback & bug history | Let users read back their own submissions. RLS read policy + profile page surface. |
 | ENH-007 | Email allowlist for beta access | 🔴 NOW PRIORITY — Close beta gate before expanding. Only pre-approved emails can sign in. |
 | ENH-008 | Gate entry JSON behind auth | Move entries out of /public. Post-beta, pre-launch priority. |
 | ENH-009 | Rate limiting on feedback & bug submissions | No throttling currently. Fine for closed beta — fix before public launch. |
+| ENH-010 | Push notifications | Mobile push with customizable timing. **User-requested x2 — future priority.** |
+| ENH-011 | Home screen widget + streak counter | Habit surface for daily access. User-requested. |
 
 ---
 
@@ -54,6 +57,7 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | ISSUE-003 | Multi-threading bug (parallel entry loading) | ✅ Closed — no parallel loading code exists, ghost issue | May 20 |
 | ISSUE-004 | Weekly wrap modal fires for zero-completion users | ✅ Fixed May 27 (same fix as ISSUE-002) | May 22 |
 | ISSUE-005 | Onboarding text overlap on mobile — last few cards (iPhone/Chrome iOS) | ✅ Fixed May 27 | May 20 |
+| ISSUE-006 | Firefox Focus login friction — privacy browser wipes session, forces re-auth on every visit | Open — no fix yet | May 28 |
 
 ---
 
@@ -103,6 +107,7 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 - **Button audit** — all buttons need loading/disabled/feedback states. Sign out flagged May 20.
 - **Audience framing** — onboarding or entry headers need clearer POV signal (Landon: "I'm not sure who this is for")
 - **Entry depth direction** — apply "felt sense + real scenario" standard to all future entries (established May 22)
+- **AI Prompt** — copy functionality added. ✅ Done May 27.
 
 ---
 
