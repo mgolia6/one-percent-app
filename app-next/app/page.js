@@ -950,6 +950,7 @@ export default function HomePage() {
   const [showWeeklySurvey, setShowWeeklySurvey] = useState(false)
   const [showEndOfBeta, setShowEndOfBeta] = useState(false)
   const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
+  const [bookmarks, setBookmarks] = useState({}) // entry_number -> bookmark id
   const libraryRef = useRef(null)
 
   useEffect(() => {
@@ -987,6 +988,11 @@ export default function HomePage() {
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
+
+      const { data: bmarks } = await supabase.from('bookmarks').select('id, entry_number').eq('user_id', session.user.id)
+      const bmarkMap = {}
+      if (bmarks) bmarks.forEach(b => { bmarkMap[b.entry_number] = b.id })
+      setBookmarks(bmarkMap)
 
       // Check for unseen changelog entries
       const { data: latestChangelog } = await supabase
@@ -1067,6 +1073,21 @@ export default function HomePage() {
   const dismissWhatsNew = async () => {
     setShowWhatsNew(false)
     await markChangelogSeen()
+  }
+
+  const toggleBookmark = async (e, entryNumber) => {
+    e.stopPropagation()
+    if (!user) return
+    const existingId = bookmarks[entryNumber]
+    if (existingId) {
+      // Remove
+      setBookmarks(prev => { const next = { ...prev }; delete next[entryNumber]; return next })
+      await supabase.from('bookmarks').delete().eq('id', existingId)
+    } else {
+      // Add
+      const { data } = await supabase.from('bookmarks').insert({ user_id: user.id, entry_number: entryNumber }).select('id').single()
+      if (data) setBookmarks(prev => ({ ...prev, [entryNumber]: data.id }))
+    }
   }
 
   if (loading) return (
@@ -1215,10 +1236,10 @@ export default function HomePage() {
         <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
         <div style={{ background: '#1e1e1e', borderRadius: 8, padding: '4px', marginBottom: 16 }}>
           <div className="filter-tabs" style={{ display: 'flex', gap: 0, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
-            {['All', 'Unlocked', 'Completed', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
+            {['All', 'Unlocked', 'Completed', 'Saved', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
               const isSelected = filter === cat
               const categoryColor = CATEGORY_COLORS[cat]
-              const isSystemTab = ['All', 'Unlocked', 'Completed'].includes(cat)
+              const isSystemTab = ['All', 'Unlocked', 'Completed', 'Saved'].includes(cat)
               const activeColor = isSystemTab ? '#fff' : categoryColor
               const restColor = isSystemTab ? '#bbb' : categoryColor
 
@@ -1262,6 +1283,7 @@ export default function HomePage() {
               if (filter === 'All') return true
               if (filter === 'Unlocked') return unlocked
               if (filter === 'Completed') return completed
+              if (filter === 'Saved') return !!bookmarks[e.entry]
               return e.category === filter
             })
             .map((e, idx) => {
@@ -1294,6 +1316,20 @@ export default function HomePage() {
                   {!unlocked && <span style={{ fontSize: 10, color: '#333' }}>🔒</span>}
                   {unlocked && !completed && <span style={{ fontSize: 10, color: accent, letterSpacing: '0.08em' }}>START →</span>}
                   {completed && <span style={{ fontSize: 10, color: '#888', letterSpacing: '0.08em' }}>REVIEW →</span>}
+                  {unlocked && (
+                    <button
+                      onClick={(ev) => toggleBookmark(ev, e.entry)}
+                      style={{
+                        background: 'none', border: 'none', padding: '2px 4px',
+                        cursor: 'pointer', fontSize: 14, lineHeight: 1,
+                        color: bookmarks[e.entry] ? '#E8FF47' : '#333',
+                        transition: 'color 0.15s',
+                      }}
+                      title={bookmarks[e.entry] ? 'Remove bookmark' : 'Bookmark this entry'}
+                    >
+                      {bookmarks[e.entry] ? '★' : '☆'}
+                    </button>
+                  )}
                 </div>
               </div>
             )
