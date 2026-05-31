@@ -1,12 +1,12 @@
 # One Percent — State Snapshot
-**Generated:** 2026-05-27 (v4)
+**Generated:** 2026-05-31 (v5)
 
 ---
 
 ## Rotation Position
 - **Total entries:** 25
 - **Last entry generated:** NC.3 (Dopamine & Motivation) — position 013
-- **Next entry due:** SC (Sales Craft) — SC.3.2 or similar
+- **Next entry due:** SC.3.2 (Sales Craft)
 
 ## Category Counts
 | Category | Count |
@@ -21,28 +21,44 @@
 
 ---
 
-## Top Priorities
-1. **Design sprint — header presence** — feels unheroic, needs weight without being a hero image
-2. **Design sprint — nail one moment** — quiz completion / "you got it" state is the candidate
-3. **Early entry quiz backfill** — entries 001–008 still have old recall-based quiz format; testers hitting these
-4. **Verify Jahic quote in Entry 017 (SC.3.1 Multi-Threading)** — still open
+## Top Priorities (Before Beta Ends)
+1. **Quiz backfill — entries 001–008** — old recall format, testers actively hitting these
+2. **Personalized goal-setting** — promised in all 5 beta check-in emails; must ship before beta ends
+3. **Email consistency audit** — 2 users flagged missing daily reminder emails
+4. **Verify Jahic quote — Entry 017 (SC.3.1 Multi-Threading)** — Dead Drop protocol, still open
 
 ---
 
 ## Open Issues
-All known bugs resolved. No open issues.
-
-## Tester Progress (as of 2026-05-27)
-You=14 (remapped), T2=8, T3=6, T4=3, T5=2, T6=1
+| ID | Summary |
+|---|---|
+| ISSUE-006 | Firefox Focus login friction — privacy browser wipes session, forces re-auth every visit |
 
 ---
 
-## AI Prompt — Fully Shipped
-- `ai_prompt` field now present on all 25 entries
-- Copy button in EntryViewer (after quiz submission, above WHAT'S NEXT card)
-- New onboarding screen (screen 3 of 9) introduces the feature
-- About page HOW IT WORKS section updated with fourth item
-- PU-007 closed
+## Tester Progress (as of 2026-05-31)
+You=25 (admin), DonRobbo=8+, Erin=6+, Brian=3+, Landon=3+, Andrew=1, Justin=0 (just joined)
+
+---
+
+## This Session (2026-05-31)
+
+### Shipped
+- **Beta check-in survey** — `/survey/[userId]`, v3 parchment aesthetic, no auth, saves to `beta_checkin` table
+- **Beta check-in emails** — 5 personalized emails sent via Resend from `matthew@mpgink.com`. All confirmed delivered.
+- **Roadmap** — `onepercentroadmap.md` in repo root. Three tiers: Before Beta Ends, Post-Beta Pre-Launch, Long-Term.
+- **Bookmarking / favorites** — `bookmarks` table, star icon on unlocked entry cards, Saved filter tab in library
+- **Admin BETA CHECK-IN tab** — reads `beta_checkin`, shows design pref, prompt farm, friction, feature priorities, open comment
+
+### Confirmed Already Done (cleared from backlog)
+- Zero-completion gate ✅ (done May 27)
+- PU-001 Library refresh button ✅ (done prior session)
+- PU-004 Leaderboard trophy emoji ✅ (done prior session)
+- Quiz revamp ✅
+- Voice feedback ✅
+- AI Prompt copy button ✅
+
+---
 
 ## Design Prototype Status
 Three prototype iterations produced (HTML files, not in repo):
@@ -50,42 +66,21 @@ Three prototype iterations produced (HTML files, not in repo):
 - v2: sand palette, morph+reveal transitions, SMART goal flow
 - v3: dimensional today card, custom SVG tab icons, profile avatar header, legibility pass
 
-**Validated directions:**
-- Sand/warm off-white palette ✓
-- Reveal (screen lift) + morph (tab crossfade) transitions ✓
-- SMART goal commitment flow ✓
-- Dimensional today card (shadow layering, category accent top edge) ✓
-- Custom SVG tab icons (sun/refresh/target) ✓
-- No emojis anywhere ✓
+**Sent to beta testers for feedback** via check-in survey (side-by-side current vs v3). Awaiting responses.
 
 **Still to resolve in design:**
-- Header presence — feels unheroic, needs weight without being a hero image
-- One micro-moment to nail — quiz completion "you got it" state is the candidate
-- Completed vs locked entry differentiation — too similar visually
-- Stats row emotional weight — streak should feel earned, not counted
-
-**Implementation plan:** admin section as sandbox first, then roll to full app pending tester feedback
+- Header presence — feels unheroic, needs weight
+- Quiz completion micro-moment ("you got it" state)
+- Completed vs locked entry differentiation
+- Stats row emotional weight
 
 ---
 
-## Feedback Summary
-- Quiz: Erin + Matthew flagged independently — application over recall. Fixed in 009–025. Backfill needed for 001–008.
-- Accountability gap: Brian flagged twice — goal feature addresses this
-- Audience clarity: Landon — "who is this for" — unresolved
-- Audio: Erin asked twice — post-beta (ENH-004)
-- AI prompt: Erin praised it — PU-007 now fully shipped
-- Prompt library idea raised by Matthew — deferred pending tester signal
-
----
-
-## Key Decisions This Session
-- Repo cleanup complete — no product changes, app untouched
-- Log convention locked: one file per day, session headers, no -v2 suffixes
-- Directions convention locked: active version in root only, old versions → Archive/
-- Editions convention locked: JSX source files live in Editions/ subfolders
-- Archive-Original-JSX deprecated and deleted — all JSX moved to Editions/
-- Claude Project instructions reviewed and confirmed accurate
-- Active instructions: Directions/onepercentinstructions-v1_34.md
+## Infrastructure
+- **Supabase tables:** profiles, completions, feedback, bug_reports, changelog, beta_checkin, bookmarks
+- **Edge functions:** send-daily-reminder, send-practice-reminder, send-weekly-wrap, send-welcome-email, send-beta-checkin
+- **Survey URLs:** `/survey/[userId]` — unique per user, no auth required
+- **Roadmap file:** `onepercentroadmap.md` in repo root
 
 ---
 
@@ -94,3 +89,5 @@ Three prototype iterations produced (HTML files, not in repo):
 - **Repo:** mgolia6/one-percent-app
 - **Supabase:** uuzdlubbynavybttlmeh
 - **Instructions:** Directions/onepercentinstructions-v1_34.md
+- **GitHub token:** See Matthew's secure notes (expires ~Aug 17, 2026)
+- **Resend API key:** See Matthew's secure notes

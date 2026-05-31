@@ -10,10 +10,10 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 
 | ID | Item | Notes |
 |---|---|---|
-| PU-001 | Library page — fix loading/refresh button | Refresh button is broken or behaving unexpectedly |
 | PU-002 | Weekly survey — update notifications section | Unclear scope — needs clarification |
 | PU-003 | Admin — add progress report section | New tab or tile in admin dashboard |
-| PU-004 | Leaderboard — trophy emoji next to heading | Simple UI tweak |
+| ~~PU-001~~ | ~~Library page — fix loading/refresh button~~ | ✅ Done prior session |
+| ~~PU-004~~ | ~~Leaderboard — trophy emoji next to heading~~ | ✅ Done prior session |
 | ~~PU-005~~ | ~~Profile — restructure to 3 tabs~~ | ✅ Done May 27 |
 | ~~PU-006~~ | ~~Admin users section — expandable cards~~ | ✅ Done May 27 |
 | ~~PU-007~~ | ~~AI Prompt — copy button in EntryViewer + full backfill~~ | ✅ Done May 27 |
@@ -26,8 +26,10 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 |---|---|
 | ~~Quiz revamp~~ | ✅ Done — application-based questions replacing memorization/slider format |
 | ~~Voice feedback~~ | ✅ Done — audio recording added to feedback flow |
-| Zero-completion gate | Weekly wrap modal should not fire if user has no completions that week. Approved May 22. |
-| Entry bookmarking / favorites | User-flagged entries for deeper follow-up. Save a concept to revisit later. Approved May 30. |
+| ~~Zero-completion gate~~ | ✅ Done May 27 — confirmed in code May 31 |
+| ~~Entry bookmarking / favorites~~ | ✅ Done May 31 — `bookmarks` table, star icon, Saved filter tab |
+| ~~Admin — beta check-in tab~~ | ✅ Done May 31 — BETA CHECK-IN tab reads from `beta_checkin` table |
+| Personalized goal-setting | Promised in beta check-in emails. Must ship before beta ends. |
 
 ---
 
