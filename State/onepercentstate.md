@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-05-31 (v5)
+**Generated:** 2026-06-01 (v6)
 
 ---
 
@@ -22,8 +22,8 @@
 ---
 
 ## Top Priorities (Before Beta Ends)
-1. **Quiz backfill — entries 001–008** — old recall format, testers actively hitting these
-2. **Personalized goal-setting** — promised in all 5 beta check-in emails; must ship before beta ends
+1. **Personalized goal-setting** — promised in all 5 beta check-in emails; must ship before beta ends. Mock v8 is the approved design direction (see Design Prototype Status below).
+2. **Quiz backfill — entries 001–008** — old recall format, testers actively hitting these
 3. **Email consistency audit** — 2 users flagged missing daily reminder emails
 4. **Verify Jahic quote — Entry 017 (SC.3.1 Multi-Threading)** — Dead Drop protocol, still open
 
@@ -36,43 +36,50 @@
 
 ---
 
-## Tester Progress (as of 2026-05-31)
-You=25 (admin), DonRobbo=8+, Erin=6+, Brian=3+, Landon=3+, Andrew=1, Justin=0 (just joined)
-
----
-
-## This Session (2026-05-31)
-
-### Shipped
-- **Beta check-in survey** — `/survey/[userId]`, v3 parchment aesthetic, no auth, saves to `beta_checkin` table
-- **Beta check-in emails** — 5 personalized emails sent via Resend from `matthew@mpgink.com`. All confirmed delivered.
-- **Roadmap** — `onepercentroadmap.md` in repo root. Three tiers: Before Beta Ends, Post-Beta Pre-Launch, Long-Term.
-- **Bookmarking / favorites** — `bookmarks` table, star icon on unlocked entry cards, Saved filter tab in library
-- **Admin BETA CHECK-IN tab** — reads `beta_checkin`, shows design pref, prompt farm, friction, feature priorities, open comment
-
-### Confirmed Already Done (cleared from backlog)
-- Zero-completion gate ✅ (done May 27)
-- PU-001 Library refresh button ✅ (done prior session)
-- PU-004 Leaderboard trophy emoji ✅ (done prior session)
-- Quiz revamp ✅
-- Voice feedback ✅
-- AI Prompt copy button ✅
+## Tester Progress (as of 2026-06-01)
+You=25 (admin), DonRobbo=13, Erin=7, Brian=3, Justin=1, Andrew=1, Landon=1
 
 ---
 
 ## Design Prototype Status
-Three prototype iterations produced (HTML files, not in repo):
-- v1: dark, neon — too similar to current app
-- v2: sand palette, morph+reveal transitions, SMART goal flow
-- v3: dimensional today card, custom SVG tab icons, profile avatar header, legibility pass
 
-**Sent to beta testers for feedback** via check-in survey (side-by-side current vs v3). Awaiting responses.
+**Active design sprint — home/library screen redesign**
 
-**Still to resolve in design:**
-- Header presence — feels unheroic, needs weight
+Reviewed Erin's beta check-in feedback this session. Key signals:
+- Prefers dark theme over v3 parchment
+- Pain points: grey text contrast, unclear completion signal
+- Feature priorities: streak, bookmarks (done ✅), home widget
+
+Iterated through mocks v1–v8. **v8 is the closest to approved direction.**
+
+### v8 Design Decisions
+- **Background:** Onboarding gradient (`#f0f4f8 → #e8eef5 → #dde6f0`) — not black, not grey
+- **Cards:** Navy `#1a2a3a` — pulled from onboarding ink color, adds warmth vs flat black
+- **YOUR COMMITMENT banner** — bold mono header, italic goal text, left accent border turns cyan on commit, taps to open goal modal
+- **Goal modal** — full SMART 3-step flow (what/when/signal), seed chips + free text, matches onboarding aesthetic
+- **KPI pills** — fully rounded, 3 distinct colored SVG icons (cyan checkmark, yellow target, purple trophy), no leaderboard link in component
+- **Streak pill** — 🔥 icon, large white number, BEST below, 7-day week view where each completed day fills with that day's lesson category color
+- **WHY I'M HERE** button on streak opens same goal modal as commitment banner (one modal, two entry points)
+- **TODAY hero** — category icon + concept title, 3px accent bar, moment strip at bottom (state-driven, not interactive)
+- **ON DECK** — compact card below today, category icon, unlocks tomorrow
+- **YOUR LIBRARY** — filter pills include PROMPT FARM and CONCEPTS GLOSSARY as dashed coming-soon pills
+- **Category icons** — 7 distinct SVG icons per category, shown in today card, on deck, and every entry row
+- **Nav** — same pill filter style as library
+
+### Still to resolve in design
+- Whether to ship v8 as a full app redesign or implement components incrementally
 - Quiz completion micro-moment ("you got it" state)
-- Completed vs locked entry differentiation
-- Stats row emotional weight
+- Completed vs locked entry visual differentiation
+- Mobile header sticky behavior on scroll
+
+**Mock file:** `one-percent-mock-v8.html` (local, not in repo — share with Erin for feedback)
+
+---
+
+## Session Changes This Session (2026-06-01)
+- Wake words updated in directions v1.35: Platform Upgrades → Enhance, Repo Check → Repo, Let's Wrap It Up → Wrap. All wake words now require standard session review.
+- Design sprint: mocks v4–v8 iterated, v8 approved as direction
+- No code shipped to production this session
 
 ---
 
