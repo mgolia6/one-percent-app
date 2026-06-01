@@ -88,6 +88,6 @@ Three prototype iterations produced (HTML files, not in repo):
 - **URL:** one-percent-app.vercel.app
 - **Repo:** mgolia6/one-percent-app
 - **Supabase:** uuzdlubbynavybttlmeh
-- **Instructions:** Directions/onepercentinstructions-v1_34.md
+- **Instructions:** Directions/onepercentinstructions-v1_35.md
 - **GitHub token:** See Matthew's secure notes (expires ~Aug 17, 2026)
 - **Resend API key:** See Matthew's secure notes
