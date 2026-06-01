@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>One Percent — Mock v6</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #dadada;
+  --text:   #0f0f0f;
+  --muted:  #666;
+  --inv:    #fff;
+  --card:   #131416;
+  --card2:  #1c1d20;
+  --border-light: rgba(0,0,0,0.1);
+  --border-dark:  rgba(255,255,255,0.07);
+  --yellow: #E8FF47;
+  --cyan:   #47FFE8;
+  --orange: #FF8C47;
+  --purple: #C847FF;
+  --pink:   #FF4778;
+  --blue:   #47C8FF;
+  --amber:  #FF8C00;
+}
+
+html { background: var(--bg); min-height: 100vh; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  max-width: 390px; margin: 0 auto;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  padding: 14px 20px 8px;
+  border-bottom: 1px solid var(--border-light);
+}
+.nav-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.wordmark {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--text);
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em;
+  padding: 3px 8px; border-radius: 3px;
+  background: var(--text); color: var(--bg);
+}
+.avatar {
+  margin-left: auto; width: 30px; height: 30px;
+  border-radius: 50%; background: #bbb;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.nav-pills {
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  background: rgba(0,0,0,0.07); border-radius: 6px; padding: 3px;
+}
+.nav-pills::-webkit-scrollbar { display: none; }
+.npill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.09em; color: var(--muted);
+  padding: 5px 11px; background: none; border: none;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0; border-radius: 4px;
+}
+.npill.bug { color: var(--pink); }
+
+/* ── PAGE ── */
+.page { padding: 0 0 80px; }
+
+/* ── KPI STRIP — dark full-width band ── */
+.kpi-band {
+  background: var(--card);
+  padding: 20px 20px 0;
+  margin-bottom: 0;
+}
+.kpi-name {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em; margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.leaderboard-btn {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; color: var(--yellow);
+  background: none; border: none; cursor: pointer; padding: 0;
+}
+.kpi-nums {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0; margin-bottom: 20px;
+}
+.kpi { }
+.kpi + .kpi { border-left: 1px solid rgba(255,255,255,0.06); padding-left: 16px; }
+.kpi-val {
+  font-size: 30px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1; color: var(--inv); margin-bottom: 5px;
+}
+.kpi-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em;
+}
+
+/* ── STREAK — inside dark band, visually separated ── */
+.streak-band {
+  background: var(--card);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 16px 20px 20px;
+}
+.streak-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.streak-left { display: flex; align-items: baseline; gap: 8px; }
+.streak-num {
+  font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1; color: var(--inv);
+}
+.streak-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.08em;
+}
+.streak-best {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+}
+.why-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; color: rgba(255,255,255,0.5);
+  background: none; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px; padding: 6px 14px; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.why-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+
+.week {
+  display: grid; grid-template-columns: repeat(7,1fr); gap: 5px;
+}
+.wday { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.wday-l {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: rgba(255,255,255,0.25); letter-spacing: 0.04em;
+}
+.wday-b {
+  width: 100%; aspect-ratio: 1; border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: transparent;
+}
+.wday-b.done { background: rgba(255,255,255,0.15); }
+.wday-b.today {
+  background: var(--inv); color: var(--card);
+  font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700;
+}
+
+/* ── DIVIDER between dark and light ── */
+.section-gap { height: 24px; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.18em; color: var(--muted);
+  padding: 0 20px; margin-bottom: 10px;
+}
+
+/* ── ON DECK HERO ── */
+.ondeck-hero {
+  margin: 0 20px 28px;
+  border-radius: 10px; overflow: hidden;
+  /* Full category color treatment on top */
+}
+.ondeck-color-bar {
+  height: 4px;
+}
+.ondeck-main {
+  background: var(--card); padding: 20px 20px 0;
+}
+.ondeck-cat-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.ondeck-cat {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+}
+.ondeck-entry-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;
+}
+.ondeck-concept {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--inv); line-height: 1.15; margin-bottom: 10px;
+}
+.ondeck-hook {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  line-height: 1.6; font-style: italic; margin-bottom: 0;
+  padding-bottom: 20px;
+}
+/* Moment strip at bottom of hero */
+.moment-strip {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--card2);
+}
+.moment-cell {
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.moment-cell:last-child { border-right: none; }
+.mc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.mc-label.active { }
+.mc-label.pending { color: rgba(255,255,255,0.25); }
+.mc-status {
+  font-size: 11px; color: rgba(255,255,255,0.3);
+}
+.mc-status.active { color: rgba(255,255,255,0.6); }
+.mc-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  display: inline-block; margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* ── LIBRARY ── */
+.filter-wrap {
+  display: flex; gap: 5px; overflow-x: auto;
+  scrollbar-width: none; padding: 0 20px 0; margin-bottom: 14px;
+}
+.filter-wrap::-webkit-scrollbar { display: none; }
+.fpill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.08em;
+  padding: 5px 12px; border-radius: 100px;
+  border: 1px solid var(--border-light);
+  color: var(--muted); background: transparent;
+  white-space: nowrap; cursor: pointer; flex-shrink: 0;
+  transition: all 0.15s;
+}
+.fpill.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* Entry rows — no cards, hairlines */
+.entry-list { padding: 0 20px; }
+.entry-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+}
+.entry-row.locked { opacity: 0.3; cursor: default; }
+.e-bar { width: 2px; height: 28px; border-radius: 1px; flex-shrink: 0; }
+.e-body { flex: 1; min-width: 0; }
+.e-concept {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+.e-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.05em;
+}
+.e-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.e-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 600;
+}
+.e-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--muted); letter-spacing: 0.08em;
+}
+.e-star {
+  font-size: 13px; cursor: pointer;
+  background: none; border: none; padding: 2px;
+  color: #bbb; transition: color 0.15s; line-height: 1;
+}
+.e-star.on { color: var(--text); }
+
+/* ── MODAL ── */
+.overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
+  align-items: flex-end; justify-content: center;
+}
+.overlay.open { display: flex; }
+.modal {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  width: 100%; max-width: 390px;
+  padding: 16px 24px 48px; position: relative;
+  animation: up 0.22s ease;
+}
+@keyframes up {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.modal-handle {
+  width: 32px; height: 3px; border-radius: 2px;
+  background: rgba(0,0,0,0.15); margin: 0 auto 24px;
+}
+.modal-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 6px;
+}
+.modal-title {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--text); margin-bottom: 24px;
+}
+.goal-empty {
+  border: 1px dashed rgba(0,0,0,0.2);
+  border-radius: 8px; padding: 28px 20px; text-align: center; margin-bottom: 16px;
+}
+.goal-empty svg { margin-bottom: 12px; opacity: 0.25; }
+.goal-empty-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.modal-cta {
+  width: 100%; background: var(--text); color: var(--bg);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  padding: 14px; border-radius: 4px; border: none; cursor: pointer;
+}
+.modal-close {
+  position: absolute; top: 20px; right: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--muted); letter-spacing: 0.1em;
+  cursor: pointer; background: none; border: none;
+}
+
+.view { display: none; }
+.view.active { display: block; }
+
+@keyframes pulse {
+  0%,100% { opacity: 0.5; } 50% { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-top">
+    <span class="wordmark">ONE PERCENT</span>
+    <span class="badge">BETA</span>
+    <div class="avatar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </div>
+  </div>
+  <div class="nav-pills">
+    <button class="npill">ABOUT</button>
+    <button class="npill">CHANGELOG</button>
+    <button class="npill bug">BUG</button>
+    <button class="npill">FEEDBACK</button>
+    <button class="npill">INFO</button>
+    <button class="npill">SIGN OUT</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- KPI + STREAK — one dark band -->
+  <div class="kpi-band">
+    <div class="kpi-name">
+      <span>Erin's Analytics</span>
+      <button class="leaderboard-btn">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+        LEADERBOARD
+      </button>
+    </div>
+    <div class="kpi-nums">
+      <div class="kpi">
+        <div class="kpi-val">7</div>
+        <div class="kpi-lbl">COMPLETED</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">2.6</div>
+        <div class="kpi-lbl">AVG SCORE</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">#2</div>
+        <div class="kpi-lbl">RANK</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="streak-band">
+    <div class="streak-top">
+      <div>
+        <div class="streak-left">
+          <div class="streak-num">1</div>
+          <div class="streak-unit">DAY STREAK</div>
+        </div>
+        <div class="streak-best">BEST · 6 DAYS</div>
+      </div>
+      <button class="why-btn" onclick="openModal()">WHY I'M HERE</button>
+    </div>
+    <div class="week">
+      <div class="wday"><span class="wday-l">M</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">T</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">W</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">T</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">F</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">S</span><div class="wday-b"></div></div>
+      <div class="wday"><span class="wday-l">S</span><div class="wday-b today">✓</div></div>
+    </div>
+  </div>
+
+  <!-- LIGHT SECTION -->
+  <div class="section-gap"></div>
+  <div class="section-label">ON DECK</div>
+
+  <div class="ondeck-hero">
+    <div class="ondeck-color-bar" style="background:#E8FF47;"></div>
+    <div class="ondeck-main">
+      <div class="ondeck-cat-row">
+        <span class="ondeck-cat" style="color:#E8FF47;">SALES CRAFT</span>
+        <span class="ondeck-entry-num">007</span>
+      </div>
+      <div class="ondeck-concept">Talk/Listen Ratio</div>
+      <div class="ondeck-hook">"You think you're running discovery. You're actually delivering a monologue with question marks."</div>
+    </div>
+    <div class="moment-strip">
+      <div class="moment-cell">
+        <div class="mc-label active" style="color:#E8FF47;">
+          <span class="mc-dot" style="background:#E8FF47;animation:pulse 2s ease-in-out infinite;"></span>MORNING
+        </div>
+        <div class="mc-status active">Read the brief</div>
+      </div>
+      <div class="moment-cell">
+        <div class="mc-label pending">MIDDAY</div>
+        <div class="mc-status">The reframe</div>
+      </div>
+      <div class="moment-cell">
+        <div class="mc-label pending">QUIZ</div>
+        <div class="mc-status">Test yourself</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">YOUR LIBRARY</div>
+  <div class="filter-wrap">
+    <button class="fpill active" onclick="switchTab('all',this)">ALL</button>
+    <button class="fpill" onclick="switchTab('unlocked',this)">UNLOCKED</button>
+    <button class="fpill" onclick="switchTab('completed',this)">COMPLETED</button>
+    <button class="fpill" onclick="switchTab('saved',this)">SAVED</button>
+    <button class="fpill" onclick="switchTab('sc',this)">SALES CRAFT</button>
+    <button class="fpill" onclick="switchTab('ai',this)">AI</button>
+    <button class="fpill" onclick="switchTab('vl',this)">VOCAB</button>
+    <button class="fpill" onclick="switchTab('mm',this)">MENTAL MODELS</button>
+    <button class="fpill" onclick="switchTab('ph',this)">PHILOSOPHY</button>
+    <button class="fpill" onclick="switchTab('nc',this)">NEUROSCIENCE</button>
+    <button class="fpill" onclick="switchTab('cm',this)">COMMUNICATION</button>
+  </div>
+
+  <div class="entry-list" id="entry-list"></div>
+
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="goalModal" onclick="closeOutside(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal()">CLOSE</button>
+    <div class="modal-eyebrow">WHY I'M HERE</div>
+    <div class="modal-title">Your Goal</div>
+    <div class="goal-empty">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <div class="goal-empty-text">No goal set yet.<br>One sentence. What are you building toward?</div>
+    </div>
+    <button class="modal-cta">SET MY GOAL</button>
+  </div>
+</div>
+
+<script>
+const CATS = {
+  'AI':'#47FFE8','Sales Craft':'#E8FF47','Vocab & Language':'#FF8C47',
+  'Mental Models':'#C847FF','Philosophy':'#FF4778',
+  'Neuroscience & Cognition':'#47C8FF','Communication':'#FF8C00'
+}
+const CAT_MAP = {
+  sc:'Sales Craft',ai:'AI',vl:'Vocab & Language',
+  mm:'Mental Models',ph:'Philosophy',nc:'Neuroscience & Cognition',cm:'Communication'
+}
+const ENTRIES = [
+  {n:'001',id:'AI.1.1', concept:'Context Window',             cat:'AI',                       done:true, score:3,saved:true},
+  {n:'002',id:'VL.1',   concept:'Framing Effect',             cat:'Vocab & Language',         done:true, score:3,saved:true},
+  {n:'003',id:'SC.1.1', concept:'Discovery Questions',        cat:'Sales Craft',              done:true, score:3,saved:true},
+  {n:'004',id:'MM.1',   concept:'Inversion',                  cat:'Mental Models',            done:true, score:3,saved:true},
+  {n:'005',id:'PH.1',   concept:'Premeditatio Malorum',       cat:'Philosophy',               done:true, score:2,saved:false},
+  {n:'006',id:'AI.1.2', concept:'Prompt Sensitivity',         cat:'AI',                       done:true, score:2,saved:false},
+  {n:'007',id:'SC.1.2', concept:'Talk/Listen Ratio',          cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:true},
+  {n:'008',id:'AI.2.1', concept:'Chain-of-Thought Prompting', cat:'AI',                       done:false,score:null,saved:false,unlocked:true},
+  {n:'009',id:'MM.3',   concept:'Survivorship Bias',          cat:'Mental Models',            done:true, score:3,saved:false},
+  {n:'010',id:'CM.2',   concept:'Feedback That Lands',        cat:'Communication',            done:false,score:null,saved:false,unlocked:true},
+  {n:'011',id:'PH.3',   concept:'Amor Fati',                  cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'012',id:'CM.3',   concept:'The Ladder of Inference',    cat:'Communication',            done:false,score:null,saved:false,unlocked:false},
+  {n:'013',id:'NC.3',   concept:'Dopamine & Motivation',      cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'014',id:'VL.2',   concept:'Euphemism Treadmill',        cat:'Vocab & Language',         done:false,score:null,saved:false,unlocked:false},
+  {n:'015',id:'SC.2.1', concept:'Anchoring in Negotiation',   cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'016',id:'MM.2',   concept:'Second-Order Thinking',      cat:'Mental Models',            done:false,score:null,saved:false,unlocked:false},
+  {n:'017',id:'AI.2.2', concept:'Hallucination/Confabulation',cat:'AI',                       done:false,score:null,saved:false,unlocked:false},
+  {n:'018',id:'PH.2',   concept:'Dichotomy of Control',       cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'019',id:'NC.1',   concept:'Neuroplasticity',            cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'020',id:'SC.2.2', concept:'Tactical Empathy',           cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'021',id:'CM.1',   concept:'Active Listening',           cat:'Communication',            done:false,score:null,saved:false,unlocked:false},
+  {n:'022',id:'SC.3.1', concept:'Multi-Threading',            cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'023',id:'AI.3.1', concept:'RAG',                        cat:'AI',                       done:false,score:null,saved:false,unlocked:false},
+  {n:'024',id:'VL.3',   concept:'Nominalization',             cat:'Vocab & Language',         done:false,score:null,saved:false,unlocked:false},
+  {n:'025',id:'NC.2',   concept:'Meditation and the Brain',   cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+]
+ENTRIES.forEach(e => { if(e.done) e.unlocked = true })
+let bookmarks = {}
+ENTRIES.forEach(e => { if(e.saved) bookmarks[e.n] = true })
+let activeTab = 'all'
+
+function render() {
+  const catF = CAT_MAP[activeTab]
+  const visible = ENTRIES.filter(e => {
+    if(activeTab==='all')       return true
+    if(activeTab==='unlocked')  return e.unlocked
+    if(activeTab==='completed') return e.done
+    if(activeTab==='saved')     return bookmarks[e.n]
+    if(catF)                    return e.cat === catF
+    return true
+  })
+  document.getElementById('entry-list').innerHTML = visible.map(e => {
+    const accent = CATS[e.cat] || '#aaa'
+    const locked = !e.unlocked
+    const starred = bookmarks[e.n]
+    return `
+    <div class="entry-row${locked?' locked':''}">
+      <div class="e-bar" style="background:${locked?'rgba(0,0,0,0.1)':accent};"></div>
+      <div class="e-body">
+        <div class="e-concept">${e.concept}</div>
+        <div class="e-meta">${e.id} · ${e.cat}</div>
+      </div>
+      <div class="e-right">
+        ${e.done ? `<span class="e-score" style="color:${accent};">${e.score}/3</span>` : ''}
+        ${!locked&&!e.done ? `<span class="e-cta">START →</span>` : ''}
+        ${e.done  ? `<span class="e-cta">REVIEW →</span>` : ''}
+        ${locked  ? `<span class="e-cta" style="opacity:0.3;">LOCKED</span>` : ''}
+        ${!locked ? `<button class="e-star${starred?' on':''}" onclick="toggleStar(event,'${e.n}')">${starred?'★':'☆'}</button>` : ''}
+      </div>
+    </div>`
+  }).join('')
+}
+
+function switchTab(id, el) {
+  document.querySelectorAll('.fpill').forEach(t => t.classList.remove('active'))
+  el.classList.add('active')
+  activeTab = id
+  render()
+}
+function toggleStar(ev, n) {
+  ev.stopPropagation()
+  bookmarks[n] = !bookmarks[n]
+  render()
+}
+function openModal()  { document.getElementById('goalModal').classList.add('open') }
+function closeModal() { document.getElementById('goalModal').classList.remove('open') }
+function closeOutside(e) { if(e.target===document.getElementById('goalModal')) closeModal() }
+render()
+</script>
+</body>
+</html>

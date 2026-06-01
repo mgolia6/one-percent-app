@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>One Percent — Mock v4</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #dadada;
+    --card:     #111;
+    --pill:     #1e1e1e;
+    --text:     #0a0a0a;
+    --text-inv: #ffffff;
+    --muted:    #555;
+    --border:   #1a1a1a;
+    --yellow:   #E8FF47;
+    --cyan:     #47FFE8;
+    --orange:   #FF8C47;
+    --purple:   #C847FF;
+    --pink:     #FF4778;
+    --blue:     #47C8FF;
+    --amber:    #FF8C00;
+  }
+
+  html {
+    background: #dadada;
+    min-height: 100vh;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  /* ── STICKY HEADER ── */
+  .sticky-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+  }
+
+  /* Row 1: wordmark + badges + avatar */
+  .top-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 24px 10px;
+  }
+  .wordmark {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em; color: var(--text);
+  }
+  .badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 8px; border-radius: 4px;
+  }
+  .badge-beta  { background: var(--card); color: var(--yellow); border: 1px solid var(--yellow); }
+  .badge-admin { background: var(--card); color: var(--cyan);   border: 1px solid var(--cyan); }
+  .avatar {
+    margin-left: auto;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #333; border: 1px solid #444;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; cursor: pointer; flex-shrink: 0;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Row 2: action bar pill */
+  .action-bar-wrap { padding: 0 24px 10px; }
+  .action-bar {
+    background: var(--pill); border-radius: 8px; padding: 4px;
+    display: flex; align-items: center; justify-content: space-between;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .action-bar::-webkit-scrollbar { display: none; }
+  .abar-left { display: flex; }
+  .abtn {
+    background: transparent; border: none; border-radius: 6px;
+    padding: 7px 12px; font-size: 9px; color: #bbb;
+    cursor: pointer; letter-spacing: 0.08em;
+    font-family: 'Inter', sans-serif; white-space: nowrap;
+    font-weight: 400; opacity: 0.85;
+  }
+  .abtn.bug  { color: var(--pink); font-weight: 600; }
+  .abtn.admin { color: var(--cyan); font-weight: 600; }
+
+  /* ── CONTENT AREA ── */
+  .content { padding: 12px 24px 80px; }
+
+  /* Analytics header row */
+  .analytics-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .analytics-name {
+    font-size: 13px; font-weight: 600; color: var(--text);
+    letter-spacing: -0.01em; margin-bottom: 3px;
+  }
+  .analytics-sub {
+    font-size: 10px; color: var(--text); letter-spacing: 0.1em; opacity: 0.5;
+  }
+  .leaderboard-btn {
+    background: var(--pill); border: none; border-radius: 6px;
+    padding: 8px 14px; font-size: 9px; color: var(--yellow);
+    cursor: pointer; letter-spacing: 0.1em;
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  }
+
+  /* ── KPI CARDS (3-col: completed / avg score / rank) ── */
+  .kpi-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px; margin-bottom: 12px;
+  }
+  .kpi-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 14px 12px; text-align: center;
+  }
+  .kpi-val {
+    font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 4px;
+  }
+  .kpi-lbl {
+    font-size: 9px; color: #fff; letter-spacing: 0.12em; opacity: 0.6;
+  }
+
+  /* ── STREAK BLOCK ── */
+  .streak-block {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 14px 16px;
+    margin-bottom: 32px;
+  }
+  .streak-top {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .streak-nums {
+    display: flex; align-items: baseline; gap: 5px;
+  }
+  .streak-fire { font-size: 15px; }
+  .streak-current {
+    font-size: 22px; font-weight: 500; color: var(--yellow); line-height: 1;
+  }
+  .streak-sep { font-size: 13px; color: #666; }
+  .streak-best { font-size: 16px; font-weight: 400; color: #888; line-height: 1; }
+  .streak-meta { font-size: 10px; color: #888; letter-spacing: 0.06em; }
+  .why-btn {
+    margin-left: auto; flex-shrink: 0;
+    background: transparent; border: 1px solid #444;
+    border-radius: 100px; padding: 5px 12px;
+    font-size: 9px; color: #bbb; letter-spacing: 0.08em;
+    font-family: 'Inter', sans-serif; cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .why-btn:hover { color: var(--yellow); border-color: rgba(232,255,71,0.4); }
+
+  /* Week row */
+  .week-row {
+    display: grid; grid-template-columns: repeat(7,1fr); gap: 4px;
+  }
+  .wday { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .wday-lbl { font-size: 9px; color: #888; letter-spacing: 0.04em; }
+  .wday-box {
+    width: 100%; aspect-ratio: 1;
+    border-radius: 3px; background: #1a1a1a; border: 1px solid #222;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: #333; font-weight: 600;
+  }
+  .wday-box.done { background: rgba(232,255,71,0.1); border-color: rgba(232,255,71,0.25); color: var(--yellow); }
+  .wday-box.today { background: var(--yellow); border-color: var(--yellow); color: #111; }
+
+  /* ── ON DECK CARD ── */
+  .on-deck-label {
+    font-size: 10px; color: var(--text); letter-spacing: 0.15em;
+    font-weight: 600; margin-bottom: 12px; opacity: 0.7;
+  }
+  .on-deck-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden; margin-bottom: 8px;
+  }
+  .on-deck-header {
+    padding: 10px 16px; border-bottom: 1px solid #1a1a1a;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cat-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 3px 9px; border-radius: 4px; border: 1px solid;
+  }
+  .on-deck-num { font-size: 10px; color: #444; letter-spacing: 0.08em; }
+  .on-deck-body { padding: 16px; }
+  .on-deck-concept {
+    font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 6px;
+  }
+  .on-deck-hook {
+    font-size: 12px; color: #888; line-height: 1.6;
+    margin-bottom: 14px; font-style: italic;
+  }
+  /* moment tabs */
+  .moment-tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .mtab {
+    padding: 8px; border-radius: 4px;
+    border: 1px solid #222; background: #1a1a1a;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+  }
+  .mtab-lbl { font-size: 9px; letter-spacing: 0.08em; color: #aaa; }
+  .mtab-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #222; border: 1px solid #333;
+  }
+  .mtab.active { border-color: var(--mtab-accent-border, rgba(71,255,232,0.3)); }
+  .mtab.active .mtab-dot {
+    background: transparent; border-color: var(--mtab-accent, #47FFE8);
+    box-shadow: 0 0 0 2px var(--mtab-accent-glow, rgba(71,255,232,0.2));
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .mtab.done { border-color: var(--mtab-accent-border, rgba(71,255,232,0.3)); }
+  .mtab.done .mtab-dot { background: var(--mtab-accent, #47FFE8); border-color: var(--mtab-accent, #47FFE8); }
+  .mtab.done .mtab-lbl { color: var(--mtab-accent, #47FFE8); }
+  .mtab.active .mtab-lbl { color: #ccc; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 2px rgba(71,255,232,0.15); }
+    50%      { box-shadow: 0 0 0 4px rgba(71,255,232,0.3); }
+  }
+
+  /* ── LIBRARY ── */
+  .library-label {
+    font-size: 10px; color: var(--text); letter-spacing: 0.15em;
+    font-weight: 600; margin-bottom: 12px; opacity: 0.7;
+  }
+  .filter-pill-wrap {
+    background: var(--pill); border-radius: 8px; padding: 4px;
+    margin-bottom: 16px; overflow-x: auto; scrollbar-width: none;
+    display: flex;
+  }
+  .filter-pill-wrap::-webkit-scrollbar { display: none; }
+  .fpill {
+    background: transparent; border: none; border-radius: 6px;
+    padding: 7px 12px; font-size: 9px; color: #bbb;
+    cursor: pointer; letter-spacing: 0.08em;
+    font-family: 'Inter', sans-serif; white-space: nowrap;
+    font-weight: 400; opacity: 0.9; flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .fpill.active { background: rgba(255,255,255,0.07); color: #fff; font-weight: 700; }
+  .fpill.sc  { color: var(--yellow); }
+  .fpill.ai  { color: var(--cyan); }
+  .fpill.vl  { color: var(--orange); }
+  .fpill.mm  { color: var(--purple); }
+  .fpill.ph  { color: var(--pink); }
+  .fpill.nc  { color: var(--blue); }
+  .fpill.cm  { color: var(--amber); }
+
+  /* Entry cards */
+  .entry-list { display: flex; flex-direction: column; gap: 8px; }
+  .entry-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; cursor: pointer; transition: border-color 0.15s;
+  }
+  .entry-card.locked { opacity: 0.35; cursor: default; }
+  .entry-left { display: flex; align-items: center; gap: 14px; }
+  .entry-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .entry-concept { font-size: 14px; color: #fff; font-weight: 500; margin-bottom: 2px; }
+  .entry-sub { font-size: 10px; letter-spacing: 0.08em; opacity: 0.8; }
+  .entry-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .entry-score { font-size: 11px; font-weight: 600; }
+  .entry-action { font-size: 10px; color: #aaa; letter-spacing: 0.08em; }
+  .entry-lock { font-size: 12px; color: #666; }
+  .entry-star { font-size: 14px; cursor: pointer; transition: color 0.15s; background: none; border: none; padding: 2px 4px; line-height: 1; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);
+    align-items: flex-end; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #1a1a1a; border: 1px solid #2a2a2a;
+    border-radius: 16px 16px 0 0;
+    width: 100%; max-width: 390px;
+    padding: 20px 20px 44px;
+    animation: slideUp 0.22s ease;
+    position: relative;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(32px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .modal-handle {
+    width: 32px; height: 4px; border-radius: 2px;
+    background: #444; margin: 0 auto 20px;
+  }
+  .modal-eyebrow {
+    font-size: 9px; letter-spacing: 0.18em; color: var(--yellow);
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .modal-title {
+    font-size: 18px; font-weight: 600; color: #fff;
+    margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+  .goal-empty {
+    background: #111; border: 1px dashed #2a2a2a;
+    border-radius: 6px; padding: 24px 20px; text-align: center;
+    margin-bottom: 14px;
+  }
+  .goal-empty-icon { font-size: 26px; margin-bottom: 8px; }
+  .goal-empty-text { font-size: 12px; color: #aaa; line-height: 1.6; }
+  .goal-cta {
+    width: 100%; background: var(--yellow); color: #111;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 13px; border-radius: 4px; border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    font-size: 10px; color: #aaa; cursor: pointer; letter-spacing: 0.06em;
+  }
+
+  /* view toggle */
+  .view { display: none; }
+  .view.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ══ STICKY HEADER ══ -->
+<div class="sticky-header">
+
+  <!-- Row 1: wordmark + badges + avatar -->
+  <div class="top-row">
+    <span class="wordmark">ONE PERCENT</span>
+    <span class="badge badge-beta">BETA</span>
+    <div class="avatar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </div>
+  </div>
+
+  <!-- Row 2: action bar -->
+  <div class="action-bar-wrap">
+    <div class="action-bar">
+      <div class="abar-left">
+        <button class="abtn">ABOUT</button>
+        <button class="abtn">CHANGELOG</button>
+        <button class="abtn bug">BUG</button>
+        <button class="abtn">FEEDBACK</button>
+        <button class="abtn">INFO</button>
+      </div>
+      <button class="abtn" style="flex-shrink:0;">SIGN OUT</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ CONTENT ══ -->
+<div class="content">
+
+  <!-- Analytics row — name only, tagline removed -->
+  <div class="analytics-row">
+    <div>
+      <div class="analytics-name">Erin's Analytics</div>
+    </div>
+    <button class="leaderboard-btn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg> LEADERBOARD</button>
+  </div>
+
+  <!-- KPI CARDS: completed / avg score / rank -->
+  <div class="kpi-grid">
+    <div class="kpi-card" style="border-top: 2px solid #aaa;">
+      <div class="kpi-val">7/25</div>
+      <div class="kpi-lbl">COMPLETED</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid var(--cyan);">
+      <div class="kpi-val" style="color:var(--cyan);">2.6/3</div>
+      <div class="kpi-lbl">AVG SCORE</div>
+    </div>
+    <div class="kpi-card" style="border-top: 2px solid var(--yellow);">
+      <div class="kpi-val" style="color:var(--yellow);">#2</div>
+      <div class="kpi-lbl">RANK</div>
+    </div>
+  </div>
+
+  <!-- STREAK BLOCK -->
+  <div class="streak-block" style="border-left: 3px solid var(--yellow);">
+    <div class="streak-top">
+      <span class="streak-fire">🔥</span>
+      <div class="streak-nums">
+        <span class="streak-current">1</span>
+        <span class="streak-sep">/</span>
+        <span class="streak-best">6</span>
+      </div>
+      <span class="streak-meta">current / best</span>
+      <button class="why-btn" onclick="openModal()">WHY I'M HERE</button>
+    </div>
+    <div class="week-row">
+      <div class="wday"><span class="wday-lbl">M</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">T</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">W</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">T</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">F</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">S</span><div class="wday-box">—</div></div>
+      <div class="wday"><span class="wday-lbl">S</span><div class="wday-box today">✓</div></div>
+    </div>
+  </div>
+
+  <!-- ON DECK -->
+  <div class="on-deck-label">ON DECK</div>
+  <div class="on-deck-card" style="border-left: 3px solid #E8FF47;">
+    <div class="on-deck-header">
+      <span class="cat-tag" style="color:#E8FF47;border-color:rgba(232,255,71,0.3);background:rgba(232,255,71,0.06);">SALES CRAFT</span>
+      <span class="on-deck-num">007</span>
+    </div>
+    <div class="on-deck-body">
+      <div class="on-deck-concept">Talk/Listen Ratio</div>
+      <div class="on-deck-hook">"You think you're running discovery. You're actually delivering a monologue with question marks."</div>
+      <div class="moment-tabs" id="ondeck-tabs" data-accent="#E8FF47">
+        <div class="mtab active"><div class="mtab-dot"></div><span class="mtab-lbl">MORNING</span></div>
+        <div class="mtab"><div class="mtab-dot"></div><span class="mtab-lbl">MIDDAY</span></div>
+        <div class="mtab"><div class="mtab-dot"></div><span class="mtab-lbl">QUIZ</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUR LIBRARY -->
+  <div class="library-label">YOUR LIBRARY</div>
+
+  <!-- Filter tabs -->
+  <div class="filter-pill-wrap">
+    <button class="fpill active" onclick="switchTab('all',this)">ALL</button>
+    <button class="fpill" onclick="switchTab('unlocked',this)">UNLOCKED</button>
+    <button class="fpill" onclick="switchTab('completed',this)">COMPLETED</button>
+    <button class="fpill" onclick="switchTab('saved',this)">SAVED</button>
+    <button class="fpill sc" onclick="switchTab('sc',this)">SALES CRAFT</button>
+    <button class="fpill ai" onclick="switchTab('ai',this)">AI</button>
+    <button class="fpill vl" onclick="switchTab('vl',this)">VOCAB & LANGUAGE</button>
+    <button class="fpill mm" onclick="switchTab('mm',this)">MENTAL MODELS</button>
+    <button class="fpill ph" onclick="switchTab('ph',this)">PHILOSOPHY</button>
+    <button class="fpill nc" onclick="switchTab('nc',this)">NEUROSCIENCE</button>
+    <button class="fpill cm" onclick="switchTab('cm',this)">COMMUNICATION</button>
+  </div>
+
+  <!-- Entry list -->
+  <div class="entry-list" id="entry-list"></div>
+
+</div>
+
+<!-- ══ GOAL MODAL ══ -->
+<div class="modal-overlay" id="goalModal" onclick="closeOutside(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <span class="modal-close" onclick="closeModal()">CLOSE</span>
+    <div class="modal-eyebrow">WHY I'M HERE</div>
+    <div class="modal-title">Your Goal</div>
+    <div class="goal-empty">
+      <div class="goal-empty-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <div class="goal-empty-text">No goal set yet.<br>One sentence. What are you building toward?</div>
+    </div>
+    <button class="goal-cta">SET MY GOAL</button>
+  </div>
+</div>
+
+<script>
+const CATEGORY_COLORS = {
+  'AI': '#47FFE8',
+  'Sales Craft': '#E8FF47',
+  'Vocab & Language': '#FF8C47',
+  'Mental Models': '#C847FF',
+  'Philosophy': '#FF4778',
+  'Neuroscience & Cognition': '#47C8FF',
+  'Communication': '#FF8C00',
+}
+
+const ENTRIES = [
+  { n:'001', id:'AI.1.1',  concept:'Context Window',                  cat:'AI',                       done:true,  score:3, saved:true  },
+  { n:'002', id:'VL.1',    concept:'Framing Effect',                  cat:'Vocab & Language',         done:true,  score:3, saved:true  },
+  { n:'003', id:'SC.1.1',  concept:'Discovery Questions',             cat:'Sales Craft',              done:true,  score:3, saved:true  },
+  { n:'004', id:'MM.1',    concept:'Inversion',                       cat:'Mental Models',            done:true,  score:3, saved:true  },
+  { n:'005', id:'PH.1',    concept:'Premeditatio Malorum',            cat:'Philosophy',               done:true,  score:2, saved:false },
+  { n:'006', id:'AI.1.2',  concept:'Prompt Sensitivity',              cat:'AI',                       done:true,  score:2, saved:false },
+  { n:'007', id:'SC.1.2',  concept:'Talk/Listen Ratio',               cat:'Sales Craft',              done:false, score:null, saved:false, unlocked:true },
+  { n:'008', id:'AI.2.1',  concept:'Chain-of-Thought Prompting',      cat:'AI',                       done:false, score:null, saved:false, unlocked:true },
+  { n:'009', id:'MM.3',    concept:'Survivorship Bias',               cat:'Mental Models',            done:true,  score:3, saved:false },
+  { n:'010', id:'CM.2',    concept:'Feedback That Lands',             cat:'Communication',            done:false, score:null, saved:false, unlocked:true },
+  { n:'011', id:'PH.3',    concept:'Amor Fati',                       cat:'Philosophy',               done:false, score:null, saved:false, unlocked:false },
+  { n:'012', id:'CM.3',    concept:'The Ladder of Inference',         cat:'Communication',            done:false, score:null, saved:false, unlocked:false },
+  { n:'013', id:'NC.3',    concept:'Dopamine & Motivation',           cat:'Neuroscience & Cognition', done:false, score:null, saved:false, unlocked:false },
+  { n:'014', id:'VL.2',    concept:'Euphemism Treadmill',             cat:'Vocab & Language',         done:false, score:null, saved:false, unlocked:false },
+  { n:'015', id:'SC.2.1',  concept:'Anchoring in Negotiation',        cat:'Sales Craft',              done:false, score:null, saved:false, unlocked:false },
+  { n:'016', id:'MM.2',    concept:'Second-Order Thinking',           cat:'Mental Models',            done:false, score:null, saved:false, unlocked:false },
+  { n:'017', id:'AI.2.2',  concept:'Hallucination / Confabulation',   cat:'AI',                       done:false, score:null, saved:false, unlocked:false },
+  { n:'018', id:'PH.2',    concept:'Dichotomy of Control',            cat:'Philosophy',               done:false, score:null, saved:false, unlocked:false },
+  { n:'019', id:'NC.1',    concept:'Neuroplasticity',                 cat:'Neuroscience & Cognition', done:false, score:null, saved:false, unlocked:false },
+  { n:'020', id:'SC.2.2',  concept:'Tactical Empathy',                cat:'Sales Craft',              done:false, score:null, saved:false, unlocked:false },
+  { n:'021', id:'CM.1',    concept:'Active Listening',                cat:'Communication',            done:false, score:null, saved:false, unlocked:false },
+  { n:'022', id:'SC.3.1',  concept:'Multi-Threading',                 cat:'Sales Craft',              done:false, score:null, saved:false, unlocked:false },
+  { n:'023', id:'AI.3.1',  concept:'RAG (Retrieval-Augmented Gen.)',  cat:'AI',                       done:false, score:null, saved:false, unlocked:false },
+  { n:'024', id:'VL.3',    concept:'Nominalization',                  cat:'Vocab & Language',         done:false, score:null, saved:false, unlocked:false },
+  { n:'025', id:'NC.2',    concept:'Meditation and the Brain',        cat:'Neuroscience & Cognition', done:false, score:null, saved:false, unlocked:false },
+]
+
+// normalise: all done = unlocked
+ENTRIES.forEach(e => { if (e.done) e.unlocked = true })
+
+let bookmarks = {}
+ENTRIES.forEach(e => { if (e.saved) bookmarks[e.n] = true })
+
+let activeFilter = 'all'
+
+function catFilter(cat) {
+  const map = {
+    'sc':'Sales Craft','ai':'AI','vl':'Vocab & Language',
+    'mm':'Mental Models','ph':'Philosophy','nc':'Neuroscience & Cognition','cm':'Communication'
+  }
+  return map[cat] || null
+}
+
+function render() {
+  const list = document.getElementById('entry-list')
+  const catF = catFilter(activeFilter)
+
+  const visible = ENTRIES.filter(e => {
+    if (activeFilter === 'all')       return true
+    if (activeFilter === 'unlocked')  return e.unlocked
+    if (activeFilter === 'completed') return e.done
+    if (activeFilter === 'saved')     return bookmarks[e.n]
+    if (catF)                         return e.cat === catF
+    return true
+  })
+
+  list.innerHTML = visible.map(e => {
+    const accent = CATEGORY_COLORS[e.cat] || '#fff'
+    const dotColor = e.done ? accent : '#333'
+    const starred = bookmarks[e.n]
+    const locked = !e.unlocked
+
+    return `
+      <div class="entry-card ${locked ? 'locked' : ''}">
+        <div class="entry-left">
+          <div class="entry-dot" style="background:${dotColor};"></div>
+          <div>
+            <div class="entry-concept">${e.concept}</div>
+            <div class="entry-sub" style="color:${accent};">${e.id} · ${e.cat}</div>
+          </div>
+        </div>
+        <div class="entry-right">
+          ${e.done ? `<span class="entry-score" style="color:${accent};">${e.score}/3</span>` : ''}
+          ${locked  ? `<span class="entry-lock">🔒</span>` : ''}
+          ${!locked && !e.done ? `<span class="entry-action" style="color:${accent};">START →</span>` : ''}
+          ${e.done  ? `<span class="entry-action">REVIEW →</span>` : ''}
+          ${!locked ? `<button class="entry-star" style="color:${starred ? '#E8FF47' : '#555'};" onclick="toggleStar(event,'${e.n}')">${starred ? '★' : '☆'}</button>` : ''}
+        </div>
+      </div>`
+  }).join('')
+}
+
+function switchTab(id, el) {
+  document.querySelectorAll('.fpill').forEach(t => t.classList.remove('active'))
+  el.classList.add('active')
+  activeFilter = id
+  render()
+}
+
+function toggleStar(ev, n) {
+  ev.stopPropagation()
+  bookmarks[n] = !bookmarks[n]
+  render()
+}
+
+function applyMtabAccent() {
+  const wrap = document.getElementById('ondeck-tabs')
+  if (!wrap) return
+  const hex = wrap.dataset.accent
+  // convert hex to rgb for glow
+  const r = parseInt(hex.slice(1,3),16)
+  const g = parseInt(hex.slice(3,5),16)
+  const b = parseInt(hex.slice(5,7),16)
+  wrap.style.setProperty('--mtab-accent', hex)
+  wrap.style.setProperty('--mtab-accent-border', `rgba(${r},${g},${b},0.35)`)
+  wrap.style.setProperty('--mtab-accent-glow',   `rgba(${r},${g},${b},0.2)`)
+}
+
+// Clicking a tab marks it done and advances active to the next
+function clickMtab(el) {
+  const tabs = [...el.parentElement.querySelectorAll('.mtab')]
+  const idx = tabs.indexOf(el)
+  // mark clicked as done
+  el.classList.remove('active')
+  el.classList.add('done')
+  // set next tab as active if exists
+  if (idx + 1 < tabs.length) {
+    tabs[idx + 1].classList.add('active')
+  }
+}
+
+applyMtabAccent()
+function openModal()  { document.getElementById('goalModal').classList.add('open') }
+function closeModal() { document.getElementById('goalModal').classList.remove('open') }
+function closeOutside(e) { if (e.target === document.getElementById('goalModal')) closeModal() }
+
+render()
+</script>
+</body>
+</html>

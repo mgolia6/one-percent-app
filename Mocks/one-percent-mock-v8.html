@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>One Percent — Mock v8</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+:root {
+  --page:   linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%);
+  --ink:    #1a2a3a;
+  --muted:  rgba(26,42,58,0.45);
+  --card:   #1a2a3a;
+  --card2:  #152030;
+  --yellow: #E8FF47;
+  --cyan:   #47FFE8;
+  --orange: #FF8C47;
+  --purple: #C847FF;
+  --pink:   #FF4778;
+  --blue:   #47C8FF;
+  --amber:  #FF8C00;
+}
+
+html { background: var(--page); min-height: 100vh; }
+body { background: transparent; color: var(--ink); font-family: 'DM Sans', sans-serif; max-width: 390px; margin: 0 auto; min-height: 100vh; }
+
+/* ── NAV ── */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(240,244,248,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(26,42,58,0.08); padding: 14px 20px 10px; }
+.nav-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.wordmark { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--ink); }
+.badge { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; background: var(--ink); color: #e8eef5; }
+.avatar { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; background: rgba(26,42,58,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+/* Nav pills — same treatment as library filters */
+.nav-filter { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+.nav-filter::-webkit-scrollbar { display: none; }
+.nfpill { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(26,42,58,0.15); color: var(--muted); background: transparent; white-space: nowrap; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+.nfpill:hover { color: var(--ink); border-color: rgba(26,42,58,0.3); }
+.nfpill.bug { color: var(--pink); border-color: rgba(255,71,120,0.3); }
+
+/* ── PAGE ── */
+.page { padding: 0 20px 80px; }
+.gap { height: 20px; }
+.gap-sm { height: 12px; }
+
+/* ── SEC LABEL ── */
+.sec-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 10px; }
+
+/* ── COMMITMENT BANNER ── */
+.commitment-card {
+  background: var(--card); border-radius: 14px;
+  padding: 16px 18px; margin-bottom: 12px;
+  border-left: 4px solid rgba(232,238,245,0.2);
+  cursor: pointer; transition: opacity 0.15s;
+  position: relative; overflow: hidden;
+}
+.commitment-card:active { opacity: 0.85; }
+.commitment-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #e8eef5; font-weight: 700; margin-bottom: 6px; }
+.commitment-text { font-size: 13px; color: rgba(232,238,245,0.75); line-height: 1.55; font-style: italic; }
+.commitment-text.empty { color: rgba(232,238,245,0.35); font-style: normal; }
+.commitment-arrow { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: rgba(232,238,245,0.2); font-size: 14px; }
+
+/* ── KPI PILLS ── */
+.kpi-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.kpi-pill { background: var(--card); border-radius: 18px; padding: 16px 10px 14px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.kpi-icon svg { display: block; }
+.kpi-val { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1; }
+.kpi-lbl { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; color: rgba(232,238,245,0.5); text-align: center; line-height: 1.3; }
+
+/* ── STREAK PILL ── */
+.streak-pill { background: var(--card); border-radius: 18px; padding: 18px 20px 16px; margin-bottom: 20px; }
+.streak-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.streak-main { display: flex; flex-direction: column; gap: 2px; }
+.streak-fire-row { display: flex; align-items: baseline; gap: 8px; }
+.streak-icon { font-size: 20px; line-height: 1; }
+.streak-num { font-size: 38px; font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1; }
+.streak-unit { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(232,238,245,0.6); letter-spacing: 0.08em; align-self: flex-end; padding-bottom: 4px; }
+.streak-best { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(232,238,245,0.35); letter-spacing: 0.06em; margin-top: 3px; }
+.why-btn { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(232,238,245,0.5); background: none; border: 1px solid rgba(232,238,245,0.15); border-radius: 100px; padding: 7px 14px; cursor: pointer; white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
+.why-btn:hover { border-color: rgba(232,238,245,0.4); color: #fff; }
+.week-row { display: grid; grid-template-columns: repeat(7,1fr); gap: 5px; }
+.wday { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wday-l { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(232,238,245,0.35); }
+.wday-b { width: 100%; aspect-ratio: 1; border-radius: 6px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 9px; font-family: 'DM Mono', monospace; font-weight: 700; color: transparent; }
+.wday-b.today { background: #fff; color: var(--card); }
+
+/* ── TODAY HERO ── */
+.today-hero { border-radius: 14px; overflow: hidden; margin-bottom: 10px; cursor: pointer; box-shadow: 0 4px 20px rgba(26,42,58,0.12); }
+.today-top { padding: 18px 18px 16px; background: var(--card); position: relative; }
+.today-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.today-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.today-eyebrow { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: rgba(232,238,245,0.45); }
+.today-live { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; }
+.live-dot { width: 5px; height: 5px; border-radius: 50%; animation: livepulse 2s ease-in-out infinite; }
+@keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+/* Cat icon + title row */
+.today-title-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.today-cat-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.today-concept { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.2; }
+.today-footer { display: flex; align-items: center; justify-content: space-between; }
+.today-cat-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; }
+.begin-btn { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; font-weight: 500; padding: 9px 18px; border-radius: 6px; border: none; cursor: pointer; }
+.moment-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(0,0,0,0.3); }
+.mc { padding: 11px 12px; background: var(--card2); }
+.mc-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.mc-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.mc-desc { font-size: 11px; color: rgba(232,238,245,0.4); }
+.mc.active .mc-desc { color: rgba(232,238,245,0.7); }
+.mc-name.active-label { color: #e8eef5; }
+.mc-name.pending { color: rgba(232,238,245,0.3); }
+
+/* ── ON DECK ── */
+.ondeck-card { background: var(--card); border-radius: 14px; padding: 14px 16px; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; box-shadow: 0 2px 12px rgba(26,42,58,0.1); }
+.ondeck-cat-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ondeck-body { flex: 1; min-width: 0; }
+.ondeck-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: rgba(232,238,245,0.4); margin-bottom: 3px; }
+.ondeck-concept { font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ondeck-cat-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; margin-top: 2px; }
+.ondeck-arrow { color: rgba(232,238,245,0.2); font-size: 16px; flex-shrink: 0; }
+
+/* ── LIBRARY ── */
+.lib-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.lib-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--muted); }
+.filter-wrap { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; margin-bottom: 14px; }
+.filter-wrap::-webkit-scrollbar { display: none; }
+.fpill { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(26,42,58,0.15); color: var(--muted); background: transparent; white-space: nowrap; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+.fpill.active { background: var(--ink); color: #e8eef5; border-color: var(--ink); }
+.fpill.soon { opacity: 0.45; cursor: default; border-style: dashed; }
+
+/* Entry rows — dark cards on light bg */
+.entry-list { display: flex; flex-direction: column; gap: 7px; }
+.entry-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--card); border-radius: 10px; cursor: pointer; transition: opacity 0.12s; }
+.entry-row.locked { opacity: 0.35; cursor: default; }
+.entry-row:not(.locked):active { opacity: 0.8; }
+.e-cat-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.e-body { flex: 1; min-width: 0; }
+.e-concept { font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.e-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(232,238,245,0.45); }
+.e-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.e-score { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; }
+.e-cta { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(232,238,245,0.45); letter-spacing: 0.08em; }
+.e-star { font-size: 13px; cursor: pointer; background: none; border: none; padding: 2px; color: rgba(232,238,245,0.25); transition: color 0.15s; line-height: 1; }
+.e-star.on { color: #E8FF47; }
+
+/* ── GOAL SHEET ── */
+.overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(10,20,30,0.65); backdrop-filter: blur(8px); align-items: flex-end; justify-content: center; }
+.overlay.open { display: flex; }
+.goal-sheet { background: linear-gradient(160deg, #f0f4f8 0%, #e8eef5 100%); width: 100%; max-width: 390px; border-radius: 20px 20px 0 0; padding: 20px 24px 48px; position: relative; animation: up 0.25s cubic-bezier(.22,1,.36,1); max-height: 88vh; overflow-y: auto; }
+.goal-sheet::-webkit-scrollbar { display: none; }
+@keyframes up { from { transform: translateY(32px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.sheet-handle { width: 36px; height: 4px; border-radius: 2px; background: rgba(26,42,58,0.12); margin: 0 auto 24px; }
+.sheet-heading { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: #1a2a3a; margin-bottom: 6px; }
+.sheet-sub { font-size: 13px; color: rgba(26,42,58,0.5); line-height: 1.6; font-weight: 300; margin-bottom: 24px; }
+.sheet-close { position: absolute; top: 20px; right: 24px; font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(26,42,58,0.35); letter-spacing: 0.1em; cursor: pointer; background: none; border: none; }
+.smart-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.smart-step { border: 1px solid rgba(26,42,58,0.1); border-radius: 10px; background: rgba(255,255,255,0.7); overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
+.smart-step.open { border-color: rgba(26,42,58,0.2); box-shadow: 0 2px 20px rgba(26,42,58,0.08); }
+.step-header { padding: 14px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+.step-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(26,42,58,0.08); border: 1px solid rgba(26,42,58,0.1); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 500; color: rgba(26,42,58,0.35); flex-shrink: 0; transition: all 0.2s; }
+.smart-step.done .step-num, .smart-step.open .step-num { background: #1a2a3a; border-color: #1a2a3a; color: #e8eef5; }
+.step-lbl { font-size: 13px; font-weight: 500; color: rgba(26,42,58,0.35); flex: 1; transition: color 0.2s; }
+.smart-step.open .step-lbl, .smart-step.done .step-lbl { color: #1a2a3a; }
+.step-val { font-size: 10px; color: rgba(26,42,58,0.4); max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.step-body { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s cubic-bezier(.22,1,.36,1), opacity 0.25s ease; }
+.smart-step.open .step-body { max-height: 280px; opacity: 1; }
+.step-body-inner { padding: 0 16px 16px; }
+.step-hint { font-size: 11px; color: rgba(26,42,58,0.4); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
+.seed-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.seed-chip { padding: 5px 11px; border-radius: 20px; border: 1px solid rgba(26,42,58,0.15); font-size: 11px; color: rgba(26,42,58,0.6); cursor: pointer; transition: all 0.15s; user-select: none; }
+.seed-chip.selected { background: #1a2a3a; border-color: #1a2a3a; color: #e8eef5; }
+.step-input { width: 100%; background: rgba(255,255,255,0.6); border: 1px solid rgba(26,42,58,0.1); border-radius: 6px; padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #1a2a3a; outline: none; transition: border-color 0.2s; }
+.step-input:focus { border-color: rgba(26,42,58,0.3); background: rgba(255,255,255,0.9); }
+.step-input::placeholder { color: rgba(26,42,58,0.25); }
+.step-confirm { margin-top: 10px; padding: 10px 16px; background: #1a2a3a; color: #e8eef5; border: none; border-radius: 6px; font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; cursor: pointer; width: 100%; }
+.goal-preview { padding: 14px 16px; background: rgba(255,255,255,0.6); border: 1px solid rgba(26,42,58,0.1); border-radius: 10px; margin-bottom: 16px; display: none; }
+.goal-preview.show { display: block; }
+.goal-preview-lbl { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.2em; color: rgba(26,42,58,0.35); margin-bottom: 6px; }
+.goal-preview-text { font-size: 14px; color: #1a2a3a; line-height: 1.5; }
+.goal-commit { width: 100%; padding: 15px; background: #1a2a3a; color: #e8eef5; border: none; border-radius: 10px; font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; cursor: pointer; opacity: 0.3; transition: opacity 0.2s; }
+.goal-commit.ready { opacity: 1; }
+
+/* ── CATEGORY ICONS (inline SVG) ── */
+.cat-icon-ai     { background: rgba(71,255,232,0.15); }
+.cat-icon-sc     { background: rgba(232,255,71,0.15); }
+.cat-icon-vl     { background: rgba(255,140,71,0.15); }
+.cat-icon-mm     { background: rgba(200,71,255,0.15); }
+.cat-icon-ph     { background: rgba(255,71,120,0.15); }
+.cat-icon-nc     { background: rgba(71,200,255,0.15); }
+.cat-icon-cm     { background: rgba(255,140,0,0.15); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-top">
+    <span class="wordmark">ONE PERCENT</span>
+    <span class="badge">BETA</span>
+    <div class="avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(26,42,58,0.5)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+  </div>
+  <div class="nav-filter">
+    <button class="nfpill">ABOUT</button>
+    <button class="nfpill">CHANGELOG</button>
+    <button class="nfpill bug">BUG</button>
+    <button class="nfpill">FEEDBACK</button>
+    <button class="nfpill">INFO</button>
+    <button class="nfpill">SIGN OUT</button>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="gap-sm"></div>
+
+  <!-- COMMITMENT -->
+  <div class="commitment-card" id="commitment-card" onclick="openGoal()">
+    <div class="commitment-title">YOUR COMMITMENT</div>
+    <div class="commitment-text empty" id="banner-text">Tap to set your goal →</div>
+    <span class="commitment-arrow">›</span>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <!-- Checkmark / completed -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="kpi-val">7</div>
+      <div class="kpi-lbl">COMPLETED</div>
+    </div>
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <!-- Target / score -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="#E8FF47" stroke="none"/></svg>
+      </div>
+      <div class="kpi-val">2.6</div>
+      <div class="kpi-lbl">AVG SCORE</div>
+    </div>
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <!-- Trophy / rank -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C847FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+      </div>
+      <div class="kpi-val">#2</div>
+      <div class="kpi-lbl">RANK</div>
+    </div>
+  </div>
+
+  <!-- STREAK -->
+  <div class="streak-pill">
+    <div class="streak-top">
+      <div class="streak-main">
+        <div class="streak-fire-row">
+          <span class="streak-icon">🔥</span>
+          <span class="streak-num">1</span>
+          <span class="streak-unit">DAY STREAK</span>
+        </div>
+        <div class="streak-best">BEST · 6 DAYS</div>
+      </div>
+      <button class="why-btn" onclick="openGoal()">WHY I'M HERE</button>
+    </div>
+    <div class="week-row" id="week-row">
+      <!-- filled by JS with category colors -->
+    </div>
+  </div>
+
+  <!-- TODAY -->
+  <div class="sec-lbl">TODAY</div>
+  <div class="today-hero">
+    <div class="today-top">
+      <div class="today-accent" style="background:#47FFE8;"></div>
+      <div class="today-meta">
+        <span class="today-eyebrow">AI.2.1 · ENTRY 008</span>
+        <span class="today-live" style="color:#47FFE8;"><span class="live-dot" style="background:#47FFE8;"></span>UNLOCKED</span>
+      </div>
+      <div class="today-title-row">
+        <div class="today-cat-icon cat-icon-ai">
+          <!-- AI icon: circuit/node -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="3" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="12" cy="21" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="3" cy="12" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="21" cy="12" r="1.2" fill="#47FFE8" stroke="none"/></svg>
+        </div>
+        <div class="today-concept">Chain-of-Thought<br>Prompting</div>
+      </div>
+      <div class="today-footer">
+        <span class="today-cat-label" style="color:#47FFE8;">ARTIFICIAL INTELLIGENCE</span>
+        <button class="begin-btn" style="background:#47FFE8;color:#0a1420;" onclick="event.stopPropagation()">BEGIN →</button>
+      </div>
+    </div>
+    <div class="moment-strip">
+      <div class="mc active">
+        <div class="mc-name active-label"><span class="mc-dot" style="background:#47FFE8;animation:livepulse 2s ease-in-out infinite;"></span>MORNING</div>
+        <div class="mc-desc active">Read the brief</div>
+      </div>
+      <div class="mc">
+        <div class="mc-name pending">MIDDAY</div>
+        <div class="mc-desc">The reframe</div>
+      </div>
+      <div class="mc">
+        <div class="mc-name pending">QUIZ</div>
+        <div class="mc-desc">Test yourself</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ON DECK -->
+  <div class="sec-lbl">ON DECK</div>
+  <div class="ondeck-card">
+    <div class="ondeck-cat-icon cat-icon-sc">
+      <!-- Sales icon: handshake / chart -->
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <div class="ondeck-body">
+      <div class="ondeck-lbl">UP NEXT · UNLOCKS TOMORROW</div>
+      <div class="ondeck-concept">Talk/Listen Ratio</div>
+      <div class="ondeck-cat-name" style="color:#E8FF47;">SC.1.2 · SALES CRAFT</div>
+    </div>
+    <span class="ondeck-arrow">›</span>
+  </div>
+
+  <!-- LIBRARY -->
+  <div class="lib-header">
+    <span class="lib-title">YOUR LIBRARY</span>
+  </div>
+  <div class="filter-wrap">
+    <button class="fpill active" onclick="switchTab('all',this)">ALL</button>
+    <button class="fpill" onclick="switchTab('unlocked',this)">UNLOCKED</button>
+    <button class="fpill" onclick="switchTab('completed',this)">COMPLETED</button>
+    <button class="fpill" onclick="switchTab('saved',this)">SAVED</button>
+    <button class="fpill" onclick="switchTab('sc',this)">SALES CRAFT</button>
+    <button class="fpill" onclick="switchTab('ai',this)">AI</button>
+    <button class="fpill" onclick="switchTab('vl',this)">VOCAB</button>
+    <button class="fpill" onclick="switchTab('mm',this)">MENTAL MODELS</button>
+    <button class="fpill" onclick="switchTab('ph',this)">PHILOSOPHY</button>
+    <button class="fpill" onclick="switchTab('nc',this)">NEUROSCIENCE</button>
+    <button class="fpill" onclick="switchTab('cm',this)">COMMUNICATION</button>
+    <button class="fpill soon" title="Coming soon">PROMPT FARM</button>
+    <button class="fpill soon" title="Coming soon">CONCEPTS GLOSSARY</button>
+  </div>
+  <div class="entry-list" id="entry-list"></div>
+</div>
+
+<!-- GOAL SHEET -->
+<div class="overlay" id="goalOverlay" onclick="closeGoalOutside(event)">
+  <div class="goal-sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="closeGoal()">CLOSE</button>
+    <div class="sheet-heading">Set your intention.</div>
+    <div class="sheet-sub">A good goal is specific, measurable, and slightly uncomfortable.</div>
+    <div class="smart-steps">
+      <div class="smart-step open" id="step-what">
+        <div class="step-header" onclick="toggleStep('step-what')">
+          <div class="step-num">1</div>
+          <div class="step-lbl">What do you want to change?</div>
+          <div class="step-val" id="val-what">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">Pick one or write your own.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="how I think under pressure">how I think</div>
+            <div class="seed-chip" data-val="how I sell and negotiate">how I sell</div>
+            <div class="seed-chip" data-val="how I use AI in my work">how I use AI</div>
+            <div class="seed-chip" data-val="how I communicate ideas">how I communicate</div>
+            <div class="seed-chip" data-val="how I make decisions">how I decide</div>
+          </div>
+          <input class="step-input" id="input-what" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-what','input-what','val-what','step-when')">CONFIRM →</button>
+        </div></div>
+      </div>
+      <div class="smart-step" id="step-when">
+        <div class="step-header" onclick="toggleStep('step-when')">
+          <div class="step-num">2</div>
+          <div class="step-lbl">By when?</div>
+          <div class="step-val" id="val-when">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">Stretch goals need real deadlines.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="end of this beta">end of beta</div>
+            <div class="seed-chip" data-val="end of Q2">end of Q2</div>
+            <div class="seed-chip" data-val="my next performance review">next review</div>
+            <div class="seed-chip" data-val="end of this year">end of year</div>
+          </div>
+          <input class="step-input" id="input-when" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-when','input-when','val-when','step-signal')">CONFIRM →</button>
+        </div></div>
+      </div>
+      <div class="smart-step" id="step-signal">
+        <div class="step-header" onclick="toggleStep('step-signal')">
+          <div class="step-num">3</div>
+          <div class="step-lbl">How will you know it worked?</div>
+          <div class="step-val" id="val-signal">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">If you can't measure it, you won't know.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="I win a deal I would have lost">win a deal I'd have lost</div>
+            <div class="seed-chip" data-val="I catch my own bad thinking in the moment">catch bad thinking live</div>
+            <div class="seed-chip" data-val="I get unsolicited feedback that I've changed">others notice the change</div>
+            <div class="seed-chip" data-val="AI is part of my daily workflow">AI in daily workflow</div>
+          </div>
+          <input class="step-input" id="input-signal" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-signal','input-signal','val-signal',null)">CONFIRM →</button>
+        </div></div>
+      </div>
+    </div>
+    <div class="goal-preview" id="goal-preview">
+      <div class="goal-preview-lbl">YOUR COMMITMENT</div>
+      <div class="goal-preview-text" id="goal-preview-text">—</div>
+    </div>
+    <button class="goal-commit" id="goal-commit" onclick="commitGoal()">I COMMIT TO THIS →</button>
+  </div>
+</div>
+
+<script>
+// ── CATEGORY CONFIG ──
+const CATS = {
+  'AI':                       { color:'#47FFE8', cls:'ai',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="3" r="1.5" fill="#47FFE8" stroke="none"/><circle cx="12" cy="21" r="1.5" fill="#47FFE8" stroke="none"/><circle cx="3" cy="12" r="1.5" fill="#47FFE8" stroke="none"/><circle cx="21" cy="12" r="1.5" fill="#47FFE8" stroke="none"/></svg>' },
+  'Sales Craft':              { color:'#E8FF47', cls:'sc',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>' },
+  'Vocab & Language':         { color:'#FF8C47', cls:'vl',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>' },
+  'Mental Models':            { color:'#C847FF', cls:'mm',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C847FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>' },
+  'Philosophy':               { color:'#FF4778', cls:'ph',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF4778" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>' },
+  'Neuroscience & Cognition': { color:'#47C8FF', cls:'nc',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#47C8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2a2.5 2.5 0 0 1 5 0v.5"/><path d="M9 2.5C5.5 3 3 6 3 9.5c0 4 3 7 6.5 7h5c3.5 0 6.5-3 6.5-7 0-3.5-2.5-6.5-6-7"/><path d="M12 9.5v5"/><path d="M9.5 12h5"/></svg>' },
+  'Communication':            { color:'#FF8C00', cls:'cm',  icon:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>' },
+}
+
+const CAT_MAP = { sc:'Sales Craft', ai:'AI', vl:'Vocab & Language', mm:'Mental Models', ph:'Philosophy', nc:'Neuroscience & Cognition', cm:'Communication' }
+
+// Streak week — last 7 days with category colors for days completed
+// In real app this would come from completions data
+// Mocking: Erin completed something Mon-Sat last week, today Sunday
+const WEEK_DATA = [
+  { l:'M', color:'#47FFE8' },
+  { l:'T', color:'#C847FF' },
+  { l:'W', color:'#E8FF47' },
+  { l:'T', color:null },
+  { l:'F', color:'#FF4778' },
+  { l:'S', color:null },
+  { l:'S', today:true, color:'#47FFE8' },
+]
+
+function renderWeek() {
+  const row = document.getElementById('week-row')
+  row.innerHTML = WEEK_DATA.map(d => {
+    if (d.today) return `<div class="wday"><span class="wday-l">${d.l}</span><div class="wday-b today">✓</div></div>`
+    if (d.color) return `<div class="wday"><span class="wday-l">${d.l}</span><div class="wday-b" style="background:${d.color}22; border:1px solid ${d.color}55; color:${d.color}; font-size:9px;">✓</div></div>`
+    return `<div class="wday"><span class="wday-l">${d.l}</span><div class="wday-b"></div></div>`
+  }).join('')
+}
+renderWeek()
+
+const ENTRIES = [
+  {n:'001',id:'AI.1.1', concept:'Context Window',             cat:'AI',                       done:true, score:3,saved:true},
+  {n:'002',id:'VL.1',   concept:'Framing Effect',             cat:'Vocab & Language',         done:true, score:3,saved:true},
+  {n:'003',id:'SC.1.1', concept:'Discovery Questions',        cat:'Sales Craft',              done:true, score:3,saved:true},
+  {n:'004',id:'MM.1',   concept:'Inversion',                  cat:'Mental Models',            done:true, score:3,saved:true},
+  {n:'005',id:'PH.1',   concept:'Premeditatio Malorum',       cat:'Philosophy',               done:true, score:2,saved:false},
+  {n:'006',id:'AI.1.2', concept:'Prompt Sensitivity',         cat:'AI',                       done:true, score:2,saved:false},
+  {n:'007',id:'SC.1.2', concept:'Talk/Listen Ratio',          cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:true},
+  {n:'008',id:'AI.2.1', concept:'Chain-of-Thought Prompting', cat:'AI',                       done:false,score:null,saved:false,unlocked:true},
+  {n:'009',id:'MM.3',   concept:'Survivorship Bias',          cat:'Mental Models',            done:true, score:3,saved:false},
+  {n:'010',id:'CM.2',   concept:'Feedback That Lands',        cat:'Communication',            done:false,score:null,saved:false,unlocked:true},
+  {n:'011',id:'PH.3',   concept:'Amor Fati',                  cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'012',id:'CM.3',   concept:'The Ladder of Inference',    cat:'Communication',            done:false,score:null,saved:false,unlocked:false},
+  {n:'013',id:'NC.3',   concept:'Dopamine & Motivation',      cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'014',id:'VL.2',   concept:'Euphemism Treadmill',        cat:'Vocab & Language',         done:false,score:null,saved:false,unlocked:false},
+  {n:'015',id:'SC.2.1', concept:'Anchoring in Negotiation',   cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'016',id:'MM.2',   concept:'Second-Order Thinking',      cat:'Mental Models',            done:false,score:null,saved:false,unlocked:false},
+  {n:'017',id:'AI.2.2', concept:'Hallucination/Confabulation',cat:'AI',                       done:false,score:null,saved:false,unlocked:false},
+  {n:'018',id:'PH.2',   concept:'Dichotomy of Control',       cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'019',id:'NC.1',   concept:'Neuroplasticity',            cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'020',id:'SC.2.2', concept:'Tactical Empathy',           cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+]
+ENTRIES.forEach(e => { if(e.done) e.unlocked = true })
+let bookmarks = {}; ENTRIES.forEach(e => { if(e.saved) bookmarks[e.n] = true })
+let activeTab = 'all'
+
+function render() {
+  const catF = CAT_MAP[activeTab]
+  const visible = ENTRIES.filter(e => {
+    if(activeTab==='all') return true
+    if(activeTab==='unlocked') return e.unlocked
+    if(activeTab==='completed') return e.done
+    if(activeTab==='saved') return bookmarks[e.n]
+    if(catF) return e.cat === catF
+    return true
+  })
+  document.getElementById('entry-list').innerHTML = visible.map(e => {
+    const cat = CATS[e.cat] || { color:'#aaa', cls:'ai', icon:'' }
+    const locked = !e.unlocked, starred = bookmarks[e.n]
+    return `<div class="entry-row${locked?' locked':''}">
+      <div class="e-cat-icon cat-icon-${cat.cls}">${cat.icon}</div>
+      <div class="e-body">
+        <div class="e-concept">${e.concept}</div>
+        <div class="e-meta">${e.id} · ${e.cat}</div>
+      </div>
+      <div class="e-right">
+        ${e.done ? `<span class="e-score" style="color:${cat.color};">${e.score}/3</span>` : ''}
+        ${!locked&&!e.done ? `<span class="e-cta">START →</span>` : ''}
+        ${e.done ? `<span class="e-cta">REVIEW →</span>` : ''}
+        ${locked ? `<span class="e-cta" style="opacity:0.25;">LOCKED</span>` : ''}
+        ${!locked ? `<button class="e-star${starred?' on':''}" onclick="toggleStar(event,'${e.n}')">${starred?'★':'☆'}</button>` : ''}
+      </div>
+    </div>`
+  }).join('')
+}
+
+function switchTab(id,el) {
+  if(el.classList.contains('soon')) return
+  document.querySelectorAll('.fpill').forEach(t=>t.classList.remove('active'))
+  el.classList.add('active'); activeTab=id; render()
+}
+function toggleStar(ev,n) { ev.stopPropagation(); bookmarks[n]=!bookmarks[n]; render() }
+
+// Goal sheet
+function openGoal()  { document.getElementById('goalOverlay').classList.add('open') }
+function closeGoal() { document.getElementById('goalOverlay').classList.remove('open') }
+function closeGoalOutside(e) { if(e.target===document.getElementById('goalOverlay')) closeGoal() }
+
+const STEPS = ['step-what','step-when','step-signal']
+const goalData = { what:'', when:'', signal:'' }
+
+function toggleStep(id) {
+  const idx = STEPS.indexOf(id)
+  for(let i=0;i<idx;i++) if(!document.getElementById(STEPS[i]).classList.contains('done')) return
+  const el=document.getElementById(id), wasOpen=el.classList.contains('open')
+  STEPS.forEach(s=>{ const e=document.getElementById(s); if(!e.classList.contains('done')) e.classList.remove('open') })
+  if(!wasOpen) el.classList.add('open')
+}
+
+function confirmStep(stepId,inputId,valId,nextId) {
+  const input=document.getElementById(inputId), val=input.value.trim()
+  if(!val){ input.style.borderColor='rgba(255,71,120,.5)'; input.focus(); setTimeout(()=>input.style.borderColor='',1200); return }
+  if(stepId==='step-what') goalData.what=val
+  if(stepId==='step-when') goalData.when=val
+  if(stepId==='step-signal') goalData.signal=val
+  document.getElementById(valId).textContent = val.length>16 ? val.slice(0,14)+'…' : val
+  const step=document.getElementById(stepId); step.classList.remove('open'); step.classList.add('done')
+  if(nextId){ setTimeout(()=>{ const n=document.getElementById(nextId); n.classList.add('open'); n.scrollIntoView({behavior:'smooth',block:'center'}) },200) }
+  else buildPreview()
+}
+
+document.querySelectorAll('.seed-chips').forEach(group => {
+  group.querySelectorAll('.seed-chip').forEach(chip => {
+    chip.addEventListener('click',()=>{
+      group.querySelectorAll('.seed-chip').forEach(c=>c.classList.remove('selected'))
+      chip.classList.add('selected')
+      group.closest('.step-body-inner').querySelector('.step-input').value = chip.dataset.val
+    })
+  })
+})
+
+function buildPreview() {
+  const text=`I will change ${goalData.what} by ${goalData.when}. I'll know it worked when ${goalData.signal}.`
+  document.getElementById('goal-preview-text').textContent=text
+  document.getElementById('goal-preview').classList.add('show')
+  document.getElementById('goal-commit').classList.add('ready')
+  setTimeout(()=>document.getElementById('goal-preview').scrollIntoView({behavior:'smooth',block:'center'}),100)
+}
+
+function commitGoal() {
+  if(!goalData.what||!goalData.when||!goalData.signal) return
+  const text=`I will change ${goalData.what} by ${goalData.when}. I'll know it worked when ${goalData.signal}.`
+  const el=document.getElementById('banner-text')
+  el.textContent='"'+text+'"'; el.classList.remove('empty')
+  // Give commitment card a color accent
+  document.getElementById('commitment-card').style.borderLeftColor='#47FFE8'
+  closeGoal()
+}
+
+render()
+</script>
+</body>
+</html>

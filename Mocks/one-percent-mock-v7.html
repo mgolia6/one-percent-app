@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>One Percent — Mock v7</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+:root {
+  --bg:    #e8eef5;
+  --ink:   #0f0f0f;
+  --muted: #777;
+  --card:  #1a2a3a;
+  --card2: #152030;
+  --hi:    rgba(255,255,255,0.08);
+  --b:     rgba(255,255,255,0.06);
+  --bl:    rgba(0,0,0,0.1);
+  --yellow:#E8FF47;
+  --cyan:  #47FFE8;
+  --orange:#FF8C47;
+  --purple:#C847FF;
+  --pink:  #FF4778;
+  --blue:  #47C8FF;
+  --amber: #FF8C00;
+}
+
+html { background: linear-gradient(160deg, #f0f4f8 0%, #e8eef5 50%, #dde6f0 100%); min-height: 100vh; }
+body {
+  background: transparent; color: #1a2a3a;
+  font-family: 'DM Sans', sans-serif;
+  max-width: 390px; margin: 0 auto; min-height: 100vh;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(240,244,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,42,58,0.1);
+  padding: 14px 20px 8px;
+}
+.nav-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.wordmark { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: #1a2a3a; }
+.badge { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; background: #1a2a3a; color: #e8eef5; }
+.avatar { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; background: #bbb; display: flex; align-items: center; justify-content: center; }
+.nav-pills { display: flex; overflow-x: auto; scrollbar-width: none; background: rgba(26,42,58,0.08); border-radius: 6px; padding: 3px; }
+.nav-pills::-webkit-scrollbar { display: none; }
+.npill { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.09em; color: rgba(26,42,58,0.5); padding: 5px 10px; background: none; border: none; cursor: pointer; white-space: nowrap; border-radius: 4px; }
+.npill.bug { color: #FF4778; }
+
+/* ── PAGE ── */
+.page { padding: 0 20px 80px; }
+
+/* ── GOAL BANNER — tappable, lives at top ── */
+.goal-banner {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  background: #1a2a3a;
+  border-radius: 12px;
+  border-left: 3px solid rgba(232,238,245,0.2);
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-bottom: 16px;
+}
+.goal-banner:active { opacity: 0.8; }
+.goal-banner-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: #aaa; margin-bottom: 5px; }
+.goal-banner-text { font-size: 13px; color: #fff; line-height: 1.5; font-style: italic; }
+.goal-banner-text.empty { color: #888; font-style: normal; }
+
+/* ── KPI PILLS ── */
+.kpi-pills {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px; margin-bottom: 12px;
+}
+.kpi-pill {
+  background: #1a2a3a;
+  border-radius: 20px;
+  padding: 14px 12px 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.kpi-icon { opacity: 0.7; }
+.kpi-val { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1; }
+.kpi-lbl { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.1em; color: #aaa; text-align: center; }
+.kpi-sub { font-family: 'DM Mono', monospace; font-size: 8px; color: #888; cursor: pointer; display: flex; align-items: center; gap: 4px; background: none; border: none; padding: 0; }
+
+/* ── STREAK PILL ── */
+.streak-pill {
+  background: #1a2a3a;
+  border-radius: 20px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.streak-left { display: flex; flex-direction: column; gap: 2px; }
+.streak-num-row { display: flex; align-items: baseline; gap: 6px; }
+.streak-num { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1; }
+.streak-unit { font-family: 'DM Mono', monospace; font-size: 10px; color: #ccc; letter-spacing: 0.08em; }
+.streak-best { font-family: 'DM Mono', monospace; font-size: 9px; color: #aaa; letter-spacing: 0.06em; margin-top: 2px; }
+.why-btn {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+  color: #ccc; background: none;
+  border: 1px solid rgba(232,238,245,0.2); border-radius: 100px;
+  padding: 7px 14px; cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s; flex-shrink: 0;
+}
+.why-btn:hover { border-color: #888; color: #fff; }
+.week-row { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-top: 14px; }
+.wday { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wday-l { font-family: 'DM Mono', monospace; font-size: 9px; color: #aaa; }
+.wday-b { width: 100%; aspect-ratio: 1; border-radius: 5px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 9px; color: transparent; }
+.wday-b.done { background: rgba(255,255,255,0.3); }
+.wday-b.today { background: #fff; color: #0a0a0a; font-family: 'DM Mono', monospace; font-weight: 700; font-size: 9px; }
+
+/* ── SECTION LABEL ── */
+.sec-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: rgba(26,42,58,0.45); margin-bottom: 10px; margin-bottom: 10px; }
+
+/* ── TODAY HERO ── */
+.today-hero {
+  border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+  cursor: pointer;
+}
+.today-top {
+  padding: 18px 18px 16px;
+  background: #1a2a3a;
+  position: relative;
+}
+.today-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.today-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.today-eyebrow { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: #aaa; }
+.today-live { display: flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; }
+.live-dot { width: 5px; height: 5px; border-radius: 50%; animation: livepulse 2s ease-in-out infinite; }
+@keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+.today-concept { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #fff; line-height: 1.15; margin-bottom: 14px; }
+.today-footer { display: flex; align-items: center; justify-content: space-between; }
+.today-cat { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; }
+.begin-btn {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; font-weight: 500;
+  padding: 9px 18px; border-radius: 6px; border: none; cursor: pointer;
+  filter: brightness(0.92);
+}
+
+/* moment strip */
+.moment-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #000; }
+.mc { padding: 11px 12px; background: #152030; }
+.mc-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+.mc-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.mc-desc { font-size: 11px; color: #888; }
+.mc.active .mc-desc { color: #ccc; }
+.mc-name.pending { color: #aaa; }
+
+/* ── ON DECK STRIP ── */
+.ondeck-strip {
+  background: #1a2a3a; border-radius: 12px;
+  padding: 14px 16px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.ondeck-icon { flex-shrink: 0; opacity: 0.5; }
+.ondeck-body { flex: 1; min-width: 0; }
+.ondeck-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: #aaa; margin-bottom: 3px; }
+.ondeck-concept { font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ondeck-cat { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; margin-top: 2px; }
+
+/* ── LIBRARY ── */
+.filter-wrap { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; margin-bottom: 14px; }
+.filter-wrap::-webkit-scrollbar { display: none; }
+.fpill { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(26,42,58,0.15); color: rgba(26,42,58,0.5); background: transparent; white-space: nowrap; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+.fpill.active { background: #1a2a3a; color: #e8eef5; border-color: #1a2a3a; }
+
+.entry-list { display: flex; flex-direction: column; }
+.entry-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); cursor: pointer; }
+.entry-row.locked { opacity: 0.3; cursor: default; }
+.e-bar { width: 2px; height: 28px; border-radius: 1px; flex-shrink: 0; }
+.e-body { flex: 1; min-width: 0; }
+.e-concept { font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+.e-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.55); }
+.e-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.e-score { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 600; }
+.e-cta { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
+.e-star { font-size: 13px; cursor: pointer; background: none; border: none; padding: 2px; color: rgba(255,255,255,0.3); transition: color 0.15s; line-height: 1; }
+.e-star.on { color: #fff; }
+
+/* ── GOAL MODAL ── */
+.overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); align-items: flex-end; justify-content: center; }
+.overlay.open { display: flex; }
+.goal-sheet {
+  background: #f5f2ec; width: 100%; max-width: 390px;
+  border-radius: 20px 20px 0 0; padding: 20px 24px 48px;
+  position: relative; animation: up 0.25s cubic-bezier(.22,1,.36,1);
+  max-height: 90vh; overflow-y: auto;
+}
+.goal-sheet::-webkit-scrollbar { display: none; }
+@keyframes up { from { transform: translateY(32px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.sheet-handle { width: 36px; height: 4px; border-radius: 2px; background: rgba(26,20,10,0.15); margin: 0 auto 24px; }
+.sheet-heading { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: #1a140a; margin-bottom: 6px; }
+.sheet-sub { font-size: 13px; color: rgba(26,20,10,0.55); line-height: 1.6; font-weight: 300; margin-bottom: 24px; }
+
+/* Steps */
+.smart-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.smart-step { border: 1px solid rgba(26,20,10,0.09); border-radius: 10px; background: #faf8f4; overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
+.smart-step.open { border-color: rgba(26,20,10,0.18); box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+.step-header { padding: 14px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+.step-num { width: 22px; height: 22px; border-radius: 50%; background: #e4e0d6; border: 1px solid rgba(26,20,10,0.09); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 500; color: rgba(26,20,10,0.4); flex-shrink: 0; transition: all 0.2s; }
+.smart-step.done .step-num, .smart-step.open .step-num { background: #1a140a; border-color: #1a140a; color: #faf8f4; }
+.step-lbl { font-size: 13px; font-weight: 500; color: rgba(26,20,10,0.4); flex: 1; transition: color 0.2s; }
+.smart-step.open .step-lbl, .smart-step.done .step-lbl { color: #1a140a; }
+.step-val { font-size: 10px; color: rgba(26,20,10,0.4); max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.smart-step.done .step-val { color: rgba(26,20,10,0.6); }
+.step-body { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s cubic-bezier(.22,1,.36,1), opacity 0.25s ease; }
+.smart-step.open .step-body { max-height: 280px; opacity: 1; }
+.step-body-inner { padding: 0 16px 16px; }
+.step-hint { font-size: 11px; color: rgba(26,20,10,0.4); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
+.seed-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.seed-chip { padding: 5px 11px; border-radius: 20px; border: 1px solid rgba(26,20,10,0.18); font-size: 11px; color: rgba(26,20,10,0.6); cursor: pointer; transition: all 0.15s; user-select: none; }
+.seed-chip.selected { background: #1a140a; border-color: #1a140a; color: #faf8f4; }
+.step-input { width: 100%; background: #e4e0d6; border: 1px solid rgba(26,20,10,0.09); border-radius: 6px; padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #1a140a; outline: none; transition: border-color 0.2s; }
+.step-input:focus { border-color: rgba(26,20,10,0.3); }
+.step-input::placeholder { color: rgba(26,20,10,0.25); }
+.step-confirm { margin-top: 10px; padding: 9px 16px; background: #1a140a; color: #faf8f4; border: none; border-radius: 6px; font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; cursor: pointer; width: 100%; }
+
+.goal-preview { padding: 14px 16px; background: #faf8f4; border: 1px solid rgba(26,20,10,0.09); border-radius: 10px; margin-bottom: 16px; display: none; }
+.goal-preview.show { display: block; }
+.goal-preview-lbl { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.2em; color: rgba(26,20,10,0.35); margin-bottom: 6px; }
+.goal-preview-text { font-size: 14px; color: #1a140a; line-height: 1.5; }
+.goal-commit { width: 100%; padding: 15px; background: #1a140a; color: #faf8f4; border: none; border-radius: 10px; font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; cursor: pointer; opacity: 0.3; transition: opacity 0.2s, transform 0.15s; }
+.goal-commit.ready { opacity: 1; }
+.sheet-close { position: absolute; top: 20px; right: 24px; font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(26,20,10,0.4); cursor: pointer; background: none; border: none; letter-spacing: 0.1em; }
+
+.view { display: none; }
+.view.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-top">
+    <span class="wordmark">ONE PERCENT</span>
+    <span class="badge">BETA</span>
+    <div class="avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+  </div>
+  <div class="nav-pills">
+    <button class="npill">ABOUT</button>
+    <button class="npill">CHANGELOG</button>
+    <button class="npill bug">BUG</button>
+    <button class="npill">FEEDBACK</button>
+    <button class="npill">INFO</button>
+    <button class="npill">SIGN OUT</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- GOAL BANNER -->
+  <div class="goal-banner" onclick="openGoal()">
+    <div class="goal-banner-lbl">YOUR COMMITMENT</div>
+    <div class="goal-banner-text empty" id="banner-text">Tap to set your goal →</div>
+  </div>
+
+  <!-- KPI PILLS -->
+  <div class="kpi-pills">
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="kpi-val">7</div>
+      <div class="kpi-lbl">COMPLETED</div>
+    </div>
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <div class="kpi-val">2.6</div>
+      <div class="kpi-lbl">AVG SCORE</div>
+    </div>
+    <div class="kpi-pill">
+      <div class="kpi-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+      </div>
+      <div class="kpi-val">#2</div>
+      <div class="kpi-lbl">RANK</div>
+      <button class="kpi-sub" onclick="alert('Leaderboard')">
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        LEADERBOARD
+      </button>
+    </div>
+  </div>
+
+  <!-- STREAK PILL -->
+  <div class="streak-pill">
+    <div style="flex:1;">
+      <div class="streak-num-row">
+        <div class="streak-num">1</div>
+        <div class="streak-unit">DAY STREAK</div>
+      </div>
+      <div class="streak-best">BEST · 6 DAYS</div>
+      <div class="week-row">
+        <div class="wday"><span class="wday-l">M</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">T</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">W</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">T</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">F</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">S</span><div class="wday-b"></div></div>
+        <div class="wday"><span class="wday-l">S</span><div class="wday-b today">✓</div></div>
+      </div>
+    </div>
+    <button class="why-btn" onclick="openGoal()">WHY I'M<br>HERE</button>
+  </div>
+
+  <!-- TODAY -->
+  <div class="sec-lbl">TODAY</div>
+  <div class="today-hero" onclick="alert('Open entry')">
+    <div class="today-top">
+      <div class="today-accent" style="background:#47FFE8;"></div>
+      <div class="today-meta">
+        <span class="today-eyebrow">TODAY — AI.2.1</span>
+        <span class="today-live" style="color:#47FFE8;">
+          <span class="live-dot" style="background:#47FFE8;"></span>UNLOCKED
+        </span>
+      </div>
+      <div class="today-concept">Chain-of-Thought<br>Prompting</div>
+      <div class="today-footer">
+        <span class="today-cat" style="color:#47FFE8;">ARTIFICIAL INTELLIGENCE</span>
+        <button class="begin-btn" style="background:#47FFE8;color:#111;" onclick="event.stopPropagation()">BEGIN →</button>
+      </div>
+    </div>
+    <div class="moment-strip">
+      <div class="mc active">
+        <div class="mc-name" style="color:#47FFE8;"><span class="mc-dot" style="background:#47FFE8;animation:livepulse 2s ease-in-out infinite;"></span>MORNING</div>
+        <div class="mc-desc active">Read the brief</div>
+      </div>
+      <div class="mc">
+        <div class="mc-name pending">MIDDAY</div>
+        <div class="mc-desc">The reframe</div>
+      </div>
+      <div class="mc">
+        <div class="mc-name pending">QUIZ</div>
+        <div class="mc-desc">Test yourself</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ON DECK -->
+  <div class="sec-lbl">ON DECK</div>
+  <div class="ondeck-strip">
+    <div class="ondeck-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+    </div>
+    <div class="ondeck-body">
+      <div class="ondeck-lbl">UP NEXT · UNLOCKS TOMORROW</div>
+      <div class="ondeck-concept">Talk/Listen Ratio</div>
+      <div class="ondeck-cat" style="color:#E8FF47;">SC.1.2 · SALES CRAFT</div>
+    </div>
+  </div>
+
+  <!-- LIBRARY -->
+  <div class="sec-lbl">YOUR LIBRARY</div>
+  <div class="filter-wrap">
+    <button class="fpill active" onclick="switchTab('all',this)">ALL</button>
+    <button class="fpill" onclick="switchTab('unlocked',this)">UNLOCKED</button>
+    <button class="fpill" onclick="switchTab('completed',this)">COMPLETED</button>
+    <button class="fpill" onclick="switchTab('saved',this)">SAVED</button>
+    <button class="fpill" onclick="switchTab('sc',this)">SALES CRAFT</button>
+    <button class="fpill" onclick="switchTab('ai',this)">AI</button>
+    <button class="fpill" onclick="switchTab('vl',this)">VOCAB</button>
+    <button class="fpill" onclick="switchTab('mm',this)">MENTAL MODELS</button>
+    <button class="fpill" onclick="switchTab('ph',this)">PHILOSOPHY</button>
+    <button class="fpill" onclick="switchTab('nc',this)">NEUROSCIENCE</button>
+    <button class="fpill" onclick="switchTab('cm',this)">COMMUNICATION</button>
+  </div>
+  <div class="entry-list" id="entry-list"></div>
+
+</div>
+
+<!-- GOAL SHEET -->
+<div class="overlay" id="goalOverlay" onclick="closeGoalOutside(event)">
+  <div class="goal-sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="closeGoal()">CLOSE</button>
+    <div class="sheet-heading">Set your intention.</div>
+    <div class="sheet-sub">A good goal is specific, measurable, and slightly uncomfortable.</div>
+
+    <div class="smart-steps" id="smart-steps">
+
+      <div class="smart-step open" id="step-what">
+        <div class="step-header" onclick="toggleStep('step-what')">
+          <div class="step-num">1</div>
+          <div class="step-lbl">What do you want to change?</div>
+          <div class="step-val" id="val-what">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">Pick one or write your own.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="how I think under pressure">how I think</div>
+            <div class="seed-chip" data-val="how I sell and negotiate">how I sell</div>
+            <div class="seed-chip" data-val="how I use AI in my work">how I use AI</div>
+            <div class="seed-chip" data-val="how I communicate ideas">how I communicate</div>
+            <div class="seed-chip" data-val="how I make decisions">how I decide</div>
+          </div>
+          <input class="step-input" id="input-what" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-what','input-what','val-what','step-when')">CONFIRM →</button>
+        </div></div>
+      </div>
+
+      <div class="smart-step" id="step-when">
+        <div class="step-header" onclick="toggleStep('step-when')">
+          <div class="step-num">2</div>
+          <div class="step-lbl">By when?</div>
+          <div class="step-val" id="val-when">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">Stretch goals need real deadlines.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="end of this beta">end of beta</div>
+            <div class="seed-chip" data-val="end of Q2">end of Q2</div>
+            <div class="seed-chip" data-val="my next performance review">next review</div>
+            <div class="seed-chip" data-val="end of this year">end of year</div>
+          </div>
+          <input class="step-input" id="input-when" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-when','input-when','val-when','step-signal')">CONFIRM →</button>
+        </div></div>
+      </div>
+
+      <div class="smart-step" id="step-signal">
+        <div class="step-header" onclick="toggleStep('step-signal')">
+          <div class="step-num">3</div>
+          <div class="step-lbl">How will you know it worked?</div>
+          <div class="step-val" id="val-signal">—</div>
+        </div>
+        <div class="step-body"><div class="step-body-inner">
+          <div class="step-hint">If you can't measure it, you won't know.</div>
+          <div class="seed-chips">
+            <div class="seed-chip" data-val="I win a deal I would have lost">win a deal I'd have lost</div>
+            <div class="seed-chip" data-val="I catch my own bad thinking in the moment">catch bad thinking live</div>
+            <div class="seed-chip" data-val="I get unsolicited feedback that I've changed">others notice the change</div>
+            <div class="seed-chip" data-val="AI is part of my daily workflow">AI in daily workflow</div>
+          </div>
+          <input class="step-input" id="input-signal" type="text" placeholder="Or write it here…">
+          <button class="step-confirm" onclick="confirmStep('step-signal','input-signal','val-signal',null)">CONFIRM →</button>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="goal-preview" id="goal-preview">
+      <div class="goal-preview-lbl">YOUR COMMITMENT</div>
+      <div class="goal-preview-text" id="goal-preview-text">—</div>
+    </div>
+    <button class="goal-commit" id="goal-commit" onclick="commitGoal()">I COMMIT TO THIS →</button>
+  </div>
+</div>
+
+<script>
+const CATS = {'AI':'#47FFE8','Sales Craft':'#E8FF47','Vocab & Language':'#FF8C47','Mental Models':'#C847FF','Philosophy':'#FF4778','Neuroscience & Cognition':'#47C8FF','Communication':'#FF8C00'}
+const CAT_MAP = {sc:'Sales Craft',ai:'AI',vl:'Vocab & Language',mm:'Mental Models',ph:'Philosophy',nc:'Neuroscience & Cognition',cm:'Communication'}
+const ENTRIES = [
+  {n:'001',id:'AI.1.1', concept:'Context Window',             cat:'AI',                       done:true, score:3,saved:true},
+  {n:'002',id:'VL.1',   concept:'Framing Effect',             cat:'Vocab & Language',         done:true, score:3,saved:true},
+  {n:'003',id:'SC.1.1', concept:'Discovery Questions',        cat:'Sales Craft',              done:true, score:3,saved:true},
+  {n:'004',id:'MM.1',   concept:'Inversion',                  cat:'Mental Models',            done:true, score:3,saved:true},
+  {n:'005',id:'PH.1',   concept:'Premeditatio Malorum',       cat:'Philosophy',               done:true, score:2,saved:false},
+  {n:'006',id:'AI.1.2', concept:'Prompt Sensitivity',         cat:'AI',                       done:true, score:2,saved:false},
+  {n:'007',id:'SC.1.2', concept:'Talk/Listen Ratio',          cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:true},
+  {n:'008',id:'AI.2.1', concept:'Chain-of-Thought Prompting', cat:'AI',                       done:false,score:null,saved:false,unlocked:true},
+  {n:'009',id:'MM.3',   concept:'Survivorship Bias',          cat:'Mental Models',            done:true, score:3,saved:false},
+  {n:'010',id:'CM.2',   concept:'Feedback That Lands',        cat:'Communication',            done:false,score:null,saved:false,unlocked:true},
+  {n:'011',id:'PH.3',   concept:'Amor Fati',                  cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'012',id:'CM.3',   concept:'The Ladder of Inference',    cat:'Communication',            done:false,score:null,saved:false,unlocked:false},
+  {n:'013',id:'NC.3',   concept:'Dopamine & Motivation',      cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'014',id:'VL.2',   concept:'Euphemism Treadmill',        cat:'Vocab & Language',         done:false,score:null,saved:false,unlocked:false},
+  {n:'015',id:'SC.2.1', concept:'Anchoring in Negotiation',   cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'016',id:'MM.2',   concept:'Second-Order Thinking',      cat:'Mental Models',            done:false,score:null,saved:false,unlocked:false},
+  {n:'017',id:'AI.2.2', concept:'Hallucination/Confabulation',cat:'AI',                       done:false,score:null,saved:false,unlocked:false},
+  {n:'018',id:'PH.2',   concept:'Dichotomy of Control',       cat:'Philosophy',               done:false,score:null,saved:false,unlocked:false},
+  {n:'019',id:'NC.1',   concept:'Neuroplasticity',            cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+  {n:'020',id:'SC.2.2', concept:'Tactical Empathy',           cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'021',id:'CM.1',   concept:'Active Listening',           cat:'Communication',            done:false,score:null,saved:false,unlocked:false},
+  {n:'022',id:'SC.3.1', concept:'Multi-Threading',            cat:'Sales Craft',              done:false,score:null,saved:false,unlocked:false},
+  {n:'023',id:'AI.3.1', concept:'RAG',                        cat:'AI',                       done:false,score:null,saved:false,unlocked:false},
+  {n:'024',id:'VL.3',   concept:'Nominalization',             cat:'Vocab & Language',         done:false,score:null,saved:false,unlocked:false},
+  {n:'025',id:'NC.2',   concept:'Meditation and the Brain',   cat:'Neuroscience & Cognition', done:false,score:null,saved:false,unlocked:false},
+]
+ENTRIES.forEach(e => { if(e.done) e.unlocked = true })
+let bookmarks = {}; ENTRIES.forEach(e => { if(e.saved) bookmarks[e.n] = true })
+let activeTab = 'all'
+
+function render() {
+  const catF = CAT_MAP[activeTab]
+  const visible = ENTRIES.filter(e => {
+    if(activeTab==='all') return true
+    if(activeTab==='unlocked') return e.unlocked
+    if(activeTab==='completed') return e.done
+    if(activeTab==='saved') return bookmarks[e.n]
+    if(catF) return e.cat === catF
+    return true
+  })
+  document.getElementById('entry-list').innerHTML = visible.map(e => {
+    const acc = CATS[e.cat]||'#aaa', locked=!e.unlocked, starred=bookmarks[e.n]
+    return `<div class="entry-row${locked?' locked':''}">
+      <div class="e-bar" style="background:${locked?'rgba(0,0,0,0.1)':acc};"></div>
+      <div class="e-body">
+        <div class="e-concept">${e.concept}</div>
+        <div class="e-meta">${e.id} · ${e.cat}</div>
+      </div>
+      <div class="e-right">
+        ${e.done?`<span class="e-score" style="color:${acc};">${e.score}/3</span>`:''}
+        ${!locked&&!e.done?`<span class="e-cta">START →</span>`:''}
+        ${e.done?`<span class="e-cta">REVIEW →</span>`:''}
+        ${locked?`<span class="e-cta" style="opacity:0.3;">LOCKED</span>`:''}
+        ${!locked?`<button class="e-star${starred?' on':''}" onclick="toggleStar(event,'${e.n}')">${starred?'★':'☆'}</button>`:''}
+      </div>
+    </div>`
+  }).join('')
+}
+
+function switchTab(id,el) { document.querySelectorAll('.fpill').forEach(t=>t.classList.remove('active')); el.classList.add('active'); activeTab=id; render() }
+function toggleStar(ev,n) { ev.stopPropagation(); bookmarks[n]=!bookmarks[n]; render() }
+
+// Goal sheet
+function openGoal()  { document.getElementById('goalOverlay').classList.add('open') }
+function closeGoal() { document.getElementById('goalOverlay').classList.remove('open') }
+function closeGoalOutside(e) { if(e.target===document.getElementById('goalOverlay')) closeGoal() }
+
+const STEPS = ['step-what','step-when','step-signal']
+const goalData = {what:'',when:'',signal:''}
+
+function toggleStep(id) {
+  const idx = STEPS.indexOf(id)
+  for(let i=0;i<idx;i++) if(!document.getElementById(STEPS[i]).classList.contains('done')) return
+  const el = document.getElementById(id), wasOpen = el.classList.contains('open')
+  STEPS.forEach(s => { const e=document.getElementById(s); if(!e.classList.contains('done')) e.classList.remove('open') })
+  if(!wasOpen) el.classList.add('open')
+}
+
+function confirmStep(stepId,inputId,valId,nextId) {
+  const input = document.getElementById(inputId)
+  const val = input.value.trim()
+  if(!val) { input.style.borderColor='rgba(184,8,64,.4)'; input.focus(); setTimeout(()=>input.style.borderColor='',1200); return }
+  if(stepId==='step-what') goalData.what=val
+  if(stepId==='step-when') goalData.when=val
+  if(stepId==='step-signal') goalData.signal=val
+  const short = val.length>16 ? val.slice(0,14)+'…' : val
+  document.getElementById(valId).textContent = short
+  const step = document.getElementById(stepId)
+  step.classList.remove('open'); step.classList.add('done')
+  if(nextId) { setTimeout(()=>{ const n=document.getElementById(nextId); n.classList.add('open'); n.scrollIntoView({behavior:'smooth',block:'center'}) },200) }
+  else buildPreview()
+}
+
+document.querySelectorAll('.seed-chips').forEach(group => {
+  group.querySelectorAll('.seed-chip').forEach(chip => {
+    chip.addEventListener('click',()=>{
+      group.querySelectorAll('.seed-chip').forEach(c=>c.classList.remove('selected'))
+      chip.classList.add('selected')
+      group.closest('.step-body-inner').querySelector('.step-input').value = chip.dataset.val
+    })
+  })
+})
+
+function buildPreview() {
+  const text = `I will change ${goalData.what} by ${goalData.when}. I'll know it worked when ${goalData.signal}.`
+  document.getElementById('goal-preview-text').textContent = text
+  document.getElementById('goal-preview').classList.add('show')
+  document.getElementById('goal-commit').classList.add('ready')
+  setTimeout(()=>document.getElementById('goal-preview').scrollIntoView({behavior:'smooth',block:'center'}),100)
+}
+
+function commitGoal() {
+  if(!goalData.what||!goalData.when||!goalData.signal) return
+  const text = `I will change ${goalData.what} by ${goalData.when}. I'll know it worked when ${goalData.signal}.`
+  const banner = document.getElementById('banner-text')
+  banner.textContent = '"' + text + '"'
+  banner.classList.remove('empty')
+  closeGoal()
+}
+
+render()
+</script>
+</body>
+</html>
