@@ -1,0 +1,88 @@
+{
+  "editionId": "AI.3.2",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "AI Agents",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "You've been using AI as a very fast assistant. Agents are something different \u2014 they're AI that takes actions.",
+    "explanation_paragraphs": [
+      "Picture a colleague you can assign a task to \u2014 not a question, a task. You say 'compile a competitive analysis on these three vendors, pull their recent news, check our CRM for any prior contact, and draft a one-pager for the Thursday meeting.' They figure out the steps, execute them, and come back with the output. That's roughly what an AI agent does. The key difference from every AI tool you've used until now: it doesn't wait for you to prompt each step.",
+      "The technical distinction matters. A standard AI interaction is a single turn: you send a message, the model responds, done. An agent is different in two ways. First, it can use tools \u2014 it can search the web, run code, query a database, call an API, read a file. Second, it can chain actions: it completes one step, evaluates the result, and decides what to do next. The model is acting, not just answering.",
+      "The reason this is the defining AI story of 2026 is that the capability crossed a practical threshold. For years, agentic behavior was possible but unreliable \u2014 models would lose track of goals, hallucinate tool outputs, or loop forever. Recent models are materially better at planning, tool use, and staying on task across multiple steps. That reliability gap closing is what moved agents from experiment to deployment.",
+      "The practical question for anyone in a knowledge-work role right now: which of your recurring multi-step tasks could an agent handle? Research workflows, report generation, lead qualification, data synthesis, contract review. These aren't distant possibilities \u2014 they're active deployments at companies right now. Understanding what agents actually are and how they work is now a baseline literacy requirement."
+    ],
+    "why_today": "Agentic AI is the central theme of enterprise AI adoption in 2026. Major AI labs \u2014 Anthropic, OpenAI, Google DeepMind \u2014 all shipped agent-focused frameworks in late 2025 and early 2026. IBM defines AI agents as 'systems that autonomously perform tasks by designing workflows with available tools.' By mid-2026, analysts estimate 40% of enterprise workflows are being evaluated for agentic automation.",
+    "morning_challenge": "Pick one recurring task in your work that requires multiple steps across multiple sources \u2014 research, summarizing, compiling, comparing.\n\nWrite out the steps as if you were handing it to a colleague:\n1. First do X\n2. Then check Y\n3. Then produce Z\n\nThat's the agent brief. Today, notice which of your tasks are actually multi-step workflows you've been doing manually because no single tool could handle them. Those are agent candidates."
+  },
+  "midday": {
+    "reframe": "An AI agent isn't smarter than a language model \u2014 it's the same model, but it can act between thinking. That's the entire shift. And it changes what's automatable.",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 ANTHROPIC / OPENAI / GOOGLE DEEPMIND, 2025\u20132026",
+    "itw_paragraphs": [
+      "In late 2025 and into 2026, all three major AI labs simultaneously shifted their public positioning from 'AI assistant' to 'AI agent.' Anthropic released Claude's tool-use and computer-use capabilities; OpenAI launched Operator, an agent that can navigate websites and complete multi-step tasks autonomously; Google DeepMind expanded Gemini's agentic capabilities through Workspace integrations. This wasn't coordinated \u2014 it reflected the same underlying technical reality: models had become reliable enough to act, not just answer.",
+      "The enterprise adoption data is concrete. Salesforce, ServiceNow, and Microsoft all embedded agentic AI into their core platforms in 2025. Salesforce's Agentforce, announced at Dreamforce 2025, allows sales teams to deploy autonomous agents that handle lead qualification, follow-up sequencing, and meeting prep \u2014 tasks previously requiring human coordination across multiple tools. ServiceNow's AI agents handle IT ticket routing and resolution without human intervention.",
+      "The pattern emerging from early deployments: agents are most valuable in workflows that are high-volume, multi-step, and clearly defined \u2014 where the goal is unambiguous even if the path requires judgment. Lead qualification. Research synthesis. Contract review. Status reporting. These aren't edge cases. They're core to how knowledge-work organizations operate, and they're the first to see measurable productivity gains from agentic deployment."
+    ],
+    "quote": "AI agents are systems that autonomously perform tasks by designing workflows with available tools. Agency is about goal-directed work with tools, not just natural language.",
+    "attribution": "IBM Institute for Business Value, 2026",
+    "midday_nudge": "If you drafted a multi-step task brief this morning, look at it again. Would every step require human judgment \u2014 or just the first and last? The steps in between are often the agent's domain. That's where the time goes."
+  },
+  "quiz": [
+    {
+      "question": "What's the core technical distinction between a standard AI chat interaction and an AI agent?",
+      "options": [
+        "Agents use larger, more powerful models \u2014 they're the same concept but with more compute",
+        "Agents can use external tools and chain actions across multiple steps toward a goal \u2014 they act, not just answer",
+        "Agents are AI systems trained specifically on task completion rather than conversation",
+        "Agents work without any human input \u2014 they operate fully autonomously from the start"
+      ],
+      "correct": 1,
+      "explanation": "The defining properties of an agent are tool use and multi-step chaining. A standard model interaction is a single turn: prompt in, response out. An agent can call external tools (search, code execution, API calls), evaluate the results, and decide what to do next \u2014 repeating this loop until the goal is reached. The underlying model may be identical; what changes is the architecture around it. Full autonomy is a spectrum, not a binary \u2014 most deployed agents operate with varying degrees of human oversight."
+    },
+    {
+      "question": "A team is evaluating which internal workflows to try automating with an AI agent. Which candidate is best suited for agentic deployment based on how agents actually work?",
+      "options": [
+        "Approving exceptions to company policy \u2014 requires contextual judgment that varies case by case",
+        "Weekly competitive intelligence reports \u2014 pulling from news sources, CRM data, and analyst feeds into a structured summary",
+        "Managing difficult client relationships \u2014 requires empathy, history, and real-time judgment",
+        "Setting strategic direction for a product \u2014 requires synthesis of ambiguous inputs and organizational buy-in"
+      ],
+      "correct": 1,
+      "explanation": "Agents work best when the goal is clear and the path involves gathering, synthesizing, and structuring information from multiple sources \u2014 even when the specific steps require judgment. Weekly competitive intelligence fits that profile: the output is defined, the sources are consistent, and the steps (search, extract, compare, format) map cleanly onto what agents do well. Policy exceptions, client relationships, and strategic decisions all require forms of contextual judgment and accountability that current agents handle poorly."
+    },
+    {
+      "question": "You hear a colleague describe AI agents as 'just chatbots that run automatically.' What's the most precise correction?",
+      "options": [
+        "They're right \u2014 agents are fundamentally the same as chatbots, just with scheduled triggers",
+        "Agents are distinct because they can use tools and maintain goal-directed behavior across multiple steps \u2014 they operate in the world, not just in a conversation",
+        "Chatbots are rule-based; agents use machine learning \u2014 that's the key difference",
+        "Agents are more advanced chatbots that can handle longer conversations without losing context"
+      ],
+      "correct": 1,
+      "explanation": "The chatbot framing misses the critical property: tool use and goal-directed multi-step action. A chatbot responds. An agent acts \u2014 it can search the web, read files, run code, call APIs, and make sequential decisions based on what it finds. The difference isn't processing power or conversation length \u2014 it's that agents can interface with external systems and take real-world actions. That's what makes them a fundamentally different category of tool."
+    }
+  ],
+  "closing": "The shift from AI-as-assistant to AI-as-agent changes the question from 'what can I ask it?' to 'what can I assign it?' That's a meaningful reframe for how you think about your own workflows.",
+  "sources": [
+    {
+      "label": "IBM Institute for Business Value \u2014 Agentic AI definition and enterprise deployment patterns, 2026",
+      "detail": "IBM's operational definition of AI agents: 'systems that autonomously perform tasks by designing workflows with available tools.' IbM documented early enterprise deployment patterns across financial services, IT operations, and sales.",
+      "url": "https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/ai-agents"
+    },
+    {
+      "label": "Salesforce \u2014 Agentforce announcement, Dreamforce 2025",
+      "detail": "Salesforce's Agentforce platform, announced September 2025, embeds autonomous sales and service agents into CRM workflows. Covers lead qualification, follow-up sequencing, and meeting prep automation.",
+      "url": "https://www.salesforce.com/agentforce/"
+    },
+    {
+      "label": "Anthropic \u2014 Claude tool use and computer use documentation, 2025-2026",
+      "detail": "Anthropic's documentation on Claude's agentic capabilities: tool use (web search, code execution, API calls) and computer use (browser and desktop navigation). Active development through 2026.",
+      "url": "https://docs.anthropic.com/en/docs/agents"
+    }
+  ],
+  "ai_prompt": "Help me think through which of my recurring work tasks could realistically be handled by an AI agent. Ask me to describe two or three tasks I do repeatedly that involve multiple steps and pulling from different sources. Then help me assess which ones are actually good agent candidates and what a deployment might look like. Here's what I'm working with: [describe your role and tasks]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-04"
+}

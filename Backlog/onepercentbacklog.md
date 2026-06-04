@@ -150,6 +150,7 @@ Target library: 365 entries (~40 full cycles)
 | Dunning-Kruger Effect | Incompetent people overestimate their competence; experts underestimate theirs. Active in professional development discourse. | candidate |
 | Availability Heuristic | We judge probability by how easily examples come to mind — recent or vivid events dominate. | candidate |
 | Steel-Manning | Constructing the strongest possible version of an opposing argument before engaging with it. Counter to strawmanning. | candidate |
+| Red Team Exercise | A structured group exercise where one person (or subgroup) is explicitly assigned to argue against the prevailing view — not devil's advocate theater, but a formal role with teeth. Origins in military planning, now standard in intelligence analysis and high-stakes decision-making. Strong sourcing (CIA red team doctrine, Kahneman on pre-mortems). Could sit in MM or CM. | candidate |
 | The Planning Fallacy | We systematically underestimate how long things take. Kahneman, active in project management discourse. | candidate |
 | Chesterton's Fence | Don't remove a fence until you understand why it was built. Powerful constraint on "move fast" thinking. | candidate |
 

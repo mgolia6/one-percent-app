@@ -1,0 +1,88 @@
+{
+  "editionId": "MM.4",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "Confirmation Bias",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "You're not gathering information. You're building a case for what you already believe. So is everyone else in the meeting.",
+    "explanation_paragraphs": [
+      "It's Q3 pipeline review. You're convinced the Meridian deal is going to close \u2014 the champion is responsive, the demo went well, and they went quiet after procurement got involved, which you've decided means they're just running internal process. Your manager asks if you've contacted the CFO directly. You say the champion said not to. You feel good about it. The deal slips. Later, someone asks what you missed. The answer: you weren't evaluating evidence. You were filtering it.",
+      "Confirmation bias is the tendency to seek out, interpret, and remember information in ways that confirm what you already believe. It's documented across more research contexts than almost any other cognitive bias \u2014 Raymond Nickerson's 1998 landmark review in the Review of General Psychology called it 'a ubiquitous phenomenon in many guises' and catalogued its appearance in scientific reasoning, medical diagnosis, legal judgment, and everyday decision-making.",
+      "The bias operates in three stages. At the input stage, we notice and search for information that aligns with our existing view \u2014 we literally look for confirming evidence more actively than disconfirming evidence. At the interpretation stage, we read ambiguous information as supportive of our position \u2014 the champion going quiet reads as 'process,' not 'lost access.' At the memory stage, we recall confirming evidence more readily than the stuff that didn't fit.",
+      "What makes this particularly dangerous in professional contexts is that it's invisible from the inside. People experiencing confirmation bias don't feel like they're ignoring evidence \u2014 they feel like they're reading the situation accurately. The bias doesn't announce itself. It just quietly removes the information that would have changed your conclusion."
+    ],
+    "why_today": "Confirmation bias remains one of the most replicated findings in cognitive psychology. Nickerson (1998) in the Review of General Psychology is the canonical literature review \u2014 46 pages cataloguing the evidence across dozens of experimental and naturalistic contexts. Recent work by Guo & Shing (2024) in the European Psychologist identified shared neural substrates between confirmation bias and memory, suggesting the bias is even more deeply integrated into cognition than Nickerson's behavioral evidence implied.",
+    "morning_challenge": "Pick one active decision you're working through right now \u2014 a deal, a hire, a strategy call, a recommendation.\n\nAsk yourself three questions:\n1. What evidence would change my mind if it were true?\n2. Have I actively looked for that evidence, or only for evidence that supports my current position?\n3. What's the most credible argument against the conclusion I'm leaning toward?\n\nYou're not trying to reverse your position. You're testing whether you've actually been evaluating or just accumulating."
+  },
+  "midday": {
+    "reframe": "The person most confident in their read of a situation is often the most biased in how they built it. Confidence isn't evidence of accuracy. It's often evidence of the depth of the bias.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 NICKERSON, REVIEW OF GENERAL PSYCHOLOGY, 1998",
+    "itw_paragraphs": [
+      "In 1998, psychologist Raymond Nickerson published a 46-page literature review in the Review of General Psychology titled 'Confirmation Bias: A Ubiquitous Phenomenon in Many Guises.' The paper synthesized decades of experimental and observational research across dozens of domains \u2014 scientific research, medical diagnosis, legal reasoning, investment decisions, and everyday inference. Its conclusion was blunt: confirmation bias is not a specialized failure mode or an artifact of low-stakes decisions. It appears consistently, across expertise levels and contexts, in everyone.",
+      "Nickerson identified several distinct mechanisms through which the bias operates. Wason's selection task (1966) \u2014 a classic logic puzzle \u2014 showed that most people, when testing a rule, generate only confirming examples rather than disconfirming ones. In medical diagnosis, studies showed physicians were more likely to order tests that would confirm their initial hypothesis than tests that might disconfirm it. In investment contexts, people held losing positions longer than winning ones partly because selling the loser required acknowledging a wrong prior belief.",
+      "The practical implication Nickerson emphasized: the bias is not reducible by intelligence or expertise. Experts are not less subject to it. In some domains, expertise makes it worse \u2014 the more you know, the more sophisticated your ability to find confirming evidence and rationalize away disconfirming data. The intervention isn't becoming smarter. It's building deliberate processes \u2014 pre-mortems, red teams, explicit search for disconfirming evidence \u2014 that counteract the bias structurally, not cognitively."
+    ],
+    "quote": "Confirmation bias, as the term is typically used in the psychological literature, connotes the seeking or interpreting of evidence in ways that are partial to existing beliefs, expectations, or a hypothesis in hand.",
+    "attribution": "Raymond S. Nickerson, Review of General Psychology, Vol. 2, No. 2, 1998",
+    "midday_nudge": "The pre-mortem is the most practical structural intervention: before finalizing a decision, spend five minutes assuming it fails and asking why. It forces your brain to search for disconfirming evidence, which is the one thing confirmation bias makes you stop doing on its own."
+  },
+  "quiz": [
+    {
+      "question": "A sales rep is certain a deal will close and dismisses a procurement delay as 'just standard process.' Their manager pushes them to contact the CFO directly; the rep declines because 'the champion said to hold off.' The deal slips. Which aspect of confirmation bias is most clearly at work?",
+      "options": [
+        "Availability heuristic \u2014 the rep is overweighting recent positive signals",
+        "Interpretation bias \u2014 ambiguous signals (silence, delay, champion's guidance) are all being read as confirming the rep's existing belief that the deal is on track",
+        "Anchoring \u2014 the rep is anchored to the initial positive impression from the demo",
+        "Overconfidence bias \u2014 the rep is too confident in their own ability to read deal health"
+      ],
+      "correct": 1,
+      "explanation": "Confirmation bias at the interpretation stage is precisely what's happening: the procurement delay (ambiguous \u2014 could mean process or lost access), the champion's guidance (ambiguous \u2014 could be accurate or a cover for a stalled deal), and the silence (ambiguous \u2014 could be internal deliberation or disengagement) are all being read as confirming the rep's prior belief. A neutral reader might interpret the same signals very differently. The rep isn't lying or being careless \u2014 they're genuinely reading the situation, but through a filter they can't see."
+    },
+    {
+      "question": "Nickerson's 1998 review concluded that confirmation bias is stronger in experts than in novices in certain domains. Why?",
+      "options": [
+        "Experts are more committed to their reputations and so resist evidence of error more strongly",
+        "Experts have more sophisticated cognitive tools to find confirming evidence and rationalize away disconfirming data \u2014 their knowledge makes the bias more capable, not less",
+        "Experts are exposed to more information, which gives confirmation bias more material to work with",
+        "Novices are more naturally curious and open, while expertise creates intellectual rigidity"
+      ],
+      "correct": 1,
+      "explanation": "The counterintuitive finding from Nickerson's review: expertise amplifies the bias in some domains because experts have more sophisticated knowledge with which to rationalize away disconfirming evidence. A novice might not know enough to explain away a contradiction \u2014 an expert can generate plausible alternative explanations on demand. This is why structural interventions (pre-mortems, red teams, devil's advocates) matter more as expertise grows, not less. The bias doesn't disappear with competence. It gets better tools."
+    },
+    {
+      "question": "Your team has just agreed on a strategy after a two-hour working session. Everyone feels good about the decision. What's the most useful thing you could do before the meeting ends?",
+      "options": [
+        "Document the decision clearly so there's accountability for execution",
+        "Assign the dissenters to lead the implementation \u2014 they'll find the problems fastest",
+        "Run a brief pre-mortem: spend five minutes assuming the strategy failed and asking why, to surface disconfirming considerations the group may have filtered out",
+        "Nothing \u2014 a strong group consensus is evidence the decision is sound"
+      ],
+      "correct": 2,
+      "explanation": "Group consensus is actually one of the conditions most associated with confirmation bias risk \u2014 when everyone agrees, social dynamics further suppress the articulation of disconfirming information. The pre-mortem directly counteracts this: by explicitly framing the question as 'assume this failed \u2014 why?', it gives participants permission to surface doubts they were suppressing, and it shifts the cognitive task from building a case (confirmation) to diagnosing failure (disconfirmation). Option D is the most dangerous response \u2014 strong consensus should increase suspicion of bias, not reduce it."
+    }
+  ],
+  "closing": "The bias doesn't make you feel biased. It makes you feel like you're the one seeing clearly while everyone else is missing something. That feeling is worth examining.",
+  "sources": [
+    {
+      "label": "Nickerson, R.S. \u2014 Confirmation Bias: A Ubiquitous Phenomenon in Many Guises, Review of General Psychology, Vol. 2, No. 2, 1998, pp. 175\u2013220",
+      "detail": "The canonical literature review on confirmation bias. 46 pages synthesizing experimental evidence across scientific reasoning, medical diagnosis, legal judgment, and everyday inference. Available open access via UCSD.",
+      "url": "https://pages.ucsd.edu/~mckenzie/nickersonConfirmationBias.pdf"
+    },
+    {
+      "label": "Wason, P.C. \u2014 On the failure to eliminate hypotheses in a conceptual task, Quarterly Journal of Experimental Psychology, Vol. 12, No. 3, 1966",
+      "detail": "The foundational Wason selection task \u2014 the original experimental demonstration that people test hypotheses by seeking confirming, not disconfirming, instances.",
+      "url": "https://doi.org/10.1080/17470216008416717"
+    },
+    {
+      "label": "Guo, D. & Shing, Y.L. \u2014 Linking the congruency effect in memory to confirmation bias in decision-making across the lifespan, European Psychologist, 2024",
+      "detail": "2024 paper identifying shared neural substrates (medial prefrontal cortex) between memory congruency effects and confirmation bias in decision-making. Suggests the bias is more deeply integrated into cognitive architecture than behavioral evidence alone implied.",
+      "url": "https://doi.org/10.1027/1016-9040/a000536"
+    }
+  ],
+  "ai_prompt": "Help me pressure-test a decision I'm working through. I want you to actively argue against my current position \u2014 not to change my mind, but to make sure I've actually considered the disconfirming evidence. Ask me what I've decided and why, then push back as rigorously as you can on the weakest parts of my reasoning. Here's where I'm at: [describe the decision]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-04"
+}

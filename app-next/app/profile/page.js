@@ -41,6 +41,11 @@ const ENTRIES = [
   { entry: '023', category: 'AI' },
   { entry: '024', category: 'Vocab & Language' },
   { entry: '025', category: 'Neuroscience & Cognition' },
+  { entry: '026', category: 'Sales Craft' },
+  { entry: '027', category: 'AI' },
+  { entry: '028', category: 'Vocab & Language' },
+  { entry: '029', category: 'Sales Craft' },
+  { entry: '030', category: 'Mental Models' },
 ]
 
 const BADGES = [

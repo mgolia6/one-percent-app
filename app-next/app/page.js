@@ -138,6 +138,11 @@ const ENTRIES = [
   { entry: '023', editionId: 'AI.3.1', concept: 'RAG (Retrieval-Augmented Generation)', category: 'AI' },
   { entry: '024', editionId: 'VL.3', concept: 'Nominalization', category: 'Vocab & Language' },
   { entry: '025', editionId: 'NC.2', concept: 'Meditation and the Brain', category: 'Neuroscience & Cognition' },
+  { entry: '026', editionId: 'SC.3.2', concept: 'Mirroring', category: 'Sales Craft' },
+  { entry: '027', editionId: 'AI.3.2', concept: 'AI Agents', category: 'AI' },
+  { entry: '028', editionId: 'VL.4', concept: 'Loaded Language', category: 'Vocab & Language' },
+  { entry: '029', editionId: 'SC.4.1', concept: 'Labeling', category: 'Sales Craft' },
+  { entry: '030', editionId: 'MM.4', concept: 'Confirmation Bias', category: 'Mental Models' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
