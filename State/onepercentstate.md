@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-04 (v7)
+**Generated:** 2026-06-04 (v8)
 
 ---
 
@@ -40,6 +40,21 @@ Candidates to consider: Red Team Exercise (MM or CM — added to backlog this se
 
 ---
 
+## Beta Expansion — Leads Pending
+8 LinkedIn DMs sent 2026-06-04. Awaiting replies. When confirmed, add to Supabase allowlist (ENH-007).
+| Name | Notes |
+|---|---|
+| John Calamita | Enterprise alum, sales background |
+| Wade Stock | AB Nonprofit team, AI Sales Lead |
+| Ankur Khanna | AB colleague, tech-savvy |
+| Chris Sherman | Enterprise alum, Presidents Club |
+| Reza Saboury | AB Nonprofit team, personal connection |
+| Larissa Rodriguez | Sales enablement professional |
+| Amy Burnette | AB colleague, builder mindset |
+| Michelle Hentz | AB colleague, AI framework builder |
+
+---
+
 ## Protocol Updates This Session
 - **Dead Drop protocol updated:** Search query is now mandatory with every claim. Format:
   > **Claim N:** [claim]
@@ -74,6 +89,7 @@ See Backlog/onepercentproductbacklog.md for full list. High priority:
 - 4-question post-entry quiz revamp — approved, not built
 - ISSUE-002: weekly trigger broken for backdated signups
 - ISSUE-004: re-engagement flow for inactive users
+- ENH-007: email allowlist — needed before new testers onboard
 
 ---
 

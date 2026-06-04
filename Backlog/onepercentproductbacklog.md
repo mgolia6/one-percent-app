@@ -113,4 +113,24 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 
 ---
 
+---
+
+## Beta Expansion — Outreach Leads
+*Contacted via LinkedIn DM — 2026-06-04*
+
+| Name | Connection | Background | Status |
+|---|---|---|---|
+| John Calamita | Enterprise Holdings alumni | BD Manager at Sprout, former AE — sales DNA throughout | DM sent |
+| Wade Stock | AB Nonprofit team (Matthew's direct) | Enterprise AE at Amazon, AI Sales Strategy Lead — sales + AI intersection | DM sent |
+| Ankur Khanna | AB colleague | BD at Walmart Business, ex-Amazon/Apple — tech-savvy, systems thinker | DM sent |
+| Chris Sherman | Enterprise Holdings alumni | Sr. AE at Qualtrics, Challenger Sales, multiple Presidents Club — wired to learn | DM sent |
+| Reza Saboury | AB Nonprofit team | AE at Amazon — told Matthew he saw him running his own company; personal connection | DM sent |
+| Larissa Rodriguez | Enterprise Holdings (overlapping era) | Sales Enablement Manager at Elsevier — thinks professionally about learning + performance | DM sent |
+| Amy Burnette | AB colleague | Sr. Technical BD at Amazon, ex-English academic — builder, self-directed learner | DM sent |
+| Michelle Hentz | AB Bulk Buy overlay | Sr. AI Specialist at Zoom, created C³ Framework™ — builder, AI thought leader | DM sent |
+
+**Next step:** When replies come in, add to Supabase allowlist (ENH-007) and send onboarding access.
+
+---
+
 *Maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
