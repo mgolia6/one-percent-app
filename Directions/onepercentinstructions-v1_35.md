@@ -280,7 +280,13 @@ PDF — on-request only.
 - **Do not commit to GitHub yet**
 
 ### Step 2 — Verify (Dead Drop, one claim at a time)
-- Walk Matthew through each verifiable claim one at a time
+- For each verifiable claim, present BOTH the claim AND a specific search query in this exact format:
+
+  **Claim N:** [The specific claim being verified]
+  **Search:** `[exact search query Matthew should run]`
+  What do you get?
+
+- The search query is mandatory — never ask “what do you get?” without giving Matthew the exact query to run
 - Wait for confirmation before moving to next claim
 - If a claim fails: remove or correct it immediately, note in verify receipt
 - Do not move to Step 3 until all claims are confirmed or corrected

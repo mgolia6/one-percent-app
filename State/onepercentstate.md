@@ -1,100 +1,85 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-01 (v6)
+**Generated:** 2026-06-04 (v7)
 
 ---
 
-## Rotation Position
-- **Total entries:** 25
-- **Last entry generated:** NC.3 (Dopamine & Motivation) — position 013
-- **Next entry due:** SC.3.2 (Sales Craft)
-
-## Category Counts
-| Category | Count |
-|---|---|
-| Sales Craft | 6 |
-| AI | 5 |
-| Vocab & Language | 3 |
-| Mental Models | 3 |
-| Philosophy | 3 |
-| Neuroscience & Cognition | 3 |
-| Communication | 3 |
+## App Status
+- **Live at:** one-percent-app.vercel.app
+- **Beta testers:** DonRobbo, Erin, Brian, Landon, Andrew, Justin
+- **Total entries published:** 030
+- **Last entry:** 030 — Confirmation Bias (MM.4)
 
 ---
 
-## Top Priorities (Before Beta Ends)
-1. **Personalized goal-setting** — promised in all 5 beta check-in emails; must ship before beta ends. Mock v8 is the approved design direction (see Design Prototype Status below).
-2. **Quiz backfill — entries 001–008** — old recall format, testers actively hitting these
-3. **Email consistency audit** — 2 users flagged missing daily reminder emails
-4. **Verify Jahic quote — Entry 017 (SC.3.1 Multi-Threading)** — Dead Drop protocol, still open
+## Content — Last 5 Published
+| # | Edition | Concept | Category | Verified |
+|---|---|---|---|---|
+| 026 | SC.3.2 | Mirroring | Sales Craft | ✓ Matthew 2026-06-04 |
+| 027 | AI.3.2 | AI Agents | AI | ✓ Matthew 2026-06-04 |
+| 028 | VL.4 | Loaded Language | Vocab & Language | ✓ Matthew 2026-06-04 |
+| 029 | SC.4.1 | Labeling | Sales Craft | ✓ Matthew 2026-06-04 |
+| 030 | MM.4 | Confirmation Bias | Mental Models | ✓ Matthew 2026-06-04 |
 
 ---
 
-## Open Issues
-| ID | Summary |
-|---|---|
-| ISSUE-006 | Firefox Focus login friction — privacy browser wipes session, forces re-auth every visit |
+## Content — Next Rotation
+| Slot | Category | Notes |
+|---|---|---|
+| 031 | NC | Neuroscience & Cognition — next in rotation |
+| 032 | CM | Communication |
+| 033 | PH | Philosophy |
+| 034 | SC | Sales Craft (SC.4.2) |
+| 035 | AI | AI (AI.4.1) |
+
+Candidates to consider: Red Team Exercise (MM or CM — added to backlog this session)
 
 ---
 
-## Tester Progress (as of 2026-06-01)
-You=25 (admin), DonRobbo=13, Erin=7, Brian=3, Justin=1, Andrew=1, Landon=1
+## Entries Still Needing Quiz Backfill
+001–008 use old recall-based format. Backfill queued — not yet scheduled.
 
 ---
 
-## Design Prototype Status
-
-**Active design sprint — home/library screen redesign**
-
-Reviewed Erin's beta check-in feedback this session. Key signals:
-- Prefers dark theme over v3 parchment
-- Pain points: grey text contrast, unclear completion signal
-- Feature priorities: streak, bookmarks (done ✅), home widget
-
-Iterated through mocks v1–v8. **v8 is the closest to approved direction.**
-
-### v8 Design Decisions
-- **Background:** Onboarding gradient (`#f0f4f8 → #e8eef5 → #dde6f0`) — not black, not grey
-- **Cards:** Navy `#1a2a3a` — pulled from onboarding ink color, adds warmth vs flat black
-- **YOUR COMMITMENT banner** — bold mono header, italic goal text, left accent border turns cyan on commit, taps to open goal modal
-- **Goal modal** — full SMART 3-step flow (what/when/signal), seed chips + free text, matches onboarding aesthetic
-- **KPI pills** — fully rounded, 3 distinct colored SVG icons (cyan checkmark, yellow target, purple trophy), no leaderboard link in component
-- **Streak pill** — 🔥 icon, large white number, BEST below, 7-day week view where each completed day fills with that day's lesson category color
-- **WHY I'M HERE** button on streak opens same goal modal as commitment banner (one modal, two entry points)
-- **TODAY hero** — category icon + concept title, 3px accent bar, moment strip at bottom (state-driven, not interactive)
-- **ON DECK** — compact card below today, category icon, unlocks tomorrow
-- **YOUR LIBRARY** — filter pills include PROMPT FARM and CONCEPTS GLOSSARY as dashed coming-soon pills
-- **Category icons** — 7 distinct SVG icons per category, shown in today card, on deck, and every entry row
-- **Nav** — same pill filter style as library
-
-### Still to resolve in design
-- Whether to ship v8 as a full app redesign or implement components incrementally
-- Quiz completion micro-moment ("you got it" state)
-- Completed vs locked entry visual differentiation
-- Mobile header sticky behavior on scroll
-
-**Mock file:** `one-percent-mock-v8.html` (local, not in repo — share with Erin for feedback)
-
----
-
-## Session Changes This Session (2026-06-01)
-- Wake words updated in directions v1.35: Platform Upgrades → Enhance, Repo Check → Repo, Let's Wrap It Up → Wrap. All wake words now require standard session review.
-- Design sprint: mocks v4–v8 iterated, v8 approved as direction
-- No code shipped to production this session
+## Protocol Updates This Session
+- **Dead Drop protocol updated:** Search query is now mandatory with every claim. Format:
+  > **Claim N:** [claim]
+  > **Search:** `[exact query]`
+  > What do you get?
+- **Content review step formalized:** Full content (including AI prompts) must be presented to Matthew for approval before Dead Drop begins
 
 ---
 
 ## Infrastructure
-- **Supabase tables:** profiles, completions, feedback, bug_reports, changelog, beta_checkin, bookmarks
-- **Edge functions:** send-daily-reminder, send-practice-reminder, send-weekly-wrap, send-welcome-email, send-beta-checkin
-- **Survey URLs:** `/survey/[userId]` — unique per user, no auth required
-- **Roadmap file:** `onepercentroadmap.md` in repo root
+- Supabase project: uuzdlubbynavybttlmeh
+- GitHub: mgolia6/one-percent-app (CLI only, api.github.com blocked)
+- Vercel: auto-deploys on push to main
+- Resend: matthew@mpgink.com, domain verified
+- pg_cron: daily reminder (12:00 UTC), practice reminder (hourly, 6hr post-completion), weekly wrap (day 7/14/21)
 
 ---
 
-## App / Repo
-- **URL:** one-percent-app.vercel.app
-- **Repo:** mgolia6/one-percent-app
-- **Supabase:** uuzdlubbynavybttlmeh
-- **Instructions:** Directions/onepercentinstructions-v1_35.md
-- **GitHub token:** See Matthew's secure notes (expires ~Aug 17, 2026)
-- **Resend API key:** See Matthew's secure notes
+## Active Beta Infrastructure
+- Survey system live: /survey/[userId] — unique links per tester
+- Beta check-in tab in admin dashboard
+- Bookmarking live: star icon, optimistic UI, Saved filter tab
+- Changelog modal: show_modal: true + published: true triggers in-app modal
+
+---
+
+## Product Backlog — Top Items
+See Backlog/onepercentproductbacklog.md for full list. High priority:
+- Goal-setting feature (teased to testers — before beta ends)
+- Quiz backfill entries 001–008
+- Voice feedback (Web Speech API) — approved, not built
+- 4-question post-entry quiz revamp — approved, not built
+- ISSUE-002: weekly trigger broken for backdated signups
+- ISSUE-004: re-engagement flow for inactive users
+
+---
+
+## Session Start Protocol (Every Session)
+1. Clone repo with token Matthew provides
+2. `git config user.email "claude@anthropic.com" && git config user.name "Claude"`
+3. Read this file
+4. Read latest log in Logs/
+5. Wait for Matthew's wake word
