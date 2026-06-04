@@ -129,6 +129,8 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | Amy Burnette | AB colleague | Sr. Technical BD at Amazon, ex-English academic — builder, self-directed learner | DM sent |
 | Michelle Hentz | AB Bulk Buy overlay | Sr. AI Specialist at Zoom, created C³ Framework™ — builder, AI thought leader | DM sent |
 
+| Matt Golia | Namesake — loose connection | Strategic AE at Quickbase, founder background, enterprise sales — shares the name | DM sent |
+
 **Next step:** When replies come in, add to Supabase allowlist (ENH-007) and send onboarding access.
 
 ---
