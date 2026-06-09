@@ -66,7 +66,7 @@ serve(async (_req) => {
     const userIds = [...new Set(completions.map((c: any) => c.user_id))]
     const { data: profiles, error: profileError } = await supabase
       .from('profiles')
-      .select('id, email, name')
+      .select('id, email, first_name')
       .in('id', userIds)
 
     if (profileError) throw profileError
@@ -90,7 +90,7 @@ serve(async (_req) => {
       const challenge = entry.morning?.morning_challenge
       if (!challenge) { skipped++; continue }
 
-      const firstName = profile.name?.split(' ')[0] || 'there'
+      const firstName = profile.first_name || 'there'
       const html = buildHtml(firstName, concept, challenge, entryNum)
 
       const res = await fetch('https://api.resend.com/emails', {
