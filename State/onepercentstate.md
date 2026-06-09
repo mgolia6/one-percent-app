@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-04 (v8)
+**Generated:** 2026-06-08 (v8)
 
 ---
 
