@@ -1194,7 +1194,7 @@ export default function HomePage() {
   const accent = todayEntry ? (CATEGORY_COLORS[todayEntry.category] || '#47FFE8') : '#47FFE8'
 
   const S = {
-    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a', maxWidth: 430, margin: '0 auto', paddingBottom: 80 },
+    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a', maxWidth: 960, margin: '0 auto', paddingBottom: 80 },
     header: { background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)' },
     headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
     wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' },
@@ -1222,7 +1222,7 @@ export default function HomePage() {
     // last learned
     lastCard: (color) => ({ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 16px 20px', cursor: 'pointer', borderLeft: `3px solid ${color || '#C847FF'}` }),
     // cat chip
-    catChip: (active) => ({ background: active ? '#243548' : '#1a2a3a', borderRadius: 12, padding: '10px 5px 9px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer', border: active ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent' }),
+    catChip: (active) => ({ background: active ? '#243548' : '#1a2a3a', borderRadius: 14, padding: '13px 6px 11px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', border: active ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent' }),
     // entry row
     entry: (locked) => ({ display: 'flex', alignItems: 'center', gap: 11, padding: '13px 13px', background: '#1a2a3a', borderRadius: 12, cursor: locked ? 'default' : 'pointer', opacity: locked ? 0.28 : 1 }),
   }
@@ -1268,6 +1268,16 @@ export default function HomePage() {
         @keyframes fold{0%{transform:translateY(0) scaleY(1);opacity:1}25%{transform:translateY(-4px) scaleY(0.65);opacity:1}55%{transform:translateY(12px) scaleY(0.12);opacity:0.7}100%{transform:translateY(80px) scaleY(0);opacity:0}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes popIn{0%{transform:scale(0.4)}100%{transform:scale(1)}}
+        @media(min-width:768px){
+          .op-desktop-shell{display:grid!important;grid-template-columns:260px 1fr;min-height:100vh;}
+          .op-sidebar{display:flex!important;}
+          .op-main{max-width:640px;margin:0 auto;width:100%;}
+          .op-bottom-nav{display:none!important;}
+          .op-header{display:none!important;}
+        }
+        @media(max-width:767px){
+          .op-sidebar{display:none!important;}
+        }
       `}</style>
 
       {/* Modals */}
@@ -1363,7 +1373,7 @@ export default function HomePage() {
       )}
 
       {/* HEADER */}
-      <div style={S.header}>
+      <div style={S.header} className="op-header">
         <div style={S.headerTop}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
             <span style={S.wm}>ONE PERCENT</span>
@@ -1394,6 +1404,39 @@ export default function HomePage() {
           <button style={S.asBtn} onClick={handleSignOut} disabled={signingOut}>{signingOut ? 'SIGNING OUT…' : 'SIGN OUT'}</button>
         </div>
       </div>
+
+      {/* DESKTOP SIDEBAR */}
+      <div className="op-sidebar" style={{ display: 'none', flexDirection: 'column', background: '#1a2a3a', minHeight: '100vh', padding: '32px 0', position: 'sticky', top: 0, height: '100vh', overflowY: 'auto' }}>
+        <div style={{ padding: '0 24px 32px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#fff', marginBottom: 10 }}>ONE PERCENT</div>
+          <div style={{ display: 'flex', gap: 6 }}>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '3px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(184,204,0,0.15)', color: '#8a9800', border: '1px solid rgba(184,204,0,0.4)' }}>BETA</span>
+            {isAdmin && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '3px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#009b89', border: '1px solid rgba(0,196,173,0.35)' }}>ADMIN</span>}
+          </div>
+        </div>
+        <div style={{ padding: '24px 16px', flex: 1 }}>
+          {[
+            { id: 'today', label: 'Today', icon: '◷' },
+            { id: 'library', label: 'Library', icon: '⊞' },
+            { id: 'prompts', label: 'Prompt Farm', icon: '⚡' },
+            { id: 'progress', label: 'Progress', icon: '↗' },
+          ].map(t => (
+            <div key={t.id} onClick={() => setActiveTab(t.id)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4, background: activeTab === t.id ? 'rgba(255,255,255,0.08)' : 'transparent', color: activeTab === t.id ? '#fff' : 'rgba(232,238,245,0.45)', fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: activeTab === t.id ? 600 : 400, transition: 'all 0.15s' }}>
+              <span style={{ fontSize: 16 }}>{t.icon}</span>{t.label}
+            </div>
+          ))}
+        </div>
+        <div style={{ padding: '16px 16px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          <div onClick={() => router.push('/about')} style={{ fontSize: 12, color: 'rgba(232,238,245,0.35)', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>ABOUT</div>
+          <div onClick={() => setShowBug(true)} style={{ fontSize: 12, color: '#FF4778', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>BUG</div>
+          <div onClick={() => setShowFeedback(true)} style={{ fontSize: 12, color: 'rgba(232,238,245,0.35)', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>FEEDBACK</div>
+          {isAdmin && <div onClick={() => router.push('/admin')} style={{ fontSize: 12, color: '#47FFE8', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>ADMIN →</div>}
+          <div onClick={handleSignOut} style={{ fontSize: 12, color: 'rgba(232,238,245,0.25)', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>SIGN OUT</div>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="op-main">
 
       {/* ── TODAY TAB ── */}
       {activeTab === 'today' && (
@@ -1522,16 +1565,16 @@ export default function HomePage() {
 
       {/* ── LIBRARY TAB ── */}
       {activeTab === 'library' && (
-        <div style={S.screen}>
+        <div style={{ ...S.screen, paddingTop: 20 }}>
           {/* Category chips 4x2 */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 7, marginBottom: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 20 }}>
             {[{ key: 'ALL', label: 'ALL', color: 'rgba(232,238,245,0.7)', bg: 'rgba(255,255,255,0.07)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.7)" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>, count: `${completedCount}/${TOTAL_ENTRIES}` },
               ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
             ].map(chip => (
               <div key={chip.key} onClick={() => setLibFilter(chip.key)} style={S.catChip(libFilter === chip.key)}>
-                <div style={{ width: 24, height: 24, borderRadius: 7, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
               </div>
             ))}
           </div>
@@ -1590,7 +1633,7 @@ export default function HomePage() {
               ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
             ].map(chip => (
               <div key={chip.key} style={S.catChip(false)}>
-                <div style={{ width: 24, height: 24, borderRadius: 7, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.06em', color: chip.color || 'rgba(232,238,245,0.6)', textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
               </div>
@@ -1731,8 +1774,10 @@ export default function HomePage() {
         </div>
       )}
 
+      </div>{/* /op-main */}
+
       {/* BOTTOM NAV */}
-      <div style={S.bottomNav}>
+      <div style={S.bottomNav} className="op-bottom-nav">
         {[
           { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'#1a2a3a':'rgba(26,42,58,0.3)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
           { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'#1a2a3a':'rgba(26,42,58,0.3)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
