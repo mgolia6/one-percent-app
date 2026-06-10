@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { Paperclip, User, Trophy } from 'lucide-react'
@@ -1312,7 +1312,7 @@ export default function HomePage() {
       {/* GOAL SHEET */}
       {showGoalSheet && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,22,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }} onClick={e => { if (e.target === e.currentTarget) setShowGoalSheet(false) }}>
-          <div style={{ background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 100%)', width: '100%', maxWidth: 430, borderRadius: '20px 20px 0 0', padding: '20px 24px 48px', maxHeight: '92vh', overflowY: 'auto', animation: 'fadeUp 0.3s cubic-bezier(0.22,1,0.36,1)' }}>
+          <div style={{ background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 100%)', width: '100%', maxWidth: 430, borderRadius: '20px 20px 0 0', padding: '20px 18px 48px', maxHeight: '92vh', overflowY: 'auto', animation: 'fadeUp 0.3s cubic-bezier(0.22,1,0.36,1)' }}>
             <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(26,42,58,0.12)', margin: '0 auto 20px' }} />
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 4 }}>
               <button onClick={() => setShowGoalSheet(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>CLOSE</button>
@@ -1343,7 +1343,7 @@ export default function HomePage() {
                           <div key={c.val} onClick={() => setVal(c.val)} style={{ padding: '7px 13px', borderRadius: 20, border: `1px solid ${val === c.val ? '#1a2a3a' : color + '55'}`, fontSize: 12, color: val === c.val ? '#ffffff' : '#1a2a3a', background: val === c.val ? '#1a2a3a' : 'transparent', cursor: 'pointer', lineHeight: 1.3, fontWeight: 400 }}>{c.label}</div>
                         ))}
                       </div>
-                      <input value={val} onChange={e => setVal(e.target.value)} placeholder="Or be even more specific…" style={{ width: '100%', background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(26,42,58,0.14)', borderRadius: 8, padding: '11px 13px', fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: '#1a2a3a', outline: 'none' }} />
+                      <input value={val} onChange={e => setVal(e.target.value)} placeholder="Or be even more specific…" style={{ width: '100%', background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(26,42,58,0.14)', borderRadius: 8, padding: '11px 13px', fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: '#1a2a3a', outline: 'none', boxSizing: 'border-box' }} />
                       <button onClick={() => { if (val.trim()) onConfirm() }} style={{ marginTop: 10, width: '100%', padding: '12px 16px', background: '#1a2a3a', color: '#ffffff', border: 'none', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: '0.14em', cursor: 'pointer' }}>{confirmLabel || 'CONFIRM →'}</button>
                     </div>
                   )}
