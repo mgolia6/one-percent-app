@@ -1,63 +1,83 @@
 # One Percent — Session Log
 **Date:** 2026-06-10
-**Entries published this session:** 031–040 (10 entries)
+**Session:** 2 (appended)
+**Entries published this session:** 0 (platform work only)
 
 ---
 
 ## What Happened
 
-### Content — Batch of 10
-Produced entries 031–040 in a single session using Option A workflow: topics confirmed upfront, then generate → verify → next sequentially.
+### Home Screen Redesign — Shipped
+Full replacement of the home screen (`page.js`) with the v8+ design direction:
 
-| # | Edition | Concept | Category |
-|---|---|---|---|
-| 031 | NC.4 | Spaced Repetition | Neuroscience & Cognition |
-| 032 | CM.4 | The BLUF Principle | Communication |
-| 033 | PH.4 | Memento Mori | Philosophy |
-| 034 | SC.3 | Calibrated Questions | Sales Craft |
-| 035 | AI.4.1 | System Prompts | AI |
-| 036 | VL.4.1 | The Overton Window | Vocab & Language |
-| 037 | SC.5 | The Accusation Audit | Sales Craft |
-| 038 | MM.5 | First Principles Thinking | Mental Models |
-| 039 | AI.4.2 | Temperature & Sampling | AI |
-| 040 | PH.5 | Epistemic Humility | Philosophy |
+- **New layout:** Today / Library / Prompts / Progress bottom nav tabs
+- **Today tab:** WHY I'M HERE commitment banner, 3 KPI chips (Completed, Streak, Avg Score), TODAY hero card with category icon + CONCEPT/IN THE WILD/LOCK IT IN moment strip, On Deck (next unlocked, or oldest incomplete if fully unlocked), Last Learned clickable to entry
+- **Library tab:** 4x2 category chip grid with icon + name + completed/total count, chip tap toggles filter on/off, FAVORITES chip replaces ALL, default shows all
+- **Prompts tab:** Prompt Farm with hero card + same category chip grid + prompt cards per completed entry
+- **Progress tab:** Streak pill + week row, Concepts Locked In + Time Spent stat pair, quiz score sparkline with human insight, leaderboard card with live rank, category mastery rings with icons inside
 
-All 10 verified by Matthew via Dead Drop protocol.
+### Goal Setting Ritual — Shipped
+Full SMART commitment flow:
 
-### Verification Protocol — Claude in Chrome
-Adopted Claude in Chrome as the preferred Dead Drop verification method this session. Claude navigates source URLs directly, reads page content, reports findings. Matthew reviews and gives explicit human sign-off per claim. Significantly faster than manual search while preserving the human-in-the-loop requirement. Formalized in Directions v1.36.
+- 3-step sheet: What needs to change / When will you know / What will proof look like
+- Sharper chips — no more Q2, no generic options
+- Typewriter animation on dark screen writes sentence in Caveat handwriting font
+- Paper folds away with "TUCKING THIS AWAY." — deliberate, not rushed
+- "Committed." done state with context: "Every lesson you open from here will be measured against this."
+- Saves `goal_what`, `goal_when`, `goal_proof` to Supabase `profiles` table (columns added via migration)
+- Grammar: "I will change [what]. [When], I'll know it worked — [proof]."
 
-### EditionId Conflicts Caught and Fixed
-Four new entries had editionId conflicts with existing catalog:
-- 035: AI.3.1 → AI.4.1 (conflict with 023 RAG)
-- 036: VL.3 → VL.4.1 (conflict with 024 Nominalization)
-- 037: SC.4 → SC.5 (conflict with 029 Labeling SC.4.1)
-- 039: AI.3.2 → AI.4.2 (conflict with 027 AI Agents)
+### Concept / In the Wild / Lock It In — Shipped
+Renamed morning/midday/evening across entire codebase:
+- EntryViewer tab labels, section overlines, next buttons, post-entry feedback labels, morning challenge → YOUR MOVE
+- Bug report dropdown options
+- How It Works copy (onboarding + page.js)
+- End of beta + weekly survey questions
+- DB column names unchanged (topic_rating, clarity_rating, quiz_rating) — no migration needed
 
-### Source Correction — 039
-arXiv 2402.05201 actual finding: temperature changes 0.0–1.0 do not have statistically significant impact on problem-solving accuracy. Entry source detail updated to reflect this accurately. Core mechanism description (explore/exploit framing, creative vs. deterministic tasks) remains accurate.
+### Desktop Layout — Shipped
+- On screens ≥768px: dark navy sidebar (240px) with Today/Library/Prompts/Progress nav + About/Bug/Feedback/Admin/Sign Out at bottom
+- Main content area takes remaining width, max 680px
+- Bottom nav and mobile header hidden on desktop
+- Mobile unchanged
 
-### App Wiring
-- Entries 031–040 added to page.js ENTRIES manifest
-- Entries 031–040 added to profile/page.js ENTRIES manifest
-- TOTAL_ENTRIES updated: 30 → 40
-- Clean build confirmed
+### Leaderboard Redesign — Shipped
+- Parchment background matching main app
+- YOUR STANDING hero card with accent bar, rank number, metric value
+- Metric switcher in dark pill
+- Each user row: progress bar at top edge, rank number, avatar, name, sub-stats, value, expandable breakdown
+- Expanded: per-metric bars + overall score
 
-### Directions
-- v1.35 → v1.36
-- Updated Dead Drop Step 2 to formalize Claude in Chrome as preferred verification method with fallback to manual search
+### Admin Overhaul — Shipped
+Full replacement of admin page:
+- Light background (matches app aesthetic)
+- **Users tab:** Status dot (engagement color), inline completed/streak/last seen, NUDGE button opens SMS sheet (pre-written message, opens native SMS if phone on file), expand for full stats + progress bar + reset actions
+- **Bugs tab:** Open/Resolved/All filter, RESOLVE button per bug, browser info shown
+- **Feedback tab:** Per-user filter, score summary (topic/clarity/quiz avg), written comments chronologically, click user from Users tab navigates here
+- **API Health tab:** Run health check button — tests Supabase DB, Auth, daily reminder edge function, practice reminder edge function. Shows OK/FAIL + ms. Yellow warning card about Resend key being critical failure point.
+- **Email tab:** Lists all 3 edge functions with schedules, step-by-step runbook for email outage debugging
+
+### Bug Fixes
+- **Page crash (React import):** Missing `import React` caused `React.cloneElement` to fail at runtime — page showed loading spinner forever. Fixed.
+- **Init crash (loading never cleared):** Unhandled exceptions in `useEffect` init prevented `setLoading(false)` from firing. Wrapped in try/catch/finally.
+- **Leaderboard N+1 blocking:** Promise.all of per-user completion queries was blocking page load. Moved to non-blocking try/catch.
+- **Sessions wiped:** All Supabase auth sessions deleted via `DELETE FROM auth.sessions` to force re-login after redesign.
+
+### Database
+- Added `goal_what`, `goal_when`, `goal_proof` text columns to `profiles` table
+
+### New Testers
+- John Calamita, Wade Stock, Ankur Khanna, Chris Sherman, Reza Saboury, Larissa Rodriguez, Amy Burnette, Michelle Hentz, Matt Golia — LinkedIn DMs sent 2026-06-04, awaiting replies
+- 2 new signups visible in Supabase (John + 1 unknown) as of this session
 
 ---
 
-## Notable Content Decisions
-- **033 Memento Mori:** Left out the Roman triumph slave-whisper anecdote — historical sourcing confirmed as tenuous (Wikipedia: "in some accounts"). Used Marcus Aurelius Meditations and Seneca Letters as primary sources instead.
-- **036 Overton Window:** Used Joseph Lehman's firsthand account from Mackinac Center as primary source — strongest possible attribution (original notes in folder labeled "Shifting Windows").
-- **039 Temperature:** Flagged that the arXiv paper's empirical finding is more nuanced than its popular interpretation — corrected in source detail.
-
----
-
-## State
-- Total entries: 040
-- Next rotation starts at: 041 (CM)
-- Directions: v1.36
-- Build: clean
+## Open / Deferred
+- User signs name in commit ritual (store on profile, use in paper signature)
+- Social sharing card ("I just learned X with One Percent")
+- Profile page overhaul (additional info, better layout)
+- Admin: error logger per user, more detailed API logging
+- 001–008 quiz backfill
+- ENH-007 email allowlist
+- Zoho Mail inbox setup
+- Magic link rate limit hit during session — default Supabase limit ~3-5/hr/email. Recommend increasing in Auth settings.
