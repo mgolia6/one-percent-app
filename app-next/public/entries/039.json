@@ -1,0 +1,88 @@
+{
+  "editionId": "AI.4.2",
+  "category": "AI",
+  "categoryTag": "ARTIFICIAL INTELLIGENCE",
+  "concept": "Temperature & Sampling",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "When an AI gives you a surprising, creative answer, that wasn't an accident. Someone decided to turn up a dial.",
+    "explanation_paragraphs": [
+      "You've probably noticed that AI models don't always give the same answer to the same question. Sometimes the output is tight, predictable, almost mechanical. Other times it's loose, inventive, occasionally strange. That variation isn't random noise \u2014 it's a deliberate design choice controlled by a parameter called temperature. Understanding what temperature does changes how you build with AI and how you interpret what it produces.",
+      "When a language model generates text, it works token by token \u2014 predicting the most likely next word given everything that came before. At each step, the model produces a probability distribution across its entire vocabulary: this word has a 40% chance of being next, this one has a 15% chance, this one has a 2% chance, and so on. Temperature is a parameter that reshapes that distribution before the model makes its selection. A lower temperature sharpens the distribution \u2014 concentrating probability mass on the highest-likelihood tokens, making the model more likely to pick the 'safe' choice. A higher temperature flattens the distribution \u2014 giving lower-probability tokens a better shot, pushing the model toward less expected outputs.",
+      "At temperature zero, the model always picks the single most probable next token \u2014 a mode called greedy decoding. The output is fully deterministic: the same prompt produces the same response every time. This is what you want for structured tasks \u2014 extracting data, generating SQL, following a precise format, producing consistent API responses. At temperature one, the model samples proportionally from its probability distribution \u2014 outputs vary, sometimes significantly, even from identical prompts. Above one, the distribution flattens further, outputs become more surprising and less coherent. Most practical applications live between 0.2 and 0.9.",
+      "The practical decision is straightforward once you understand the mechanism: match temperature to the task. Fact extraction, classification, format-sensitive generation \u2014 low temperature, high consistency. Brainstorming, creative writing, ideation, exploring a problem space \u2014 higher temperature, more variance. The mistake most people make is leaving temperature at whatever the default is and wondering why the model feels either too rigid or too unpredictable for their use case. The dial exists. Turn it deliberately."
+    ],
+    "why_today": "Temperature as a sampling parameter in neural networks was introduced in Ackley, Hinton, and Sejnowski's 1985 work on Boltzmann machines. Its application to large language models is documented across all major provider APIs (Anthropic, OpenAI, Google) and academic literature. A 2024 arXiv paper specifically examining the effect of sampling temperature on LLM problem-solving confirmed the core trade-off: lower temperatures exploit higher-probability solutions, higher temperatures explore the solution space more broadly.",
+    "morning_challenge": "Pick an AI task you run regularly \u2014 a summary, a draft, an analysis, a classification.\n\nRun it twice: once at temperature 0 (or as low as your tool allows) and once at a higher setting (0.7\u20131.0).\n\nCompare the outputs. Which one was more useful for this specific task? That's your data point for what temperature this prompt should live at."
+  },
+  "midday": {
+    "reframe": "A model at temperature zero is an expert consultant who always gives you the most defensible answer. A model at temperature one is a creative collaborator who will occasionally say something you've never thought of. They're not the same tool.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 ACKLEY, HINTON & SEJNOWSKI (1985) AND LLM PROVIDER API DOCUMENTATION",
+    "itw_paragraphs": [
+      "The temperature parameter originates in physics \u2014 specifically in statistical mechanics, where temperature describes the energy level of a system and determines how likely it is to occupy a higher-energy state. Ackley, Hinton, and Sejnowski imported this concept into machine learning in 1985 in their work on Boltzmann machines: higher temperature meant more random transitions between states, lower temperature meant the system converged on more stable, predictable configurations. When the same parameter was applied to language model sampling decades later, the physics metaphor held: high temperature produces more energetic, varied outputs; low temperature produces more stable, concentrated ones.",
+      "Every major AI provider exposes temperature as a configurable parameter in their API. Anthropic's Claude API, OpenAI's GPT API, and Google's Gemini API all accept a temperature value \u2014 typically between 0 and 1 or 0 and 2 depending on the provider \u2014 that directly controls this behavior. A 2024 arXiv paper examining temperature's effect on LLM problem-solving described the trade-off precisely: lower temperatures exploit more probable solutions within the solution space; higher temperatures explore it more broadly. The practical implication is that temperature is a task-matching decision, not a quality setting.",
+      "One nuance worth knowing: temperature zero doesn't guarantee identical outputs across all providers and contexts. Hardware floating-point operations, parallel processing, and other infrastructure factors can introduce small variations even at the lowest temperature settings. For applications where exact reproducibility matters \u2014 automated testing, content pipelines, compliance workflows \u2014 most providers also offer a seed parameter that, combined with temperature zero, maximizes consistency. Temperature controls the model's intent to vary; seed controls some of the implementation-level variance."
+    ],
+    "quote": "Lower temperatures tend to exploit more probable solutions; higher temperatures explore the solution space more broadly. Temperature can be seen as a trade-off between exploring and exploiting possible solutions.",
+    "attribution": "Guo et al. \u2014 The Effect of Sampling Temperature on Problem Solving in Large Language Models, arXiv:2402.05201, 2024",
+    "midday_nudge": "If you use an AI tool with API access or advanced settings today, find the temperature control. Check what it's currently set to. Then ask: is this actually the right setting for what I'm using it for? For most knowledge work tasks, something between 0.3 and 0.7 is the right range \u2014 below that for precision tasks, above that for creative ones."
+  },
+  "quiz": [
+    {
+      "question": "You're building an AI tool that extracts structured data from contracts \u2014 pulling out party names, dates, and dollar amounts into a consistent JSON format. What temperature setting is most appropriate and why?",
+      "options": [
+        "High temperature (0.8\u20131.0) \u2014 to give the model flexibility in how it interprets ambiguous contract language",
+        "Low temperature (0\u20130.2) \u2014 extraction tasks require consistency and adherence to format; higher temperatures introduce variation that risks producing invalid or inconsistent structured output",
+        "Medium temperature (0.5) \u2014 to balance accuracy with the model's ability to handle edge cases creatively",
+        "Temperature doesn't affect structured output tasks \u2014 it only matters for open-ended generation"
+      ],
+      "correct": 1,
+      "explanation": "Structured extraction tasks \u2014 JSON, SQL, classifications, format-sensitive outputs \u2014 require the model to follow precise specifications consistently. Higher temperatures increase the probability of the model sampling lower-probability tokens, which for structured tasks means deviating from the required format or introducing variation where consistency is required. Temperature zero (greedy decoding) is appropriate here: the model always picks the most probable next token, producing deterministic, format-adherent output. Creativity is not an asset in this context \u2014 reliability is."
+    },
+    {
+      "question": "At temperature zero, a language model performs what's called greedy decoding. What does this mean in practice?",
+      "options": [
+        "The model processes the prompt faster by skipping lower-probability tokens in its vocabulary",
+        "At each generation step, the model always selects the single most probable next token \u2014 making output fully deterministic for a given prompt, with no sampling variance",
+        "The model becomes more conservative about making claims it's uncertain about, adding more hedging language",
+        "The model uses a smaller subset of its vocabulary to generate responses, reducing computational cost"
+      ],
+      "correct": 1,
+      "explanation": "Greedy decoding means the model takes the argmax at each step \u2014 always picking the token with the highest probability in its distribution, without sampling. This produces deterministic output: the same prompt will generate the same response every time (modulo implementation-level floating-point variance). It does not make the model shorter, more hedged, or computationally cheaper \u2014 it simply removes the randomness from token selection. The 'greedy' label refers to the optimization strategy: always taking the locally optimal choice at each step without exploring alternatives."
+    },
+    {
+      "question": "A team is using AI to help with quarterly business reviews \u2014 they want it to analyze sales data, identify patterns, and then generate an executive narrative summarizing the findings. Should they use the same temperature for both tasks?",
+      "options": [
+        "Yes \u2014 a medium temperature of 0.5 is appropriate for both analytical and narrative tasks",
+        "No \u2014 the analysis and pattern identification step benefits from lower temperature for consistency and accuracy; the narrative generation step can tolerate higher temperature to produce more natural, varied prose rather than mechanical output",
+        "Yes \u2014 temperature should be set by the model's confidence level, not the task type",
+        "No \u2014 analysis tasks should use high temperature to explore more interpretations of the data; narrative tasks should use low temperature for precision"
+      ],
+      "correct": 1,
+      "explanation": "These are genuinely different tasks with different optimization targets. Pattern identification and data analysis are precision tasks \u2014 you want the model to consistently identify the highest-probability correct interpretation of the data, not to explore creative alternatives. Low temperature serves that. Executive narrative generation is a different problem \u2014 you want readable, natural prose rather than mechanical output, and some variance in phrasing is an asset rather than a liability. Higher temperature helps here. The mistake is treating temperature as a single setting for an entire workflow rather than a parameter you tune per task."
+    }
+  ],
+  "closing": "Temperature is one of the simplest levers in AI and one of the most misunderstood. It's not a quality dial \u2014 it's a creativity-versus-consistency dial. Most people leave it at the default and wonder why the model keeps feeling wrong for the task.",
+  "sources": [
+    {
+      "label": "Ackley, D.H., Hinton, G.E., & Sejnowski, T.J. \u2014 A Learning Algorithm for Boltzmann Machines, Cognitive Science, Vol. 9, No. 1, 1985",
+      "detail": "The origin of temperature as a parameter in machine learning \u2014 imported from statistical mechanics. Established the foundational use of temperature to control randomness in probabilistic systems, which was later applied directly to language model token sampling.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog0901_7"
+    },
+    {
+      "label": "Guo, Z. et al. \u2014 The Effect of Sampling Temperature on Problem Solving in Large Language Models, arXiv:2402.05201, 2024",
+      "detail": "Academic paper examining how temperature affects LLM performance. The paper establishes the theoretical framing: lower temperatures exploit more probable solutions in the solution space; higher temperatures explore it more broadly. Note: the empirical finding is that temperature changes from 0.0 to 1.0 do not have statistically significant impact on problem-solving accuracy \u2014 the practical implication is that temperature matters most for creative vs. deterministic task types rather than raw accuracy.",
+      "url": "https://arxiv.org/pdf/2402.05201"
+    },
+    {
+      "label": "Prompt Engineering Guide \u2014 LLM Settings: Temperature, promptingguide.ai",
+      "detail": "Practitioner reference covering temperature and related sampling parameters across major LLM providers. Widely cited in the AI engineering community for applied guidance on parameter configuration.",
+      "url": "https://www.promptingguide.ai/introduction/settings"
+    }
+  ],
+  "ai_prompt": "I want to understand how to use temperature settings more deliberately in my AI workflows. Help me think through the tasks I use AI for and what temperature setting makes sense for each. Ask me about my specific use cases first, then give me concrete recommendations with reasoning. Here's how I'm currently using AI: [describe your main use cases]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-10"
+}

@@ -1,0 +1,83 @@
+{
+  "editionId": "SC.3",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "Calibrated Questions",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "The most powerful move in a negotiation isn't making a great argument. It's asking a question the other person has to think hard to answer.",
+    "explanation_paragraphs": [
+      "You're in a deal conversation that has stalled. The prospect isn't moving. Your instinct is to present more information, restate your value prop, maybe sharpen the price. All of these put pressure on the conversation from your side \u2014 and pressure from your side tends to create resistance on theirs. There's a different move: ask them a question they have to solve.",
+      "Calibrated questions are a technique developed by Chris Voss during his career as the FBI's lead international kidnapping negotiator and formalized in his 2016 book Never Split the Difference. The principle: instead of making statements or closed-ended requests, ask open-ended questions that begin with 'How' or 'What.' These questions require genuine thought to answer, which shifts the cognitive load to the other side and \u2014 critically \u2014 gives them a sense of control over the conversation while you retain control over its direction.",
+      "The mechanics matter. Questions that start with 'Can,' 'Is,' 'Are,' 'Do,' or 'Does' can be answered with yes or no \u2014 they require no real engagement and reveal almost nothing. 'How' and 'What' questions can't be deflected that easily. 'How does this work for your timeline?' requires the other person to actually think about their timeline and tell you what's in it. 'What would need to be true for this to move forward?' requires them to articulate their actual constraints \u2014 which is information you need and often can't get by asking directly.",
+      "Voss's core insight is that calibrated questions create what he calls the illusion of control: the other party feels like they're driving the conversation because they're doing the talking, but the questions are framing what they can talk about. In practice, this means you can introduce your agenda through questions rather than statements \u2014 which lands with far less resistance. A statement can be attacked. A question can't."
+    ],
+    "why_today": "Calibrated questions come directly from Chapter 7 of Never Split the Difference by Chris Voss (Harper Business, 2016), one of the best-selling negotiation books of the past decade. Voss spent 24 years at the FBI, including as the agency's lead international kidnapping negotiator. The technique is documented extensively in the book and in Voss's subsequent training through his company Black Swan Group.",
+    "morning_challenge": "Think of a conversation you need to have this week \u2014 a negotiation, a stalled deal, a difficult internal alignment, a request that keeps getting deferred.\n\nWrite three calibrated questions for it. Each one must start with 'How' or 'What.' None of them can be answered with yes or no.\n\nThen rank them by which one would surface the most useful information if the other person answered it honestly."
+  },
+  "midday": {
+    "reframe": "Every closed question is a door you can only open from your side. Every calibrated question is a door you hand them the handle to \u2014 and they open it for you.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 CHRIS VOSS, NEVER SPLIT THE DIFFERENCE, 2016",
+    "itw_paragraphs": [
+      "In Chapter 7 of Never Split the Difference \u2014 titled 'Create the Illusion of Control' \u2014 Voss describes the moment calibrated questions became central to his negotiation approach. Facing a hostage situation where direct demands were getting nowhere, his team needed a way to keep the other side talking, surface their actual constraints, and move the conversation toward resolution without triggering defensiveness. Telling people what to do wasn't working. Asking them how they'd solve the problem was.",
+      "The key distinction Voss draws is between questions that create agency and questions that create dead ends. A closed question \u2014 'Can you do this by Friday?' \u2014 puts the other person in a binary position. A calibrated question \u2014 'How do we make sure this lands by Friday?' \u2014 makes them a participant in solving the problem. It also reveals what they think the obstacles are, which is almost always more useful than whether they'll agree.",
+      "Voss's formulation of the two most powerful calibrated questions applies well beyond hostage negotiation. 'How am I supposed to do that?' \u2014 said calmly \u2014 is a way to decline a demand without saying no. It forces the other side to engage with your constraints rather than dismiss them. 'What's making this difficult?' surfaces blockers that might never come up in a direct conversation. Both questions put the cognitive work on the counterpart and produce information you can actually use."
+    ],
+    "quote": "Calibrated questions make your counterpart feel like they're in charge, but it's really you who are framing the conversation. Your counterpart will have no idea how constrained they are by your questions.",
+    "attribution": "Chris Voss, Never Split the Difference, Chapter 7",
+    "midday_nudge": "In your next conversation today where you want something \u2014 information, agreement, a decision \u2014 replace your first statement or closed question with a calibrated one. Start with 'What' or 'How.' See what they tell you that they wouldn't have told you if you'd just made your case."
+  },
+  "quiz": [
+    {
+      "question": "A prospect tells you the price is too high. Which response best applies the calibrated question technique?",
+      "options": [
+        "'Can you tell me more about your budget?' ",
+        "'What would a number that works for you look like?'",
+        "'Is price the only thing standing in the way?'",
+        "'I understand \u2014 would a payment plan help?'"
+      ],
+      "correct": 1,
+      "explanation": "Option B is the only calibrated question \u2014 it starts with 'What,' requires genuine engagement, and surfaces real information (their actual number or framing) rather than a yes/no. Option A starts with 'Can' \u2014 a closed structure that can be deflected. Option C is a yes/no question that narrows the conversation prematurely. Option D skips the information-gathering entirely and jumps to a solution, which may solve the wrong problem. Calibrated questions gather before they propose."
+    },
+    {
+      "question": "Why does Voss argue that 'How' and 'What' questions are more effective in negotiation than direct requests or statements?",
+      "options": [
+        "They are more polite, which puts the other party at ease and makes them more likely to comply",
+        "They give the counterpart a sense of control and require them to engage cognitively, surfacing their real constraints and keeping them talking \u2014 while you control the direction through the framing",
+        "They signal that you are flexible and willing to compromise, which builds goodwill",
+        "They are harder to misinterpret than statements, reducing the chance of miscommunication"
+      ],
+      "correct": 1,
+      "explanation": "The core mechanism is the illusion of control \u2014 the other party feels like they're driving because they're the ones answering and talking, but the question itself defines what they can address. This produces two things simultaneously: the other party's actual constraints and thinking (information you need), and a lower-resistance dynamic than direct requests create. Voss is explicit that this isn't about politeness \u2014 it's about strategic framing through question design."
+    },
+    {
+      "question": "A deal has been verbally agreed but keeps slipping \u2014 the counterpart says they're on board but nothing moves. Which calibrated question is most likely to surface what's actually blocking execution?",
+      "options": [
+        "'Are you still committed to moving forward with this?'",
+        "'When can we expect to hear back from you?'",
+        "'What's making it difficult to get this across the line on your end?'",
+        "'Do you need me to send the contract again?'"
+      ],
+      "correct": 2,
+      "explanation": "Option C is the only one that asks the counterpart to identify and articulate the actual blocker. Options A and D are yes/no questions that will produce reassurance rather than information. Option B asks for a timeline but not a cause \u2014 it will get a date that may slip again for the same undisclosed reason. 'What's making this difficult?' forces the other party to engage with the real obstacle, which is the only way to address it. Voss calls this type of question essential for situations where surface agreement masks actual resistance."
+    }
+  ],
+  "closing": "Most people think negotiation skill is about having the right answers. Voss spent 24 years at the FBI learning it's about asking the right questions \u2014 and then staying quiet long enough for the other side to fill the silence.",
+  "sources": [
+    {
+      "label": "Voss, C. & Raz, T. \u2014 Never Split the Difference: Negotiating As If Your Life Depended On It, Harper Business, 2016. Chapter 7: Create the Illusion of Control",
+      "detail": "The primary source for calibrated questions. Chapter 7 develops the full framework \u2014 the distinction between closed and open-ended questions, why 'How' and 'What' outperform other question starters, and how the illusion of control functions in high-stakes negotiation. Voss draws on 24 years at the FBI including his role as lead international kidnapping negotiator.",
+      "url": "https://www.harpercollins.com/products/never-split-the-difference-chris-vosstahl-raz"
+    },
+    {
+      "label": "Black Swan Group \u2014 Calibrated Questions, blackswanltd.com",
+      "detail": "Chris Voss's negotiation training organization, which has published extensive applied material on calibrated questions in business and sales contexts. Supplements the book with case studies and practitioner guidance.",
+      "url": "https://www.blackswanltd.com/our-methodology"
+    }
+  ],
+  "ai_prompt": "I have a negotiation or difficult conversation coming up and I want to prepare calibrated questions for it. Help me design 'How' and 'What' questions that will surface the other party's real constraints and keep the conversation moving without creating resistance. Ask me about the situation first before we build the questions. Here's what I'm walking into: [describe the conversation]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-10"
+}

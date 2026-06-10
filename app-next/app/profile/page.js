@@ -46,6 +46,16 @@ const ENTRIES = [
   { entry: '028', category: 'Vocab & Language' },
   { entry: '029', category: 'Sales Craft' },
   { entry: '030', category: 'Mental Models' },
+  { entry: '031', category: 'Neuroscience & Cognition' },
+  { entry: '032', category: 'Communication' },
+  { entry: '033', category: 'Philosophy' },
+  { entry: '034', category: 'Sales Craft' },
+  { entry: '035', category: 'AI' },
+  { entry: '036', category: 'Vocab & Language' },
+  { entry: '037', category: 'Sales Craft' },
+  { entry: '038', category: 'Mental Models' },
+  { entry: '039', category: 'AI' },
+  { entry: '040', category: 'Philosophy' },
 ]
 
 const BADGES = [

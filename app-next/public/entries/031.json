@@ -1,0 +1,88 @@
+{
+  "editionId": "NC.4",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEUROSCIENCE & COGNITION",
+  "concept": "Spaced Repetition",
+  "accent": "#47C8FF",
+  "accentDim": "rgba(71,200,255,0.10)",
+  "morning": {
+    "hook": "You're not forgetting because you're bad at learning. You're forgetting because you're reviewing at the wrong time \u2014 or not at all.",
+    "explanation_paragraphs": [
+      "You sit through a 90-minute training. You take notes. You feel like you've got it. Two weeks later, someone asks you to explain the framework and you're pulling fragments out of thin air. This isn't a memory failure \u2014 it's a timing failure. You reviewed once, right after learning, when your retention was already at its peak. That's the least useful moment to review.",
+      "In the 1880s, German psychologist Hermann Ebbinghaus ran what was then an unprecedented experiment: he memorized thousands of nonsense syllables and tracked how quickly he forgot them. The result was the forgetting curve \u2014 a steep, predictable exponential decay showing that without review, people forget roughly half of new information within days and up to 80% within a month. The curve has been replicated as recently as 2015 by Murre and Dros, with results consistent with Ebbinghaus's original findings.",
+      "The fix Ebbinghaus identified was spaced repetition: reviewing material at increasing intervals timed to catch your memory just before it fades. A 2006 meta-analysis by Cepeda, Pashler, and colleagues synthesized 839 assessments across 317 experiments and confirmed the effect holds across domains, materials, and age groups. The key finding: the optimal gap between study sessions increases as the retention goal extends further into the future. If you want to remember something for a week, space your reviews in days. If you want to remember it for a year, space them in weeks.",
+      "What makes spaced repetition counterintuitive is that it feels worse while it's working. Reviewing material you've almost forgotten feels harder than reviewing material you remember well \u2014 and that difficulty is the point. The slight struggle to retrieve something that's fading is what triggers consolidation into long-term memory. Reviewing material you still remember clearly produces almost no benefit. The timing is everything."
+    ],
+    "why_today": "Spaced repetition is one of the most replicated findings in cognitive psychology. Ebbinghaus's original 1885 work was confirmed by Murre & Dros in a 2015 PLOS ONE replication study. Cepeda et al.'s 2006 meta-analysis in Psychological Bulletin remains the largest quantitative synthesis of the spacing effect \u2014 839 assessments, 317 experiments, 184 articles \u2014 confirming the effect across virtually every domain tested.",
+    "morning_challenge": "Pick one concept you've learned in the last two weeks that actually matters \u2014 a framework, a methodology, a key finding.\n\nDon't re-read your notes. Instead, close them and write down everything you can recall about it right now from memory.\n\nWhat came back easily? What required effort? What was gone?\n\nThe gaps aren't permanent. They're just the spots where a well-timed review would have landed."
+  },
+  "midday": {
+    "reframe": "Cramming isn't a study technique \u2014 it's a memory loan. You borrow retention for 24 hours and pay it back with interest over the next month.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 CEPEDA ET AL., PSYCHOLOGICAL BULLETIN, 2006",
+    "itw_paragraphs": [
+      "In 2006, Nicholas Cepeda and Harold Pashler at UC San Diego led a team that conducted the largest quantitative synthesis of the spacing effect ever published. Their meta-analysis, published in Psychological Bulletin, covered 839 assessments of distributed practice drawn from 317 experiments across 184 articles. The question they were trying to answer wasn't whether spacing works \u2014 decades of research had settled that \u2014 but under what conditions, and by how much.",
+      "The key finding was what they called the optimal interstudy interval: the gap between study sessions that produces maximum retention at a given future test point. Critically, this optimal gap was not fixed \u2014 it scaled with how far in the future you needed to remember the material. Short retention goals called for shorter gaps; longer retention goals required longer gaps. The relationship was non-linear and task-dependent, but the direction was consistent across all 317 experiments: spacing always outperformed massing, and more spacing outperformed less spacing up to a point.",
+      "The practical implication is direct: if you learn something in a meeting today, a single review tomorrow is worth far more than re-reading your notes five times this afternoon. If you want to still have it in a month, you need at least one more review around the one-week mark. The timing matters more than the volume. Repetition without spacing is largely wasted effort."
+    ],
+    "quote": "The ISI producing maximal retention increased as retention interval increased.",
+    "attribution": "Cepeda, N.J., Pashler, H., Vul, E., Wixted, J.T., & Rohrer, D. \u2014 Psychological Bulletin, Vol. 132, No. 3, 2006",
+    "midday_nudge": "Set one review reminder right now \u2014 not for something you learned today, but for something you learned 5\u201310 days ago. Put it 3\u20135 days from now. That's a real spaced repetition interval, and it will do more for long-term retention than re-reading anything tonight."
+  },
+  "quiz": [
+    {
+      "question": "Someone attends a full-day workshop on a new methodology. That evening, they re-read all their notes twice. The following week, they remember almost nothing. What does spaced repetition theory say went wrong?",
+      "options": [
+        "They didn't take detailed enough notes during the workshop",
+        "Same-day review is nearly useless \u2014 retention is already at its peak right after learning, so reviewing then produces minimal consolidation benefit. A review 1\u20133 days later would have been far more effective",
+        "They needed to review more times on the same evening to lock the material in",
+        "Full-day workshops produce too much information for spaced repetition to help \u2014 shorter learning sessions are required"
+      ],
+      "correct": 1,
+      "explanation": "The forgetting curve shows that retention is highest immediately after learning \u2014 which means reviewing right after the session catches memory when it doesn't need the support. The consolidation benefit of a review is greatest when retrieval requires effort, which happens when some forgetting has already occurred. Reviewing 1\u20133 days later, when the material has begun to fade, is far more effective than same-day repetition. The volume of information isn't the problem \u2014 the timing is."
+    },
+    {
+      "question": "Cepeda et al.'s 2006 meta-analysis found that the optimal gap between study sessions varied based on one key factor. What was it?",
+      "options": [
+        "The complexity of the material being learned",
+        "How long in the future the person needed to retain the information \u2014 longer retention goals required longer gaps between sessions",
+        "The age and cognitive baseline of the learner",
+        "Whether the material was conceptual or procedural"
+      ],
+      "correct": 1,
+      "explanation": "The central finding of the Cepeda meta-analysis was that optimal interstudy interval scales with retention interval \u2014 how far in the future you need the memory to hold. Short-term retention goals are served by short gaps; long-term retention goals require progressively longer gaps between review sessions. This is why a fixed review schedule (e.g., always review after 24 hours) is suboptimal \u2014 it ignores the relationship between when you need the memory and when you should review it."
+    },
+    {
+      "question": "Spaced repetition feels harder than reviewing material you remember well. Why is that difficulty actually the mechanism \u2014 not a problem to eliminate?",
+      "options": [
+        "Difficulty signals that the material is important, which motivates deeper processing",
+        "The effortful retrieval of fading information is what triggers memory consolidation \u2014 struggle at retrieval is the neurological event that strengthens the memory trace",
+        "Hard material requires more repetitions, so the difficulty is simply a sign that more review sessions are needed",
+        "Reviewing difficult material forces slower reading, which improves encoding depth"
+      ],
+      "correct": 1,
+      "explanation": "This is the core counterintuitive finding behind spaced repetition: the felt difficulty of retrieving something you've partially forgotten is the mechanism, not a side effect. When retrieval is effortless \u2014 because you reviewed recently and still remember clearly \u2014 the brain doesn't need to strengthen the memory trace. When retrieval requires effort because some forgetting has occurred, the brain consolidates more deeply. This is why easy reviews feel productive but produce little long-term benefit, and why the optimal review moment is just before the memory fades, not well before."
+    }
+  ],
+  "closing": "The format you're using right now \u2014 one concept per day, across multiple days \u2014 is a spaced repetition system. The quiz isn't decoration. It's a retrieval event. The fact that you won't see this concept again tomorrow is a feature.",
+  "sources": [
+    {
+      "label": "Cepeda, N.J., Pashler, H., Vul, E., Wixted, J.T., & Rohrer, D. \u2014 Distributed Practice in Verbal Recall Tasks: A Review and Quantitative Synthesis, Psychological Bulletin, Vol. 132, No. 3, 2006, pp. 354\u2013380",
+      "detail": "The largest meta-analysis of the spacing effect to date \u2014 839 assessments of distributed practice from 317 experiments across 184 articles. Confirms that spacing outperforms massing across virtually all conditions tested, and that optimal interstudy interval scales with retention interval.",
+      "url": "https://augmentingcognition.com/assets/Cepeda2006.pdf"
+    },
+    {
+      "label": "Murre, J.M.J. & Dros, J. \u2014 Replication and Analysis of Ebbinghaus' Forgetting Curve, PLOS ONE, Vol. 10, No. 7, 2015",
+      "detail": "2015 replication of Ebbinghaus's original 1885 forgetting curve research, confirming the exponential decay pattern using modern experimental methods. Results were consistent with Ebbinghaus's original findings.",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0120644"
+    },
+    {
+      "label": "Ebbinghaus, H. \u2014 Memory: A Contribution to Experimental Psychology, 1885. Translated by Ruger & Bussenius, Teachers College, Columbia University, 1913",
+      "detail": "The original source \u2014 Ebbinghaus's documentation of the forgetting curve and early evidence for spaced review as a memory intervention. Foundational to all subsequent spacing effect research.",
+      "url": "https://archive.org/details/memorycontributi00ebbiuoft"
+    }
+  ],
+  "ai_prompt": "I want to build a spaced repetition habit around something I'm actively learning right now. Help me design a simple review schedule by first asking me what I'm trying to learn and how long I need to retain it \u2014 then give me a concrete interval plan I can actually follow. Here's what I'm working on: [describe the skill or knowledge area]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-10"
+}

@@ -1,0 +1,88 @@
+{
+  "editionId": "MM.5",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "First Principles Thinking",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "Most problems aren't actually hard. They just look hard because everyone has been solving them the same way for so long that nobody questions whether that way makes sense.",
+    "explanation_paragraphs": [
+      "You're working on a problem \u2014 a pricing model, a process, a product decision \u2014 and the conversation keeps circling back to the same reference points. What competitors do. What's worked before. What the industry standard is. These feel like constraints, but most of them aren't. They're just accumulated assumptions that nobody has stopped to examine. First principles thinking is the practice of stopping, stripping away every assumption, and rebuilding from what you can actually prove is true.",
+      "The concept traces back to Aristotle, who defined a first principle as 'the first basis from which a thing is known' \u2014 a foundational truth that cannot be derived from anything more fundamental. In his Posterior Analytics, Aristotle argued that genuine knowledge requires grounding in these irreducible starting points, rather than in analogy or tradition. The contrast he drew was between understanding something at its root versus understanding it as a variation of something else.",
+      "That distinction \u2014 first principles versus analogy \u2014 is where the practical power lives. Reasoning by analogy means building on what others have done, with modifications. It's efficient, and often good enough. But it inherits all the assumptions of the prior model, including the wrong ones. First principles thinking discards the prior model entirely and asks: what do we actually know? What is irreducibly true here? What can we build up from that ground?",
+      "The modern example that made this framework famous is Elon Musk and SpaceX. In a 2012 interview, Musk described discovering that rockets cost up to $65 million to purchase \u2014 and asking why. He applied first principles: what is a rocket actually made of? Aerospace-grade aluminum alloys, titanium, copper, carbon fiber. What do those materials cost on the commodity market? It turned out the raw material cost of a rocket was approximately two percent of the typical purchase price. SpaceX built its own rockets from raw materials and cut launch costs by nearly ten times. The physics hadn't changed. The assumptions had."
+    ],
+    "why_today": "First principles thinking is grounded in Aristotle's Posterior Analytics and Metaphysics, where he defines archai \u2014 first principles \u2014 as the foundational starting points of all knowledge and scientific reasoning. The modern application through Elon Musk is documented in a widely cited 2012 interview and corroborated across multiple sources including James Clear's summary at jamesclear.com and Sahil Bloom's analysis. The SpaceX cost breakdown \u2014 materials at approximately 2% of purchase price \u2014 is Musk's own account from that interview, consistent across all sources reviewed.",
+    "morning_challenge": "Pick one assumption that is treated as a given in your work \u2014 a pricing floor, a process step, a timeline, a format, a constraint that nobody questions.\n\nNow ask: is this a law of physics or is it a habit? What would it cost to actually verify whether it's necessary?\n\nYou don't have to rebuild SpaceX. You just have to find one thing everyone assumes is fixed that might not be."
+  },
+  "midday": {
+    "reframe": "Reasoning by analogy is how you get slightly better than last year. Reasoning from first principles is how you get ten times better \u2014 or realize you've been solving the wrong problem entirely.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 ELON MUSK, 2012 INTERVIEW, DOCUMENTED IN JAMES CLEAR AND MULTIPLE SOURCES",
+    "itw_paragraphs": [
+      "In a 2012 interview, Elon Musk described how he approached the problem of rocket cost when founding SpaceX. The aerospace industry's assumption was that rockets cost tens of millions of dollars \u2014 that was simply what rockets cost, because that was what they had always cost. Musk applied what he called first principles thinking, which he attributed to his background in physics: 'Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let's look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.'",
+      "The 98% gap between material cost and purchase price wasn't profit \u2014 it was the accumulated cost of an industry that had been reasoning by analogy for decades. Inefficient supply chains, outsourced components, no reusability, no competitive pressure to question any of it. Once Musk identified the gap through first principles, the path was clear: buy the raw materials, build the rockets, cut the price by nearly ten times. SpaceX launched its first successful orbital rocket in 2008.",
+      "The broader lesson isn't about aerospace. It's about what happens when every participant in a market has been reasoning by analogy for long enough that the assumptions become invisible. The constraints that feel like physics are often just unexamined habits. First principles thinking is the discipline of asking which ones are actually load-bearing \u2014 and discovering that fewer of them are than everyone assumed."
+    ],
+    "quote": "Physics teaches you to reason from first principles rather than by analogy. You boil things down to the most fundamental truths and then reason up from there.",
+    "attribution": "Elon Musk, 2012 interview",
+    "midday_nudge": "Find one process or decision in your work this week where the answer is 'that's how we do it' or 'that's the industry standard.' Write down what the actual goal of that process is \u2014 stripped of all the existing structure around it. Then ask: if you were designing from scratch to hit that goal, would you build what exists?"
+  },
+  "quiz": [
+    {
+      "question": "A team is designing a new sales compensation plan. They start by looking at three competitors' plans and averaging the key elements. What type of reasoning is this, and what does first principles thinking offer instead?",
+      "options": [
+        "This is deductive reasoning \u2014 valid because it's grounded in market data. First principles would add qualitative research to supplement it",
+        "This is reasoning by analogy \u2014 it inherits all the assumptions of the competitor models, including wrong ones. First principles would start from the actual goal of the comp plan and build up from there: what behavior are we trying to incentivize, and what structure produces that behavior most directly?",
+        "This is inductive reasoning \u2014 valid for establishing market norms. First principles would question whether those norms produce optimal outcomes",
+        "This is benchmarking, which is appropriate for comp design. First principles thinking is better suited to product and engineering problems"
+      ],
+      "correct": 1,
+      "explanation": "Averaging competitor plans is reasoning by analogy \u2014 it assumes that what competitors do reflects what actually works, or at least what's acceptable, without examining the underlying logic. First principles would strip the problem back to the foundational question: what specific behaviors do we want to drive, and what compensation structure most directly produces those behaviors? That often produces a very different design than what competitors have, because competitors' plans were often built the same way \u2014 by copying slightly modified versions of what came before."
+    },
+    {
+      "question": "Musk discovered that the raw material cost of a rocket was approximately 2% of the purchase price. Why is this the output of first principles thinking rather than just good negotiation or cost analysis?",
+      "options": [
+        "Because he found a better supplier by shopping globally rather than using the default aerospace vendors",
+        "Because he broke the problem down to its irreducible physical components \u2014 what the rocket actually consists of \u2014 rather than accepting the market price as the starting point. The gap between material cost and purchase price revealed that the constraint was assumed, not physical",
+        "Because he applied economies of scale that existing aerospace manufacturers hadn't explored",
+        "Because he used vertical integration, which is a standard cost reduction strategy in manufacturing"
+      ],
+      "correct": 1,
+      "explanation": "The first principles move was asking 'what is a rocket made of?' rather than 'what does a rocket cost?' Those are different questions with different implications. Starting from purchase price accepts the market's accumulated assumptions as reality. Starting from material composition treats the rocket as a physical object with known, priceable components \u2014 and lets the math reveal the gap. Once the gap was visible, the assumptions became visible: an industry-wide failure to question whether the cost structure was necessary. That's what first principles thinking surfaces \u2014 not better answers to existing questions, but evidence that the question was wrong."
+    },
+    {
+      "question": "When is reasoning by analogy the better choice \u2014 and when does first principles thinking offer the bigger advantage?",
+      "options": [
+        "Analogy is better for simple problems; first principles is better for complex ones",
+        "Analogy is efficient and appropriate when the prior model is sound and incremental improvement is the goal. First principles pays off when the prior model contains wrong assumptions, when the gap between what's assumed and what's physically possible is large, or when you're trying to do something significantly different from what's been done before",
+        "First principles is always superior \u2014 analogy is a cognitive shortcut that leads to mediocrity",
+        "Analogy is better in fast-moving markets; first principles is better in stable industries"
+      ],
+      "correct": 1,
+      "explanation": "First principles thinking is expensive \u2014 it requires stripping out all prior assumptions and rebuilding from scratch, which takes time and cognitive effort. Reasoning by analogy is faster and often good enough when the underlying model is sound. The mistake is applying analogy when the underlying model is not sound \u2014 when it contains inherited assumptions that nobody has tested, when competitors are all copying each other, or when the goal is transformation rather than improvement. The skill isn't choosing first principles over analogy \u2014 it's knowing which type of problem you're actually facing."
+    }
+  ],
+  "closing": "Aristotle built the philosophical foundation for this 2,400 years ago. Musk applied it to rockets. The question it asks is the same either way: what do you actually know, versus what are you just assuming because everyone else assumes it too?",
+  "sources": [
+    {
+      "label": "Aristotle \u2014 Posterior Analytics, c. 350 BC. Translation by G.R.G. Mure",
+      "detail": "The foundational philosophical source for first principles. Aristotle defines archai \u2014 first principles \u2014 as the irreducible starting points of knowledge that cannot be derived from anything more fundamental, and argues that genuine scientific understanding requires grounding in these foundations rather than in analogy or tradition.",
+      "url": "https://classics.mit.edu/Aristotle/posterior.html"
+    },
+    {
+      "label": "Musk, E. \u2014 Interview describing SpaceX and first principles thinking, 2012. Documented and cited in Clear, J. \u2014 First Principles: Elon Musk on the Power of Thinking for Yourself, jamesclear.com",
+      "detail": "Primary modern source for first principles thinking as a practical framework. Musk describes the SpaceX rocket cost analysis \u2014 materials at approximately 2% of purchase price \u2014 and the reasoning by analogy versus first principles distinction. James Clear's documentation is the most widely cited version of this interview.",
+      "url": "https://jamesclear.com/first-principles"
+    },
+    {
+      "label": "Farnam Street \u2014 First Principles: The Building Blocks of True Knowledge, fs.blog",
+      "detail": "Comprehensive treatment of first principles thinking from Plato through Aristotle, Descartes, and modern applications. Covers the philosophical lineage and the practical distinction between reasoning from first principles and reasoning from analogy.",
+      "url": "https://fs.blog/first-principles/"
+    }
+  ],
+  "ai_prompt": "I want to apply first principles thinking to a real problem I'm working on \u2014 something where I suspect the current approach is built on assumptions nobody has tested. Help me strip it down: identify what's actually true versus what's assumed, and rebuild from there. Ask me about the problem first before we start pulling it apart. Here's what I'm working on: [describe it]",
+  "verified": true,
+  "verified_by": "Matthew",
+  "verified_date": "2026-06-10"
+}

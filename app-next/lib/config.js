@@ -1,1 +1,1 @@
-export const TOTAL_ENTRIES = 30
+export const TOTAL_ENTRIES = 40

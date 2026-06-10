@@ -1,37 +1,40 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-08 (v8)
+**Generated:** 2026-06-10 (v9)
 
 ---
 
 ## App Status
 - **Live at:** one-percent-app.vercel.app
 - **Beta testers:** DonRobbo, Erin, Brian, Landon, Andrew, Justin
-- **Total entries published:** 030
-- **Last entry:** 030 — Confirmation Bias (MM.4)
+- **Total entries published:** 040
+- **Last entry:** 040 — Epistemic Humility (PH.5)
 
 ---
 
-## Content — Last 5 Published
+## Content — Last 10 Published
 | # | Edition | Concept | Category | Verified |
 |---|---|---|---|---|
-| 026 | SC.3.2 | Mirroring | Sales Craft | ✓ Matthew 2026-06-04 |
-| 027 | AI.3.2 | AI Agents | AI | ✓ Matthew 2026-06-04 |
-| 028 | VL.4 | Loaded Language | Vocab & Language | ✓ Matthew 2026-06-04 |
-| 029 | SC.4.1 | Labeling | Sales Craft | ✓ Matthew 2026-06-04 |
-| 030 | MM.4 | Confirmation Bias | Mental Models | ✓ Matthew 2026-06-04 |
+| 031 | NC.4 | Spaced Repetition | Neuroscience & Cognition | ✓ Matthew 2026-06-10 |
+| 032 | CM.4 | The BLUF Principle | Communication | ✓ Matthew 2026-06-10 |
+| 033 | PH.4 | Memento Mori | Philosophy | ✓ Matthew 2026-06-10 |
+| 034 | SC.3 | Calibrated Questions | Sales Craft | ✓ Matthew 2026-06-10 |
+| 035 | AI.4.1 | System Prompts | AI | ✓ Matthew 2026-06-10 |
+| 036 | VL.4.1 | The Overton Window | Vocab & Language | ✓ Matthew 2026-06-10 |
+| 037 | SC.5 | The Accusation Audit | Sales Craft | ✓ Matthew 2026-06-10 |
+| 038 | MM.5 | First Principles Thinking | Mental Models | ✓ Matthew 2026-06-10 |
+| 039 | AI.4.2 | Temperature & Sampling | AI | ✓ Matthew 2026-06-10 |
+| 040 | PH.5 | Epistemic Humility | Philosophy | ✓ Matthew 2026-06-10 |
 
 ---
 
 ## Content — Next Rotation
 | Slot | Category | Notes |
 |---|---|---|
-| 031 | NC | Neuroscience & Cognition — next in rotation |
-| 032 | CM | Communication |
-| 033 | PH | Philosophy |
-| 034 | SC | Sales Craft (SC.4.2) |
-| 035 | AI | AI (AI.4.1) |
-
-Candidates to consider: Red Team Exercise (MM or CM — added to backlog this session)
+| 041 | CM | Communication |
+| 042 | SC | Sales Craft |
+| 043 | NC | Neuroscience & Cognition |
+| 044 | AI | AI |
+| 045 | VL | Vocab & Language |
 
 ---
 
@@ -40,62 +43,31 @@ Candidates to consider: Red Team Exercise (MM or CM — added to backlog this se
 
 ---
 
-## Beta Expansion — Leads Pending
-8 LinkedIn DMs sent 2026-06-04. Awaiting replies. When confirmed, add to Supabase allowlist (ENH-007).
-| Name | Notes |
-|---|---|
-| John Calamita | Enterprise alum, sales background |
-| Wade Stock | AB Nonprofit team, AI Sales Lead |
-| Ankur Khanna | AB colleague, tech-savvy |
-| Chris Sherman | Enterprise alum, Presidents Club |
-| Reza Saboury | AB Nonprofit team, personal connection |
-| Larissa Rodriguez | Sales enablement professional |
-| Amy Burnette | AB colleague, builder mindset |
-| Michelle Hentz | AB colleague, AI framework builder |
+## Verification Protocol — Updated 2026-06-10
+Dead Drop verification now uses **Claude in Chrome** as the preferred method:
+- Claude connects to Matthew's browser via extension
+- Claude navigates each source URL directly and reads page content
+- Matthew reviews and gives explicit human sign-off per claim
+- Fallback: manual search if Chrome extension unavailable
+- Human sign-off is always required regardless of method
+- Formalized in Directions v1.36
 
 ---
 
-## Protocol Updates This Session
-- **Dead Drop protocol updated:** Search query is now mandatory with every claim. Format:
-  > **Claim N:** [claim]
-  > **Search:** `[exact query]`
-  > What do you get?
-- **Content review step formalized:** Full content (including AI prompts) must be presented to Matthew for approval before Dead Drop begins
+## Active Infrastructure
+- **Email:** Resend via matthew@mpgink.com — daily reminder + practice reminder edge functions confirmed working
+- **Auth:** Supabase session auth
+- **Deployment:** Vercel auto-deploy on push to main
+- **Directions:** onepercentinstructions-v1_36.md
 
 ---
 
-## Infrastructure
-- Supabase project: uuzdlubbynavybttlmeh
-- GitHub: mgolia6/one-percent-app (CLI only, api.github.com blocked)
-- Vercel: auto-deploys on push to main
-- Resend: matthew@mpgink.com, domain verified
-- pg_cron: daily reminder (12:00 UTC), practice reminder (hourly, 6hr post-completion), weekly wrap (day 7/14/21)
-
----
-
-## Active Beta Infrastructure
-- Survey system live: /survey/[userId] — unique links per tester
-- Beta check-in tab in admin dashboard
-- Bookmarking live: star icon, optimistic UI, Saved filter tab
-- Changelog modal: show_modal: true + published: true triggers in-app modal
-
----
-
-## Product Backlog — Top Items
-See Backlog/onepercentproductbacklog.md for full list. High priority:
-- Goal-setting feature (teased to testers — before beta ends)
-- Quiz backfill entries 001–008
-- Voice feedback (Web Speech API) — approved, not built
-- 4-question post-entry quiz revamp — approved, not built
-- ISSUE-002: weekly trigger broken for backdated signups
-- ISSUE-004: re-engagement flow for inactive users
-- ENH-007: email allowlist — needed before new testers onboard
-
----
-
-## Session Start Protocol (Every Session)
-1. Clone repo with token Matthew provides
-2. `git config user.email "claude@anthropic.com" && git config user.name "Claude"`
-3. Read this file
-4. Read latest log in Logs/
-5. Wait for Matthew's wake word
+## Open Items
+- Human "brain getting smarter" moment on quiz completion — not yet implemented
+- Home screen redesign (v8 mock) — not yet implemented
+- Header redesign — flagged as unheroic, needs sprint
+- Email allowlist (ENH-007) — most urgent security item before expanding beta
+- Push notifications — post-launch (Capacitor)
+- Prompt Farm + Concepts Glossary — placeholder tabs exist
+- 001–008 quiz backfill — queued
+- Zoho Mail inbox setup — matthew@mpgink.com receiving

@@ -143,6 +143,16 @@ const ENTRIES = [
   { entry: '028', editionId: 'VL.4', concept: 'Loaded Language', category: 'Vocab & Language' },
   { entry: '029', editionId: 'SC.4.1', concept: 'Labeling', category: 'Sales Craft' },
   { entry: '030', editionId: 'MM.4', concept: 'Confirmation Bias', category: 'Mental Models' },
+  { entry: '031', editionId: 'NC.4', concept: 'Spaced Repetition', category: 'Neuroscience & Cognition' },
+  { entry: '032', editionId: 'CM.4', concept: 'The BLUF Principle', category: 'Communication' },
+  { entry: '033', editionId: 'PH.4', concept: 'Memento Mori', category: 'Philosophy' },
+  { entry: '034', editionId: 'SC.3', concept: 'Calibrated Questions', category: 'Sales Craft' },
+  { entry: '035', editionId: 'AI.4.1', concept: 'System Prompts', category: 'AI' },
+  { entry: '036', editionId: 'VL.4.1', concept: 'The Overton Window', category: 'Vocab & Language' },
+  { entry: '037', editionId: 'SC.5', concept: 'The Accusation Audit', category: 'Sales Craft' },
+  { entry: '038', editionId: 'MM.5', concept: 'First Principles Thinking', category: 'Mental Models' },
+  { entry: '039', editionId: 'AI.4.2', concept: 'Temperature & Sampling', category: 'AI' },
+  { entry: '040', editionId: 'PH.5', concept: 'Epistemic Humility', category: 'Philosophy' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
