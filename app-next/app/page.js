@@ -980,13 +980,13 @@ export default function HomePage() {
   const [ritualTyped, setRitualTyped] = useState('')
   const [ritualPhase, setRitualPhase] = useState('typing') // typing | sig | folding | done
   const [leaderboardRank, setLeaderboardRank] = useState(null)
-  const [allUserCompletions, setAllUserCompletions] = useState(0)
 
   useEffect(() => {
     async function init() {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) { router.push('/login'); return }
-      setUser(session.user)
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session) { router.push('/login'); return }
+        setUser(session.user)
 
       let { data: prof, error: profError } = await supabase.from('profiles').select('*').eq('id', session.user.id).maybeSingle()
       if (profError) { setLoading(false); return }
@@ -1012,17 +1012,21 @@ export default function HomePage() {
       if (bmarks) bmarks.forEach(b => { bmarkMap[b.entry_number] = b.id })
       setBookmarks(bmarkMap)
 
-      // Leaderboard rank
+      // Leaderboard rank — non-blocking, can fail silently
       if (!prof.is_admin) {
-        const { data: allProfs } = await supabase.from('profiles').select('id').eq('is_admin', false)
-        if (allProfs) {
-          const counts = await Promise.all(allProfs.map(async p => {
-            const { count } = await supabase.from('completions').select('*', { count: 'exact', head: true }).eq('user_id', p.id)
-            return { id: p.id, count: count || 0 }
-          }))
-          counts.sort((a, b) => b.count - a.count)
-          const myRank = counts.findIndex(c => c.id === session.user.id) + 1
-          setLeaderboardRank(myRank)
+        try {
+          const { data: allProfs } = await supabase.from('profiles').select('id').eq('is_admin', false)
+          if (allProfs) {
+            const counts = await Promise.all(allProfs.map(async p => {
+              const { count } = await supabase.from('completions').select('*', { count: 'exact', head: true }).eq('user_id', p.id)
+              return { id: p.id, count: count || 0 }
+            }))
+            counts.sort((a, b) => b.count - a.count)
+            const myRank = counts.findIndex(c => c.id === session.user.id) + 1
+            setLeaderboardRank(myRank)
+          }
+        } catch (e) {
+          console.warn('Leaderboard rank fetch failed:', e)
         }
       }
 
@@ -1058,6 +1062,10 @@ export default function HomePage() {
         setShowWelcome(true)
         setTimeout(() => setWelcomeFading(true), 6000)
         setTimeout(() => setShowWelcome(false), 6700)
+      }
+      } catch (err) {
+        console.error('Init error:', err)
+        setLoading(false)
       }
     }
     init()
