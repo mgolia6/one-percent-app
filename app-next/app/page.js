@@ -966,7 +966,7 @@ export default function HomePage() {
   const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
   const [bookmarks, setBookmarks] = useState({})
   const [activeTab, setActiveTab] = useState('today')
-  const [libFilter, setLibFilter] = useState('ALL')
+  const [libFilter, setLibFilter] = useState('')
   const [showGoalSheet, setShowGoalSheet] = useState(false)
   const [goalWhat, setGoalWhat] = useState('')
   const [goalWhen, setGoalWhen] = useState('')
@@ -1165,7 +1165,10 @@ export default function HomePage() {
   // Today entry and last completed
   const todayEntry = ENTRIES[unlockedCount - 1] || ENTRIES[0]
   const lastEntry = unlockedCount > 1 ? ENTRIES[unlockedCount - 2] : null
-  const onDeckEntry = unlockedCount < ENTRIES.length ? ENTRIES[unlockedCount] : null
+  // On Deck: if entries remain unlocked, show next. Otherwise show oldest incomplete.
+  const nextUnlocked = unlockedCount < ENTRIES.length ? ENTRIES[unlockedCount] : null
+  const oldestIncomplete = ENTRIES.find(e => !completions[e.entry] && e.entry !== todayEntry?.entry) || null
+  const onDeckEntry = nextUnlocked || oldestIncomplete
   const todayCompleted = !!completions[todayEntry?.entry]
   const todayComp = completions[todayEntry?.entry]
 
@@ -1194,13 +1197,13 @@ export default function HomePage() {
   const accent = todayEntry ? (CATEGORY_COLORS[todayEntry.category] || '#47FFE8') : '#47FFE8'
 
   const S = {
-    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a', maxWidth: 960, margin: '0 auto', paddingBottom: 80 },
+    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a' },
     header: { background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)' },
     headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
     wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' },
     actionStrip: { padding: '0 20px 9px', display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto', scrollbarWidth: 'none' },
-    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', padding: '4px 9px', borderRadius: 100, border: '1px solid rgba(26,42,58,0.11)', color: 'rgba(26,42,58,0.55)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', padding: '4px 9px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.28)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
+    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(26,42,58,0.13)', color: 'rgba(26,42,58,0.65)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
+    asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.32)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
     sep: { width: 1, height: 12, background: 'rgba(26,42,58,0.09)', flexShrink: 0, margin: '0 1px' },
     av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(26,42,58,0.09)', border: '1px solid rgba(26,42,58,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
     screen: { padding: '18px 18px 0' },
@@ -1269,14 +1272,16 @@ export default function HomePage() {
         @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes popIn{0%{transform:scale(0.4)}100%{transform:scale(1)}}
         @media(min-width:768px){
-          .op-desktop-shell{display:grid!important;grid-template-columns:260px 1fr;min-height:100vh;}
-          .op-sidebar{display:flex!important;}
-          .op-main{max-width:640px;margin:0 auto;width:100%;}
+          .op-desktop-shell{display:flex!important;min-height:100vh;}
+          .op-sidebar{display:flex!important;width:240px;flex-shrink:0;}
+          .op-main{flex:1;max-width:680px;padding-bottom:60px;}
           .op-bottom-nav{display:none!important;}
           .op-header{display:none!important;}
         }
         @media(max-width:767px){
           .op-sidebar{display:none!important;}
+          .op-desktop-shell{display:block!important;}
+          .op-main{padding-bottom:0;}
         }
       `}</style>
 
@@ -1405,6 +1410,7 @@ export default function HomePage() {
         </div>
       </div>
 
+      <div className="op-desktop-shell" style={{ display: 'flex' }}>
       {/* DESKTOP SIDEBAR */}
       <div className="op-sidebar" style={{ display: 'none', flexDirection: 'column', background: '#1a2a3a', minHeight: '100vh', padding: '32px 0', position: 'sticky', top: 0, height: '100vh', overflowY: 'auto' }}>
         <div style={{ padding: '0 24px 32px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -1532,7 +1538,7 @@ export default function HomePage() {
                     {cat.icon && React.cloneElement(cat.icon, { width: 14, height: 14 })}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.5)', marginBottom: 3 }}>UP NEXT · UNLOCKS TOMORROW</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.5)', marginBottom: 3 }}>{nextUnlocked ? 'UP NEXT · UNLOCKS TOMORROW' : 'PICK UP WHERE YOU LEFT OFF'}</div>
                     <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{onDeckEntry.concept}</div>
                     <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: cat.color || '#fff' }}>{onDeckEntry.editionId} · {onDeckEntry.category.toUpperCase()}</div>
                   </div>
@@ -1568,10 +1574,10 @@ export default function HomePage() {
         <div style={{ ...S.screen, paddingTop: 20 }}>
           {/* Category chips 4x2 */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 20 }}>
-            {[{ key: 'ALL', label: 'ALL', color: 'rgba(232,238,245,0.7)', bg: 'rgba(255,255,255,0.07)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.7)" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>, count: `${completedCount}/${TOTAL_ENTRIES}` },
+            {[{ key: 'FAVORITES', label: 'SAVED', color: '#E8FF47', bg: 'rgba(232,255,71,0.1)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>, count: `${Object.keys(bookmarks).length}` },
               ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
             ].map(chip => (
-              <div key={chip.key} onClick={() => setLibFilter(chip.key)} style={S.catChip(libFilter === chip.key)}>
+              <div key={chip.key} onClick={() => setLibFilter(libFilter === chip.key ? '' : chip.key)} style={S.catChip(libFilter === chip.key)}>
                 <div style={{ width: 28, height: 28, borderRadius: 8, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
@@ -1582,8 +1588,8 @@ export default function HomePage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingBottom: 20 }}>
             {ENTRIES
               .filter(e => {
-                if (libFilter === 'ALL') return true
-                if (libFilter === 'Saved') return !!bookmarks[e.entry]
+                if (!libFilter || libFilter === 'ALL') return true
+                if (libFilter === 'FAVORITES') return !!bookmarks[e.entry]
                 return e.category === libFilter
               })
               .map((e, idx) => {
@@ -1594,7 +1600,9 @@ export default function HomePage() {
                 const isToday = entryNum === unlockedCount
                 return (
                   <div key={e.entry} onClick={() => unlocked && router.push(`/entry/${e.entry}`)} style={{ ...S.entry(!unlocked), border: isToday ? `1px solid ${cat.color || '#47FFE8'}40` : '1px solid transparent' }}>
-                    <div style={{ width: 3, height: 34, borderRadius: 2, flexShrink: 0, background: cat.color || '#fff', opacity: !unlocked ? 0.12 : completed ? 0.5 : 1 }} />
+                    <div style={{ width: 34, height: 34, borderRadius: 9, background: !unlocked ? 'rgba(255,255,255,0.04)' : (cat.color || '#fff') + '18', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, opacity: !unlocked ? 0.3 : 1 }}>
+                      {cat.icon && React.cloneElement(cat.icon, { width: 16, height: 16 })}
+                    </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontSize: 13, fontWeight: completed ? 400 : 600, color: completed ? 'rgba(232,238,245,0.58)' : '#e8eef5', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{e.concept}</div>
                       <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: isToday ? cat.color : 'rgba(232,238,245,0.4)' }}>{e.editionId} · {isToday ? 'TODAY' : e.category.toUpperCase()}</div>
@@ -1629,7 +1637,7 @@ export default function HomePage() {
           </div>
           {/* Category chips */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 7, marginBottom: 14 }}>
-            {[{ key: 'ALL', label: 'ALL', color: 'rgba(232,238,245,0.7)', bg: 'rgba(255,255,255,0.07)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.7)" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>, count: `${completedCount}/${TOTAL_ENTRIES}` },
+            {[{ key: 'FAVORITES', label: 'SAVED', color: '#E8FF47', bg: 'rgba(232,255,71,0.1)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>, count: `${Object.keys(bookmarks).length}` },
               ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
             ].map(chip => (
               <div key={chip.key} style={S.catChip(false)}>
@@ -1775,6 +1783,7 @@ export default function HomePage() {
       )}
 
       </div>{/* /op-main */}
+      </div>{/* /op-desktop-shell */}
 
       {/* BOTTOM NAV */}
       <div style={S.bottomNav} className="op-bottom-nav">
