@@ -17,7 +17,7 @@ const STEPS = [
     id: 'access',
     eyebrow: 'WHAT YOU\'RE GETTING',
     heading: '30 days. All seven categories. Daily.',
-    body: "Full access to everything — every category, every entry, unlocked one per day for 30 days.\n\nEach entry has three parts: a Morning Brief to start your day sharp, a Midday Reframe to apply it, and an Evening Quiz to lock it in.",
+    body: "Full access to everything — every category, every entry, unlocked one per day for 30 days.\n\nEach entry has three parts: the Concept to understand it, In the Wild to see it in action, and Lock It In to test yourself.",
     cta: 'GOT IT →',
     commitment: null,
   },

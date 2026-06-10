@@ -328,9 +328,9 @@ function BugModal({ userId, onClose }) {
 
             <select value={page} onChange={e => setPage(e.target.value)} style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '10px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", marginBottom: 12, outline: 'none' }}>
               <option>Library</option>
-              <option>Entry — Concept</option>
-              <option>Entry — In the Wild</option>
-              <option>Entry — Lock It In</option>
+              <option>Entry — Morning</option>
+              <option>Entry — Midday</option>
+              <option>Entry — Evening / Quiz</option>
               <option>Onboarding</option>
               <option>Info</option>
               <option>Login</option>
@@ -372,7 +372,7 @@ const HOW_IT_WORKS = [
   {
     eyebrow: 'WHAT YOU\'RE GETTING',
     heading: '30 days. All seven categories. Daily.',
-    body: "Full access to everything — every category, every entry, unlocked one per day for 30 days.\n\nEach entry has three parts: the Concept to understand it, In the Wild to see it in action, and Lock It In to test yourself.",
+    body: "Full access to everything — every category, every entry, unlocked one per day for 30 days.\n\nEach entry has three parts: a Morning Brief to start your day sharp, a Midday Reframe to apply it, and an Evening Quiz to lock it in.",
   },
   {
     eyebrow: 'FEEDBACK — 1 OF 4',
@@ -641,7 +641,7 @@ function EndOfBetaModal({ userId, onClose }) {
             <EobRatingRow label="QUIZ QUALITY" question="Was it testing the right things?" value={quizRating} onChange={setQuizRating} />
             <EobChipRow label="WHICH CATEGORY DELIVERED THE MOST VALUE?" options={EOB_CATS} value={mostValueCat} onChange={setMostValueCat} />
             <EobChipRow label="WHICH CATEGORY COULD BE CUT WITHOUT YOU NOTICING?" options={[...EOB_CATS, 'None']} value={couldCutCat} onChange={setCouldCutCat} />
-            <EobChipRow label="WAS THE CONCEPT / IN THE WILD / LOCK IT IN STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} />
+            <EobChipRow label="WAS THE MORNING BRIEF / MIDDAY REFRAME / EVENING QUIZ STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} />
             {structureVerdict && structureVerdict !== 'Yes — keep it' && <EobOpenText value={structureDetail} onChange={setStructureDetail} placeholder="What would you change?" />}
             <EobChipRow label="WAS 10 MINUTES THE RIGHT COMMITMENT?" options={['Too short', 'Just right', 'Too long', 'Inconsistent']} value={commitment} onChange={setCommitment} />
             <EobOpenText label="WHAT TOPIC DO YOU MOST WANT ADDED BEFORE PUBLIC LAUNCH?" value={topicToAdd} onChange={setTopicToAdd} placeholder="Be specific." />
@@ -957,6 +957,7 @@ export default function HomePage() {
   const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
+  const [filter, setFilter] = useState('All')
   const [signingOut, setSigningOut] = useState(false)
   const [showWhatsNew, setShowWhatsNew] = useState(false)
   const [whatsNewEntry, setWhatsNewEntry] = useState(null)
@@ -964,23 +965,8 @@ export default function HomePage() {
   const [showWeeklySurvey, setShowWeeklySurvey] = useState(false)
   const [showEndOfBeta, setShowEndOfBeta] = useState(false)
   const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
-  const [bookmarks, setBookmarks] = useState({})
-  const [activeTab, setActiveTab] = useState('today')
-  const [libFilter, setLibFilter] = useState('ALL')
-  const [showGoalSheet, setShowGoalSheet] = useState(false)
-  const [goalWhat, setGoalWhat] = useState('')
-  const [goalWhen, setGoalWhen] = useState('')
-  const [goalProof, setGoalProof] = useState('')
-  const [goalStep, setGoalStep] = useState(1)
-  const [goalWhatInput, setGoalWhatInput] = useState('')
-  const [goalWhenInput, setGoalWhenInput] = useState('')
-  const [goalProofInput, setGoalProofInput] = useState('')
-  const [showCommitRitual, setShowCommitRitual] = useState(false)
-  const [ritualText, setRitualText] = useState('')
-  const [ritualTyped, setRitualTyped] = useState('')
-  const [ritualPhase, setRitualPhase] = useState('typing') // typing | sig | folding | done
-  const [leaderboardRank, setLeaderboardRank] = useState(null)
-  const [allUserCompletions, setAllUserCompletions] = useState(0)
+  const [bookmarks, setBookmarks] = useState({}) // entry_number -> bookmark id
+  const libraryRef = useRef(null)
 
   useEffect(() => {
     async function init() {
@@ -989,18 +975,29 @@ export default function HomePage() {
       setUser(session.user)
 
       let { data: prof, error: profError } = await supabase.from('profiles').select('*').eq('id', session.user.id).maybeSingle()
-      if (profError) { setLoading(false); return }
+      console.log('[library] profile fetch:', prof, profError)
+      if (profError) {
+        console.error('Profile fetch error:', profError)
+        setLoading(false)
+        return
+      }
       if (!prof) {
         const { data: newProf, error: insertError } = await supabase.from('profiles').insert({ id: session.user.id, email: session.user.email, signup_date: new Date().toISOString() }).select().maybeSingle()
-        if (insertError) { setLoading(false); return }
+        if (insertError) {
+          console.error('Profile insert error:', insertError)
+          setLoading(false)
+          return
+        }
         prof = newProf
       }
-      if (!prof?.onboarding_complete) { router.push('/onboarding'); return }
+
+      // New users go through onboarding first
+      if (!prof?.onboarding_complete) {
+        router.push('/onboarding')
+        return
+      }
 
       setProfile(prof)
-      if (prof.goal_what) setGoalWhat(prof.goal_what)
-      if (prof.goal_when) setGoalWhen(prof.goal_when)
-      if (prof.goal_proof) setGoalProof(prof.goal_proof)
 
       const { data: comps } = await supabase.from('completions').select('entry_number, score, time_to_quiz').eq('user_id', session.user.id)
       const compMap = {}
@@ -1012,34 +1009,36 @@ export default function HomePage() {
       if (bmarks) bmarks.forEach(b => { bmarkMap[b.entry_number] = b.id })
       setBookmarks(bmarkMap)
 
-      // Leaderboard rank
-      if (!prof.is_admin) {
-        const { data: allProfs } = await supabase.from('profiles').select('id').eq('is_admin', false)
-        if (allProfs) {
-          const counts = await Promise.all(allProfs.map(async p => {
-            const { count } = await supabase.from('completions').select('*', { count: 'exact', head: true }).eq('user_id', p.id)
-            return { id: p.id, count: count || 0 }
-          }))
-          counts.sort((a, b) => b.count - a.count)
-          const myRank = counts.findIndex(c => c.id === session.user.id) + 1
-          setLeaderboardRank(myRank)
+      // Check for unseen changelog entries
+      const { data: latestChangelog } = await supabase
+        .from('changelog')
+        .select('version, title, description, show_modal')
+        .eq('published', true)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+
+      if (latestChangelog && latestChangelog.version !== prof.last_seen_changelog_version) {
+        setHasUnseenChangelog(true)
+        if (latestChangelog.show_modal) {
+          setWhatsNewEntry(latestChangelog)
+          setShowWhatsNew(true)
         }
       }
 
-      const { data: latestChangelog } = await supabase.from('changelog').select('version, title, description, show_modal').eq('published', true).order('created_at', { ascending: false }).limit(1).maybeSingle()
-      if (latestChangelog && latestChangelog.version !== prof.last_seen_changelog_version) {
-        setHasUnseenChangelog(true)
-        if (latestChangelog.show_modal) { setWhatsNewEntry(latestChangelog); setShowWhatsNew(true) }
-      }
-
+      // Weekly survey trigger: fires at day 7, 14, 21 (skip 28, handled by end-of-beta)
+      // Skipped for admins. Requires at least one completion to prevent firing for zero-activity users.
       if (prof?.signup_date && !prof?.is_admin) {
         const { data: anyComps } = await supabase.from('completions').select('entry_number').eq('user_id', session.user.id).limit(1)
-        if (anyComps && anyComps.length > 0) {
+        const hasCompletions = anyComps && anyComps.length > 0
+        if (hasCompletions) {
           const daysSince = Math.floor((Date.now() - new Date(prof.signup_date).getTime()) / 86400000)
           const lastSurveyDay = prof.last_weekly_survey_day || 0
-          for (const d of [7, 14, 21]) {
+          const SURVEY_DAYS = [7, 14, 21]
+          for (const d of SURVEY_DAYS) {
             if (daysSince >= d && lastSurveyDay < d) {
-              setWeeklyWeekNumber(d / 7)
+              const weekNum = d / 7
+              setWeeklyWeekNumber(weekNum)
               setTimeout(() => setShowWeeklySurvey(true), 2000)
               break
             }
@@ -1047,11 +1046,13 @@ export default function HomePage() {
         }
       }
 
+      // End-of-beta trigger: fires once when all entries are completed
       if (!prof?.end_of_beta_survey_done) {
         const { data: completionRows } = await supabase.from('completions').select('entry_number').eq('user_id', session.user.id)
-        if (completionRows && completionRows.length >= TOTAL_ENTRIES) setTimeout(() => setShowEndOfBeta(true), 2000)
+        if (completionRows && completionRows.length >= TOTAL_ENTRIES) {
+          setTimeout(() => setShowEndOfBeta(true), 2000)
+        }
       }
-
       setLoading(false)
       if (!sessionStorage.getItem('welcomed')) {
         sessionStorage.setItem('welcomed', '1')
@@ -1071,77 +1072,42 @@ export default function HomePage() {
 
   const markChangelogSeen = async () => {
     if (!profile || !hasUnseenChangelog) return
-    const { data: latest } = await supabase.from('changelog').select('version').eq('published', true).order('created_at', { ascending: false }).limit(1).maybeSingle()
+    const { data: latest } = await supabase
+      .from('changelog')
+      .select('version')
+      .eq('published', true)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
     if (latest) {
       await supabase.from('profiles').update({ last_seen_changelog_version: latest.version }).eq('id', profile.id)
       setHasUnseenChangelog(false)
     }
   }
 
-  const dismissWhatsNew = async () => { setShowWhatsNew(false); await markChangelogSeen() }
+  const dismissWhatsNew = async () => {
+    setShowWhatsNew(false)
+    await markChangelogSeen()
+  }
 
   const toggleBookmark = async (e, entryNumber) => {
     e.stopPropagation()
     if (!user) return
     const existingId = bookmarks[entryNumber]
     if (existingId) {
+      // Remove
       setBookmarks(prev => { const next = { ...prev }; delete next[entryNumber]; return next })
       await supabase.from('bookmarks').delete().eq('id', existingId)
     } else {
+      // Add
       const { data } = await supabase.from('bookmarks').insert({ user_id: user.id, entry_number: entryNumber }).select('id').single()
       if (data) setBookmarks(prev => ({ ...prev, [entryNumber]: data.id }))
     }
   }
 
-  // Goal commit
-  const commitGoal = async () => {
-    const what = goalWhatInput.trim()
-    const when = goalWhenInput.trim()
-    const proof = goalProofInput.trim()
-    if (!what || !when || !proof) return
-    // Build sentence
-    const sentence = `I will change ${what}.\n\n${when.charAt(0).toUpperCase() + when.slice(1)}, I'll know it worked — ${proof.replace(/\.$/, '')}.`
-    setRitualText(sentence)
-    setRitualTyped('')
-    setRitualPhase('typing')
-    setShowGoalSheet(false)
-    setShowCommitRitual(true)
-    // Save to DB
-    await supabase.from('profiles').update({ goal_what: what, goal_when: when, goal_proof: proof }).eq('id', user.id)
-    setGoalWhat(what)
-    setGoalWhen(when)
-    setGoalProof(proof)
-    // Typewriter
-    let i = 0
-    const type = () => {
-      if (i <= sentence.length) {
-        setRitualTyped(sentence.slice(0, i))
-        i++
-        const ch = sentence[i - 1] || ''
-        let delay = 36
-        if (ch === '.') delay = 300
-        else if (ch === ',') delay = 160
-        else if (ch === '\n') delay = 380
-        else if (ch === ' ') delay = 52
-        else if (ch === '—') delay = 130
-        setTimeout(type, delay)
-      } else {
-        setRitualPhase('sig')
-        setTimeout(() => {
-          setRitualPhase('folding')
-          setTimeout(() => setRitualPhase('done'), 1900)
-        }, 3100)
-      }
-    }
-    setTimeout(type, 900)
-  }
-
   if (loading) return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)' }}>
-      <div style={{ display: 'flex', gap: 5 }}>
-        {[0,1,2].map(i => <div key={i} style={{ width: 5, height: 5, borderRadius: '50%', background: '#1a2a3a', animation: `pulse 1.2s ease-in-out ${i * 0.2}s infinite`, opacity: 0.4 }} />)}
-        <style>{`@keyframes pulse{0%,80%,100%{opacity:0.2;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}`}</style>
-      </div>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <ThinkingDots />
     </div>
   )
 
@@ -1151,592 +1117,239 @@ export default function HomePage() {
   const totalScore = Object.values(completions).reduce((a, c) => a + (c.score || 0), 0)
   const avgScore = completedCount > 0 ? (totalScore / completedCount).toFixed(1) : '—'
   const streak = profile?.current_streak || 0
-  const totalTimeSeconds = Object.values(completions).reduce((a, c) => a + (c.time_to_quiz || 0), 0)
-  const totalTimeMin = Math.round(totalTimeSeconds / 60)
-
-  // Today entry and last completed
-  const todayEntry = ENTRIES[unlockedCount - 1] || ENTRIES[0]
-  const lastEntry = unlockedCount > 1 ? ENTRIES[unlockedCount - 2] : null
-  const onDeckEntry = unlockedCount < ENTRIES.length ? ENTRIES[unlockedCount] : null
-  const todayCompleted = !!completions[todayEntry?.entry]
-  const todayComp = completions[todayEntry?.entry]
-
-  // Category completion counts
-  const catCounts = {}
-  const catTotals = {}
-  ENTRIES.forEach(e => {
-    catTotals[e.category] = (catTotals[e.category] || 0) + 1
-    if (completions[e.entry]) catCounts[e.category] = (catCounts[e.category] || 0) + 1
-  })
-
-  // Score trend (last 7)
-  const recentScores = Object.values(completions).slice(-7).map(c => c.score || 0)
-
-  const CAT_CONFIG = {
-    'AI':                       { color: '#47FFE8', short: 'AI',        icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="3" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="12" cy="21" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="3" cy="12" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="21" cy="12" r="1.2" fill="#47FFE8" stroke="none"/></svg> },
-    'Sales Craft':              { color: '#E8FF47', short: 'SALES',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
-    'Vocab & Language':         { color: '#FF8C47', short: 'VOCAB',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg> },
-    'Mental Models':            { color: '#C847FF', short: 'MENTAL',     icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg> },
-    'Philosophy':               { color: '#FF4778', short: 'PHILOSOPHY', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF4778" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg> },
-    'Neuroscience & Cognition': { color: '#47C8FF', short: 'NEURO',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47C8FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2a2.5 2.5 0 0 1 5 0v.5"/><path d="M9 2.5C5.5 3 3 6 3 9.5c0 4 3 7 6.5 7h5c3.5 0 6.5-3 6.5-7 0-3.5-2.5-6.5-6-7"/><path d="M12 9.5v5"/><path d="M9.5 12h5"/></svg> },
-    'Communication':            { color: '#FF8C00', short: 'COMM.',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
-  }
-  const ALL_CATS = ['AI', 'Sales Craft', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
-
-  const accent = todayEntry ? (CATEGORY_COLORS[todayEntry.category] || '#47FFE8') : '#47FFE8'
-
-  const S = {
-    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a', maxWidth: 430, margin: '0 auto', paddingBottom: 80 },
-    header: { background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)' },
-    headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
-    wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' },
-    actionStrip: { padding: '0 20px 9px', display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto', scrollbarWidth: 'none' },
-    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', padding: '4px 9px', borderRadius: 100, border: '1px solid rgba(26,42,58,0.11)', color: 'rgba(26,42,58,0.55)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', padding: '4px 9px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.28)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    sep: { width: 1, height: 12, background: 'rgba(26,42,58,0.09)', flexShrink: 0, margin: '0 1px' },
-    av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(26,42,58,0.09)', border: '1px solid rgba(26,42,58,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
-    screen: { padding: '18px 18px 0' },
-    secLabel: { fontSize: 13, fontWeight: 600, color: '#1a2a3a', letterSpacing: '-0.01em', marginBottom: 10, marginTop: 2 },
-    // nav
-    bottomNav: { position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(26,42,58,0.08)', display: 'flex', zIndex: 100 },
-    tab: (active) => ({ flex: 1, padding: '10px 0 18px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer', position: 'relative', opacity: active ? 1 : 0.7 }),
-    tabLbl: (active) => ({ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.12em', color: active ? '#1a2a3a' : 'rgba(26,42,58,0.35)' }),
-    tabPip: (active) => ({ position: 'absolute', top: 0, left: '25%', right: '25%', height: 2, background: '#1a2a3a', borderRadius: '0 0 2px 2px', transform: active ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 0.28s cubic-bezier(0.34,1.56,0.64,1)' }),
-    // commitment
-    commitment: { background: '#1a2a3a', borderRadius: 18, padding: '18px 20px 18px 22px', cursor: 'pointer', position: 'relative', overflow: 'hidden', borderLeft: '4px solid rgba(255,255,255,0.55)', marginBottom: 18, boxShadow: '0 4px 20px rgba(26,42,58,0.1)' },
-    // kpis
-    kpiGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 20 },
-    kpi: { background: '#1a2a3a', borderRadius: 14, padding: '14px 8px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 },
-    // today card
-    todayCard: { background: '#1a2a3a', borderRadius: 18, overflow: 'hidden', cursor: 'pointer', boxShadow: '0 4px 24px rgba(26,42,58,0.13)', marginBottom: 20 },
-    // ondeck
-    ondeck: { background: '#1a2a3a', borderRadius: 14, padding: '14px 15px', display: 'flex', alignItems: 'center', gap: 13, marginBottom: 20, opacity: 0.72 },
-    // last learned
-    lastCard: (color) => ({ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 16px 20px', cursor: 'pointer', borderLeft: `3px solid ${color || '#C847FF'}` }),
-    // cat chip
-    catChip: (active) => ({ background: active ? '#243548' : '#1a2a3a', borderRadius: 12, padding: '10px 5px 9px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer', border: active ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent' }),
-    // entry row
-    entry: (locked) => ({ display: 'flex', alignItems: 'center', gap: 11, padding: '13px 13px', background: '#1a2a3a', borderRadius: 12, cursor: locked ? 'default' : 'pointer', opacity: locked ? 0.28 : 1 }),
-  }
-
-  // Goal sheet chip data
-  const WHAT_CHIPS = [
-    { label: 'knowing vs. doing', val: 'the gap between what I know and what I actually do' },
-    { label: 'high-stakes conversations', val: 'how sharp I am in high-stakes conversations' },
-    { label: 'AI beyond basics', val: 'how I use AI beyond basic prompting' },
-    { label: 'reframing under pressure', val: 'how quickly I can reframe a problem under pressure' },
-    { label: 'performing when it matters', val: 'how I perform when it actually matters' },
-    { label: 'deliberate communication', val: 'how deliberately I communicate ideas' },
-  ]
-  const WHEN_CHIPS = [
-    { label: 'end of 30 days', val: 'by the end of these 30 days' },
-    { label: 'next big moment', val: 'before my next big presentation or conversation' },
-    { label: '90 days out', val: 'within 90 days of finishing this' },
-    { label: 'end of year', val: 'by the end of this year' },
-  ]
-  const PROOF_CHIPS = [
-    { label: "a win I wouldn't have had", val: 'I win a deal or negotiation I would have lost before' },
-    { label: 'catching it in real time', val: 'I catch myself thinking differently in the moment, not in hindsight' },
-    { label: 'someone notices the change', val: 'someone asks me how I approach problems differently' },
-    { label: 'using it without thinking', val: "I use what I've learned without having to think about it" },
-  ]
-
-  const goalSentence = goalWhat && goalWhen && goalProof
-    ? `I will change ${goalWhat}. ${goalWhen.charAt(0).toUpperCase() + goalWhen.slice(1)}, I'll know it worked — ${goalProof.replace(/\.$/, '')}.`
-    : ''
-
-  const catTotalEntries = ENTRIES.length / 7  // approx per category (40/7 ≈ 5.7, use catTotals)
 
   return (
-    <div style={S.page}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500;600&display=swap');
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-        .action-strip::-webkit-scrollbar{display:none;}
-        .lib-filter-scroll::-webkit-scrollbar{display:none;}
-        @keyframes ldot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.2;transform:scale(0.5)}}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-        @keyframes paperIn{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
-        @keyframes fold{0%{transform:translateY(0) scaleY(1);opacity:1}25%{transform:translateY(-4px) scaleY(0.65);opacity:1}55%{transform:translateY(12px) scaleY(0.12);opacity:0.7}100%{transform:translateY(80px) scaleY(0);opacity:0}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes popIn{0%{transform:scale(0.4)}100%{transform:scale(1)}}
-      `}</style>
+    <div style={{ minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: '#fff' }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
 
-      {/* Modals */}
       {showEndOfBeta && <EndOfBetaModal userId={user?.id} onClose={() => setShowEndOfBeta(false)} />}
       {showWeeklySurvey && <WeeklySurveyModal userId={user?.id} weekNumber={weeklyWeekNumber} onClose={async () => { setShowWeeklySurvey(false); await supabase.from('profiles').update({ last_weekly_survey_day: weeklyWeekNumber * 7 }).eq('id', user.id) }} />}
       {showFeedback && <FeedbackModal userId={user?.id} onClose={() => setShowFeedback(false)} />}
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
       {showWhatsNew && whatsNewEntry && <WhatsNewModal entry={whatsNewEntry} onDismiss={dismissWhatsNew} />}
+
+      {/* Welcome overlay */}
       {showWelcome && (() => {
-        const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : 'there')
         const { line } = getDailyGreeting(profile?.name)
-        return <WelcomeOverlay fullText={`Welcome back, ${firstName}.`} line={line} fading={welcomeFading} onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }} />
+        const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : 'there')
+        const fullText = `Welcome back, ${firstName}.`
+        return (
+          <WelcomeOverlay
+            fullText={fullText}
+            line={line}
+            fading={welcomeFading}
+            onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }}
+          />
+        )
       })()}
 
-      {/* COMMIT RITUAL OVERLAY */}
-      {showCommitRitual && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 300, background: '#09090b', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 20px' }}>
-          {ritualPhase !== 'done' && (
-            <div style={{ width: '100%', background: '#faf7f0', borderRadius: 4, padding: '28px 26px 32px', boxShadow: '0 12px 48px rgba(0,0,0,0.5)', animation: 'paperIn 0.8s cubic-bezier(0.22,1,0.36,1) 0.3s both', ...(ritualPhase === 'folding' ? { animation: 'fold 1s cubic-bezier(0.4,0,0.6,1) forwards' } : {}) }}>
-              <div style={{ height: 3, borderRadius: 2, marginBottom: 20, background: 'linear-gradient(90deg,#47FFE8,#C847FF)' }} />
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.35)', marginBottom: 14 }}>MY COMMITMENT</div>
-              <div style={{ fontFamily: "'Caveat', cursive", fontSize: 22, lineHeight: 1.65, color: '#1a2a3a', minHeight: 100, wordBreak: 'break-word' }}>
-                {ritualTyped.split('\n').map((line, i) => <span key={i}>{line}{i < ritualTyped.split('\n').length - 1 && <br />}</span>)}
-                {ritualPhase === 'typing' && <span style={{ display: 'inline-block', width: 2, height: 21, background: '#1a2a3a', marginLeft: 1, verticalAlign: 'middle', animation: 'blink 0.85s step-end infinite' }} />}
-              </div>
-              {(ritualPhase === 'sig' || ritualPhase === 'folding') && (
-                <div style={{ fontFamily: "'Caveat', cursive", fontSize: 17, color: 'rgba(26,42,58,0.38)', marginTop: 18, borderTop: '1px solid rgba(26,42,58,0.1)', paddingTop: 12, animation: 'fadeUp 0.5s ease' }}>
-                  — {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                </div>
+      {/* Header */}
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+
+        {/* Row 1 — wordmark */}
+        <div style={{ padding: '20px 24px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
+            <span style={{ fontSize: 9, background: '#1a1a1a', color: '#E8FF47', border: '1px solid #E8FF4766', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>BETA</span>
+            {isAdmin && (
+              <span style={{ fontSize: 9, background: '#1a1a1a', color: '#47FFE8', border: '1px solid #47FFE866', borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 600 }}>ADMIN</span>
+            )}
+          </div>
+          {/* Profile avatar */}
+          <button
+            onClick={() => router.push('/profile')}
+            style={{
+              width: 32, height: 32, borderRadius: '50%',
+              background: '#1a1a1a', border: '1px solid #333',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', fontSize: 14, color: '#999',
+              padding: 0, overflow: 'hidden', flexShrink: 0,
+            }}
+          >
+            {profile?.avatar_url
+              ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              : <User size={16} strokeWidth={1.5} color='#555' />
+            }
+          </button>
+        </div>
+
+        {/* Row 2 — action bar, scrollable */}
+        <style>{`.action-bar::-webkit-scrollbar { display: none; }`}</style>
+        <div style={{ padding: '0 24px 10px' }}>
+          <div className="action-bar" style={{
+            background: '#1e1e1e', borderRadius: 8, padding: '4px',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 0,
+            overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch',
+          }}>
+            <div style={{ display: 'flex', gap: 0 }}>
+              <button onClick={() => router.push('/about')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>ABOUT</button>
+              <button onClick={() => { router.push('/changelog'); markChangelogSeen() }} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: hasUnseenChangelog ? '#E8FF47' : '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: hasUnseenChangelog ? 600 : 400, opacity: 0.85, transition: 'opacity 0.15s ease', position: 'relative' }}>
+                CHANGELOG
+                {hasUnseenChangelog && <span style={{ position: 'absolute', top: 4, right: 4, width: 5, height: 5, borderRadius: '50%', background: '#E8FF47', display: 'block' }} />}
+              </button>
+              <button onClick={() => setShowBug(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#FF4778', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>BUG</button>
+              <button onClick={() => setShowFeedback(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>FEEDBACK</button>
+              <button onClick={() => setShowHowItWorks(true)} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: 0.85, transition: 'opacity 0.15s ease' }}>INFO</button>
+              {isAdmin && (
+                <button onClick={() => router.push('/admin')} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#47FFE8', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 600, opacity: 0.85, transition: 'opacity 0.15s ease' }}>ADMIN →</button>
               )}
             </div>
-          )}
-          {(ritualPhase === 'folding') && (
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.25)', marginTop: 24, animation: 'fadeUp 0.6s ease' }}>TUCKING THIS AWAY.</div>
-          )}
-          {ritualPhase === 'done' && (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 40 }}>
-              <div style={{ fontSize: 52, marginBottom: 20, animation: 'popIn 0.6s cubic-bezier(0.34,1.56,0.64,1)' }}>✓</div>
-              <div style={{ fontSize: 36, fontWeight: 700, color: '#fff', letterSpacing: '-0.025em', marginBottom: 10, animation: 'fadeUp 0.5s ease 0.1s both' }}>Committed.</div>
-              <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', fontWeight: 300, lineHeight: 1.7, textAlign: 'center', maxWidth: 280, animation: 'fadeUp 0.5s ease 0.2s both' }}>It's set. Every lesson you open from here will be measured against this.</div>
-              <button onClick={() => setShowCommitRitual(false)} style={{ marginTop: 40, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.14em', padding: '13px 28px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.18)', color: '#ffffff', background: 'transparent', cursor: 'pointer', animation: 'fadeUp 0.5s ease 0.4s both' }}>
-                START TODAY'S LESSON →
-              </button>
-            </div>
-          )}
+            {/* Sign out pushed to right */}
+            <button onClick={handleSignOut} disabled={signingOut} style={{ background: 'transparent', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: signingOut ? 'default' : 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", whiteSpace: 'nowrap', flexShrink: 0, fontWeight: 400, opacity: signingOut ? 0.4 : 0.85, transition: 'opacity 0.15s ease' }}>{signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}</button>
+          </div>
         </div>
-      )}
 
-      {/* GOAL SHEET */}
-      {showGoalSheet && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,14,22,0.7)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }} onClick={e => { if (e.target === e.currentTarget) setShowGoalSheet(false) }}>
-          <div style={{ background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 100%)', width: '100%', maxWidth: 430, borderRadius: '20px 20px 0 0', padding: '20px 24px 48px', maxHeight: '92vh', overflowY: 'auto', animation: 'fadeUp 0.3s cubic-bezier(0.22,1,0.36,1)' }}>
-            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(26,42,58,0.12)', margin: '0 auto 20px' }} />
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 4 }}>
-              <button onClick={() => setShowGoalSheet(false)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>CLOSE</button>
+      </div>
+
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '12px 24px 80px' }}>
+
+        {/* Analytics label */}
+        <div style={{ marginBottom: 16, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 3 }}>
+              {profile?.name ? `${profile.name}'s Analytics` : 'Your Analytics'}
             </div>
-            <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: '-0.025em', color: '#1a2a3a', lineHeight: 1.15, marginBottom: 6 }}>Make a commitment.</div>
-            <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.58)', lineHeight: 1.6, fontWeight: 300, marginBottom: 28 }}>Not a preference. Not a wish. Something you'll actually hold yourself to.</div>
+            <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.1em' }}>
+              THE DATA DOESN'T LIE
+            </div>
+          </div>
+          <button
+            onClick={() => router.push('/leaderboard')}
+            style={{
+              background: '#1e1e1e', border: 'none', borderRadius: 6,
+              padding: '8px 14px', fontSize: 9, color: '#E8FF47',
+              cursor: 'pointer', letterSpacing: '0.1em',
+              fontFamily: "'Inter',sans-serif", fontWeight: 600,
+              display: 'flex', alignItems: 'center', gap: 6,
+              flexShrink: 0,
+            }}
+          >
+            <Trophy size={11} style={{ flexShrink: 0 }} /> LEADERBOARD
+          </button>
+        </div>
 
-            {/* Step 1 */}
-            {[
-              { step: 1, label: "What needs to change?", hint: "Be specific enough that it stings a little.", chips: WHAT_CHIPS, val: goalWhatInput, setVal: setGoalWhatInput, color: '#47FFE8', textColor: '#008a7a', onConfirm: () => setGoalStep(2) },
-              { step: 2, label: "When will you know?", hint: "Real deadlines create real pressure.", chips: WHEN_CHIPS, val: goalWhenInput, setVal: setGoalWhenInput, color: '#E8FF47', textColor: '#6b7a00', onConfirm: () => setGoalStep(3) },
-              { step: 3, label: "What will proof look like?", hint: "If you can't describe proof, you don't have a goal yet.", chips: PROOF_CHIPS, val: goalProofInput, setVal: setGoalProofInput, color: '#C847FF', textColor: '#7a00a8', onConfirm: commitGoal, confirmLabel: 'LOCK IT IN →' },
-            ].map(({ step, label, hint, chips, val, setVal, color, textColor, onConfirm, confirmLabel }) => {
-              const isDone = goalStep > step
-              const isOpen = goalStep === step
+        {/* Stats bar */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 32 }}>
+          {[
+            { label: 'STREAK', value: streak > 0 ? `${streak} day${streak !== 1 ? 's' : ''}` : '—' },
+            { label: 'COMPLETED', value: `${completedCount}/${unlockedCount}` },
+            { label: 'AVG SCORE', value: avgScore !== '—' ? `${avgScore}/3` : '—' },
+            { label: 'UNLOCKED', value: `${unlockedCount}` },
+          ].map(s => (
+            <div key={s.label} style={{ background: '#111', border: '1px solid #1a1a1a', borderRadius: 4, padding: '14px 12px', textAlign: 'center' }}>
+              <div style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 4 }}>{s.value}</div>
+              <div style={{ fontSize: 9, color: '#fff', letterSpacing: '0.12em', opacity: 0.6 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Entry list */}
+        <div style={{ fontSize: 10, color: '#0a0a0a', letterSpacing: '0.15em', marginBottom: 12, fontWeight: 600 }}>YOUR LIBRARY</div>
+        
+        {/* Category filter tabs */}
+        <style>{`.filter-tabs::-webkit-scrollbar { display: none; }`}</style>
+        <div style={{ background: '#1e1e1e', borderRadius: 8, padding: '4px', marginBottom: 16 }}>
+          <div className="filter-tabs" style={{ display: 'flex', gap: 0, overflowX: 'auto', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+            {['All', 'Unlocked', 'Completed', 'Saved', 'Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication'].map(cat => {
+              const isSelected = filter === cat
+              const categoryColor = CATEGORY_COLORS[cat]
+              const isSystemTab = ['All', 'Unlocked', 'Completed', 'Saved'].includes(cat)
+              const activeColor = isSystemTab ? '#fff' : categoryColor
+              const restColor = isSystemTab ? '#bbb' : categoryColor
+
+
               return (
-                <div key={step} style={{ border: `1px solid ${isOpen ? 'rgba(26,42,58,0.22)' : 'rgba(26,42,58,0.1)'}`, borderRadius: 14, background: isDone ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.65)', overflow: 'hidden', marginBottom: 8, boxShadow: isOpen ? '0 2px 20px rgba(26,42,58,0.08)' : 'none' }}>
-                  <div style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12, cursor: isDone ? 'pointer' : 'default' }} onClick={() => isDone && setGoalStep(step)}>
-                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: `rgba(${color === '#47FFE8' ? '71,255,232' : color === '#E8FF47' ? '232,255,71' : '200,71,255'},0.15)`, border: `1px solid ${color}66`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'DM Mono', monospace", fontSize: 9, fontWeight: 600, color: textColor, flexShrink: 0 }}>{step}</div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: isOpen || isDone ? '#1a2a3a' : 'rgba(26,42,58,0.4)', flex: 1 }}>{label}</div>
-                    {isDone && val && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.5)', maxWidth: 96, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{val.length > 18 ? val.slice(0,16)+'…' : val}</div>}
-                  </div>
-                  {isOpen && (
-                    <div style={{ padding: '0 16px 16px' }}>
-                      <div style={{ fontSize: 12, color: 'rgba(26,42,58,0.5)', lineHeight: 1.6, marginBottom: 12, fontStyle: 'italic' }}>{hint}</div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-                        {chips.map(c => (
-                          <div key={c.val} onClick={() => setVal(c.val)} style={{ padding: '7px 13px', borderRadius: 20, border: `1px solid ${val === c.val ? '#1a2a3a' : color + '55'}`, fontSize: 12, color: val === c.val ? '#ffffff' : '#1a2a3a', background: val === c.val ? '#1a2a3a' : 'transparent', cursor: 'pointer', lineHeight: 1.3, fontWeight: 400 }}>{c.label}</div>
-                        ))}
-                      </div>
-                      <input value={val} onChange={e => setVal(e.target.value)} placeholder="Or be even more specific…" style={{ width: '100%', background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(26,42,58,0.14)', borderRadius: 8, padding: '11px 13px', fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: '#1a2a3a', outline: 'none' }} />
-                      <button onClick={() => { if (val.trim()) onConfirm() }} style={{ marginTop: 10, width: '100%', padding: '12px 16px', background: '#1a2a3a', color: '#ffffff', border: 'none', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: '0.14em', cursor: 'pointer' }}>{confirmLabel || 'CONFIRM →'}</button>
-                    </div>
-                  )}
-                </div>
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  style={{
+                    background: isSelected ? 'rgba(255,255,255,0.07)' : 'transparent',
+                    color: isSelected ? activeColor : restColor,
+                    border: 'none',
+                    outline: 'none',
+                    borderRadius: 6,
+                    padding: '7px 12px',
+                    fontSize: 9,
+                    fontWeight: isSelected ? 700 : 400,
+                    letterSpacing: '0.08em',
+                    cursor: 'pointer',
+                    fontFamily: "'Inter',sans-serif",
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    opacity: isSelected ? 1 : 0.9,
+                    transition: 'background 0.15s ease, color 0.15s ease, opacity 0.15s ease',
+                  }}
+                >
+                  {cat.toUpperCase()}
+                </button>
               )
             })}
           </div>
         </div>
-      )}
 
-      {/* HEADER */}
-      <div style={S.header}>
-        <div style={S.headerTop}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-            <span style={S.wm}>ONE PERCENT</span>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '4px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(184,204,0,0.15)', color: '#6b7800', border: '1px solid rgba(184,204,0,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#8a9800', flexShrink: 0 }} />BETA
-              </span>
-              {isAdmin && (
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '4px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#007a6b', border: '1px solid rgba(0,196,173,0.35)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#009b89', flexShrink: 0 }} />ADMIN
-                </span>
-              )}
-            </div>
-          </div>
-          <button onClick={() => router.push('/profile')} style={S.av}>
-            {profile?.avatar_url ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} /> : <User size={14} strokeWidth={1.5} color="rgba(26,42,58,0.5)" />}
-          </button>
-        </div>
-        <div className="action-strip" style={S.actionStrip}>
-          <button style={S.asBtn} onClick={() => router.push('/about')}>ABOUT</button>
-          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#b8a000' : 'rgba(26,42,58,0.55)', fontWeight: hasUnseenChangelog ? 600 : 400 }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
-          <div style={S.sep} />
-          <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
-          <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
-          <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
-          {isAdmin && <><div style={S.sep} /><button style={{ ...S.asBtn, color: '#47FFE8', borderColor: 'rgba(71,255,232,0.3)' }} onClick={() => router.push('/admin')}>ADMIN →</button></>}
-          <div style={S.sep} />
-          <button style={S.asBtn} onClick={handleSignOut} disabled={signingOut}>{signingOut ? 'SIGNING OUT…' : 'SIGN OUT'}</button>
-        </div>
-      </div>
+        <div ref={libraryRef} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {ENTRIES
+            .filter((e, idx) => {
+              const entryNum = idx + 1
+              const unlocked = entryNum <= unlockedCount
+              const completed = !!completions[e.entry]
+              
+              if (filter === 'All') return true
+              if (filter === 'Unlocked') return unlocked
+              if (filter === 'Completed') return completed
+              if (filter === 'Saved') return !!bookmarks[e.entry]
+              return e.category === filter
+            })
+            .map((e, idx) => {
+            const entryNum = idx + 1
+            const unlocked = entryNum <= unlockedCount
+            const completed = !!completions[e.entry]
+            const accent = CATEGORY_COLORS[e.category] || '#fff'
+            const comp = completions[e.entry]
 
-      {/* ── TODAY TAB ── */}
-      {activeTab === 'today' && (
-        <div style={S.screen}>
-          {/* Commitment */}
-          <div style={S.commitment} onClick={() => { setGoalStep(1); setShowGoalSheet(true) }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.55)', marginBottom: 7 }}>WHY I'M HERE</div>
-            <div style={{ fontSize: 13, color: goalSentence ? 'rgba(232,238,245,0.92)' : 'rgba(232,238,245,0.35)', lineHeight: 1.6, fontStyle: goalSentence ? 'italic' : 'normal' }}>
-              {goalSentence || 'What are you actually trying to change? Tap to set your goal.'}
-            </div>
-            <div style={{ position: 'absolute', right: 18, top: '50%', transform: 'translateY(-50%)', color: 'rgba(232,238,245,0.15)', fontSize: 22, fontWeight: 300 }}>›</div>
-          </div>
-
-          {/* KPIs */}
-          <div style={S.kpiGrid}>
-            {[
-              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>, val: completedCount, lbl: 'COMPLETED' },
-              { icon: <span style={{ fontSize: 20, lineHeight: 1 }}>🔥</span>, val: streak, lbl: 'DAY STREAK' },
-              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.5" fill="#E8FF47" stroke="none"/></svg>, val: avgScore, lbl: 'AVG SCORE' },
-            ].map((k, i) => (
-              <div key={i} style={S.kpi}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 22 }}>{k.icon}</div>
-                <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', lineHeight: 1 }}>{k.val}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.55)', textAlign: 'center' }}>{k.lbl}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Today */}
-          <div style={S.secLabel}>Today</div>
-          {todayEntry && (() => {
-            const cat = CAT_CONFIG[todayEntry.category] || {}
-            const entryAccent = cat.color || '#47FFE8'
-            const comp = completions[todayEntry.entry]
-            const conceptDone = !!comp
-            // determine which moment is active based on completion
             return (
-              <div style={S.todayCard} onClick={() => router.push(`/entry/${todayEntry.entry}`)}>
-                <div style={{ padding: '20px 20px 16px', position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: entryAccent }} />
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.45)' }}>{todayEntry.editionId} · ENTRY {todayEntry.entry}</span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: entryAccent }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: entryAccent, animation: 'ldot 2s ease-in-out infinite' }} />
-                      {todayCompleted ? 'COMPLETE' : 'UNLOCKED'}
-                    </span>
+              <div
+                key={e.entry}
+                onClick={() => unlocked && router.push(`/entry/${e.entry}`)}
+                style={{
+                  background: '#111', border: `1px solid ${unlocked ? '#1a1a1a' : '#111'}`,
+                  borderRadius: 4, padding: '16px 18px', cursor: unlocked ? 'pointer' : 'default',
+                  opacity: unlocked ? 1 : 0.35, transition: 'border-color 0.15s',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: completed ? accent : '#333', flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: 14, color: unlocked ? '#fff' : '#555', fontWeight: 500, marginBottom: 2 }}>{e.concept}</div>
+                    <div style={{ fontSize: 10, color: accent, letterSpacing: '0.08em', opacity: 0.8 }}>{e.editionId} · {e.category}</div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
-                    <div style={{ width: 38, height: 38, borderRadius: 10, background: entryAccent + '1a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 3 }}>
-                      {cat.icon && React.cloneElement(cat.icon, { width: 18, height: 18 })}
-                    </div>
-                    <div style={{ fontSize: 27, fontWeight: 700, letterSpacing: '-0.025em', color: '#fff', lineHeight: 1.1 }}>{todayEntry.concept}</div>
-                  </div>
-                  <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.55)', fontWeight: 300, fontStyle: 'italic', lineHeight: 1.55, marginBottom: 18 }}>
-                    {/* hook from entry JSON not loaded here — use category tagline */}
-                    {todayEntry.category}
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: entryAccent, flexShrink: 0 }} />
-                      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: entryAccent }}>{todayEntry.category.toUpperCase()}</span>
-                    </div>
-                    <button onClick={e => { e.stopPropagation(); router.push(`/entry/${todayEntry.entry}`) }} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, fontWeight: 600, letterSpacing: '0.12em', padding: '11px 22px', borderRadius: 10, border: 'none', background: entryAccent, color: '#061410', cursor: 'pointer' }}>
-                      {todayCompleted ? 'REVIEW →' : 'BEGIN →'}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
+                  {completed && <span style={{ fontSize: 11, color: accent, fontWeight: 600 }}>{comp.score}/3</span>}
+                  {!unlocked && <span style={{ fontSize: 10, color: '#333' }}>🔒</span>}
+                  {unlocked && !completed && <span style={{ fontSize: 10, color: accent, letterSpacing: '0.08em' }}>START →</span>}
+                  {completed && <span style={{ fontSize: 10, color: '#888', letterSpacing: '0.08em' }}>REVIEW →</span>}
+                  {unlocked && (
+                    <button
+                      onClick={(ev) => toggleBookmark(ev, e.entry)}
+                      style={{
+                        background: 'none', border: 'none', padding: '2px 4px',
+                        cursor: 'pointer', fontSize: 14, lineHeight: 1,
+                        color: bookmarks[e.entry] ? '#E8FF47' : '#555',
+                        transition: 'color 0.15s',
+                      }}
+                      title={bookmarks[e.entry] ? 'Remove bookmark' : 'Bookmark this entry'}
+                    >
+                      {bookmarks[e.entry] ? '★' : '☆'}
                     </button>
-                  </div>
+                  )}
                 </div>
-                {/* Moment strip */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  {['CONCEPT', 'IN THE WILD', 'LOCK IT IN'].map((label, i) => {
-                    const isDone = todayCompleted && i < 3
-                    const isActive = !todayCompleted && i === 0
-                    return (
-                      <div key={label} style={{ padding: '12px 10px', background: isDone && i === 0 ? entryAccent + '1a' : '#152030', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
-                        <div style={{ width: 5, height: 5, borderRadius: '50%', background: isDone ? 'rgba(232,238,245,0.55)' : isActive ? entryAccent : 'rgba(255,255,255,0.12)' }} />
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.08em', color: isDone ? 'rgba(232,238,245,0.6)' : isActive ? 'rgba(232,238,245,0.85)' : 'rgba(232,238,245,0.28)', textAlign: 'center' }}>{label}</span>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )
-          })()}
-
-          {/* On Deck */}
-          {onDeckEntry && (() => {
-            const cat = CAT_CONFIG[onDeckEntry.category] || {}
-            return (
-              <>
-                <div style={S.secLabel}>On Deck</div>
-                <div style={S.ondeck}>
-                  <div style={{ width: 32, height: 32, borderRadius: 9, background: (cat.color || '#fff') + '1a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    {cat.icon && React.cloneElement(cat.icon, { width: 14, height: 14 })}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.5)', marginBottom: 3 }}>UP NEXT · UNLOCKS TOMORROW</div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{onDeckEntry.concept}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: cat.color || '#fff' }}>{onDeckEntry.editionId} · {onDeckEntry.category.toUpperCase()}</div>
-                  </div>
-                  <span style={{ color: 'rgba(232,238,245,0.2)', fontSize: 18, flexShrink: 0 }}>›</span>
-                </div>
-              </>
-            )
-          })()}
-
-          {/* Last Learned */}
-          {lastEntry && (() => {
-            const cat = CAT_CONFIG[lastEntry.category] || {}
-            const lastComp = completions[lastEntry.entry]
-            return (
-              <>
-                <div style={S.secLabel}>Last Learned</div>
-                <div style={S.lastCard(cat.color)} onClick={() => router.push(`/entry/${lastEntry.entry}`)}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.45)', marginBottom: 5 }}>ENTRY {lastEntry.entry} · {lastEntry.category.toUpperCase()} · {lastEntry.editionId}</div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', marginBottom: 6 }}>{lastEntry.concept}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(232,238,245,0.65)', lineHeight: 1.65, fontWeight: 300, fontStyle: 'italic' }}>
-                    {lastComp ? `You scored ${lastComp.score}/3 on this one.` : 'Tap to revisit.'}
-                  </div>
-                  <div style={{ marginTop: 10, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: (cat.color || '#C847FF') + 'cc' }}>REVISIT THIS LESSON →</div>
-                </div>
-              </>
-            )
-          })()}
-        </div>
-      )}
-
-      {/* ── LIBRARY TAB ── */}
-      {activeTab === 'library' && (
-        <div style={S.screen}>
-          {/* Category chips 4x2 */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 7, marginBottom: 16 }}>
-            {[{ key: 'ALL', label: 'ALL', color: 'rgba(232,238,245,0.7)', bg: 'rgba(255,255,255,0.07)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.7)" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>, count: `${completedCount}/${TOTAL_ENTRIES}` },
-              ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
-            ].map(chip => (
-              <div key={chip.key} onClick={() => setLibFilter(chip.key)} style={S.catChip(libFilter === chip.key)}>
-                <div style={{ width: 24, height: 24, borderRadius: 7, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ height: 1, background: 'rgba(26,42,58,0.08)', marginBottom: 14 }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, paddingBottom: 20 }}>
-            {ENTRIES
-              .filter(e => {
-                if (libFilter === 'ALL') return true
-                if (libFilter === 'Saved') return !!bookmarks[e.entry]
-                return e.category === libFilter
-              })
-              .map((e, idx) => {
-                const entryNum = ENTRIES.indexOf(e) + 1
-                const unlocked = entryNum <= unlockedCount
-                const completed = !!completions[e.entry]
-                const cat = CAT_CONFIG[e.category] || {}
-                const isToday = entryNum === unlockedCount
-                return (
-                  <div key={e.entry} onClick={() => unlocked && router.push(`/entry/${e.entry}`)} style={{ ...S.entry(!unlocked), border: isToday ? `1px solid ${cat.color || '#47FFE8'}40` : '1px solid transparent' }}>
-                    <div style={{ width: 3, height: 34, borderRadius: 2, flexShrink: 0, background: cat.color || '#fff', opacity: !unlocked ? 0.12 : completed ? 0.5 : 1 }} />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 13, fontWeight: completed ? 400 : 600, color: completed ? 'rgba(232,238,245,0.58)' : '#e8eef5', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{e.concept}</div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: isToday ? cat.color : 'rgba(232,238,245,0.4)' }}>{e.editionId} · {isToday ? 'TODAY' : e.category.toUpperCase()}</div>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-                      {completed && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 700, color: cat.color }}>{completions[e.entry]?.score}/3</span>}
-                      {isToday && !completed && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.08em', color: cat.color, fontWeight: 700 }}>NOW →</span>}
-                      {unlocked && !isToday && !completed && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.08em', color: 'rgba(232,238,245,0.4)' }}>START →</span>}
-                      {!unlocked && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.08em', color: 'rgba(232,238,245,0.4)' }}>LOCKED</span>}
-                      {unlocked && (
-                        <button onClick={ev => toggleBookmark(ev, e.entry)} style={{ fontSize: 13, background: 'none', border: 'none', padding: 2, cursor: 'pointer', color: bookmarks[e.entry] ? '#E8FF47' : 'rgba(232,238,245,0.2)', lineHeight: 1 }}>
-                          {bookmarks[e.entry] ? '★' : '☆'}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
-          </div>
-        </div>
-      )}
-
-      {/* ── PROMPTS TAB ── */}
-      {activeTab === 'prompts' && (
-        <div style={S.screen}>
-          <div style={{ background: '#1a2a3a', borderRadius: 18, padding: '26px 22px', textAlign: 'center', marginBottom: 14 }}>
-            <div style={{ width: 52, height: 52, borderRadius: 15, background: 'rgba(200,71,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-            </div>
-            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', marginBottom: 7 }}>Prompt Farm</div>
-            <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.6)', lineHeight: 1.6, fontWeight: 300 }}>Every concept you've learned has a prompt built for it. Copy it into Claude and put the idea to work on a real problem.</div>
-          </div>
-          {/* Category chips */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 7, marginBottom: 14 }}>
-            {[{ key: 'ALL', label: 'ALL', color: 'rgba(232,238,245,0.7)', bg: 'rgba(255,255,255,0.07)', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.7)" strokeWidth="2" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>, count: `${completedCount}/${TOTAL_ENTRIES}` },
-              ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
-            ].map(chip => (
-              <div key={chip.key} style={S.catChip(false)}>
-                <div style={{ width: 24, height: 24, borderRadius: 7, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.06em', color: chip.color || 'rgba(232,238,245,0.6)', textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ height: 8 }} />
-          {/* Prompt cards from completed entries with ai_prompt */}
-          {ENTRIES.filter(e => completions[e.entry]).map(e => {
-            const cat = CAT_CONFIG[e.category] || {}
-            return (
-              <div key={e.entry} style={{ background: '#1a2a3a', borderRadius: 13, padding: '15px 17px', marginBottom: 7, borderLeft: `3px solid ${cat.color || '#C847FF'}` }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.16em', color: 'rgba(232,238,245,0.45)', marginBottom: 7 }}>{e.category.toUpperCase()} · {e.concept.toUpperCase()}</div>
-                <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.82)', lineHeight: 1.55, fontWeight: 300, fontStyle: 'italic', marginBottom: 10 }}>
-                  Tap to open a conversation about {e.concept} in Claude.
-                </div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: (cat.color || '#C847FF') + 'cc' }}>OPEN IN CLAUDE →</div>
               </div>
             )
           })}
-          {completedCount === 0 && <div style={{ textAlign: 'center', padding: '40px 20px', color: 'rgba(26,42,58,0.4)', fontSize: 13, fontStyle: 'italic' }}>Complete your first lesson to unlock prompts.</div>}
         </div>
-      )}
-
-      {/* ── PROGRESS TAB ── */}
-      {activeTab === 'progress' && (
-        <div style={{ ...S.screen, paddingBottom: 20 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {/* Streak */}
-            <div style={{ background: '#1a2a3a', borderRadius: 18, padding: '22px 20px' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-                <span style={{ fontSize: 24, lineHeight: 1 }}>🔥</span>
-                <span style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', lineHeight: 1 }}>{streak}</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.55)', letterSpacing: '0.08em', paddingBottom: 5, alignSelf: 'flex-end' }}>DAY STREAK</span>
-              </div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.35)', letterSpacing: '0.08em', marginBottom: 18 }}>PERSONAL BEST · {profile?.longest_streak || streak || 0} DAYS</div>
-              {/* Week row */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 5 }}>
-                {['M','T','W','T','F','S','S'].map((d, i) => (
-                  <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)' }}>{d}</span>
-                    <div style={{ width: '100%', aspectRatio: 1, borderRadius: 7, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontFamily: "'DM Mono', monospace", fontWeight: 700 }} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Concepts + Time */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-              <div style={{ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 14px', display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(71,255,232,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                </div>
-                <div>
-                  <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', color: '#47FFE8', lineHeight: 1, marginBottom: 3 }}>{completedCount}</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.5)' }}>CONCEPTS<br/>LOCKED IN</div>
-                </div>
-              </div>
-              <div style={{ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 14px', display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(232,255,71,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-                </div>
-                <div>
-                  <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', color: '#E8FF47', lineHeight: 1, marginBottom: 3 }}>{totalTimeMin}m</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.5)' }}>TIME SPENT<br/>LEARNING</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Score trend */}
-            {recentScores.length > 0 && (
-              <div style={{ background: '#1a2a3a', borderRadius: 14, padding: '16px 18px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14 }}>
-                  <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.45)' }}>QUIZ SCORE TREND</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(232,238,245,0.28)', marginTop: 3 }}>LAST {recentScores.length} ENTRIES</div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: '#47FFE8', letterSpacing: '-0.02em' }}>{(recentScores.reduce((a,b) => a+b, 0) / recentScores.length).toFixed(1)}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(71,255,232,0.6)', marginTop: 2 }}>AVG</div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 36, marginBottom: 10 }}>
-                  {recentScores.map((s, i) => {
-                    const colors = ['#47FFE8','#E8FF47','#47FFE8','#C847FF','#E8FF47','#47FFE8','#47FFE8']
-                    return <div key={i} style={{ flex: 1, borderRadius: '3px 3px 0 0', background: colors[i % colors.length], opacity: 0.4 + s/3*0.6, height: `${Math.round(s/3*100)}%`, minHeight: 3 }} />
-                  })}
-                </div>
-                <div style={{ fontSize: 12, color: 'rgba(232,238,245,0.5)', fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 10 }}>
-                  Your scores are improving. Keep going.
-                </div>
-              </div>
-            )}
-
-            {/* Leaderboard */}
-            <div onClick={() => router.push('/leaderboard')} style={{ background: '#1a2a3a', borderRadius: 14, padding: '15px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(232,255,71,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
-                </div>
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', marginBottom: 2 }}>Leaderboard</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)' }}>{leaderboardRank ? `YOU'RE #${leaderboardRank} OF 6 TESTERS` : 'SEE HOW YOU STACK UP'}</div>
-                </div>
-              </div>
-              {leaderboardRank && <div style={{ fontSize: 26, fontWeight: 700, color: '#E8FF47', letterSpacing: '-0.02em' }}>#{leaderboardRank}</div>}
-            </div>
-
-            {/* Category mastery rings */}
-            <div style={{ background: '#1a2a3a', borderRadius: 14, padding: '18px 18px 16px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.45)', marginBottom: 16 }}>CATEGORY MASTERY</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 }}>
-                {ALL_CATS.map(catName => {
-                  const cat = CAT_CONFIG[catName] || {}
-                  const done = catCounts[catName] || 0
-                  const total = catTotals[catName] || 1
-                  const pct = Math.round((done / total) * 100)
-                  const R = 22, S = 58, CIRC = 2 * Math.PI * R
-                  const dash = CIRC * (pct / 100)
-                  const active = pct > 0
-                  return (
-                    <div key={catName} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
-                      <div style={{ position: 'relative', width: S, height: S }}>
-                        <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} style={{ position: 'absolute', top: 0, left: 0 }}>
-                          <circle cx={S/2} cy={S/2} r={R} stroke="rgba(255,255,255,0.07)" strokeWidth="3.5" fill="none" />
-                          {active && <circle cx={S/2} cy={S/2} r={R} stroke={cat.color || '#fff'} strokeWidth="3.5" fill="none" strokeLinecap="round" strokeDasharray={`${dash.toFixed(1)} ${(CIRC-dash).toFixed(1)}`} transform={`rotate(-90 ${S/2} ${S/2})`} />}
-                        </svg>
-                        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: active ? 1 : 0.25 }}>
-                          {cat.icon && React.cloneElement(cat.icon, { width: 16, height: 16 })}
-                        </div>
-                      </div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 6, letterSpacing: '0.06em', color: active ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.28)', textAlign: 'center', lineHeight: 1.3 }}>{cat.short || catName}</div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* BOTTOM NAV */}
-      <div style={S.bottomNav}>
-        {[
-          { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'#1a2a3a':'rgba(26,42,58,0.3)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
-          { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'#1a2a3a':'rgba(26,42,58,0.3)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
-          { id: 'prompts', label: 'PROMPTS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='prompts'?'#1a2a3a':'rgba(26,42,58,0.3)'} strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> },
-          { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'#1a2a3a':'rgba(26,42,58,0.3)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
-        ].map(t => (
-          <div key={t.id} onClick={() => setActiveTab(t.id)} style={S.tab(activeTab === t.id)}>
-            <div style={S.tabPip(activeTab === t.id)} />
-            <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.icon}</div>
-            <span style={S.tabLbl(activeTab === t.id)}>{t.label}</span>
-          </div>
-        ))}
       </div>
     </div>
   )

@@ -296,7 +296,7 @@ function EndOfBetaSurveyTest({ userId, onDone }) {
       <SvRatingRow label="QUIZ QUALITY" question="Was it testing the right things?" value={quizRating} onChange={setQuizRating} accent={BETA_ACCENT} />
       <SvChipRow label="WHICH CATEGORY DELIVERED THE MOST VALUE?" options={SURVEY_CATS} value={mostValueCat} onChange={setMostValueCat} accent={BETA_ACCENT} />
       <SvChipRow label="WHICH CATEGORY COULD BE CUT WITHOUT YOU NOTICING?" options={[...SURVEY_CATS, 'None']} value={couldCutCat} onChange={setCouldCutCat} accent={BETA_ACCENT} />
-      <SvChipRow label="WAS THE MORNING BRIEF / MIDDAY REFRAME / EVENING QUIZ STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} accent={BETA_ACCENT} />
+      <SvChipRow label="WAS THE CONCEPT / IN THE WILD / LOCK IT IN STRUCTURE RIGHT?" options={['Yes — keep it', 'Needs tweaks', 'Rethink it']} value={structureVerdict} onChange={setStructureVerdict} accent={BETA_ACCENT} />
       {structureVerdict && structureVerdict !== 'Yes — keep it' && <SvOpenText value={structureDetail} onChange={setStructureDetail} placeholder="What would you change?" />}
       <SvChipRow label="WAS 10 MINUTES THE RIGHT COMMITMENT?" options={['Too short', 'Just right', 'Too long', 'Inconsistent']} value={commitment} onChange={setCommitment} accent={BETA_ACCENT} />
       <SvOpenText label="WHAT TOPIC DO YOU MOST WANT ADDED BEFORE PUBLIC LAUNCH?" value={topicToAdd} onChange={setTopicToAdd} placeholder="Be specific." />

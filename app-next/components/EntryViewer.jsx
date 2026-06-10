@@ -164,9 +164,9 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   }
 
   const SECTIONS = [
-    { field: 'morning', label: 'MORNING BRIEF',  question: 'Did this click for you?' },
-    { field: 'reframe', label: 'MIDDAY REFRAME', question: 'Did it shift how you think about it?' },
-    { field: 'quiz',    label: 'EVENING QUIZ',   question: 'Could you explain this to someone else now?' },
+    { field: 'morning', label: 'THE CONCEPT',  question: 'Did this click for you?' },
+    { field: 'reframe', label: 'IN THE WILD', question: 'Did it shift how you think about it?' },
+    { field: 'quiz',    label: 'LOCK IT IN',   question: 'Could you explain this to someone else now?' },
   ]
 
   const RatingRow = ({ field, label, question }) => (
@@ -370,9 +370,9 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   }
 
   const tabs = [
-    { id: 'morning', label: 'MORNING', icon: BookOpen },
-    { id: 'midday', label: 'MIDDAY', icon: Lightbulb },
-    { id: 'evening', label: 'EVENING', icon: Award },
+    { id: 'morning', label: 'CONCEPT', icon: BookOpen },
+    { id: 'midday', label: 'IN THE WILD', icon: Lightbulb },
+    { id: 'evening', label: 'LOCK IT IN', icon: Award },
   ]
 
   const scoreBg = score === 3 ? 'op-score-perfect' : score === 2 ? 'op-score-close' : 'op-score-low'
@@ -461,7 +461,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         {/* Morning */}
         {tab === 'morning' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING BRIEF</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>THE CONCEPT</div>
             <div style={{ fontSize: 20, color: T.text, lineHeight: 1.5, fontWeight: 400, marginBottom: 20, letterSpacing: '-0.01em' }}>{entry.morning.hook}</div>
             <div style={{ marginBottom: 20 }}>
               {entry.morning.explanation_paragraphs.map((p, i) => (
@@ -473,17 +473,17 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.7 }}>{entry.morning.why_today}</div>
             </div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
-              <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MORNING CHALLENGE</div>
+              <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>YOUR MOVE</div>
               <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
             </div>
-            <button className="op-next-btn" onClick={() => { setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>MIDDAY</button>
+            <button className="op-next-btn" onClick={() => { setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>IN THE WILD →</button>
           </div>
         )}
 
         {/* Midday */}
         {tab === 'midday' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>MIDDAY REFRAME</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>IN THE WILD</div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
               <div style={{ fontSize: 17, color: T.text, lineHeight: 1.5, fontWeight: 500 }}>{entry.midday.reframe}</div>
             </div>
@@ -498,14 +498,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 12, color: T.textDim, letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
             </div>
             <div style={{ fontSize: 14, color: T.textDim, lineHeight: 1.7, borderTop: `1px solid ${T.border}`, paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
-            <button className="op-next-btn" onClick={() => { setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>EVENING</button>
+            <button className="op-next-btn" onClick={() => { setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>LOCK IT IN →</button>
           </div>
         )}
 
         {/* Evening */}
         {tab === 'evening' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>TEST YOURSELF</div>
+            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
             {entry.quiz.map((q, qi) => (
               <div key={qi} style={{ marginBottom: 28 }}>
                 <div style={{ fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
