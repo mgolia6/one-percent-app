@@ -1,11 +1,11 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-10 (v10)
+**Generated:** 2026-06-12 (v11)
 
 ---
 
 ## App Status
 - **Live at:** one-percent-app.vercel.app
-- **Beta testers:** DonRobbo (22 done), Erin (10), Brian (3), Landon (1), Andrew (1), Justin (1), John (0), Unknown (0)
+- **Beta testers:** DonRobbo (24+ done), Erin, Justin, Brian, Landon, Andrew (active beta)
 - **Total entries published:** 040
 - **Last entry:** 040 — Epistemic Humility (PH.5)
 - **Directions:** onepercentinstructions-v1_36.md
@@ -40,11 +40,11 @@
 ---
 
 ## Current Design System
-- **Aesthetic:** Warm parchment gradient `#f0f4f8 → #e8eef5 → #dde6f0`, navy `#1a2a3a` cards
-- **Fonts:** DM Sans (body), DM Mono (labels/tags), Caveat (ritual handwriting)
+- **Aesthetic:** DARK — `#0e141c` page background, `#1a2a3a` cards, `rgba(11,17,25,.97)` header
+- **Fonts:** DM Sans (body), DM Mono (labels/tags)
 - **Nav:** Today / Library / Prompts / Progress (bottom on mobile, sidebar on desktop)
-- **Naming:** Concept / In the Wild / Lock It In (not morning/midday/evening anywhere)
-- **Section names:** YOUR MOVE (not Morning Challenge)
+- **Naming:** Concept / In the Wild / Lock It In
+- **Prompt Farm → Prompt Vault** (renamed this session)
 
 ## Category Accent Colors
 - Sales Craft `#E8FF47` · AI `#47FFE8` · Vocab & Language `#FF8C47`
@@ -54,39 +54,50 @@
 ---
 
 ## Infrastructure
-- **Email:** Resend via matthew@mpgink.com — `send-daily-reminder` + `send-practice-reminder` edge functions confirmed working
-- **Auth:** Supabase session auth. Magic link rate limit: ~3-5/hr/email — increase in Auth → Rate Limits for heavy dev sessions
+- **Email:** Resend via matthew@mpgink.com — `send-daily-reminder` + `send-weekly-wrap` edge functions live
+- **Auth:** Supabase session auth. Magic link rate limit: increase in Auth → Rate Limits for heavy dev sessions
 - **Deployment:** Vercel auto-deploy on push to main
 - **Supabase project:** uuzdlubbynavybttlmeh
 - **GitHub:** mgolia6/one-percent-app
 
-## Database — Key Columns Added This Session
-- `profiles.goal_what` (text) — commitment step 1
-- `profiles.goal_when` (text) — commitment step 2
-- `profiles.goal_proof` (text) — commitment step 3
+## Database — Key Tables / Columns
+- `profiles.goal_what/goal_when/goal_proof` — SMART commitment fields
+- `profiles.streak_freezes` + `streak_freeze_used_at` — freeze system
+- `badge_definitions` + `user_badges` — badge catalog (40 badges seeded)
 
 ---
 
-## What Shipped This Session (2026-06-10)
-- **Home screen full redesign:** 4-tab layout (Today/Library/Prompts/Progress), commitment banner, KPI chips, TODAY hero card with moment strip, On Deck (next unlocked OR oldest incomplete if fully unlocked), Last Learned
-- **Goal setting ritual:** 3-step SMART commitment sheet, typewriter animation, paper fold, saves to Supabase
-- **Concept/In the Wild/Lock It In rename:** Applied across entire codebase
-- **Desktop layout:** Dark navy sidebar ≥768px, mobile unchanged
-- **Library:** Category icons in entry rows, FAVORITES chip, chip tap toggles (deselect = show all)
-- **Leaderboard redesign:** Parchment bg, hero standing card, metric switcher pill, progress bar rows
-- **Admin overhaul:** Light bg, user cards with status dots + nudge SMS shell, API health checker, bug log with resolve, feedback per user with score averages, email runbook
-- **Bug fixes:** React import crash, init try/catch/finally, leaderboard non-blocking
+## What Shipped This Session (2026-06-12)
+- **Full dark mode overhaul** — `#0e141c` page bg, dark header, dark bottom nav
+- **WHY I'M HERE editorial treatment** — no card box, target icon, 15px text, pencil edit affordance bottom-right, bottom divider separates from KPIs
+- **BETA pill** — yellow-green `#c8d800` on dark, pops clearly
+- **ADMIN pill** — teal `#00c4ad` on dark, distinct from BETA
+- **KPI font bump** — values 22→26px, labels 7→11px
+- **On Deck lock/chevron conditional** — lock SVG when nextUnlocked (locked entry), chevron › when in-progress incomplete
+- **Library category chips — flat** — no background boxes, icon + colored label + count, transparent bg, active dot indicator
+- **Prompt Farm → Prompt Vault** — renamed throughout, compact single-row hero (lock icon left, title + sub right)
+- **Progress streak section** — background container removed entirely, 🔥 number and week grid float on page
+- **Streak freeze strip** — 🧊 inline strip inside streak section, shows `profile.streak_freezes` count
+- **Bottom nav** — `#1a2a3a` dark background, colored underline pip on active tab, icon strokes light on dark
+- **sec label font bump** — 13→15px, color `#e8eef5`
+- **Badge system** — DB tables + 40 seeded badges, profile page badge shelf, BadgeEarnOverlay, `checkAndAwardBadges()` on load
+- **Welcome overlay** — context-aware, streak chip, vault count chip, 7 nudge variants
+- **DonRobbo streak fix** — corrected to 24 days in Supabase
+- **Daily reminder edge function** — 3-segment behavioral emails (active/at-risk/lapsed), 21 distinct variants
+- **Weekly wrap edge function** — momentum headline by entry count, even sends for zero-entry weeks
 
 ---
 
 ## Open Items (Prioritized)
-1. **Magic link rate limit** — increase in Supabase Auth → Rate Limits
-2. **User signs name in ritual** — input in goal sheet, store on profile, show in paper signature
-3. **Social sharing card** — "I just learned X with One Percent" → Web Share API + copy fallback
-4. **Profile page overhaul** — additional fields, better layout
-5. **001–008 quiz backfill** — old recall format → application/conceptual
-6. **ENH-007 email allowlist** — before expanding beta further
-7. **Zoho Mail inbox** — matthew@mpgink.com receiving
-8. **Push notifications** — Capacitor, post-launch
-9. **Prompt Farm content** — placeholder exists
-10. **Concepts Glossary** — placeholder exists
+1. **Scroll breathing room** — all tabs need paddingBottom so last card isn't cut off at bottom nav
+2. **About / Changelog pages** — need dark style treatment to match new aesthetic
+3. **Bug modal + Feedback modal** — too much gray, need visual liveliness to match dark theme
+4. **Tab scroll position** — Library and Prompts default to top of first card instead of top of page; returning to a tab should reset to top (not last scroll position)
+5. **Library chips active state** — Option B: subtle border on active chip so selection is clear
+6. **Profile page overhaul** — redundant with Progress tab in places; needs rethink as a distinct surface
+7. **ENH-007 email allowlist** — 🔴 HIGH PRIORITY before expanding beta
+8. **User signs name in ritual** — input in goal sheet
+9. **Social sharing card** — Web Share API
+10. **001–008 quiz backfill** — recall → application format
+11. **Zoho Mail inbox** — matthew@mpgink.com receiving
+12. **Push notifications** — Capacitor, post-launch
