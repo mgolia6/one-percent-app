@@ -51,51 +51,183 @@ function ThinkingDots() {
   )
 }
 
-function WelcomeOverlay({ fullText, line, fading, onDismiss }) {
-  const [displayed, setDisplayed] = useState('')
-  const [lineVisible, setLineVisible] = useState(false)
+function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, lastConcept, goalWhat, fading, onDismiss }) {
+  const [phase, setPhase] = useState('name') // name | stats | nudge
+  const [nameTyped, setNameTyped] = useState('')
+  const [statsVisible, setStatsVisible] = useState(false)
+  const [nudgeVisible, setNudgeVisible] = useState(false)
+
+  // Build greeting
+  const greeting = firstName && firstName !== 'there' ? `${firstName}.` : "You're back."
+
+  // Build context line — most interesting stat first
+  const nudge = (() => {
+    if (streak >= 7) return `${streak} days straight. That's not a habit yet — but it's becoming one.`
+    if (streak >= 3) return `${streak}-day streak. Keep the thread.`
+    if (streak === 0 && longestStreak > 3) return `Your best was ${longestStreak} days. Today's the reset.`
+    if (completedCount >= 25) return `${completedCount} concepts in the vault. You're compounding.`
+    if (completedCount >= 10) return `${completedCount} entries done. The reps are adding up.`
+    if (lastConcept) return `Last time: ${lastConcept}. Today builds on it.`
+    if (goalWhat) return `You're here to change ${goalWhat}. This is how.`
+    return `One concept. That's the whole ask.`
+  })()
 
   useEffect(() => {
+    // Type the name
     let i = 0
-    const speed = 90
-    const timer = setInterval(() => {
+    const nameTimer = setInterval(() => {
       i++
-      setDisplayed(fullText.slice(0, i))
-      if (i >= fullText.length) {
-        clearInterval(timer)
-        setTimeout(() => setLineVisible(true), 400)
+      setNameTyped(greeting.slice(0, i))
+      if (i >= greeting.length) {
+        clearInterval(nameTimer)
+        setTimeout(() => { setPhase('stats'); setStatsVisible(true) }, 500)
+        setTimeout(() => { setPhase('nudge'); setNudgeVisible(true) }, 1200)
       }
-    }, speed)
-    return () => clearInterval(timer)
-  }, [fullText])
+    }, 65)
+    return () => clearInterval(nameTimer)
+  }, [greeting])
+
+  const accentColor = streak >= 7 ? '#47FFE8' : streak >= 3 ? '#E8FF47' : '#ffffff'
 
   return (
     <div onClick={onDismiss} style={{
       position: 'fixed', inset: 0, zIndex: 999,
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      padding: 32, cursor: 'pointer',
-      background: '#0a0a0a',
+      padding: '32px 28px', cursor: 'pointer',
+      background: 'linear-gradient(160deg, #0a0a0f 0%, #0d0d14 50%, #0a0a0a 100%)',
       opacity: fading ? 0 : 1,
-      transition: 'opacity 0.6s ease',
+      transition: 'opacity 0.7s ease',
     }}>
-      <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 32 }}>ONE PERCENT</div>
+      {/* wordmark */}
+      <div style={{ fontSize: 9, letterSpacing: '0.3em', color: '#2a2a2a', fontWeight: 600, marginBottom: 48, fontFamily: "'DM Mono', monospace" }}>ONE PERCENT</div>
+
+      {/* Name — large typewriter */}
       <div style={{
-        fontSize: 36, fontWeight: 500, color: '#fff',
+        fontSize: 42, fontWeight: 700, color: '#fff',
+        letterSpacing: '-0.03em', textAlign: 'center', lineHeight: 1.1,
+        marginBottom: 32, minHeight: 54,
+        fontFamily: "'DM Sans', 'Inter', sans-serif",
+      }}>
+        {nameTyped}
+        {phase === 'name' && <span style={{ display: 'inline-block', width: 3, height: 42, background: '#fff', marginLeft: 3, verticalAlign: 'middle', animation: 'wblink 0.75s step-end infinite' }} />}
+      </div>
+
+      {/* Stats chips — animate in */}
+      {completedCount > 0 && (
+        <div style={{
+          display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap', justifyContent: 'center',
+          opacity: statsVisible ? 1 : 0,
+          transform: statsVisible ? 'translateY(0)' : 'translateY(8px)',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+        }}>
+          {streak > 0 && (
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              padding: '7px 14px', borderRadius: 100,
+              background: `${accentColor}12`, border: `1px solid ${accentColor}30`,
+            }}>
+              <span style={{ fontSize: 12 }}>🔥</span>
+              <span style={{ fontSize: 11, color: accentColor, fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em', fontWeight: 600 }}>{streak} DAY STREAK</span>
+            </div>
+          )}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            padding: '7px 14px', borderRadius: 100,
+            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+          }}>
+            <span style={{ fontSize: 11, color: '#666', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>{completedCount} IN THE VAULT</span>
+          </div>
+        </div>
+      )}
+
+      {/* Nudge line */}
+      <div style={{
+        fontSize: 14, color: '#555',
+        textAlign: 'center', maxWidth: 280, lineHeight: 1.75,
+        fontFamily: "'DM Sans', 'Inter', sans-serif",
+        fontWeight: 300, letterSpacing: '0.01em',
+        opacity: nudgeVisible ? 1 : 0,
+        transition: 'opacity 0.6s ease 0.2s',
+      }}>
+        {nudge}
+      </div>
+
+      {/* Tap to dismiss hint */}
+      <div style={{
+        position: 'absolute', bottom: 40,
+        fontSize: 9, color: '#2a2a2a', letterSpacing: '0.2em',
+        fontFamily: "'DM Mono', monospace",
+        opacity: nudgeVisible ? 1 : 0,
+        transition: 'opacity 0.5s ease 0.8s',
+      }}>
+        TAP TO CONTINUE
+      </div>
+
+      <style>{`
+        @keyframes wblink { 0%,100%{opacity:1} 50%{opacity:0} }
+      `}</style>
+    </div>
+  )
+}
+
+
+// Badge earn moment overlay
+function BadgeEarnOverlay({ badge, onDismiss }) {
+  const [visible, setVisible] = React.useState(false)
+  React.useEffect(() => { setTimeout(() => setVisible(true), 50) }, [])
+
+  const CAT_COLORS = {
+    'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
+    'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
+    'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
+  }
+  const color = badge.category ? CAT_COLORS[badge.category] || '#fff' : '#E8FF47'
+
+  return (
+    <div onClick={onDismiss} style={{
+      position: 'fixed', inset: 0, zIndex: 1000,
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      padding: 32, cursor: 'pointer',
+      background: 'rgba(0,0,0,0.88)',
+      backdropFilter: 'blur(12px)',
+      opacity: visible ? 1 : 0,
+      transition: 'opacity 0.4s ease',
+    }}>
+      <div style={{
+        fontSize: 64, marginBottom: 24, lineHeight: 1,
+        transform: visible ? 'scale(1)' : 'scale(0.4)',
+        transition: 'transform 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s',
+      }}>
+        {badge.icon && badge.icon !== '◈' ? badge.icon : '🎖️'}
+      </div>
+      <div style={{
+        fontSize: 9, letterSpacing: '0.3em', color: color,
+        fontFamily: "'DM Mono', monospace", fontWeight: 700,
+        marginBottom: 12, opacity: visible ? 1 : 0,
+        transition: 'opacity 0.4s ease 0.4s',
+      }}>BADGE EARNED</div>
+      <div style={{
+        fontSize: 28, fontWeight: 700, color: '#fff',
         letterSpacing: '-0.02em', textAlign: 'center', lineHeight: 1.2,
-        marginBottom: 20, minHeight: 88,
-        fontFamily: "'Inter', sans-serif",
-      }}>
-        {displayed}
-        <span style={{ opacity: lineVisible ? 0 : 1, transition: 'opacity 0.3s', borderRight: '2px solid #fff', marginLeft: 2 }}>&nbsp;</span>
-      </div>
+        marginBottom: 10, fontFamily: "'DM Sans', sans-serif",
+        opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 0.5s',
+      }}>{badge.name}</div>
       <div style={{
-        fontSize: 13, color: '#444', letterSpacing: '0.04em',
-        textAlign: 'center', maxWidth: 260, lineHeight: 1.8,
-        opacity: lineVisible ? 1 : 0,
-        transition: 'opacity 0.6s ease',
-      }}>
-        {line}
-      </div>
+        fontSize: 13, color: '#666', textAlign: 'center',
+        maxWidth: 260, lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif",
+        opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 0.6s',
+      }}>{badge.description}</div>
+      <div style={{
+        position: 'absolute', width: 200, height: 200, borderRadius: '50%',
+        background: `radial-gradient(circle, ${color}18 0%, transparent 70%)`,
+        top: '50%', left: '50%', transform: 'translate(-50%, -50%) translateY(-80px)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: 40, fontSize: 9, color: '#333',
+        letterSpacing: '0.2em', fontFamily: "'DM Mono', monospace",
+        opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 1s',
+      }}>TAP TO CONTINUE</div>
     </div>
   )
 }
@@ -980,6 +1112,8 @@ export default function HomePage() {
   const [ritualTyped, setRitualTyped] = useState('')
   const [ritualPhase, setRitualPhase] = useState('typing') // typing | sig | folding | done
   const [leaderboardRank, setLeaderboardRank] = useState(null)
+  const [earnedBadgeQueue, setEarnedBadgeQueue] = useState([]) // badges to show one at a time
+  const [showingBadge, setShowingBadge] = useState(null)
 
   useEffect(() => {
     async function init() {
@@ -1006,6 +1140,30 @@ export default function HomePage() {
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
+
+      // Build category breakdown for badge check
+      const ENTRY_CATS_INIT = [
+        {entry:'001',cat:'AI'},{entry:'002',cat:'Vocab & Language'},{entry:'003',cat:'Sales Craft'},
+        {entry:'004',cat:'Mental Models'},{entry:'005',cat:'Philosophy'},{entry:'006',cat:'AI'},
+        {entry:'007',cat:'Sales Craft'},{entry:'008',cat:'AI'},{entry:'009',cat:'Mental Models'},
+        {entry:'010',cat:'Communication'},{entry:'011',cat:'Philosophy'},{entry:'012',cat:'Communication'},
+        {entry:'013',cat:'Neuroscience & Cognition'},{entry:'014',cat:'Vocab & Language'},{entry:'015',cat:'Sales Craft'},
+        {entry:'016',cat:'Mental Models'},{entry:'017',cat:'AI'},{entry:'018',cat:'Philosophy'},
+        {entry:'019',cat:'Neuroscience & Cognition'},{entry:'020',cat:'Sales Craft'},{entry:'021',cat:'Communication'},
+        {entry:'022',cat:'Sales Craft'},{entry:'023',cat:'AI'},{entry:'024',cat:'Vocab & Language'},
+        {entry:'025',cat:'Neuroscience & Cognition'},{entry:'026',cat:'Sales Craft'},{entry:'027',cat:'AI'},
+        {entry:'028',cat:'Vocab & Language'},{entry:'029',cat:'Sales Craft'},{entry:'030',cat:'Mental Models'},
+        {entry:'031',cat:'Neuroscience & Cognition'},{entry:'032',cat:'Communication'},{entry:'033',cat:'Philosophy'},
+        {entry:'034',cat:'Sales Craft'},{entry:'035',cat:'AI'},{entry:'036',cat:'Vocab & Language'},
+        {entry:'037',cat:'Sales Craft'},{entry:'038',cat:'Mental Models'},{entry:'039',cat:'AI'},
+        {entry:'040',cat:'Philosophy'},
+      ]
+      const initCatBreakdown = {}
+      ENTRY_CATS_INIT.forEach(e => {
+        if (compMap[e.entry]) initCatBreakdown[e.cat] = (initCatBreakdown[e.cat] || 0) + 1
+      })
+      // Non-blocking badge check
+      setTimeout(() => checkAndAwardBadges(session.user.id, prof, compMap, initCatBreakdown), 1500)
 
       const { data: bmarks } = await supabase.from('bookmarks').select('id, entry_number').eq('user_id', session.user.id)
       const bmarkMap = {}
@@ -1070,6 +1228,107 @@ export default function HomePage() {
     }
     init()
   }, [router])
+
+  // Badge check — call after any completion or on load
+  const checkAndAwardBadges = async (userId, profile, compMap, catBreakdown) => {
+    try {
+      // Fetch already-earned badges
+      const { data: alreadyEarned } = await supabase.from('user_badges').select('badge_id').eq('user_id', userId)
+      const earnedSet = new Set((alreadyEarned || []).map(b => b.badge_id))
+
+      // Fetch all badge definitions
+      const { data: allBadges } = await supabase.from('badge_definitions').select('*').order('sort_order')
+      if (!allBadges) return
+
+      const completedCount = Object.keys(compMap).length
+      const longestStreak = profile?.longest_streak || 0
+      const currentStreak = profile?.current_streak || 0
+      const daysSinceSignup = profile?.signup_date ? Math.floor((Date.now() - new Date(profile.signup_date).getTime()) / 86400000) : 0
+      const hasFeedback = false // we don't track this client-side; skip for now
+      const hour = new Date().getHours()
+
+      const shouldEarn = (badgeId) => {
+        switch(badgeId) {
+          case 'first_rep':      return completedCount >= 1
+          case 'streak_3':       return longestStreak >= 3
+          case 'streak_7':       return longestStreak >= 7
+          case 'streak_14':      return longestStreak >= 14
+          case 'streak_30':      return longestStreak >= 30
+          case 'vault_10':       return completedCount >= 10
+          case 'vault_25':       return completedCount >= 25
+          case 'vault_40':       return completedCount >= 40
+          case 'vault_75':       return completedCount >= 75
+          case 'full_rotation':  return completedCount >= 9
+          case 'perfect_score':  return Object.values(compMap).some(c => c.score === 3)
+          case 'hat_trick':      return Object.values(compMap).filter(c => c.score === 3).length >= 3
+          // Category badges
+          case 'ai_1':  return (catBreakdown['AI'] || 0) >= 1
+          case 'ai_5':  return (catBreakdown['AI'] || 0) >= 5
+          case 'ai_10': return (catBreakdown['AI'] || 0) >= 10
+          case 'sc_1':  return (catBreakdown['Sales Craft'] || 0) >= 1
+          case 'sc_5':  return (catBreakdown['Sales Craft'] || 0) >= 5
+          case 'sc_10': return (catBreakdown['Sales Craft'] || 0) >= 10
+          case 'vl_1':  return (catBreakdown['Vocab & Language'] || 0) >= 1
+          case 'vl_5':  return (catBreakdown['Vocab & Language'] || 0) >= 5
+          case 'vl_10': return (catBreakdown['Vocab & Language'] || 0) >= 10
+          case 'mm_1':  return (catBreakdown['Mental Models'] || 0) >= 1
+          case 'mm_5':  return (catBreakdown['Mental Models'] || 0) >= 5
+          case 'mm_10': return (catBreakdown['Mental Models'] || 0) >= 10
+          case 'ph_1':  return (catBreakdown['Philosophy'] || 0) >= 1
+          case 'ph_5':  return (catBreakdown['Philosophy'] || 0) >= 5
+          case 'ph_10': return (catBreakdown['Philosophy'] || 0) >= 10
+          case 'nc_1':  return (catBreakdown['Neuroscience & Cognition'] || 0) >= 1
+          case 'nc_5':  return (catBreakdown['Neuroscience & Cognition'] || 0) >= 5
+          case 'nc_10': return (catBreakdown['Neuroscience & Cognition'] || 0) >= 10
+          case 'cm_1':  return (catBreakdown['Communication'] || 0) >= 1
+          case 'cm_5':  return (catBreakdown['Communication'] || 0) >= 5
+          case 'cm_10': return (catBreakdown['Communication'] || 0) >= 10
+          // Easter eggs
+          case 'night_owl':       return hour >= 0 && hour < 4
+          case 'early_bird':      return hour < 6
+          case 'weekend_warrior': return false // tracked in EntryViewer on completion
+          case 'ghost_protocol':  return false // tracked in EntryViewer on return
+          case 'deja_vu':         return false // tracked in EntryViewer on review
+          case 'the_long_game':   return daysSinceSignup >= 60
+          case 'the_grind':       return false // tracked in EntryViewer
+          case 'true_believer':   return false // tracked server-side
+          default: return false
+        }
+      }
+
+      const newlyEarned = []
+      for (const badge of allBadges) {
+        if (earnedSet.has(badge.id)) continue
+        if (!shouldEarn(badge.id)) continue
+        const { error } = await supabase.from('user_badges').insert({ user_id: userId, badge_id: badge.id })
+        if (!error) newlyEarned.push(badge)
+      }
+
+      if (newlyEarned.length > 0) {
+        setEarnedBadgeQueue(newlyEarned)
+        setShowingBadge(newlyEarned[0])
+
+        // Award streak freezes for streak milestones
+        const streakMilestones = ['streak_7', 'streak_14', 'streak_30']
+        const freezesEarned = newlyEarned.filter(b => streakMilestones.includes(b.id)).length
+        if (freezesEarned > 0) {
+          await supabase.from('profiles').update({
+            streak_freezes: (profile?.streak_freezes || 0) + freezesEarned
+          }).eq('id', userId)
+        }
+      }
+    } catch (e) {
+      console.warn('Badge check failed:', e)
+    }
+  }
+
+  const dismissBadge = () => {
+    setEarnedBadgeQueue(prev => {
+      const next = prev.slice(1)
+      setShowingBadge(next.length > 0 ? next[0] : null)
+      return next
+    })
+  }
 
   const handleSignOut = async () => {
     setSigningOut(true)
@@ -1292,10 +1551,23 @@ export default function HomePage() {
       {showBug && <BugModal userId={user?.id} onClose={() => setShowBug(false)} />}
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
       {showWhatsNew && whatsNewEntry && <WhatsNewModal entry={whatsNewEntry} onDismiss={dismissWhatsNew} />}
-      {showWelcome && (() => {
-        const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : 'there')
-        const { line } = getDailyGreeting(profile?.name)
-        return <WelcomeOverlay fullText={`Welcome back, ${firstName}.`} line={line} fading={welcomeFading} onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }} />
+      {showingBadge && <BadgeEarnOverlay badge={showingBadge} onDismiss={dismissBadge} />}
+      {showWelcome && !showingBadge && (() => {
+        const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : '')
+        const completedCount = Object.keys(completions).length
+        // Find last completed concept name
+        const lastEntryNum = Object.keys(completions).sort((a,b) => parseInt(b)-parseInt(a))[0]
+        const lastConcept = null // we don't cache concept names client-side; leave null for now
+        return <WelcomeOverlay
+          firstName={firstName}
+          streak={profile?.current_streak || 0}
+          longestStreak={profile?.longest_streak || 0}
+          completedCount={completedCount}
+          lastConcept={lastConcept}
+          goalWhat={profile?.goal_what || ''}
+          fading={welcomeFading}
+          onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }}
+        />
       })()}
 
       {/* COMMIT RITUAL OVERLAY */}

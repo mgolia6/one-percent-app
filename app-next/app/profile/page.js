@@ -58,19 +58,8 @@ const ENTRIES = [
   { entry: '040', category: 'Philosophy' },
 ]
 
-const BADGES = [
-  { id: 'founder', label: "Founder's Club", desc: 'Beta tester from day one', icon: 'Shield', color: '#E8FF47', check: ({ profile }) => !!profile?.onboarding_complete, progress: null },
-  { id: 'first_entry', label: 'First Step', desc: 'Complete your first entry', icon: 'Footprints', color: '#47FFE8', check: ({ completedCount }) => completedCount >= 1, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 1), max: 1 }) },
-  { id: 'perfect_score', label: 'Perfect Score', desc: 'Get 3/3 on a quiz', icon: 'Target', color: '#47FFE8', check: ({ completions }) => Object.values(completions).some(c => c.score === 3), progress: null },
-  { id: 'ten_entries', label: 'Ten Deep', desc: 'Complete 10 entries', icon: 'Layers', color: '#C847FF', check: ({ completedCount }) => completedCount >= 10, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 10), max: 10 }) },
-  { id: 'twenty_five', label: 'Quarter Century', desc: 'Complete 25 entries', icon: 'Zap', color: '#C847FF', check: ({ completedCount }) => completedCount >= 25, progress: ({ completedCount }) => ({ value: Math.min(completedCount, 25), max: 25 }) },
-  { id: 'all_cats', label: 'Full Spectrum', desc: 'Complete at least one entry in every category', icon: 'Grid3X3', color: '#FF8C47', check: ({ catBreakdown }) => Object.keys(catBreakdown).length >= 7, progress: ({ catBreakdown }) => ({ value: Object.keys(catBreakdown).length, max: 7 }) },
-  { id: 'streak_3', label: '3-Day Streak', desc: 'Keep a 3-day streak', icon: 'Flame', color: '#FF8C47', check: ({ profile }) => (profile?.longest_streak || 0) >= 3, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 3), max: 3 }) },
-  { id: 'streak_7', label: 'Week Strong', desc: 'Keep a 7-day streak', icon: 'Flame', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 7, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 7), max: 7 }) },
-  { id: 'streak_30', label: 'Monthly', desc: 'Keep a 30-day streak', icon: 'Flame', color: '#FF4778', check: ({ profile }) => (profile?.longest_streak || 0) >= 30, progress: ({ profile }) => ({ value: Math.min(profile?.longest_streak || 0, 30), max: 30 }) },
-  { id: 'perfect_week', label: 'Perfect Week', desc: '7 entries in 7 days', icon: 'Gem', color: '#47C8FF', check: ({ completedCount }) => completedCount >= 7, progress: null },
-]
-
+// Badges now come from Supabase (badge_definitions + user_badges tables)
+// ICONS kept for any legacy references
 const ICONS = { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem }
 
 // Design tokens
@@ -80,32 +69,51 @@ const BORDER = '#222'
 const BORDER_FAINT = '#1a1a1a'
 const T = { primary: '#ffffff', secondary: '#bbb', tertiary: '#777', faint: '#444' }
 
-function BadgeRow({ badge, earned, progressData }) {
-  const Icon = ICONS[badge.icon]
+const CAT_COLORS = {
+  'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
+  'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
+  'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
+}
+
+function BadgeRow({ badge, earned, earnedAt }) {
+  const color = badge.category ? CAT_COLORS[badge.category] || '#fff' : '#E8FF47'
+  const iconEl = badge.icon && badge.icon !== '◈' ? (
+    <span style={{ fontSize: 18, lineHeight: 1 }}>{badge.icon}</span>
+  ) : (
+    <div style={{ width: 18, height: 18, borderRadius: '50%', background: color + '22', border: `1px solid ${color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: 6, height: 6, borderRadius: '50%', background: earned ? color : '#333' }} />
+    </div>
+  )
+
   return (
     <div style={{
       display: 'flex', alignItems: 'center', gap: 14,
       padding: '14px 0',
       borderBottom: `1px solid ${earned ? BORDER_FAINT : '#141414'}`,
-      opacity: earned ? 1 : 0.4,
+      opacity: earned ? 1 : 0.35,
     }}>
-      <div style={{ color: earned ? badge.color : '#555', flexShrink: 0, width: 20, display: 'flex', justifyContent: 'center' }}>
-        {Icon && <Icon size={18} strokeWidth={1.5} />}
+      <div style={{ flexShrink: 0, width: 24, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        {earned ? iconEl : (
+          badge.hidden
+            ? <span style={{ fontSize: 14, filter: 'grayscale(1)', opacity: 0.3 }}>?</span>
+            : iconEl
+        )}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: earned ? T.primary : T.tertiary, marginBottom: 2 }}>{badge.label}</div>
-        <div style={{ fontSize: 11, color: T.tertiary }}>{badge.desc}</div>
-        {!earned && progressData && (
-          <div style={{ marginTop: 8 }}>
-            <div style={{ height: 2, background: '#1a1a1a', borderRadius: 1, marginBottom: 4 }}>
-              <div style={{ height: '100%', width: `${(progressData.value / progressData.max) * 100}%`, background: '#333', borderRadius: 1 }} />
-            </div>
-            <div style={{ fontSize: 9, color: T.faint }}>{progressData.value}/{progressData.max}</div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: earned ? T.primary : T.tertiary, marginBottom: 2 }}>
+          {badge.hidden && !earned ? '???' : badge.name}
+        </div>
+        <div style={{ fontSize: 11, color: T.tertiary, lineHeight: 1.5 }}>
+          {badge.hidden && !earned ? 'Keep playing to discover this one.' : badge.description}
+        </div>
+        {earned && earnedAt && (
+          <div style={{ fontSize: 9, color: T.faint, marginTop: 3, letterSpacing: '0.06em' }}>
+            {new Date(earnedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </div>
         )}
       </div>
       {earned && (
-        <div style={{ fontSize: 9, background: badge.color + '18', color: badge.color, borderRadius: 3, padding: '2px 7px', letterSpacing: '0.1em', fontWeight: 700, flexShrink: 0 }}>
+        <div style={{ fontSize: 9, background: color + '18', color, borderRadius: 3, padding: '3px 8px', letterSpacing: '0.1em', fontWeight: 700, flexShrink: 0 }}>
           EARNED
         </div>
       )}
@@ -125,6 +133,9 @@ export default function ProfilePage() {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploadingAvatar, setUploadingAvatar] = useState(false)
   const [tab, setTab] = useState('progress')
+  const [badgeDefs, setBadgeDefs] = useState([])
+  const [userBadges, setUserBadges] = useState({}) // badge_id -> earned_at
+  const [streakFreezes, setStreakFreezes] = useState(0)
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -135,10 +146,12 @@ export default function ProfilePage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
 
-    const [{ data }, { data: comps }, { data: allProfiles }] = await Promise.all([
+    const [{ data }, { data: comps }, { data: allProfiles }, { data: badgeDefsData }, { data: earnedBadgesData }] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
       supabase.from('completions').select('entry_number, score').eq('user_id', user.id),
       supabase.from('profiles').select('id, current_streak').order('current_streak', { ascending: false }),
+      supabase.from('badge_definitions').select('*').order('sort_order'),
+      supabase.from('user_badges').select('badge_id, earned_at').eq('user_id', user.id),
     ])
 
     if (data) {
@@ -147,12 +160,20 @@ export default function ProfilePage() {
       setLastName(data.last_name || '')
       setEmail(data.email || user.email || '')
       setAvatarUrl(data.avatar_url || null)
+      setStreakFreezes(data.streak_freezes || 0)
     }
 
     if (comps) {
       const map = {}
       comps.forEach(c => { map[c.entry_number] = c })
       setCompletions(map)
+    }
+
+    if (badgeDefsData) setBadgeDefs(badgeDefsData)
+    if (earnedBadgesData) {
+      const badgeMap = {}
+      earnedBadgesData.forEach(b => { badgeMap[b.badge_id] = b.earned_at })
+      setUserBadges(badgeMap)
     }
 
     if (allProfiles && data) {
@@ -212,9 +233,8 @@ export default function ProfilePage() {
     catTotal[e.category] = (catTotal[e.category] || 0) + 1
     if (completions[e.entry]) catBreakdown[e.category] = (catBreakdown[e.category] || 0) + 1
   })
-  const badgeCtx = { profile, completions, completedCount, catBreakdown }
-  const earnedBadges = BADGES.filter(b => b.check(badgeCtx))
-  const lockedBadges = BADGES.filter(b => !b.check(badgeCtx))
+  const earnedBadges = badgeDefs.filter(b => userBadges[b.id])
+  const lockedBadges = badgeDefs.filter(b => !userBadges[b.id])
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -369,19 +389,29 @@ export default function ProfilePage() {
         {/* BADGES TAB */}
         {tab === 'badges' && (
           <div style={{ paddingBottom: 40 }}>
+            {/* Streak Freeze display */}
+            <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 8, padding: '16px 18px', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ fontSize: 28, lineHeight: 1 }}>🧊</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: T.primary, marginBottom: 3 }}>Streak Freezes</div>
+                <div style={{ fontSize: 11, color: T.tertiary, lineHeight: 1.5 }}>Auto-protects your streak when you miss a day. Earned through milestones.</div>
+              </div>
+              <div style={{ textAlign: 'center', flexShrink: 0 }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: streakFreezes > 0 ? '#47C8FF' : T.faint, lineHeight: 1, letterSpacing: '-0.02em' }}>{streakFreezes}</div>
+                <div style={{ fontSize: 8, color: T.faint, letterSpacing: '0.1em', marginTop: 2 }}>AVAILABLE</div>
+              </div>
+            </div>
+
             {earnedBadges.length > 0 && (
               <div style={{ marginBottom: 28 }}>
                 <div style={{ fontSize: 10, color: T.secondary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 4 }}>EARNED · {earnedBadges.length}</div>
-                {earnedBadges.map(b => <BadgeRow key={b.id} badge={b} earned={true} progressData={null} />)}
+                {earnedBadges.map(b => <BadgeRow key={b.id} badge={b} earned={true} earnedAt={userBadges[b.id]} />)}
               </div>
             )}
             {lockedBadges.length > 0 && (
               <div>
                 <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 4 }}>LOCKED · {lockedBadges.length}</div>
-                {lockedBadges.map(b => {
-                  const progressData = b.progress ? b.progress(badgeCtx) : null
-                  return <BadgeRow key={b.id} badge={b} earned={false} progressData={progressData} />
-                })}
+                {lockedBadges.map(b => <BadgeRow key={b.id} badge={b} earned={false} earnedAt={null} />)}
               </div>
             )}
           </div>
