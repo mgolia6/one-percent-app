@@ -1456,27 +1456,27 @@ export default function HomePage() {
   const accent = todayEntry ? (CATEGORY_COLORS[todayEntry.category] || '#47FFE8') : '#47FFE8'
 
   const S = {
-    page: { minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#1a2a3a' },
-    header: { background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)' },
+    page: { minHeight: '100vh', background: '#0e141c', fontFamily: "'DM Sans', 'Inter', sans-serif", color: '#e8eef5' },
+    header: { background: 'rgba(11,17,25,0.97)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(255,255,255,0.06)' },
     headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
-    wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' },
+    wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#e8eef5' },
     actionStrip: { padding: '0 20px 9px', display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto', scrollbarWidth: 'none' },
-    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(26,42,58,0.13)', color: 'rgba(26,42,58,0.65)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
+    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.09)', color: 'rgba(232,238,245,0.45)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
     asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.32)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    sep: { width: 1, height: 12, background: 'rgba(26,42,58,0.09)', flexShrink: 0, margin: '0 1px' },
-    av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(26,42,58,0.09)', border: '1px solid rgba(26,42,58,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
+    sep: { width: 1, height: 12, background: 'rgba(255,255,255,0.08)', flexShrink: 0, margin: '0 1px' },
+    av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
     screen: { padding: '18px 18px 0' },
-    secLabel: { fontSize: 13, fontWeight: 600, color: '#1a2a3a', letterSpacing: '-0.01em', marginBottom: 10, marginTop: 2 },
+    secLabel: { fontSize: 15, fontWeight: 600, color: '#e8eef5', letterSpacing: '-0.01em', marginBottom: 10, marginTop: 2 },
     // nav
-    bottomNav: { position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(26,42,58,0.08)', display: 'flex', zIndex: 100 },
+    bottomNav: { position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, background: '#1a2a3a', borderTop: '1px solid rgba(255,255,255,0.04)', display: 'flex', zIndex: 100 },
     tab: (active) => ({ flex: 1, padding: '10px 0 18px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer', position: 'relative', opacity: active ? 1 : 0.7 }),
-    tabLbl: (active) => ({ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.12em', color: active ? '#1a2a3a' : 'rgba(26,42,58,0.35)' }),
-    tabPip: (active) => ({ position: 'absolute', top: 0, left: '25%', right: '25%', height: 2, background: '#1a2a3a', borderRadius: '0 0 2px 2px', transform: active ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 0.28s cubic-bezier(0.34,1.56,0.64,1)' }),
+    tabLbl: (active) => ({ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', color: active ? 'rgba(232,238,245,0.9)' : 'rgba(232,238,245,0.28)' }),
+    tabPip: (active, color) => ({ position: 'absolute', top: 0, left: '25%', right: '25%', height: 2, background: color || 'rgba(232,238,245,0.9)', borderRadius: '0 0 2px 2px', transform: active ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 0.28s cubic-bezier(0.34,1.56,0.64,1)' }),
     // commitment
-    commitment: { background: '#1a2a3a', borderRadius: 18, padding: '18px 20px 18px 22px', cursor: 'pointer', position: 'relative', overflow: 'hidden', borderLeft: '4px solid rgba(255,255,255,0.55)', marginBottom: 18, boxShadow: '0 4px 20px rgba(26,42,58,0.1)' },
+    commitment: { padding: '18px 0 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 16, cursor: 'pointer', position: 'relative' },
     // kpis
-    kpiGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 20 },
-    kpi: { background: '#1a2a3a', borderRadius: 14, padding: '14px 8px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 },
+    kpiGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 18 },
+    kpi: { background: '#1a2a3a', borderRadius: 14, padding: '16px 8px 14px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 },
     // today card
     todayCard: { background: '#1a2a3a', borderRadius: 18, overflow: 'hidden', cursor: 'pointer', boxShadow: '0 4px 24px rgba(26,42,58,0.13)', marginBottom: 20 },
     // ondeck
@@ -1484,7 +1484,7 @@ export default function HomePage() {
     // last learned
     lastCard: (color) => ({ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 16px 20px', cursor: 'pointer', borderLeft: `3px solid ${color || '#C847FF'}` }),
     // cat chip
-    catChip: (active) => ({ background: active ? '#243548' : '#1a2a3a', borderRadius: 14, padding: '13px 6px 11px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', border: active ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent' }),
+    catChip: (active) => ({ background: 'transparent', borderRadius: 10, padding: '10px 4px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', border: 'none' }),
     // entry row
     entry: (locked) => ({ display: 'flex', alignItems: 'center', gap: 11, padding: '13px 13px', background: '#1a2a3a', borderRadius: 12, cursor: locked ? 'default' : 'pointer', opacity: locked ? 0.28 : 1 }),
   }
@@ -1655,12 +1655,12 @@ export default function HomePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
             <span style={S.wm}>ONE PERCENT</span>
             <div style={{ display: 'flex', gap: 4 }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '4px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(184,204,0,0.15)', color: '#6b7800', border: '1px solid rgba(184,204,0,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#8a9800', flexShrink: 0 }} />BETA
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(184,204,0,0.18)', color: '#c8d800', border: '1px solid rgba(184,204,0,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#c8d800', flexShrink: 0 }} />BETA
               </span>
               {isAdmin && (
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '4px 8px', borderRadius: 5, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#007a6b', border: '1px solid rgba(0,196,173,0.35)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#009b89', flexShrink: 0 }} />ADMIN
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#00c4ad', border: '1px solid rgba(0,196,173,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#00c4ad', flexShrink: 0 }} />ADMIN
                 </span>
               )}
             </div>
@@ -1696,7 +1696,7 @@ export default function HomePage() {
           {[
             { id: 'today', label: 'Today', icon: '◷' },
             { id: 'library', label: 'Library', icon: '⊞' },
-            { id: 'prompts', label: 'Prompt Farm', icon: '⚡' },
+            { id: 'prompts', label: 'Prompt Vault', icon: '⚡' },
             { id: 'progress', label: 'Progress', icon: '↗' },
           ].map(t => (
             <div key={t.id} onClick={() => setActiveTab(t.id)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4, background: activeTab === t.id ? 'rgba(255,255,255,0.08)' : 'transparent', color: activeTab === t.id ? '#fff' : 'rgba(232,238,245,0.45)', fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: activeTab === t.id ? 600 : 400, transition: 'all 0.15s' }}>
@@ -1721,11 +1721,21 @@ export default function HomePage() {
         <div style={S.screen}>
           {/* Commitment */}
           <div style={S.commitment} onClick={() => { setGoalStep(1); setShowGoalSheet(true) }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.55)', marginBottom: 7 }}>WHY I'M HERE</div>
-            <div style={{ fontSize: 13, color: goalSentence ? 'rgba(232,238,245,0.92)' : 'rgba(232,238,245,0.35)', lineHeight: 1.6, fontStyle: goalSentence ? 'italic' : 'normal' }}>
+            {/* Top row: target icon + label */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+              <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(232,238,245,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.5)" strokeWidth="1.8" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="rgba(232,238,245,0.5)" stroke="none"/></svg>
+              </div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.22em', color: 'rgba(232,238,245,0.28)' }}>WHY I'M HERE</div>
+            </div>
+            {/* Commitment text — 15px, no box */}
+            <div style={{ fontSize: 15, fontWeight: 500, color: goalSentence ? 'rgba(232,238,245,0.88)' : 'rgba(232,238,245,0.3)', lineHeight: 1.6, paddingRight: 24 }}>
               {goalSentence || 'What are you actually trying to change? Tap to set your goal.'}
             </div>
-            <div style={{ position: 'absolute', right: 18, top: '50%', transform: 'translateY(-50%)', color: 'rgba(232,238,245,0.15)', fontSize: 22, fontWeight: 300 }}>›</div>
+            {/* Pencil edit — bottom right, very subtle */}
+            <div style={{ position: 'absolute', bottom: 18, right: 2, opacity: 0.25 }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.9)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
           </div>
 
           {/* KPIs */}
@@ -1736,9 +1746,9 @@ export default function HomePage() {
               { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.5" fill="#E8FF47" stroke="none"/></svg>, val: avgScore, lbl: 'AVG SCORE' },
             ].map((k, i) => (
               <div key={i} style={S.kpi}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 22 }}>{k.icon}</div>
-                <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', lineHeight: 1 }}>{k.val}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.55)', textAlign: 'center' }}>{k.lbl}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 24 }}>{k.icon}</div>
+                <div style={{ fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', lineHeight: 1 }}>{k.val}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.08em', color: 'rgba(232,238,245,0.5)', textAlign: 'center' }}>{k.lbl}</div>
               </div>
             ))}
           </div>
@@ -1814,7 +1824,10 @@ export default function HomePage() {
                     <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{onDeckEntry.concept}</div>
                     <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: cat.color || '#fff' }}>{onDeckEntry.editionId} · {onDeckEntry.category.toUpperCase()}</div>
                   </div>
-                  <span style={{ color: 'rgba(232,238,245,0.2)', fontSize: 18, flexShrink: 0 }}>›</span>
+                  {nextUnlocked
+                    ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.2)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><polyline points="9 18 15 12 9 6"/></svg>
+                  }
                 </div>
               </>
             )
@@ -1850,9 +1863,9 @@ export default function HomePage() {
               ...ALL_CATS.map(c => ({ key: c, label: CAT_CONFIG[c]?.short || c, color: CAT_CONFIG[c]?.color, bg: (CAT_CONFIG[c]?.color || '#fff') + '1f', icon: CAT_CONFIG[c]?.icon, count: `${catCounts[c] || 0}/${catTotals[c] || 0}` }))
             ].map(chip => (
               <div key={chip.key} onClick={() => setLibFilter(libFilter === chip.key ? '' : chip.key)} style={S.catChip(libFilter === chip.key)}>
-                <div style={{ width: 28, height: 28, borderRadius: 8, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
+                <div style={{ width: 30, height: 30, borderRadius: 9, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', color: libFilter === chip.key ? '#fff' : (chip.color || 'rgba(232,238,245,0.6)'), textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: libFilter === chip.key ? 'rgba(232,238,245,0.7)' : 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
               </div>
             ))}
           </div>
@@ -1900,12 +1913,15 @@ export default function HomePage() {
       {/* ── PROMPTS TAB ── */}
       {activeTab === 'prompts' && (
         <div style={S.screen}>
-          <div style={{ background: '#1a2a3a', borderRadius: 18, padding: '26px 22px', textAlign: 'center', marginBottom: 14 }}>
-            <div style={{ width: 52, height: 52, borderRadius: 15, background: 'rgba(200,71,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+          {/* Prompt Vault — compact single-row hero */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px 0', borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 16 }}>
+            <div style={{ width: 44, height: 44, borderRadius: 13, background: 'rgba(200,71,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="#C847FF" stroke="none"/></svg>
             </div>
-            <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', marginBottom: 7 }}>Prompt Farm</div>
-            <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.6)', lineHeight: 1.6, fontWeight: 300 }}>Every concept you've learned has a prompt built for it. Copy it into Claude and put the idea to work on a real problem.</div>
+            <div>
+              <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', marginBottom: 3 }}>Prompt Vault</div>
+              <div style={{ fontSize: 12, color: 'rgba(232,238,245,0.45)', lineHeight: 1.5, fontWeight: 300 }}>Every concept you've locked in, ready to use.</div>
+            </div>
           </div>
           {/* Category chips */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 7, marginBottom: 14 }}>
@@ -1914,8 +1930,8 @@ export default function HomePage() {
             ].map(chip => (
               <div key={chip.key} style={S.catChip(false)}>
                 <div style={{ width: 28, height: 28, borderRadius: 8, background: chip.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{chip.icon}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.06em', color: chip.color || 'rgba(232,238,245,0.6)', textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', color: chip.color || 'rgba(232,238,245,0.6)', textAlign: 'center', lineHeight: 1.2 }}>{chip.label}</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{chip.count}</div>
               </div>
             ))}
           </div>
@@ -1941,22 +1957,34 @@ export default function HomePage() {
       {activeTab === 'progress' && (
         <div style={{ ...S.screen, paddingBottom: 20 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {/* Streak */}
-            <div style={{ background: '#1a2a3a', borderRadius: 18, padding: '22px 20px' }}>
+            {/* Streak — no background box, floats on page */}
+            <div style={{ paddingBottom: 4 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-                <span style={{ fontSize: 24, lineHeight: 1 }}>🔥</span>
-                <span style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', lineHeight: 1 }}>{streak}</span>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.55)', letterSpacing: '0.08em', paddingBottom: 5, alignSelf: 'flex-end' }}>DAY STREAK</span>
+                <span style={{ fontSize: 26, lineHeight: 1 }}>🔥</span>
+                <span style={{ fontSize: 48, fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', lineHeight: 1 }}>{streak}</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: 'rgba(232,238,245,0.5)', letterSpacing: '0.08em', paddingBottom: 5, alignSelf: 'flex-end' }}>DAY STREAK</span>
               </div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.35)', letterSpacing: '0.08em', marginBottom: 18 }}>PERSONAL BEST · {profile?.longest_streak || streak || 0} DAYS</div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(232,238,245,0.3)', letterSpacing: '0.08em', marginBottom: 18 }}>PERSONAL BEST · {profile?.longest_streak || streak || 0} DAYS</div>
               {/* Week row */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 5 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 5, marginBottom: 14 }}>
                 {['M','T','W','T','F','S','S'].map((d, i) => (
                   <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)' }}>{d}</span>
-                    <div style={{ width: '100%', aspectRatio: 1, borderRadius: 7, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontFamily: "'DM Mono', monospace", fontWeight: 700 }} />
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.35)' }}>{d}</span>
+                    <div style={{ width: '100%', aspectRatio: 1, borderRadius: 8, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontFamily: "'DM Mono', monospace", fontWeight: 700 }} />
                   </div>
                 ))}
+              </div>
+              {/* Streak freeze strip — inside streak section */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: 'rgba(71,200,255,0.06)', border: '1px solid rgba(71,200,255,0.1)', borderRadius: 10, padding: '10px 14px' }}>
+                <span style={{ fontSize: 22, lineHeight: 1 }}>🧊</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(232,238,245,0.75)', marginBottom: 2 }}>Streak Freezes</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.3)', letterSpacing: '0.04em' }}>EARN AT 7, 14 &amp; 30 DAY MILESTONES</div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 26, fontWeight: 700, color: '#47C8FF', letterSpacing: '-0.02em', lineHeight: 1 }}>{profile?.streak_freezes || 0}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(71,200,255,0.4)', letterSpacing: '0.1em', marginTop: 1 }}>AVAILABLE</div>
+                </div>
               </div>
             </div>
 
@@ -2060,13 +2088,13 @@ export default function HomePage() {
       {/* BOTTOM NAV */}
       <div style={S.bottomNav} className="op-bottom-nav">
         {[
-          { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'#1a2a3a':'rgba(26,42,58,0.3)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
-          { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'#1a2a3a':'rgba(26,42,58,0.3)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
-          { id: 'prompts', label: 'PROMPTS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='prompts'?'#1a2a3a':'rgba(26,42,58,0.3)'} strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> },
-          { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'#1a2a3a':'rgba(26,42,58,0.3)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
+          { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
+          { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
+          { id: 'prompts', label: 'PROMPTS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='prompts'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'} strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> },
+          { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
         ].map(t => (
           <div key={t.id} onClick={() => setActiveTab(t.id)} style={S.tab(activeTab === t.id)}>
-            <div style={S.tabPip(activeTab === t.id)} />
+            <div style={S.tabPip(activeTab === t.id, activeTab === t.id ? 'rgba(232,238,245,0.9)' : 'transparent')} />
             <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.icon}</div>
             <span style={S.tabLbl(activeTab === t.id)}>{t.label}</span>
           </div>
