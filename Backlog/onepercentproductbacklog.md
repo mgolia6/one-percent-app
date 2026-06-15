@@ -1,6 +1,6 @@
 # One Percent — Product Backlog
 **onepercentproductbacklog.md | Living file — updated each session**
-Last updated: 2026-06-15
+Last updated: 2026-06-15 (Session 2)
 
 This file tracks all non-content work: features, bugs, platform upgrades, infrastructure, and notifications. Content concept candidates live in `onepercentbacklog.md`.
 
@@ -11,15 +11,15 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | ID | Item | Notes |
 |---|---|---|
 | ENH-007 | Email allowlist for beta access | Close beta gate before expanding. Only pre-approved emails can sign in. |
-| UI-001 | Scroll breathing room — all tabs | Last card cut off at bottom nav on every tab. Add paddingBottom to all tab scroll containers. **Do first next session.** |
-| UI-002 | Tab scroll position reset | Library and Prompts default to top of first card, not top of page. Returning to a tab should scroll to top (not restore last position). |
-| UI-003 | Library chips active state — Option B | Add subtle border on active chip so selection is visually clear. Currently active dot is too subtle. |
-| UI-004 | About + Changelog pages — dark styling | These pages still use light/parchment aesthetic. Need to match dark mode design system. |
-| UI-005 | Bug + Feedback modals — liven up | Too much gray. Match dark theme energy — more contrast, cleaner form treatment. |
-| UI-006 | Profile page overhaul | Redundant with Progress tab in several places. Needs rethink as a distinct surface. Separate identity/settings from progress data. |
-| UI-007 | Streak month view | Expandable streak section in Progress tab. Tap to expand → full month grid. Scroll back through previous months. Pull from completions table. Color each day with category accent color of what was completed. |
+| ~~UI-001~~ | ~~Scroll breathing room — all tabs~~ | ✅ Done Jun 15 — 90px paddingBottom on all tab containers |
+| ~~UI-002~~ | ~~Tab scroll position reset~~ | ✅ Done Jun 15 — window.scrollTo instant on tab switch |
+| ~~UI-003~~ | ~~Library chips active state~~ | ✅ Done Jun 15 — border + dim fill on active chip |
+| ~~UI-004~~ | ~~About + Changelog pages — dark styling~~ | ✅ Done Jun 15 — #0e141c bg, white wordmark, DM Mono |
+| ~~UI-005~~ | ~~Bug + Feedback modals~~ | ✅ Done Jun 15 — lifted contrast, DM Mono, accent eyebrows |
+| ~~UI-006~~ | ~~Profile page overhaul~~ | ✅ Done Jun 15 — killed Progress tab, Account tab: name/phone/email reminders, footer links to About + Privacy |
+| ~~UI-007~~ | ~~Streak month view~~ | ✅ Done Jun 15 — full month grid, category-colored dots, real completed_at data |
 | CONTENT-001 | Quiz content audit — remove sales bias | Erin feedback on Dichotomy of Control: quiz questions were sales-driven. Audit ALL non-sales entries for sales-tilted quiz questions and rewrite. Also: review Sales Craft category framing — reposition as universal (everyone has a sales component to their job regardless of role). |
-| FEAT-001 | AI agent | Embedded chat in app. Pre-filled with entry's ai_prompt. Aware of user's completed entries (can reference concepts they've learned). Built on Anthropic API (claude-sonnet-4-6). Lives in Prompt Vault tab or as a drawer. Scope to finalize next session. |
+| ~~FEAT-001~~ | ~~AI agent — Deep Cut~~ | ✅ Done Jun 15 — circle FAB (color cycling), app-level entry picker, streaming chat grounded in verified sources, today's ai_prompt as first suggestion, /api/deep-cut server-side route |
 
 ---
 
@@ -85,6 +85,7 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | ISSUE-005 | Onboarding text overlap on mobile | ✅ Fixed May 27 | May 20 |
 | ISSUE-006 | Firefox Focus login friction | Open — no fix yet | May 28 |
 | ISSUE-007 | HITL icon not appearing in app | Open — flagged, not resolved | Jun 10 |
+| ISSUE-008 | Deep Cut — test source grounding + orange flag behavior on device | Open — needs device test | Jun 15 |
 
 ---
 
@@ -122,8 +123,10 @@ Remaining:
 **Infrastructure notes:**
 - Send from `matthew@mpgink.com` via Resend
 - SPF/DKIM DNS configured on mpgink.com
-- **Pre-launch:** Add `email_reminders boolean default true` to `profiles` + unsubscribe link (CAN-SPAM)
-- **Future:** `phone` column on `profiles` for SMS via Twilio
+- ✅ `email_reminders` boolean added to profiles Jun 15 — toggle in Account tab, CAN-SPAM ready
+- ✅ `phone` column on `profiles` added Jun 15 (optional, for future SMS)
+- ✅ `email_reminders boolean default true` on `profiles` added Jun 15
+- ✅ `completed_at` on `completions` added to query Jun 15 (powers streak month grid)
 
 ---
 
