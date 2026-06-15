@@ -1175,7 +1175,7 @@ export default function HomePage() {
         totalCompleted: null, // filled after completions load below
       })
 
-      const { data: comps } = await supabase.from('completions').select('entry_number, score, time_to_quiz').eq('user_id', session.user.id)
+      const { data: comps } = await supabase.from('completions').select('entry_number, score, time_to_quiz, completed_at').eq('user_id', session.user.id)
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
@@ -2010,15 +2010,64 @@ export default function HomePage() {
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: 'rgba(232,238,245,0.5)', letterSpacing: '0.08em', paddingBottom: 5, alignSelf: 'flex-end' }}>DAY STREAK</span>
               </div>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(232,238,245,0.3)', letterSpacing: '0.08em', marginBottom: 18 }}>PERSONAL BEST · {profile?.longest_streak || streak || 0} DAYS</div>
-              {/* Week row */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 5, marginBottom: 14 }}>
-                {['M','T','W','T','F','S','S'].map((d, i) => (
-                  <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.35)' }}>{d}</span>
-                    <div style={{ width: '100%', aspectRatio: 1, borderRadius: 8, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontFamily: "'DM Mono', monospace", fontWeight: 700 }} />
+              {/* Month grid */}
+              {(() => {
+                const now = new Date()
+                const year = now.getFullYear()
+                const month = now.getMonth()
+                const daysInMonth = new Date(year, month + 1, 0).getDate()
+                const firstDow = new Date(year, month, 1).getDay() // 0=Sun
+                // Build completed_at lookup: 'YYYY-MM-DD' -> category color
+                const dateColorMap = {}
+                Object.values(completions).forEach(comp => {
+                  if (!comp.completed_at) return
+                  const d = new Date(comp.completed_at)
+                  const key = d.toISOString().slice(0, 10)
+                  // find category for this entry
+                  const entryNum = String(comp.entry_number || '').padStart(3, '0')
+                  const entryDef = ENTRIES.find(e => e.entry === entryNum)
+                  const cat = entryDef?.category
+                  dateColorMap[key] = cat ? CATEGORY_COLORS[cat] : '#47FFE8'
+                })
+                const todayKey = now.toISOString().slice(0, 10)
+                // Mon-first offset: Sun(0)->6, Mon(1)->0, etc
+                const offset = (firstDow + 6) % 7
+                const cells = []
+                for (let i = 0; i < offset; i++) cells.push(null)
+                for (let d = 1; d <= daysInMonth; d++) cells.push(d)
+                const monthName = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+                return (
+                  <div style={{ marginBottom: 14 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', letterSpacing: '0.1em' }}>{monthName.toUpperCase()}</div>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 4, marginBottom: 6 }}>
+                      {['M','T','W','T','F','S','S'].map((d, i) => (
+                        <div key={i} style={{ textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.25)', paddingBottom: 3 }}>{d}</div>
+                      ))}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 4 }}>
+                      {cells.map((day, i) => {
+                        if (!day) return <div key={`blank-${i}`} />
+                        const dateKey = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`
+                        const color = dateColorMap[dateKey]
+                        const isToday = dateKey === todayKey
+                        return (
+                          <div key={dateKey} style={{
+                            aspectRatio: 1, borderRadius: 5,
+                            background: color ? `${color}28` : isToday ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.03)',
+                            border: isToday ? '1px solid rgba(255,255,255,0.15)' : color ? `1px solid ${color}44` : '1px solid transparent',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            position: 'relative',
+                          }}>
+                            {color && <div style={{ width: 5, height: 5, borderRadius: '50%', background: color, opacity: 0.9 }} />}
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
-                ))}
-              </div>
+                )
+              })()}
               {/* Streak freeze strip — inside streak section */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, background: 'rgba(71,200,255,0.06)', border: '1px solid rgba(71,200,255,0.1)', borderRadius: 10, padding: '10px 14px' }}>
                 <span style={{ fontSize: 22, lineHeight: 1 }}>🧊</span>

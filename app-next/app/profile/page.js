@@ -62,12 +62,12 @@ const ENTRIES = [
 // ICONS kept for any legacy references
 const ICONS = { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem }
 
-// Design tokens
-const BG = '#111'
-const SURFACE = '#181818'
-const BORDER = '#222'
-const BORDER_FAINT = '#1a1a1a'
-const T = { primary: '#ffffff', secondary: '#bbb', tertiary: '#777', faint: '#444' }
+// Design tokens — matched to app dark system
+const BG = '#0e141c'
+const SURFACE = '#1a2a3a'
+const BORDER = 'rgba(255,255,255,0.08)'
+const BORDER_FAINT = 'rgba(255,255,255,0.04)'
+const T = { primary: '#e8eef5', secondary: 'rgba(232,238,245,0.65)', tertiary: 'rgba(232,238,245,0.35)', faint: 'rgba(232,238,245,0.18)' }
 
 const CAT_COLORS = {
   'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
@@ -250,15 +250,15 @@ export default function ProfilePage() {
   )
 
   return (
-    <div style={{ minHeight: '100vh', background: BG, fontFamily: "'Inter',sans-serif", color: T.primary }}>
+    <div style={{ minHeight: '100vh', background: BG, fontFamily: "'DM Sans', 'Inter', sans-serif", color: T.primary }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes spin { to { transform: rotate(360deg) } }
       `}</style>
 
       {/* Sticky back nav */}
-      <div style={{ position: 'sticky', top: 0, zIndex: 20, background: BG, borderBottom: `1px solid ${BORDER_FAINT}` }}>
+      <div style={{ position: 'sticky', top: 0, zIndex: 20, background: 'rgba(14,20,28,0.97)', backdropFilter: 'blur(14px)', borderBottom: `1px solid ${BORDER_FAINT}` }}>
         <div style={{ maxWidth: 520, margin: '0 auto', padding: '12px 20px' }}>
           <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.secondary, letterSpacing: '0.08em', padding: 0 }}>
             <ChevronLeft size={13} strokeWidth={2} />
@@ -274,7 +274,7 @@ export default function ProfilePage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             {/* Avatar */}
             <label style={{ position: 'relative', flexShrink: 0, cursor: uploadingAvatar ? 'default' : 'pointer' }}>
-              <div style={{ width: 52, height: 52, borderRadius: '50%', background: SURFACE, border: `1px solid ${BORDER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 56, height: 56, borderRadius: '50%', background: SURFACE, border: `2px solid ${BORDER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {avatarUrl
                   ? <img src={avatarUrl} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   : <User size={20} strokeWidth={1} color={T.faint} />
@@ -311,7 +311,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Stats — single surface row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', background: SURFACE, borderRadius: 8, border: `1px solid ${BORDER}`, marginBottom: 28, overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', background: SURFACE, borderRadius: 14, border: `1px solid ${BORDER}`, marginBottom: 28, overflow: 'hidden' }}>
           {[
             { label: 'STREAK', value: `${currentStreak}d` },
             { label: 'LONGEST', value: `${longestStreak}d` },
@@ -390,7 +390,7 @@ export default function ProfilePage() {
         {tab === 'badges' && (
           <div style={{ paddingBottom: 40 }}>
             {/* Streak Freeze display */}
-            <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 8, padding: '16px 18px', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 14, padding: '16px 18px', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ fontSize: 28, lineHeight: 1 }}>🧊</div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: T.primary, marginBottom: 3 }}>Streak Freezes</div>
@@ -437,7 +437,7 @@ export default function ProfilePage() {
                     borderBottom: `1px solid ${field.editable ? BORDER : BORDER_FAINT}`,
                     padding: '10px 0', fontSize: 14,
                     color: field.editable ? T.primary : T.faint,
-                    fontFamily: "'Inter',sans-serif", outline: 'none',
+                    fontFamily: "'DM Mono', monospace", outline: 'none',
                     cursor: field.editable ? 'text' : 'default',
                   }}
                 />
@@ -452,10 +452,10 @@ export default function ProfilePage() {
             )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 24 }}>
-              <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 4, padding: '13px', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
+              <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 10, padding: '14px', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
                 {saving ? 'SAVING...' : 'SAVE CHANGES'}
               </button>
-              <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#f87171', border: '1px solid #2a1a1e', borderRadius: 4, padding: '12px', fontSize: 11, fontWeight: 500, letterSpacing: '0.08em', cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
+              <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#FF4778', border: '1px solid rgba(255,71,120,0.2)', borderRadius: 10, padding: '13px', fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
                 {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
               </button>
             </div>
