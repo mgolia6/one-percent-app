@@ -7,7 +7,7 @@ import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 import analytics from '@/lib/analytics'
-import DeepCut from '@/components/DeepCut'
+import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1118,7 +1118,7 @@ export default function HomePage() {
   const [showBug, setShowBug] = useState(false)
   const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
-  const [deepCutEntry, setDeepCutEntry] = useState(null)
+  const [deepCutOpen, setDeepCutOpen] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
   const [showWhatsNew, setShowWhatsNew] = useState(false)
@@ -1599,16 +1599,22 @@ export default function HomePage() {
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
       {showWhatsNew && whatsNewEntry && <WhatsNewModal entry={whatsNewEntry} onDismiss={dismissWhatsNew} />}
       {showingBadge && <BadgeEarnOverlay badge={showingBadge} onDismiss={dismissBadge} />}
-      {deepCutEntry && (
+      {/* Deep Cut FAB — floats above bottom nav on all tabs */}
+      <DeepCutFAB onClick={() => setDeepCutOpen(true)} />
+
+      {/* Deep Cut drawer */}
+      {deepCutOpen && (
         <DeepCut
-          entry={deepCutEntry}
+          entries={ENTRIES}
+          todayEntry={ENTRIES.find(e => !completions[e.entry])}
+          completions={completions}
           userContext={{
             firstName: profile?.first_name,
             goal: profile?.goal_what ? `change ${profile.goal_what} by ${profile.goal_when}` : null,
             completedCount,
             completedConcepts: ENTRIES.filter(e => completions[e.entry]).map(e => e.concept),
           }}
-          onClose={() => setDeepCutEntry(null)}
+          onClose={() => setDeepCutOpen(false)}
         />
       )}
       {showWelcome && !showingBadge && (() => {
@@ -2003,26 +2009,9 @@ export default function HomePage() {
                 <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.65)', lineHeight: 1.55, fontWeight: 300, fontStyle: 'italic', marginBottom: 12 }}>
                   Go deeper on {e.concept} — grounded in verified sources.
                 </div>
-                <button
-                  onClick={async () => {
-                    try {
-                      const res = await fetch(`/entries/${e.entry}.json`)
-                      const entryData = await res.json()
-                      setDeepCutEntry(entryData)
-                    } catch {
-                      setDeepCutEntry({ concept: e.concept, category: e.category, accent: color })
-                    }
-                  }}
-                  style={{
-                    background: `${color}18`, border: `1px solid ${color}44`,
-                    borderRadius: 7, padding: '7px 14px',
-                    fontFamily: "'DM Mono', monospace", fontSize: 8,
-                    letterSpacing: '0.12em', color, cursor: 'pointer',
-                    transition: 'background 0.15s',
-                  }}
-                >
-                  DEEP CUT →
-                </button>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: `${color}cc` }}>
+                  USE PROMPT →
+                </div>
               </div>
             )
           })}
