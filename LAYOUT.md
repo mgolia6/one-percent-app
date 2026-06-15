@@ -1,5 +1,5 @@
 # One Percent — Layout & Design State
-**Last updated:** 2026-06-14
+**Last updated:** 2026-06-15
 
 ---
 
@@ -52,7 +52,8 @@ Dark, minimal, high-contrast. Not terminal — clean and editorial. Navy/dark bl
 ### Header (sticky, top)
 - Left: `ONE PERCENT` wordmark (DM Mono) + BETA chip (yellow-green `#c8d800`) + ADMIN chip (`#00c4ad`) if admin
 - Right: Avatar button → `/profile` route
-- Action strip below wordmark: ABOUT · CHANGELOG · BUG (pink) · FEEDBACK · INFO · SIGN OUT
+- Action strip below wordmark: CHANGELOG · BUG (pink) · FEEDBACK · INFO · SIGN OUT
+- ABOUT removed Jun 15 — now lives in profile Account tab footer
 - Header is `op-header` class — hidden on desktop (≥768px)
 
 ### Bottom Tab Nav (`op-bottom-nav`)
@@ -75,11 +76,12 @@ Full-width, scrolls independently per tab. `padding: 18px 18px 0`, plus paddingB
 - Width: 240px, fixed/sticky, `background: #1a2a3a`, full viewport height
 - Top: ONE PERCENT wordmark + BETA/ADMIN chips
 - Nav items: Today · Library · Prompt Vault · Progress (icon + label, active state = `rgba(255,255,255,0.08)` bg)
-- Bottom: ABOUT · BUG · FEEDBACK · ADMIN (if admin) · SIGN OUT links
+- Bottom: BUG · FEEDBACK · ADMIN (if admin) · SIGN OUT links (ABOUT removed Jun 15)
 
 ### Main Content (`op-main`)
 - `flex: 1`, `maxWidth: 680px`, `paddingBottom: 60px`
 - Header (`op-header`) hidden — wordmark lives in sidebar
+- Tab scroll containers: `paddingBottom: 90px` (clears bottom nav, fixed Jun 15)
 
 ---
 
@@ -88,7 +90,7 @@ Full-width, scrolls independently per tab. `padding: 18px 18px 0`, plus paddingB
 ### Welcome Overlay
 - Fires once per session (sessionStorage flag)
 - Full-screen dark overlay (`#0a0a0f` gradient)
-- Typewriter animation: name typed out at 65ms/char
+- Typewriter animation: "Welcome back," types first (italic, muted), 300ms pause, then name types at 65ms/char
 - Stats chips: streak chip (color varies by streak length) + vault count chip
 - Nudge line: context-aware (streak, count, goal, etc.)
 - TAP TO CONTINUE hint at bottom
@@ -118,11 +120,12 @@ Layout (top to bottom):
 ### PROMPTS Tab (Prompt Vault)
 - Compact single-row hero: lock icon (44px, purple bg) + title + subtitle
 - Same category chips as Library (4-col grid)
-- Prompt cards per completed entry: left border (category color), category + concept label, "Open in Claude →" CTA
+- Prompt cards per completed entry: left border (category color), category + concept label, USE PROMPT → CTA
+- Per-entry DEEP CUT buttons removed Jun 15 — Deep Cut now lives as an app-level FAB
 
 ### PROGRESS Tab
 Layout (top to bottom):
-1. **Streak section** — no card box, floats on page. Large 🔥 + number + DAY STREAK label. Personal best below. 7-day week row (M–S dots). Streak freeze strip (🧊 inline, shows count)
+1. **Streak section** — no card box, floats on page. Large 🔥 + number + DAY STREAK label. Personal best below. Full month calendar grid (replaced 7-day row Jun 15): Mon-first, colored dot per completed day in category accent color, today highlighted with faint border. Powered by real `completed_at` data. Streak freeze strip (🧊 inline, shows count)
 2. **Concepts + Time** — 2-col grid: completed count (cyan) + total time (yellow)
 3. **Quiz score trend** — `#1a2a3a` card, bar chart of last 7 scores, avg callout
 4. **Leaderboard** — tappable card → `/leaderboard`, shows current rank
@@ -143,6 +146,33 @@ Layout (top to bottom):
 
 ---
 
+## Deep Cut
+
+**Entry point:** Circle FAB, bottom right, 82px above bottom nav. Floats across all tabs. Cycles through all 7 category accent colors every 2.5s with pulse ring + outer ring animation. Scissors icon.
+
+**Drawer:** Slide-up, 92dvh, `#070c12` background.
+
+**State A — Entry picker:**
+- "WHAT DO YOU WANT TO GO DEEPER ON?" label
+- Category filter chips (same accent colors as rest of app)
+- Completed entries list: colored left bar, concept name, category, score
+- GO DEEP button activates in selected entry's accent color
+
+**State B — Chat:**
+- EXPLORING context pill at top — shows selected concept, tap to SWITCH back to picker
+- Source pills row — tappable links to all verified sources for the entry
+- Today's `ai_prompt` surfaces as first suggestion chip: TODAY'S PROMPT badge in entry accent color, italic text, accent-tinted background
+- Standard explore prompts below: real example / connections / counterargument / apply to work
+- Streaming response from `/api/deep-cut` (server-side, claude-sonnet-4-6)
+- Out-of-source answers flagged inline in orange by Claude
+- User message bubbles pick up entry accent color
+
+**API:** `/api/deep-cut` — server-side Next.js route. Injects full entry JSON (morning, midday, sources, quiz) + user context into system prompt. Explicit source grounding rules. Requires `ANTHROPIC_API_KEY` in Vercel env vars.
+
+**Files:** `app-next/components/DeepCut.jsx` (component + FAB export), `app-next/app/api/deep-cut/route.js`
+
+---
+
 ## Modals & Overlays
 
 ### How It Works Modal
@@ -152,11 +182,13 @@ Layout (top to bottom):
 
 ### Feedback Modal
 - Star rating 1–5 + comment textarea + screenshot attach
-- Dark modal (`#111` bg)
+- Dark modal (`#111827` bg, rgba white border, 14px radius)
+- Cyan eyebrow (#47FFE8), DM Mono buttons, accent-colored active state on send
 
 ### Bug Modal
 - Page selector dropdown + description textarea + screenshot attach
-- Dark modal, REPORT button in pink `#FF4778`
+- Dark modal (`#111827` bg, rgba white border, 14px radius)
+- Pink eyebrow (#FF4778), DM Mono buttons, accent-colored active state on report
 
 ### Weekly Survey Modal (`/survey` trigger)
 - Full-screen scroll, dark bg
@@ -175,6 +207,27 @@ Layout (top to bottom):
 
 ### Badge Earn Overlay
 - See Surfaces section above
+
+### Profile Page (`/profile`)
+Two tabs: **ACCOUNT | BADGES**
+
+**ACCOUNT tab:**
+- Avatar (60px circle, upload via Supabase Storage, + badge in bottom right)
+- First name, last name (editable)
+- Email (read-only)
+- Phone (optional, for future SMS)
+- NOTIFICATIONS section: email reminders toggle (saves to `profiles.email_reminders`)
+- Save + Sign Out buttons
+- Footer links: About One Percent → `/about`, Privacy Policy → `/privacy`
+
+**BADGES tab:**
+- Streak freeze card (count + description)
+- EARNED badges list (date earned)
+- LOCKED badges list (hidden badge names replaced with ???)
+
+**Removed Jun 15:** Progress tab — all that data lives in the main Progress tab.
+
+---
 
 ### Goal Commitment Flow
 - Bottom sheet (`op-goal-sheet`), light bg, slides up
@@ -200,10 +253,11 @@ Layout (top to bottom):
 | `/onboarding` | `app/onboarding/page.js` | First-run flow |
 | `/entry/[id]` | `app/entry/[id]/page.js` + `components/EntryViewer.jsx` | Lesson viewer |
 | `/admin` | `app/admin/page.js` | Admin panel |
-| `/profile` | `app/profile/page.js` | User profile |
+| `/profile` | `app/profile/page.js` | User profile — Account tab + Badges tab |
+| `/privacy` | `app/privacy/page.js` | Privacy policy (added Jun 15) |
 | `/leaderboard` | `app/leaderboard/page.js` | Leaderboard |
-| `/about` | `app/about/page.js` | About page (needs dark style update) |
-| `/changelog` | `app/changelog/page.js` | Changelog (needs dark style update) |
+| `/about` | `app/about/page.js` | About page — dark styled (fixed Jun 15) |
+| `/changelog` | `app/changelog/page.js` | Changelog — dark styled (fixed Jun 15) |
 | `/survey/[userId]` | `app/survey/[userId]/page.js` | Survey |
 
 ---
@@ -220,11 +274,15 @@ Layout (top to bottom):
 ---
 
 ## Open Layout Debt
-1. All tabs need `paddingBottom` to clear bottom nav (last card cut off)
-2. About + Changelog pages need dark style treatment
-3. Bug + Feedback modals need visual liveliness (too much gray)
-4. Tab scroll position should reset to top when switching tabs
-5. Profile page needs rethink — overlaps with Progress tab
+~~1. All tabs need `paddingBottom` to clear bottom nav~~ ✅ Fixed Jun 15
+~~2. About + Changelog pages need dark style treatment~~ ✅ Fixed Jun 15
+~~3. Bug + Feedback modals need visual liveliness~~ ✅ Fixed Jun 15
+~~4. Tab scroll position should reset to top~~ ✅ Fixed Jun 15
+~~5. Profile page needs rethink~~ ✅ Fixed Jun 15
+
+**Current open debt:**
+- HITL icon not appearing in app (ISSUE-007)
+- Deep Cut device test — verify source grounding + orange flag behavior (ISSUE-008)
 
 ---
 
@@ -241,3 +299,5 @@ Layout (top to bottom):
 | Config (TOTAL_ENTRIES etc.) | `app-next/lib/config.js` |
 | Edge functions (email) | `supabase/functions/` |
 | Entry content | `app-next/public/entries/[NNN].json` |
+| Deep Cut component + FAB | `app-next/components/DeepCut.jsx` |
+| Deep Cut API route | `app-next/app/api/deep-cut/route.js` |
