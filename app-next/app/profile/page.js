@@ -15,51 +15,7 @@ const CATEGORY_COLORS = {
   'Communication': '#FF8C00',
 }
 
-const ENTRIES = [
-  { entry: '001', category: 'AI' },
-  { entry: '002', category: 'Vocab & Language' },
-  { entry: '003', category: 'Sales Craft' },
-  { entry: '004', category: 'Mental Models' },
-  { entry: '005', category: 'Philosophy' },
-  { entry: '006', category: 'AI' },
-  { entry: '007', category: 'Sales Craft' },
-  { entry: '008', category: 'AI' },
-  { entry: '009', category: 'Mental Models' },
-  { entry: '010', category: 'Communication' },
-  { entry: '011', category: 'Philosophy' },
-  { entry: '012', category: 'Communication' },
-  { entry: '013', category: 'Neuroscience & Cognition' },
-  { entry: '014', category: 'Vocab & Language' },
-  { entry: '015', category: 'Sales Craft' },
-  { entry: '016', category: 'Mental Models' },
-  { entry: '017', category: 'AI' },
-  { entry: '018', category: 'Philosophy' },
-  { entry: '019', category: 'Neuroscience & Cognition' },
-  { entry: '020', category: 'Sales Craft' },
-  { entry: '021', category: 'Communication' },
-  { entry: '022', category: 'Sales Craft' },
-  { entry: '023', category: 'AI' },
-  { entry: '024', category: 'Vocab & Language' },
-  { entry: '025', category: 'Neuroscience & Cognition' },
-  { entry: '026', category: 'Sales Craft' },
-  { entry: '027', category: 'AI' },
-  { entry: '028', category: 'Vocab & Language' },
-  { entry: '029', category: 'Sales Craft' },
-  { entry: '030', category: 'Mental Models' },
-  { entry: '031', category: 'Neuroscience & Cognition' },
-  { entry: '032', category: 'Communication' },
-  { entry: '033', category: 'Philosophy' },
-  { entry: '034', category: 'Sales Craft' },
-  { entry: '035', category: 'AI' },
-  { entry: '036', category: 'Vocab & Language' },
-  { entry: '037', category: 'Sales Craft' },
-  { entry: '038', category: 'Mental Models' },
-  { entry: '039', category: 'AI' },
-  { entry: '040', category: 'Philosophy' },
-]
-
 // Badges now come from Supabase (badge_definitions + user_badges tables)
-// ICONS kept for any legacy references
 const ICONS = { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem }
 
 // Design tokens — matched to app dark system
@@ -89,7 +45,7 @@ function BadgeRow({ badge, earned, earnedAt }) {
     <div style={{
       display: 'flex', alignItems: 'center', gap: 14,
       padding: '14px 0',
-      borderBottom: `1px solid ${earned ? BORDER_FAINT : '#141414'}`,
+      borderBottom: `1px solid ${earned ? BORDER_FAINT : 'rgba(255,255,255,0.02)'}`,
       opacity: earned ? 1 : 0.35,
     }}>
       <div style={{ flexShrink: 0, width: 24, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -121,10 +77,60 @@ function BadgeRow({ badge, earned, earnedAt }) {
   )
 }
 
+function FieldRow({ label, value, onChange, editable = true, type = 'text', hint }) {
+  return (
+    <div style={{ marginBottom: 22 }}>
+      <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.16em', marginBottom: 7, fontWeight: 600, fontFamily: "'DM Mono', monospace" }}>{label}</div>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange ? e => onChange(e.target.value) : undefined}
+        readOnly={!editable}
+        style={{
+          width: '100%', background: editable ? 'rgba(255,255,255,0.04)' : 'transparent',
+          border: 'none',
+          borderBottom: `1px solid ${editable ? BORDER : BORDER_FAINT}`,
+          padding: '10px 0', fontSize: 14,
+          color: editable ? T.primary : T.faint,
+          fontFamily: "'DM Sans', 'Inter', sans-serif", outline: 'none',
+          cursor: editable ? 'text' : 'default',
+        }}
+      />
+      {hint && <div style={{ fontSize: 10, color: T.faint, marginTop: 4 }}>{hint}</div>}
+    </div>
+  )
+}
+
+function Toggle({ label, subLabel, value, onChange }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 0', borderBottom: `1px solid ${BORDER_FAINT}` }}>
+      <div>
+        <div style={{ fontSize: 13, color: T.secondary, marginBottom: 2 }}>{label}</div>
+        {subLabel && <div style={{ fontSize: 11, color: T.tertiary }}>{subLabel}</div>}
+      </div>
+      <div
+        onClick={() => onChange(!value)}
+        style={{
+          width: 44, height: 26, borderRadius: 13,
+          background: value ? '#47FFE8' : 'rgba(255,255,255,0.08)',
+          position: 'relative', cursor: 'pointer', flexShrink: 0,
+          transition: 'background 0.2s',
+        }}
+      >
+        <div style={{
+          position: 'absolute', top: 3, left: value ? 21 : 3,
+          width: 20, height: 20, borderRadius: '50%',
+          background: value ? '#0a1420' : 'rgba(255,255,255,0.3)',
+          transition: 'left 0.2s',
+        }} />
+      </div>
+    </div>
+  )
+}
+
 export default function ProfilePage() {
   const router = useRouter()
   const [profile, setProfile] = useState(null)
-  const [completions, setCompletions] = useState({})
   const [rank, setRank] = useState(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -132,13 +138,16 @@ export default function ProfilePage() {
   const [message, setMessage] = useState(null)
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploadingAvatar, setUploadingAvatar] = useState(false)
-  const [tab, setTab] = useState('progress')
+  const [tab, setTab] = useState('account')
   const [badgeDefs, setBadgeDefs] = useState([])
-  const [userBadges, setUserBadges] = useState({}) // badge_id -> earned_at
+  const [userBadges, setUserBadges] = useState({})
   const [streakFreezes, setStreakFreezes] = useState(0)
+  // Account fields
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [emailReminders, setEmailReminders] = useState(true)
 
   useEffect(() => { loadProfile() }, [])
 
@@ -146,9 +155,8 @@ export default function ProfilePage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
 
-    const [{ data }, { data: comps }, { data: allProfiles }, { data: badgeDefsData }, { data: earnedBadgesData }] = await Promise.all([
+    const [{ data }, { data: allProfiles }, { data: badgeDefsData }, { data: earnedBadgesData }] = await Promise.all([
       supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
-      supabase.from('completions').select('entry_number, score').eq('user_id', user.id),
       supabase.from('profiles').select('id, current_streak').order('current_streak', { ascending: false }),
       supabase.from('badge_definitions').select('*').order('sort_order'),
       supabase.from('user_badges').select('badge_id, earned_at').eq('user_id', user.id),
@@ -159,14 +167,10 @@ export default function ProfilePage() {
       setFirstName(data.first_name || '')
       setLastName(data.last_name || '')
       setEmail(data.email || user.email || '')
+      setPhone(data.phone || '')
+      setEmailReminders(data.email_reminders !== false)
       setAvatarUrl(data.avatar_url || null)
       setStreakFreezes(data.streak_freezes || 0)
-    }
-
-    if (comps) {
-      const map = {}
-      comps.forEach(c => { map[c.entry_number] = c })
-      setCompletions(map)
     }
 
     if (badgeDefsData) setBadgeDefs(badgeDefsData)
@@ -191,6 +195,8 @@ export default function ProfilePage() {
     const { error } = await supabase.from('profiles').update({
       first_name: firstName.trim() || null,
       last_name: lastName.trim() || null,
+      phone: phone.trim() || null,
+      email_reminders: emailReminders,
     }).eq('id', profile.id)
     if (error) { setMessage({ type: 'error', text: 'Update failed — try again' }); setSaving(false); return }
     setMessage({ type: 'success', text: 'Saved' })
@@ -222,30 +228,22 @@ export default function ProfilePage() {
     window.location.href = '/login'
   }
 
-  // Derived
-  const completedCount = Object.keys(completions).length
-  const memberSince = profile?.signup_date ? new Date(profile.signup_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : '—'
-  const currentStreak = profile?.current_streak || 0
-  const longestStreak = profile?.longest_streak || 0
-  const catBreakdown = {}
-  const catTotal = {}
-  ENTRIES.forEach(e => {
-    catTotal[e.category] = (catTotal[e.category] || 0) + 1
-    if (completions[e.entry]) catBreakdown[e.category] = (catBreakdown[e.category] || 0) + 1
-  })
   const earnedBadges = badgeDefs.filter(b => userBadges[b.id])
   const lockedBadges = badgeDefs.filter(b => !userBadges[b.id])
+  const memberSince = profile?.signup_date ? new Date(profile.signup_date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : null
+  const currentStreak = profile?.current_streak || 0
+  const longestStreak = profile?.longest_streak || 0
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 13, color: T.tertiary, letterSpacing: '0.1em' }}>LOADING...</div>
+      <div style={{ fontSize: 11, color: T.tertiary, letterSpacing: '0.2em', fontFamily: "'DM Mono', monospace" }}>LOADING...</div>
     </div>
   )
 
   if (!profile) return (
     <div style={{ minHeight: '100vh', background: BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <div style={{ fontSize: 13, color: '#f87171', marginBottom: 20 }}>No profile found</div>
-      <button onClick={() => router.push('/')} style={{ background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 3, padding: '10px 20px', fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', cursor: 'pointer' }}>BACK TO LIBRARY</button>
+      <div style={{ fontSize: 13, color: '#FF4778', marginBottom: 20 }}>No profile found</div>
+      <button onClick={() => router.push('/')} style={{ background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 8, padding: '10px 20px', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', cursor: 'pointer', fontFamily: "'DM Mono', monospace" }}>BACK TO LIBRARY</button>
     </div>
   )
 
@@ -255,35 +253,35 @@ export default function ProfilePage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes spin { to { transform: rotate(360deg) } }
+        input::placeholder { color: rgba(232,238,245,0.2); }
       `}</style>
 
-      {/* Sticky back nav */}
+      {/* Sticky nav */}
       <div style={{ position: 'sticky', top: 0, zIndex: 20, background: 'rgba(14,20,28,0.97)', backdropFilter: 'blur(14px)', borderBottom: `1px solid ${BORDER_FAINT}` }}>
         <div style={{ maxWidth: 520, margin: '0 auto', padding: '12px 20px' }}>
-          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.secondary, letterSpacing: '0.08em', padding: 0 }}>
+          <button onClick={() => router.push('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 10, color: T.tertiary, letterSpacing: '0.1em', padding: 0, fontFamily: "'DM Mono', monospace" }}>
             <ChevronLeft size={13} strokeWidth={2} />
             LIBRARY
           </button>
         </div>
       </div>
 
-      <div style={{ maxWidth: 520, margin: '0 auto', padding: '20px 20px 60px' }}>
+      <div style={{ maxWidth: 520, margin: '0 auto', padding: '24px 20px 80px' }}>
 
-        {/* Header — avatar/name left, rank right */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        {/* Header — avatar + name + streak + rank */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             {/* Avatar */}
             <label style={{ position: 'relative', flexShrink: 0, cursor: uploadingAvatar ? 'default' : 'pointer' }}>
-              <div style={{ width: 56, height: 56, borderRadius: '50%', background: SURFACE, border: `2px solid ${BORDER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 60, height: 60, borderRadius: '50%', background: SURFACE, border: `2px solid ${BORDER}`, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {avatarUrl
                   ? <img src={avatarUrl} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  : <User size={20} strokeWidth={1} color={T.faint} />
+                  : <User size={22} strokeWidth={1} color={T.faint} />
                 }
               </div>
-              {/* + indicator */}
               {!uploadingAvatar && (
-                <div style={{ position: 'absolute', bottom: 0, right: 0, width: 16, height: 16, borderRadius: '50%', background: '#E8FF47', border: `2px solid ${BG}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Plus size={9} strokeWidth={3} color="#0A0A0A" />
+                <div style={{ position: 'absolute', bottom: 0, right: 0, width: 18, height: 18, borderRadius: '50%', background: '#E8FF47', border: `2px solid ${BG}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Plus size={10} strokeWidth={3} color="#0A0A0A" />
                 </div>
               )}
               {uploadingAvatar && (
@@ -295,93 +293,85 @@ export default function ProfilePage() {
             </label>
 
             <div>
-              <div style={{ fontSize: 21, fontWeight: 700, letterSpacing: '-0.02em', color: T.primary, marginBottom: 3 }}>{profile.first_name || 'Beta Tester'}</div>
-              <div style={{ fontSize: 11, color: T.tertiary, letterSpacing: '0.04em' }}>Since {memberSince}</div>
+              <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', color: T.primary, lineHeight: 1, marginBottom: 4 }}>
+                {profile.first_name || 'Beta Tester'}
+                {profile.last_name ? ` ${profile.last_name}` : ''}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                {currentStreak > 0 && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <span style={{ fontSize: 12 }}>🔥</span>
+                    <span style={{ fontSize: 11, color: currentStreak >= 7 ? '#47FFE8' : '#E8FF47', fontFamily: "'DM Mono', monospace", fontWeight: 600 }}>{currentStreak}</span>
+                  </div>
+                )}
+                {memberSince && <div style={{ fontSize: 11, color: T.faint, fontFamily: "'DM Mono', monospace" }}>SINCE {memberSince.toUpperCase()}</div>}
+              </div>
             </div>
           </div>
 
           {/* Rank */}
           {rank !== null && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, flexShrink: 0 }}>
-              <Trophy size={15} strokeWidth={1.5} color='#E8FF47' />
-              <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em', color: T.primary, lineHeight: 1 }}>#{rank}</div>
-              <div style={{ fontSize: 8, color: T.tertiary, letterSpacing: '0.12em', fontWeight: 600 }}>RANK</div>
+              <Trophy size={14} strokeWidth={1.5} color='#E8FF47' />
+              <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: T.primary, lineHeight: 1 }}>#{rank}</div>
+              <div style={{ fontSize: 8, color: T.tertiary, letterSpacing: '0.14em', fontFamily: "'DM Mono', monospace" }}>RANK</div>
             </div>
           )}
         </div>
 
-        {/* Stats — single surface row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', background: SURFACE, borderRadius: 14, border: `1px solid ${BORDER}`, marginBottom: 28, overflow: 'hidden' }}>
-          {[
-            { label: 'STREAK', value: `${currentStreak}d` },
-            { label: 'LONGEST', value: `${longestStreak}d` },
-            { label: 'DONE', value: completedCount },
-            { label: 'BADGES', value: earnedBadges.length },
-          ].map((s, i) => (
-            <div key={s.label} style={{ padding: '16px 0', textAlign: 'center', borderRight: i < 3 ? `1px solid ${BORDER}` : 'none' }}>
-              <div style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: T.primary, marginBottom: 4 }}>{s.value}</div>
-              <div style={{ fontSize: 8, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tabs — PROGRESS | BADGES | PROFILE */}
+        {/* Tabs — ACCOUNT | BADGES */}
         <div style={{ display: 'flex', marginBottom: 28, borderBottom: `1px solid ${BORDER_FAINT}` }}>
           {[
-            { key: 'progress', label: 'PROGRESS' },
+            { key: 'account', label: 'ACCOUNT' },
             { key: 'badges', label: 'BADGES' },
-            { key: 'profile', label: 'PROFILE' },
           ].map(t => (
             <button key={t.key} onClick={() => setTab(t.key)} style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: '8px 20px 8px 0', fontSize: 11,
+              padding: '8px 20px 10px 0', fontSize: 10,
               fontWeight: tab === t.key ? 600 : 400,
               color: tab === t.key ? T.primary : T.tertiary,
-              letterSpacing: '0.1em',
-              borderBottom: tab === t.key ? `1px solid ${T.primary}` : '1px solid transparent',
-              marginBottom: -1, fontFamily: "'Inter',sans-serif",
+              letterSpacing: '0.14em',
+              borderBottom: tab === t.key ? `2px solid ${T.primary}` : '2px solid transparent',
+              marginBottom: -1, fontFamily: "'DM Mono', monospace",
             }}>
               {t.label}
             </button>
           ))}
         </div>
 
-        {/* PROGRESS TAB */}
-        {tab === 'progress' && (
+        {/* ACCOUNT TAB */}
+        {tab === 'account' && (
           <div style={{ paddingBottom: 40 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-              {Object.keys(catTotal).map(cat => {
-                const color = CATEGORY_COLORS[cat] || '#fff'
-                const done = catBreakdown[cat] || 0
-                const total = catTotal[cat]
-                const pct = Math.round((done / total) * 100)
-                return (
-                  <div key={cat}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 7, height: 7, borderRadius: '50%', background: done > 0 ? color : T.faint, flexShrink: 0 }} />
-                        <div style={{ fontSize: 13, color: done > 0 ? T.secondary : T.faint, fontWeight: done > 0 ? 500 : 400 }}>{cat}</div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ fontSize: 10, color: done > 0 ? color : T.faint, fontWeight: 600, letterSpacing: '0.05em' }}>{pct}%</div>
-                        <div style={{ fontSize: 11, color: T.faint }}>{done}/{total}</div>
-                      </div>
-                    </div>
-                    <div style={{ height: 3, background: BORDER_FAINT, borderRadius: 2 }}>
-                      <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 2, transition: 'width 0.4s ease' }} />
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
 
-            {/* Total */}
-            <div style={{ marginTop: 24, paddingTop: 16, borderTop: `1px solid ${BORDER_FAINT}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ fontSize: 11, color: T.tertiary, letterSpacing: '0.1em', fontWeight: 600 }}>TOTAL</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ fontSize: 10, color: T.tertiary, fontWeight: 600, letterSpacing: '0.05em' }}>{Math.round((completedCount / Object.values(catTotal).reduce((a, b) => a + b, 0)) * 100)}%</div>
-                <div style={{ fontSize: 11, color: T.secondary, fontWeight: 600 }}>{completedCount}/{Object.values(catTotal).reduce((a, b) => a + b, 0)}</div>
+            {/* Identity */}
+            <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.18em', fontWeight: 600, marginBottom: 16, fontFamily: "'DM Mono', monospace" }}>IDENTITY</div>
+            <FieldRow label="FIRST NAME" value={firstName} onChange={setFirstName} />
+            <FieldRow label="LAST NAME" value={lastName} onChange={setLastName} />
+            <FieldRow label="EMAIL" value={email} editable={false} hint="Email cannot be changed" />
+            <FieldRow label="PHONE" value={phone} onChange={setPhone} type="tel" hint="Used for future SMS notifications — optional" />
+
+            {/* Notifications */}
+            <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.18em', fontWeight: 600, marginTop: 28, marginBottom: 12, fontFamily: "'DM Mono', monospace" }}>NOTIFICATIONS</div>
+            <Toggle
+              label="Daily email reminders"
+              subLabel="Morning nudge when your entry is ready"
+              value={emailReminders}
+              onChange={setEmailReminders}
+            />
+
+            {message && (
+              <div style={{ fontSize: 12, color: message.type === 'success' ? '#4ade80' : '#f87171', textAlign: 'center', padding: '10px', background: message.type === 'success' ? '#4ade8011' : '#f8717111', borderRadius: 8, letterSpacing: '0.05em', marginTop: 20 }}>
+                {message.text}
               </div>
+            )}
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 24 }}>
+              <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 10, padding: '14px', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', fontFamily: "'DM Mono', monospace", cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
+                {saving ? 'SAVING...' : 'SAVE CHANGES'}
+              </button>
+              <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#FF4778', border: '1px solid rgba(255,71,120,0.2)', borderRadius: 10, padding: '13px', fontSize: 10, letterSpacing: '0.14em', fontFamily: "'DM Mono', monospace", cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
+                {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
+              </button>
             </div>
           </div>
         )}
@@ -398,67 +388,22 @@ export default function ProfilePage() {
               </div>
               <div style={{ textAlign: 'center', flexShrink: 0 }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: streakFreezes > 0 ? '#47C8FF' : T.faint, lineHeight: 1, letterSpacing: '-0.02em' }}>{streakFreezes}</div>
-                <div style={{ fontSize: 8, color: T.faint, letterSpacing: '0.1em', marginTop: 2 }}>AVAILABLE</div>
+                <div style={{ fontSize: 8, color: T.faint, letterSpacing: '0.12em', marginTop: 2, fontFamily: "'DM Mono', monospace" }}>AVAILABLE</div>
               </div>
             </div>
 
             {earnedBadges.length > 0 && (
               <div style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 10, color: T.secondary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 4 }}>EARNED · {earnedBadges.length}</div>
+                <div style={{ fontSize: 9, color: T.secondary, letterSpacing: '0.16em', fontWeight: 600, marginBottom: 4, fontFamily: "'DM Mono', monospace" }}>EARNED · {earnedBadges.length}</div>
                 {earnedBadges.map(b => <BadgeRow key={b.id} badge={b} earned={true} earnedAt={userBadges[b.id]} />)}
               </div>
             )}
             {lockedBadges.length > 0 && (
               <div>
-                <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 4 }}>LOCKED · {lockedBadges.length}</div>
+                <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.16em', fontWeight: 600, marginBottom: 4, fontFamily: "'DM Mono', monospace" }}>LOCKED · {lockedBadges.length}</div>
                 {lockedBadges.map(b => <BadgeRow key={b.id} badge={b} earned={false} earnedAt={null} />)}
               </div>
             )}
-          </div>
-        )}
-
-        {/* PROFILE TAB */}
-        {tab === 'profile' && (
-          <div style={{ paddingBottom: 40 }}>
-            <div style={{ fontSize: 10, color: T.tertiary, letterSpacing: '0.14em', fontWeight: 600, marginBottom: 16 }}>ACCOUNT</div>
-            {[
-              { label: 'FIRST NAME', value: firstName, onChange: setFirstName, editable: true },
-              { label: 'LAST NAME', value: lastName, onChange: setLastName, editable: true },
-              { label: 'EMAIL', value: email, onChange: null, editable: false },
-            ].map(field => (
-              <div key={field.label} style={{ marginBottom: 20 }}>
-                <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.14em', marginBottom: 6, fontWeight: 600 }}>{field.label}</div>
-                <input
-                  type="text" value={field.value}
-                  onChange={field.onChange ? e => field.onChange(e.target.value) : undefined}
-                  readOnly={!field.editable}
-                  style={{
-                    width: '100%', background: 'transparent', border: 'none',
-                    borderBottom: `1px solid ${field.editable ? BORDER : BORDER_FAINT}`,
-                    padding: '10px 0', fontSize: 14,
-                    color: field.editable ? T.primary : T.faint,
-                    fontFamily: "'DM Mono', monospace", outline: 'none',
-                    cursor: field.editable ? 'text' : 'default',
-                  }}
-                />
-                {!field.editable && <div style={{ fontSize: 10, color: T.faint, marginTop: 4 }}>Email cannot be changed</div>}
-              </div>
-            ))}
-
-            {message && (
-              <div style={{ fontSize: 12, color: message.type === 'success' ? '#4ade80' : '#f87171', textAlign: 'center', padding: '10px', background: message.type === 'success' ? '#4ade8011' : '#f8717111', borderRadius: 4, letterSpacing: '0.05em', marginBottom: 12 }}>
-                {message.text}
-              </div>
-            )}
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 24 }}>
-              <button onClick={handleSave} disabled={saving} style={{ width: '100%', background: '#E8FF47', color: '#0A0A0A', border: 'none', borderRadius: 10, padding: '14px', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.5 : 1 }}>
-                {saving ? 'SAVING...' : 'SAVE CHANGES'}
-              </button>
-              <button onClick={handleSignOut} disabled={signingOut} style={{ width: '100%', background: 'none', color: '#FF4778', border: '1px solid rgba(255,71,120,0.2)', borderRadius: 10, padding: '13px', fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", cursor: signingOut ? 'default' : 'pointer', opacity: signingOut ? 0.5 : 1 }}>
-                {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
-              </button>
-            </div>
           </div>
         )}
 
