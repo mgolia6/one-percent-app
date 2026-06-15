@@ -1529,7 +1529,7 @@ export default function HomePage() {
     // last learned
     lastCard: (color) => ({ background: '#1a2a3a', borderRadius: 14, padding: '16px 16px 16px 20px', cursor: 'pointer', borderLeft: `3px solid ${color || '#C847FF'}` }),
     // cat chip
-    catChip: (active) => ({ background: 'transparent', borderRadius: 10, padding: '10px 4px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', border: 'none' }),
+    catChip: (active) => ({ background: active ? 'rgba(255,255,255,0.07)' : 'transparent', borderRadius: 10, padding: '10px 4px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, cursor: 'pointer', border: active ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent', boxSizing: 'border-box' }),
     // entry row
     entry: (locked) => ({ display: 'flex', alignItems: 'center', gap: 11, padding: '13px 13px', background: '#1a2a3a', borderRadius: 12, cursor: locked ? 'default' : 'pointer', opacity: locked ? 0.28 : 1 }),
   }
@@ -1744,7 +1744,7 @@ export default function HomePage() {
             { id: 'prompts', label: 'Prompt Vault', icon: '⚡' },
             { id: 'progress', label: 'Progress', icon: '↗' },
           ].map(t => (
-            <div key={t.id} onClick={() => setActiveTab(t.id)} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4, background: activeTab === t.id ? 'rgba(255,255,255,0.08)' : 'transparent', color: activeTab === t.id ? '#fff' : 'rgba(232,238,245,0.45)', fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: activeTab === t.id ? 600 : 400, transition: 'all 0.15s' }}>
+            <div key={t.id} onClick={() => { setActiveTab(t.id); window.scrollTo({ top: 0, behavior: 'instant' }) }} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4, background: activeTab === t.id ? 'rgba(255,255,255,0.08)' : 'transparent', color: activeTab === t.id ? '#fff' : 'rgba(232,238,245,0.45)', fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: activeTab === t.id ? 600 : 400, transition: 'all 0.15s' }}>
               <span style={{ fontSize: 16 }}>{t.icon}</span>{t.label}
             </div>
           ))}
@@ -2138,7 +2138,7 @@ export default function HomePage() {
           { id: 'prompts', label: 'PROMPTS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='prompts'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'} strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> },
           { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
         ].map(t => (
-          <div key={t.id} onClick={() => setActiveTab(t.id)} style={S.tab(activeTab === t.id)}>
+          <div key={t.id} onClick={() => { setActiveTab(t.id); window.scrollTo({ top: 0, behavior: 'instant' }) }} style={S.tab(activeTab === t.id)}>
             <div style={S.tabPip(activeTab === t.id, activeTab === t.id ? 'rgba(232,238,245,0.9)' : 'transparent')} />
             <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.icon}</div>
             <span style={S.tabLbl(activeTab === t.id)}>{t.label}</span>
