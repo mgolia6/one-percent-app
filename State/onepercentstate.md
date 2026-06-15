@@ -1,5 +1,5 @@
 # One Percent — State Snapshot
-**Generated:** 2026-06-12 (v11)
+**Generated:** 2026-06-15 (v12)
 
 ---
 
@@ -54,6 +54,7 @@
 ---
 
 ## Infrastructure
+- **Analytics:** PostHog wired in (project 470392). lib/analytics.js is the single import for all events. Admin ANALYTICS tab live.
 - **Email:** Resend via matthew@mpgink.com — `send-daily-reminder` + `send-weekly-wrap` edge functions live
 - **Auth:** Supabase session auth. Magic link rate limit: increase in Auth → Rate Limits for heavy dev sessions
 - **Deployment:** Vercel auto-deploy on push to main
@@ -67,37 +68,27 @@
 
 ---
 
-## What Shipped This Session (2026-06-12)
-- **Full dark mode overhaul** — `#0e141c` page bg, dark header, dark bottom nav
-- **WHY I'M HERE editorial treatment** — no card box, target icon, 15px text, pencil edit affordance bottom-right, bottom divider separates from KPIs
-- **BETA pill** — yellow-green `#c8d800` on dark, pops clearly
-- **ADMIN pill** — teal `#00c4ad` on dark, distinct from BETA
-- **KPI font bump** — values 22→26px, labels 7→11px
-- **On Deck lock/chevron conditional** — lock SVG when nextUnlocked (locked entry), chevron › when in-progress incomplete
-- **Library category chips — flat** — no background boxes, icon + colored label + count, transparent bg, active dot indicator
-- **Prompt Farm → Prompt Vault** — renamed throughout, compact single-row hero (lock icon left, title + sub right)
-- **Progress streak section** — background container removed entirely, 🔥 number and week grid float on page
-- **Streak freeze strip** — 🧊 inline strip inside streak section, shows `profile.streak_freezes` count
-- **Bottom nav** — `#1a2a3a` dark background, colored underline pip on active tab, icon strokes light on dark
-- **sec label font bump** — 13→15px, color `#e8eef5`
-- **Badge system** — DB tables + 40 seeded badges, profile page badge shelf, BadgeEarnOverlay, `checkAndAwardBadges()` on load
-- **Welcome overlay** — context-aware, streak chip, vault count chip, 7 nudge variants
-- **DonRobbo streak fix** — corrected to 24 days in Supabase
-- **Daily reminder edge function** — 3-segment behavioral emails (active/at-risk/lapsed), 21 distinct variants
-- **Weekly wrap edge function** — momentum headline by entry count, even sends for zero-entry weeks
+## What Shipped This Session (2026-06-15)
+- **PostHog analytics** — posthog-js installed, PostHogProvider in layout, lib/analytics.js event library
+- **Full event instrumentation** — 11 event types across page.js, entry page, EntryViewer
+- **Admin ANALYTICS tab** — Today / Funnel / Engagement / Entry Performance / Top Prompts / Deep Dive links
 
 ---
 
 ## Open Items (Prioritized)
-1. **Scroll breathing room** — all tabs need paddingBottom so last card isn't cut off at bottom nav
-2. **About / Changelog pages** — need dark style treatment to match new aesthetic
-3. **Bug modal + Feedback modal** — too much gray, need visual liveliness to match dark theme
-4. **Tab scroll position** — Library and Prompts default to top of first card instead of top of page; returning to a tab should reset to top (not last scroll position)
-5. **Library chips active state** — Option B: subtle border on active chip so selection is clear
-6. **Profile page overhaul** — redundant with Progress tab in places; needs rethink as a distinct surface
-7. **ENH-007 email allowlist** — 🔴 HIGH PRIORITY before expanding beta
-8. **User signs name in ritual** — input in goal sheet
-9. **Social sharing card** — Web Share API
-10. **001–008 quiz backfill** — recall → application format
+1. **Scroll buffer** — 🔴 bottom nav cuts off content on all tabs. Need paddingBottom on tab content containers in page.js. Quick fix — do first next session.
+2. **Streak month view** — expandable streak section, full month grid, scroll back through months via completions table
+3. **Quiz content audit** — Dichotomy of Control quiz had sales-bias questions. Audit ALL non-sales entries. Also: reframe Sales Craft category to be universally relevant (everyone has a sales component to their job)
+4. **AI agent** — embedded chat in app, pre-filled with entry ai_prompt, aware of user's completed entries. Anthropic API (claude-sonnet-4-6). Scope next session.
+5. **About / Changelog pages** — need dark style treatment
+6. **Bug modal + Feedback modal** — too gray
+7. **Tab scroll position** — returning to a tab should reset to top
+8. **Library chips active state** — Option B border
+9. **Profile page overhaul** — redundant with Progress tab
+10. **ENH-007 email allowlist** — 🔴 HIGH PRIORITY before expanding beta
 11. **Zoho Mail inbox** — matthew@mpgink.com receiving
 12. **Push notifications** — Capacitor, post-launch
+
+## Session Notes
+- bash_tool stopped responding mid-session. Next session: verify bash works immediately after clone before starting any work.
+- Changelog v0.8 in Supabase (published: false) — needs approval
