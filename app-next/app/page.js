@@ -1715,7 +1715,6 @@ export default function HomePage() {
           </button>
         </div>
         <div className="action-strip" style={S.actionStrip}>
-          <button style={S.asBtn} onClick={() => router.push('/about')}>ABOUT</button>
           <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#b8a000' : 'rgba(26,42,58,0.55)', fontWeight: hasUnseenChangelog ? 600 : 400 }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
           <div style={S.sep} />
           <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
@@ -1750,7 +1749,6 @@ export default function HomePage() {
           ))}
         </div>
         <div style={{ padding: '16px 16px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-          <div onClick={() => router.push('/about')} style={{ fontSize: 12, color: 'rgba(232,238,245,0.35)', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>ABOUT</div>
           <div onClick={() => setShowBug(true)} style={{ fontSize: 12, color: '#FF4778', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>BUG</div>
           <div onClick={() => setShowFeedback(true)} style={{ fontSize: 12, color: 'rgba(232,238,245,0.35)', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>FEEDBACK</div>
           {isAdmin && <div onClick={() => router.push('/admin')} style={{ fontSize: 12, color: '#47FFE8', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>ADMIN →</div>}

@@ -373,6 +373,26 @@ export default function ProfilePage() {
                 {signingOut ? 'SIGNING OUT...' : 'SIGN OUT'}
               </button>
             </div>
+
+            {/* Footer links */}
+            <div style={{ marginTop: 36, paddingTop: 20, borderTop: `1px solid ${BORDER_FAINT}`, display: 'flex', flexDirection: 'column', gap: 0 }}>
+              {[
+                { label: 'About One Percent', href: '/about' },
+                { label: 'Privacy Policy', href: '/privacy' },
+              ].map(({ label, href }) => (
+                <a key={href} href={href} style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '13px 0', borderBottom: `1px solid ${BORDER_FAINT}`,
+                  textDecoration: 'none', color: T.tertiary,
+                  fontSize: 13, fontFamily: "'DM Sans', sans-serif",
+                  transition: 'color 0.15s',
+                }}>
+                  {label}
+                  <span style={{ fontSize: 16, color: T.faint, lineHeight: 1 }}>›</span>
+                </a>
+              ))}
+            </div>
+
           </div>
         )}
 
