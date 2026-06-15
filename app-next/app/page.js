@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase'
 import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
+import analytics from '@/lib/analytics'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1136,6 +1137,16 @@ export default function HomePage() {
       if (prof.goal_when) setGoalWhen(prof.goal_when)
       if (prof.goal_proof) setGoalProof(prof.goal_proof)
 
+      // Analytics: identify user
+      analytics.userIdentified({
+        userId: session.user.id,
+        email: session.user.email,
+        name: prof?.name || null,
+        isAdmin: prof?.is_admin || false,
+        streak: prof?.current_streak || 0,
+        totalCompleted: null, // filled after completions load below
+      })
+
       const { data: comps } = await supabase.from('completions').select('entry_number, score, time_to_quiz').eq('user_id', session.user.id)
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
@@ -1308,6 +1319,11 @@ export default function HomePage() {
         setEarnedBadgeQueue(newlyEarned)
         setShowingBadge(newlyEarned[0])
 
+        // Track each badge earn
+        newlyEarned.forEach(badge => {
+          analytics.badgeEarned({ badgeId: badge.id, badgeName: badge.name, badgeCategory: badge.category || null })
+        })
+
         // Award streak freezes for streak milestones
         const streakMilestones = ['streak_7', 'streak_14', 'streak_30']
         const freezesEarned = newlyEarned.filter(b => streakMilestones.includes(b.id)).length
@@ -1378,6 +1394,7 @@ export default function HomePage() {
     setGoalWhat(what)
     setGoalWhen(when)
     setGoalProof(proof)
+    analytics.goalCommitted({ what, when, signal: proof })
     // Typewriter
     let i = 0
     const type = () => {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
+import analytics from '@/lib/analytics'
 
 function Celebration({ score, accent, onDone }) {
   const canvasRef = useRef(null)
@@ -160,6 +161,13 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
       return
     }
     setDone(true)
+    analytics.feedbackSubmitted({
+      entryNumber,
+      morningRating: ratings.morning,
+      middayRating: ratings.reframe,
+      quizRating: ratings.quiz,
+      hasComment: !!comment.trim(),
+    })
     setTimeout(() => { if (onSubmit) onSubmit() }, 2800)
   }
 
@@ -366,6 +374,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     }
     setTimeout(() => scoreRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
     setTimeout(() => completionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 800)
+    analytics.quizSubmitted({
+      entryNumber: entry.number,
+      category: entry.category,
+      concept: entry.concept,
+      score,
+      maxScore: entry.quiz.length,
+      timeToQuizMs: Date.now() - startTime,
+    })
     if (onComplete) onComplete({ score, timeToQuiz, answers })
   }
 
@@ -448,7 +464,10 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         {tabs.map(t => {
           const Icon = t.icon
           return (
-            <button key={t.id} className={`op-tab-btn${tab === t.id ? ' active' : ''}`} onClick={() => setTab(t.id)}>
+            <button key={t.id} className={`op-tab-btn${tab === t.id ? ' active' : ''}`} onClick={() => {
+              analytics.tabSwitched({ entryNumber: entry.number, fromTab: tab, toTab: t.id })
+              setTab(t.id)
+            }}>
               <Icon size={16} style={{ marginRight: 6 }} />{t.label}
             </button>
           )
@@ -476,7 +495,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 10, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>YOUR MOVE</div>
               <div style={{ fontSize: 14, color: T.textMid, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{entry.morning.morning_challenge}</div>
             </div>
-            <button className="op-next-btn" onClick={() => { setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>IN THE WILD →</button>
+            <button className="op-next-btn" onClick={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'morning', toTab: 'midday' }); setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>IN THE WILD →</button>
           </div>
         )}
 
@@ -498,7 +517,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               <div style={{ fontSize: 12, color: T.textDim, letterSpacing: '0.04em' }}>— {entry.midday.attribution}</div>
             </div>
             <div style={{ fontSize: 14, color: T.textDim, lineHeight: 1.7, borderTop: `1px solid ${T.border}`, paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
-            <button className="op-next-btn" onClick={() => { setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>LOCK IT IN →</button>
+            <button className="op-next-btn" onClick={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'midday', toTab: 'evening' }); setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>LOCK IT IN →</button>
           </div>
         )}
 
@@ -585,6 +604,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     <button
                       onClick={() => {
                         navigator.clipboard.writeText(entry.ai_prompt).then(() => {
+                          analytics.aiPromptCopied({ entryNumber: entry.number, category: entry.category, concept: entry.concept })
                           setPromptCopied(true)
                           setTimeout(() => setPromptCopied(false), 2000)
                         })

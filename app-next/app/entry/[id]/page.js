@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { isUnlocked } from '@/lib/unlock'
 import EntryViewer from '@/components/EntryViewer'
+import analytics from '@/lib/analytics'
 
 function ReengagementModal({ onClose, onStart }) {
   return (
@@ -289,6 +290,24 @@ export default function EntryPage() {
       const streak = prof.current_streak || 0
       setUserStats({ answers: comp?.answers || null, streak })
       setLoading(false)
+
+      // Analytics: identify user once per session load
+      analytics.userIdentified({
+        userId: session.user.id,
+        email: session.user.email,
+        name: prof?.name || null,
+        isAdmin: prof?.is_admin || false,
+        streak,
+        totalCompleted: prof?.completed_count || null,
+      })
+      // Analytics: entry opened
+      analytics.entryOpened({
+        entryNumber: entryId,
+        category: data?.category || null,
+        concept: data?.concept || null,
+        editionId: data?.edition_id || null,
+        isFirstTime: !comp,
+      })
     }
     init()
     return () => { cancelled = true }
@@ -313,7 +332,19 @@ export default function EntryPage() {
         current_streak: newStreak, last_active_date: today,
         longest_streak: Math.max(newStreak, profile?.longest_streak || 0)
       }).eq('id', user.id)
+      analytics.streakUpdated({
+        newStreak,
+        longestStreak: Math.max(newStreak, profile?.longest_streak || 0),
+      })
     }
+
+    analytics.entryCompleted({
+      entryNumber: entryId,
+      category: entry?.category || null,
+      concept: entry?.concept || null,
+      score,
+      streakAfter: newStreak,
+    })
 
     // Prompt quick daily feedback after quiz (5% of the time to not be annoying)
     // This is handled by a post-completion card in EntryViewer
