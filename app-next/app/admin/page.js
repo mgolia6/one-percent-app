@@ -107,6 +107,7 @@ export default function AdminPage() {
   const [analyticsData, setAnalyticsData] = useState(null)
   const [analyticsLoading, setAnalyticsLoading] = useState(false)
   const [analyticsError, setAnalyticsError] = useState(null)
+  const [resetBlastState, setResetBlastState] = useState('idle') // idle | confirm | sending | done | error
 
   useEffect(() => {
     async function init() {
@@ -145,6 +146,22 @@ export default function AdminPage() {
         summary[c.user_id].lastDate = c.completed_at
     })
     setUserCompletions(summary)
+  }
+
+  async function sendPasswordResetBlast() {
+    setResetBlastState('sending')
+    try {
+      const targets = users.filter(u => !u.is_admin)
+      for (const u of targets) {
+        await supabase.auth.resetPasswordForEmail(u.email, {
+          redirectTo: `${window.location.origin}/reset-password`
+        })
+      }
+      setResetBlastState('done')
+    } catch (e) {
+      console.error('Reset blast error:', e)
+      setResetBlastState('error')
+    }
   }
 
   async function refreshAll() {
@@ -890,6 +907,55 @@ export default function AdminPage() {
         {/* ── EMAIL TAB ── */}
         {tab === 'email' && (
           <div>
+
+            {/* PASSWORD RESET BLAST */}
+            <SectionLabel>AUTH MIGRATION</SectionLabel>
+            <Card style={{ marginBottom: 20, borderTop: `3px solid ${CYAN}` }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#1a2a3a', marginBottom: 6 }}>Send Password Reset to All Testers</div>
+              <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.6)', lineHeight: 1.6, marginBottom: 16 }}>
+                Sends a Supabase password reset email to every non-admin user. Use this once after switching from magic link to password auth — testers need to set a password before they can sign in.
+              </div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.08em', marginBottom: 14 }}>
+                {nonAdminUsers.map(u => u.email).join(' · ')}
+              </div>
+              {resetBlastState === 'idle' && (
+                <button
+                  onClick={() => setResetBlastState('confirm')}
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', padding: '10px 20px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}12`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}
+                >
+                  SEND RESET EMAILS → {nonAdminUsers.length} USERS
+                </button>
+              )}
+              {resetBlastState === 'confirm' && (
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    onClick={sendPasswordResetBlast}
+                    style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', padding: '10px 20px', borderRadius: 8, border: 'none', background: CYAN, color: '#0a1420', cursor: 'pointer', fontWeight: 700 }}
+                  >
+                    CONFIRM — SEND TO ALL
+                  </button>
+                  <button
+                    onClick={() => setResetBlastState('idle')}
+                    style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '10px 16px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.12)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}
+                  >
+                    CANCEL
+                  </button>
+                </div>
+              )}
+              {resetBlastState === 'sending' && (
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.1em' }}>SENDING…</div>
+              )}
+              {resetBlastState === 'done' && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <Chip label="SENT" color={CYAN} />
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.5)', letterSpacing: '0.06em' }}>Reset emails delivered. Testers can now set passwords.</span>
+                </div>
+              )}
+              {resetBlastState === 'error' && (
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: PINK, letterSpacing: '0.06em' }}>ERROR — check console</div>
+              )}
+            </Card>
+
             <SectionLabel>EDGE FUNCTIONS</SectionLabel>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 20 }}>
               {[
