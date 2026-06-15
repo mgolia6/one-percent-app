@@ -53,12 +53,16 @@ function ThinkingDots() {
 }
 
 function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, lastConcept, goalWhat, fading, onDismiss }) {
-  const [phase, setPhase] = useState('name') // name | stats | nudge
+  const [phase, setPhase] = useState('welcome') // welcome | name | stats | nudge
+  const [welcomeTyped, setWelcomeTyped] = useState('')
   const [nameTyped, setNameTyped] = useState('')
   const [statsVisible, setStatsVisible] = useState(false)
   const [nudgeVisible, setNudgeVisible] = useState(false)
 
-  // Build greeting
+  // Welcome line — always the same
+  const welcomeLine = 'Welcome back,'
+
+  // Name line
   const greeting = firstName && firstName !== 'there' ? `${firstName}.` : "You're back."
 
   // Build context line — most interesting stat first
@@ -74,18 +78,30 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
   })()
 
   useEffect(() => {
-    // Type the name
+    // Type "Welcome back," first
     let i = 0
-    const nameTimer = setInterval(() => {
+    const welcomeTimer = setInterval(() => {
       i++
-      setNameTyped(greeting.slice(0, i))
-      if (i >= greeting.length) {
-        clearInterval(nameTimer)
-        setTimeout(() => { setPhase('stats'); setStatsVisible(true) }, 500)
-        setTimeout(() => { setPhase('nudge'); setNudgeVisible(true) }, 1200)
+      setWelcomeTyped(welcomeLine.slice(0, i))
+      if (i >= welcomeLine.length) {
+        clearInterval(welcomeTimer)
+        // Pause, then start typing the name
+        setTimeout(() => {
+          setPhase('name')
+          let j = 0
+          const nameTimer = setInterval(() => {
+            j++
+            setNameTyped(greeting.slice(0, j))
+            if (j >= greeting.length) {
+              clearInterval(nameTimer)
+              setTimeout(() => { setPhase('stats'); setStatsVisible(true) }, 500)
+              setTimeout(() => { setPhase('nudge'); setNudgeVisible(true) }, 1200)
+            }
+          }, 65)
+        }, 300)
       }
     }, 65)
-    return () => clearInterval(nameTimer)
+    return () => clearInterval(welcomeTimer)
   }, [greeting])
 
   const accentColor = streak >= 7 ? '#47FFE8' : streak >= 3 ? '#E8FF47' : '#ffffff'
@@ -101,6 +117,18 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
     }}>
       {/* wordmark */}
       <div style={{ fontSize: 9, letterSpacing: '0.3em', color: '#2a2a2a', fontWeight: 600, marginBottom: 48, fontFamily: "'DM Mono', monospace" }}>ONE PERCENT</div>
+
+      {/* Welcome back line — typewriter */}
+      <div style={{
+        fontSize: 18, fontWeight: 300, color: 'rgba(255,255,255,0.45)',
+        letterSpacing: '0.01em', textAlign: 'center', lineHeight: 1.2,
+        marginBottom: 8, minHeight: 26,
+        fontFamily: "'DM Sans', 'Inter', sans-serif",
+        fontStyle: 'italic',
+      }}>
+        {welcomeTyped}
+        {phase === 'welcome' && welcomeTyped.length > 0 && <span style={{ display: 'inline-block', width: 2, height: 18, background: 'rgba(255,255,255,0.45)', marginLeft: 2, verticalAlign: 'middle', animation: 'wblink 0.75s step-end infinite' }} />}
+      </div>
 
       {/* Name — large typewriter */}
       <div style={{
@@ -1482,7 +1510,7 @@ export default function HomePage() {
     asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.32)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
     sep: { width: 1, height: 12, background: 'rgba(255,255,255,0.08)', flexShrink: 0, margin: '0 1px' },
     av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
-    screen: { padding: '18px 18px 0' },
+    screen: { padding: '18px 18px 90px' },
     secLabel: { fontSize: 15, fontWeight: 600, color: '#e8eef5', letterSpacing: '-0.01em', marginBottom: 10, marginTop: 2 },
     // nav
     bottomNav: { position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, background: '#1a2a3a', borderTop: '1px solid rgba(255,255,255,0.04)', display: 'flex', zIndex: 100 },
@@ -1972,7 +2000,7 @@ export default function HomePage() {
 
       {/* ── PROGRESS TAB ── */}
       {activeTab === 'progress' && (
-        <div style={{ ...S.screen, paddingBottom: 20 }}>
+        <div style={{ ...S.screen, paddingBottom: 90 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {/* Streak — no background box, floats on page */}
             <div style={{ paddingBottom: 4 }}>
