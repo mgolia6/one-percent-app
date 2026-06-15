@@ -109,13 +109,13 @@ export default function ChangelogPage() {
   }, [])
 
   return (
-    <div style={{ minHeight: '100vh', background: '#dadada', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#0e141c', fontFamily: "'DM Sans', 'Inter', sans-serif" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); *{box-sizing:border-box;margin:0;padding:0;}`}</style>
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px 80px' }}>
 
         {/* Header */}
         <div style={{ padding: '20px 0 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#0a0a0a' }}>ONE PERCENT</span>
+          <span style={{ fontSize: 13, letterSpacing: '0.22em', fontWeight: 600, color: '#e8eef5', fontFamily: "'DM Mono', monospace" }}>ONE PERCENT</span>
           <button
             onClick={() => router.back()}
             style={{ background: '#1a1a1a', border: 'none', borderRadius: 6, padding: '7px 12px', fontSize: 9, color: '#bbb', cursor: 'pointer', letterSpacing: '0.08em', fontWeight: 400, fontFamily: "'Inter',sans-serif" }}

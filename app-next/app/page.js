@@ -357,24 +357,24 @@ function FeedbackModal({ userId, onClose }) {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
-      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%' }}>
+      <div style={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: 28, maxWidth: 400, width: '100%' }}>
         {done ? (
           <div style={{ textAlign: 'center', fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>FEEDBACK RECEIVED</div>
         ) : (
           <>
-            <div style={{ fontSize: 11, letterSpacing: '0.15em', color: '#555', marginBottom: 8, fontWeight: 600 }}>FEEDBACK</div>
-            <div style={{ fontSize: 16, color: '#fff', fontWeight: 500, marginBottom: 24 }}>How's One Percent working for you?</div>
+            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#47FFE8', marginBottom: 8, fontWeight: 700, fontFamily: "'DM Mono', monospace" }}>FEEDBACK</div>
+            <div style={{ fontSize: 18, color: '#fff', fontWeight: 600, marginBottom: 24, letterSpacing: '-0.01em' }}>How's it working for you?</div>
 
             <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
               {[1,2,3,4,5].map(n => (
                 <button key={n} onClick={() => setRating(n)} style={{
-                  flex: 1, padding: '12px 0', borderRadius: 4, border: `1px solid ${rating >= n ? '#47FFE8' : '#222'}`,
-                  background: rating >= n ? '#47FFE822' : '#111', color: rating >= n ? '#47FFE8' : '#555',
-                  fontSize: 14, cursor: 'pointer', fontFamily: "'Inter',sans-serif"
+                  flex: 1, padding: '12px 0', borderRadius: 8, border: `1px solid ${rating >= n ? '#47FFE8' : 'rgba(255,255,255,0.08)'}`,
+                  background: rating >= n ? '#47FFE822' : 'rgba(255,255,255,0.03)', color: rating >= n ? '#47FFE8' : 'rgba(232,238,245,0.3)',
+                  fontSize: 14, cursor: 'pointer', fontFamily: "'DM Sans', 'Inter', sans-serif"
                 }}>{n}</button>
               ))}
             </div>
-            <div style={{ fontSize: 10, color: '#333', letterSpacing: '0.1em', marginBottom: 20, display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ fontSize: 9, color: 'rgba(232,238,245,0.3)', letterSpacing: '0.1em', marginBottom: 20, display: 'flex', justifyContent: 'space-between', fontFamily: "'DM Mono', monospace" }}>
               <span>NOT USEFUL</span><span>ESSENTIAL</span>
             </div>
 
@@ -382,18 +382,18 @@ function FeedbackModal({ userId, onClose }) {
               value={comment}
               onChange={e => setComment(e.target.value)}
               placeholder="Anything specific? (optional)"
-              style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 80, outline: 'none' }}
+              style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '12px 14px', fontSize: 13, color: '#e8eef5', fontFamily: "'DM Sans', 'Inter', sans-serif", resize: 'vertical', minHeight: 80, outline: 'none' }}
             />
 
             <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
               <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 9, color: 'rgba(232,238,245,0.4)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '7px 12px', letterSpacing: '0.1em', fontFamily: "'DM Mono', monospace" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
               {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
             </label>
 
             <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
-              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
-              <button onClick={submit} disabled={!rating || submitting} style={{ flex: 2, padding: '12px 0', background: rating ? '#47FFE8' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#0a0a0a', cursor: rating ? 'pointer' : 'not-allowed', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 9, color: 'rgba(232,238,245,0.4)', cursor: 'pointer', letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace" }}>CANCEL</button>
+              <button onClick={submit} disabled={!rating || submitting} style={{ flex: 2, padding: '12px 0', background: rating ? '#47FFE8' : 'rgba(71,255,232,0.1)', border: 'none', borderRadius: 8, fontSize: 9, fontWeight: 700, color: rating ? '#0a1420' : 'rgba(71,255,232,0.3)', cursor: rating ? 'pointer' : 'not-allowed', letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", opacity: submitting ? 0.6 : 1 }}>
                 {submitting ? 'SENDING...' : 'SEND'}
               </button>
             </div>
@@ -479,15 +479,15 @@ function BugModal({ userId, onClose }) {
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24 }}>
-      <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 400, width: '100%' }}>
+      <div style={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: 28, maxWidth: 400, width: '100%' }}>
         {done ? (
           <div style={{ textAlign: 'center', fontSize: 13, color: '#FF4778', letterSpacing: '0.08em' }}>REPORTED — THANKS</div>
         ) : (
           <>
-            <div style={{ fontSize: 11, letterSpacing: '0.15em', color: '#555', marginBottom: 8, fontWeight: 600 }}>REPORT A BUG</div>
-            <div style={{ fontSize: 16, color: '#fff', fontWeight: 500, marginBottom: 24 }}>What broke?</div>
+            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#FF4778', marginBottom: 8, fontWeight: 700, fontFamily: "'DM Mono', monospace" }}>REPORT A BUG</div>
+            <div style={{ fontSize: 18, color: '#fff', fontWeight: 600, marginBottom: 24, letterSpacing: '-0.01em' }}>What broke?</div>
 
-            <select value={page} onChange={e => setPage(e.target.value)} style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '10px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", marginBottom: 12, outline: 'none' }}>
+            <select value={page} onChange={e => setPage(e.target.value)} style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '10px 14px', fontSize: 13, color: '#e8eef5', fontFamily: "'DM Sans', 'Inter', sans-serif", marginBottom: 12, outline: 'none' }}>
               <option>Library</option>
               <option>Entry — Concept</option>
               <option>Entry — In the Wild</option>
@@ -502,18 +502,18 @@ function BugModal({ userId, onClose }) {
               value={description}
               onChange={e => setDescription(e.target.value)}
               placeholder="Describe what happened..."
-              style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 100, outline: 'none' }}
+              style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '12px 14px', fontSize: 13, color: '#e8eef5', fontFamily: "'DM Sans', 'Inter', sans-serif", resize: 'vertical', minHeight: 100, outline: 'none' }}
             />
 
             <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer' }}>
               <input type="file" accept="image/*" onChange={handleImage} style={{ display: 'none' }} />
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, color: '#888', border: '1px solid #222', borderRadius: 4, padding: '7px 12px', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 9, color: 'rgba(232,238,245,0.4)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '7px 12px', letterSpacing: '0.1em', fontFamily: "'DM Mono', monospace" }}><Paperclip size={11} strokeWidth={1.5} />ATTACH SCREENSHOT</span>
               {imagePreview && <img src={imagePreview} alt="preview" style={{ height: 36, borderRadius: 4, border: '1px solid #333', objectFit: 'cover' }} />}
             </label>
 
             <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
-              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid #222', borderRadius: 4, fontSize: 11, color: '#555', cursor: 'pointer', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif" }}>CANCEL</button>
-              <button onClick={submit} disabled={!description.trim() || submitting} style={{ flex: 2, padding: '12px 0', background: description.trim() ? '#FF4778' : '#1a1a1a', border: 'none', borderRadius: 4, fontSize: 11, fontWeight: 600, color: '#fff', cursor: description.trim() ? 'pointer' : 'not-allowed', letterSpacing: '0.08em', fontFamily: "'Inter',sans-serif", opacity: submitting ? 0.6 : 1 }}>
+              <button onClick={onClose} style={{ flex: 1, padding: '12px 0', background: 'none', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 9, color: 'rgba(232,238,245,0.4)', cursor: 'pointer', letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace" }}>CANCEL</button>
+              <button onClick={submit} disabled={!description.trim() || submitting} style={{ flex: 2, padding: '12px 0', background: description.trim() ? '#FF4778' : 'rgba(255,71,120,0.1)', border: 'none', borderRadius: 8, fontSize: 9, fontWeight: 700, color: description.trim() ? '#fff' : 'rgba(255,71,120,0.3)', cursor: description.trim() ? 'pointer' : 'not-allowed', letterSpacing: '0.12em', fontFamily: "'DM Mono', monospace", opacity: submitting ? 0.6 : 1 }}>
                 {submitting ? 'SENDING...' : 'REPORT'}
               </button>
             </div>
