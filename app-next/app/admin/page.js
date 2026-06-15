@@ -104,6 +104,9 @@ export default function AdminPage() {
   const [feedbackUser, setFeedbackUser] = useState(null)
   const [resetting, setResetting] = useState(null)
   const [resetConfirm, setResetConfirm] = useState(null)
+  const [analyticsData, setAnalyticsData] = useState(null)
+  const [analyticsLoading, setAnalyticsLoading] = useState(false)
+  const [analyticsError, setAnalyticsError] = useState(null)
 
   useEffect(() => {
     async function init() {
@@ -116,6 +119,12 @@ export default function AdminPage() {
     }
     init()
   }, [router])
+
+  useEffect(() => {
+    if (tab === 'analytics' && !analyticsData && !analyticsLoading) {
+      loadAnalytics()
+    }
+  }, [tab])
 
   async function loadAll() {
     const [{ data: fb }, { data: br }, { data: us }, { data: comps }] = await Promise.all([
@@ -214,6 +223,103 @@ export default function AdminPage() {
     ])
     setResetting(null); setResetConfirm(null)
     await loadAll()
+  }
+
+  async function loadAnalytics() {
+    setAnalyticsLoading(true)
+    setAnalyticsError(null)
+    const PH_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
+    const PH_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com'
+    const PH_PROJECT = '470392'
+
+    async function phQuery(query) {
+      const res = await fetch(`${PH_HOST}/api/projects/${PH_PROJECT}/query/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${PH_KEY}` },
+        body: JSON.stringify({ query: { kind: 'HogQLQuery', query } }),
+      })
+      if (!res.ok) throw new Error(`PostHog ${res.status}: ${await res.text()}`)
+      const json = await res.json()
+      return json.results || []
+    }
+
+    try {
+      const [todayRows, funnelRows, promptRows, signalRows, entryPerfRows] = await Promise.all([
+        // Today counts
+        phQuery(`
+          SELECT event, count() as n FROM events
+          WHERE event IN ('entry_opened','entry_completed','quiz_submitted')
+            AND toDate(timestamp) = today()
+          GROUP BY event
+        `),
+        // 7-day funnel
+        phQuery(`
+          SELECT
+            countIf(event = 'entry_opened') as opened,
+            countIf(event = 'entry_tab_switched' AND JSONExtractString(properties,'to_tab') = 'midday') as to_midday,
+            countIf(event = 'entry_tab_switched' AND JSONExtractString(properties,'to_tab') = 'evening') as to_evening,
+            countIf(event = 'quiz_submitted') as quiz_done
+          FROM events
+          WHERE event IN ('entry_opened','entry_tab_switched','quiz_submitted')
+            AND timestamp >= now() - INTERVAL 7 DAY
+        `),
+        // Top AI prompt copies
+        phQuery(`
+          SELECT JSONExtractString(properties,'concept') as concept,
+                 JSONExtractString(properties,'entry_number') as entry_num,
+                 count() as copies
+          FROM events WHERE event = 'ai_prompt_copied'
+          GROUP BY concept, entry_num ORDER BY copies DESC LIMIT 5
+        `),
+        // Engagement signals last 7 days
+        phQuery(`
+          SELECT event, count() as n FROM events
+          WHERE event IN ('goal_committed','badge_earned','streak_updated','entry_feedback_submitted','ai_prompt_copied')
+            AND timestamp >= now() - INTERVAL 7 DAY
+          GROUP BY event
+        `),
+        // Per-entry quiz stats
+        phQuery(`
+          SELECT JSONExtractString(properties,'entry_number') as entry_num,
+                 JSONExtractString(properties,'concept') as concept,
+                 count() as submissions,
+                 avg(JSONExtractFloat(properties,'score')) as avg_score,
+                 countIf(JSONExtractBool(properties,'perfect') = true) as perfects
+          FROM events WHERE event = 'quiz_submitted'
+          GROUP BY entry_num, concept
+          ORDER BY toInt32OrNull(entry_num) ASC LIMIT 40
+        `),
+      ])
+
+      const todayMap = {}
+      todayRows.forEach(([event, n]) => { todayMap[event] = n })
+
+      const [opened=0, toMidday=0, toEvening=0, quizDone=0] = funnelRows[0] || []
+      const funnel = [
+        { label: 'OPENED', n: opened, pct: 100 },
+        { label: 'IN THE WILD', n: toMidday, pct: opened > 0 ? Math.round((toMidday/opened)*100) : 0 },
+        { label: 'LOCK IT IN', n: toEvening, pct: opened > 0 ? Math.round((toEvening/opened)*100) : 0 },
+        { label: 'QUIZ DONE', n: quizDone, pct: opened > 0 ? Math.round((quizDone/opened)*100) : 0 },
+      ]
+
+      const signalMap = {}
+      signalRows.forEach(([event, n]) => { signalMap[event] = n })
+
+      const topPrompts = promptRows.map(([concept, entryNum, copies]) => ({ concept, entryNum, copies }))
+
+      const entryPerf = entryPerfRows.map(([entryNum, concept, submissions, avgScore, perfects]) => ({
+        entryNum, concept,
+        submissions,
+        avgScore: avgScore != null ? Math.round(avgScore * 10) / 10 : null,
+        perfects,
+        perfectPct: submissions > 0 ? Math.round((perfects/submissions)*100) : 0,
+      }))
+
+      setAnalyticsData({ todayMap, funnel, signalMap, topPrompts, entryPerf })
+    } catch (e) {
+      setAnalyticsError(e.message)
+    }
+    setAnalyticsLoading(false)
   }
 
   if (loading) return (
@@ -323,6 +429,7 @@ export default function AdminPage() {
           <TabBtn id="users" label="USERS" active={tab==='users'} onClick={setTab} />
           <TabBtn id="bugs" label="BUGS" active={tab==='bugs'} onClick={setTab} badge={openBugs.length} />
           <TabBtn id="feedback" label="FEEDBACK" active={tab==='feedback'} onClick={setTab} />
+          <TabBtn id="analytics" label="ANALYTICS" active={tab==='analytics'} onClick={setTab} />
           <TabBtn id="apis" label="API HEALTH" active={tab==='apis'} onClick={setTab} />
           <TabBtn id="email" label="EMAIL" active={tab==='email'} onClick={setTab} />
         </div>
@@ -587,6 +694,196 @@ export default function AdminPage() {
                 </div>
               </div>
             </Card>
+          </div>
+        )}
+
+        {/* ── ANALYTICS TAB ── */}
+        {tab === 'analytics' && (
+          <div>
+            {/* Header row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <SectionLabel>POSTHOG — LIVE DATA</SectionLabel>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button
+                  onClick={() => { setAnalyticsData(null); loadAnalytics() }}
+                  disabled={analyticsLoading}
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.12)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}
+                >
+                  {analyticsLoading ? 'LOADING…' : '↺ REFRESH'}
+                </button>
+                <a
+                  href={`https://us.posthog.com/project/470392`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: 'none', background: CYAN, color: '#0a1420', cursor: 'pointer', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 5, fontWeight: 600 }}
+                >
+                  POSTHOG DASHBOARD ↗
+                </a>
+              </div>
+            </div>
+
+            {analyticsError && (
+              <Card style={{ background: `${PINK}0d`, border: `1px solid ${PINK}30`, marginBottom: 16 }}>
+                <div style={{ fontSize: 12, color: PINK, fontFamily: "'DM Mono', monospace", letterSpacing: '0.06em' }}>QUERY ERROR</div>
+                <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', marginTop: 6 }}>{analyticsError}</div>
+              </Card>
+            )}
+
+            {analyticsLoading && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {[1,2,3,4].map(i => (
+                  <div key={i} style={{ height: 80, borderRadius: 14, background: 'rgba(26,42,58,0.05)', animation: 'pulse 1.5s ease-in-out infinite' }} />
+                ))}
+                <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}`}</style>
+              </div>
+            )}
+
+            {analyticsData && !analyticsLoading && (() => {
+              const { todayMap, funnel, signalMap, topPrompts, entryPerf } = analyticsData
+              return (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+
+                  {/* TODAY */}
+                  <div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>TODAY</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10 }}>
+                      {[
+                        { label: 'OPENED', val: todayMap['entry_opened'] || 0, color: CYAN },
+                        { label: 'COMPLETED', val: todayMap['entry_completed'] || 0, color: YELLOW },
+                        { label: 'QUIZZES', val: todayMap['quiz_submitted'] || 0, color: PURPLE },
+                      ].map(k => (
+                        <Card key={k.label} style={{ padding: '14px 16px', textAlign: 'center' }}>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(26,42,58,0.4)', marginBottom: 8 }}>{k.label}</div>
+                          <div style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-0.025em', color: k.color, lineHeight: 1 }}>{k.val}</div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* FUNNEL */}
+                  <div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>7-DAY FUNNEL — ENTRY → QUIZ</div>
+                    <Card>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        {funnel.map((step, i) => (
+                          <div key={step.label}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 5 }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.4)', width: 16 }}>{i + 1}</span>
+                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#1a2a3a' }}>{step.label}</span>
+                              </div>
+                              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                                <span style={{ fontSize: 18, fontWeight: 700, color: '#1a2a3a' }}>{step.n}</span>
+                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: step.pct < 50 ? PINK : step.pct < 75 ? ORANGE : CYAN }}>{step.pct}%</span>
+                              </div>
+                            </div>
+                            <div style={{ height: 4, background: 'rgba(26,42,58,0.06)', borderRadius: 2 }}>
+                              <div style={{ height: '100%', width: `${step.pct}%`, borderRadius: 2, background: step.pct < 50 ? PINK : step.pct < 75 ? ORANGE : CYAN, transition: 'width 0.6s ease' }} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
+                  </div>
+
+                  {/* ENGAGEMENT SIGNALS */}
+                  <div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>ENGAGEMENT — LAST 7 DAYS</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 8 }}>
+                      {[
+                        { event: 'ai_prompt_copied',         label: 'AI PROMPTS COPIED',  color: CYAN },
+                        { event: 'goal_committed',           label: 'GOALS COMMITTED',    color: YELLOW },
+                        { event: 'badge_earned',             label: 'BADGES EARNED',      color: PURPLE },
+                        { event: 'entry_feedback_submitted', label: 'FEEDBACK SUBMITTED', color: ORANGE },
+                        { event: 'streak_updated',           label: 'STREAKS EXTENDED',   color: PINK },
+                      ].map(s => (
+                        <Card key={s.event} style={{ padding: '12px 14px' }}>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>{s.label}</div>
+                          <div style={{ fontSize: 28, fontWeight: 700, color: s.color, letterSpacing: '-0.02em', lineHeight: 1 }}>{signalMap[s.event] || 0}</div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* ENTRY PERFORMANCE */}
+                  {entryPerf.length > 0 && (
+                    <div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>ENTRY PERFORMANCE — QUIZ SUBMISSIONS</div>
+                      <Card style={{ padding: 0, overflow: 'hidden' }}>
+                        <div style={{ overflowX: 'auto' }}>
+                          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                            <thead>
+                              <tr style={{ borderBottom: '1px solid rgba(26,42,58,0.08)' }}>
+                                {['#', 'CONCEPT', 'SUBMITS', 'AVG SCORE', 'PERFECTS'].map(h => (
+                                  <th key={h} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)', padding: '10px 16px', textAlign: h === '#' || h === 'SUBMITS' || h === 'AVG SCORE' || h === 'PERFECTS' ? 'center' : 'left', whiteSpace: 'nowrap' }}>{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {entryPerf.map((e, i) => (
+                                <tr key={e.entryNum} style={{ borderBottom: i < entryPerf.length - 1 ? '1px solid rgba(26,42,58,0.05)' : 'none' }}>
+                                  <td style={{ padding: '10px 16px', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.35)', textAlign: 'center' }}>{String(e.entryNum).padStart(3,'0')}</td>
+                                  <td style={{ padding: '10px 16px', fontWeight: 500, color: '#1a2a3a', maxWidth: 200, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.concept}</td>
+                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: CYAN }}>{e.submissions}</td>
+                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.avgScore >= 2.5 ? YELLOW : e.avgScore >= 1.5 ? ORANGE : PINK }}>{e.avgScore ?? '—'}<span style={{ fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>/3</span></td>
+                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.perfectPct >= 50 ? YELLOW : 'rgba(26,42,58,0.4)' }}>{e.perfectPct}%</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </Card>
+                    </div>
+                  )}
+
+                  {/* TOP AI PROMPT COPIES */}
+                  {topPrompts.length > 0 && (
+                    <div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>TOP AI PROMPT COPIES — ALL TIME</div>
+                      <Card style={{ padding: 0, overflow: 'hidden' }}>
+                        {topPrompts.map((p, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: i < topPrompts.length - 1 ? '1px solid rgba(26,42,58,0.05)' : 'none' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.3)', width: 20 }}>#{i+1}</span>
+                              <span style={{ fontSize: 13, fontWeight: 500, color: '#1a2a3a' }}>{p.concept || `Entry ${p.entryNum}`}</span>
+                            </div>
+                            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 700, color: CYAN }}>{p.copies}×</span>
+                          </div>
+                        ))}
+                      </Card>
+                    </div>
+                  )}
+
+                  {/* DEEP DIVE LINKS */}
+                  <div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>DIVE DEEPER</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                      {[
+                        { label: 'EVENTS EXPLORER', href: `https://us.posthog.com/project/470392/activity/explore` },
+                        { label: 'SESSION REPLAY', href: `https://us.posthog.com/project/470392/replay` },
+                        { label: 'FUNNELS', href: `https://us.posthog.com/project/470392/insights?insight=FUNNELS` },
+                        { label: 'USER PATHS', href: `https://us.posthog.com/project/470392/insights?insight=PATHS` },
+                        { label: 'RETENTION', href: `https://us.posthog.com/project/470392/insights?insight=RETENTION` },
+                        { label: 'ALL PERSONS', href: `https://us.posthog.com/project/470392/persons` },
+                      ].map(link => (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: '#fff', borderRadius: 10, border: '1px solid rgba(26,42,58,0.08)', textDecoration: 'none', transition: 'border-color 0.15s' }}
+                        >
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#1a2a3a', fontWeight: 500 }}>{link.label}</span>
+                          <span style={{ color: 'rgba(26,42,58,0.3)', fontSize: 12 }}>↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              )
+            })()}
+
           </div>
         )}
 
