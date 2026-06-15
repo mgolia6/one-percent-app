@@ -7,6 +7,7 @@ import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { getUnlockedCount } from '@/lib/unlock'
 import analytics from '@/lib/analytics'
+import DeepCut from '@/components/DeepCut'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1117,6 +1118,7 @@ export default function HomePage() {
   const [showBug, setShowBug] = useState(false)
   const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
+  const [deepCutEntry, setDeepCutEntry] = useState(null)
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
   const [showWhatsNew, setShowWhatsNew] = useState(false)
@@ -1597,6 +1599,18 @@ export default function HomePage() {
       {showHowItWorks && <HowItWorksModal onClose={() => setShowHowItWorks(false)} />}
       {showWhatsNew && whatsNewEntry && <WhatsNewModal entry={whatsNewEntry} onDismiss={dismissWhatsNew} />}
       {showingBadge && <BadgeEarnOverlay badge={showingBadge} onDismiss={dismissBadge} />}
+      {deepCutEntry && (
+        <DeepCut
+          entry={deepCutEntry}
+          userContext={{
+            firstName: profile?.first_name,
+            goal: profile?.goal_what ? `change ${profile.goal_what} by ${profile.goal_when}` : null,
+            completedCount,
+            completedConcepts: ENTRIES.filter(e => completions[e.entry]).map(e => e.concept),
+          }}
+          onClose={() => setDeepCutEntry(null)}
+        />
+      )}
       {showWelcome && !showingBadge && (() => {
         const firstName = profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : '')
         const completedCount = Object.keys(completions).length
@@ -1979,20 +1993,40 @@ export default function HomePage() {
             ))}
           </div>
           <div style={{ height: 8 }} />
-          {/* Prompt cards from completed entries with ai_prompt */}
+          {/* Prompt cards from completed entries */}
           {ENTRIES.filter(e => completions[e.entry]).map(e => {
             const cat = CAT_CONFIG[e.category] || {}
+            const color = cat.color || '#C847FF'
             return (
-              <div key={e.entry} style={{ background: '#1a2a3a', borderRadius: 13, padding: '15px 17px', marginBottom: 7, borderLeft: `3px solid ${cat.color || '#C847FF'}` }}>
+              <div key={e.entry} style={{ background: '#1a2a3a', borderRadius: 13, padding: '15px 17px', marginBottom: 7, borderLeft: `3px solid ${color}` }}>
                 <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.16em', color: 'rgba(232,238,245,0.45)', marginBottom: 7 }}>{e.category.toUpperCase()} · {e.concept.toUpperCase()}</div>
-                <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.82)', lineHeight: 1.55, fontWeight: 300, fontStyle: 'italic', marginBottom: 10 }}>
-                  Tap to open a conversation about {e.concept} in Claude.
+                <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.65)', lineHeight: 1.55, fontWeight: 300, fontStyle: 'italic', marginBottom: 12 }}>
+                  Go deeper on {e.concept} — grounded in verified sources.
                 </div>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: (cat.color || '#C847FF') + 'cc' }}>OPEN IN CLAUDE →</div>
+                <button
+                  onClick={async () => {
+                    try {
+                      const res = await fetch(`/entries/${e.entry}.json`)
+                      const entryData = await res.json()
+                      setDeepCutEntry(entryData)
+                    } catch {
+                      setDeepCutEntry({ concept: e.concept, category: e.category, accent: color })
+                    }
+                  }}
+                  style={{
+                    background: `${color}18`, border: `1px solid ${color}44`,
+                    borderRadius: 7, padding: '7px 14px',
+                    fontFamily: "'DM Mono', monospace", fontSize: 8,
+                    letterSpacing: '0.12em', color, cursor: 'pointer',
+                    transition: 'background 0.15s',
+                  }}
+                >
+                  DEEP CUT →
+                </button>
               </div>
             )
           })}
-          {completedCount === 0 && <div style={{ textAlign: 'center', padding: '40px 20px', color: 'rgba(26,42,58,0.4)', fontSize: 13, fontStyle: 'italic' }}>Complete your first lesson to unlock prompts.</div>}
+          {completedCount === 0 && <div style={{ textAlign: 'center', padding: '40px 20px', color: 'rgba(232,238,245,0.2)', fontSize: 13, fontStyle: 'italic' }}>Complete your first entry to unlock Deep Cut.</div>}
         </div>
       )}
 
