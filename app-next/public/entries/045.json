@@ -1,0 +1,83 @@
+{
+  "editionId": "VL.6",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "Weasel Words",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "Some words look like they're saying something while actively avoiding saying anything. They're called weasel words \u2014 and once you see them, you can't stop seeing them everywhere.",
+    "explanation_paragraphs": [
+      "A company announces it is 'committed to exploring opportunities to enhance its diversity initiatives.' A politician says 'many people are saying' that a policy has failed. A manager tells you the team has 'made significant progress' on a project with no shipping date in sight. None of these sentences contains a verifiable claim. All of them create the impression of one.",
+      "Weasel words are terms or phrases that appear to make substantive assertions while actually removing their own content. The name comes from the belief that weasels suck the contents from eggs while leaving the shell intact \u2014 the words look full but contain nothing. The category includes vague quantifiers ('many,' 'some,' 'significant'), passive constructions that omit agents ('mistakes were made'), hedged claims that convert assertions into possibilities ('can,' 'may,' 'might'), and appeals to unnamed authority ('experts say,' 'research shows').",
+      "Theodore Roosevelt used the term as early as 1916 in a speech criticizing political language that appeared substantive but committed to nothing. Linguists including Geoffrey Nunberg at UC Berkeley have traced the proliferation of weasel words in institutional communication \u2014 where accountability avoidance is a structural incentive.",
+      "The reason they matter for anyone who communicates professionally is twofold. First, you need to recognize them in others' language \u2014 especially in contexts where accountability matters: contracts, commitments, performance feedback, executive messaging. Second, you need to audit your own language. Under stress or uncertainty, most people reflexively reach for hedged language that protects them from being pinned down. That protection has a cost: it erodes trust, obscures meaning, and signals that you're not actually saying what you're thinking."
+    ],
+    "why_today": "Weasel words as a linguistic category are documented in political rhetoric analysis, including Theodore Roosevelt's 1916 speech. Contemporary linguistic analysis includes Geoffrey Nunberg's work (Going Nucular, 2004). The term and examples appear across linguistics, media studies, and professional communication curricula.",
+    "morning_challenge": "Pull up any corporate communication you received in the last week. Read it looking specifically for weasel words: vague quantifiers, hedged claims, passive constructions, unnamed authorities.\n\nHow many did you find? What would the sentence mean if you replaced each weasel word with a specific, accountable claim?\n\nNow check your own last five emails for the same patterns."
+  },
+  "midday": {
+    "reframe": "Every weasel word in your communication is a small withdrawal from your credibility account. The hedge protects you from being wrong. It also protects you from being believed.",
+    "itw_label": "IN THE WILD \u2014 TYPE B \u00b7 CORPORATE AND POLITICAL COMMUNICATION ANALYSIS. THEODORE ROOSEVELT, 1916.",
+    "itw_paragraphs": [
+      "Theodore Roosevelt coined the political use of the term in a 1916 speech criticizing the Democratic Party platform. His target was specifically the phrase 'universal, voluntary training,' which he argued was self-canceling: you can't have training that is both universal and voluntary. The form of commitment was present; the substance had been weaseled out.",
+      "In corporate communication, weasel words serve a specific organizational function: they allow institutions to appear to say things without being held to them. 'We are committed to exploring' is not a commitment. 'Significant progress' is not a milestone. These phrases provide the appearance of substance for audiences that aren't paying close attention, while giving the speaker cover when the commitment is not kept.",
+      "The proliferation of weasel words in professional communication has accelerated in environments with high accountability pressure. The irony is that the strategy backfires at scale: audiences who interact with institutional language regularly become fluent in weasel word detection. What feels protective to the writer reads as evasive to the audience."
+    ],
+    "quote": "Weasel words are words that suck all the life out of the words next to them, just as a weasel sucks an egg and leaves the shell.",
+    "attribution": "Theodore Roosevelt, speech, St. Louis, 1916",
+    "midday_nudge": "Find one sentence in something you're currently writing that contains a weasel word. Replace it with a specific, accountable statement. Notice what it feels like to commit to a claim."
+  },
+  "quiz": [
+    {
+      "question": "Which is the best example of a weasel word construction?",
+      "options": [
+        "'We will ship the feature by March 15.'",
+        "'Research suggests our approach may help improve certain outcomes for some users.'",
+        "'The project failed to meet its deadline because we underestimated the integration work.'",
+        "'Three of the five proposals were rejected by the committee on cost grounds.'"
+      ],
+      "correct": 1,
+      "explanation": "'Research suggests our approach may help improve certain outcomes for some users' contains four weasel constructions in one sentence: 'research suggests' (unnamed authority), 'may help' (hedged possibility), 'improve' (vague direction), and 'certain outcomes for some users' (unspecified scope). The other options contain specific agents, outcomes, reasons, or numbers \u2014 the marks of accountable language."
+    },
+    {
+      "question": "Why do weasel words persist in professional communication despite their credibility cost?",
+      "options": [
+        "They are more efficient \u2014 hedged language takes fewer words to express complex ideas",
+        "They serve an accountability-avoidance function: vague language protects the speaker from being held to claims that might later prove wrong",
+        "Most audiences prefer hedged language because it signals appropriate humility",
+        "They are required in legal and regulatory contexts, which sets a norm that spreads to other communication"
+      ],
+      "correct": 1,
+      "explanation": "Weasel words persist because they solve a real organizational problem: accountability. If you say 'we will deliver X by Q3,' you are accountable when Q3 arrives. If you say 'we are committed to exploring opportunities to enhance our delivery of X,' you have protected yourself from that accountability. The structural incentive toward hedging is why weasel words require active effort to eliminate."
+    },
+    {
+      "question": "A vendor proposal says 'our platform can help reduce costs significantly for many organizations in your sector.' What's the most useful follow-up question?",
+      "options": [
+        "'Can you tell us more about your platform's features?'",
+        "'What percentage cost reduction, for which specific types of organizations, measured how, over what time period?' \u2014 the question forces each weasel word to be replaced with a specific claim",
+        "'Are there case studies we can review?'",
+        "'What does your implementation timeline look like?'"
+      ],
+      "correct": 1,
+      "explanation": "The proposal sentence contains four weasel constructions: 'can help' (possibility), 'significantly' (no magnitude), 'many organizations' (unspecified count), 'in your sector' (vague scope). The only way to evaluate whether the claim is real is to replace each with a specific: what percentage? Which organization types? Measured how? Over what period?"
+    }
+  ],
+  "closing": "The antidote to weasel words isn't more confidence \u2014 it's more specificity. Specific claims can be wrong. Weasel claims can't be anything at all.",
+  "sources": [
+    {
+      "label": "Roosevelt, T. \u2014 Speech, St. Louis, May 31, 1916",
+      "detail": "Primary source for the political coinage of 'weasel words' as a term for language that extracts substantive commitment from apparent assertions.",
+      "url": "https://www.bartleby.com/73/1.html"
+    },
+    {
+      "label": "Nunberg, G. \u2014 Going Nucular, PublicAffairs, 2004",
+      "detail": "Linguistic analysis of political and institutional language including weasel constructions.",
+      "url": "https://www.publicaffairsbooks.com/titles/geoffrey-nunberg/going-nucular/9781586482541/"
+    }
+  ],
+  "ai_prompt": "I want to audit a piece of writing for weasel words and replace them with specific, accountable language. Ask me to share the text before we start. Here's what I'm working on: [paste the text you want to audit]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

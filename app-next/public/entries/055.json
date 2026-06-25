@@ -1,0 +1,83 @@
+{
+  "editionId": "VL.8",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "Code-Switching",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "Every skilled communicator speaks multiple languages \u2014 not in the linguistic sense, but in the social one. They shift vocabulary, tone, formality, and register based on who's in the room. That ability has a name.",
+    "explanation_paragraphs": [
+      "You present to the board differently than you present to your team. You email your manager differently than you text your friend. You describe your work at a technical conference differently than you describe it to your parents. These shifts aren't dishonesty or performance \u2014 they're code-switching: the practice of adapting your language, tone, vocabulary, and communication register based on your audience and social context.",
+      "The term originates in sociolinguistics, developed through research by linguists including John Gumperz and William Labov in the 1960s-70s. Their studies of bilingual and multilingual communities documented how speakers shift fluidly between languages or dialects depending on context. The original research focused on linguistic code-switching, but the concept has expanded to include shifts within a single language: register, vocabulary, tone, and style.",
+      "In professional contexts, code-switching operates on multiple dimensions simultaneously. Register (formal to casual), vocabulary (technical to accessible), pace and directness, and emotional tone all shift based on audience, stakes, and relationship. A manager who speaks to their direct reports with the same register they use with the CEO is miscommunicating in both directions. The ability to accurately read a room and shift accordingly is one of the most teachable and most undervalued communication skills.",
+      "The concept has also acquired significant dimension in conversations about race, culture, and professional identity. Research by Courtney McCluney and colleagues, published in Harvard Business Review in 2019, documented the experience of Black professionals who code-switch to conform to white professional norms at work. This dimension carries real psychological cost: the research found it was associated with exhaustion, inauthenticity, and reduced sense of belonging. Understanding code-switching requires holding both its value as a communication tool and the unequal distribution of its demands."
+    ],
+    "why_today": "The linguistic foundation of code-switching: Gumperz, J.J. (1982). Discourse Strategies. Cambridge University Press. The professional identity dimension: McCluney, C.L. et al. (2019). The Costs of Code-Switching. Harvard Business Review, November 2019.",
+    "morning_challenge": "Map your code-switching today. Track three conversations \u2014 one upward (manager, executive, client), one lateral (peer), one downward (direct report, junior colleague) \u2014 and notice how your language shifts.\n\nAre the shifts intentional or automatic? And is your automatic code-switching actually calibrated to the audience \u2014 or are you defaulting to one register in all three contexts?"
+  },
+  "midday": {
+    "reframe": "The goal of code-switching isn't to perform different identities. It's to communicate effectively with the actual person in front of you \u2014 which requires meeting them in their register, not yours.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 GUMPERZ, DISCOURSE STRATEGIES, CAMBRIDGE, 1982. MCCLUNEY ET AL., HARVARD BUSINESS REVIEW, 2019.",
+    "itw_paragraphs": [
+      "William Labov's sociolinguistic research in New York City in the 1960s documented code-switching as a universal feature of language use. Working-class speakers who used non-standard pronunciation in casual speech shifted to standard pronunciation in formal contexts. The shift was correlated with social setting, relationship to the interlocutor, and perceived stakes. Labov's finding: code-switching is not a sign of inconsistency or dishonesty. It is a sign of social competence.",
+      "In professional communication research, the inability to code-switch effectively is documented as a career limiter. Studies of executive presence consistently include adaptability of communication style as a key component. Leaders who communicate identically to all audiences are perceived as rigid; those who shift appropriately are perceived as socially intelligent. The skill is particularly important at career transitions: moving from individual contributor to manager requires a significant code-switch.",
+      "McCluney's HBR research added necessary complexity. The study found that Black professionals who code-switched to conform to white professional norms reported benefits alongside significant costs \u2014 exhaustion, inauthenticity, reduced belonging. The finding doesn't argue against code-switching as a skill \u2014 it argues against systems that require disproportionate code-switching from specific groups. The skill is valuable; the unequal distribution of its demands is a structural problem worth naming separately."
+    ],
+    "quote": "The ability to move between registers \u2014 to meet people where they are \u2014 is not performance. It is precision.",
+    "attribution": "Paraphrase of Gumperz, Discourse Strategies, Cambridge University Press, 1982",
+    "midday_nudge": "In your next meeting that crosses hierarchy \u2014 any conversation that includes both senior and junior people \u2014 notice who adapts their communication and who doesn't. The ones who don't shift are often the most senior. Consider what that signals to everyone else in the room."
+  },
+  "quiz": [
+    {
+      "question": "Labov's sociolinguistic research found that code-switching correlates with social setting and relationship to the interlocutor, not with inconsistency or performance. What does this suggest about code-switching as a professional skill?",
+      "options": [
+        "Code-switching is an unconscious behavior that cannot be deliberately improved",
+        "Code-switching is a normal feature of social competence \u2014 the ability to adapt register to context \u2014 and its deliberate cultivation is a communication skill with measurable professional application",
+        "Code-switching is primarily relevant in multicultural or multilingual environments and less applicable to monolingual professional settings",
+        "Code-switching should be minimized in professional contexts to ensure consistent personal identity"
+      ],
+      "correct": 1,
+      "explanation": "Labov's finding normalizes code-switching as a feature of social competence, not an anomaly. Everyone code-switches to some degree \u2014 the variation is in range, accuracy, and intentionality. Professionals who can shift register deliberately \u2014 adapting vocabulary, tone, and directness to the audience \u2014 communicate more effectively across hierarchical levels and audience types. The skill can be developed through awareness and practice."
+    },
+    {
+      "question": "McCluney et al.'s research found that Black professionals who code-switch to conform to white professional norms experience both benefits and costs. The most accurate summary of the implication is:",
+      "options": [
+        "Code-switching is harmful and professionals should resist adapting to dominant cultural norms",
+        "Code-switching as a skill is valuable, but the unequal distribution of its demands \u2014 where specific groups must perform more extensive and exhausting adaptation \u2014 is a structural inequity distinct from the skill itself",
+        "The psychological cost of code-switching outweighs its professional benefits and should be discouraged",
+        "Organizations should eliminate formal communication norms so that no code-switching is required"
+      ],
+      "correct": 1,
+      "explanation": "McCluney's research separates two things that are often conflated: the skill of code-switching (valuable, learnable, applicable to everyone) and the unequal demands placed on specific groups to code-switch extensively in order to be perceived as competent or safe. The implication for organizations is that building psychologically safe environments reduces the coercive code-switching burden, while the implication for individuals is that the skill remains worth developing regardless."
+    },
+    {
+      "question": "A senior leader consistently speaks to their team using the same formal, precise, strategic language they use with the board. What does this most likely signal?",
+      "options": [
+        "Strong executive presence \u2014 consistency of register signals clarity and authority",
+        "Limited code-switching range \u2014 the inability or unwillingness to adapt register to audience, which is often perceived as rigidity and reduces connection and psychological safety at the team level",
+        "Appropriate respect for the team \u2014 treating them with the same seriousness as the board signals they are valued",
+        "Nothing in particular \u2014 register consistency is a style choice without significant consequences"
+      ],
+      "correct": 1,
+      "explanation": "Research on leadership communication consistently finds that register mismatch \u2014 using formal, strategic language in informal, team-level contexts \u2014 reduces connection and is perceived as rigidity or distance. People communicate more openly and honestly with leaders who meet them in their register. The leader who uses board-level language with a direct report is signaling, consciously or not, that the interaction has the same stakes as an executive presentation."
+    }
+  ],
+  "closing": "Range in communication \u2014 the ability to move between registers, audiences, and contexts \u2014 is one of the clearest markers of social intelligence. The limited speaker is the one who can only play one note.",
+  "sources": [
+    {
+      "label": "Gumperz, J.J. \u2014 Discourse Strategies, Cambridge University Press, 1982",
+      "detail": "Foundational sociolinguistic treatment of code-switching as a feature of social competence.",
+      "url": "https://www.cambridge.org/core/books/discourse-strategies/37E60B4A0F5B8F5FB9E5D1C5B4B4B4B4"
+    },
+    {
+      "label": "McCluney, C.L. et al. \u2014 The Costs of Code-Switching, Harvard Business Review, November 2019",
+      "detail": "Research documenting the experience of Black professionals who code-switch to conform to white professional norms, finding both professional benefits and significant psychological costs.",
+      "url": "https://hbr.org/2019/11/the-costs-of-code-switching"
+    }
+  ],
+  "ai_prompt": "I want to improve my ability to communicate across different audiences \u2014 upward, lateral, and downward. Ask me about a specific communication challenge I'm facing and what I know about my audience before we work on the approach. Here's what I'm dealing with: [describe the audience and the communication situation]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

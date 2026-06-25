@@ -1,0 +1,88 @@
+{
+  "editionId": "CM.6",
+  "category": "Communication",
+  "categoryTag": "COMMUNICATION",
+  "concept": "Psychological Safety",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
+  "morning": {
+    "hook": "The most important thing about your team isn't their skill level. It's whether people feel safe enough to say what they actually think.",
+    "explanation_paragraphs": [
+      "You're in a meeting. Someone presents a plan with an obvious flaw. You see it. So do two other people. Nobody says anything. The plan goes forward. Three weeks later it fails in exactly the way you predicted. Afterward, everyone privately admits they saw it coming. This is not a knowledge problem. It's a safety problem.",
+      "Psychological safety is the shared belief within a team that it's safe to take interpersonal risks \u2014 to speak up, disagree, ask questions, admit mistakes, or propose unconventional ideas without fear of punishment, humiliation, or exclusion. Harvard Business School professor Amy Edmondson coined the term and developed its research base through studies of medical teams in the 1990s. She expected to find that high-performing teams made fewer errors. Instead, she found they reported more errors \u2014 because they felt safe enough to surface problems rather than hide them.",
+      "In 2012, Google ran Project Aristotle \u2014 a multi-year internal study of what made their teams effective. They analyzed 180 teams across the company, tracking dozens of variables: individual skill levels, personalities, tenure, social dynamics. The single factor that best predicted team performance was psychological safety. Not individual talent. Not subject matter expertise. Whether people felt safe enough to take risks with each other.",
+      "The mechanism is straightforward: when people don't feel safe, they optimize for self-protection rather than contribution. They stay quiet when they should speak. They soften feedback until it's useless. They don't flag problems until they're crises. The team operates on a fraction of its actual information \u2014 because most of the information people have is too risky to share."
+    ],
+    "why_today": "Amy Edmondson's foundational research: Edmondson, A. (1999). Psychological safety and learning behavior in work teams. Administrative Science Quarterly, 44(2), 350-383. Google's Project Aristotle findings published via re:Work (2016). Edmondson's book The Fearless Organization (Wiley, 2018) synthesizes two decades of research.",
+    "morning_challenge": "Rate your current team's psychological safety honestly \u2014 not how you want it to be, but how it actually is.\n\nIn your last five team meetings: Did people volunteer problems or wait to be asked? Did anyone push back on the leader's view? Did anyone ask a question that revealed they didn't understand something?\n\nIf the answer to all three is no: that's data. What's one thing you could do this week to make it safer to say something real?"
+  },
+  "midday": {
+    "reframe": "Silence in a meeting is not agreement. Most of the time it's self-protection. The leader's job is to make the real conversation less risky than the safe one.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 AMY EDMONDSON, ADMINISTRATIVE SCIENCE QUARTERLY, 1999. GOOGLE PROJECT ARISTOTLE, 2016.",
+    "itw_paragraphs": [
+      "Edmondson's original hospital team study found something counterintuitive: teams that reported higher rates of medication errors were not making more errors \u2014 they were operating in environments where reporting errors was safe. Lower-performing teams made errors too; they just didn't surface them. The metric that looked like performance was actually a measure of suppression.",
+      "Google's Project Aristotle reached the same conclusion through a completely different methodology. Teams with high psychological safety outperformed on every metric Google tracked: revenue targets, quality ratings, leadership assessments, self-reported satisfaction. The correlation held even after controlling for individual ability.",
+      "Edmondson's research on failure in high-stakes environments consistently shows the same pattern: disasters are rarely caused by people not knowing something. They're caused by people knowing something and not feeling safe saying it. The Challenger launch decision, the Volkswagen emissions scandal, the Wells Fargo account fraud \u2014 in each case, people inside the organization had information that could have prevented the outcome. The failure was cultural, not informational."
+    ],
+    "quote": "Psychological safety is not about being nice. It is about giving candid feedback, openly admitting mistakes, and learning from each other.",
+    "attribution": "Amy Edmondson, The Fearless Organization, Wiley, 2018",
+    "midday_nudge": "In your next meeting: actively invite dissent on one specific point. Don't just say 'any questions?' \u2014 say 'what's the strongest argument against what I just proposed?' Watch what comes out when you make disagreement the explicitly safe option."
+  },
+  "quiz": [
+    {
+      "question": "Amy Edmondson's original hospital study found that high-performing nursing teams reported more medication errors than low-performing teams. The correct interpretation is:",
+      "options": [
+        "High-performing teams were making more mistakes due to overconfidence and faster work pace",
+        "High-performing teams had higher psychological safety, making it safe to surface and report errors \u2014 they weren't making more errors, they were reporting them. Low-performing teams suppressed error reports",
+        "The measurement methodology was flawed \u2014 error reporting rates don't accurately reflect actual error rates",
+        "High-performing teams had stricter reporting requirements, which artificially elevated their error counts"
+      ],
+      "correct": 1,
+      "explanation": "This is Edmondson's central finding: the teams that looked better on the error-suppression metric were actually performing worse on patient care outcomes, because unreported errors can't be corrected. High psychological safety produced more reporting, faster correction, and better learning."
+    },
+    {
+      "question": "Google's Project Aristotle identified psychological safety as the top predictor of team performance. This finding was significant because it contradicted which common assumption?",
+      "options": [
+        "The assumption that team size determines performance",
+        "The assumption that individual talent and skill level are the primary drivers of team performance \u2014 Project Aristotle found that who is on the team matters less than how team members interact with each other",
+        "The assumption that teams with diverse backgrounds perform better than homogeneous ones",
+        "The assumption that performance is primarily driven by clear goal-setting and accountability structures"
+      ],
+      "correct": 1,
+      "explanation": "Google's initial hypothesis was that the best teams would be composed of the best individual performers. Project Aristotle found this was not predictive. Teams with high psychological safety outperformed teams with individually higher-rated members who operated in low-safety environments."
+    },
+    {
+      "question": "A team leader wants to increase psychological safety. Which action is most likely to produce genuine change?",
+      "options": [
+        "Announcing in an all-hands that 'this is a safe space' and encouraging open feedback",
+        "Consistently responding to bad news, mistakes, and dissenting views with curiosity rather than defensiveness or blame \u2014 psychological safety is created through behavioral patterns, not declarations",
+        "Implementing anonymous feedback channels so people can share concerns without attribution",
+        "Reducing the frequency of performance reviews to decrease evaluation anxiety"
+      ],
+      "correct": 1,
+      "explanation": "Edmondson's research is clear that psychological safety is a team-level perception built through repeated behavioral signals from leaders \u2014 particularly how they respond to vulnerability, disagreement, and bad news. Declarations have little effect if the leader's actual response to a dissenting view is defensive. The behavioral pattern that matters most: when someone surfaces a problem or disagrees, does the leader respond with curiosity, or with defensiveness?"
+    }
+  ],
+  "closing": "The most dangerous teams aren't the ones who don't know the answer. They're the ones where people know the answer and don't say it.",
+  "sources": [
+    {
+      "label": "Edmondson, A.C. \u2014 Psychological Safety and Learning Behavior in Work Teams, Administrative Science Quarterly, 44(2), 1999",
+      "detail": "Foundational peer-reviewed paper establishing psychological safety as a team-level construct. Includes the hospital medication error study.",
+      "url": "https://journals.sagepub.com/doi/10.2307/2666999"
+    },
+    {
+      "label": "Edmondson, A.C. \u2014 The Fearless Organization, Wiley, 2018",
+      "detail": "Synthesis of two decades of research on psychological safety across high-stakes organizational contexts.",
+      "url": "https://www.wiley.com/en-us/The+Fearless+Organization-p-9781119477242"
+    },
+    {
+      "label": "Google re:Work \u2014 Guide: Understand Team Effectiveness (Project Aristotle), 2016",
+      "detail": "Google's published findings from Project Aristotle, identifying psychological safety as the top predictor of team performance.",
+      "url": "https://rework.withgoogle.com/guides/understanding-team-effectiveness/steps/introduction/"
+    }
+  ],
+  "ai_prompt": "I want to honestly assess the psychological safety on my team and identify specific things I can change. Ask me about how my team actually behaves before we diagnose anything. Here's what I'm noticing: [describe what you observe in your team's communication patterns]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

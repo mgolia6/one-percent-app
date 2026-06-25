@@ -1,0 +1,83 @@
+{
+  "editionId": "SC.13",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "SPIN Selling",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "Most salespeople ask questions to check boxes. SPIN Selling is built on 35,000 sales calls that revealed which questions actually move deals \u2014 and why most discovery conversations are doing it wrong.",
+    "explanation_paragraphs": [
+      "You're in discovery. You ask about budget, timeline, decision process, current state. The prospect gives short answers. You feel like you're gathering information; they feel like they're filling out a form. Nothing about it creates urgency, surfaces genuine pain, or builds the kind of understanding that makes a compelling proposal possible.",
+      "SPIN Selling was developed by Neil Rackham and his team at Huthwaite International, based on the analysis of 35,000 sales calls across 23 countries over twelve years. Published in 1988, it remains one of the most rigorously evidence-based sales methodologies ever produced. The research finding: the questions that distinguished top performers from average performers were not about product, features, or pricing \u2014 they were questions that progressively surfaced and deepened the buyer's awareness of their own problem.",
+      "SPIN is an acronym for four question types, used in sequence. Situation questions establish context. Problem questions identify difficulties. Implication questions are where the methodology separates itself: they take a problem and explore its downstream consequences \u2014 'If that process breaks down, what happens to the output? How does that affect the team downstream? What does that cost you in time?' Implication questions turn a problem into a pain. Need-Payoff questions complete the loop: 'How important would it be to solve that? What would that be worth to you?' \u2014 getting the buyer to articulate the value of a solution in their own words.",
+      "The sequencing matters. Implication questions are the engine. They work because they don't tell the buyer their problem is serious \u2014 they ask questions that lead the buyer to realize it. A buyer who says 'I guess that could add up to $200,000 a year in wasted time' is significantly more motivated than a buyer who heard a salesperson claim that."
+    ],
+    "why_today": "SPIN Selling: Rackham, N. \u2014 SPIN Selling, McGraw-Hill, 1988. Based on Huthwaite International's 12-year research program analyzing 35,000 sales calls across 23 countries. The methodology remains actively taught by Huthwaite and is one of the most cited frameworks in enterprise sales training.",
+    "morning_challenge": "Pull up your standard discovery call framework. How many of your planned questions are Situation questions (gathering facts)? How many are Implication questions (exploring downstream consequences of the problem)?\n\nFor most reps, the ratio is 80/20 in favor of Situation questions. Rackham's research says the ratio should be nearly reversed.\n\nWrite one Implication question for your most active deal right now."
+  },
+  "midday": {
+    "reframe": "The buyer already knows they have a problem. What they often don't know is how serious it is. Implication questions are how you show them \u2014 without telling them.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 RACKHAM, SPIN SELLING, MCGRAW-HILL, 1988. HUTHWAITE INTERNATIONAL RESEARCH, 35,000 SALES CALLS, 12 YEARS.",
+    "itw_paragraphs": [
+      "Rackham's research methodology was unusually rigorous for a sales study. Huthwaite researchers observed live sales calls \u2014 with the buyer's permission \u2014 and coded every interaction, tracking which seller behaviors correlated with successful outcomes. The data consistently showed that the behavioral patterns of top performers were distinct from average performers \u2014 and the most striking difference was in question type, not pitch quality, rapport building, or closing technique.",
+      "The finding on Situation questions is counterintuitive: top performers asked fewer of them, not more. Average performers loaded their discovery calls with Situation questions, which feel productive (you're gathering information) but are low-value for the buyer, who has answered these questions for every vendor they've talked to. Top performers got through Situation questions quickly and moved into Problem and Implication territory faster.",
+      "The Need-Payoff question sequence is the conversion mechanism. After Implication questions have surfaced and expanded the pain, Need-Payoff questions \u2014 'How important would it be to fix that? What would it mean for the team?' \u2014 get the buyer to articulate the value of a solution in their own language. Rackham's research found that the number of Need-Payoff statements made by buyers in a call was one of the strongest predictors of successful outcomes."
+    ],
+    "quote": "In successful sales calls, the buyer does most of the talking. And most of what they say is about their problems, implications, and needs \u2014 because that's what the seller asked about.",
+    "attribution": "Paraphrase of Neil Rackham, SPIN Selling, McGraw-Hill, 1988",
+    "midday_nudge": "In your next discovery conversation: after a prospect identifies a problem, ask one Implication question before moving on. 'What happens when that breaks down? How does that affect the downstream team? What does that cost you?' Let them do the math. Then listen."
+  },
+  "quiz": [
+    {
+      "question": "Rackham's research found that top performers asked fewer Situation questions than average performers. Why does this finding run counter to most sales training instincts?",
+      "options": [
+        "Because most sales training emphasizes building rapport, and Situation questions are perceived as rapport-building",
+        "Because Situation questions feel productive to the seller \u2014 they're gathering information \u2014 but are low-value for the buyer, who has answered them for every other vendor. Top performers move past them faster and into Problem and Implication territory where buyer engagement actually increases",
+        "Because top performers use CRM data instead of live questions to gather situation information",
+        "Because Situation questions expose the seller's lack of pre-call research"
+      ],
+      "correct": 1,
+      "explanation": "Rackham's data showed that buyer engagement was lower during Situation questions and higher during Problem and Implication questions. Situation questions feel necessary from the seller's perspective \u2014 you're building context \u2014 but from the buyer's perspective they're repetitive and low-stakes. Moving through them efficiently and reaching Problem questions faster is a structural advantage."
+    },
+    {
+      "question": "What distinguishes an Implication question from a Problem question in SPIN Selling?",
+      "options": [
+        "Implication questions are about future scenarios; Problem questions are about current state",
+        "Implication questions explore the downstream consequences and broader impact of a problem \u2014 turning a difficulty into a pain with magnitude \u2014 while Problem questions only identify that a difficulty exists",
+        "Implication questions are asked later in the sales cycle; Problem questions are used only in initial discovery",
+        "Implication questions are used in complex enterprise sales; Problem questions are more appropriate for transactional sales"
+      ],
+      "correct": 1,
+      "explanation": "The distinction is depth of pain, not type or timing. A Problem question surfaces the existence of a difficulty: 'Where does the current process break down?' An Implication question explores what that breakdown means: 'When that happens, what does it affect downstream? How long does it take to recover? What does that cost?' The problem says 'there is a difficulty.' The implication says 'that difficulty has magnitude.'"
+    },
+    {
+      "question": "Why does SPIN Selling emphasize getting buyers to articulate the value of a solution through Need-Payoff questions, rather than having the seller present that value?",
+      "options": [
+        "Because buyers trust their own assessments more than seller claims \u2014 a buyer who calculates the value themselves is more committed to it than a buyer who was told a number",
+        "Because Need-Payoff questions reduce the seller's time speaking, which research shows improves outcomes",
+        "Because regulatory requirements in some industries prohibit sellers from making specific value claims",
+        "Because buyers who articulate value are more likely to become internal champions for the purchase"
+      ],
+      "correct": 0,
+      "explanation": "The core mechanism is self-generated persuasion: a buyer who says 'I guess that problem is costing us about $200,000 a year' is more motivated to solve it than a buyer who was told by a salesperson that the problem costs $200,000 a year. Their own math is more credible to them than your math. Need-Payoff questions transfer the value articulation from seller to buyer \u2014 which Rackham's data showed was strongly predictive of successful outcomes."
+    }
+  ],
+  "closing": "The research behind SPIN Selling is 35 years old and still more rigorously evidenced than most frameworks being sold today. Good questions age better than clever pitches.",
+  "sources": [
+    {
+      "label": "Rackham, N. \u2014 SPIN Selling, McGraw-Hill, 1988",
+      "detail": "Primary source for the SPIN methodology \u2014 based on Huthwaite International's 12-year, 35,000-call research program.",
+      "url": "https://www.mheducation.com/highered/product/spin-selling-rackham/M9780070511132.html"
+    },
+    {
+      "label": "Huthwaite International \u2014 SPIN Selling Research",
+      "detail": "Huthwaite's documentation of the original research methodology.",
+      "url": "https://www.huthwaite.co.uk/research/spin-selling/"
+    }
+  ],
+  "ai_prompt": "I want to prepare better discovery questions for an upcoming sales call using the SPIN framework. Ask me about the prospect, their likely situation, and what problems I suspect they have before we build the question sequence. Here's the account I'm preparing for: [describe the prospect and what you know about their situation]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

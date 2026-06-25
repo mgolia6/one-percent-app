@@ -1,6 +1,6 @@
 # One Percent — Content Backlog
 **onepercentbacklog.md | Living file — updated after every generation**
-Last updated: 2026-06-11 — Audit + expansion pass. Stale `used` markers corrected against 40 published entries. Thin categories (CM, VL, AI) expanded. Total candidates: ~130+.
+Last updated: 2026-06-25 — Entries 041-060 generated and verified. 20 concepts marked used across all 7 categories.
 
 > **Content candidates only.** Features, bugs, platform upgrades, and infrastructure live in `Backlog/onepercentproductbacklog.md`.
 
@@ -51,19 +51,19 @@ Target library: 365 entries (~40 full cycles)
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| "That's Right" vs. "You're Right" | The most important distinction in negotiation. "You're right" ends the conversation. "That's right" means they feel genuinely understood. Chapter 5, NSTD. | candidate |
+| "That's Right" vs. "You're Right" | The most important distinction in negotiation. "You're right" ends the conversation. "That's right" means they feel genuinely understood. Chapter 5, NSTD. | used |
 | The Late-Night FM DJ Voice | Downward inflection = authority and calm. Upward inflection = seeking approval. How tone of voice controls frame. Chapter 1, NSTD. | candidate |
 | The Black Swan Concept | Unknown unknowns that completely change the negotiation landscape when discovered. Why information gathering never stops. Chapter 10, NSTD. | candidate |
 | No-Oriented Questions | Getting the counterpart to say "no" as a way of making them feel safe and in control — more powerful than yes in many scenarios. Chapter 6, NSTD. | candidate |
-| The Ackerman Model | Systematic anchoring and concession strategy: start at 65%, move to 85%, 95%, 100% of target, with decreasing increments and non-round numbers. Chapter 9, NSTD. Distinct from anchoring entry. | candidate |
+| The Ackerman Model | Systematic anchoring and concession strategy: start at 65%, move to 85%, 95%, 100% of target, with decreasing increments and non-round numbers. Chapter 9, NSTD. Distinct from anchoring entry. | used |
 
 ### General Sales Craft Candidates
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| SPIN Selling | Neil Rackham's 40,000-call research base. Still the most evidence-backed discovery methodology. Being revisited in context of complex enterprise deals. | candidate |
+| SPIN Selling | Neil Rackham's 40,000-call research base. Still the most evidence-backed discovery methodology. Being revisited in context of complex enterprise deals. | used |
 | Challenger Sale Methodology | Dixon & Adamson 2011. "Teach, Tailor, Take Control" — resurging as buyers become more informed and value-led. Relevant contrast to relationship selling. | candidate |
-| Loss Aversion in Sales | Kahneman/Tversky applied to buyer behavior. Distinct from anchoring entry. How framing a deal around loss vs. gain shifts close rates. | candidate |
+| Loss Aversion in Sales | Kahneman/Tversky applied to buyer behavior. Distinct from anchoring entry. How framing a deal around loss vs. gain shifts close rates. | used |
 | Pipeline Velocity | The four levers: deal count, average deal size, win rate, sales cycle length. Measurable. Good Measurable Behavior Rule candidate. | candidate |
 | MEDDIC / MEDDPICC | Qualification framework. Widely adopted in enterprise SaaS. Strong source availability (John McMahon, Force Management). | candidate |
 | Objection Handling as Intelligence | Objections aren't resistance, they're data. How top reps use objections to diagnose deal health. Behavioral sourcing from Gong available. | candidate |
@@ -93,8 +93,8 @@ Target library: 365 entries (~40 full cycles)
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| Fine-Tuning vs. Prompting | When you need a custom model vs. better prompts. Decision framework relevant to any org deploying AI. | candidate |
-| Embeddings and Vector Search | How AI finds "similar" things. Foundation of semantic search, RAG, recommendation systems. More accessible than it sounds. | candidate |
+| Fine-Tuning vs. Prompting | When you need a custom model vs. better prompts. Decision framework relevant to any org deploying AI. | used |
+| Embeddings and Vector Search | How AI finds "similar" things. Foundation of semantic search, RAG, recommendation systems. More accessible than it sounds. | used |
 | RLHF (Reinforcement Learning from Human Feedback) | How models are aligned to human preferences. Explains why ChatGPT feels different from base GPT. Accessible framing available. | candidate |
 | Model Evals and Benchmarks | How AI capability is measured — and why benchmarks are often gamed or misunderstood. Critical AI literacy concept for 2026. | candidate |
 | Multimodal AI | Models that process text, image, audio, video. Where the field is in 2026. | candidate |
@@ -112,8 +112,8 @@ Target library: 365 entries (~40 full cycles)
 | The Automation Trap | Where AI augmentation ends and replacement begins — and why that line is fuzzier than headlines suggest. | candidate |
 | AI Literacy as a Skill | Being discussed in 2026 as a distinct workplace competency separate from tool use. What it actually means to be AI-literate. | candidate |
 | Compound AI Systems | Chaining multiple AI calls together — the architecture behind most real-world AI products. Moving beyond single-prompt thinking. | candidate |
-| Reasoning Models | The emergence of models that "think before answering" (OpenAI o-series, etc.). What changes when inference compute scales. | candidate |
-| The Eval Problem | Why it's hard to know if your AI system is actually working. Fundamental challenge in 2025-2026 AI deployment. | candidate |
+| Reasoning Models | The emergence of models that "think before answering" (OpenAI o-series, etc.). What changes when inference compute scales. | used |
+| The Eval Problem | Why it's hard to know if your AI system is actually working. Fundamental challenge in 2025-2026 AI deployment. | used |
 | AI Memory and Persistence | How AI systems remember (or don't) across sessions. Why stateless LLMs behave differently from how people expect. | candidate |
 | Prompt Chaining | Breaking complex tasks into sequential prompts — practical technique with real uplift. Distinct from agents. | candidate |
 
@@ -135,9 +135,9 @@ Target library: 365 entries (~40 full cycles)
 | Dog Whistles and Coded Language | Communication designed to mean different things to different audiences. Active in political, marketing, and corporate discourse. | candidate |
 | The Illusion of Explanatory Depth | People think they understand complex systems better than they do until asked to explain them. Classic psychology with strong professional application. | candidate |
 | Semantic Satiation | When a word loses meaning from repetition. Relevant to brand language, corporate buzzwords, political rhetoric. | candidate |
-| Weasel Words | Vague qualifiers that dilute accountability. "Some people say," "many experts believe." Active in media literacy discourse. | candidate |
+| Weasel Words | Vague qualifiers that dilute accountability. "Some people say," "many experts believe." Active in media literacy discourse. | used |
 | Jargon as Power | How technical language creates in-group/out-group dynamics. Who benefits from impenetrable jargon — and who gets excluded. | candidate |
-| Code-Switching | Adapting language, tone, and register across social contexts. Professional and cultural dimensions. | candidate |
+| Code-Switching | Adapting language, tone, and register across social contexts. Professional and cultural dimensions. | used |
 | Metalanguage | Language used to talk about language. How framing the conversation shapes the conversation itself. | candidate |
 
 ### New Candidates
@@ -146,9 +146,9 @@ Target library: 365 entries (~40 full cycles)
 |---|---|---|
 | The Vocabulary of Power | How the words you use signal status — upspeak, hedging, qualifiers, and filler that undermine credibility. Practical and immediately observable. | candidate |
 | Apophasis | Saying something by claiming not to say it. "I won't even mention the fact that..." Political and sales applications. | candidate |
-| Epistemic Markers | The language of certainty vs. uncertainty — "I think," "I know," "it seems." How these phrases change how ideas land. | candidate |
+| Epistemic Markers | The language of certainty vs. uncertainty — "I think," "I know," "it seems." How these phrases change how ideas land. | used |
 | The Passive Voice as Evasion | How passive construction obscures agency in corporate, political, and legal communication. "Mistakes were made." | candidate |
-| Presupposition in Language | Questions and statements that smuggle in assumptions. "When did you stop lying?" — the listener accepts the frame before they answer. | candidate |
+| Presupposition in Language | Questions and statements that smuggle in assumptions. "When did you stop lying?" — the listener accepts the frame before they answer. | used |
 | Linguistic Relativity | Does language shape thought, or thought shape language? The Sapir-Whorf hypothesis, what the evidence actually shows, and why it matters practically. | candidate |
 | The Overjustification Effect in Language | When explaining your reasoning actually weakens your position. "Because" as a trust trigger — even when the reason is meaningless (Langer 1978). | candidate |
 | False Precision | Using specific numbers to imply certainty that doesn't exist. "73% of people..." — where it comes from and why it works. | candidate |
@@ -252,10 +252,10 @@ Target library: 365 entries (~40 full cycles)
 |---|---|---|
 | Cognitive Load Theory | Sweller 1988, updated through 2020s. How working memory limits learning. Directly relevant to anyone designing or consuming information. | candidate |
 | The Default Mode Network | What the brain does when "idle" — creativity, consolidation, self-referential thought. Implications for rest, focus, creative work. | candidate |
-| Decision Fatigue | Willpower and decision quality degrade over the course of a day. Baumeister, Muraven. Relevant to how we structure work. | candidate |
-| Sleep and Memory Consolidation | Sleep is when memories consolidate — not rest. Walker 2017 plus subsequent research. Directly actionable. | candidate |
+| Decision Fatigue | Willpower and decision quality degrade over the course of a day. Baumeister, Muraven. Relevant to how we structure work. | used |
+| Sleep and Memory Consolidation | Sleep is when memories consolidate — not rest. Walker 2017 plus subsequent research. Directly actionable. | used |
 | Stress and the Prefrontal Cortex | Acute vs. chronic stress effects on executive function. Amy Arnsten's research at Yale. | candidate |
-| Habit Loops | Neural basis of habit: cue, routine, reward, basal ganglia. Duhigg built on Graybiel's MIT research. | candidate |
+| Habit Loops | Neural basis of habit: cue, routine, reward, basal ganglia. Duhigg built on Graybiel's MIT research. | used |
 | Attention and Deep Work | Neural basis of focused attention vs. mind-wandering. Gloria Mark's distraction research. Cal Newport's applied framework. | candidate |
 | Mirror Neurons and Empathy | Neural basis of social understanding. Rizzolatti's discovery, subsequent debate, what it actually explains. | candidate |
 | Retrieval Practice Effect | Testing yourself is more effective than re-reading. Roediger & Karpicke 2006. Why the quiz format works — meta-relevant. | candidate |
@@ -265,7 +265,7 @@ Target library: 365 entries (~40 full cycles)
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| The Yerkes-Dodson Curve | Optimal performance requires optimal arousal — too little or too much stress tanks output. The inverted U that explains why pressure helps until it doesn't. | candidate |
+| The Yerkes-Dodson Curve | Optimal performance requires optimal arousal — too little or too much stress tanks output. The inverted U that explains why pressure helps until it doesn't. | used |
 | Cognitive Flexibility | The brain's ability to switch between thinking about different concepts. Distinct from neuroplasticity. Trainable, measurable, high-relevance. | candidate |
 | Interoception | Awareness of internal body signals — heart rate, gut feeling, tension. Research linking interoceptive accuracy to decision-making quality. | candidate |
 | Working Memory and Its Limits | Miller's Law (7±2), updated by Cowan (4±1). What this means for communication, presentations, and how you structure anything. | candidate |
@@ -291,20 +291,20 @@ Target library: 365 entries (~40 full cycles)
 | Concept | Relevance Note | Status |
 |---|---|---|
 | Nonviolent Communication (NVC) | Marshall Rosenberg's framework: observations, feelings, needs, requests. Widely used in conflict resolution and management. | candidate |
-| Intent vs. Impact | What you meant vs. what they received. Why good intent doesn't prevent bad impact — and what to do about it. | candidate |
+| Intent vs. Impact | What you meant vs. what they received. Why good intent doesn't prevent bad impact — and what to do about it. | used |
 | Crucial Conversations | Patterson et al. — what happens to communication when stakes are high, opinions differ, emotions run strong. | candidate |
 | Writing Clearly Under Pressure | Inverted pyramid, plain language, why clarity is a form of respect. Orwell's six rules. | candidate |
 | Persuasion vs. Manipulation | Where the ethical line is. Aristotle's rhetoric (ethos, pathos, logos) applied to modern professional communication. | candidate |
 | Asking Better Questions | Closed vs. open vs. probing questions — why most professionals default to the weakest form. | candidate |
-| Psychological Safety in Communication | Amy Edmondson's research on team communication. Why people don't speak up — and what creates conditions where they do. | candidate |
+| Psychological Safety in Communication | Amy Edmondson's research on team communication. Why people don't speak up — and what creates conditions where they do. | used |
 | Silence as Communication | Pausing, waiting, and what silence signals in negotiation, feedback, and difficult conversations. | candidate |
 
 ### New Candidates
 
 | Concept | Relevance Note | Status |
 |---|---|---|
-| The Mehrabian Myth | "55% of communication is body language" — the most misquoted stat in management. What Mehrabian actually found and what really matters in communication. Contrarian, well-sourced. | candidate |
-| Narrative Transportation | When a story pulls someone in so completely that their attitudes and beliefs shift. The mechanism behind why storytelling works — not just that it does. | candidate |
+| The Mehrabian Myth | "55% of communication is body language" — the most misquoted stat in management. What Mehrabian actually found and what really matters in communication. Contrarian, well-sourced. | used |
+| Narrative Transportation | When a story pulls someone in so completely that their attitudes and beliefs shift. The mechanism behind why storytelling works — not just that it does. | used |
 | Strategic Ambiguity | Deliberately leaving language vague to preserve options or avoid conflict. Used in diplomacy, leadership, negotiation. Distinct from weasel words — sometimes intentional. | candidate |
 | The Curse of Knowledge in Communication | Once you know something, you lose the ability to imagine not knowing it — which kills clarity in explanation. Pinker 2014. (Pair with NC entry if used there.) | candidate |
 | Framing Under Pressure | How the words people reach for when stressed reveal their mental model of the situation — and how to reframe in real time. | candidate |

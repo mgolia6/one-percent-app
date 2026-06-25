@@ -1,0 +1,78 @@
+{
+  "editionId": "SC.11",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "The Ackerman Model",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "Most people negotiate by feel. The Ackerman Model is what negotiating by system looks like \u2014 and it consistently outperforms instinct.",
+    "explanation_paragraphs": [
+      "You're negotiating a contract. You know your target number. You know your walk-away. Everything between those points is improvised. The Ackerman Model gives you a systematic alternative: a specific sequence of offers with a specific mathematical structure that exploits how human psychology responds to concessions.",
+      "The model was developed by Mike Ackerman, a CIA officer who taught it to Chris Voss during his FBI hostage negotiation training. Voss documented it in Never Split the Difference. The structure is precise: start at 65% of your target price, then move to 85%, then 95%, then 100%, making each concession smaller and adding non-monetary requests at the final stages.",
+      "The psychology behind the structure is deliberate. Opening at 65% is aggressive enough to anchor the negotiation well below the midpoint. Each subsequent concession \u2014 moving from 65 to 85, then to 95, then to 100 \u2014 is meaningfully smaller than the last. This deceleration signals that you are approaching your limit. The final offer at 100% of target is non-round \u2014 $37,893 rather than $38,000 \u2014 which signals that the number was calculated precisely, not plucked from the air.",
+      "The last piece is the addition of a non-monetary request at the final stage. 'I can do $37,893, but I'd need you to include onboarding support.' This frames the final price as a concession and gives the counterpart a small win to claim. Counterparts who feel they won something are more likely to follow through on commitments."
+    ],
+    "why_today": "The Ackerman Model is documented in Chapter 9 of Never Split the Difference by Chris Voss and Tahl Raz (HarperBusiness, 2016). Mike Ackerman developed the model through CIA operations. The Black Swan Group actively teaches it to enterprise sales teams.",
+    "morning_challenge": "Think about your next pricing or scope negotiation. Do you have a target number?\n\nMap out the Ackerman sequence: 65% \u2192 85% \u2192 95% \u2192 100% of target. Write down the actual dollar amounts.\n\nWhat's the non-monetary item you'll add at the final stage? Pick something real."
+  },
+  "midday": {
+    "reframe": "Negotiation without a system is just improvised giving. The Ackerman Model doesn't remove judgment \u2014 it creates a structure within which your judgment operates more effectively.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 VOSS & RAZ, NEVER SPLIT THE DIFFERENCE, HARPERBUSINESS, 2016. CHAPTER 9.",
+    "itw_paragraphs": [
+      "Voss's account of the Ackerman Model treats it as one of the most transferable tools from hostage to commercial negotiation \u2014 not because the stakes are the same but because the human psychology is. The pattern of concessions, the non-round numbers, the late-stage non-monetary requests: all exploit consistent features of how people process fairness and value.",
+      "The non-round number mechanism deserves particular attention. '$38,000' feels like a round number someone settled on. '$37,893' feels like a number someone calculated. Counterparts who believe a number was calculated treat it as more firm \u2014 they assume there's a specific reason for each digit, even when there isn't. The precision performs constraint.",
+      "The non-monetary request at closing is perhaps the most psychologically sophisticated element. Human beings are strongly motivated by the sense of having extracted value in a negotiation \u2014 regardless of whether the extracted item has significant monetary value. Deals closed on terms where the counterpart feels they won something are more durable than deals where they feel they simply capitulated."
+    ],
+    "quote": "Set your target price, then use a precise series of moves to get there. The system does the work that improvisation leaves to luck.",
+    "attribution": "Paraphrase of Chris Voss, Never Split the Difference, Chapter 9, 2016",
+    "midday_nudge": "Pull up your current active deals. For any negotiation where price is still open: calculate the four Ackerman numbers right now. 65%, 85%, 95%, 100% of your target. Having the numbers in hand before the conversation changes how you show up in it."
+  },
+  "quiz": [
+    {
+      "question": "In the Ackerman Model, why do the concessions get smaller with each move (65\u219285\u219295\u2192100) rather than being equal increments?",
+      "options": [
+        "To maximize the total value captured by moving slowly toward the target price",
+        "Decelerating concessions signal proximity to a limit \u2014 a counterpart who sees concessions shrinking interprets this as approaching your floor. Equal increments give no such signal and can invite continued pressure",
+        "To create confusion in the counterpart about where the final number will land",
+        "Because the model was designed for hostage negotiation where equal concessions create dangerous precedents"
+      ],
+      "correct": 1,
+      "explanation": "The deceleration is a deliberate psychological signal. When concessions shrink \u2014 from a 20-point jump to a 10-point jump to a 5-point jump \u2014 the counterpart's intuitive read is that you're approaching your limit. Equal concessions (70\u219280\u219290\u2192100) don't create this effect \u2014 they signal a consistent pattern the counterpart can expect to continue."
+    },
+    {
+      "question": "Why does the Ackerman Model recommend using a non-round number for the final offer?",
+      "options": [
+        "Non-round numbers are easier for counterparts to remember",
+        "Non-round numbers create an implicit signal that the figure was precisely calculated \u2014 counterparts who believe a number was calculated treat it as more fixed and are less likely to push for further concessions",
+        "Round numbers trigger anchoring effects more strongly than non-round numbers",
+        "The non-round number creates ambiguity that gives you room to adjust later"
+      ],
+      "correct": 1,
+      "explanation": "The mechanism is perceptual: '$37,893' implies that someone did the math to arrive at exactly that figure. '$38,000' implies someone picked a round number. Counterparts who believe a number has a specific calculated basis are more likely to treat it as a firm limit. The non-round number performs constraint without claiming it."
+    },
+    {
+      "question": "What is the strategic purpose of adding a non-monetary request at the final stage of an Ackerman negotiation?",
+      "options": [
+        "To extract additional value from the deal beyond the price",
+        "To give the counterpart something to win \u2014 a small concession they can claim as extracted \u2014 which increases the durability of the agreement and the counterpart's commitment to following through",
+        "To signal that you've reached your absolute limit and can't move further on price",
+        "To create a distraction that shifts the counterpart's attention away from the final price"
+      ],
+      "correct": 1,
+      "explanation": "The primary function of the late-stage non-monetary request is psychological, not economic. Counterparts who feel they won something \u2014 extracted a concession \u2014 are more committed to the resulting agreement. The item itself matters less than the experience of winning it. You offer to trade something small for the price landing where you wanted it, and the counterpart's narrative becomes 'I pushed them and got something.'"
+    }
+  ],
+  "closing": "The Ackerman Model isn't manipulation. It's a system that accounts for how human beings actually process offers \u2014 which is something improvisation almost always gets wrong.",
+  "sources": [
+    {
+      "label": "Voss, C. & Raz, T. \u2014 Never Split the Difference, HarperBusiness, 2016, Chapter 9",
+      "detail": "Primary source for the Ackerman Model. Documents the offer sequence, non-round number mechanism, and non-monetary request strategy.",
+      "url": "https://www.harpercollins.com/products/never-split-the-difference-chris-vossTahl-raz"
+    }
+  ],
+  "ai_prompt": "I want to apply the Ackerman Model to a real negotiation I'm currently in. Ask me about my target number, my walk-away point, and what I know about the counterpart's constraints before we map the offer sequence. Here's the negotiation I'm working on: [describe the deal and where you are in it]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

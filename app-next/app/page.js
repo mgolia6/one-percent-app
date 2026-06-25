@@ -315,6 +315,26 @@ const ENTRIES = [
   { entry: '038', editionId: 'MM.5', concept: 'First Principles Thinking', category: 'Mental Models' },
   { entry: '039', editionId: 'AI.4.2', concept: 'Temperature & Sampling', category: 'AI' },
   { entry: '040', editionId: 'PH.5', concept: 'Epistemic Humility', category: 'Philosophy' },
+  { entry: '041', editionId: 'CM.5', concept: 'Intent vs. Impact', category: 'Communication' },
+  { entry: '042', editionId: 'SC.10', concept: '"That\'s Right" vs. "You\'re Right"', category: 'Sales Craft' },
+  { entry: '043', editionId: 'NC.5', concept: 'Decision Fatigue', category: 'Neuroscience & Cognition' },
+  { entry: '044', editionId: 'AI.9', concept: 'Reasoning Models', category: 'AI' },
+  { entry: '045', editionId: 'VL.6', concept: 'Weasel Words', category: 'Vocab & Language' },
+  { entry: '046', editionId: 'CM.6', concept: 'Psychological Safety', category: 'Communication' },
+  { entry: '047', editionId: 'SC.11', concept: 'The Ackerman Model', category: 'Sales Craft' },
+  { entry: '048', editionId: 'NC.6', concept: 'Sleep and Memory Consolidation', category: 'Neuroscience & Cognition' },
+  { entry: '049', editionId: 'AI.10', concept: 'Fine-Tuning vs. Prompting', category: 'AI' },
+  { entry: '050', editionId: 'VL.7', concept: 'Presupposition in Language', category: 'Vocab & Language' },
+  { entry: '051', editionId: 'CM.7', concept: 'Narrative Transportation', category: 'Communication' },
+  { entry: '052', editionId: 'SC.12', concept: 'Loss Aversion in Sales', category: 'Sales Craft' },
+  { entry: '053', editionId: 'NC.7', concept: 'Habit Loops', category: 'Neuroscience & Cognition' },
+  { entry: '054', editionId: 'AI.11', concept: 'The Eval Problem', category: 'AI' },
+  { entry: '055', editionId: 'VL.8', concept: 'Code-Switching', category: 'Vocab & Language' },
+  { entry: '056', editionId: 'CM.8', concept: 'The Mehrabian Myth', category: 'Communication' },
+  { entry: '057', editionId: 'SC.13', concept: 'SPIN Selling', category: 'Sales Craft' },
+  { entry: '058', editionId: 'NC.8', concept: 'The Yerkes-Dodson Curve', category: 'Neuroscience & Cognition' },
+  { entry: '059', editionId: 'AI.12', concept: 'Embeddings and Vector Search', category: 'AI' },
+  { entry: '060', editionId: 'VL.9', concept: 'Epistemic Markers', category: 'Vocab & Language' },
 ]
 
 function FeedbackModal({ userId, onClose }) {
@@ -1198,6 +1218,13 @@ export default function HomePage() {
         {entry:'034',cat:'Sales Craft'},{entry:'035',cat:'AI'},{entry:'036',cat:'Vocab & Language'},
         {entry:'037',cat:'Sales Craft'},{entry:'038',cat:'Mental Models'},{entry:'039',cat:'AI'},
         {entry:'040',cat:'Philosophy'},
+        {entry:'041',cat:'Communication'},{entry:'042',cat:'Sales Craft'},{entry:'043',cat:'Neuroscience & Cognition'},
+        {entry:'044',cat:'AI'},{entry:'045',cat:'Vocab & Language'},{entry:'046',cat:'Communication'},
+        {entry:'047',cat:'Sales Craft'},{entry:'048',cat:'Neuroscience & Cognition'},{entry:'049',cat:'AI'},
+        {entry:'050',cat:'Vocab & Language'},{entry:'051',cat:'Communication'},{entry:'052',cat:'Sales Craft'},
+        {entry:'053',cat:'Neuroscience & Cognition'},{entry:'054',cat:'AI'},{entry:'055',cat:'Vocab & Language'},
+        {entry:'056',cat:'Communication'},{entry:'057',cat:'Sales Craft'},{entry:'058',cat:'Neuroscience & Cognition'},
+        {entry:'059',cat:'AI'},{entry:'060',cat:'Vocab & Language'},
       ]
       const initCatBreakdown = {}
       ENTRY_CATS_INIT.forEach(e => {

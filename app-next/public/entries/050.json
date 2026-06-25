@@ -1,0 +1,83 @@
+{
+  "editionId": "VL.7",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "Presupposition in Language",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "Every question smuggles in assumptions. The listener's mind accepts those assumptions before processing the question \u2014 and that happens even when they know to be on guard.",
+    "explanation_paragraphs": [
+      "A journalist asks a CEO: 'When did your company first become aware of the safety issues?' The question assumes safety issues exist. The CEO who says 'I don't recall exactly when' has accepted the frame. A lawyer asks a witness: 'Have you stopped taking bribes?' Both 'yes' and 'no' confirm the premise. A manager asks a team member: 'Why do you think this project is behind schedule?' The question assumes the project is behind schedule \u2014 and prompts the team member to generate explanations for a premise they may not agree with.",
+      "Presupposition is the linguistic term for information that a speaker assumes to be true without asserting it directly \u2014 information that is smuggled into an utterance rather than stated. Unlike direct claims, presuppositions are not typically challenged by listeners. The mind processes the explicit content of what's being said and tends to let the presupposed content pass unexamined.",
+      "The phenomenon has been studied extensively in linguistics. Elizabeth Loftus demonstrated the practical power of presupposition in her landmark eyewitness testimony research. In one famous study, participants asked 'How fast were the cars going when they smashed into each other?' estimated significantly higher speeds than those asked 'How fast were the cars going when they hit each other?' \u2014 and were more likely to report seeing broken glass that wasn't there. The single word 'smashed' presupposed a more violent collision, and that presupposition contaminated participants' memories.",
+      "The professional applications are direct. In sales: 'When would you like to get started?' presupposes a decision to buy. In negotiation: 'How much would you need us to adjust the timeline?' presupposes the timeline needs adjustment. In management: 'What's your plan for getting this back on track?' presupposes it's off track. Understanding presuppositions lets you both deploy them consciously and catch them when they're being used on you."
+    ],
+    "why_today": "Elizabeth Loftus's eyewitness testimony research: Loftus, E.F. & Palmer, J.C. (1974). Reconstruction of automobile destruction. Journal of Verbal Learning and Verbal Behavior, 13(5), 585-589. Foundational linguistic treatment: Levinson, S.C. (1983). Pragmatics. Cambridge University Press.",
+    "morning_challenge": "Listen for presuppositions in the next meeting you attend. Track specifically: what do the questions assume without stating?\n\nThen catch yourself: what presuppositions are you embedding in your own questions today? Pick one question you're planning to ask and identify what it presupposes. Is that assumption one you want to be making?"
+  },
+  "midday": {
+    "reframe": "When someone asks you a question, there are two things to evaluate: what they're asking, and what they're assuming by asking it. You only have to answer one of them.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 LOFTUS & PALMER, JOURNAL OF VERBAL LEARNING AND VERBAL BEHAVIOR, 1974. LEVINSON, PRAGMATICS, CAMBRIDGE, 1983.",
+    "itw_paragraphs": [
+      "Elizabeth Loftus's 1974 study is the most replicated demonstration of presupposition's real-world power. Participants watched a short film of a car accident, then answered questions about it. The only variable was a single verb: 'smashed,' 'collided,' 'bumped,' 'hit,' or 'contacted.' Participants in the 'smashed' condition estimated the cars were traveling at 40.8 mph; those in the 'contacted' condition estimated 31.8 mph. One week later, the 'smashed' group was significantly more likely to report seeing broken glass that wasn't in the film.",
+      "In legal contexts, the power of presupposition is so well-documented that it has shaped rules of evidence. Leading questions \u2014 those that embed the answer in the presupposition \u2014 are generally prohibited on direct examination in U.S. courts precisely because they contaminate testimony.",
+      "The sales application is well-established in buyer behavior research. Assumptive closing \u2014 using presuppositions to embed a buying decision in the framing of questions \u2014 ('Would you prefer to start in Q3 or Q4?') has been documented to increase conversion rates compared to direct closing questions ('Are you ready to move forward?')."
+    ],
+    "quote": "Language doesn't just describe reality. It constructs the assumptions through which we interpret it.",
+    "attribution": "Paraphrase of the Loftus eyewitness testimony research framework, 1974",
+    "midday_nudge": "Before your next negotiation or important conversation: write out three questions you plan to ask. Under each one, write what it presupposes. Are those presuppositions serving you? Or conceding something you haven't decided to concede?"
+  },
+  "quiz": [
+    {
+      "question": "A colleague asks you: 'What's your plan for addressing the quality issues in your team's output?' The most precise description of what this question does is:",
+      "options": [
+        "It requests a plan, which is a reasonable ask in a work context",
+        "It presupposes that quality issues exist in your team's output \u2014 embedding that claim as background assumption rather than a contestable assertion, which means your answer is likely to accept the premise even if you disagree with it",
+        "It is a leading question that should be challenged as inappropriate",
+        "It frames the conversation around solutions rather than problems, which is a constructive communication approach"
+      ],
+      "correct": 1,
+      "explanation": "The question presupposes that quality issues exist. By asking for a plan, it embeds the diagnosis as settled background. If you respond by explaining your plan, you've accepted the frame. The linguistically precise response identifies the presupposition before accepting or rejecting it: 'I'd push back on the premise first \u2014 what specific quality issues are you observing?'"
+    },
+    {
+      "question": "Loftus and Palmer's eyewitness study found that the verb used in a question ('smashed' vs. 'hit') affected both speed estimates and later memory for events that didn't occur. What does this demonstrate about presupposition?",
+      "options": [
+        "That people are generally poor at estimating speed, and the verb choice exploited that existing weakness",
+        "That presuppositions embedded in questions can not only influence immediate responses but can alter the memory of witnessed events \u2014 the assumed content becomes incorporated into how participants encode and recall what they saw",
+        "That leading questions are only effective on inattentive or low-intelligence witnesses",
+        "That people defer to the framing of authority figures, and the experimenter's word choice acted as a social cue"
+      ],
+      "correct": 1,
+      "explanation": "The finding goes beyond influencing answers \u2014 the presupposition contaminated memory. Participants who heard 'smashed' were significantly more likely to falsely report seeing broken glass a week later. The presupposed content was incorporated into how they stored the memory of the event. In legal, investigative, and journalistic contexts, this is why the language used in early questioning can permanently affect the reliability of recall."
+    },
+    {
+      "question": "In a sales context, how does assumptive closing use presupposition?",
+      "options": [
+        "By making explicit claims about the product's value that create urgency",
+        "By embedding the buying decision as background assumption in a question about implementation details \u2014 'Would you prefer Q3 or Q4 start?' presupposes a decision to start, making the decision itself less available for scrutiny than if it were asked directly",
+        "By asking closed yes/no questions that limit the prospect's options",
+        "By referencing competitors to create contrast that favors the product"
+      ],
+      "correct": 1,
+      "explanation": "Assumptive closing works precisely through presupposition. 'Would you prefer to start in Q3 or Q4?' doesn't ask whether the prospect will buy \u2014 it presupposes they will and asks only about timing. The prospect's mind is directed to the binary choice, not the more fundamental question of whether to proceed. Compared to 'Are you ready to move forward?' \u2014 which makes the decision explicit \u2014 the assumptive version receives less direct cognitive resistance."
+    }
+  ],
+  "closing": "The most powerful move in many conversations isn't the argument you make. It's the assumption you get the other person to accept without noticing.",
+  "sources": [
+    {
+      "label": "Loftus, E.F. & Palmer, J.C. \u2014 Reconstruction of Automobile Destruction, Journal of Verbal Learning and Verbal Behavior, 13(5), 1974",
+      "detail": "Landmark study demonstrating that verb choice in questions alters both immediate estimates and subsequent memory, establishing the real-world cognitive power of linguistic presupposition.",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0022537174800113"
+    },
+    {
+      "label": "Levinson, S.C. \u2014 Pragmatics, Cambridge University Press, 1983",
+      "detail": "Foundational linguistic treatment of presupposition as a pragmatic phenomenon.",
+      "url": "https://www.cambridge.org/core/books/pragmatics/7D28E7F82E1EDE3BA8F4DAED5F53E9E7"
+    }
+  ],
+  "ai_prompt": "I want to analyze the presuppositions embedded in a conversation or set of questions I'm dealing with \u2014 and figure out which ones I should challenge and which to accept. Ask me about the context before we start. Here's the situation: [describe the conversation or questions you're working with]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}

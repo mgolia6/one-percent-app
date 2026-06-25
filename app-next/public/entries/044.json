@@ -1,0 +1,88 @@
+{
+  "editionId": "AI.9",
+  "category": "AI",
+  "categoryTag": "ARTIFICIAL INTELLIGENCE",
+  "concept": "Reasoning Models",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "For the first two years of the LLM era, AI gave you answers. A new class of model gives you something more useful: thinking.",
+    "explanation_paragraphs": [
+      "You ask a standard language model a hard question. It generates an answer almost instantly \u2014 pulling from patterns in training, arriving at a conclusion without visibly working through the problem. That speed is often fine. For complex multi-step problems, legal analysis, math, code debugging, strategic planning \u2014 it's a liability. The model skips steps that matter, and you can't see where it went wrong.",
+      "Reasoning models are a different architecture. Instead of jumping directly to an answer, they generate an extended internal chain of thought \u2014 working through the problem step by step before producing a response. OpenAI's o1 and o3 series, released in 2024 and 2025, are the most prominent examples. The model is trained using reinforcement learning to generate these reasoning traces and check its own work before finalizing output. The result is dramatically higher accuracy on complex tasks at the cost of higher latency and token usage.",
+      "The practical distinction matters for anyone using AI in high-stakes workflows. Standard models are fast and cheap and excellent for summarization, drafting, extraction, and classification. Reasoning models are slower, more expensive, and far better at tasks where the path to the answer matters as much as the answer itself.",
+      "The shift also changes how you should prompt. Standard models benefit from chain-of-thought instructions \u2014 'think step by step' \u2014 because it approximates the reasoning process. Reasoning models do this natively. Over-instructing them to show their work can actually interfere with their internal reasoning process. Your job is to give it the right problem and the right context, not to manage how it thinks."
+    ],
+    "why_today": "OpenAI's o1 model was released September 2024, o3 in December 2024. Anthropic's Claude 3.7 Sonnet with extended thinking was released February 2025. DeepSeek R1 released January 2025. Reasoning model capability is now standard across major AI providers.",
+    "morning_challenge": "Think about the last time you used AI and got an answer that seemed wrong or shallow. Was the task genuinely complex \u2014 multi-step, requiring logical inference, or involving code or math?\n\nIf so, you may have used the wrong class of model. Standard models for generation and drafting. Reasoning models for problems where the thinking matters.\n\nIdentify one task in your current work that would benefit from a reasoning model and try it this week."
+  },
+  "midday": {
+    "reframe": "The question isn't just 'what AI should I use?' It's 'does this problem need an answer or does it need thinking?' Those are different questions that call for different tools.",
+    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 OPENAI O1/O3 SERIES (2024-2025). ANTHROPIC CLAUDE 3.7 EXTENDED THINKING (2025). DEEPSEEK R1 (2025).",
+    "itw_paragraphs": [
+      "When OpenAI released o1 in September 2024, its benchmark performance on the competitive programming (Codeforces) put it in the 89th percentile \u2014 compared to standard GPT-4o's performance in the 11th percentile on the same test. On the 2024 International Mathematics Olympiad qualifier, o1 solved 83% of problems; GPT-4o solved 13%. These aren't marginal improvements. They represent a qualitative shift in capability on tasks where step-by-step reasoning is required.",
+      "The mechanism behind reasoning models is reinforcement learning applied to the reasoning process itself. The model is rewarded not just for correct final answers but for reasoning traces that lead to correct answers. This creates a model that has learned to think carefully rather than one that has learned to sound confident.",
+      "By mid-2025, reasoning models had moved from a niche capability to a standard offering. DeepSeek's R1 demonstrated that the architecture could be replicated at dramatically lower cost. Anthropic's extended thinking mode in Claude 3.7 Sonnet gave users toggle control over how much thinking to apply. Reasoning capability is no longer a premium feature \u2014 it's a tool selection decision every serious AI user needs to understand."
+    ],
+    "quote": "We've moved from models that predict answers to models that derive them. That's not an incremental improvement. It's a different thing.",
+    "attribution": "Paraphrase of OpenAI's o1 technical report framing, September 2024",
+    "midday_nudge": "Next time you hit a problem where AI gives you an unsatisfying answer \u2014 try the same prompt in a reasoning model with extended thinking enabled. Notice the difference in how it approaches the problem, not just whether the answer changes."
+  },
+  "quiz": [
+    {
+      "question": "A reasoning model is most likely to outperform a standard language model on which task?",
+      "options": [
+        "Summarizing a 10-page document into three bullet points",
+        "Writing a first draft of a client email based on talking points",
+        "Debugging a complex function where a subtle off-by-one error causes incorrect output only under specific conditions",
+        "Generating five subject line options for a marketing email"
+      ],
+      "correct": 2,
+      "explanation": "Reasoning models are specifically architected to outperform on tasks where step-by-step logical inference is required and errors compound. Debugging a complex function with a subtle error is exactly this class of problem. The other tasks are generation and drafting \u2014 where standard models are fast, cheap, and excellent."
+    },
+    {
+      "question": "What is the primary mechanism that makes reasoning models more accurate on complex tasks?",
+      "options": [
+        "They have larger context windows, allowing them to consider more information",
+        "They are trained on more recent data",
+        "They generate an extended internal chain of thought before finalizing an answer, and are trained via reinforcement learning to reward reasoning traces that lead to correct outcomes",
+        "They use a different tokenization approach for mathematical notation"
+      ],
+      "correct": 2,
+      "explanation": "The core architectural difference is the reasoning trace \u2014 an extended internal working-through of the problem before a final answer is produced. This is trained via reinforcement learning: the model is rewarded for reasoning processes that lead to correct answers, not just for correct final answers. This creates a model that has learned to derive answers rather than predict them."
+    },
+    {
+      "question": "How should your prompting approach change when using a reasoning model?",
+      "options": [
+        "Reasoning models require more explicit step-by-step instructions because they don't natively generate chains of thought",
+        "Prompting strategy is identical \u2014 reasoning models simply produce better outputs from the same prompts",
+        "With reasoning models, you can reduce explicit chain-of-thought instructions since the model reasons natively \u2014 focus on giving it the right problem and context rather than managing how it thinks",
+        "Reasoning models require shorter prompts to avoid interfering with their internal reasoning"
+      ],
+      "correct": 2,
+      "explanation": "With standard models, 'think step by step' improves performance because it coaxes the model into approximating a reasoning process it doesn't do by default. Reasoning models do this natively \u2014 over-instructing them can actually interfere. The shift in prompting is from managing how the model thinks to focusing on what problem you're giving it and what context it needs."
+    }
+  ],
+  "closing": "The most important thing to understand about reasoning models isn't how they work. It's knowing when to reach for one \u2014 and when a faster, cheaper tool is exactly right.",
+  "sources": [
+    {
+      "label": "OpenAI \u2014 o1 System Card and Technical Report, September 2024",
+      "detail": "Documents the o1 model's architecture, training methodology, and benchmark performance including AMC and Math Olympiad results.",
+      "url": "https://openai.com/index/openai-o1-system-card/"
+    },
+    {
+      "label": "Anthropic \u2014 Claude 3.7 Sonnet with Extended Thinking, February 2025",
+      "detail": "Anthropic's implementation of reasoning model capabilities via extended thinking mode.",
+      "url": "https://www.anthropic.com/news/claude-3-7-sonnet"
+    },
+    {
+      "label": "DeepSeek \u2014 R1 Technical Report, January 2025",
+      "detail": "Documents DeepSeek's replication of reasoning model capabilities at significantly lower compute cost.",
+      "url": "https://arxiv.org/abs/2501.12948"
+    }
+  ],
+  "ai_prompt": "I want to figure out which of my current AI use cases would actually benefit from a reasoning model versus a standard model. Ask me about the types of tasks I use AI for before making recommendations. Here's a description of how I currently use AI: [describe your use cases]",
+  "verified": true,
+  "verified_by": "claude_in_chrome_dead_drop",
+  "verified_date": "2026-06-25"
+}
