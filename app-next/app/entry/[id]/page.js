@@ -399,6 +399,7 @@ export default function EntryPage() {
         onBack={() => router.push('/')}
         userStats={userStats}
         userId={user?.id}
+        isAdmin={profile?.is_admin || false}
         onFeedbackDone={(accent) => {
           setFeedbackAccent(accent || '#47FFE8')
           setShowFeedbackOverlay(true)

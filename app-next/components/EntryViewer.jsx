@@ -329,11 +329,12 @@ const THEMES = {
   },
 }
 
-export default function EntryViewer({ entry, onComplete, onBack, userStats, userId, onFeedbackDone }) {
+export default function EntryViewer({ entry, onComplete, onBack, userStats, userId, onFeedbackDone, isAdmin = false }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  const [mode, setMode] = useState('choose') // 'choose' | 'quiz' | 'chat'
+  // Lock It In is admin-gated for now. Non-admins go straight to the quiz.
+  const [mode, setMode] = useState(isAdmin ? 'choose' : 'quiz') // 'choose' | 'quiz' | 'chat'
   const [chatScore, setChatScore] = useState(null)
   const [showCelebration, setShowCelebration] = useState(false)
   const [srcOpen, setSrcOpen] = useState(false)
@@ -561,8 +562,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
 
-            {/* Mode chooser: conversational recall vs. multiple-choice quiz */}
-            {mode === 'choose' && !submitted && (
+            {/* Mode chooser: conversational recall vs. multiple-choice quiz (admin-gated) */}
+            {isAdmin && mode === 'choose' && !submitted && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 8 }}>
                 <button onClick={() => setMode('chat')} style={{ textAlign: 'left', background: ACCENT, border: 'none', borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: '#0A0A0A' }}>Lock it in with AI →</div>
@@ -576,7 +577,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             )}
 
             {/* Conversational "Lock It In" */}
-            {mode === 'chat' && !submitted && (
+            {isAdmin && mode === 'chat' && !submitted && (
               <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
             )}
 
