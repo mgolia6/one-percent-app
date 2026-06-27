@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/scripts/block-edit-missing-file.sh\"",
+            "timeout": 10,
+            "statusMessage": "Reality check: does the file exist?"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/scripts/check-vercel-json.sh\"",
+            "timeout": 10,
+            "statusMessage": "Checking vercel.json for new api/ route"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/scripts/build-check.sh\"",
+            "timeout": 180,
+            "statusMessage": "Running build check before session end"
+          }
+        ]
+      }
+    ]
+  }
+}
