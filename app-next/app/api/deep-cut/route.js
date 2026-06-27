@@ -2,7 +2,8 @@ import Anthropic from '@anthropic-ai/sdk'
 
 export const runtime = 'nodejs'
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+// Vercel stores the key as CLAUDE_API_KEY; fall back to ANTHROPIC_API_KEY for local dev.
+const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY })
 
 export async function POST(req) {
   try {
