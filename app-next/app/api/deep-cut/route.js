@@ -6,7 +6,7 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 export async function POST(req) {
   try {
-    const { messages, entry, userContext } = await req.json()
+    const { messages, entry, userContext = {} } = await req.json()
 
     if (!entry || !messages?.length) {
       return new Response(JSON.stringify({ error: 'Missing entry or messages' }), { status: 400 })
@@ -87,6 +87,8 @@ RULES — READ CAREFULLY:
 
   } catch (err) {
     console.error('Deep Cut API error:', err)
-    return new Response(JSON.stringify({ error: 'Something went wrong' }), { status: 500 })
+    // Surface the real reason (e.g. missing ANTHROPIC_API_KEY, bad model) so failures are diagnosable.
+    const detail = err?.message || 'Something went wrong'
+    return new Response(JSON.stringify({ error: detail }), { status: 500 })
   }
 }
