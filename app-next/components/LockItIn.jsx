@@ -6,8 +6,8 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 // exercise is always exactly three turns (predictable length and API cost).
 const MOVES = [
   (concept) => `In your own words — what is **${concept}**, and why does it matter?`,
-  () => `Where could you put this to work in the next few days? Be specific.`,
-  () => `What's the strongest objection or failure case for this idea — and how would you handle it?`,
+  () => `Think of a real moment — recent or coming up — where this could change what you do. What's the moment, and what would you do differently?`,
+  (concept) => `Last one: explain **${concept}** to a friend who's never heard of it — in a sentence or two.`,
 ]
 
 function render(md) {
@@ -76,7 +76,9 @@ export default function LockItIn({ entry, accent, theme: T, onComplete, onSwitch
     }
 
     // Final move done — grade the three answers into a 0–3 score.
-    setTurns((t) => [...t, { role: 'assistant', content: 'Locking it in…' }])
+    // The typing indicator covers the grading wait; the result then waits for the
+    // user to read their last reply and tap Continue (we do NOT auto-advance, which
+    // previously closed the conversation before the final response could be read).
     let score = 3
     let recap = ''
     try {
@@ -93,8 +95,13 @@ export default function LockItIn({ entry, accent, theme: T, onComplete, onSwitch
     setFinished(true)
     setResult({ score, recap })
     setBusy(false)
-    if (onComplete) onComplete({ score, recap, answers: { mode: 'chat' } })
-  }, [input, busy, finished, entry, concept, onComplete])
+  }, [input, busy, finished, entry, concept])
+
+  // User taps Continue on the result — only now do we record the completion and
+  // advance to the post-entry flow.
+  const finish = () => {
+    if (result && onComplete) onComplete({ score: result.score, recap: result.recap, answers: { mode: 'chat' } })
+  }
 
   return (
     <div>
@@ -191,6 +198,13 @@ export default function LockItIn({ entry, accent, theme: T, onComplete, onSwitch
           <div style={{ fontSize: 36, fontWeight: 500, color: result.score === 3 ? accent : '#ccc' }}>{result.score}/3</div>
           <div style={{ fontSize: 13, letterSpacing: '0.15em', color: T.textDim, marginTop: 6 }}>LOCKED IN</div>
           {result.recap && <div style={{ fontSize: 13, color: T.textMid, marginTop: 10, lineHeight: 1.6 }}>{result.recap}</div>}
+          <button onClick={finish} style={{
+            marginTop: 18, background: accent, color: '#0A0A0A', border: 'none', borderRadius: 6,
+            padding: '11px 26px', fontSize: 12, fontWeight: 600, letterSpacing: '0.08em',
+            cursor: 'pointer', fontFamily: "'Inter',sans-serif",
+          }}>
+            CONTINUE →
+          </button>
         </div>
       )}
     </div>
