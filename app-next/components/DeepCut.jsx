@@ -227,11 +227,17 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
   const [showSuggestions, setShowSuggestions] = useState(true)
   const [orbColor, setOrbColor] = useState(CAT_COLORS[0])
   const [orbIdx, setOrbIdx] = useState(0)
+  // Full entry content (sources, morning/midday/closing, ai_prompt) loaded on demand
+  // from /entries/[NNN].json. The ENTRIES manifest only carries lightweight metadata,
+  // so the API must be fed the full file to stay grounded in the verified sources.
+  const [fullEntry, setFullEntry] = useState(null)
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
 
-  // Completed entries only, most recent first
-  const completedEntries = entries.filter(e => completions[e.entry])
+  // Completed entries only — attach the user's score from the completions map
+  const completedEntries = entries
+    .filter(e => completions[e.entry])
+    .map(e => ({ ...e, score: completions[e.entry]?.score ?? null }))
 
   // Orb cycles with FAB color
   useEffect(() => {
@@ -252,15 +258,25 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
 
   const accent = selectedEntry ? (CAT_CONFIG[selectedEntry.category] || '#C847FF') : orbColor
 
-  const beginChat = () => {
+  const beginChat = async () => {
     if (!selectedEntry) return
     setChatActive(true)
+    setFullEntry(null)
     setMessages([{
       role: 'assistant',
       content: `You studied **${selectedEntry.concept}**${selectedEntry.score != null ? ` and scored ${selectedEntry.score}/3` : ''}.\n\nI'm grounded in the verified sources for this entry. Ask me anything — or start with today's prompt.`,
     }])
     setShowSuggestions(true)
     setTimeout(() => inputRef.current?.focus(), 300)
+
+    // Load the full entry file so the API gets sources + content, not just metadata.
+    try {
+      const res = await fetch(`/entries/${selectedEntry.entry}.json`)
+      const data = res.ok ? await res.json() : null
+      setFullEntry(data ? { ...data, entry: selectedEntry.entry, score: selectedEntry.score } : selectedEntry)
+    } catch {
+      setFullEntry(selectedEntry)
+    }
   }
 
   const send = useCallback(async (text) => {
@@ -274,13 +290,28 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
     setStreaming(true)
     setStreamingText('')
 
+    // Guarantee the API gets the grounded entry even if the user sends before
+    // the background load in beginChat() finishes.
+    let entryPayload = fullEntry
+    if (!entryPayload && selectedEntry) {
+      try {
+        const er = await fetch(`/entries/${selectedEntry.entry}.json`)
+        entryPayload = er.ok
+          ? { ...(await er.json()), entry: selectedEntry.entry, score: selectedEntry.score }
+          : selectedEntry
+        setFullEntry(entryPayload)
+      } catch {
+        entryPayload = selectedEntry
+      }
+    }
+
     try {
       const res = await fetch('/api/deep-cut', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: newMessages,
-          entry: selectedEntry,
+          entry: entryPayload,
           userContext,
         }),
       })
@@ -302,7 +333,7 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
       setStreaming(false)
       setTimeout(() => inputRef.current?.focus(), 100)
     }
-  }, [input, messages, streaming, selectedEntry, userContext])
+  }, [input, messages, streaming, selectedEntry, fullEntry, userContext])
 
   const handleClose = () => {
     setVisible(false)
@@ -314,9 +345,12 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
     setMessages([])
     setShowSuggestions(true)
     setStreamingText('')
+    setFullEntry(null)
   }
 
-  const todayAiPrompt = todayEntry?.ai_prompt || null
+  // today's prompt comes from the loaded full entry, and only when the selected
+  // concept is in fact today's entry
+  const todayAiPrompt = fullEntry?.ai_prompt || null
 
   return (
     <>
@@ -390,7 +424,7 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
             </div>
 
             {/* Sources */}
-            <SourcePills sources={selectedEntry?.sources} />
+            <SourcePills sources={fullEntry?.sources} />
 
             {/* Messages */}
             <div style={{ flex: 1, overflowY: 'auto', paddingTop: 8, paddingBottom: 4 }}>
@@ -404,7 +438,7 @@ export default function DeepCut({ entries, todayEntry, completions, userContext,
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.25)', marginBottom: 8 }}>EXPLORE</div>
 
                   {/* Today's ai_prompt — first, visually distinct */}
-                  {todayAiPrompt && selectedEntry?.entry === todayEntry?.number && (
+                  {todayAiPrompt && selectedEntry?.entry === todayEntry?.entry && (
                     <button onClick={() => send(todayAiPrompt)} style={{
                       display: 'block', width: '100%', textAlign: 'left',
                       padding: '11px 14px', borderRadius: 10, marginBottom: 8, border: 'none',
