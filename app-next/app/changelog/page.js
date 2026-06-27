@@ -28,7 +28,7 @@ function ChangelogEntry({ entry, defaultOpen, isLatest }) {
         {/* Version badge */}
         <div style={{
           fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
-          color: isLatest ? '#E8FF47' : '#555',
+          color: isLatest ? '#E8FF47' : 'rgba(255,255,255,0.62)',
           background: isLatest ? '#E8FF4711' : '#1a1a1a',
           border: `1px solid ${isLatest ? '#E8FF4733' : '#222'}`,
           borderRadius: 3, padding: '2px 7px', flexShrink: 0,
@@ -47,7 +47,7 @@ function ChangelogEntry({ entry, defaultOpen, isLatest }) {
             {entry.title}
           </div>
           {!open && (
-            <div style={{ fontSize: 10, color: '#444', marginTop: 3, letterSpacing: '0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)', marginTop: 3, letterSpacing: '0.02em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {summary}
             </div>
           )}
@@ -63,7 +63,7 @@ function ChangelogEntry({ entry, defaultOpen, isLatest }) {
             }}>NEW</div>
           )}
           <div style={{
-            fontSize: 10, color: '#444',
+            fontSize: 10, color: 'rgba(255,255,255,0.55)',
             transition: 'transform 0.2s',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
           }}>▾</div>
@@ -73,7 +73,7 @@ function ChangelogEntry({ entry, defaultOpen, isLatest }) {
       {/* Expanded content */}
       {open && (
         <div style={{ borderTop: '1px solid #1a1a1a', padding: '14px 22px 20px' }}>
-          <div style={{ fontSize: 10, color: '#555', letterSpacing: '0.08em', marginBottom: 14 }}>
+          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.08em', marginBottom: 14 }}>
             {formatDate(entry.created_at)}
           </div>
           {bullets.map((line, i) => (

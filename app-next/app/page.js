@@ -165,14 +165,14 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
             padding: '7px 14px', borderRadius: 100,
             background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
           }}>
-            <span style={{ fontSize: 11, color: '#666', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>{completedCount} IN THE VAULT</span>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>{completedCount} IN THE VAULT</span>
           </div>
         </div>
       )}
 
       {/* Nudge line */}
       <div style={{
-        fontSize: 14, color: '#555',
+        fontSize: 14, color: 'rgba(255,255,255,0.62)',
         textAlign: 'center', maxWidth: 280, lineHeight: 1.75,
         fontFamily: "'DM Sans', 'Inter', sans-serif",
         fontWeight: 300, letterSpacing: '0.01em',
@@ -243,7 +243,7 @@ function BadgeEarnOverlay({ badge, onDismiss }) {
         opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 0.5s',
       }}>{badge.name}</div>
       <div style={{
-        fontSize: 13, color: '#666', textAlign: 'center',
+        fontSize: 13, color: 'rgba(255,255,255,0.65)', textAlign: 'center',
         maxWidth: 260, lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif",
         opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 0.6s',
       }}>{badge.description}</div>
@@ -254,7 +254,7 @@ function BadgeEarnOverlay({ badge, onDismiss }) {
         pointerEvents: 'none',
       }} />
       <div style={{
-        position: 'absolute', bottom: 40, fontSize: 9, color: '#333',
+        position: 'absolute', bottom: 40, fontSize: 9, color: 'rgba(255,255,255,0.45)',
         letterSpacing: '0.2em', fontFamily: "'DM Mono', monospace",
         opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease 1s',
       }}>TAP TO CONTINUE</div>
@@ -446,7 +446,7 @@ function WhatsNewModal({ entry, onDismiss }) {
           </div>
         ))}
         {remaining > 0 && (
-          <div style={{ fontSize: 11, color: '#444', marginTop: 4, marginLeft: 20, fontFamily: "'Inter',sans-serif" }}>+{remaining} more in the changelog</div>
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', marginTop: 4, marginLeft: 20, fontFamily: "'Inter',sans-serif" }}>+{remaining} more in the changelog</div>
         )}
         <button
           onClick={onDismiss}
@@ -589,7 +589,7 @@ const SURVEY_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', '
 function WkChipRow({ label, options, value, onChange }) {
   return (
     <div style={{ marginBottom: 20 }}>
-      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
+      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {options.map(opt => (
           <button key={opt} onClick={() => onChange(opt)} style={{
@@ -628,7 +628,7 @@ function WkRatingRow({ label, question, value, onChange }) {
 function WkOpenText({ label, value, onChange, placeholder, minHeight }) {
   return (
     <div style={{ marginBottom: 20 }}>
-      {label && <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
+      {label && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
       <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder || 'Be specific.'} style={{
         width: '100%', background: '#060606', border: '1px solid #222', borderRadius: 4,
         padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif",
@@ -639,7 +639,7 @@ function WkOpenText({ label, value, onChange, placeholder, minHeight }) {
 }
 
 function WkSection({ title }) {
-  return <div style={{ fontSize: 9, color: '#333', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
+  return <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
 }
 
 // ── End-of-Beta Survey components ───────────────────────────────────────────
@@ -669,7 +669,7 @@ function EobRatingRow({ label, question, value, onChange }) {
 function EobChipRow({ label, options, value, onChange }) {
   return (
     <div style={{ marginBottom: 20 }}>
-      <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
+      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {options.map(opt => (
           <button key={opt} onClick={() => onChange(opt)} style={{
@@ -688,7 +688,7 @@ function EobChipRow({ label, options, value, onChange }) {
 function EobOpenText({ label, value, onChange, placeholder, minHeight }) {
   return (
     <div style={{ marginBottom: 20 }}>
-      {label && <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
+      {label && <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>{label}</div>}
       <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder || 'Be specific.'} style={{
         width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4,
         padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif",
@@ -699,7 +699,7 @@ function EobOpenText({ label, value, onChange, placeholder, minHeight }) {
 }
 
 function EobSection({ title }) {
-  return <div style={{ fontSize: 9, color: '#444', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
+  return <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 16, marginTop: 28, paddingBottom: 8, borderBottom: '1px solid #1a1a1a' }}>{title}</div>
 }
 
 function EndOfBetaModal({ userId, onClose }) {
@@ -803,14 +803,14 @@ function EndOfBetaModal({ userId, onClose }) {
           <div style={{ textAlign: 'center', paddingTop: 80 }}>
             <div style={{ fontSize: 32, marginBottom: 16 }}>✓</div>
             <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 8 }}>Done. Thank you.</div>
-            <div style={{ fontSize: 13, color: '#555', marginBottom: 32 }}>This shapes what comes next.</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', marginBottom: 32 }}>This shapes what comes next.</div>
             <button onClick={onClose} style={{ background: EOB_ACCENT, border: 'none', borderRadius: 4, padding: '12px 32px', fontSize: 11, fontWeight: 600, color: '#fff', cursor: 'pointer', letterSpacing: '0.1em' }}>BACK TO APP</button>
           </div>
         ) : (
           <>
             <div style={{ fontSize: 9, letterSpacing: '0.2em', color: EOB_ACCENT, marginBottom: 6, fontWeight: 600 }}>END OF BETA</div>
             <div style={{ fontSize: 24, color: '#fff', fontWeight: 700, marginBottom: 6 }}>All done. Zoom out.</div>
-            <div style={{ fontSize: 13, color: '#555', marginBottom: 32, lineHeight: 1.6 }}>This is the full debrief. Be specific — this one shapes v1.</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', marginBottom: 32, lineHeight: 1.6 }}>This is the full debrief. Be specific — this one shapes v1.</div>
 
             <EobSection title="OVERALL" />
             <EobRatingRow label="OVERALL RATING" question="How would you rate One Percent?" value={overallRating} onChange={setOverallRating} />
@@ -853,7 +853,7 @@ function EndOfBetaModal({ userId, onClose }) {
             {wouldRefer === 'Yes — who and why' && <EobOpenText value={referDetail} onChange={setReferDetail} placeholder="Who and why?" />}
             <EobChipRow label="WHICH LAUNCH MODEL WOULD MAKE YOU MOST LIKELY TO SHARE IT?" options={['Free with premium tier', 'One-time purchase', 'Subscription', 'Free forever', "Doesn't matter"]} value={launchModel} onChange={setLaunchModel} />
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 11, color: '#666', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>HOW LIKELY ARE YOU TO STILL BE USING THIS IN 6 MONTHS? (1-10)</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>HOW LIKELY ARE YOU TO STILL BE USING THIS IN 6 MONTHS? (1-10)</div>
               <div style={{ display: 'flex', gap: 4 }}>
                 {[1,2,3,4,5,6,7,8,9,10].map(n => (
                   <button key={n} onClick={() => setSixMonth(n)} style={{
@@ -971,7 +971,7 @@ function WeeklySurveyModal({ userId, weekNumber, onClose }) {
               <div>
                 <div style={{ fontSize: 9, color: '#47FFE8', letterSpacing: '0.2em', fontWeight: 700, marginBottom: 6 }}>WEEK {weekNumber} CHECK-IN</div>
                 <div style={{ fontSize: 18, color: '#fff', fontWeight: 700, marginBottom: 4 }}>How's it landing?</div>
-                <div style={{ fontSize: 12, color: '#555', lineHeight: 1.5 }}>Don't be nice — be useful. This shapes what's next.</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', lineHeight: 1.5 }}>Don't be nice — be useful. This shapes what's next.</div>
               </div>
 
             </div>
