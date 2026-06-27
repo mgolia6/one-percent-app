@@ -51,9 +51,9 @@ function WeeklyWrapModal({ userId, weekEntries, onClose }) {
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 24, overflowY: 'auto' }}>
       <div style={{ background: '#111', border: '1px solid #222', borderRadius: 8, padding: 32, maxWidth: 440, width: '100%', margin: 'auto' }}>
-        <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY WRAP</div>
+        <div style={{ fontSize: 9, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.62)', marginBottom: 6, fontWeight: 600 }}>WEEKLY WRAP</div>
         <div style={{ fontSize: 22, color: '#fff', fontWeight: 600, marginBottom: 6, lineHeight: 1.3 }}>Here's what you learned this week.</div>
-        <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>
+        <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', marginBottom: 28, lineHeight: 1.6 }}>
           {weekEntries.length} concept{weekEntries.length !== 1 ? 's' : ''}. One percent at a time.
         </div>
 
@@ -66,12 +66,12 @@ function WeeklyWrapModal({ userId, weekEntries, onClose }) {
                   <div>
                     <div style={{ fontSize: 11, color: accent, letterSpacing: '0.08em', marginBottom: 4 }}>{e.category}</div>
                     <div style={{ fontSize: 14, color: '#eee', fontWeight: 500 }}>{e.concept}</div>
-                    <div style={{ fontSize: 12, color: '#555', marginTop: 4, lineHeight: 1.5 }}>{e.hook}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', marginTop: 4, lineHeight: 1.5 }}>{e.hook}</div>
                   </div>
                   {e.score !== null && (
-                    <div style={{ flexShrink: 0, fontSize: 11, color: '#444', textAlign: 'right' }}>
+                    <div style={{ flexShrink: 0, fontSize: 11, color: 'rgba(255,255,255,0.55)', textAlign: 'right' }}>
                       <div style={{ fontSize: 16, color: e.score >= 2 ? '#4ade80' : '#f87171', fontWeight: 600 }}>{e.score}/3</div>
-                      <div style={{ fontSize: 9, letterSpacing: '0.08em', color: '#444', marginTop: 2 }}>QUIZ</div>
+                      <div style={{ fontSize: 9, letterSpacing: '0.08em', color: 'rgba(255,255,255,0.55)', marginTop: 2 }}>QUIZ</div>
                     </div>
                   )}
                 </div>
@@ -80,7 +80,7 @@ function WeeklyWrapModal({ userId, weekEntries, onClose }) {
           })}
         </div>
 
-        <div style={{ fontSize: 13, color: '#555', lineHeight: 1.7, marginBottom: 24, paddingTop: 16, borderTop: '1px solid #1a1a1a' }}>
+        <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', lineHeight: 1.7, marginBottom: 24, paddingTop: 16, borderTop: '1px solid #1a1a1a' }}>
           Every concept you learned this week is a tool you can use today. The reps compound.
         </div>
 
@@ -124,7 +124,7 @@ function WeeklyFeedbackModal({ userId, onClose }) {
 
   const RatingRow = ({ label, field }) => (
     <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', marginBottom: 8 }}>{label}</div>
       <div style={{ display: 'flex', gap: 6 }}>
         {[1,2,3,4,5].map(n => (
           <button key={n} onClick={() => setRatings(r => ({ ...r, [field]: n }))} style={{
@@ -143,20 +143,20 @@ function WeeklyFeedbackModal({ userId, onClose }) {
         {done ? (
           <div style={{ textAlign: 'center', padding: '24px 0' }}>
             <div style={{ fontSize: 13, color: '#47FFE8', letterSpacing: '0.08em' }}>FEEDBACK RECEIVED</div>
-            <div style={{ fontSize: 12, color: '#555', marginTop: 8 }}>This helps a lot. For real.</div>
+            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.62)', marginTop: 8 }}>This helps a lot. For real.</div>
           </div>
         ) : (
           <>
-            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: '#555', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN</div>
+            <div style={{ fontSize: 9, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.62)', marginBottom: 6, fontWeight: 600 }}>WEEKLY CHECK-IN</div>
             <div style={{ fontSize: 18, color: '#fff', fontWeight: 600, marginBottom: 6 }}>One week in. Be honest.</div>
-            <div style={{ fontSize: 13, color: '#555', marginBottom: 28, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', marginBottom: 28, lineHeight: 1.6 }}>This feedback directly shapes what One Percent becomes. Don't be nice — be useful.</div>
 
             <RatingRow label="CLARITY — How clear is the content?" field="clarity" />
             <RatingRow label="RELEVANCE — How useful to your actual work?" field="relevance" />
             <RatingRow label="QUIZ — Is it testing the right things?" field="quiz" />
 
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', marginBottom: 8 }}>WOULD YOU RECOMMEND THIS TO SOMEONE?</div>
               <div style={{ display: 'flex', gap: 8 }}>
                 {['Yes', 'Not yet', 'No'].map(v => (
                   <button key={v} onClick={() => setWouldRecommend(v)} style={{
@@ -169,12 +169,12 @@ function WeeklyFeedbackModal({ userId, onClose }) {
             </div>
 
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT'S MISSING OR SHOULD BE DIFFERENT?</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', marginBottom: 8 }}>WHAT'S MISSING OR SHOULD BE DIFFERENT?</div>
               <textarea value={missing} onChange={e => setMissing(e.target.value)} placeholder="Be specific." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
             </div>
 
             <div style={{ marginBottom: 24 }}>
-              <div style={{ fontSize: 11, color: '#555', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN SO FAR — anything you actually used?</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', marginBottom: 8 }}>BIGGEST WIN SO FAR — anything you actually used?</div>
               <textarea value={biggestWin} onChange={e => setBiggestWin(e.target.value)} placeholder="Even small counts." style={{ width: '100%', background: '#0a0a0a', border: '1px solid #222', borderRadius: 4, padding: '12px 14px', fontSize: 13, color: '#bbb', fontFamily: "'Inter',sans-serif", resize: 'vertical', minHeight: 72, outline: 'none' }} />
             </div>
 
@@ -352,13 +352,13 @@ export default function EntryPage() {
 
   if (loading) return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 11, color: '#333', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
+      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.2em', fontFamily: "'Inter',sans-serif" }}>LOADING...</div>
     </div>
   )
 
   if (error) return (
     <div style={{ minHeight: '100vh', background: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontSize: 13, color: '#555', fontFamily: "'Inter',sans-serif" }}>{error}</div>
+      <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', fontFamily: "'Inter',sans-serif" }}>{error}</div>
     </div>
   )
 
@@ -383,11 +383,11 @@ export default function EntryPage() {
           animation: 'fadeInFb 0.4s ease forwards',
         }}>
           <style>{`@keyframes fadeInFb { from { opacity: 0; } to { opacity: 1; } }`}</style>
-          <div style={{ fontSize: 9, letterSpacing: '0.25em', color: '#333', fontWeight: 600, marginBottom: 32, fontFamily: "'Inter',sans-serif" }}>ONE PERCENT</div>
+          <div style={{ fontSize: 9, letterSpacing: '0.25em', color: 'rgba(255,255,255,0.45)', fontWeight: 600, marginBottom: 32, fontFamily: "'Inter',sans-serif" }}>ONE PERCENT</div>
           <div style={{ fontSize: 36, fontWeight: 500, color: '#fff', letterSpacing: '-0.02em', marginBottom: 16, textAlign: 'center', lineHeight: 1.2, fontFamily: "'Inter',sans-serif" }}>
             Logged.
           </div>
-          <div style={{ fontSize: 13, color: '#444', letterSpacing: '0.04em', textAlign: 'center', maxWidth: 260, lineHeight: 1.8, fontFamily: "'Inter',sans-serif" }}>
+          <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.04em', textAlign: 'center', maxWidth: 260, lineHeight: 1.8, fontFamily: "'Inter',sans-serif" }}>
             That helps. For real.
           </div>
           <div style={{ marginTop: 20, width: 32, height: 2, borderRadius: 1, background: feedbackAccent, opacity: 0.6 }} />
