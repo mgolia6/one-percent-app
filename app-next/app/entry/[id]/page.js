@@ -288,7 +288,7 @@ export default function EntryPage() {
       const { data: comp } = await supabase.from('completions').select('*').eq('user_id', session.user.id).eq('entry_number', entryId).single()
       if (cancelled) return
       const streak = prof.current_streak || 0
-      setUserStats({ answers: comp?.answers || null, streak })
+      setUserStats({ answers: comp?.answers || null, score: comp?.score ?? null, streak })
       setLoading(false)
 
       // Analytics: identify user once per session load

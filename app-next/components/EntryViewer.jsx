@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
 import analytics from '@/lib/analytics'
+import LockItIn from './LockItIn'
 
 function Celebration({ score, accent, onDone }) {
   const canvasRef = useRef(null)
@@ -332,6 +333,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [mode, setMode] = useState('choose') // 'choose' | 'quiz' | 'chat'
+  const [chatScore, setChatScore] = useState(null)
   const [showCelebration, setShowCelebration] = useState(false)
   const [srcOpen, setSrcOpen] = useState(false)
   const [showEntryFeedback, setShowEntryFeedback] = useState(false)
@@ -350,8 +353,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
 
   useEffect(() => {
     if (userStats && userStats.answers) {
-      setAnswers(userStats.answers)
       setSubmitted(true)
+      if (userStats.answers.mode === 'chat') {
+        setMode('chat')
+        setChatScore(userStats.score ?? null)
+      } else {
+        setAnswers(userStats.answers)
+        setMode('quiz')
+      }
     }
   }, [userStats])
 
@@ -362,6 +371,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
 
   const allAnswered = entry.quiz.every((_, i) => answers[i] !== undefined)
   const score = entry.quiz.filter((q, i) => answers[i] === q.correct).length
+  // Score shown in the result box: chat score when in conversational mode, else quiz score.
+  const displayScore = mode === 'chat' ? (chatScore ?? 0) : score
 
   const handleSubmit = () => {
     if (!allAnswered) return
@@ -385,17 +396,41 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     if (onComplete) onComplete({ score, timeToQuiz, answers })
   }
 
+  // Completion path for the conversational "Lock It In" mode — mirrors handleSubmit
+  // so streak/leaderboard/feedback all behave identically to the quiz.
+  const handleChatComplete = ({ score: s, answers: chatAnswers }) => {
+    if (submitted) return
+    const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
+    setChatScore(s)
+    setSubmitted(true)
+    if (s >= 2) setShowCelebration(true)
+    if (!feedbackShown.current) {
+      feedbackShown.current = true
+      setShowEntryFeedback(true)
+    }
+    setTimeout(() => completionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400)
+    analytics.quizSubmitted({
+      entryNumber: entry.number,
+      category: entry.category,
+      concept: entry.concept,
+      score: s,
+      maxScore: 3,
+      timeToQuizMs: Date.now() - startTime,
+    })
+    if (onComplete) onComplete({ score: s, timeToQuiz, answers: chatAnswers || { mode: 'chat' } })
+  }
+
   const tabs = [
     { id: 'morning', label: 'CONCEPT', icon: BookOpen },
     { id: 'midday', label: 'IN THE WILD', icon: Lightbulb },
     { id: 'evening', label: 'LOCK IT IN', icon: Award },
   ]
 
-  const scoreBg = score === 3 ? 'op-score-perfect' : score === 2 ? 'op-score-close' : 'op-score-low'
-  const scoreBorder = score === 3 ? ACCENT : score === 2 ? '#606060' : '#333'
-  const scoreColor = score === 3 ? ACCENT : score === 2 ? '#ccc' : '#555'
-  const scoreLabel = score === 3 ? 'PERFECT SCORE' : score === 2 ? 'ALMOST THERE' : score === 1 ? 'KEEP GOING' : 'REVIEW & RETRY'
-  const scoreSub = score === 3 ? "You've got this one locked in." : score === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
+  const scoreBg = displayScore === 3 ? 'op-score-perfect' : displayScore === 2 ? 'op-score-close' : 'op-score-low'
+  const scoreBorder = displayScore === 3 ? ACCENT : displayScore === 2 ? '#606060' : '#333'
+  const scoreColor = displayScore === 3 ? ACCENT : displayScore === 2 ? '#ccc' : '#555'
+  const scoreLabel = displayScore === 3 ? 'PERFECT SCORE' : displayScore === 2 ? 'ALMOST THERE' : displayScore === 1 ? 'KEEP GOING' : 'REVIEW & RETRY'
+  const scoreSub = displayScore === 3 ? "You've got this one locked in." : displayScore === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
 
   return (
     <div style={{ background: T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, transition: 'background 0.6s ease, color 0.4s ease' }}>
@@ -525,6 +560,28 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         {tab === 'evening' && (
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
+
+            {/* Mode chooser: conversational recall vs. multiple-choice quiz */}
+            {mode === 'choose' && !submitted && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 8 }}>
+                <button onClick={() => setMode('chat')} style={{ textAlign: 'left', background: ACCENT, border: 'none', borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#0A0A0A' }}>Lock it in with AI →</div>
+                  <div style={{ fontSize: 11, color: 'rgba(10,10,10,0.7)', marginTop: 3, lineHeight: 1.5 }}>A short back-and-forth — explain it, apply it, defend it.</div>
+                </button>
+                <button onClick={() => setMode('quiz')} style={{ textAlign: 'left', background: 'none', border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: T.text }}>Take the quick quiz</div>
+                  <div style={{ fontSize: 11, color: T.textDim, marginTop: 3, lineHeight: 1.5 }}>3 multiple-choice questions.</div>
+                </button>
+              </div>
+            )}
+
+            {/* Conversational "Lock It In" */}
+            {mode === 'chat' && !submitted && (
+              <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
+            )}
+
+            {/* Multiple-choice quiz */}
+            {mode === 'quiz' && (<>
             {entry.quiz.map((q, qi) => (
               <div key={qi} style={{ marginBottom: 28 }}>
                 <div style={{ fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
@@ -544,14 +601,15 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             ))}
 
             {!submitted && <button className="op-submit-btn" onClick={handleSubmit} disabled={!allAnswered}>SUBMIT</button>}
+            </>)}
 
             {submitted && (
               <>
                 <div ref={scoreRef} className={`op-score-box ${scoreBg}`} style={{ border: `2px solid ${scoreBorder}` }}>
-                  <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{score}/3</div>
+                  <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{displayScore}/3</div>
                   <div style={{ fontSize: 13, letterSpacing: '0.15em', color: score === 3 ? T.text : T.textDim, marginTop: 6 }}>{scoreLabel}</div>
                   <div style={{ fontSize: 12, color: T.textDim, marginTop: 8, lineHeight: 1.5 }}>{scoreSub}</div>
-                  {score < 3 && (
+                  {mode === 'quiz' && displayScore < 3 && (
                     <div style={{ marginTop: 18 }}>
                       <button
                         onClick={() => { setAnswers({}); setSubmitted(false); setShowCelebration(false); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50) }}
