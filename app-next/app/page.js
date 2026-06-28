@@ -10,6 +10,7 @@ import { getUnlockedCount } from '@/lib/unlock'
 import { getDueCount } from '@/lib/lockins'
 import analytics from '@/lib/analytics'
 import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
+import OnThisDay from '@/components/OnThisDay'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1846,6 +1847,9 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* On This Day — daily bonus card (real Wikipedia events, AI framing) */}
+          <OnThisDay />
 
           {/* Today */}
           <div style={S.secLabel}>Today</div>
