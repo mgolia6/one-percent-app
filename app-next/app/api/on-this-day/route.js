@@ -2,6 +2,9 @@ import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
 export const runtime = 'nodejs'
+// Never CDN-cache: the route reads/writes the daily card, so each call (esp. the
+// cron) must actually execute. The DB row is the cache layer, not the CDN.
+export const dynamic = 'force-dynamic'
 
 // Vercel stores the key as CLAUDE_API_KEY; fall back to ANTHROPIC_API_KEY for local dev.
 const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY })
@@ -50,7 +53,7 @@ export async function GET(req) {
       const { data: cached } = await adminDb.from('on_this_day').select('*').eq('date', isoDate).maybeSingle()
       if (cached?.event) {
         return new Response(JSON.stringify(cached), {
-          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' },
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
         })
       }
     }
@@ -118,7 +121,7 @@ export async function GET(req) {
     }
 
     return new Response(JSON.stringify(card), {
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' },
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
     })
   } catch (err) {
     return new Response(JSON.stringify({ error: err?.message || 'Something went wrong' }), { status: 500 })
