@@ -7,6 +7,7 @@ import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { CATEGORIES, CATEGORY_KEYS } from '@/lib/categories'
 import { getUnlockedCount } from '@/lib/unlock'
+import { getDueCount } from '@/lib/lockins'
 import analytics from '@/lib/analytics'
 import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
 
@@ -1121,6 +1122,7 @@ export default function HomePage() {
   const [user, setUser] = useState(null)
   const [profile, setProfile] = useState(null)
   const [completions, setCompletions] = useState({})
+  const [dueCount, setDueCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showBug, setShowBug] = useState(false)
@@ -1189,6 +1191,9 @@ export default function HomePage() {
       const compMap = {}
       if (comps) comps.forEach(c => { compMap[c.entry_number] = c })
       setCompletions(compMap)
+
+      // Spaced-repetition: how many lock-ins are due for review right now.
+      getDueCount(session.user.id).then(setDueCount).catch(() => {})
 
       // Build category breakdown for badge check
       const ENTRY_CATS_INIT = [
@@ -1756,6 +1761,8 @@ export default function HomePage() {
           </button>
         </div>
         <div className="action-strip" style={S.actionStrip}>
+          <button style={{ ...S.asBtn, color: dueCount > 0 ? '#47FFE8' : 'rgba(26,42,58,0.55)', fontWeight: dueCount > 0 ? 600 : 400, borderColor: dueCount > 0 ? 'rgba(71,255,232,0.35)' : undefined }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
+          <div style={S.sep} />
           <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#b8a000' : 'rgba(26,42,58,0.55)', fontWeight: hasUnseenChangelog ? 600 : 400 }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
           <div style={S.sep} />
           <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
@@ -1788,6 +1795,9 @@ export default function HomePage() {
               <span style={{ fontSize: 16 }}>{t.icon}</span>{t.label}
             </div>
           ))}
+          <div onClick={() => router.push('/review')} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4, background: 'transparent', color: dueCount > 0 ? '#47FFE8' : 'rgba(232,238,245,0.45)', fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: dueCount > 0 ? 600 : 400, transition: 'all 0.15s' }}>
+            <span style={{ fontSize: 16 }}>📌</span>Review{dueCount > 0 ? ` · ${dueCount}` : ''}
+          </div>
         </div>
         <div style={{ padding: '16px 16px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           <div onClick={() => setShowBug(true)} style={{ fontSize: 12, color: '#FF4778', cursor: 'pointer', padding: '6px 16px', fontFamily: "'DM Mono', monospace", letterSpacing: '0.08em' }}>BUG</div>
