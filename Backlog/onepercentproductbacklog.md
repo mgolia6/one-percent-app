@@ -19,6 +19,33 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 | ~~Dark-on-dark in welcome/boot~~ | ✅ Wordmark + "TAP TO CONTINUE" were `#2a2a2a` on near-black → `rgba(255,255,255,0.3/0.4)` |
 | ~~Claude Code hooks~~ | ✅ PreToolUse (missing-file block + vercel.json check) + Stop (build check) in `.claude/` |
 
+## ⚙️ Env / setup checklist (Vercel)
+
+| Var | For | Status |
+|---|---|---|
+| `CLAUDE_API_KEY` | Deep Cut, Lock It In, On This Day, feedback summary | ✅ set |
+| `SUPABASE_SERVICE_ROLE_KEY` | On This Day cron self-cache (route persists daily card) | ✅ set |
+| `POSTHOG_PERSONAL_KEY` | Admin Analytics tab (PostHog query API needs a `phx_` personal key) | ⏳ **needs adding** — then redeploy |
+
+Note: the old `NEXT_PUBLIC_POSTHOG_KEY` is the public **ingest** key (`phc_`) and can't read the query API — that was why Analytics 401'd. Queries now proxy through `/api/admin/analytics` (admin-authed, server-side key).
+
+## ✅ Shipped 2026-06-28 (admin overhaul)
+
+| Item | Notes |
+|---|---|
+| ~~On This Day un-gated~~ | ✅ Live for all users (card + archive); backfill stays admin-only |
+| ~~On This Day daily cron + backfill~~ | ✅ `send-otd` via route self-cache (service key) + admin backfill 7/30/90 days; verified end-to-end |
+| ~~Admin responsive user cards~~ | ✅ Stats reflow below identity on mobile; KPI grid 2-col |
+| ~~Feedback: surveys surfaced~~ | ✅ Check-in Surveys section (7/14/21/30-day) with ratings; weekly blob now parsed into a key/value table (was a wall of text) |
+| ~~Feedback: summary + AI~~ | ✅ Aggregate card + ✦ Summarize with AI (`/api/admin/feedback-summary`) |
+| ~~Feedback: addressed toggle~~ | ✅ Mark synthesized/addressed (feedback.reviewed); added admin UPDATE policy |
+| ~~Admin phone entry for users~~ | ✅ Edit any user's phone from the card; admin profiles-update policy via `is_admin()` |
+| ~~Admin systems strip~~ | ✅ Keep It Sharp / Lock It In / On This Day visibility |
+| ~~Bug triage~~ | ✅ Won't-fix + reopen, filters w/ counts, optimistic, mobile |
+| ~~API Health: email-blast bug~~ | ✅ Removed; it invoked real senders on every check. New safe `/api/health` (Claude + env) |
+| ~~Admin dark theme~~ | ✅ Converted to app dark system (#0e141c / #1a2a3a) |
+| ~~Analytics PostHog key fix~~ | ✅ Proxied via `/api/admin/analytics` (needs `POSTHOG_PERSONAL_KEY`) |
+
 ## 🔜 New / queued (from 2026-06-28)
 
 | ID | Item | Notes |

@@ -39,6 +39,45 @@ function engagementColor(lastActive) {
   return '#FF4778'
 }
 
+// Weekly surveys cram every answer into one pipe-delimited string
+// ("entries:1-2 | time:No pattern | device:Phone | ..."). Parse it back into
+// key/value pairs so it can render as a scannable table instead of a wall.
+function parseKV(text) {
+  if (!text || !text.includes('|') || !text.includes(':')) return null
+  const parts = text.split('|').map(s => s.trim()).filter(Boolean)
+  const pairs = []
+  for (const p of parts) {
+    const idx = p.indexOf(':')
+    if (idx === -1) return null // not clean key:value — treat as free text
+    const k = p.slice(0, idx).trim()
+    const v = p.slice(idx + 1).trim()
+    if (!k) return null
+    pairs.push({ k, v })
+  }
+  return pairs.length >= 2 ? pairs : null
+}
+
+function SurveyDetail({ text }) {
+  const pairs = parseKV(text)
+  if (!pairs) {
+    return (
+      <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6 }}>
+        <span style={{ color: ORANGE, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>NOTES</span>{text}
+      </div>
+    )
+  }
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(88px,auto) 1fr', gap: '7px 12px', alignItems: 'baseline' }}>
+      {pairs.map((p, i) => (
+        <React.Fragment key={i}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8.5, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.4)', textTransform: 'uppercase' }}>{p.k.replace(/_/g, ' ')}</div>
+          <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.45 }}>{p.v}</div>
+        </React.Fragment>
+      ))}
+    </div>
+  )
+}
+
 function StatusDot({ color }) {
   return <span style={{ width: 8, height: 8, borderRadius: '50%', background: color, display: 'inline-block', flexShrink: 0 }} />
 }
@@ -850,8 +889,8 @@ export default function AdminPage() {
                           ) : null)}
                         </div>
                       )}
-                      {f.biggest_win && <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.6, marginBottom: f.missing_topics || f.comment ? 6 : 0 }}><span style={{ color: CYAN, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>WIN</span>"{f.biggest_win}"</div>}
-                      {f.missing_topics && <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6, marginBottom: f.comment ? 6 : 0 }}><span style={{ color: ORANGE, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>MISSING</span>{f.missing_topics}</div>}
+                      {f.biggest_win && <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.6, marginBottom: f.missing_topics || f.comment ? 10 : 0 }}><span style={{ color: CYAN, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>WIN</span>"{f.biggest_win}"</div>}
+                      {f.missing_topics && <div style={{ marginBottom: f.comment ? 10 : 0, paddingTop: 10, borderTop: '1px solid rgba(255,255,255,0.06)' }}><SurveyDetail text={f.missing_topics} /></div>}
                       {f.comment && <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6 }}>{f.comment}</div>}
                     </Card>
                   ))}
@@ -892,8 +931,8 @@ export default function AdminPage() {
                       )}
                     </div>
 
-                    {/* Comments */}
-                    {items.filter(f => f.comment || f.biggest_win || f.missing_topics).slice(0, 5).map((f, i) => (
+                    {/* Comments (surveys have their own section above) */}
+                    {items.filter(f => !SURVEY_TYPES.includes(f.feedback_type) && (f.comment || f.biggest_win || f.missing_topics)).slice(0, 5).map((f, i) => (
                       <div key={i} style={{ borderTop: '1px solid rgba(232,238,245,0.07)', paddingTop: 12, marginTop: 12, opacity: f.reviewed ? 0.6 : 1 }}>
                         <div style={{ display: 'flex', gap: 8, marginBottom: 6, alignItems: 'center', flexWrap: 'wrap' }}>
                           <Chip label={f.feedback_type?.replace('_', '-').toUpperCase() || 'FEEDBACK'} color={f.feedback_type === 'weekly' ? YELLOW : f.feedback_type === 'end_of_beta' ? PINK : CYAN} />
@@ -908,8 +947,8 @@ export default function AdminPage() {
                         )}
                       </div>
                     ))}
-                    {items.filter(f => f.comment || f.biggest_win).length > 5 && (
-                      <div style={{ marginTop: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', cursor: 'pointer' }}>+{items.filter(f => f.comment || f.biggest_win).length - 5} MORE</div>
+                    {items.filter(f => !SURVEY_TYPES.includes(f.feedback_type) && (f.comment || f.biggest_win)).length > 5 && (
+                      <div style={{ marginTop: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', cursor: 'pointer' }}>+{items.filter(f => !SURVEY_TYPES.includes(f.feedback_type) && (f.comment || f.biggest_win)).length - 5} MORE</div>
                     )}
                   </Card>
                 )
