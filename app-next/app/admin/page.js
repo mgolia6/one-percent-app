@@ -320,18 +320,19 @@ export default function AdminPage() {
   async function loadAnalytics() {
     setAnalyticsLoading(true)
     setAnalyticsError(null)
-    const PH_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
-    const PH_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com'
-    const PH_PROJECT = '470392'
+    const { data: { session } } = await supabase.auth.getSession()
+    const token = session?.access_token
 
+    // Queries run server-side via /api/admin/analytics (holds the PostHog
+    // personal key; verifies this caller is an admin).
     async function phQuery(query) {
-      const res = await fetch(`${PH_HOST}/api/projects/${PH_PROJECT}/query/`, {
+      const res = await fetch('/api/admin/analytics', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${PH_KEY}` },
-        body: JSON.stringify({ query: { kind: 'HogQLQuery', query } }),
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ query }),
       })
-      if (!res.ok) throw new Error(`PostHog ${res.status}: ${await res.text()}`)
       const json = await res.json()
+      if (!res.ok) throw new Error(json.error || `Analytics ${res.status}`)
       return json.results || []
     }
 
