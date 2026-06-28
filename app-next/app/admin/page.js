@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { CATEGORIES } from '@/lib/categories'
 
-const ACCENT = '#1a2a3a'
+const ACCENT = '#33506e'
 const CYAN = '#47FFE8'
 const YELLOW = '#E8FF47'
 const PINK = '#FF4778'
@@ -59,9 +59,9 @@ function ReviewToggle({ reviewed, onToggle }) {
       style={{
         fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.08em', padding: '5px 10px',
         borderRadius: 7, cursor: 'pointer', fontWeight: 600, whiteSpace: 'nowrap',
-        border: reviewed ? `1px solid ${CYAN}` : '1px solid rgba(26,42,58,0.18)',
+        border: reviewed ? `1px solid ${CYAN}` : '1px solid rgba(232,238,245,0.18)',
         background: reviewed ? `${CYAN}18` : 'transparent',
-        color: reviewed ? '#0a8a78' : 'rgba(26,42,58,0.45)',
+        color: reviewed ? CYAN : 'rgba(232,238,245,0.45)',
       }}
     >
       {reviewed ? '✓ ADDRESSED' : 'MARK ADDRESSED'}
@@ -71,7 +71,7 @@ function ReviewToggle({ reviewed, onToggle }) {
 
 function Card({ children, style }) {
   return (
-    <div style={{ background: '#fff', borderRadius: 14, padding: '18px 20px', border: '1px solid rgba(26,42,58,0.08)', boxShadow: '0 1px 4px rgba(26,42,58,0.04)', ...style }}>
+    <div style={{ background: '#1a2a3a', borderRadius: 14, padding: '18px 20px', border: '1px solid rgba(232,238,245,0.08)', boxShadow: '0 1px 4px rgba(232,238,245,0.04)', ...style }}>
       {children}
     </div>
   )
@@ -79,7 +79,7 @@ function Card({ children, style }) {
 
 function SectionLabel({ children }) {
   return (
-    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.4)', marginBottom: 12, marginTop: 4 }}>
+    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.2em', color: 'rgba(232,238,245,0.4)', marginBottom: 12, marginTop: 4 }}>
       {children}
     </div>
   )
@@ -91,7 +91,7 @@ function TabBtn({ id, label, active, onClick, badge }) {
       padding: '9px 16px', borderRadius: 8, border: 'none', cursor: 'pointer',
       fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em',
       background: active ? ACCENT : 'transparent',
-      color: active ? '#fff' : 'rgba(26,42,58,0.5)',
+      color: active ? '#fff' : 'rgba(232,238,245,0.5)',
       fontWeight: active ? 600 : 400, whiteSpace: 'nowrap', flexShrink: 0,
       position: 'relative', transition: 'all 0.15s',
     }}>
@@ -415,8 +415,8 @@ export default function AdminPage() {
   }
 
   if (loading) return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.2em', color: 'rgba(26,42,58,0.4)' }}>LOADING...</div>
+    <div style={{ minHeight: '100vh', background: '#0e141c', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.2em', color: 'rgba(232,238,245,0.4)' }}>LOADING...</div>
     </div>
   )
 
@@ -462,7 +462,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', sans-serif", color: '#1a2a3a' }}>
+    <div style={{ minHeight: '100vh', background: '#0e141c', fontFamily: "'DM Sans', sans-serif", color: '#e8eef5' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
@@ -485,27 +485,27 @@ export default function AdminPage() {
           .au-head{flex-wrap:wrap;gap:10px 12px;}
           .au-id{order:1;}
           .au-actions{order:2;margin-left:auto;}
-          .au-stats{order:3;flex-basis:100%;justify-content:space-between;gap:8px;border-top:1px solid rgba(26,42,58,0.07);padding-top:12px;}
+          .au-stats{order:3;flex-basis:100%;justify-content:space-between;gap:8px;border-top:1px solid rgba(232,238,245,0.07);padding-top:12px;}
         }
       `}</style>
 
       {/* NUDGE MODAL */}
       {nudgeUser && (
         <div className="nudge-overlay" onClick={e => e.target.className === 'nudge-overlay' && setNudgeUser(null)}>
-          <div style={{ background: '#fff', width: '100%', maxWidth: 480, borderRadius: '20px 20px 0 0', padding: '24px 24px 48px' }}>
-            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(26,42,58,0.12)', margin: '0 auto 20px' }} />
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>NUDGE</div>
-            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em', color: '#1a2a3a', marginBottom: 4 }}>{nudgeUser.first_name || nudgeUser.email}</div>
-            <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.5)', marginBottom: 20 }}>{nudgeUser.phone ? nudgeUser.phone : 'No phone number on file — SMS unavailable'}</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.5)', marginBottom: 8 }}>MESSAGE</div>
+          <div style={{ background: '#1a2a3a', width: '100%', maxWidth: 480, borderRadius: '20px 20px 0 0', padding: '24px 24px 48px' }}>
+            <div style={{ width: 36, height: 4, borderRadius: 2, background: 'rgba(232,238,245,0.12)', margin: '0 auto 20px' }} />
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 6 }}>NUDGE</div>
+            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em', color: '#e8eef5', marginBottom: 4 }}>{nudgeUser.first_name || nudgeUser.email}</div>
+            <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.5)', marginBottom: 20 }}>{nudgeUser.phone ? nudgeUser.phone : 'No phone number on file — SMS unavailable'}</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.5)', marginBottom: 8 }}>MESSAGE</div>
             <textarea
               value={nudgeMsg}
               onChange={e => setNudgeMsg(e.target.value)}
               placeholder={`Hey ${nudgeUser.first_name || 'there'}, just checking in — how's One Percent going?`}
-              style={{ width: '100%', background: 'rgba(26,42,58,0.04)', border: '1px solid rgba(26,42,58,0.12)', borderRadius: 10, padding: '12px 14px', fontSize: 14, color: '#1a2a3a', minHeight: 100, outline: 'none', fontFamily: "'DM Sans', sans-serif", marginBottom: 14 }}
+              style={{ width: '100%', background: 'rgba(232,238,245,0.04)', border: '1px solid rgba(232,238,245,0.12)', borderRadius: 10, padding: '12px 14px', fontSize: 14, color: '#e8eef5', minHeight: 100, outline: 'none', fontFamily: "'DM Sans', sans-serif", marginBottom: 14 }}
             />
             <div style={{ display: 'flex', gap: 8 }}>
-              <button onClick={() => setNudgeUser(null)} style={{ flex: 1, padding: 12, background: 'transparent', border: '1px solid rgba(26,42,58,0.12)', borderRadius: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>CANCEL</button>
+              <button onClick={() => setNudgeUser(null)} style={{ flex: 1, padding: 12, background: 'transparent', border: '1px solid rgba(232,238,245,0.12)', borderRadius: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>CANCEL</button>
               <button
                 onClick={() => {
                   if (nudgeUser.phone) {
@@ -515,7 +515,7 @@ export default function AdminPage() {
                   }
                   setNudgeUser(null)
                 }}
-                style={{ flex: 2, padding: 12, background: '#1a2a3a', border: 'none', borderRadius: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#fff', cursor: 'pointer', fontWeight: 600 }}
+                style={{ flex: 2, padding: 12, background: '#33506e', border: 'none', borderRadius: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#fff', cursor: 'pointer', fontWeight: 600 }}
               >
                 {nudgeUser.phone ? 'SEND SMS →' : 'COPY MESSAGE →'}
               </button>
@@ -525,17 +525,17 @@ export default function AdminPage() {
       )}
 
       {/* HEADER */}
-      <div className="admin-header" style={{ background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)', padding: '14px 24px' }}>
+      <div className="admin-header" style={{ background: 'rgba(14,20,28,0.9)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(232,238,245,0.07)', padding: '14px 24px' }}>
         <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' }}>ONE PERCENT</span>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#e8eef5' }}>ONE PERCENT</span>
             <Chip label="ADMIN" color={CYAN} />
           </div>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-            <button onClick={refreshAll} disabled={refreshing} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.12)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>
+            <button onClick={refreshAll} disabled={refreshing} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.12)', background: 'transparent', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>
               {refreshing ? 'REFRESHING…' : '↺ REFRESH'}
             </button>
-            <button onClick={() => router.push('/')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: 'none', background: '#1a2a3a', color: '#fff', cursor: 'pointer' }}>← APP</button>
+            <button onClick={() => router.push('/')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: 'none', background: '#33506e', color: '#fff', cursor: 'pointer' }}>← APP</button>
           </div>
         </div>
       </div>
@@ -554,7 +554,7 @@ export default function AdminPage() {
             }).reduce((a, c) => a + c.count, 0) / nonAdminUsers.length) : 0, color: PURPLE },
           ].map(k => (
             <Card key={k.label} style={{ padding: '14px 16px' }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(26,42,58,0.4)', marginBottom: 8 }}>{k.label}</div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.4)', marginBottom: 8 }}>{k.label}</div>
               <div style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.025em', color: k.color, lineHeight: 1 }}>{k.val}</div>
             </Card>
           ))}
@@ -563,7 +563,7 @@ export default function AdminPage() {
         {/* SYSTEMS STRIP — Keep It Sharp + On This Day */}
         {systems && (
           <Card style={{ marginBottom: 24, padding: '14px 18px' }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.16em', color: 'rgba(26,42,58,0.4)', marginBottom: 12 }}>SYSTEMS</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.16em', color: 'rgba(232,238,245,0.4)', marginBottom: 12 }}>SYSTEMS</div>
             <div className="admin-kpis">
               {[
                 { label: 'SHARP · ACTIVE', val: systems.lockinsActive, sub: `${systems.lockinsUsers} user${systems.lockinsUsers === 1 ? '' : 's'}`, color: CYAN },
@@ -572,9 +572,9 @@ export default function AdminPage() {
                 { label: 'ON THIS DAY', val: systems.otdCount, sub: systems.otdToday ? "today ✓" : 'today pending', color: systems.otdToday ? YELLOW : ORANGE },
               ].map(s => (
                 <div key={s.label}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>{s.label}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.4)', marginBottom: 6 }}>{s.label}</div>
                   <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.025em', color: s.color, lineHeight: 1 }}>{s.val}</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: 'rgba(26,42,58,0.35)', marginTop: 4 }}>{s.sub}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.35)', marginTop: 4 }}>{s.sub}</div>
                 </div>
               ))}
             </div>
@@ -582,7 +582,7 @@ export default function AdminPage() {
         )}
 
         {/* TAB NAV */}
-        <div className="admin-tabs" style={{ display: 'flex', gap: 4, overflowX: 'auto', scrollbarWidth: 'none', background: 'rgba(26,42,58,0.05)', borderRadius: 12, padding: 4, marginBottom: 24 }}>
+        <div className="admin-tabs" style={{ display: 'flex', gap: 4, overflowX: 'auto', scrollbarWidth: 'none', background: 'rgba(232,238,245,0.05)', borderRadius: 12, padding: 4, marginBottom: 24 }}>
           <TabBtn id="users" label="USERS" active={tab==='users'} onClick={setTab} />
           <TabBtn id="bugs" label="BUGS" active={tab==='bugs'} onClick={setTab} badge={openBugs.length} />
           <TabBtn id="feedback" label="FEEDBACK" active={tab==='feedback'} onClick={setTab} />
@@ -611,25 +611,25 @@ export default function AdminPage() {
                       <StatusDot color={dotColor} />
                       <div style={{ minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-                          <span className="au-ell" style={{ fontSize: 15, fontWeight: 600, color: '#1a2a3a', maxWidth: '100%' }}>{name}</span>
+                          <span className="au-ell" style={{ fontSize: 15, fontWeight: 600, color: '#e8eef5', maxWidth: '100%' }}>{name}</span>
                           {!u.onboarding_complete && <Chip label="ONBOARDING" color={ORANGE} />}
                         </div>
-                        <div className="au-ell" style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.05em' }}>{u.email}</div>
+                        <div className="au-ell" style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.05em' }}>{u.email}</div>
                       </div>
                     </div>
                     {/* Stats */}
                     <div className="au-stats">
                       <div className="au-stat">
                         <div style={{ fontSize: 18, fontWeight: 700, color: CYAN, letterSpacing: '-0.02em' }}>{comp.count}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>DONE</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.35)' }}>DONE</div>
                       </div>
                       <div className="au-stat">
                         <div style={{ fontSize: 18, fontWeight: 700, color: YELLOW, letterSpacing: '-0.02em' }}>{u.current_streak || 0}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>STREAK</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.35)' }}>STREAK</div>
                       </div>
                       <div className="au-stat">
                         <div style={{ fontSize: 13, fontWeight: 600, color: dotColor }}>{timeAgo(lastActive)}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>LAST SEEN</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.35)' }}>LAST SEEN</div>
                       </div>
                     </div>
                     {/* Nudge + expand */}
@@ -638,45 +638,45 @@ export default function AdminPage() {
                         onClick={e => { e.stopPropagation(); setNudgeMsg(''); setNudgeUser(u) }}
                         style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 13px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}
                       >NUDGE</button>
-                      <span style={{ color: 'rgba(26,42,58,0.25)', fontSize: 16, transition: 'transform 0.2s', transform: isExpanded ? 'rotate(180deg)' : 'none' }}>⌄</span>
+                      <span style={{ color: 'rgba(232,238,245,0.25)', fontSize: 16, transition: 'transform 0.2s', transform: isExpanded ? 'rotate(180deg)' : 'none' }}>⌄</span>
                     </div>
                   </div>
 
                   {/* Expanded detail */}
                   {isExpanded && (
-                    <div style={{ borderTop: '1px solid rgba(26,42,58,0.07)', padding: '16px 18px', background: 'rgba(26,42,58,0.02)' }}>
+                    <div style={{ borderTop: '1px solid rgba(232,238,245,0.07)', padding: '16px 18px', background: 'rgba(232,238,245,0.02)' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10, marginBottom: 16 }}>
                         {[
                           { l: 'SIGNED UP', v: daysSinceSignup != null ? `${daysSinceSignup}d ago` : '—' },
                           { l: 'AVG SCORE', v: avgScore ? `${avgScore}/3` : '—' },
                           { l: 'BEST STREAK', v: `${u.longest_streak || 0}d` },
                         ].map(s => (
-                          <div key={s.l} style={{ background: '#fff', borderRadius: 10, padding: '12px 14px', border: '1px solid rgba(26,42,58,0.07)' }}>
-                            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.14em', color: 'rgba(26,42,58,0.35)', marginBottom: 5 }}>{s.l}</div>
-                            <div style={{ fontSize: 16, fontWeight: 600, color: '#1a2a3a' }}>{s.v}</div>
+                          <div key={s.l} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: '12px 14px', border: '1px solid rgba(232,238,245,0.07)' }}>
+                            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.35)', marginBottom: 5 }}>{s.l}</div>
+                            <div style={{ fontSize: 16, fontWeight: 600, color: '#e8eef5' }}>{s.v}</div>
                           </div>
                         ))}
                       </div>
                       {/* Completion progress bar */}
                       <div style={{ marginBottom: 16 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)' }}>PROGRESS</span>
-                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.4)' }}>{comp.count}/{TOTAL_ENTRIES}</span>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.4)' }}>PROGRESS</span>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)' }}>{comp.count}/{TOTAL_ENTRIES}</span>
                         </div>
-                        <div style={{ height: 4, background: 'rgba(26,42,58,0.08)', borderRadius: 2 }}>
+                        <div style={{ height: 4, background: 'rgba(232,238,245,0.08)', borderRadius: 2 }}>
                           <div style={{ height: '100%', width: `${Math.round((comp.count / TOTAL_ENTRIES) * 100)}%`, background: CYAN, borderRadius: 2, transition: 'width 0.5s' }} />
                         </div>
                       </div>
                       {/* Feedback count */}
                       {feedbackByUser[u.id] && (
-                        <div style={{ marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.08em', cursor: 'pointer' }}
+                        <div style={{ marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.08em', cursor: 'pointer' }}
                           onClick={() => { setFeedbackUser(u.id); setTab('feedback') }}>
                           {feedbackByUser[u.id].items.length} FEEDBACK ITEMS → VIEW
                         </div>
                       )}
                       {/* Phone — admin can add numbers collected off-platform */}
                       <div style={{ marginBottom: 16 }}>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>CELL PHONE {u.phone ? '· ON FILE' : '· NONE'}</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.4)', marginBottom: 6 }}>CELL PHONE {u.phone ? '· ON FILE' : '· NONE'}</div>
                         <div style={{ display: 'flex', gap: 8 }}>
                           <input
                             type="tel"
@@ -684,7 +684,7 @@ export default function AdminPage() {
                             onChange={e => setPhoneEdits(p => ({ ...p, [u.id]: e.target.value }))}
                             placeholder="+1 555 123 4567"
                             onClick={e => e.stopPropagation()}
-                            style={{ flex: 1, minWidth: 0, padding: '9px 12px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.14)', background: '#fff', fontFamily: "'DM Mono', monospace", fontSize: 12, color: '#1a2a3a', outline: 'none' }}
+                            style={{ flex: 1, minWidth: 0, padding: '9px 12px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.14)', background: 'rgba(255,255,255,0.05)', fontFamily: "'DM Mono', monospace", fontSize: 12, color: '#e8eef5', outline: 'none' }}
                           />
                           <button
                             onClick={e => { e.stopPropagation(); saveUserPhone(u.id) }}
@@ -698,12 +698,12 @@ export default function AdminPage() {
                         {resetConfirm === u.id + '-data' ? (
                           <>
                             <button onClick={() => resetUserData(u.id)} disabled={!!resetting} style={{ flex: 1, padding: '8px 12px', background: ORANGE, color: '#fff', border: 'none', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', cursor: 'pointer', fontWeight: 600 }}>CONFIRM RESET DATA</button>
-                            <button onClick={() => setResetConfirm(null)} style={{ padding: '8px 12px', background: 'transparent', border: '1px solid rgba(26,42,58,0.12)', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>CANCEL</button>
+                            <button onClick={() => setResetConfirm(null)} style={{ padding: '8px 12px', background: 'transparent', border: '1px solid rgba(232,238,245,0.12)', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>CANCEL</button>
                           </>
                         ) : resetConfirm === u.id + '-hard' ? (
                           <>
                             <button onClick={() => hardResetUser(u.id)} disabled={!!resetting} style={{ flex: 1, padding: '8px 12px', background: PINK, color: '#fff', border: 'none', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', cursor: 'pointer', fontWeight: 600 }}>CONFIRM HARD RESET</button>
-                            <button onClick={() => setResetConfirm(null)} style={{ padding: '8px 12px', background: 'transparent', border: '1px solid rgba(26,42,58,0.12)', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>CANCEL</button>
+                            <button onClick={() => setResetConfirm(null)} style={{ padding: '8px 12px', background: 'transparent', border: '1px solid rgba(232,238,245,0.12)', borderRadius: 8, fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>CANCEL</button>
                           </>
                         ) : (
                           <>
@@ -725,30 +725,30 @@ export default function AdminPage() {
           <div>
             <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
               {[['open','OPEN',openBugs.length],['resolved','RESOLVED',resolvedBugs.length],['wont_fix',"WON'T FIX",wontFixBugs.length],['all','ALL',bugs.length]].map(([k,l,n]) => (
-                <button key={k} onClick={() => setBugFilter(k)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: bugFilter === k ? ACCENT : 'rgba(26,42,58,0.07)', color: bugFilter === k ? '#fff' : 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>{l} ({n})</button>
+                <button key={k} onClick={() => setBugFilter(k)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: bugFilter === k ? ACCENT : 'rgba(232,238,245,0.07)', color: bugFilter === k ? '#fff' : 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>{l} ({n})</button>
               ))}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {displayedBugs.length === 0 && <div style={{ textAlign: 'center', padding: 40, color: 'rgba(26,42,58,0.35)', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em' }}>NO BUGS IN THIS FILTER</div>}
+              {displayedBugs.length === 0 && <div style={{ textAlign: 'center', padding: 40, color: 'rgba(232,238,245,0.35)', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em' }}>NO BUGS IN THIS FILTER</div>}
               {displayedBugs.map(b => {
                 const status = b.status || 'open'
                 const isOpen = status === 'open'
-                const accent = status === 'resolved' ? CYAN : status === 'wont_fix' ? 'rgba(26,42,58,0.3)' : PINK
+                const accent = status === 'resolved' ? CYAN : status === 'wont_fix' ? 'rgba(232,238,245,0.3)' : PINK
                 return (
                 <Card key={b.id} style={{ borderLeft: `3px solid ${accent}`, opacity: isOpen ? 1 : 0.72 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
                     <Chip label={b.page || 'Unknown'} color={ORANGE} />
                     {!isOpen && <Chip label={status === 'resolved' ? 'RESOLVED' : "WON'T FIX"} color={status === 'resolved' ? CYAN : 'rgba(120,130,140,1)'} />}
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(b.created_at)}</span>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{b.profiles?.first_name || b.profiles?.email || 'Unknown'}</span>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{timeAgo(b.created_at)}</span>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{b.profiles?.first_name || b.profiles?.email || 'Unknown'}</span>
                   </div>
-                  <div style={{ fontSize: 14, color: '#1a2a3a', lineHeight: 1.5, marginBottom: b.browser_info ? 8 : 12 }}>{b.description}</div>
-                  {b.browser_info && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.3)', marginTop: 6, marginBottom: 12, wordBreak: 'break-all' }}>{b.browser_info.slice(0, 120)}{b.browser_info.length > 120 ? '…' : ''}</div>}
+                  <div style={{ fontSize: 14, color: '#e8eef5', lineHeight: 1.5, marginBottom: b.browser_info ? 8 : 12 }}>{b.description}</div>
+                  {b.browser_info && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.3)', marginTop: 6, marginBottom: 12, wordBreak: 'break-all' }}>{b.browser_info.slice(0, 120)}{b.browser_info.length > 120 ? '…' : ''}</div>}
                   <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                     {isOpen ? (
                       <>
                         <button onClick={() => setBugStatus(b.id, 'resolved')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}>✓ RESOLVE</button>
-                        <button onClick={() => setBugStatus(b.id, 'wont_fix')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.18)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>WON'T FIX</button>
+                        <button onClick={() => setBugStatus(b.id, 'wont_fix')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.18)', background: 'transparent', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>WON'T FIX</button>
                       </>
                     ) : (
                       <button onClick={() => setBugStatus(b.id, 'open')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: `1px solid ${ORANGE}40`, background: `${ORANGE}10`, color: ORANGE, cursor: 'pointer', fontWeight: 600 }}>↺ REOPEN</button>
@@ -766,12 +766,12 @@ export default function AdminPage() {
           <div>
             {/* User selector */}
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 20 }}>
-              <button onClick={() => setFeedbackUser(null)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: !feedbackUser ? ACCENT : 'rgba(26,42,58,0.07)', color: !feedbackUser ? '#fff' : 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>ALL</button>
+              <button onClick={() => setFeedbackUser(null)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: !feedbackUser ? ACCENT : 'rgba(232,238,245,0.07)', color: !feedbackUser ? '#fff' : 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>ALL</button>
               {Object.entries(feedbackByUser).map(([uid, { user }]) => {
                 const u = users.find(x => x.id === uid)
                 const name = u?.first_name || user?.first_name || user?.email?.split('@')[0] || 'Unknown'
                 return (
-                  <button key={uid} onClick={() => setFeedbackUser(uid)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: feedbackUser === uid ? ACCENT : 'rgba(26,42,58,0.07)', color: feedbackUser === uid ? '#fff' : 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>{name.toUpperCase()}</button>
+                  <button key={uid} onClick={() => setFeedbackUser(uid)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: feedbackUser === uid ? ACCENT : 'rgba(232,238,245,0.07)', color: feedbackUser === uid ? '#fff' : 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>{name.toUpperCase()}</button>
                 )
               })}
             </div>
@@ -780,43 +780,43 @@ export default function AdminPage() {
             <Card style={{ marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: '#1a2a3a' }}>{feedbackUser ? userName(feedbackUser) : 'All testers'} · summary</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)', marginTop: 3 }}>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: '#e8eef5' }}>{feedbackUser ? userName(feedbackUser) : 'All testers'} · summary</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', marginTop: 3 }}>
                     {Object.entries(fbSummary.byType).map(([t, n]) => `${n} ${t.replace('_', '-')}`).join(' · ') || 'no feedback yet'}
                   </div>
                   {fbSummary.total > 0 && (
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.04em', color: fbSummary.addressed === fbSummary.total ? '#0a8a78' : ORANGE, marginTop: 5 }}>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.04em', color: fbSummary.addressed === fbSummary.total ? CYAN : ORANGE, marginTop: 5 }}>
                       {fbSummary.addressed}/{fbSummary.total} addressed
                     </div>
                   )}
                 </div>
                 <button onClick={() => summarizeFeedback(fbScope)} disabled={aiSummary.state === 'loading'}
-                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '8px 14px', borderRadius: 8, border: 'none', background: aiSummary.state === 'loading' ? 'rgba(26,42,58,0.1)' : '#1a2a3a', color: '#fff', cursor: aiSummary.state === 'loading' ? 'default' : 'pointer', fontWeight: 600, flexShrink: 0 }}>
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '8px 14px', borderRadius: 8, border: 'none', background: aiSummary.state === 'loading' ? 'rgba(232,238,245,0.1)' : '#33506e', color: '#fff', cursor: aiSummary.state === 'loading' ? 'default' : 'pointer', fontWeight: 600, flexShrink: 0 }}>
                   {aiSummary.state === 'loading' ? 'SUMMARIZING…' : '✦ SUMMARIZE WITH AI'}
                 </button>
               </div>
 
               <div className="admin-kpis">
                 {[{ l: 'TOPIC', v: fbSummary.topic, c: YELLOW }, { l: 'CLARITY', v: fbSummary.clarity, c: CYAN }, { l: 'QUIZ', v: fbSummary.quiz, c: PURPLE }, { l: 'OVERALL', v: fbSummary.overall, c: ORANGE }].map(s => (
-                  <div key={s.l} style={{ textAlign: 'center', background: 'rgba(26,42,58,0.03)', borderRadius: 10, padding: '10px 6px' }}>
-                    <div style={{ fontSize: 22, fontWeight: 700, color: s.v ? s.c : 'rgba(26,42,58,0.2)', letterSpacing: '-0.02em' }}>{s.v || '—'}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)', marginTop: 3 }}>{s.l}</div>
+                  <div key={s.l} style={{ textAlign: 'center', background: 'rgba(232,238,245,0.03)', borderRadius: 10, padding: '10px 6px' }}>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: s.v ? s.c : 'rgba(232,238,245,0.2)', letterSpacing: '-0.02em' }}>{s.v || '—'}</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.35)', marginTop: 3 }}>{s.l}</div>
                   </div>
                 ))}
               </div>
 
               {Object.keys(fbSummary.recommend).length > 0 && (
                 <div style={{ display: 'flex', gap: 8, marginTop: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)' }}>RECOMMEND:</span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.4)' }}>RECOMMEND:</span>
                   {[['Yes', CYAN], ['Not yet', YELLOW], ['No', PINK]].map(([k, c]) => fbSummary.recommend[k] ? <Chip key={k} label={`${k} · ${fbSummary.recommend[k]}`} color={c} /> : null)}
                 </div>
               )}
 
               {aiSummary.state !== 'idle' && (
-                <div style={{ marginTop: 16, borderTop: '1px solid rgba(26,42,58,0.07)', paddingTop: 14 }}>
-                  {aiSummary.state === 'loading' && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.1em' }}>READING {fbScope.length} ITEMS…</div>}
+                <div style={{ marginTop: 16, borderTop: '1px solid rgba(232,238,245,0.07)', paddingTop: 14 }}>
+                  {aiSummary.state === 'loading' && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.1em' }}>READING {fbScope.length} ITEMS…</div>}
                   {aiSummary.state === 'error' && <div style={{ fontSize: 12, color: PINK }}>{aiSummary.text}</div>}
-                  {aiSummary.state === 'done' && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{aiSummary.text}</div>}
+                  {aiSummary.state === 'done' && <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{aiSummary.text}</div>}
                 </div>
               )}
             </Card>
@@ -830,9 +830,9 @@ export default function AdminPage() {
                     <Card key={f.id || i} style={{ borderLeft: `3px solid ${f.reviewed ? CYAN : YELLOW}`, opacity: f.reviewed ? 0.62 : 1, transition: 'opacity 0.2s' }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: 14, fontWeight: 700, color: '#1a2a3a' }}>{userName(f.user_id)}</span>
+                          <span style={{ fontSize: 14, fontWeight: 700, color: '#e8eef5' }}>{userName(f.user_id)}</span>
                           <Chip label={(f.feedback_type || '').toUpperCase()} color={YELLOW} />
-                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(f.created_at)}</span>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{timeAgo(f.created_at)}</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                           {f.would_recommend && <Chip label={`REC: ${f.would_recommend}`} color={f.would_recommend === 'Yes' ? CYAN : f.would_recommend === 'No' ? PINK : YELLOW} />}
@@ -844,14 +844,14 @@ export default function AdminPage() {
                           {[['TOPIC', f.topic_rating, YELLOW], ['CLARITY', f.clarity_rating, CYAN], ['QUIZ', f.quiz_rating, PURPLE]].map(([l, v, c]) => v ? (
                             <div key={l} style={{ textAlign: 'center' }}>
                               <div style={{ fontSize: 15, fontWeight: 700, color: c }}>{v}/5</div>
-                              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.08em', color: 'rgba(26,42,58,0.35)' }}>{l}</div>
+                              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.08em', color: 'rgba(232,238,245,0.35)' }}>{l}</div>
                             </div>
                           ) : null)}
                         </div>
                       )}
-                      {f.biggest_win && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.6, marginBottom: f.missing_topics || f.comment ? 6 : 0 }}><span style={{ color: CYAN, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>WIN</span>"{f.biggest_win}"</div>}
-                      {f.missing_topics && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6, marginBottom: f.comment ? 6 : 0 }}><span style={{ color: ORANGE, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>MISSING</span>{f.missing_topics}</div>}
-                      {f.comment && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6 }}>{f.comment}</div>}
+                      {f.biggest_win && <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.6, marginBottom: f.missing_topics || f.comment ? 6 : 0 }}><span style={{ color: CYAN, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>WIN</span>"{f.biggest_win}"</div>}
+                      {f.missing_topics && <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6, marginBottom: f.comment ? 6 : 0 }}><span style={{ color: ORANGE, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>MISSING</span>{f.missing_topics}</div>}
+                      {f.comment && <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6 }}>{f.comment}</div>}
                     </Card>
                   ))}
                 </div>
@@ -875,8 +875,8 @@ export default function AdminPage() {
                   <Card key={uid} style={{ marginBottom: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
                       <div>
-                        <div style={{ fontSize: 16, fontWeight: 700, color: '#1a2a3a', marginBottom: 3 }}>{name}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{items.length} ITEMS TOTAL · {postEntry.length} POST-LESSON</div>
+                        <div style={{ fontSize: 16, fontWeight: 700, color: '#e8eef5', marginBottom: 3 }}>{name}</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{items.length} ITEMS TOTAL · {postEntry.length} POST-LESSON</div>
                       </div>
                       {/* Score summary */}
                       {topicAvg && (
@@ -884,7 +884,7 @@ export default function AdminPage() {
                           {[{ l: 'TOPIC', v: topicAvg, c: YELLOW }, { l: 'CLARITY', v: clarityAvg, c: CYAN }, { l: 'QUIZ', v: quizAvg, c: PURPLE }].map(s => s.v ? (
                             <div key={s.l} style={{ textAlign: 'center' }}>
                               <div style={{ fontSize: 16, fontWeight: 700, color: s.c, letterSpacing: '-0.02em' }}>{s.v}</div>
-                              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(26,42,58,0.35)', letterSpacing: '0.08em' }}>{s.l}</div>
+                              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, color: 'rgba(232,238,245,0.35)', letterSpacing: '0.08em' }}>{s.l}</div>
                             </div>
                           ) : null)}
                         </div>
@@ -893,27 +893,27 @@ export default function AdminPage() {
 
                     {/* Comments */}
                     {items.filter(f => f.comment || f.biggest_win || f.missing_topics).slice(0, 5).map((f, i) => (
-                      <div key={i} style={{ borderTop: '1px solid rgba(26,42,58,0.07)', paddingTop: 12, marginTop: 12, opacity: f.reviewed ? 0.6 : 1 }}>
+                      <div key={i} style={{ borderTop: '1px solid rgba(232,238,245,0.07)', paddingTop: 12, marginTop: 12, opacity: f.reviewed ? 0.6 : 1 }}>
                         <div style={{ display: 'flex', gap: 8, marginBottom: 6, alignItems: 'center', flexWrap: 'wrap' }}>
                           <Chip label={f.feedback_type?.replace('_', '-').toUpperCase() || 'FEEDBACK'} color={f.feedback_type === 'weekly' ? YELLOW : f.feedback_type === 'end_of_beta' ? PINK : CYAN} />
-                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(f.created_at)}</span>
-                          {f.overall_rating && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{f.overall_rating}/5</span>}
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{timeAgo(f.created_at)}</span>
+                          {f.overall_rating && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{f.overall_rating}/5</span>}
                           <span style={{ marginLeft: 'auto' }}><ReviewToggle reviewed={f.reviewed} onToggle={() => toggleReviewed(f.id, f.reviewed)} /></span>
                         </div>
-                        {f.comment && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.6, marginBottom: f.biggest_win ? 6 : 0 }}>{f.comment}</div>}
-                        {f.biggest_win && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6, fontStyle: 'italic' }}>"{f.biggest_win}"</div>}
+                        {f.comment && <div style={{ fontSize: 13, color: '#e8eef5', lineHeight: 1.6, marginBottom: f.biggest_win ? 6 : 0 }}>{f.comment}</div>}
+                        {f.biggest_win && <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.6, fontStyle: 'italic' }}>"{f.biggest_win}"</div>}
                         {f.missing_topics && f.missing_topics.length > 20 && (
-                          <div style={{ fontSize: 11, color: 'rgba(26,42,58,0.4)', fontFamily: "'DM Mono', monospace", letterSpacing: '0.04em', marginTop: 6, wordBreak: 'break-word' }}>{f.missing_topics.slice(0, 200)}{f.missing_topics.length > 200 ? '…' : ''}</div>
+                          <div style={{ fontSize: 11, color: 'rgba(232,238,245,0.4)', fontFamily: "'DM Mono', monospace", letterSpacing: '0.04em', marginTop: 6, wordBreak: 'break-word' }}>{f.missing_topics.slice(0, 200)}{f.missing_topics.length > 200 ? '…' : ''}</div>
                         )}
                       </div>
                     ))}
                     {items.filter(f => f.comment || f.biggest_win).length > 5 && (
-                      <div style={{ marginTop: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)', cursor: 'pointer' }}>+{items.filter(f => f.comment || f.biggest_win).length - 5} MORE</div>
+                      <div style={{ marginTop: 10, fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', cursor: 'pointer' }}>+{items.filter(f => f.comment || f.biggest_win).length - 5} MORE</div>
                     )}
                   </Card>
                 )
               })}
-            {feedback.length === 0 && <div style={{ textAlign: 'center', padding: 40, color: 'rgba(26,42,58,0.35)', fontFamily: "'DM Mono', monospace", fontSize: 10 }}>NO FEEDBACK YET</div>}
+            {feedback.length === 0 && <div style={{ textAlign: 'center', padding: 40, color: 'rgba(232,238,245,0.35)', fontFamily: "'DM Mono', monospace", fontSize: 10 }}>NO FEEDBACK YET</div>}
           </div>
         )}
 
@@ -928,8 +928,8 @@ export default function AdminPage() {
 
             {Object.keys(apiStatus).length === 0 && !apiChecking && (
               <Card style={{ textAlign: 'center', padding: 40 }}>
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'rgba(26,42,58,0.35)', marginBottom: 8 }}>NO RESULTS YET</div>
-                <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.5)' }}>Run a health check to see API status.</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.35)', marginBottom: 8 }}>NO RESULTS YET</div>
+                <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.5)' }}>Run a health check to see API status.</div>
               </Card>
             )}
 
@@ -940,13 +940,13 @@ export default function AdminPage() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <StatusDot color={s.ok ? CYAN : PINK} />
                       <div>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: '#1a2a3a', marginBottom: 3 }}>{s.label}</div>
-                        <div style={{ fontSize: 12, color: 'rgba(26,42,58,0.5)' }}>{s.detail}</div>
+                        <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', marginBottom: 3 }}>{s.label}</div>
+                        <div style={{ fontSize: 12, color: 'rgba(232,238,245,0.5)' }}>{s.detail}</div>
                       </div>
                     </div>
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
                       <Chip label={s.ok ? 'OK' : 'FAIL'} color={s.ok ? CYAN : PINK} />
-                      {s.ms != null && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)', marginTop: 4 }}>{s.ms}ms</div>}
+                      {s.ms != null && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)', marginTop: 4 }}>{s.ms}ms</div>}
                     </div>
                   </div>
                 </Card>
@@ -958,8 +958,8 @@ export default function AdminPage() {
               <div style={{ display: 'flex', gap: 10 }}>
                 <div style={{ fontSize: 16 }}>⚠</div>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1a2a3a', marginBottom: 4 }}>Email isn't auto-pinged on purpose</div>
-                  <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.6)', lineHeight: 1.6 }}>The email senders can't be tested without actually sending mail to users, so the health check no longer invokes them. To verify Resend, check a recent reminder landed (or the cron run logs). The RESEND_API_KEY secret lives in Supabase Edge Functions settings, set per function.</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#e8eef5', marginBottom: 4 }}>Email isn't auto-pinged on purpose</div>
+                  <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.6)', lineHeight: 1.6 }}>The email senders can't be tested without actually sending mail to users, so the health check no longer invokes them. To verify Resend, check a recent reminder landed (or the cron run logs). The RESEND_API_KEY secret lives in Supabase Edge Functions settings, set per function.</div>
                 </div>
               </div>
             </Card>
@@ -976,7 +976,7 @@ export default function AdminPage() {
                 <button
                   onClick={() => { setAnalyticsData(null); loadAnalytics() }}
                   disabled={analyticsLoading}
-                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.12)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.12)', background: 'transparent', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}
                 >
                   {analyticsLoading ? 'LOADING…' : '↺ REFRESH'}
                 </button>
@@ -994,14 +994,14 @@ export default function AdminPage() {
             {analyticsError && (
               <Card style={{ background: `${PINK}0d`, border: `1px solid ${PINK}30`, marginBottom: 16 }}>
                 <div style={{ fontSize: 12, color: PINK, fontFamily: "'DM Mono', monospace", letterSpacing: '0.06em' }}>QUERY ERROR</div>
-                <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', marginTop: 6 }}>{analyticsError}</div>
+                <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', marginTop: 6 }}>{analyticsError}</div>
               </Card>
             )}
 
             {analyticsLoading && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {[1,2,3,4].map(i => (
-                  <div key={i} style={{ height: 80, borderRadius: 14, background: 'rgba(26,42,58,0.05)', animation: 'pulse 1.5s ease-in-out infinite' }} />
+                  <div key={i} style={{ height: 80, borderRadius: 14, background: 'rgba(232,238,245,0.05)', animation: 'pulse 1.5s ease-in-out infinite' }} />
                 ))}
                 <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}`}</style>
               </div>
@@ -1014,7 +1014,7 @@ export default function AdminPage() {
 
                   {/* TODAY */}
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>TODAY</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>TODAY</div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10 }}>
                       {[
                         { label: 'OPENED', val: todayMap['entry_opened'] || 0, color: CYAN },
@@ -1022,7 +1022,7 @@ export default function AdminPage() {
                         { label: 'QUIZZES', val: todayMap['quiz_submitted'] || 0, color: PURPLE },
                       ].map(k => (
                         <Card key={k.label} style={{ padding: '14px 16px', textAlign: 'center' }}>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(26,42,58,0.4)', marginBottom: 8 }}>{k.label}</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.4)', marginBottom: 8 }}>{k.label}</div>
                           <div style={{ fontSize: 36, fontWeight: 700, letterSpacing: '-0.025em', color: k.color, lineHeight: 1 }}>{k.val}</div>
                         </Card>
                       ))}
@@ -1031,22 +1031,22 @@ export default function AdminPage() {
 
                   {/* FUNNEL */}
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>7-DAY FUNNEL — ENTRY → QUIZ</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>7-DAY FUNNEL — ENTRY → QUIZ</div>
                     <Card>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {funnel.map((step, i) => (
                           <div key={step.label}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 5 }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.4)', width: 16 }}>{i + 1}</span>
-                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#1a2a3a' }}>{step.label}</span>
+                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)', width: 16 }}>{i + 1}</span>
+                                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#e8eef5' }}>{step.label}</span>
                               </div>
                               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                                <span style={{ fontSize: 18, fontWeight: 700, color: '#1a2a3a' }}>{step.n}</span>
+                                <span style={{ fontSize: 18, fontWeight: 700, color: '#e8eef5' }}>{step.n}</span>
                                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: step.pct < 50 ? PINK : step.pct < 75 ? ORANGE : CYAN }}>{step.pct}%</span>
                               </div>
                             </div>
-                            <div style={{ height: 4, background: 'rgba(26,42,58,0.06)', borderRadius: 2 }}>
+                            <div style={{ height: 4, background: 'rgba(232,238,245,0.06)', borderRadius: 2 }}>
                               <div style={{ height: '100%', width: `${step.pct}%`, borderRadius: 2, background: step.pct < 50 ? PINK : step.pct < 75 ? ORANGE : CYAN, transition: 'width 0.6s ease' }} />
                             </div>
                           </div>
@@ -1057,7 +1057,7 @@ export default function AdminPage() {
 
                   {/* ENGAGEMENT SIGNALS */}
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>ENGAGEMENT — LAST 7 DAYS</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>ENGAGEMENT — LAST 7 DAYS</div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 8 }}>
                       {[
                         { event: 'ai_prompt_copied',         label: 'AI PROMPTS COPIED',  color: CYAN },
@@ -1067,7 +1067,7 @@ export default function AdminPage() {
                         { event: 'streak_updated',           label: 'STREAKS EXTENDED',   color: PINK },
                       ].map(s => (
                         <Card key={s.event} style={{ padding: '12px 14px' }}>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>{s.label}</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.4)', marginBottom: 6 }}>{s.label}</div>
                           <div style={{ fontSize: 28, fontWeight: 700, color: s.color, letterSpacing: '-0.02em', lineHeight: 1 }}>{signalMap[s.event] || 0}</div>
                         </Card>
                       ))}
@@ -1077,25 +1077,25 @@ export default function AdminPage() {
                   {/* ENTRY PERFORMANCE */}
                   {entryPerf.length > 0 && (
                     <div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>ENTRY PERFORMANCE — QUIZ SUBMISSIONS</div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>ENTRY PERFORMANCE — QUIZ SUBMISSIONS</div>
                       <Card style={{ padding: 0, overflow: 'hidden' }}>
                         <div style={{ overflowX: 'auto' }}>
                           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                             <thead>
-                              <tr style={{ borderBottom: '1px solid rgba(26,42,58,0.08)' }}>
+                              <tr style={{ borderBottom: '1px solid rgba(232,238,245,0.08)' }}>
                                 {['#', 'CONCEPT', 'SUBMITS', 'AVG SCORE', 'PERFECTS'].map(h => (
-                                  <th key={h} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)', padding: '10px 16px', textAlign: h === '#' || h === 'SUBMITS' || h === 'AVG SCORE' || h === 'PERFECTS' ? 'center' : 'left', whiteSpace: 'nowrap' }}>{h}</th>
+                                  <th key={h} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.4)', padding: '10px 16px', textAlign: h === '#' || h === 'SUBMITS' || h === 'AVG SCORE' || h === 'PERFECTS' ? 'center' : 'left', whiteSpace: 'nowrap' }}>{h}</th>
                                 ))}
                               </tr>
                             </thead>
                             <tbody>
                               {entryPerf.map((e, i) => (
-                                <tr key={e.entryNum} style={{ borderBottom: i < entryPerf.length - 1 ? '1px solid rgba(26,42,58,0.05)' : 'none' }}>
-                                  <td style={{ padding: '10px 16px', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.35)', textAlign: 'center' }}>{String(e.entryNum).padStart(3,'0')}</td>
-                                  <td style={{ padding: '10px 16px', fontWeight: 500, color: '#1a2a3a', maxWidth: 200, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.concept}</td>
+                                <tr key={e.entryNum} style={{ borderBottom: i < entryPerf.length - 1 ? '1px solid rgba(232,238,245,0.05)' : 'none' }}>
+                                  <td style={{ padding: '10px 16px', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.35)', textAlign: 'center' }}>{String(e.entryNum).padStart(3,'0')}</td>
+                                  <td style={{ padding: '10px 16px', fontWeight: 500, color: '#e8eef5', maxWidth: 200, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.concept}</td>
                                   <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: CYAN }}>{e.submissions}</td>
-                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.avgScore >= 2.5 ? YELLOW : e.avgScore >= 1.5 ? ORANGE : PINK }}>{e.avgScore ?? '—'}<span style={{ fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>/3</span></td>
-                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.perfectPct >= 50 ? YELLOW : 'rgba(26,42,58,0.4)' }}>{e.perfectPct}%</td>
+                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.avgScore >= 2.5 ? YELLOW : e.avgScore >= 1.5 ? ORANGE : PINK }}>{e.avgScore ?? '—'}<span style={{ fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>/3</span></td>
+                                  <td style={{ padding: '10px 16px', textAlign: 'center', fontFamily: "'DM Mono', monospace", fontSize: 13, fontWeight: 700, color: e.perfectPct >= 50 ? YELLOW : 'rgba(232,238,245,0.4)' }}>{e.perfectPct}%</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -1108,13 +1108,13 @@ export default function AdminPage() {
                   {/* TOP AI PROMPT COPIES */}
                   {topPrompts.length > 0 && (
                     <div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>TOP AI PROMPT COPIES — ALL TIME</div>
+                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>TOP AI PROMPT COPIES — ALL TIME</div>
                       <Card style={{ padding: 0, overflow: 'hidden' }}>
                         {topPrompts.map((p, i) => (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: i < topPrompts.length - 1 ? '1px solid rgba(26,42,58,0.05)' : 'none' }}>
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: i < topPrompts.length - 1 ? '1px solid rgba(232,238,245,0.05)' : 'none' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.3)', width: 20 }}>#{i+1}</span>
-                              <span style={{ fontSize: 13, fontWeight: 500, color: '#1a2a3a' }}>{p.concept || `Entry ${p.entryNum}`}</span>
+                              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.3)', width: 20 }}>#{i+1}</span>
+                              <span style={{ fontSize: 13, fontWeight: 500, color: '#e8eef5' }}>{p.concept || `Entry ${p.entryNum}`}</span>
                             </div>
                             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 700, color: CYAN }}>{p.copies}×</span>
                           </div>
@@ -1125,7 +1125,7 @@ export default function AdminPage() {
 
                   {/* DEEP DIVE LINKS */}
                   <div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(26,42,58,0.4)', marginBottom: 10 }}>DIVE DEEPER</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginBottom: 10 }}>DIVE DEEPER</div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                       {[
                         { label: 'EVENTS EXPLORER', href: `https://us.posthog.com/project/470392/activity/explore` },
@@ -1140,10 +1140,10 @@ export default function AdminPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: '#fff', borderRadius: 10, border: '1px solid rgba(26,42,58,0.08)', textDecoration: 'none', transition: 'border-color 0.15s' }}
+                          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: 'rgba(255,255,255,0.05)', borderRadius: 10, border: '1px solid rgba(232,238,245,0.08)', textDecoration: 'none', transition: 'border-color 0.15s' }}
                         >
-                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#1a2a3a', fontWeight: 500 }}>{link.label}</span>
-                          <span style={{ color: 'rgba(26,42,58,0.3)', fontSize: 12 }}>↗</span>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: '#e8eef5', fontWeight: 500 }}>{link.label}</span>
+                          <span style={{ color: 'rgba(232,238,245,0.3)', fontSize: 12 }}>↗</span>
                         </a>
                       ))}
                     </div>
@@ -1163,11 +1163,11 @@ export default function AdminPage() {
             {/* PASSWORD RESET BLAST */}
             <SectionLabel>AUTH MIGRATION</SectionLabel>
             <Card style={{ marginBottom: 20, borderTop: `3px solid ${CYAN}` }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#1a2a3a', marginBottom: 6 }}>Send Password Reset to All Testers</div>
-              <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.6)', lineHeight: 1.6, marginBottom: 16 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', marginBottom: 6 }}>Send Password Reset to All Testers</div>
+              <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.6)', lineHeight: 1.6, marginBottom: 16 }}>
                 Sends a Supabase password reset email to every non-admin user. Use this once after switching from magic link to password auth — testers need to set a password before they can sign in.
               </div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.08em', marginBottom: 14 }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.08em', marginBottom: 14 }}>
                 {nonAdminUsers.map(u => u.email).join(' · ')}
               </div>
               {resetBlastState === 'idle' && (
@@ -1188,19 +1188,19 @@ export default function AdminPage() {
                   </button>
                   <button
                     onClick={() => setResetBlastState('idle')}
-                    style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '10px 16px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.12)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}
+                    style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '10px 16px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.12)', background: 'transparent', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}
                   >
                     CANCEL
                   </button>
                 </div>
               )}
               {resetBlastState === 'sending' && (
-                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.1em' }}>SENDING…</div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.1em' }}>SENDING…</div>
               )}
               {resetBlastState === 'done' && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <Chip label="SENT" color={CYAN} />
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.5)', letterSpacing: '0.06em' }}>Reset emails delivered. Testers can now set passwords.</span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(232,238,245,0.5)', letterSpacing: '0.06em' }}>Reset emails delivered. Testers can now set passwords.</span>
                 </div>
               )}
               {resetBlastState === 'error' && (
@@ -1216,17 +1216,17 @@ export default function AdminPage() {
                 { name: 'send-weekly-wrap', label: 'Weekly Wrap', schedule: '11:00 UTC daily', color: PURPLE },
               ].map(fn => (
                 <Card key={fn.name} style={{ borderTop: `3px solid ${fn.color}` }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1a2a3a', marginBottom: 4 }}>{fn.label}</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.06em', marginBottom: 12 }}>{fn.schedule}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#e8eef5', marginBottom: 4 }}>{fn.label}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.06em', marginBottom: 12 }}>{fn.schedule}</div>
                   <Chip label={fn.name} color={fn.color} />
                 </Card>
               ))}
             </div>
             <Card style={{ background: `${PINK}0d`, border: `1px solid ${PINK}30` }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: '#1a2a3a', marginBottom: 8 }}>If emails stop working</div>
+              <div style={{ fontSize: 13, fontWeight: 600, color: '#e8eef5', marginBottom: 8 }}>If emails stop working</div>
               <ol style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {['Check Supabase → Edge Functions → each function → Secrets', 'Verify RESEND_API_KEY is set and not expired', 'Go to resend.com → API Keys → confirm key is active', 'Check Resend dashboard for bounce/block events', 'Re-add the key to all three edge functions if rotated'].map((step, i) => (
-                  <li key={i} style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.5 }}>{step}</li>
+                  <li key={i} style={{ fontSize: 13, color: 'rgba(232,238,245,0.7)', lineHeight: 1.5 }}>{step}</li>
                 ))}
               </ol>
             </Card>
