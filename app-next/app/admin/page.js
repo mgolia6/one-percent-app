@@ -105,6 +105,8 @@ export default function AdminPage() {
   const [analyticsLoading, setAnalyticsLoading] = useState(false)
   const [analyticsError, setAnalyticsError] = useState(null)
   const [resetBlastState, setResetBlastState] = useState('idle') // idle | confirm | sending | done | error
+  const [systems, setSystems] = useState(null)
+  const [aiSummary, setAiSummary] = useState({ state: 'idle', text: '' }) // idle | loading | done | error
 
   useEffect(() => {
     async function init() {
@@ -125,15 +127,29 @@ export default function AdminPage() {
   }, [tab])
 
   async function loadAll() {
-    const [{ data: fb }, { data: br }, { data: us }, { data: comps }] = await Promise.all([
+    const [{ data: fb }, { data: br }, { data: us }, { data: comps }, { data: locks }, { data: otd }] = await Promise.all([
       supabase.from('feedback').select('*, profiles(email, first_name)').order('created_at', { ascending: false }),
       supabase.from('bug_reports').select('*, profiles(email, first_name)').order('created_at', { ascending: false }),
-      supabase.from('profiles').select('id, email, name, first_name, last_name, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
-      supabase.from('completions').select('user_id, entry_number, score, completed_at'),
+      supabase.from('profiles').select('id, email, name, first_name, last_name, phone, email_reminders, signup_date, current_streak, longest_streak, last_active_date, onboarding_complete, is_admin, avatar_url').order('signup_date', { ascending: false }),
+      supabase.from('completions').select('user_id, entry_number, score, completed_at, answers'),
+      supabase.from('lockins').select('id, user_id, status, due_at'),
+      supabase.from('on_this_day').select('date'),
     ])
     setFeedback(fb || [])
     setBugs(br || [])
     setUsers(us || [])
+    // Systems snapshot — Keep It Sharp (spaced repetition) + On This Day.
+    const nowIso = new Date().toISOString()
+    const active = (locks || []).filter(l => l.status === 'active')
+    const chatCompletions = (comps || []).filter(c => c.answers?.mode === 'chat').length
+    setSystems({
+      lockinsActive: active.length,
+      lockinsDue: active.filter(l => l.due_at && l.due_at <= nowIso).length,
+      lockinsUsers: new Set(active.map(l => l.user_id)).size,
+      otdCount: (otd || []).length,
+      otdToday: (otd || []).some(o => o.date === nowIso.slice(0, 10)),
+      chatLockins: chatCompletions,
+    })
     const summary = {}
     ;(comps || []).forEach(c => {
       if (!summary[c.user_id]) summary[c.user_id] = { count: 0, lastDate: null, scores: [] }
@@ -143,6 +159,24 @@ export default function AdminPage() {
         summary[c.user_id].lastDate = c.completed_at
     })
     setUserCompletions(summary)
+  }
+
+  async function summarizeFeedback(scopeItems) {
+    setAiSummary({ state: 'loading', text: '' })
+    try {
+      const items = scopeItems
+        .map(f => ({ type: f.feedback_type, rating: f.overall_rating, recommend: f.would_recommend, comment: f.comment, missing: f.missing_topics, win: f.biggest_win }))
+        .filter(x => x.comment || x.missing || x.win)
+      if (!items.length) { setAiSummary({ state: 'done', text: 'No written feedback to summarize yet.' }); return }
+      const res = await fetch('/api/admin/feedback-summary', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Summary failed')
+      setAiSummary({ state: 'done', text: data.summary })
+    } catch (e) {
+      setAiSummary({ state: 'error', text: e.message })
+    }
   }
 
   async function sendPasswordResetBlast() {
@@ -357,6 +391,27 @@ export default function AdminPage() {
 
   const avg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : null
 
+  // Feedback summary + surveys (respects the active user filter)
+  const SURVEY_TYPES = ['weekly', 'midpoint', 'final']
+  const fbScope = feedbackUser ? feedback.filter(f => f.user_id === feedbackUser) : feedback
+  const surveyItems = fbScope.filter(f => SURVEY_TYPES.includes(f.feedback_type))
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''))
+  const userName = (uid) => {
+    const u = users.find(x => x.id === uid)
+    return u?.first_name || u?.email?.split('@')[0] || 'Unknown'
+  }
+  const fbSummary = {
+    total: fbScope.length,
+    byType: fbScope.reduce((acc, f) => { acc[f.feedback_type] = (acc[f.feedback_type] || 0) + 1; return acc }, {}),
+    topic: avg(fbScope.map(f => f.topic_rating).filter(Boolean)),
+    clarity: avg(fbScope.map(f => f.clarity_rating).filter(Boolean)),
+    quiz: avg(fbScope.map(f => f.quiz_rating).filter(Boolean)),
+    overall: avg(fbScope.map(f => f.overall_rating).filter(Boolean)),
+    recommend: surveyItems.reduce((acc, f) => { if (f.would_recommend) acc[f.would_recommend] = (acc[f.would_recommend] || 0) + 1; return acc }, {}),
+    missing: fbScope.map(f => f.missing_topics).filter(t => t && t.trim().length > 2),
+    wins: fbScope.map(f => f.biggest_win).filter(t => t && t.trim().length > 2),
+  }
+
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(160deg,#f0f4f8 0%,#e8eef5 50%,#dde6f0 100%)', fontFamily: "'DM Sans', sans-serif", color: '#1a2a3a' }}>
       <style>{`
@@ -365,6 +420,24 @@ export default function AdminPage() {
         .admin-tabs::-webkit-scrollbar{display:none;}
         .nudge-overlay{position:fixed;inset:0;background:rgba(10,14,22,0.6);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;z-index:200;}
         textarea{resize:vertical;}
+        /* KPI row */
+        .admin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+        /* User card header */
+        .au-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;}
+        .au-id{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+        .au-stats{display:flex;gap:22px;align-items:center;flex-shrink:0;}
+        .au-actions{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+        .au-stat{text-align:center;min-width:38px;}
+        .au-ell{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        @media(max-width:640px){
+          .admin-content{padding:16px 14px 60px!important;}
+          .admin-header{padding:12px 14px!important;}
+          .admin-kpis{grid-template-columns:repeat(2,1fr);}
+          .au-head{flex-wrap:wrap;gap:10px 12px;}
+          .au-id{order:1;}
+          .au-actions{order:2;margin-left:auto;}
+          .au-stats{order:3;flex-basis:100%;justify-content:space-between;gap:8px;border-top:1px solid rgba(26,42,58,0.07);padding-top:12px;}
+        }
       `}</style>
 
       {/* NUDGE MODAL */}
@@ -403,7 +476,7 @@ export default function AdminPage() {
       )}
 
       {/* HEADER */}
-      <div style={{ background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)', padding: '14px 24px' }}>
+      <div className="admin-header" style={{ background: 'rgba(240,244,248,0.96)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(26,42,58,0.07)', padding: '14px 24px' }}>
         <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#1a2a3a' }}>ONE PERCENT</span>
@@ -418,10 +491,10 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '20px 24px 60px' }}>
+      <div className="admin-content" style={{ maxWidth: 960, margin: '0 auto', padding: '20px 24px 60px' }}>
 
         {/* QUICK KPI ROW */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10, marginBottom: 24 }}>
+        <div className="admin-kpis" style={{ marginBottom: 24 }}>
           {[
             { label: 'TESTERS', val: nonAdminUsers.length, color: CYAN },
             { label: 'OPEN BUGS', val: openBugs.length, color: openBugs.length > 0 ? PINK : CYAN },
@@ -437,6 +510,27 @@ export default function AdminPage() {
             </Card>
           ))}
         </div>
+
+        {/* SYSTEMS STRIP — Keep It Sharp + On This Day */}
+        {systems && (
+          <Card style={{ marginBottom: 24, padding: '14px 18px' }}>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.16em', color: 'rgba(26,42,58,0.4)', marginBottom: 12 }}>SYSTEMS</div>
+            <div className="admin-kpis">
+              {[
+                { label: 'SHARP · ACTIVE', val: systems.lockinsActive, sub: `${systems.lockinsUsers} user${systems.lockinsUsers === 1 ? '' : 's'}`, color: CYAN },
+                { label: 'SHARP · DUE NOW', val: systems.lockinsDue, sub: 'to review', color: systems.lockinsDue > 0 ? ORANGE : CYAN },
+                { label: 'LOCK IT IN · CHATS', val: systems.chatLockins, sub: 'AI sessions', color: PURPLE },
+                { label: 'ON THIS DAY', val: systems.otdCount, sub: systems.otdToday ? "today ✓" : 'today pending', color: systems.otdToday ? YELLOW : ORANGE },
+              ].map(s => (
+                <div key={s.label}>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>{s.label}</div>
+                  <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.025em', color: s.color, lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.06em', color: 'rgba(26,42,58,0.35)', marginTop: 4 }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
 
         {/* TAB NAV */}
         <div className="admin-tabs" style={{ display: 'flex', gap: 4, overflowX: 'auto', scrollbarWidth: 'none', background: 'rgba(26,42,58,0.05)', borderRadius: 12, padding: 4, marginBottom: 24 }}>
@@ -463,35 +557,37 @@ export default function AdminPage() {
               return (
                 <Card key={u.id} style={{ padding: 0, overflow: 'hidden' }}>
                   {/* Header row */}
-                  <div onClick={() => setExpandedUser(isExpanded ? null : u.id)} style={{ padding: '16px 18px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <StatusDot color={dotColor} />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-                        <span style={{ fontSize: 15, fontWeight: 600, color: '#1a2a3a' }}>{name}</span>
-                        {!u.onboarding_complete && <Chip label="ONBOARDING" color={ORANGE} />}
+                  <div className="au-head" onClick={() => setExpandedUser(isExpanded ? null : u.id)}>
+                    <div className="au-id">
+                      <StatusDot color={dotColor} />
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                          <span className="au-ell" style={{ fontSize: 15, fontWeight: 600, color: '#1a2a3a', maxWidth: '100%' }}>{name}</span>
+                          {!u.onboarding_complete && <Chip label="ONBOARDING" color={ORANGE} />}
+                        </div>
+                        <div className="au-ell" style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.05em' }}>{u.email}</div>
                       </div>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.05em' }}>{u.email}</div>
                     </div>
-                    {/* Stats inline */}
-                    <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexShrink: 0 }}>
-                      <div style={{ textAlign: 'center' }}>
+                    {/* Stats */}
+                    <div className="au-stats">
+                      <div className="au-stat">
                         <div style={{ fontSize: 18, fontWeight: 700, color: CYAN, letterSpacing: '-0.02em' }}>{comp.count}</div>
                         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>DONE</div>
                       </div>
-                      <div style={{ textAlign: 'center' }}>
+                      <div className="au-stat">
                         <div style={{ fontSize: 18, fontWeight: 700, color: YELLOW, letterSpacing: '-0.02em' }}>{u.current_streak || 0}</div>
                         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>STREAK</div>
                       </div>
-                      <div style={{ textAlign: 'center' }}>
+                      <div className="au-stat">
                         <div style={{ fontSize: 13, fontWeight: 600, color: dotColor }}>{timeAgo(lastActive)}</div>
                         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)' }}>LAST SEEN</div>
                       </div>
                     </div>
                     {/* Nudge + expand */}
-                    <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
+                    <div className="au-actions">
                       <button
                         onClick={e => { e.stopPropagation(); setNudgeMsg(''); setNudgeUser(u) }}
-                        style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}
+                        style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 13px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}
                       >NUDGE</button>
                       <span style={{ color: 'rgba(26,42,58,0.25)', fontSize: 16, transition: 'transform 0.2s', transform: isExpanded ? 'rotate(180deg)' : 'none' }}>⌄</span>
                     </div>
@@ -604,7 +700,81 @@ export default function AdminPage() {
               })}
             </div>
 
-            {/* Feedback items */}
+            {/* SUMMARY */}
+            <Card style={{ marginBottom: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
+                <div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: '#1a2a3a' }}>{feedbackUser ? userName(feedbackUser) : 'All testers'} · summary</div>
+                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)', marginTop: 3 }}>
+                    {Object.entries(fbSummary.byType).map(([t, n]) => `${n} ${t.replace('_', '-')}`).join(' · ') || 'no feedback yet'}
+                  </div>
+                </div>
+                <button onClick={() => summarizeFeedback(fbScope)} disabled={aiSummary.state === 'loading'}
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '8px 14px', borderRadius: 8, border: 'none', background: aiSummary.state === 'loading' ? 'rgba(26,42,58,0.1)' : '#1a2a3a', color: '#fff', cursor: aiSummary.state === 'loading' ? 'default' : 'pointer', fontWeight: 600, flexShrink: 0 }}>
+                  {aiSummary.state === 'loading' ? 'SUMMARIZING…' : '✦ SUMMARIZE WITH AI'}
+                </button>
+              </div>
+
+              <div className="admin-kpis">
+                {[{ l: 'TOPIC', v: fbSummary.topic, c: YELLOW }, { l: 'CLARITY', v: fbSummary.clarity, c: CYAN }, { l: 'QUIZ', v: fbSummary.quiz, c: PURPLE }, { l: 'OVERALL', v: fbSummary.overall, c: ORANGE }].map(s => (
+                  <div key={s.l} style={{ textAlign: 'center', background: 'rgba(26,42,58,0.03)', borderRadius: 10, padding: '10px 6px' }}>
+                    <div style={{ fontSize: 22, fontWeight: 700, color: s.v ? s.c : 'rgba(26,42,58,0.2)', letterSpacing: '-0.02em' }}>{s.v || '—'}</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.35)', marginTop: 3 }}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              {Object.keys(fbSummary.recommend).length > 0 && (
+                <div style={{ display: 'flex', gap: 8, marginTop: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', color: 'rgba(26,42,58,0.4)' }}>RECOMMEND:</span>
+                  {[['Yes', CYAN], ['Not yet', YELLOW], ['No', PINK]].map(([k, c]) => fbSummary.recommend[k] ? <Chip key={k} label={`${k} · ${fbSummary.recommend[k]}`} color={c} /> : null)}
+                </div>
+              )}
+
+              {aiSummary.state !== 'idle' && (
+                <div style={{ marginTop: 16, borderTop: '1px solid rgba(26,42,58,0.07)', paddingTop: 14 }}>
+                  {aiSummary.state === 'loading' && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(26,42,58,0.4)', letterSpacing: '0.1em' }}>READING {fbScope.length} ITEMS…</div>}
+                  {aiSummary.state === 'error' && <div style={{ fontSize: 12, color: PINK }}>{aiSummary.text}</div>}
+                  {aiSummary.state === 'done' && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{aiSummary.text}</div>}
+                </div>
+              )}
+            </Card>
+
+            {/* CHECK-IN SURVEYS — weekly / midpoint / final (the 7/14/21/30-day responses) */}
+            {surveyItems.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <SectionLabel>CHECK-IN SURVEYS · {surveyItems.length}</SectionLabel>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {surveyItems.map((f, i) => (
+                    <Card key={f.id || i} style={{ borderLeft: `3px solid ${YELLOW}` }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: 14, fontWeight: 700, color: '#1a2a3a' }}>{userName(f.user_id)}</span>
+                          <Chip label={(f.feedback_type || '').toUpperCase()} color={YELLOW} />
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(f.created_at)}</span>
+                        </div>
+                        {f.would_recommend && <Chip label={`REC: ${f.would_recommend}`} color={f.would_recommend === 'Yes' ? CYAN : f.would_recommend === 'No' ? PINK : YELLOW} />}
+                      </div>
+                      {(f.topic_rating || f.clarity_rating || f.quiz_rating) && (
+                        <div style={{ display: 'flex', gap: 16, marginBottom: (f.missing_topics || f.biggest_win || f.comment) ? 10 : 0, flexWrap: 'wrap' }}>
+                          {[['TOPIC', f.topic_rating, YELLOW], ['CLARITY', f.clarity_rating, CYAN], ['QUIZ', f.quiz_rating, PURPLE]].map(([l, v, c]) => v ? (
+                            <div key={l} style={{ textAlign: 'center' }}>
+                              <div style={{ fontSize: 15, fontWeight: 700, color: c }}>{v}/5</div>
+                              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 7, letterSpacing: '0.08em', color: 'rgba(26,42,58,0.35)' }}>{l}</div>
+                            </div>
+                          ) : null)}
+                        </div>
+                      )}
+                      {f.biggest_win && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.6, marginBottom: f.missing_topics || f.comment ? 6 : 0 }}><span style={{ color: CYAN, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>WIN</span>"{f.biggest_win}"</div>}
+                      {f.missing_topics && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6, marginBottom: f.comment ? 6 : 0 }}><span style={{ color: ORANGE, fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', marginRight: 6 }}>MISSING</span>{f.missing_topics}</div>}
+                      {f.comment && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6 }}>{f.comment}</div>}
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Per-user post-lesson feedback */}
             {Object.entries(feedbackByUser)
               .filter(([uid]) => !feedbackUser || uid === feedbackUser)
               .map(([uid, { items, user }]) => {

@@ -337,7 +337,7 @@ export default function ProfilePage() {
             <FieldRow label="FIRST NAME" value={firstName} onChange={setFirstName} />
             <FieldRow label="LAST NAME" value={lastName} onChange={setLastName} />
             <FieldRow label="EMAIL" value={email} editable={false} hint="Email cannot be changed" />
-            <FieldRow label="PHONE" value={phone} onChange={setPhone} type="tel" hint="Used for future SMS notifications — optional" />
+            <FieldRow label="PHONE" value={phone} onChange={setPhone} type="tel" hint="Add your cell to get SMS nudges & reminders — optional" />
 
             {/* Notifications */}
             <div style={{ fontSize: 9, color: T.tertiary, letterSpacing: '0.18em', fontWeight: 600, marginTop: 28, marginBottom: 12, fontFamily: "'DM Mono', monospace" }}>NOTIFICATIONS</div>
