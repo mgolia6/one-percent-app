@@ -1,10 +1,18 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { createClient } from '@supabase/supabase-js'
 
 export const runtime = 'nodejs'
 
 // Vercel stores the key as CLAUDE_API_KEY; fall back to ANTHROPIC_API_KEY for local dev.
 const client = new Anthropic({ apiKey: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY })
 const MODEL = 'claude-sonnet-4-6'
+
+// Server-side cache/persist (service role). Optional — if the key isn't set the
+// route still works (generates on demand); it just won't self-cache. The daily
+// cron relies on this to fill the archive on days nobody opens the app.
+const SUPA_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
+const adminDb = SUPA_URL && SERVICE_KEY ? createClient(SUPA_URL, SERVICE_KEY, { auth: { persistSession: false } }) : null
 
 // "On This Day" — the facts are pulled from Wikipedia's on-this-day feed (real,
 // sourced, auto-verified). Claude only PICKS the most resonant event and writes
@@ -35,6 +43,17 @@ export async function GET(req) {
     const mm = pad(now.getUTCMonth() + 1)
     const dd = pad(now.getUTCDate())
     const isoDate = `${now.getUTCFullYear()}-${mm}-${dd}`
+    const isReal = !dateParam // only the genuine "today" is cached/persisted
+
+    // Serve the cached card if we already generated one for this date.
+    if (adminDb && isReal) {
+      const { data: cached } = await adminDb.from('on_this_day').select('*').eq('date', isoDate).maybeSingle()
+      if (cached?.event) {
+        return new Response(JSON.stringify(cached), {
+          headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' },
+        })
+      }
+    }
 
     // Real, sourced events for this month/day. Cached at the edge for a day.
     const wikiRes = await fetch(
@@ -90,6 +109,12 @@ export async function GET(req) {
       source_url: chosen.source_url,
       source_title: chosen.source_title,
       category: 'History',
+    }
+
+    // Persist so it's the same shared card all day (and fills the archive when
+    // the daily cron calls this on a day no user has opened the app).
+    if (adminDb && isReal) {
+      await adminDb.from('on_this_day').upsert(card, { onConflict: 'date', ignoreDuplicates: true })
     }
 
     return new Response(JSON.stringify(card), {
