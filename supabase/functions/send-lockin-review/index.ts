@@ -9,7 +9,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')!
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-const APP_URL = 'https://one-percent-app.vercel.app'
+const APP_URL = 'https://onepercent.mpgink.com'
 
 function buildHtml(firstName: string, items: { concept: string; keeper: string | null }[]) {
   const n = items.length
