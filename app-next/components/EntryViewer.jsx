@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
 import analytics from '@/lib/analytics'
 import LockItIn from './LockItIn'
+import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
   const canvasRef = useRef(null)
@@ -275,6 +276,83 @@ function PostEntryFeedback({ entryNumber, userId, accent, onSubmit, theme }) {
   )
 }
 
+// "Keep It Sharp" — flag this lesson for spaced-repetition review. Shown in the
+// completion card. Enrolls into the lockins table; the daily cron nudges when due.
+function KeepSharp({ entry, userId, keeper, hook, accent, theme: T }) {
+  const [state, setState] = useState('loading') // 'loading' | 'idle' | 'saving' | 'enrolled'
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    let alive = true
+    if (!userId) { setState('idle'); return }
+    getLockin({ userId, entryNumber: entry.entry ?? entry.number }).then((l) => {
+      if (!alive) return
+      setState(l && l.status !== 'archived' ? 'enrolled' : 'idle')
+    })
+    return () => { alive = false }
+  }, [userId, entry])
+
+  const enroll = async () => {
+    if (!userId) return
+    setState('saving')
+    const { error } = await enrollLockin({ userId, entry, keeper: keeper || null, hook: hook || null })
+    setState(error ? 'idle' : 'enrolled')
+    if (!error && typeof analytics.lockinEnrolled === 'function') {
+      analytics.lockinEnrolled({ entryNumber: entry.entry ?? entry.number, concept: entry.concept })
+    }
+  }
+
+  const undo = async () => {
+    if (!userId) return
+    setState('saving')
+    await removeLockin({ userId, entryNumber: entry.entry ?? entry.number })
+    setState('idle')
+  }
+
+  if (state === 'loading') return null
+
+  if (state === 'enrolled') {
+    return (
+      <div style={{ background: `${accent}0d`, border: `1px solid ${accent}44`, borderRadius: 6, padding: '14px 16px', marginBottom: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ color: accent, fontSize: 14 }}>✓</span>
+          <div style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>You're keeping this sharp</div>
+        </div>
+        <div style={{ fontSize: 12, color: T.textDim, marginTop: 6, lineHeight: 1.6 }}>
+          We'll resurface it on a spaced schedule — first recall in 2 days. Find your reviews under <strong style={{ color: T.textMid }}>Review</strong>.
+        </div>
+        <button onClick={undo} style={{ background: 'none', border: 'none', color: T.textFaint, fontSize: 11, cursor: 'pointer', padding: '6px 0 0', fontFamily: "'Inter',sans-serif", letterSpacing: '0.04em' }}>
+          Remove from rotation
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <button
+      onClick={enroll}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      disabled={state === 'saving'}
+      style={{
+        width: '100%', textAlign: 'left', background: hovered ? `${accent}14` : T.surface,
+        border: `1px solid ${hovered ? accent : T.surfaceBorder}`, borderRadius: 6, padding: '14px 16px',
+        marginBottom: 12, cursor: 'pointer', fontFamily: "'Inter',sans-serif", transition: 'all 0.15s',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{ fontSize: 14 }}>📌</span>
+        <div style={{ fontSize: 13, color: T.text, fontWeight: 600 }}>
+          {state === 'saving' ? 'Adding…' : 'Keep this one sharp'}
+        </div>
+      </div>
+      <div style={{ fontSize: 12, color: T.textDim, marginTop: 6, lineHeight: 1.6 }}>
+        Go deeper on this concept — we'll bring it back for a quick recall over the next few weeks so it actually sticks.
+      </div>
+    </button>
+  )
+}
+
 const THEMES = {
   morning: {
     bg: 'linear-gradient(160deg, #22252e 0%, #1e2128 50%, #1a1d24 100%)',
@@ -333,9 +411,11 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  // Lock It In is admin-gated for now. Non-admins go straight to the quiz.
-  const [mode, setMode] = useState(isAdmin ? 'choose' : 'quiz') // 'choose' | 'quiz' | 'chat'
+  // Lock It In is live for everyone — start on the mode chooser.
+  const [mode, setMode] = useState('choose') // 'choose' | 'quiz' | 'chat'
   const [chatScore, setChatScore] = useState(null)
+  const [chatKeeper, setChatKeeper] = useState(null)
+  const [chatHook, setChatHook] = useState(null)
   const [showCelebration, setShowCelebration] = useState(false)
   const [srcOpen, setSrcOpen] = useState(false)
   const [showEntryFeedback, setShowEntryFeedback] = useState(false)
@@ -358,6 +438,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
       if (userStats.answers.mode === 'chat') {
         setMode('chat')
         setChatScore(userStats.score ?? null)
+        if (userStats.answers.keeper) setChatKeeper(userStats.answers.keeper)
+        if (userStats.answers.hook) setChatHook(userStats.answers.hook)
       } else {
         setAnswers(userStats.answers)
         setMode('quiz')
@@ -403,6 +485,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     if (submitted) return
     const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
     setChatScore(s)
+    if (chatAnswers?.keeper) setChatKeeper(chatAnswers.keeper)
+    if (chatAnswers?.hook) setChatHook(chatAnswers.hook)
     setSubmitted(true)
     if (s >= 2) setShowCelebration(true)
     if (!feedbackShown.current) {
@@ -562,8 +646,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
 
-            {/* Mode chooser: conversational recall vs. multiple-choice quiz (admin-gated) */}
-            {isAdmin && mode === 'choose' && !submitted && (
+            {/* Mode chooser: conversational recall vs. multiple-choice quiz */}
+            {mode === 'choose' && !submitted && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 8 }}>
                 <button onClick={() => setMode('chat')} style={{ textAlign: 'left', background: ACCENT, border: 'none', borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: '#0A0A0A' }}>Lock it in with AI →</div>
@@ -577,7 +661,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             )}
 
             {/* Conversational "Lock It In" */}
-            {isAdmin && mode === 'chat' && !submitted && (
+            {mode === 'chat' && !submitted && (
               <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
             )}
 
@@ -691,6 +775,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                 {/* Completion action card */}
                 <div ref={completionRef} className="op-completion-card">
                   <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.12em', fontWeight: 600, marginBottom: 14 }}>WHAT'S NEXT</div>
+                  <KeepSharp entry={entry} userId={userId} keeper={chatKeeper} hook={chatHook} accent={ACCENT} theme={T} />
                   {onBack && (
                     <button className="op-action-primary" onClick={onBack}>
                       BACK TO LIBRARY

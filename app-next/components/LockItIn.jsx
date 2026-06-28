@@ -99,7 +99,7 @@ export default function LockItIn({ entry, accent, theme: T, onComplete, onSwitch
   const finish = () => {
     if (!result) return
     const keeper = (keeperDraft || '').trim() || result.theirKeeper
-    if (onComplete) onComplete({ score: result.score, answers: { mode: 'chat', keeper } })
+    if (onComplete) onComplete({ score: result.score, answers: { mode: 'chat', keeper, hook: result.hook || null } })
   }
 
   const eq = (a, b) => (a || '').trim() === (b || '').trim()
