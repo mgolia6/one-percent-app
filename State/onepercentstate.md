@@ -6,23 +6,24 @@ Regenerated after session: entries 041-060 shipped and verified. North Star set 
 
 ## ★ North Star (set 2026-06-28)
 
-**Goal: by end of August 2026 — ~450 verified entries + a validated learning loop on the PWA. THEN go native (proper Expo/React Native rebuild — "do it right the first time," not a wrapper).**
+**Goal: by end of August 2026 — ~400 verified entries + a validated learning loop on the PWA. THEN go native (proper Expo/React Native rebuild — "do it right the first time," not a wrapper).**
 
-- **Content target: ~50 per category × 9 categories ≈ 450.** Rationale: users will be able to **favorite** and **block** categories, so each category needs enough depth that blocking 1–2 still gives a full year (365) of unique daily content (7 remaining cats × ~52 ≈ 365). 400 is the floor; ~450 supports blocking up to 2.
-- **Categories: 7 → 9.** Add **History** and **Psychology** (both from scratch). Watch the Psychology ↔ Neuroscience & Cognition ↔ Mental Models boundary — give each a clear scope (Psych = social/emotional/motivation/personality; NC = brain mechanism; MM = decision/thinking tools).
-- **Per-category remaining to hit ~50 each:** SC +37, AI +38, VL +41, MM +45, PH +45, NC +42, CM +42, **History +50, Psychology +50** ≈ **+390** (from 60 → ~450). Content sprint must be **balanced**, not skewed to AI/Sales. Velocity ~20/clip → ~20 sessions over 9 weeks = feasible if focused.
-- **Verification:** to hit August, expect a content pipeline + tiered verification (full Dead Drop on early/high-traffic; "draft-verified" + backfill on the tail).
+- **Categories: 7 → 8.** Add **History** only. **Psychology considered and passed** (overlaps existing Neuroscience & Cognition / Mental Models) — psych-flavored concepts get absorbed into those rather than a new category.
+- **Content target (8 categories; user can block up to 2):**
+  - **August bar: ~50/category × 8 ≈ ~400.** Full unique year if a user blocks 1 category; ~10 months unique if they block 2 (then gently recycles — fine for a daily habit, reinforced by spaced repetition).
+  - **Stretch (post-August): ~60/category ≈ ~480** for a full unique year even if 2 are blocked.
+- **Per-category remaining to ~50 each:** SC +37, AI +38, VL +41, MM +45, PH +45, NC +42, CM +42, **History +50** ≈ **+340** (60 → ~400). Sprint must be **balanced**, not skewed to AI/Sales. Velocity ~20/clip → ~17 sessions over 9 weeks = feasible if focused. Tier verification: full Dead Drop on early/high-traffic, draft-verified + backfill on the tail.
 
 **New features queued (build-now / native-ports):**
-- **Favorite + block categories** — profile preference model + daily-selection filter (weight favorites, exclude blocked). Get the data model right now; it ports to native.
-- **"On This Day" daily bonus** — date-keyed bonus card for active users (real historical event → micro-lesson); retention hook tied to History. SEPARATE stream, not counted in the ~450 rotation.
+- **Favorite + block categories (block up to 2)** — profile preference model (`favorited[]`, `blocked[]`) + daily-selection filter (weight favorites, exclude blocked). Data model designed native-portable.
+- **"On This Day" daily bonus** — **per-date AI, auto-verified**: generated fresh for each calendar day from a real historical event, served as a bonus card to active users. SEPARATE stream, not counted in the ~400 rotation; retention hook tied to History.
 
 **Because native is the destination (~2 months out):**
 - Keep all logic UI-agnostic (Supabase queries, scoring, SR scheduling, AI routes already are) so the rebuild is "rebuild the views," not everything.
 - **Don't over-invest in web push** — validate the spaced-repetition loop via email + in-app on-open recall now; do real push **natively** (APNs/FCM). 
 - Document the design tokens cleanly for a faithful RN port.
 
-**Open decisions:** block 1 vs 2 categories (415 vs ~470 floor) · Psychology scope vs NC/MM · On-This-Day generation (per-date AI vs curated 365 set).
+**Resolved 2026-06-28:** block up to 2 categories · History only (Psychology passed) · On-This-Day = per-date AI, auto-verified.
 
 ---
 
