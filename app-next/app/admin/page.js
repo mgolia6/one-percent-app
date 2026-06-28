@@ -288,9 +288,10 @@ export default function AdminPage() {
     setApiChecking(false)
   }
 
-  async function markBugResolved(id) {
-    await supabase.from('bug_reports').update({ status: 'resolved' }).eq('id', id)
-    await loadAll()
+  async function setBugStatus(id, status) {
+    setBugs(prev => prev.map(b => b.id === id ? { ...b, status } : b))
+    const { error } = await supabase.from('bug_reports').update({ status }).eq('id', id)
+    if (error) loadAll() // resync on failure
   }
 
   async function resetUserData(userId) {
@@ -422,7 +423,11 @@ export default function AdminPage() {
   const nonAdminUsers = users.filter(u => !u.is_admin)
   const openBugs = bugs.filter(b => b.status === 'open' || !b.status)
   const resolvedBugs = bugs.filter(b => b.status === 'resolved')
-  const displayedBugs = bugFilter === 'open' ? openBugs : bugFilter === 'resolved' ? resolvedBugs : bugs
+  const wontFixBugs = bugs.filter(b => b.status === 'wont_fix')
+  const displayedBugs = bugFilter === 'all' ? bugs
+    : bugFilter === 'open' ? openBugs
+    : bugFilter === 'resolved' ? resolvedBugs
+    : wontFixBugs
 
   // Feedback by user
   const feedbackByUser = {}
@@ -718,32 +723,40 @@ export default function AdminPage() {
         {/* ── BUGS TAB ── */}
         {tab === 'bugs' && (
           <div>
-            <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
-              {[['open','OPEN'],['resolved','RESOLVED'],['all','ALL']].map(([k,l]) => (
-                <button key={k} onClick={() => setBugFilter(k)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: bugFilter === k ? ACCENT : 'rgba(26,42,58,0.07)', color: bugFilter === k ? '#fff' : 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>{l} {k === 'open' ? `(${openBugs.length})` : k === 'resolved' ? `(${resolvedBugs.length})` : `(${bugs.length})`}</button>
+            <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
+              {[['open','OPEN',openBugs.length],['resolved','RESOLVED',resolvedBugs.length],['wont_fix',"WON'T FIX",wontFixBugs.length],['all','ALL',bugs.length]].map(([k,l,n]) => (
+                <button key={k} onClick={() => setBugFilter(k)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 14px', borderRadius: 8, border: 'none', background: bugFilter === k ? ACCENT : 'rgba(26,42,58,0.07)', color: bugFilter === k ? '#fff' : 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>{l} ({n})</button>
               ))}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {displayedBugs.length === 0 && <div style={{ textAlign: 'center', padding: 40, color: 'rgba(26,42,58,0.35)', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em' }}>NO BUGS IN THIS FILTER</div>}
-              {displayedBugs.map(b => (
-                <Card key={b.id} style={{ borderLeft: b.status === 'resolved' ? '3px solid rgba(26,42,58,0.12)' : `3px solid ${PINK}` }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                        <Chip label={b.page || 'Unknown'} color={ORANGE} />
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(b.created_at)}</span>
-                        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{b.profiles?.first_name || b.profiles?.email || 'Unknown'}</span>
-                      </div>
-                      <div style={{ fontSize: 14, color: '#1a2a3a', lineHeight: 1.5, marginBottom: b.browser_info ? 8 : 0 }}>{b.description}</div>
-                      {b.browser_info && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.3)', marginTop: 6, wordBreak: 'break-all' }}>{b.browser_info.slice(0, 120)}{b.browser_info.length > 120 ? '…' : ''}</div>}
-                    </div>
-                    {b.status !== 'resolved' && (
-                      <button onClick={() => markBugResolved(b.id)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}>RESOLVE</button>
+              {displayedBugs.map(b => {
+                const status = b.status || 'open'
+                const isOpen = status === 'open'
+                const accent = status === 'resolved' ? CYAN : status === 'wont_fix' ? 'rgba(26,42,58,0.3)' : PINK
+                return (
+                <Card key={b.id} style={{ borderLeft: `3px solid ${accent}`, opacity: isOpen ? 1 : 0.72 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                    <Chip label={b.page || 'Unknown'} color={ORANGE} />
+                    {!isOpen && <Chip label={status === 'resolved' ? 'RESOLVED' : "WON'T FIX"} color={status === 'resolved' ? CYAN : 'rgba(120,130,140,1)'} />}
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(b.created_at)}</span>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{b.profiles?.first_name || b.profiles?.email || 'Unknown'}</span>
+                  </div>
+                  <div style={{ fontSize: 14, color: '#1a2a3a', lineHeight: 1.5, marginBottom: b.browser_info ? 8 : 12 }}>{b.description}</div>
+                  {b.browser_info && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, color: 'rgba(26,42,58,0.3)', marginTop: 6, marginBottom: 12, wordBreak: 'break-all' }}>{b.browser_info.slice(0, 120)}{b.browser_info.length > 120 ? '…' : ''}</div>}
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    {isOpen ? (
+                      <>
+                        <button onClick={() => setBugStatus(b.id, 'resolved')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}10`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}>✓ RESOLVE</button>
+                        <button onClick={() => setBugStatus(b.id, 'wont_fix')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.18)', background: 'transparent', color: 'rgba(26,42,58,0.5)', cursor: 'pointer' }}>WON'T FIX</button>
+                      </>
+                    ) : (
+                      <button onClick={() => setBugStatus(b.id, 'open')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.1em', padding: '7px 14px', borderRadius: 8, border: `1px solid ${ORANGE}40`, background: `${ORANGE}10`, color: ORANGE, cursor: 'pointer', fontWeight: 600 }}>↺ REOPEN</button>
                     )}
-                    {b.status === 'resolved' && <Chip label="RESOLVED" color={CYAN} />}
                   </div>
                 </Card>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
