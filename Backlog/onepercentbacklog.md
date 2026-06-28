@@ -26,9 +26,12 @@ Status codes: `candidate` · `used` · `needs-verification`
 | PH | Philosophy | #FF4778 | Slot 7 |
 | NC | Neuroscience & Cognition | #47C8FF | Slot 8 |
 | CM | Communication | #FF8C00 | Slot 9 |
+| HS | History | #E0A93D | TBD (new 2026-06-28) |
+| PF | Personal Finance | #3DE88A | TBD (new 2026-06-28) |
+| HP | Health & Performance | #FF5151 | TBD (new 2026-06-28) |
 
-9-slot cycle: `SC → AI → VL → SC → MM → AI → PH → NC → CM` → repeat
-Target library: 365 entries (~40 full cycles)
+**Target (updated 2026-06-28): ~400 entries across 10 categories (~40 each)** — supports favorite + block up to 2 categories. Rotation to be re-balanced for 10 categories. Category colors/prefixes source of truth: `app-next/lib/categories.js`.
+Original: ~365 across 9 slots (`SC → AI → VL → SC → MM → AI → PH → NC → CM`).
 
 ---
 
@@ -335,3 +338,144 @@ Target library: 365 entries (~40 full cycles)
 
 *This file is maintained by Claude. Matthew can add, flag, or reprioritize at any time.*
 *Product backlog (features, bugs, upgrades): `Backlog/onepercentproductbacklog.md`*
+
+---
+
+## History (HS) — Accent: #E0A93D  *(new 2026-06-28 — target ~40)*
+
+Pivotal events, figures, and turning points — always with a "why it still matters today" angle. Pairs with the **On This Day** daily bonus. All `candidate` pending Dead Drop verification.
+
+- The Library of Alexandria — the fragility of knowledge
+- Gutenberg's printing press — the first information revolution
+- The Black Death — how a plague reshaped labor and wages
+- The Rosetta Stone — decoding a lost language
+- The Code of Hammurabi — the first written law
+- The Antikythera mechanism — an ancient analog "computer"
+- The Silk Road — globalization before the word existed
+- The Magna Carta — the first real limit on a ruler's power
+- The Columbian Exchange — food, disease, and a remade world
+- The Peace of Westphalia — the birth of the nation-state
+- The Lisbon earthquake of 1755 — the dawn of disaster science
+- Tulip Mania — the first speculative bubble
+- The South Sea Bubble — when a whole government got fooled
+- The Dutch East India Company — the first joint-stock corporation
+- The Venetian Arsenal — assembly lines centuries early
+- The Industrial Revolution — steam, scale, and the modern world
+- The Haitian Revolution — the only successful slave revolt
+- The telegraph — "the Victorian internet"
+- The Domesday Book — the first government "big data"
+- The Meiji Restoration — a nation modernizing in a generation
+- The Transcontinental Railroad — why time zones exist
+- The discovery of penicillin — luck, mold, and modern medicine
+- The 1918 influenza pandemic — the forgotten catastrophe
+- The Manhattan Project — science at terrifying speed
+- Bretton Woods — how the dollar took over the world
+- The Marshall Plan — rebuilding an enemy on purpose
+- The Cuban Missile Crisis — thirteen days on the brink
+- The Apollo program — the original moonshot
+- The Nixon Shock (1971) — the day money left gold
+- The fall of the Berlin Wall — a system collapsing overnight
+- ARPANET — the internet's quiet birth
+- The Wright brothers — twelve seconds that changed everything
+- Abolition of the British slave trade — a movement that worked
+- The Dreyfus Affair — media, justice, and "J'accuse"
+- The Great Fire of London — and the birth of insurance
+- The Suez Canal — why chokepoints decide trade
+- The Phoenician alphabet — writing for everyone
+- The spinning jenny — mechanization and its discontents
+- The Trinity test — the moment the nuclear age began
+- The printing of the Encyclopédie — organizing all knowledge
+
+---
+
+## Personal Finance (PF) — Accent: #3DE88A  *(new 2026-06-28 — target ~40)*
+
+Money mechanics + behavior. Highly applicable; avoid specific product/ticker advice — teach the principle. All `candidate` pending Dead Drop verification.
+
+- Compound interest — the snowball that does the work
+- The Rule of 72 — doubling time in your head
+- Savings rate beats income — the real lever
+- Pay yourself first — automation over willpower
+- The emergency fund — why 3–6 months
+- Good debt vs bad debt — interest as a force
+- The true cost of credit-card interest
+- Index funds & diversification — owning everything
+- Dollar-cost averaging — removing the timing question
+- Time in the market beats timing the market
+- The 4% rule — what "enough to retire" means
+- Tax-advantaged accounts — 401(k), IRA, Roth basics
+- The employer match — turning down free money
+- Expense ratios & fees — the silent drag on returns
+- Inflation — why cash quietly loses
+- Lifestyle creep — the raise that vanishes
+- Net worth vs income — what actually matters
+- Opportunity cost of money — every dollar has a job
+- Loss aversion in investing — why we sell low
+- Mental accounting — why we treat dollars differently
+- The latte factor — myth vs the actual math
+- Sunk cost in money decisions
+- Liquidity vs return — the tradeoff you can't escape
+- Debt snowball vs avalanche — momentum vs math
+- How credit scores actually work
+- The time value of money
+- Asset allocation & rebalancing
+- Stocks vs bonds — risk and return
+- Sequence-of-returns risk — order matters near retirement
+- Insurance as risk transfer (not investment)
+- The endowment effect — overvaluing what you own
+- Anchoring on price — how sellers set your expectations
+- Delayed gratification — the marshmallow test, with money
+- FIRE — financial independence, retire early
+- The psychology of windfalls — why they evaporate
+- "Enough" — defining your number (Bogle)
+- The cost of waiting a year to invest
+- Diversifying income, not just investments
+- The danger of leverage — magnifying both ways
+- Hyperbolic discounting — why "later" loses to "now"
+
+---
+
+## Health & Performance (HP) — Accent: #FF5151  *(new 2026-06-28 — target ~40)*
+
+The body's operating manual: sleep, training, nutrition, recovery, longevity. Body-focused (vs Neuroscience's brain focus). Evidence-based; flag hype. All `candidate` pending Dead Drop verification.
+
+- Sleep architecture — REM vs deep, and why both matter
+- Circadian rhythm — morning light as a free drug
+- Sleep pressure & adenosine — why you get tired
+- Caffeine's half-life — why the 3pm coffee costs you
+- Zone 2 cardio — the longevity engine
+- VO2 max — the single best longevity marker
+- Progressive overload — the one rule of getting stronger
+- Protein & muscle protein synthesis
+- Sarcopenia — the muscle you lose with age
+- NEAT — the calories you burn just living
+- The minimum effective dose of exercise
+- Recovery & supercompensation — growth happens at rest
+- Heart rate variability (HRV) — reading your nervous system
+- Resting heart rate as a fitness signal
+- Hydration & electrolytes — beyond "8 glasses"
+- The glucose spike — and the crash that follows
+- Fiber & the gut microbiome
+- Strength training for longevity — not just looks
+- Cortisol & chronic stress — the always-on cost
+- Allostatic load — the price of never recovering
+- Breathwork & the vagus nerve
+- Nasal vs mouth breathing
+- Cold exposure — hype vs the actual evidence
+- Sauna/heat — surprising cardiovascular benefits
+- Mobility vs flexibility — different things
+- The sit-to-stand test — a longevity predictor
+- Grip strength as a health marker
+- Chronic inflammation — the slow burn behind disease
+- The "anabolic window" — mostly a myth
+- Creatine — the most-studied supplement
+- The dangers of chronic sitting
+- A walk after meals — the easiest glucose hack
+- Sleep debt — why you can't fully repay it
+- Blue light & melatonin
+- Exercise "snacks" — micro-bouts that count
+- Overtraining syndrome — when more is worse
+- Muscle as a longevity organ
+- The protein leverage hypothesis
+- Breath cadence & the relaxation response
+- Daylight, not screens — anchoring your body clock
