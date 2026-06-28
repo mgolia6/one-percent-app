@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { TOTAL_ENTRIES } from '@/lib/config'
+import { CATEGORIES } from '@/lib/categories'
 
 const ACCENT = '#1a2a3a'
 const CYAN = '#47FFE8'
@@ -11,11 +12,7 @@ const PINK = '#FF4778'
 const PURPLE = '#C847FF'
 const ORANGE = '#FF8C47'
 
-const CAT_COLORS = {
-  'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
-  'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
-}
+const CAT_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 function timeAgo(ts) {
   if (!ts) return 'never'

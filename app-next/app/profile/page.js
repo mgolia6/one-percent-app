@@ -4,16 +4,9 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem, User, ChevronLeft, Trophy, Plus } from 'lucide-react'
+import { CATEGORIES } from '@/lib/categories'
 
-const CATEGORY_COLORS = {
-  'AI': '#47FFE8',
-  'Sales Craft': '#E8FF47',
-  'Vocab & Language': '#FF8C47',
-  'Mental Models': '#C847FF',
-  'Philosophy': '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF',
-  'Communication': '#FF8C00',
-}
+const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 // Badges now come from Supabase (badge_definitions + user_badges tables)
 const ICONS = { Shield, Footprints, Target, Layers, Zap, Grid3X3, Flame, Gem }
@@ -25,11 +18,7 @@ const BORDER = 'rgba(255,255,255,0.08)'
 const BORDER_FAINT = 'rgba(255,255,255,0.04)'
 const T = { primary: '#e8eef5', secondary: 'rgba(232,238,245,0.65)', tertiary: 'rgba(232,238,245,0.35)', faint: 'rgba(232,238,245,0.18)' }
 
-const CAT_COLORS = {
-  'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
-  'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
-}
+const CAT_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 function BadgeRow({ badge, earned, earnedAt }) {
   const color = badge.category ? CAT_COLORS[badge.category] || '#fff' : '#E8FF47'

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { Paperclip, User, Trophy } from 'lucide-react'
 import { TOTAL_ENTRIES } from '@/lib/config'
+import { CATEGORIES, CATEGORY_KEYS } from '@/lib/categories'
 import { getUnlockedCount } from '@/lib/unlock'
 import analytics from '@/lib/analytics'
 import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
@@ -206,12 +207,7 @@ function BadgeEarnOverlay({ badge, onDismiss }) {
   const [visible, setVisible] = React.useState(false)
   React.useEffect(() => { setTimeout(() => setVisible(true), 50) }, [])
 
-  const CAT_COLORS = {
-    'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
-    'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
-    'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
-  }
-  const color = badge.category ? CAT_COLORS[badge.category] || '#fff' : '#E8FF47'
+  const color = badge.category ? CATEGORY_COLORS[badge.category] || '#fff' : '#E8FF47'
 
   return (
     <div onClick={onDismiss} style={{
@@ -264,15 +260,7 @@ function BadgeEarnOverlay({ badge, onDismiss }) {
 
 // TOTAL_ENTRIES imported from @/lib/config
 
-const CATEGORY_COLORS = {
-  'AI': '#47FFE8',
-  'Sales Craft': '#E8FF47',
-  'Vocab & Language': '#FF8C47',
-  'Mental Models': '#C847FF',
-  'Philosophy': '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF',
-  'Communication': '#FF8C00',
-}
+const CATEGORY_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 const ENTRIES = [
   { entry: '001', editionId: 'AI.1.1', concept: 'Context Window', category: 'AI' },
@@ -584,7 +572,7 @@ const HOW_IT_WORKS = [
 ]
 
 // ── Weekly survey modal (fires at day 7, 14, 21) ─────────────────────────
-const SURVEY_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
+const SURVEY_CATS = CATEGORY_KEYS.filter(k => ENTRIES.some(e => e.category === k))
 
 function WkChipRow({ label, options, value, onChange }) {
   return (
@@ -644,7 +632,7 @@ function WkSection({ title }) {
 
 // ── End-of-Beta Survey components ───────────────────────────────────────────
 const EOB_ACCENT = '#FF4778'
-const EOB_CATS = ['Sales Craft', 'AI', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
+const EOB_CATS = CATEGORY_KEYS.filter(k => ENTRIES.some(e => e.category === k))
 
 function EobRatingRow({ label, question, value, onChange }) {
   return (
@@ -1516,16 +1504,22 @@ export default function HomePage() {
   // Score trend (last 7)
   const recentScores = Object.values(completions).slice(-7).map(c => c.score || 0)
 
-  const CAT_CONFIG = {
-    'AI':                       { color: '#47FFE8', short: 'AI',        icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="3" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="12" cy="21" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="3" cy="12" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="21" cy="12" r="1.2" fill="#47FFE8" stroke="none"/></svg> },
-    'Sales Craft':              { color: '#E8FF47', short: 'SALES',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
-    'Vocab & Language':         { color: '#FF8C47', short: 'VOCAB',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg> },
-    'Mental Models':            { color: '#C847FF', short: 'MENTAL',     icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg> },
-    'Philosophy':               { color: '#FF4778', short: 'PHILOSOPHY', icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF4778" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg> },
-    'Neuroscience & Cognition': { color: '#47C8FF', short: 'NEURO',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47C8FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2a2.5 2.5 0 0 1 5 0v.5"/><path d="M9 2.5C5.5 3 3 6 3 9.5c0 4 3 7 6.5 7h5c3.5 0 6.5-3 6.5-7 0-3.5-2.5-6.5-6-7"/><path d="M12 9.5v5"/><path d="M9.5 12h5"/></svg> },
-    'Communication':            { color: '#FF8C00', short: 'COMM.',      icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
+  // Category icons are web-only JSX, so they stay local; color/short come from the registry.
+  const CAT_ICONS = {
+    'AI':                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47FFE8" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="3" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="12" cy="21" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="3" cy="12" r="1.2" fill="#47FFE8" stroke="none"/><circle cx="21" cy="12" r="1.2" fill="#47FFE8" stroke="none"/></svg>,
+    'Sales Craft':              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8FF47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+    'Vocab & Language':         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>,
+    'Mental Models':            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C847FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>,
+    'Philosophy':               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF4778" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>,
+    'Neuroscience & Cognition': <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#47C8FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.5 2a2.5 2.5 0 0 1 5 0v.5"/><path d="M9 2.5C5.5 3 3 6 3 9.5c0 4 3 7 6.5 7h5c3.5 0 6.5-3 6.5-7 0-3.5-2.5-6.5-6-7"/><path d="M12 9.5v5"/><path d="M9.5 12h5"/></svg>,
+    'Communication':            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+    'History':                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E0A93D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg>,
+    'Personal Finance':         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3DE88A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M14.5 9.3a2.4 2 0 0 0-5 .4c0 2.6 5 1.4 5 4 a2.4 2 0 0 1-5 .4"/></svg>,
+    'Health & Performance':     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF5151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h4l2 6 4-12 2 6h6"/></svg>,
   }
-  const ALL_CATS = ['AI', 'Sales Craft', 'Vocab & Language', 'Mental Models', 'Philosophy', 'Neuroscience & Cognition', 'Communication']
+  const CAT_CONFIG = Object.fromEntries(CATEGORIES.map(c => [c.key, { color: c.color, short: c.short, icon: CAT_ICONS[c.key] }]))
+  // Only surface categories that actually have content (new categories stay hidden until their entries land).
+  const ALL_CATS = CATEGORY_KEYS.filter(k => (catTotals[k] || 0) > 0)
 
   const accent = todayEntry ? (CATEGORY_COLORS[todayEntry.category] || '#47FFE8') : '#47FFE8'
 

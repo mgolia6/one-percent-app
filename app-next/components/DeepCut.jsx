@@ -1,18 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { CATEGORIES } from '@/lib/categories'
 
-const CAT_COLORS = ['#47FFE8','#E8FF47','#FF8C47','#C847FF','#FF4778','#47C8FF','#FF8C00']
+const CAT_COLORS = CATEGORIES.map(c => c.color)
 
-const CAT_CONFIG = {
-  'AI':                       '#47FFE8',
-  'Sales Craft':              '#E8FF47',
-  'Vocab & Language':         '#FF8C47',
-  'Mental Models':            '#C847FF',
-  'Philosophy':               '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF',
-  'Communication':            '#FF8C00',
-}
+const CAT_CONFIG = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 // ── FAB — circle, color cycling ──
 export function DeepCutFAB({ onClick }) {
@@ -137,13 +130,7 @@ function EntryPicker({ entries, onSelect, onBegin, selectedEntry }) {
   const [catFilter, setCatFilter] = useState('all')
   const cats = [
     { key: 'all', label: 'ALL', color: null },
-    { key: 'AI', label: 'AI', color: '#47FFE8' },
-    { key: 'Sales Craft', label: 'SALES', color: '#E8FF47' },
-    { key: 'Mental Models', label: 'MENTAL MODELS', color: '#C847FF' },
-    { key: 'Philosophy', label: 'PHILOSOPHY', color: '#FF4778' },
-    { key: 'Vocab & Language', label: 'VOCAB', color: '#FF8C47' },
-    { key: 'Neuroscience & Cognition', label: 'NEURO', color: '#47C8FF' },
-    { key: 'Communication', label: 'COMM', color: '#FF8C00' },
+    ...CATEGORIES.filter(c => entries.some(e => e.category === c.key)).map(c => ({ key: c.key, label: c.short, color: c.color })),
   ]
   const visible = catFilter === 'all' ? entries : entries.filter(e => e.category === catFilter)
 

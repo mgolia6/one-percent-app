@@ -4,6 +4,7 @@ import { Flame, User, ChevronLeft, ChevronDown } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
+import { CATEGORIES } from '@/lib/categories'
 
 const METRICS = [
   { id: 'overall',   label: 'OVERALL',     description: 'Normalized across all four metrics' },
@@ -18,11 +19,7 @@ const COLORS = {
   streak: '#FF8C47', longest: '#C847FF',
 }
 
-const CAT_COLORS = {
-  'AI': '#47FFE8', 'Sales Craft': '#E8FF47', 'Vocab & Language': '#FF8C47',
-  'Mental Models': '#C847FF', 'Philosophy': '#FF4778',
-  'Neuroscience & Cognition': '#47C8FF', 'Communication': '#FF8C00',
-}
+const CAT_COLORS = Object.fromEntries(CATEGORIES.map(c => [c.key, c.color]))
 
 function displayName(p, currentUserId) {
   const isYou = p.id === currentUserId
