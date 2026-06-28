@@ -51,6 +51,24 @@ function Chip({ label, color, bg }) {
   )
 }
 
+function ReviewToggle({ reviewed, onToggle }) {
+  return (
+    <button
+      onClick={e => { e.stopPropagation(); onToggle() }}
+      title={reviewed ? 'Synthesized & addressed — tap to unmark' : 'Mark as synthesized & addressed in an update'}
+      style={{
+        fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.08em', padding: '5px 10px',
+        borderRadius: 7, cursor: 'pointer', fontWeight: 600, whiteSpace: 'nowrap',
+        border: reviewed ? `1px solid ${CYAN}` : '1px solid rgba(26,42,58,0.18)',
+        background: reviewed ? `${CYAN}18` : 'transparent',
+        color: reviewed ? '#0a8a78' : 'rgba(26,42,58,0.45)',
+      }}
+    >
+      {reviewed ? '✓ ADDRESSED' : 'MARK ADDRESSED'}
+    </button>
+  )
+}
+
 function Card({ children, style }) {
   return (
     <div style={{ background: '#fff', borderRadius: 14, padding: '18px 20px', border: '1px solid rgba(26,42,58,0.08)', boxShadow: '0 1px 4px rgba(26,42,58,0.04)', ...style }}>
@@ -107,6 +125,8 @@ export default function AdminPage() {
   const [resetBlastState, setResetBlastState] = useState('idle') // idle | confirm | sending | done | error
   const [systems, setSystems] = useState(null)
   const [aiSummary, setAiSummary] = useState({ state: 'idle', text: '' }) // idle | loading | done | error
+  const [phoneEdits, setPhoneEdits] = useState({})
+  const [phoneSaving, setPhoneSaving] = useState(null)
 
   useEffect(() => {
     async function init() {
@@ -159,6 +179,24 @@ export default function AdminPage() {
         summary[c.user_id].lastDate = c.completed_at
     })
     setUserCompletions(summary)
+  }
+
+  async function saveUserPhone(userId) {
+    const value = (phoneEdits[userId] ?? '').trim()
+    setPhoneSaving(userId)
+    const { error } = await supabase.from('profiles').update({ phone: value || null }).eq('id', userId)
+    if (!error) {
+      setUsers(prev => prev.map(u => u.id === userId ? { ...u, phone: value || null } : u))
+      setPhoneEdits(prev => { const n = { ...prev }; delete n[userId]; return n })
+    }
+    setPhoneSaving(null)
+  }
+
+  async function toggleReviewed(id, current) {
+    // Optimistic flip; revert on failure.
+    setFeedback(prev => prev.map(f => f.id === id ? { ...f, reviewed: !current } : f))
+    const { error } = await supabase.from('feedback').update({ reviewed: !current }).eq('id', id)
+    if (error) setFeedback(prev => prev.map(f => f.id === id ? { ...f, reviewed: current } : f))
   }
 
   async function summarizeFeedback(scopeItems) {
@@ -410,6 +448,7 @@ export default function AdminPage() {
     recommend: surveyItems.reduce((acc, f) => { if (f.would_recommend) acc[f.would_recommend] = (acc[f.would_recommend] || 0) + 1; return acc }, {}),
     missing: fbScope.map(f => f.missing_topics).filter(t => t && t.trim().length > 2),
     wins: fbScope.map(f => f.biggest_win).filter(t => t && t.trim().length > 2),
+    addressed: fbScope.filter(f => f.reviewed).length,
   }
 
   return (
@@ -625,6 +664,25 @@ export default function AdminPage() {
                           {feedbackByUser[u.id].items.length} FEEDBACK ITEMS → VIEW
                         </div>
                       )}
+                      {/* Phone — admin can add numbers collected off-platform */}
+                      <div style={{ marginBottom: 16 }}>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.12em', color: 'rgba(26,42,58,0.4)', marginBottom: 6 }}>CELL PHONE {u.phone ? '· ON FILE' : '· NONE'}</div>
+                        <div style={{ display: 'flex', gap: 8 }}>
+                          <input
+                            type="tel"
+                            value={phoneEdits[u.id] ?? u.phone ?? ''}
+                            onChange={e => setPhoneEdits(p => ({ ...p, [u.id]: e.target.value }))}
+                            placeholder="+1 555 123 4567"
+                            onClick={e => e.stopPropagation()}
+                            style={{ flex: 1, minWidth: 0, padding: '9px 12px', borderRadius: 8, border: '1px solid rgba(26,42,58,0.14)', background: '#fff', fontFamily: "'DM Mono', monospace", fontSize: 12, color: '#1a2a3a', outline: 'none' }}
+                          />
+                          <button
+                            onClick={e => { e.stopPropagation(); saveUserPhone(u.id) }}
+                            disabled={phoneSaving === u.id || (phoneEdits[u.id] ?? u.phone ?? '') === (u.phone ?? '')}
+                            style={{ padding: '9px 16px', borderRadius: 8, border: 'none', background: CYAN, color: '#0a1420', fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.08em', fontWeight: 600, cursor: 'pointer', opacity: (phoneSaving === u.id || (phoneEdits[u.id] ?? u.phone ?? '') === (u.phone ?? '')) ? 0.4 : 1 }}
+                          >{phoneSaving === u.id ? 'SAVING…' : 'SAVE'}</button>
+                        </div>
+                      </div>
                       {/* Reset actions */}
                       <div style={{ display: 'flex', gap: 8 }}>
                         {resetConfirm === u.id + '-data' ? (
@@ -708,6 +766,11 @@ export default function AdminPage() {
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)', marginTop: 3 }}>
                     {Object.entries(fbSummary.byType).map(([t, n]) => `${n} ${t.replace('_', '-')}`).join(' · ') || 'no feedback yet'}
                   </div>
+                  {fbSummary.total > 0 && (
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.04em', color: fbSummary.addressed === fbSummary.total ? '#0a8a78' : ORANGE, marginTop: 5 }}>
+                      {fbSummary.addressed}/{fbSummary.total} addressed
+                    </div>
+                  )}
                 </div>
                 <button onClick={() => summarizeFeedback(fbScope)} disabled={aiSummary.state === 'loading'}
                   style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '8px 14px', borderRadius: 8, border: 'none', background: aiSummary.state === 'loading' ? 'rgba(26,42,58,0.1)' : '#1a2a3a', color: '#fff', cursor: aiSummary.state === 'loading' ? 'default' : 'pointer', fontWeight: 600, flexShrink: 0 }}>
@@ -746,14 +809,17 @@ export default function AdminPage() {
                 <SectionLabel>CHECK-IN SURVEYS · {surveyItems.length}</SectionLabel>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {surveyItems.map((f, i) => (
-                    <Card key={f.id || i} style={{ borderLeft: `3px solid ${YELLOW}` }}>
+                    <Card key={f.id || i} style={{ borderLeft: `3px solid ${f.reviewed ? CYAN : YELLOW}`, opacity: f.reviewed ? 0.62 : 1, transition: 'opacity 0.2s' }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                           <span style={{ fontSize: 14, fontWeight: 700, color: '#1a2a3a' }}>{userName(f.user_id)}</span>
                           <Chip label={(f.feedback_type || '').toUpperCase()} color={YELLOW} />
                           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(f.created_at)}</span>
                         </div>
-                        {f.would_recommend && <Chip label={`REC: ${f.would_recommend}`} color={f.would_recommend === 'Yes' ? CYAN : f.would_recommend === 'No' ? PINK : YELLOW} />}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                          {f.would_recommend && <Chip label={`REC: ${f.would_recommend}`} color={f.would_recommend === 'Yes' ? CYAN : f.would_recommend === 'No' ? PINK : YELLOW} />}
+                          <ReviewToggle reviewed={f.reviewed} onToggle={() => toggleReviewed(f.id, f.reviewed)} />
+                        </div>
                       </div>
                       {(f.topic_rating || f.clarity_rating || f.quiz_rating) && (
                         <div style={{ display: 'flex', gap: 16, marginBottom: (f.missing_topics || f.biggest_win || f.comment) ? 10 : 0, flexWrap: 'wrap' }}>
@@ -809,11 +875,12 @@ export default function AdminPage() {
 
                     {/* Comments */}
                     {items.filter(f => f.comment || f.biggest_win || f.missing_topics).slice(0, 5).map((f, i) => (
-                      <div key={i} style={{ borderTop: '1px solid rgba(26,42,58,0.07)', paddingTop: 12, marginTop: 12 }}>
-                        <div style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
+                      <div key={i} style={{ borderTop: '1px solid rgba(26,42,58,0.07)', paddingTop: 12, marginTop: 12, opacity: f.reviewed ? 0.6 : 1 }}>
+                        <div style={{ display: 'flex', gap: 8, marginBottom: 6, alignItems: 'center', flexWrap: 'wrap' }}>
                           <Chip label={f.feedback_type?.replace('_', '-').toUpperCase() || 'FEEDBACK'} color={f.feedback_type === 'weekly' ? YELLOW : f.feedback_type === 'end_of_beta' ? PINK : CYAN} />
                           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{timeAgo(f.created_at)}</span>
                           {f.overall_rating && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(26,42,58,0.35)' }}>{f.overall_rating}/5</span>}
+                          <span style={{ marginLeft: 'auto' }}><ReviewToggle reviewed={f.reviewed} onToggle={() => toggleReviewed(f.id, f.reviewed)} /></span>
                         </div>
                         {f.comment && <div style={{ fontSize: 13, color: '#1a2a3a', lineHeight: 1.6, marginBottom: f.biggest_win ? 6 : 0 }}>{f.comment}</div>}
                         {f.biggest_win && <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.7)', lineHeight: 1.6, fontStyle: 'italic' }}>"{f.biggest_win}"</div>}
