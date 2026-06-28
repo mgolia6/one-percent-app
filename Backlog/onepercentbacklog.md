@@ -479,3 +479,133 @@ The body's operating manual: sleep, training, nutrition, recovery, longevity. Bo
 - The protein leverage hypothesis
 - Breath cadence & the relaxation response
 - Daylight, not screens — anchoring your body clock
+
+---
+
+## Top-Ups to ~40 (added 2026-06-28) — existing 7 categories
+
+New candidates to bring each existing category to ~40, deduped against all candidates above. All `candidate` pending Dead Drop.
+
+### Sales Craft (+14)
+- The trial close — testing readiness before you ask
+- Economic buyer vs. user — selling to the signer
+- The cost of inaction — beating the status quo, not a competitor
+- Bracketing — setting the negotiation range
+- The concession pattern — how *the way* you give signals value
+- Pre-suasion (Cialdini) — setting the frame before the ask
+- Reciprocity in deals (Cialdini)
+- Social proof in selling (Cialdini)
+- Ethical scarcity & urgency
+- BATNA / the power of the walk-away
+- "Why change / why now / why you"
+- Discovery vs. demo — earning the right to show
+- Negotiating with procurement
+- The champion's risk — what your advocate stakes internally
+
+### AI (+14)
+- The Transformer & attention — the core architecture, made simple
+- Diffusion models — how images are generated
+- Mixture of Experts (MoE)
+- Quantization — shrinking models to run cheaply
+- Distillation — small models taught by big ones
+- The alignment problem
+- Guardrails & content moderation
+- Synthetic training data
+- Model collapse — training on AI's own output
+- Open vs. closed models — the strategic divide
+- Cost-per-token economics
+- Latency vs. quality tradeoffs
+- Watermarking & content provenance
+- Jailbreaks — defeating AI safety (distinct from prompt injection)
+
+### Vocab & Language (+18)
+- Connotation vs. denotation
+- The etymological fallacy — origin isn't meaning
+- Doublespeak (Orwell)
+- Dysphemism — the opposite of euphemism
+- Metaphors We Live By (Lakoff)
+- Framing via metaphor — "the war on," "the journey"
+- The Rule of Three (rhetoric)
+- Chiasmus — "ask not what your country..."
+- Anaphora — persuasion through repetition
+- Snowclones — "X is the new Y"
+- Semantic drift — how "literally" lost its meaning
+- Politeness & "face" (Brown & Levinson)
+- Deixis — words that need context to mean anything
+- Reclaimed language
+- Malapropisms & eggcorns
+- Portmanteaus — how new words are born
+- Hypernyms — the power of the category word
+- Idioms — and why they refuse to translate
+
+### Mental Models (+14)
+- Goodhart's Law — when a measure becomes a target
+- The Pareto Principle (80/20)
+- The Lindy Effect
+- Circle of competence
+- Ergodicity — the average vs. your actual path
+- The Peter Principle
+- Parkinson's Law
+- Local vs. global optima
+- Feedback loops — reinforcing vs. balancing
+- Emergence — the whole isn't the sum of parts
+- Schelling points — coordinating without communicating
+- The Abilene Paradox — agreeing to what nobody wants
+- Path dependence — history constrains the present
+- Diminishing returns
+
+### Philosophy (+18)
+- The Allegory of the Cave (Plato)
+- Pascal's Wager
+- The Categorical Imperative (Kant)
+- The Euthyphro Dilemma
+- The Experience Machine (Nozick)
+- The Problem of Evil
+- Free will vs. determinism
+- Compatibilism
+- The Sorites Paradox — when does a heap stop being one?
+- The Ring of Gyges — morality when no one's watching
+- The Social Contract
+- Negative vs. positive liberty (Berlin)
+- The Golden Mean (Aristotle)
+- Wu Wei — effortless action (Taoism)
+- Beginner's mind / shoshin (Zen)
+- Epicureanism — pleasure, properly understood
+- Nihilism vs. existentialism
+- The Master–Slave dialectic (Hegel) — recognition
+
+### Neuroscience & Cognition (+16)
+- Neurogenesis — growing neurons as an adult
+- The amygdala hijack
+- Myelination — why reps make you faster
+- The reticular activating system — your attention filter
+- Chronotypes — larks, owls, and your best hours
+- Ultradian rhythms — the 90-minute focus cycle
+- Flow state — the neuroscience of "in the zone"
+- The Zeigarnik effect — why open loops nag you
+- Memory reconsolidation — recalling rewrites the memory
+- State-dependent memory
+- The gut–brain axis
+- Cognitive offloading — outsourcing memory to the world
+- Change blindness
+- The misinformation effect — editable memories
+- Habituation — why everything fades
+- The Flynn effect — why IQ scores keep rising
+
+### Communication (+16)
+- The Pratfall Effect — flaws make you more likeable
+- The foot-in-the-door technique
+- The door-in-the-face technique
+- The Ben Franklin effect — a favor builds rapport
+- Reframing — changing meaning without changing facts
+- "Yes, and" — the improv principle for collaboration
+- Active constructive responding — how you react to good news
+- Why the praise sandwich fails
+- Managing up
+- The anatomy of a real apology
+- Disagreeing without damaging the relationship
+- The negativity bias in email/written tone
+- Choosing the channel — when not to send the email
+- The read-back — confirming shared understanding
+- Delivering hard news (the SPIKES approach)
+- Specificity over vague praise
