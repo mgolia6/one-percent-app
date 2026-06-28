@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { categoryColor } from '@/lib/categories'
 
@@ -14,6 +15,7 @@ const pad = (n) => String(n).padStart(2, '0')
 const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 
 export default function OnThisDay() {
+  const router = useRouter()
   const [card, setCard] = useState(null)
   const [open, setOpen] = useState(false)
   const [done, setDone] = useState(false)
@@ -93,11 +95,17 @@ export default function OnThisDay() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={e => e.stopPropagation()}
-              style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.5)', textDecoration: 'none' }}
+              style={{ display: 'block', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.5)', textDecoration: 'none', marginBottom: 10 }}
             >
               ✓ Verified via Wikipedia → {card.source_title}
             </a>
           )}
+          <button
+            onClick={e => { e.stopPropagation(); router.push('/on-this-day') }}
+            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em', fontWeight: 600, color: ACCENT }}
+          >
+            VIEW THE ARCHIVE →
+          </button>
         </div>
       )}
 
