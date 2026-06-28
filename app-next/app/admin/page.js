@@ -252,24 +252,6 @@ export default function AdminPage() {
       results.supabase = { ok: false, ms: null, label: 'Supabase DB', detail: e.message }
     }
 
-    // Check Resend via edge function ping
-    try {
-      const start = Date.now()
-      const { data, error } = await supabase.functions.invoke('send-daily-reminder', { body: { dry_run: true } })
-      results.resend = { ok: !error, ms: Date.now() - start, label: 'Resend / Email', detail: error ? error.message : 'Edge function reachable' }
-    } catch(e) {
-      results.resend = { ok: false, ms: null, label: 'Resend / Email', detail: e.message }
-    }
-
-    // Check practice reminder
-    try {
-      const start = Date.now()
-      const { error } = await supabase.functions.invoke('send-practice-reminder', { body: { dry_run: true } })
-      results.practice = { ok: !error, ms: Date.now() - start, label: 'Practice Reminder', detail: error ? error.message : 'Edge function reachable' }
-    } catch(e) {
-      results.practice = { ok: false, ms: null, label: 'Practice Reminder', detail: e.message }
-    }
-
     // Auth check
     try {
       const start = Date.now()
@@ -277,6 +259,29 @@ export default function AdminPage() {
       results.auth = { ok: !!session, ms: Date.now() - start, label: 'Supabase Auth', detail: session ? 'Session valid' : 'No session' }
     } catch(e) {
       results.auth = { ok: false, ms: null, label: 'Supabase Auth', detail: e.message }
+    }
+
+    // Claude API + server env (via non-destructive /api/health probe).
+    // NOTE: we intentionally do NOT ping the email senders — invoking them
+    // actually sends reminder emails to users.
+    try {
+      const start = Date.now()
+      const res = await fetch('/api/health')
+      const h = await res.json()
+      results.claude = {
+        ok: !!h.claude?.ok,
+        ms: h.claude?.ms ?? (Date.now() - start),
+        label: 'Claude API · Deep Cut / Lock It In / On This Day',
+        detail: h.claude?.ok ? 'Key valid, model reachable' : (h.claude?.error || 'Failed'),
+      }
+      results.serviceKey = {
+        ok: !!h.env?.serviceKey,
+        ms: null,
+        label: 'Service-role key · On This Day cron',
+        detail: h.env?.serviceKey ? 'Configured in Vercel' : "Missing — daily card cron can't persist",
+      }
+    } catch(e) {
+      results.claude = { ok: false, ms: null, label: 'Claude API', detail: e.message }
     }
 
     setApiStatus(results)
@@ -940,8 +945,8 @@ export default function AdminPage() {
               <div style={{ display: 'flex', gap: 10 }}>
                 <div style={{ fontSize: 16 }}>⚠</div>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1a2a3a', marginBottom: 4 }}>Resend API key is critical</div>
-                  <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.6)', lineHeight: 1.6 }}>If the email check fails, verify the RESEND_API_KEY secret in Supabase Edge Functions settings. This was the cause of the week-long email outage. The key must be set on each edge function individually.</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1a2a3a', marginBottom: 4 }}>Email isn't auto-pinged on purpose</div>
+                  <div style={{ fontSize: 13, color: 'rgba(26,42,58,0.6)', lineHeight: 1.6 }}>The email senders can't be tested without actually sending mail to users, so the health check no longer invokes them. To verify Resend, check a recent reminder landed (or the cron run logs). The RESEND_API_KEY secret lives in Supabase Edge Functions settings, set per function.</div>
                 </div>
               </div>
             </Card>
