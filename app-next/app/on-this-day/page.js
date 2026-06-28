@@ -64,6 +64,7 @@ export default function OnThisDayArchive() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [rows, setRows] = useState([])
+  const [isAdmin, setIsAdmin] = useState(false)
   const [backfill, setBackfill] = useState({ running: false, msg: '' })
 
   useEffect(() => {
@@ -72,10 +73,10 @@ export default function OnThisDayArchive() {
       const { data: { session } } = await supabase.auth.getSession()
       if (cancelled) return
       if (!session) { router.push('/login'); return }
-      // Admin-gated while the feature is in live testing.
+      // Open to all signed-in users; backfill control stays admin-only.
       const { data: prof } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).single()
       if (cancelled) return
-      if (!prof?.is_admin) { router.push('/'); return }
+      setIsAdmin(prof?.is_admin || false)
 
       const { data } = await supabase.from('on_this_day').select('*').order('date', { ascending: false })
       if (cancelled) return
@@ -140,6 +141,7 @@ export default function OnThisDayArchive() {
         </div>
 
         {/* Admin backfill — generate + save missing past days */}
+        {isAdmin && (
         <div style={{ background: CARD, border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '14px 16px', marginBottom: 24 }}>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.12em', color: 'rgba(232,238,245,0.5)', marginBottom: 10 }}>BACKFILL · ADMIN</div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -168,6 +170,7 @@ export default function OnThisDayArchive() {
             Generates a card for each missing day (skips ones you already have). A few seconds per day.
           </div>
         </div>
+        )}
 
         {rows.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '40px 12px' }}>

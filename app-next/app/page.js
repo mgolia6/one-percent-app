@@ -1848,8 +1848,8 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* On This Day — daily bonus card (admin-gated for live testing) */}
-          {isAdmin && <OnThisDay />}
+          {/* On This Day — daily bonus card (live for all users) */}
+          <OnThisDay />
 
           {/* Today */}
           <div style={S.secLabel}>Today</div>
