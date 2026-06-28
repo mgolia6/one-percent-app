@@ -6,6 +6,32 @@ This file tracks all non-content work: features, bugs, platform upgrades, infras
 
 ---
 
+## ✅ Shipped 2026-06-28 — Lock It In + Spaced Repetition + Domain
+
+| Item | Notes |
+|---|---|
+| ~~Deep Cut not working~~ | ✅ Wrong env var — route now reads `CLAUDE_API_KEY` (ANTHROPIC fallback); also fixed metadata-only entry passing + `.number`→`.entry` |
+| ~~Lock It In (AI-coached recall)~~ | ✅ Built + **released to ALL users** (admin gate removed). 3-move arc (recall→recognize→distill keeper), `/api/lock-it-in`, model claude-sonnet-4-6, memory hook, **keeper quality gate** so lazy/wrong keepers can't be locked in |
+| ~~Keep It Sharp (spaced repetition)~~ | ✅ `lockins` table + RLS, Leitner 2d/5d/12d/30d (`lib/lockins.js`), "Keep this one sharp" enrollment, `/review` recall page, home REVIEW badge, `send-lockin-review` edge fn + daily cron (14:00 UTC). Verified end-to-end (200) |
+| ~~Category single source of truth~~ | ✅ `lib/categories.js` canonical; consolidated 6 color maps + 3 lists; **now 10 categories** (added History, Personal Finance, Health & Performance — hidden until they have content) |
+| ~~Announcement modal at login~~ | ✅ Reused WhatsNewModal; changelog **v1.0** published (`show_modal=true`), leads with new domain |
+| ~~Custom domain~~ | ✅ App now at **onepercent.mpgink.com** (Vercel alias; .vercel.app still serves) |
+| ~~Dark-on-dark in welcome/boot~~ | ✅ Wordmark + "TAP TO CONTINUE" were `#2a2a2a` on near-black → `rgba(255,255,255,0.3/0.4)` |
+| ~~Claude Code hooks~~ | ✅ PreToolUse (missing-file block + vercel.json check) + Stop (build check) in `.claude/` |
+
+## 🔜 New / queued (from 2026-06-28)
+
+| ID | Item | Notes |
+|---|---|---|
+| SR-001 | Redeploy `send-lockin-review` for domain | Source points at onepercent.mpgink.com; live fn still uses .vercel.app alias (works, unbranded). Optional |
+| SR-002 | Login-time review prompt | Optional: surface due reviews in a modal on app open (currently REVIEW nav + badge only) |
+| CAT-001 | Rotation re-balance for 10 categories | New 3 need first entries before they surface |
+| FEAT-002 | Favorites + block categories (up to 2) | Profile preference model (`favorited[]`/`blocked[]`) + daily-selection filter; designed, not built |
+| FEAT-003 | "On This Day" daily bonus | Per-date AI, auto-verified, separate bonus stream; not built |
+| Q-001 | Welcome-overlay frequency | Currently once per browser session (sessionStorage). Revisit if we want once/day or every load |
+
+---
+
 ## 🔴 Before Beta Ends (Highest Priority)
 
 | ID | Item | Notes |

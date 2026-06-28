@@ -158,5 +158,5 @@ Category accent colors locked — see `.claude/knowledge/design-system.md`
 - `.claude/knowledge/entry-system.md` — edition IDs, rotation, category colors, pre-gen checklist
 - `.claude/knowledge/design-system.md` — full design tokens, component patterns
 - `.claude/rules/wrap-protocol.md` — full 10-step wrap checklist
-- `Directions/onepercentinstructions-v1_38.md` — full project instructions (authoritative)
+- `Directions/onepercentinstructions-v1_39.md` — full project instructions (authoritative)
 - `LAYOUT.md` — every layout decision ever made

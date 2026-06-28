@@ -301,3 +301,18 @@ Two tabs: **ACCOUNT | BADGES**
 | Entry content | `app-next/public/entries/[NNN].json` |
 | Deep Cut component + FAB | `app-next/components/DeepCut.jsx` |
 | Deep Cut API route | `app-next/app/api/deep-cut/route.js` |
+| Lock It In (conversational) | `app-next/components/LockItIn.jsx` + `app-next/app/api/lock-it-in/route.js` |
+| Spaced-repetition review page | `app-next/app/review/page.js` |
+| SR scheduling helpers | `app-next/lib/lockins.js` |
+| Category registry (single source) | `app-next/lib/categories.js` |
+
+---
+
+## Layout changes — 2026-06-28 (Lock It In + Keep It Sharp)
+
+- **Evening tab ("LOCK IT IN"):** mode chooser now shows for **all users** (was admin-only) — "Lock it in with AI →" vs "Take the quick quiz". Conversational flow renders inline.
+- **Entry completion card ("WHAT'S NEXT"):** new **"Keep this one sharp"** card at the top — enrolls the lesson into spaced repetition; flips to an enrolled-confirmation state with a "Remove from rotation" link.
+- **New route `/review`:** dark (`#0e141c`) recall surface. Per-card: category eyebrow (accent), concept, Leitner box dots, REVEAL → keeper/hook → "Got it" / "Still fuzzy". Finish state shows graduated count + "coming up" queue. Max width 560.
+- **Home REVIEW entry point:** action strip button (top, mobile/header) + desktop sidebar nav item, both with a due-count badge (`• N`) in accent when reviews are due.
+- **Welcome/boot overlay:** wordmark + "TAP TO CONTINUE" recolored from `#2a2a2a` (invisible on near-black) to `rgba(255,255,255,0.3)` / `0.4`. Overlay still gated to once per browser session (`sessionStorage 'welcomed'`), auto-dismiss ~6.7s.
+- No changes to the light screens (welcome typewriter background, streak ritual, goal sheet).
