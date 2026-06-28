@@ -1,6 +1,6 @@
 # One Percent — State Snapshot
-**Last updated: 2026-06-28**
-Regenerated after the feature/platform session: Lock It In live for all, Keep It Sharp (spaced repetition) shipped, categories → 10, app moved to onepercent.mpgink.com.
+**Last updated: 2026-06-28 (Session 2)**
+Regenerated after Session 2: On This Day daily bonus shipped to all users; full admin overhaul (dark theme, feedback summary/surveys/addressed, phone entry, bug triage, API-health + analytics fixes). Session 1 had shipped Lock It In + Keep It Sharp + the onepercent.mpgink.com domain.
 
 ---
 
@@ -69,14 +69,22 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 | 1 | send-daily-reminder | `0 12 * * *` | send-daily-reminder |
 | 2 | send-practice-reminder | `0 * * * *` | send-practice-reminder |
 | 3 | send-weekly-wrap | `0 11 * * *` | send-weekly-wrap |
-| 4 | **send-lockin-review** | `0 14 * * *` | **send-lockin-review** (NEW) |
+| 4 | send-lockin-review | `0 14 * * *` | send-lockin-review |
+| 5 | **generate-on-this-day** | `5 0 * * *` | GETs `/api/on-this-day` (NEW) |
+
+### Vercel env vars
+- ✅ `CLAUDE_API_KEY` — Deep Cut, Lock It In, On This Day, feedback summary
+- ✅ `SUPABASE_SERVICE_ROLE_KEY` — On This Day route self-cache (cron persistence)
+- ⏳ `POSTHOG_PERSONAL_KEY` — **needs adding** for the admin Analytics tab (PostHog query API needs a `phx_` personal key; the public `phc_` ingest key 401s)
 
 ---
 
-## DB Schema changes this session
-- **NEW table `lockins`** (spaced repetition): `id, user_id→profiles, entry_number, concept, category, keeper, hook, box (0–3), status (active/done/archived), due_at, last_reviewed_at, review_count, reminder_sent_at, created_at`. Unique (user_id, entry_number). Explicit per-operation RLS (own rows).
-- **Edge function `send-lockin-review`** deployed (Verify JWT OFF). Source in `supabase/functions/send-lockin-review/index.ts`.
-- **changelog v1.0** row inserted + published (`show_modal=true`) — the login announcement.
+## DB Schema / infra (current)
+- **`lockins`** (spaced repetition): user_id, entry_number, concept, category, keeper, hook, box(0–3), status, due_at, last_reviewed_at, review_count, reminder_sent_at. Unique (user_id, entry_number). Per-op RLS.
+- **`on_this_day`** (daily bonus): date PK, year, event, blurb, why_today, source_url, source_title, category. RLS: authed select + insert.
+- **RLS added:** `feedback_update_admin`, `profiles_update_admin`, `is_admin()` SECURITY DEFINER helper.
+- **Edge function `send-lockin-review`** (Verify JWT OFF). On This Day generation is a **Next.js route** (`/api/on-this-day`), not an edge function — cron GETs it.
+- **changelog:** v1.0 published (Lock It In + Keep It Sharp + domain); **v1.1 drafted** (On This Day, published=false, awaiting approval).
 
 ---
 
@@ -90,18 +98,36 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - Streak calendar, profile (mastery rings, score trend, leaderboard), bookmarks
 - Email infra: daily reminder, weekly wrap, practice reminder, **lock-in review** (pg_cron)
 - Admin panel, Prompt Vault, Leaderboard
+- **On This Day** — daily history bonus card (Today tab) + `/on-this-day` archive + daily cron + admin backfill. Wikipedia-sourced, Claude-framed, auto-verified. **Live for all users.**
+- **Admin (overhauled):** dark theme, responsive cards, feedback summary + AI summarize + check-in surveys + addressed toggle, admin phone entry, systems strip, bug triage, fixed API-health email bug, analytics proxy.
 - **Single source of truth category registry** (`lib/categories.js`, 10 categories)
 - Dark-first UI, DM Sans + DM Mono
 
 ---
 
 ## Pending / In Progress
-- **Redeploy `send-lockin-review`** so review emails use onepercent.mpgink.com (source updated; live function still uses .vercel.app alias — works, unbranded). Optional.
-- **Content sprint:** ~340 entries across 10 categories to hit ~400 by end of Aug (banks in `Backlog/onepercentbacklog.md`). Tier verification: full Dead Drop early/high-traffic, draft-verified + backfill on the tail.
-- **Rotation re-balance** for 10 categories.
+- **Add `POSTHOG_PERSONAL_KEY` to Vercel** → lights up the admin Analytics tab. Only open setup item.
+- **Content sprint:** ~340 entries across 10 categories to hit ~400 by end of Aug (banks in `Backlog/onepercentbacklog.md`). Critical path. Tier verification: full Dead Drop early/high-traffic, draft-verified + backfill on the tail.
+- **Rotation re-balance** for 10 categories (new 3 need first entries before they surface).
 - **Favorites + block categories (up to 2)** — profile preference model designed, not built.
-- **"On This Day" daily bonus** — per-date AI, auto-verified; separate stream; not built.
-- Verify boot-sequence fix once `6d326b4` deploys.
+- **Redeploy `send-lockin-review`** so review emails use onepercent.mpgink.com (optional, works via alias).
+
+---
+
+## ★ Roadmap — strategic (added 2026-06-28, Session 2)
+
+**1. Refactoring assessment — before the native push.** Initial read (do a focused pass before August native work):
+- `app/page.js` is **~1,900 lines** — home, all tabs, ~8 modals, goal sheet, commit ritual, welcome overlay all in one file. Prime candidate to split (modals → `components/`, tabs → per-tab components).
+- `app/admin/page.js` **~1,050 lines** — could split per-tab, but lower priority (admin-only).
+- **Entry manifest is still duplicated** in `page.js` and `profile/page.js` (the recurring four-file-sync risk) — move to a shared `lib/entries.js` like we did for categories.
+- Category registry is done ✅; SR/scoring logic already UI-agnostic ✅.
+- **Decision needed:** how much to refactor on web now vs. let the native rebuild be the clean break. Recommendation: do the cheap, high-leverage extractions (entry manifest, page.js modals) so the native port has clean seams; defer deep restructuring to native.
+
+**2. Design / appeal review.** Is the app genuinely appealing, not just functional? Run a structured review:
+- Audit against the locked design system (neon-on-dark, DM Sans/Mono, category accents) for consistency drift.
+- First-run / empty-state / loading-state polish; mobile feel; motion/animation taste.
+- Visual hierarchy on the Today tab now that it carries commitment + KPIs + On This Day + today's lesson (is it cluttered?).
+- Output: a prioritized punch-list of aesthetic fixes + a verdict on whether the look earns retention. Can run as a dedicated session (optionally with screenshots / a design-focused agent).
 
 ---
 
@@ -116,7 +142,9 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - Lock It In: `app-next/components/LockItIn.jsx` + `app-next/app/api/lock-it-in/route.js`
 - Edge functions: `supabase/functions/*/index.ts`
 - State: `State/onepercentstate.md` (this file)
-- Directions: `Directions/onepercentinstructions-v1_39.md` (current)
+- On This Day: `app/components/OnThisDay.jsx`, `app/on-this-day/page.js`, `app/api/on-this-day/route.js`
+- Admin: `app/admin/page.js` (+ `app/api/admin/feedback-summary`, `app/api/admin/analytics`, `app/api/health`)
+- Directions: `Directions/onepercentinstructions-v1_40.md` (current)
 
 ---
 

@@ -316,3 +316,14 @@ Two tabs: **ACCOUNT | BADGES**
 - **Home REVIEW entry point:** action strip button (top, mobile/header) + desktop sidebar nav item, both with a due-count badge (`• N`) in accent when reviews are due.
 - **Welcome/boot overlay:** wordmark + "TAP TO CONTINUE" recolored from `#2a2a2a` (invisible on near-black) to `rgba(255,255,255,0.3)` / `0.4`. Overlay still gated to once per browser session (`sessionStorage 'welcomed'`), auto-dismiss ~6.7s.
 - No changes to the light screens (welcome typewriter background, streak ritual, goal sheet).
+
+## Layout changes — 2026-06-28 Session 2 (On This Day + admin overhaul)
+
+- **Today tab — "On This Day" card:** between KPIs and today's lesson. History-gold (`#E0A93D`) left border, "ON THIS DAY · MON DD" eyebrow, "BONUS" tag, year + blurb. Tap → "WHY IT STICKS" + Wikipedia source + "VIEW THE ARCHIVE →". Live for all users.
+- **New route `/on-this-day`:** dark archive of all cards, newest first, each expandable. Admin-only **BACKFILL** control (7/30/90-day buttons) at top.
+- **Admin section — now DARK.** Converted from the leftover light theme to the app system: `#0e141c` page, `#1a2a3a` cards, light text (`#e8eef5` / muted whites), dark blurred header, subtle elevated inner surfaces (`rgba(255,255,255,0.05)`). Primary buttons/active tabs use slate `#33506e`; category accents + white-on-color-button text unchanged.
+- **Admin user cards — responsive:** identity + nudge/chevron on top, the 3 stats reflow to a full-width row below a divider on mobile (`.au-head`/`.au-stats`/`.au-actions` + media query). KPI grid 2-col on mobile.
+- **Admin feedback tab:** summary card (rating avgs + recommend breakdown + ✦ Summarize with AI), **CHECK-IN SURVEYS** section (7/14/21/30-day), weekly survey blob parsed into a **key/value table** (`SurveyDetail`), **✓ Addressed** toggle per item, post-entry items show **ENTRY #N**.
+- **Admin user card — phone editor** in the expanded detail (CELL PHONE field + SAVE).
+- **Admin systems strip** (Keep It Sharp / Lock It In / On This Day) above the tab nav.
+- **Admin bugs tab:** Won't-Fix + Reopen actions, filter chips with counts, status-tinted cards, mobile reflow.

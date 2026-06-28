@@ -74,3 +74,42 @@ Shipped **Lock It In** (AI-coached recall) to all users, built and launched **Ke
 - Build clean before each push.
 - SR backend tested live: function 200 + cron job registered (jobid 4) + JWT toggle confirmed.
 - Prod deploy `fb7c0ec` READY; aliases confirm onepercent.mpgink.com + .vercel.app both serve it.
+
+---
+
+# Session 2 — On This Day + full admin overhaul
+
+## On This Day (daily bonus) — built, tested, shipped to ALL users
+- **Concept:** a daily history card on the Today tab. Facts pulled from **Wikipedia's on-this-day feed** (real, sourced, auto-verified); Claude only PICKS the most resonant event + writes the One Percent-voice blurb — never recalls history from memory, so it can't invent a date.
+- **`on_this_day` table** (date PK, year, event, blurb, why_today, source_url, source_title, category). RLS: authed select, authed insert.
+- **`/api/on-this-day`** route: read cache → else generate (Wikipedia + Claude) → persist via service role (only for real "today"). `force-dynamic` + `no-store` so the CDN never short-circuits it (caught: a `Cache-Control: max-age` header was letting the CDN serve cached responses → cron wouldn't persist).
+- **Daily cron** (jobid 5, 00:05 UTC) GETs the route → fills the archive forward even on days nobody opens the app. **Needs `SUPABASE_SERVICE_ROLE_KEY` in Vercel** (added) for the route to persist.
+- **`OnThisDay` card** (Today tab) + **`/on-this-day` archive page** (all cards, newest first) + admin **backfill** (7/30/90 days, writes from admin session — no service key needed).
+- Verified end-to-end: deleted today's row, ran the exact cron command, row regenerated + persisted (200). Today's card: Stonewall riots (1969).
+- Un-gated to all users after admin testing.
+
+## Admin overhaul (was light-themed + rough on mobile)
+- **Dark theme** — converted the whole admin to the app system (#0e141c / #1a2a3a / light text). Closed the leftover style gap.
+- **Responsive user cards** — stats reflow below identity on mobile (was overflowing).
+- **Feedback tab:** summary card (rating avgs, recommend breakdown) + **✦ Summarize with AI** (`/api/admin/feedback-summary`); **Check-in Surveys** section surfaces the 7/14/21/30-day responses (were invisible); weekly survey blob (`key:value | …` in missing_topics) now parsed into a **key/value table**; **Addressed toggle** (feedback.reviewed + admin UPDATE policy).
+- **Admin phone entry** — edit any user's phone from the card (numbers collected off onboarding); admin profiles-UPDATE policy via `is_admin()` SECURITY DEFINER.
+- **Systems strip** — Keep It Sharp / Lock It In / On This Day visibility.
+- **Bug triage** — won't-fix + reopen, filter counts, optimistic, mobile.
+- **API Health fix (important):** the check INVOKED the real email senders (`send-daily-reminder`/`send-practice-reminder`) on every run — **it was blasting users**. Removed; added safe `/api/health` (verifies Claude key + reports env). 
+- **Analytics fix:** tab sent the public ingest key (`phc_`) to PostHog's query API (needs a personal `phx_` key) → 401. Now proxied through admin-authed **`/api/admin/analytics`**. Needs `POSTHOG_PERSONAL_KEY` in Vercel.
+
+## Env state (Vercel)
+- ✅ `CLAUDE_API_KEY`, ✅ `SUPABASE_SERVICE_ROLE_KEY`, ⏳ `POSTHOG_PERSONAL_KEY` (only open setup item).
+
+## New surfaces / infra this session
+- Routes: `/on-this-day`, `/api/on-this-day`, `/api/health`, `/api/admin/feedback-summary`, `/api/admin/analytics`.
+- Table: `on_this_day`. Cron: `generate-on-this-day` (jobid 5). RLS: feedback_update_admin, profiles_update_admin, `is_admin()` helper.
+
+## Roadmap asks captured (Matthew, this wrap)
+1. **Refactoring assessment** — decide if more refactoring is needed before the native push (page.js ~1900 lines, admin ~1050, duplicated entry manifests). See State roadmap.
+2. **Design / appeal review** — structured aesthetic review of whether the app is genuinely appealing. See State roadmap.
+
+## Open / next
+- Add `POSTHOG_PERSONAL_KEY` to light up Analytics.
+- Content sprint (~340 across 10 categories) remains the critical path.
+- Refactoring assessment + design review (new roadmap items).

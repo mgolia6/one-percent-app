@@ -54,8 +54,11 @@ Note: the old `NEXT_PUBLIC_POSTHOG_KEY` is the public **ingest** key (`phc_`) an
 | SR-002 | Login-time review prompt | Optional: surface due reviews in a modal on app open (currently REVIEW nav + badge only) |
 | CAT-001 | Rotation re-balance for 10 categories | New 3 need first entries before they surface |
 | FEAT-002 | Favorites + block categories (up to 2) | Profile preference model (`favorited[]`/`blocked[]`) + daily-selection filter; designed, not built |
-| FEAT-003 | "On This Day" daily bonus | Per-date AI, auto-verified, separate bonus stream; not built |
+| ~~FEAT-003~~ | ~~"On This Day" daily bonus~~ | ✅ Built + shipped to all users (Wikipedia-sourced, Claude-framed, cron + backfill) |
 | Q-001 | Welcome-overlay frequency | Currently once per browser session (sessionStorage). Revisit if we want once/day or every load |
+| **REFACTOR-001** | Refactoring assessment before native | page.js ~1,900 lines (split modals/tabs); admin ~1,050; **entry manifest still duplicated** (page.js + profile.js → extract `lib/entries.js`). Recommendation: do cheap high-leverage extractions on web now (clean seams for the port), defer deep restructuring to native. See State Roadmap. |
+| **DESIGN-001** | Design / appeal review | Structured aesthetic review: is the app genuinely appealing, not just functional? Audit design-system consistency, empty/loading states, mobile feel, Today-tab hierarchy (now carries commitment + KPIs + On This Day + lesson). Output: prioritized punch-list + retention verdict. Can be its own session. See State Roadmap. |
+| FEEDBACK-001 | Post-entry feedback → show concept name | Now shows ENTRY #N; could map number→concept (needs entries manifest in admin) for readability |
 
 ---
 

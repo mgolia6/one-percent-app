@@ -936,6 +936,7 @@ export default function AdminPage() {
                       <div key={i} style={{ borderTop: '1px solid rgba(232,238,245,0.07)', paddingTop: 12, marginTop: 12, opacity: f.reviewed ? 0.6 : 1 }}>
                         <div style={{ display: 'flex', gap: 8, marginBottom: 6, alignItems: 'center', flexWrap: 'wrap' }}>
                           <Chip label={f.feedback_type?.replace('_', '-').toUpperCase() || 'FEEDBACK'} color={f.feedback_type === 'weekly' ? YELLOW : f.feedback_type === 'end_of_beta' ? PINK : CYAN} />
+                          {f.entry_number && <Chip label={`ENTRY #${f.entry_number}`} color={PURPLE} />}
                           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{timeAgo(f.created_at)}</span>
                           {f.overall_rating && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.35)' }}>{f.overall_rating}/5</span>}
                           <span style={{ marginLeft: 'auto' }}><ReviewToggle reviewed={f.reviewed} onToggle={() => toggleReviewed(f.id, f.reviewed)} /></span>
