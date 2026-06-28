@@ -119,7 +119,7 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
       transition: 'opacity 0.7s ease',
     }}>
       {/* wordmark */}
-      <div style={{ fontSize: 9, letterSpacing: '0.3em', color: '#2a2a2a', fontWeight: 600, marginBottom: 48, fontFamily: "'DM Mono', monospace" }}>ONE PERCENT</div>
+      <div style={{ fontSize: 9, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.3)', fontWeight: 600, marginBottom: 48, fontFamily: "'DM Mono', monospace" }}>ONE PERCENT</div>
 
       {/* Welcome back line — typewriter */}
       <div style={{
@@ -187,7 +187,7 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
       {/* Tap to dismiss hint */}
       <div style={{
         position: 'absolute', bottom: 40,
-        fontSize: 9, color: '#2a2a2a', letterSpacing: '0.2em',
+        fontSize: 9, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.2em',
         fontFamily: "'DM Mono', monospace",
         opacity: nudgeVisible ? 1 : 0,
         transition: 'opacity 0.5s ease 0.8s',
