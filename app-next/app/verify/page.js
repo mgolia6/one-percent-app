@@ -193,9 +193,12 @@ export default function VerifyPage() {
                     <label style={{ display: 'flex', gap: 11, cursor: 'pointer' }}>
                       <input type="checkbox" checked={on} disabled={fl} onChange={ev => toggleCheck(e.edition_id, c.no, ev.target.checked)}
                         style={{ appearance: 'none', WebkitAppearance: 'none', minWidth: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${on ? OK : fl ? `${WARN}66` : FAINT}`, background: on ? OK : 'transparent', position: 'relative', cursor: fl ? 'default' : 'pointer', opacity: fl ? 0.5 : 1 }} />
-                      <span style={{ fontSize: 14, opacity: fl ? 0.65 : 1 }}>
+                      <span style={{ fontSize: 14, opacity: fl ? 0.65 : 1, minWidth: 0 }}>
                         {c.kind ? <span style={{ color: GOLD, fontSize: 11, letterSpacing: '0.04em' }}>{c.kind} </span> : null}{c.text}
-                        <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px' }}>{c.snippet}</div>
+                        <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px', overflowWrap: 'anywhere' }}>{c.snippet}</div>
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: GOLD, margin: '0 0 7px', overflowWrap: 'anywhere' }}>
+                          📍 {c.locate ? c.locate : <>on the page, find: “{(c.snippet || '').replace(/[“”"]/g, '').split(/\s+/).slice(0, 6).join(' ')}…”</>}
+                        </div>
                         <a href={c.url} target="_blank" rel="noopener noreferrer" onClick={ev => ev.stopPropagation()}
                           style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', color: '#06212b', background: OK, padding: '5px 12px', borderRadius: 7, textDecoration: 'none' }}>Verify ↗</a>
                       </span>

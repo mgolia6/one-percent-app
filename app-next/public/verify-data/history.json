@@ -46,7 +46,8 @@
         "kind": "FIGURES",
         "text": "~30,000 editions / ~20M copies in Europe by 1500",
         "snippet": "“By 1500 the presses of Western Europe had produced more than twenty million copies.” (~30,000 known editions)",
-        "url": "https://en.wikipedia.org/wiki/Incunable"
+        "url": "https://en.wikipedia.org/wiki/Incunable",
+        "locate": "Wikipedia 'Incunable' → search the page for 'twenty million' (sentence: 'By 1500 the presses of Western Europe had produced more than twenty million copies')"
       },
       {
         "no": 2,
@@ -141,7 +142,8 @@
         "kind": "",
         "text": "B-59 / Arkhipov: nuclear torpedo, 3-officer rule, Arkhipov refused",
         "snippet": "“On most Soviet submarines… only the captain and political officer were required to authorize a launch. On B-59, a third signature was needed because Vasili Arkhipov was also chief of staff of the brigade.”",
-        "url": "https://en.wikipedia.org/wiki/Soviet_submarine_B-59"
+        "url": "https://en.wikipedia.org/wiki/Soviet_submarine_B-59",
+        "locate": "Wikipedia 'Soviet submarine B-59' → search for 'third signature' / 'chief of staff of the brigade'"
       },
       {
         "no": 1,
