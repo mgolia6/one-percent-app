@@ -1773,8 +1773,6 @@ export default function HomePage() {
           <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
           <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
           {isAdmin && <><div style={S.sep} /><button style={{ ...S.asBtn, color: '#47FFE8', borderColor: 'rgba(71,255,232,0.3)' }} onClick={() => router.push('/admin')}>ADMIN →</button></>}
-          <div style={S.sep} />
-          <button style={S.asBtn} onClick={handleSignOut} disabled={signingOut}>{signingOut ? 'SIGNING OUT…' : 'SIGN OUT'}</button>
         </div>
       </div>
 
