@@ -30,6 +30,8 @@ export default function VerifyPage() {
   const [lastSubmit, setLastSubmit] = useState(null) // latest submission for this category
   const [submitting, setSubmitting] = useState(false)
   const [justSubmitted, setJustSubmitted] = useState(false)
+  const [view, setView] = useState('verify')        // 'verify' | 'archive'
+  const [allSubs, setAllSubs] = useState([])         // all submissions, newest first
 
   useEffect(() => {
     let cancelled = false
@@ -46,6 +48,15 @@ export default function VerifyPage() {
     init()
     return () => { cancelled = true }
   }, [router])
+
+  const loadArchive = useCallback(async () => {
+    const { data } = await supabase.from('verification_submissions')
+      .select('id, category, submitted_at, status, verified_count, flagged_count, processed_at, flagged_claims, verified_editions')
+      .order('submitted_at', { ascending: false })
+    setAllSubs(data || [])
+  }, [])
+
+  useEffect(() => { if (userId) loadArchive() }, [userId, loadArchive])
 
   const loadCategory = useCallback(async (key) => {
     const def = CATEGORIES.find(c => c.key === key)
@@ -126,6 +137,7 @@ export default function VerifyPage() {
     setLastSubmit(data || row)
     setJustSubmitted(true)
     setSubmitting(false)
+    loadArchive()
   }
 
   if (loading) return (
@@ -144,7 +156,10 @@ export default function VerifyPage() {
       <div style={{ position: 'sticky', top: 0, zIndex: 10, background: BG, borderBottom: `1px solid ${LINE}` }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
           <button onClick={() => router.push('/admin')} style={{ background: 'none', border: 'none', color: MUT, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.08em', padding: 0 }}>← ADMIN</button>
-          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: MUT }}>Verified <b style={{ color: OK }}>{verifiedCount}</b> / {entries.length}</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            {view === 'verify' && <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: MUT }}>Verified <b style={{ color: OK }}>{verifiedCount}</b> / {entries.length}</div>}
+            <button onClick={() => setView(v => v === 'archive' ? 'verify' : 'archive')} style={{ background: view === 'archive' ? 'rgba(224,169,61,0.12)' : 'transparent', border: `1px solid ${view === 'archive' ? GOLD : LINE}`, color: view === 'archive' ? GOLD : MUT, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.06em', padding: '5px 11px', borderRadius: 7 }}>{view === 'archive' ? '✕ CLOSE' : `⌗ RUNS${allSubs.length ? ` (${allSubs.length})` : ''}`}</button>
+          </div>
         </div>
       </div>
 
@@ -152,6 +167,11 @@ export default function VerifyPage() {
         <h1 style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.01em', marginBottom: 4 }}>Verify — Dead Drop</h1>
         <div style={{ color: MUT, fontSize: 13, marginBottom: 16 }}>Two AI passes done (confirm + adversarial). This is the human check — your ticks save automatically.</div>
 
+        {view === 'archive' && (
+          <ArchivePanel subs={allSubs} cats={CATEGORIES} onOpen={(c) => { setCat(c); setView('verify') }} />
+        )}
+
+        {view === 'verify' && <>
         {/* Category switcher */}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
           {CATEGORIES.map(c => (
@@ -244,13 +264,20 @@ export default function VerifyPage() {
           )
         })}
 
+        {entries.length > 0 && verifiedCount === entries.length && flaggedTotal === 0 && (
+          <div style={{ marginTop: 14, padding: '14px 16px', background: `${OK}14`, border: `1px solid ${OK}55`, borderRadius: 10, fontSize: 13.5, color: INK }}>
+            <span style={{ color: OK, fontWeight: 700, fontFamily: "'DM Mono', monospace", letterSpacing: '0.04em' }}>✓ {verifiedCount}/{entries.length} COMPLETE.</span> This category is fully signed off. Hit <b>Submit for review</b> to archive the run — I’ll promote the set into the library and it’ll show under <b>⌗ Runs</b>.
+          </div>
+        )}
+
         <div style={{ color: FAINT, fontSize: 12, marginTop: 8 }}>
           Everything you tick, flag, and sign off saves automatically. When you’ve been through the whole category, hit <b style={{ color: OK }}>Submit for review</b> below — that hands the batch to me: I rework the flagged claims and promote the signed-off entries into the library.
         </div>
+        </>}
       </div>
 
       {/* Sticky submit bar */}
-      <div style={{ position: 'sticky', bottom: 0, zIndex: 10, background: 'rgba(14,20,28,0.96)', backdropFilter: 'blur(10px)', borderTop: `1px solid ${LINE}` }}>
+      {view === 'verify' && <div style={{ position: 'sticky', bottom: 0, zIndex: 10, background: 'rgba(14,20,28,0.96)', backdropFilter: 'blur(10px)', borderTop: `1px solid ${LINE}` }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '12px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: MUT, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
             <span><b style={{ color: OK }}>{verifiedCount}</b> signed off</span>
@@ -269,7 +296,50 @@ export default function VerifyPage() {
             </button>
           )}
         </div>
-      </div>
+      </div>}
+    </div>
+  )
+}
+
+// Archive of past verification runs (all categories). Read-only history so completed
+// runs stay accessible as new ones come through.
+function ArchivePanel({ subs, cats, onOpen }) {
+  const label = (k) => cats.find(c => c.key === k)?.label || k
+  const statusStyle = (s) => s === 'promoted'
+    ? { color: OK, border: `1px solid ${OK}`, label: '✓ PROMOTED' }
+    : s === 'processed'
+    ? { color: OK, border: `1px solid ${OK}66`, label: '✓ PROCESSED' }
+    : { color: GOLD, border: `1px solid ${GOLD}66`, label: 'PENDING' }
+  if (!subs.length) return (
+    <div style={{ color: FAINT, fontSize: 13, padding: '24px 4px' }}>No submitted runs yet. Sign off a category and hit <b>Submit for review</b> — it’ll show up here.</div>
+  )
+  return (
+    <div>
+      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.12em', color: MUT, marginBottom: 12 }}>SUBMITTED RUNS — {subs.length}</div>
+      {subs.map(s => {
+        const st = statusStyle(s.status)
+        return (
+          <div key={s.id} style={{ background: CARD, border: `1px solid ${LINE}`, borderRadius: 11, padding: 14, marginBottom: 10 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+              <div style={{ fontSize: 15, fontWeight: 600 }}>{label(s.category)}</div>
+              <span style={{ fontSize: 9.5, letterSpacing: '0.08em', padding: '3px 9px', borderRadius: 12, color: st.color, border: st.border, fontFamily: "'DM Mono', monospace" }}>{st.label}</span>
+            </div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: FAINT, marginBottom: 8 }}>
+              {new Date(s.submitted_at).toLocaleString()} · <span style={{ color: OK }}>{s.verified_count} signed off</span> · <span style={{ color: WARN }}>{s.flagged_count} flagged</span>
+            </div>
+            {Array.isArray(s.flagged_claims) && s.flagged_claims.length > 0 && (
+              <div style={{ borderTop: `1px solid ${LINE}`, paddingTop: 8, marginBottom: 8 }}>
+                {s.flagged_claims.map((f, i) => (
+                  <div key={i} style={{ fontSize: 12, color: MUT, marginBottom: 4 }}>
+                    <span style={{ color: WARN, fontFamily: "'DM Mono', monospace", fontSize: 10 }}>⚑ {f.edition_id}</span> {f.claim}{f.note ? <span style={{ color: FAINT }}> — “{f.note}”</span> : null}
+                  </div>
+                ))}
+              </div>
+            )}
+            <button onClick={() => onOpen(s.category)} style={{ background: 'none', border: `1px solid ${LINE}`, color: MUT, fontSize: 11, padding: '6px 12px', borderRadius: 7, cursor: 'pointer', fontFamily: "'DM Mono', monospace" }}>open {label(s.category)} →</button>
+          </div>
+        )
+      })}
     </div>
   )
 }

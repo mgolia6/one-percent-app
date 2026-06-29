@@ -10,35 +10,40 @@
         "kind": "THESIS",
         "text": "The body runs on a roughly 24-hour internal clock (circadian rhythm) governed by the suprachiasmatic nucleus (SCN), a cluster of cells in the brain that acts as the master clock.",
         "snippet": "The master circadian clock in humans is located in the suprachiasmatic nucleus (SCN) — a paired structure of roughly 20,000 neurons in the hypothalamus, sitting directly above the optic chiasm.",
-        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7931002/"
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7931002/",
+        "locate": "Intro/background section → search 'suprachiasmatic nucleus' (note: page text may phrase neuron count differently)"
       },
       {
         "no": 1,
         "kind": "",
         "text": "The master clock is set primarily by light; specialized retinal cells detect light and send a timing signal to the brain, making light the principal zeitgeber.",
         "snippet": "Light is the principal zeitgeber that entrains circadian rhythms of physiology and behaviour. The SCN receives direct light input from specialized retinal cells (intrinsically photosensitive retinal ganglion cells, or ipRGCs).",
-        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7931002/"
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7931002/",
+        "locate": "Light/entrainment section → search 'zeitgeber' then 'intrinsically photosensitive retinal ganglion'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "The intrinsic human circadian period is slightly longer than 24 hours (approximately 24.2 hours), which is why daily light synchronization is required.",
         "snippet": "the intrinsic period of the human circadian pacemaker averages 24.18 hours in both young and older individuals living in carefully controlled lighting conditions",
-        "url": "https://www.science.org/doi/10.1126/science.284.5423.2177"
+        "url": "https://www.science.org/doi/10.1126/science.284.5423.2177",
+        "locate": "Abstract → search 'intrinsic period' and '24.18'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Light in the morning advances the clock (shifting sleep earlier) while light at night delays it (shifting sleep later) — the timing of light, not just the amount, sets the system (Czeisler/Harvard chronobiology).",
         "snippet": "The research established that the human circadian system requires daily synchronization with the 24-hour light-dark cycle to maintain proper alignment with the environment.",
-        "url": "https://www.pnas.org/doi/10.1073/pnas.1010666108"
+        "url": "https://www.pnas.org/doi/10.1073/pnas.1010666108",
+        "locate": "Synthesized summary, not verbatim. Search Abstract/intro for: 'daily synchronization 24-hour light-dark cycle'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "The 2017 Nobel Prize in Physiology or Medicine was awarded to Jeffrey C. Hall, Michael Rosbash and Michael W. Young for discoveries of molecular mechanisms controlling the circadian rhythm (context check; not asserted in draft body).",
         "snippet": "The Nobel Prize in Physiology or Medicine 2017 was awarded jointly to Jeffrey C. Hall, Michael Rosbash and Michael W. Young \"for their discoveries of molecular mechanisms controlling the circadian rhythm\".",
-        "url": "https://www.nobelprize.org/prizes/medicine/2017/summary/"
+        "url": "https://www.nobelprize.org/prizes/medicine/2017/summary/",
+        "locate": "Top summary box / headline citation → search 'discoveries of molecular mechanisms controlling the circadian rhythm'"
       }
     ]
   },
@@ -53,35 +58,40 @@
         "kind": "THESIS",
         "text": "Caffeine's half-life in a typical adult is roughly 5-6 hours, so a 3pm coffee still has a substantial fraction circulating near bedtime.",
         "snippet": "The mean half-life of caffeine in plasma of healthy individuals is about 5 hours... elimination half-life may range between 1.5 and 9.5 hours, indicating considerable variation among individuals.",
-        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/"
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/",
+        "locate": "§ 'Pharmacokinetics' (or summary) → search 'mean half-life' and '1.5 and 9.5 hours'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Half-life means clearance is exponential: after one half-life half a dose remains, after two a quarter, and so on.",
         "snippet": "The elimination half-life is the time required for the concentration of a drug to decrease to half of its starting dose in the body.",
-        "url": "https://www.ncbi.nlm.nih.gov/books/NBK554498/"
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK554498/",
+        "locate": "§ 'Definition/Introduction' → search 'time required for the concentration of a drug to decrease to half'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Caffeine works by antagonizing (blocking) adenosine receptors, masking adenosine-driven fatigue rather than adding energy.",
         "snippet": "Caffeine is a competitive antagonist at adenosine receptors... antagonizes all 4 adenosine receptor subtypes; antagonism of the A2a receptor is particularly responsible for caffeine's wakefulness effects.",
-        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/"
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/",
+        "locate": "§ 'Mechanism of Action' → search 'competitive antagonist' and 'A2a'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Late-day caffeine measurably disrupts sleep even 6 hours before bed, often without the sleeper noticing (Drake et al. 2013).",
         "snippet": "Even when caffeine was consumed six hours before going to bed, objectively measured total sleep time was reduced by more than one hour... participants were unaware of this sleep disturbance.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/24235903/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24235903/",
+        "locate": "Abstract only, paraphrased. Search page for: 'caffeine six hours before bedtime objectively measured total sleep'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Half-life is highly individual, varying with genetics (CYP1A2), smoking, pregnancy, and age.",
         "snippet": "In smokers, the half-life is reduced by up to 50%... pregnant patients may experience a prolonged half-life of up to 15 hours... adults over 65 may experience a half-life of 6-8 hours.",
-        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/"
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/",
+        "locate": "§ 'Pharmacokinetics'/'Toxicity' → search 'smokers' then 'prolonged half-life of up to 15 hours'"
       }
     ]
   },
@@ -96,35 +106,40 @@
         "kind": "THESIS",
         "text": "Zone 2 is an easy, conversational-pace aerobic intensity (roughly 60-70% of max HR) and a large base of easy aerobic work is the foundational, most sustainable form of cardio for long-term health.",
         "snippet": "Zone 2 sits at 60 to 70 percent of your maximum heart rate, the intensity where fat oxidation peaks and mitochondrial adaptation accumulates.",
-        "url": "https://www.trainingpeaks.com/blog/zone-2-training-for-endurance-athletes/"
+        "url": "https://www.trainingpeaks.com/blog/zone-2-training-for-endurance-athletes/",
+        "locate": "Blog body, synthesized. Search the page for: 'Zone 2' '60 to 70 percent' 'fat oxidation peaks'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "At Zone 2 intensity, muscles primarily burn fat and the body clears lactate about as fast as it produces it (lactate stays roughly stable around 2 mmol/L).",
         "snippet": "Dr. Inigo San Millan ... defines Zone 2 as the highest intensity at which lactate remains stable around 1.7-2.0 ... in Zone 2 fat oxidation rates are near maximal ... sometimes referred to as 'FatMax'.",
-        "url": "https://www.highnorth.co.uk/articles/zone-2-training-inigo-san-millan"
+        "url": "https://www.highnorth.co.uk/articles/zone-2-training-inigo-san-millan",
+        "locate": "Article body → search 'San Millan' then 'FatMax' (note: lactate value may read '1.7-2.0 mmol/L')"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Zone 2 training drives mitochondrial adaptations (biogenesis / improved efficiency) and improved lactate clearance and fat oxidation, per San Millan's research with elite cyclists and metabolic patients.",
         "snippet": "Research by San Millan and George Brooks shows Zone 2 upregulates mitochondrial biogenesis and trains mitochondria to oxidize lactate rather than accumulate it.",
-        "url": "https://www.highnorth.co.uk/articles/zone-2-training-inigo-san-millan"
+        "url": "https://www.highnorth.co.uk/articles/zone-2-training-inigo-san-millan",
+        "locate": "Article body → search 'George Brooks' and 'mitochondrial biogenesis'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "The 'still able to hold a conversation in short sentences' talk test maps onto a real physiological boundary (the first ventilatory / aerobic threshold), not an arbitrary rule.",
         "snippet": "studies showing a correlation between the last positive stage of the talk test and the first ventilatory threshold, and that workload, oxygen uptake, and heart rate in the last positive stage ... were not different from the same parameters related to the first ventilatory threshold.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11266803/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11266803/",
+        "locate": "§ 'Results'/'Discussion' → search 'last positive stage of the talk test' and 'first ventilatory threshold'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Cardiorespiratory fitness is strongly inversely associated with all-cause mortality with no observed upper limit; low fitness carries risk comparable to major traditional risk factors (Mandsager et al., JAMA Network Open, 2018, >120,000 treadmill-tested patients).",
         "snippet": "The cohort study included 122,007 consecutive patients undergoing exercise treadmill testing, and found that cardiorespiratory fitness was inversely associated with all-cause mortality without an observed upper limit of benefit.",
-        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428"
+        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428",
+        "locate": "Abstract → search '122,007' and 'without an observed upper limit'"
       }
     ]
   },
@@ -139,35 +154,40 @@
         "kind": "THESIS",
         "text": "VO2 max (cardiorespiratory fitness) is among the most powerful predictors of all-cause mortality; low fitness carries risk comparable to or greater than major traditional risk factors like smoking and diabetes.",
         "snippet": "the increase in all-cause mortality associated with reduced cardiorespiratory fitness was comparable to or greater than traditional clinical risk factors... low cardiorespiratory fitness (compared to elite) had an adjusted hazard ratio of 5.04 (95% CI, 4.10-6.20)... smoking 1.41, diabetes 1.40",
-        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428"
+        "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428",
+        "locate": "§ 'Results' → search 'hazard ratio' '5.04' (smoking 1.41 / diabetes 1.40 nearby in same table/para)"
       },
       {
         "no": 1,
         "kind": "",
         "text": "VO2 max is the maximum rate at which the body can take in, transport, and use oxygen during all-out exercise, expressed per kilogram of body weight (mL/kg/min).",
         "snippet": "VO2 max ... is the maximum rate of oxygen consumption attainable during physical exertion ... expressed either as an absolute rate in litres of oxygen per minute (L/min) or as a relative rate in millilitres of oxygen per kilogram of the body mass per minute (mL/(kg·min))",
-        "url": "https://en.wikipedia.org/wiki/VO2_max"
+        "url": "https://en.wikipedia.org/wiki/VO2_max",
+        "locate": "Lead/§ 'Definition' → search 'maximum rate of oxygen consumption' and 'mL/(kg'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Lab-measured VO2 max via gas-analysis mask on a graded treadmill test is the gold standard for cardiorespiratory fitness; it is a whole-system measure (lungs, heart/blood, muscle oxygen extraction).",
         "snippet": "Among cardiorespiratory fitness indicators, maximal oxygen uptake (VO2max) is considered the gold standard ... The current gold standard for measuring VO2 max is a metabolic gas analysis during a maximal graded exercise test (GXT) on a treadmill",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11197041/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11197041/",
+        "locate": "Intro → search 'gold standard' and 'graded exercise test'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "The Mandsager et al. JAMA Network Open 2018 study covered over 120,000 treadmill-tested patients and found a strong graded inverse relationship between fitness and mortality with no upper limit of benefit.",
         "snippet": "In this cohort study of 122,007 consecutive patients undergoing exercise treadmill testing, cardiorespiratory fitness was inversely associated with all-cause mortality without an observed upper limit of benefit.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6324439/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6324439/",
+        "locate": "Abstract conclusion → search '122,007 consecutive patients' and 'without an observed upper limit'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "VO2 max is partly heritable/genetically capped; trainability is real but bounded (commonly ~15-20% improvement with significant training), consistent with Attia's framing.",
         "snippet": "VO2 max has a large genetic component, and most people can get a 15-20% increase in VO2 max with significant training.",
-        "url": "https://peterattiamd.com/how-does-vo2-max-correlate-with-longevity/"
+        "url": "https://peterattiamd.com/how-does-vo2-max-correlate-with-longevity/",
+        "locate": "Article body (Q&A blog) → search 'genetic component' and '15-20% increase'"
       }
     ]
   },
@@ -182,35 +202,40 @@
         "kind": "THESIS",
         "text": "Progressive overload is the principle that to keep adapting you must gradually increase the stress placed on the body/muscles over time; once a load is no longer challenging it is no longer a stimulus for change.",
         "snippet": "Progressive overload is defined as \"the gradual increase in stress placed upon the body during exercise training\".",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/",
+        "locate": "Intro/§ 'Definition' → search 'gradual increase in stress placed upon the body'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "The modern principle traces to physician Thomas DeLorme, who developed Progressive Resistance Exercise working with WWII-era rehabilitation patients in the mid-1940s, systematically increasing load as patients got stronger.",
         "snippet": "In 1945, an army physician, Dr. Thomas L. DeLorme experimented with a new rehabilitation technique ... he referred to the program as \"Progressive Resistance Exercise.\"",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/22592167/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22592167/",
+        "locate": "Abstract → search '1945' and 'Progressive Resistance Exercise' (DeLorme history paper)"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Overload can be increased through multiple variables, not only heavier weight: load, repetitions, sets, frequency, range of motion, and rest manipulation.",
         "snippet": "Effective programs begin with appropriate manipulation of load, volume, frequency, and range of motion ... just adding weight, reps, or harder progressions over time on a consistent program does most of the work.",
-        "url": "https://www.nfpt.com/beyond-the-guidelines-what-the-2026-acsm-position-stand-gets-right-and-what-it-changes-for-personal-trainers/"
+        "url": "https://www.nfpt.com/beyond-the-guidelines-what-the-2026-acsm-position-stand-gets-right-and-what-it-changes-for-personal-trainers/",
+        "locate": "Blog body, synthesized. Search the page for: 'load, volume, frequency, and range of motion'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Progressive overload and the SAID principle (specific adaptation to imposed demand) are core organizing principles in NSCA's Essentials of Strength Training and Conditioning.",
         "snippet": "Strength training is based on the principle of progressive overload ... The SAID principle (specific adaptation to imposed demand) says the demand type on the body dictates the following adaptation type.",
-        "url": "https://www.nsca.com/certification/cscs/essentials-of-strength-training-and-conditioning-5th-edition/"
+        "url": "https://www.nsca.com/certification/cscs/essentials-of-strength-training-and-conditioning-5th-edition/",
+        "locate": "Textbook/product page, paraphrased. Search for: 'progressive overload' and 'SAID principle'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Adversarial check on attribution: the Milo of Croton calf-to-bull story is a modern legend (popularized by the 1925 Milo Bar-Bell Company), not historical evidence of a training method. The draft does NOT claim Milo as fact — it attributes the principle to DeLorme and modern strength science, which is correct framing.",
         "snippet": "The actual ancient sources never mention a systematic calf-to-bull training program ... In 1925, the Milo Bar-Bell Company of Philadelphia published an essay ... that presents Milo as the inventor of progressive exercise.",
-        "url": "https://physicalculturestudy.com/2026/02/18/milo-of-croton-did-not-invent-progressive-overload/"
+        "url": "https://physicalculturestudy.com/2026/02/18/milo-of-croton-did-not-invent-progressive-overload/",
+        "locate": "Article body → search '1925' 'Milo Bar-Bell Company' and 'never mention a systematic'"
       }
     ]
   },
@@ -225,28 +250,32 @@
         "kind": "THESIS",
         "text": "Muscle is gained or maintained when muscle protein synthesis (MPS) exceeds muscle protein breakdown over time; resistance exercise plus adequate, distributed dietary protein keeps net balance positive.",
         "snippet": "Resistance exercise results in increased muscle net protein balance for 24-48 hours, where both protein anabolism and catabolism increase after exercise, but the increase in anabolism is relatively larger, causing the net muscle protein balance to be positive.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2732256/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2732256/",
+        "locate": "Body/Discussion of net protein balance → search 'net protein balance for 24'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Per-meal protein dose for maximal MPS saturates around 0.4 g/kg/meal (roughly 20-40g for most adults), supporting distribution across meals (leucine-threshold concept).",
         "snippet": "The proposed optimal per-meal amount of dietary protein for maximal stimulation of muscle protein synthesis (MPS) is 0.4 g/kg/meal (95% CI: 0.21, 0.59 g/kg/meal)... ~0.4g/kg/meal, equivalent to ~30-40g/meal.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5828430/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5828430/",
+        "locate": "Abstract / Results → search '0.4 g/kg/meal' or '0.21, 0.59'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Daily protein benefits for muscle and strength during resistance training plateau around 1.6 g/kg/day (Morton et al. 2018 BJSM meta-analysis, 49 studies).",
         "snippet": "The dose-response curve plateaus near 1.62 g/kg body mass per day; intakes above this did not produce additional gains in the pooled data.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867436/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5867436/",
+        "locate": "Abstract Results (Morton meta-analysis) → search '1.62 g/kg' or 'plateaus'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Resistance exercise elevates MPS for roughly a day (24-48 hours) afterward; precise post-workout 'anabolic window' timing is overstated and total daily protein dominates (Aragon & Schoenfeld).",
         "snippet": "Aragon and Schoenfeld postulated that the anabolic window of opportunity may be as long as 4-6 hours around a training session... achieving sufficient total daily protein intake is the primary driver of muscle adaptation, rather than precise timing.",
-        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3577439/"
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3577439/",
+        "locate": "Body, anabolic window section → search 'anabolic window of opportunity may be as long as 4'"
       }
     ]
   },
@@ -261,35 +290,40 @@
         "kind": "THESIS",
         "text": "A short, light walk after eating blunts the post-meal blood-glucose spike compared with continuing to sit.",
         "snippet": "Light-intensity walking significantly attenuated postprandial glucose (Δ = −0.72, 95% CI −1.03, −0.41) and insulin (Δ = −0.83) compared to continued sitting.",
-        "url": "https://link.springer.com/article/10.1007/s40279-022-01649-4"
+        "url": "https://link.springer.com/article/10.1007/s40279-022-01649-4",
+        "locate": "Abstract Results → search 'attenuated postprandial glucose' or '−0.72'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Even very short bouts of light walking (2 to 5 minutes) help, per the Buffey et al. 2022 Sports Medicine systematic review and meta-analysis.",
         "snippet": "The standing and light walking breaks lasted between 2 to 5 minutes... as little as two to five minutes of walking after a meal could lower blood sugar levels.",
-        "url": "https://www.cnn.com/2022/09/02/health/walking-blood-sugar-study-wellness"
+        "url": "https://www.cnn.com/2022/09/02/health/walking-blood-sugar-study-wellness",
+        "locate": "Article body (CNN) → search 'two to five minutes of walking after a meal'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Light walking is superior to merely standing for lowering post-meal glucose and insulin.",
         "snippet": "Frequent short interruptions of standing significantly attenuated postprandial glucose compared to prolonged sitting; however, light-intensity walking was found to represent a superior physical activity break.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9325803/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9325803/",
+        "locate": "Abstract Results/Conclusion → search 'light-intensity walking' and 'superior physical activity break'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Movement timed to the post-meal window controls glucose better than the same movement at an unrelated time (DiPietro et al. 2013, Diabetes Care).",
         "snippet": "Postmeal walking was significantly more effective than 45 min of sustained morning or afternoon walking in lowering 3-h postdinner glucose... short, intermittent bouts of postmeal walking appear to be an effective way to control postprandial hyperglycemia in older people.",
-        "url": "https://diabetesjournals.org/care/article/36/10/3262/30770/Three-15-min-Bouts-of-Moderate-Postmeal-Walking"
+        "url": "https://diabetesjournals.org/care/article/36/10/3262/30770/Three-15-min-Bouts-of-Moderate-Postmeal-Walking",
+        "locate": "Abstract Results → search 'Postmeal walking was significantly more effective'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Mechanism: contracting muscle increases glucose uptake via GLUT4 through a contraction-stimulated pathway that operates partly independently of insulin.",
         "snippet": "Light-intensity walking was shown to significantly attenuate postprandial glucose and insulin compared to continued sitting; the active ingredient is muscle contraction. (Contraction-stimulated GLUT4 glucose uptake is established exercise physiology.)",
-        "url": "https://link.springer.com/article/10.1007/s40279-022-01649-4"
+        "url": "https://link.springer.com/article/10.1007/s40279-022-01649-4",
+        "locate": "Abstract Results → search 'attenuate postprandial glucose and insulin compared to continued sitting'"
       }
     ]
   },
@@ -304,35 +338,40 @@
         "kind": "THESIS",
         "text": "Sleep pressure (homeostatic Process S) rises the longer you are awake and discharges only when you sleep, with adenosine accumulating in the brain during wakefulness as a key driver and being cleared during sleep.",
         "snippet": "The extracellular level of adenosine increases in the cortex and basal forebrain during prolonged wakefulness and decreases during sleep recovery, proposing adenosine acts as a homeostatic regulator of sleep.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9541543/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9541543/",
+        "locate": "Body, adenosine homeostasis section → search 'increases in the cortex and basal forebrain during prolonged wakefulness'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Caffeine works as an adenosine-receptor antagonist: it blocks the receptors where adenosine would register, masking accumulated fatigue without removing the adenosine itself.",
         "snippet": "Caffeine is a potent adenosine receptor antagonist with roughly equally high affinity for both A1 and A2A receptors. Work in mice provided strong evidence that caffeine promotes wakefulness primarily by blocking the A2A subtype of adenosine receptors.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9541543/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9541543/",
+        "locate": "Body, caffeine section → search 'potent adenosine receptor antagonist' or 'blocking the A2A'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Sleepiness is governed by two interacting processes (Borbely 1982): the homeostatic Process S that rises with time awake, and the circadian Process C that is independent of sleep/wake, so timing — not just hours awake — shapes how tired you feel.",
         "snippet": "Two processes play a dominant role in sleep regulation: a sleep-dependent process (Process S) and a sleep-independent circadian process (Process C). Process S shows exponential decline during sleep and an increase during waking, with its level at sleep onset being a function of prior waking time.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/7185792/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/7185792/",
+        "locate": "Abstract (Borbely 1982) → search 'Process S' and 'exponential decline during sleep'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Caffeine has a half-life of roughly five to six hours, so a meaningful amount is still circulating that long after consumption (supporting the afternoon-cutoff challenge).",
         "snippet": "In healthy adults, the half-life is approximately 5 to 6 hours. The mean half-life of caffeine in plasma of healthy individuals is about 5 hours.",
-        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/"
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519490/",
+        "locate": "§ 'Pharmacokinetics' → search 'half-life is approximately 5 to 6 hours'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Adenosine is a key mediator of sleep homeostasis but not the sole signal; the draft frames it as 'governed largely by adenosine' and pairs it with the circadian system, which matches the literature.",
         "snippet": "while adenosine is a key mediator, sleep homeostasis operates through multiple interacting molecular mechanisms rather than adenosine acting alone... multiple endogenous sleep-promoting substances (such as adenosine, TNF-alpha, and IL-1beta).",
-        "url": "https://www.sciencedirect.com/science/article/pii/S1389945724000534"
+        "url": "https://www.sciencedirect.com/science/article/pii/S1389945724000534",
+        "locate": "Abstract / body → search 'TNF-alpha' or 'multiple endogenous sleep-promoting substances'"
       }
     ]
   },
@@ -347,35 +386,40 @@
         "kind": "THESIS",
         "text": "Lower grip strength is associated with higher risk of all-cause and cardiovascular mortality (PURE study, Leong et al., The Lancet, 2015).",
         "snippet": "Grip strength was inversely associated with all-cause mortality... every 5-kg decrease in grip strength was linked to a 17% increase in cardiovascular mortality (hazard ratio 1.17, 95% CI 1.11-1.24; p<0.0001).",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/",
+        "locate": "PubMed Abstract Findings → search 'inversely associated with all-cause mortality' and '1.17'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Each ~5 kg decrease in grip strength is associated with a ~16% higher risk of all-cause death (HR 1.16) and ~17% higher cardiovascular death (HR 1.17).",
         "snippet": "hazard ratio per 5 kg reduction in grip strength of 1.16 (95% CI 1.13-1.20)... every 5 kg reduction... a 1.17 hazard ratio for cardiovascular mortality.",
-        "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(14)62000-6/abstract"
+        "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(14)62000-6/abstract",
+        "locate": "Abstract Findings → search 'per 5 kg reduction in grip strength 1.16'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Grip strength was a stronger predictor of all-cause and cardiovascular death than systolic blood pressure.",
         "snippet": "Grip strength was a stronger predictor of all-cause and cardiovascular mortality than systolic blood pressure.",
-        "url": "https://www.sciencedaily.com/releases/2015/05/150513210142.htm"
+        "url": "https://www.sciencedaily.com/releases/2015/05/150513210142.htm",
+        "locate": "Article body (ScienceDaily) → search 'stronger predictor' and 'systolic blood pressure'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "The PURE study tracked roughly 140,000 adults across 17 countries.",
         "snippet": "The study included 139,691 participants enrolled between January 2003 and December 2009... data from nearly 140,000 adults in 17 countries.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/",
+        "locate": "Abstract Methods/Findings → search '139' or '17 countries'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Grip strength is a predictor/marker of mortality, not a proven causal lever; training grip in isolation is not shown to extend life (correlation vs causation).",
         "snippet": "reduced muscular strength, as measured by grip strength, was associated with increased risk... a simple, inexpensive risk-stratifying method - an association/prognostic marker, not a demonstrated causal intervention.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25982160/",
+        "locate": "Abstract Interpretation → search 'simple, inexpensive risk-stratifying' or 'reduced muscular strength'"
       }
     ]
   },
@@ -390,35 +434,40 @@
         "kind": "THESIS",
         "text": "Creatine monohydrate is the most effective (and one of the most studied) ergogenic sports supplements for increasing high-intensity exercise capacity and lean body mass during training.",
         "snippet": "Creatine monohydrate is the most effective ergogenic nutritional supplement currently available to athletes in terms of increasing high-intensity exercise capacity and lean body mass during training.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5469049/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5469049/",
+        "locate": "Abstract / opening statement → search 'most effective ergogenic nutritional supplement'"
       },
       {
         "no": 1,
         "kind": "",
         "text": "Mechanism: creatine is stored mostly in muscle and helps regenerate ATP (phosphocreatine system) during short, intense efforts; supplementation raises muscle creatine stores.",
         "snippet": "Studies consistently reveal that creatine supplementation exerts positive ergogenic effects on single and multiple bouts of short-duration, high-intensity exercise activities... performance outcomes include increases in maximal strength, maximal work output, power production, sprint performance, and fat-free mass.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8228369/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8228369/",
+        "locate": "Body Results → search 'single and multiple bouts of short-duration, high-intensity'"
       },
       {
         "no": 2,
         "kind": "",
         "text": "Typical maintenance dose is ~3-5 g/day of creatine monohydrate (optionally after a loading phase); this is the ISSN-recommended dose.",
         "snippet": "The typical maintenance dose is approximately 3-5 g/day of creatine monohydrate in adults. ISSN position stand recommends 3-5 g/day for maintenance following a loading phase.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4421632/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4421632/",
+        "locate": "Dosing section → search '3-5 g/day' and 'maintenance'"
       },
       {
         "no": 3,
         "kind": "",
         "text": "Safety: in healthy individuals, long-term creatine supplementation has not been shown to harm kidney function; the characteristic early weight gain is intramuscular water, not fat.",
         "snippet": "Short and long-term supplementation (up to 30 g/day for 5 years) is safe and well-tolerated in healthy individuals.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8228369/"
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8228369/",
+        "locate": "Safety section → search 'up to 30 g/day for 5 years' or 'safe and well-tolerated'"
       },
       {
         "no": 4,
         "kind": "",
         "text": "Branch (2003) meta-analysis: creatine's benefit is concentrated in short-duration, high-intensity, repeated-effort tasks (strength/power), with little benefit for sustained endurance (running, swimming).",
         "snippet": "Effect size was greater for changes in lean body mass following short-term creatine supplementation, repetitive-bout laboratory-based exercise tasks of 30 seconds or less... creatine supplementation does not appear to be effective in improving running and swimming performance.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/12945830/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12945830/",
+        "locate": "PubMed Abstract Results → search '30 seconds or less' or 'running and swimming performance'"
       }
     ]
   }
