@@ -1534,8 +1534,8 @@ export default function HomePage() {
     header: { background: 'rgba(11,17,25,0.97)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(255,255,255,0.06)' },
     headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
     wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#e8eef5' },
-    actionStrip: { padding: '0 20px 9px', display: 'flex', alignItems: 'center', gap: 4, overflowX: 'auto', scrollbarWidth: 'none' },
-    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.09)', color: 'rgba(232,238,245,0.45)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
+    actionStrip: { padding: '0 18px 11px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 7 },
+    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(232,238,245,0.72)', background: 'rgba(255,255,255,0.03)', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
     asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.32)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
     sep: { width: 1, height: 12, background: 'rgba(255,255,255,0.08)', flexShrink: 0, margin: '0 1px' },
     av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
@@ -1762,9 +1762,9 @@ export default function HomePage() {
           </button>
         </div>
         <div className="action-strip" style={S.actionStrip}>
-          <button style={{ ...S.asBtn, color: dueCount > 0 ? '#47FFE8' : 'rgba(26,42,58,0.55)', fontWeight: dueCount > 0 ? 600 : 400, borderColor: dueCount > 0 ? 'rgba(71,255,232,0.35)' : undefined }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
+          <button style={{ ...S.asBtn, color: '#47FFE8', fontWeight: 600, borderColor: 'rgba(71,255,232,0.4)', background: 'rgba(71,255,232,0.08)' }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
           <div style={S.sep} />
-          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#b8a000' : 'rgba(26,42,58,0.55)', fontWeight: hasUnseenChangelog ? 600 : 400 }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
+          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : 'rgba(232,238,245,0.72)', fontWeight: hasUnseenChangelog ? 600 : 400, borderColor: hasUnseenChangelog ? 'rgba(224,169,61,0.4)' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
           <div style={S.sep} />
           <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
           <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
