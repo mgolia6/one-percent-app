@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "VL.11",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "Linguistic Relativity",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "Some languages have no word for 'left' or 'right.' To say where something is, you say north, south, east, west — even indoors, even for the fork on your plate. Speakers of those languages stay oriented to the compass at all times, automatically, the way you stay oriented to gravity. Their language didn't give them a magic sense. It just made them practice one constantly.",
+    "explanation_paragraphs": [
+      "The Australian language Guugu Yimithirr, studied by linguist Stephen Levinson, uses cardinal directions instead of body-relative terms like 'left' and 'right.' To speak the language at all, you must always know which way is north. Speakers do — with an accuracy that astonished researchers, in unfamiliar places, in the dark, after being spun around. This is the strongest kind of evidence for linguistic relativity: the idea, associated with Edward Sapir and Benjamin Lee Whorf, that the language you speak shapes how you think.",
+      "The mechanism, where it's real, is not that words trap thought — it's that a language forces you to habitually attend to certain features of the world. If your grammar requires you to mark direction, you practice tracking direction. If your language has a single basic word for blue and green, your color discrimination near that boundary is measurably slower than a speaker whose language splits them. The effect is built by repeated attention, not by hard limits on what you can conceive.",
+      "Here's the crucial nuance, because this is where the idea gets abused. The strong version — that language determines thought, that you literally cannot think what your language can't say — is false and was abandoned. Whorf's famous claim that the Hopi had 'no concept of time' didn't survive scrutiny. People learn new distinctions, think around their vocabulary, and invent words for new ideas constantly. What survived rigorous testing is the weak version: language nudges habitual thought at the margins, mostly in perception, memory, and attention.",
+      "The stakes are that 'because of the words we use' is one of the most overclaimed explanations in popular culture. You'll hear that a language with no future tense makes its speakers save more money, or that one untranslatable word reveals a whole culture's secret wisdom. Most of these claims are the discredited strong version wearing a lab coat. Knowing where the real evidence stops lets you enjoy the genuine effect without being sold the fantasy."
+    ],
+    "why_today": "Lera Boroditsky's work on the Pormpuraaw community ('How Does Our Language Shape the Way We Think?', 2009) and the foundational color studies (Kay & Kempton, American Anthropologist, 1984) document the measurable, weak version of the effect.",
+    "morning_challenge": "Notice one place today where language is quietly steering your attention.\n\nEnglish forces you to mark tense on almost every verb — you can't say 'I go to the store' without committing to when. It forces gender on pronouns. It does not force you to mark the source of your information, though some languages do. Pick a sentence you say and ask: what is my language making me specify here that I might otherwise have left vague — and what is it letting me leave vague that another language would force me to pin down?\n\nYou're not looking for magic. You're noticing the habits of attention your language has been drilling into you your whole life."
+  },
+  "midday": {
+    "reframe": "Language doesn't put walls around your thoughts. It puts grooves in your attention. The strong claim — 'you can't think what you can't say' — is false. The real claim — 'what your language makes you mark, you get more practice noticing' — is smaller, true, and far more interesting than the myth.",
+    "itw_label": "IN THE WILD — TYPE A · BORODITSKY, 2009. KAY & KEMPTON, AMERICAN ANTHROPOLOGIST, 1984. WHORF, LANGUAGE THOUGHT AND REALITY, 1956.",
+    "itw_paragraphs": [
+      "Lera Boroditsky's research with the Pormpuraaw community in northern Australia is the cleanest demonstration of the genuine effect. Because their language relies on cardinal directions, speakers maintain constant orientation, and this shows up in how they arrange time itself: asked to lay out a sequence of events, English speakers go left to right, Hebrew speakers right to left — and Pormpuraaw speakers arrange it east to west, reorienting the layout depending on which way they happen to be facing. Their spatial language reshaped a habit you'd never suspect was linguistic at all.",
+      "The color evidence is more modest and that's the point. Kay and Kempton found that English speakers, whose language draws a sharp line between green and blue, exaggerated the perceived difference across that boundary compared to speakers of a language that didn't split them. The effect was real and measurable — but it was a subtle shift in discrimination, not a different visual world. This is the texture of true linguistic relativity: small, boundary effects in perception, not whole alternate realities.",
+      "Contrast that with Whorf's original overreach. He claimed Hopi had no way to express time and therefore conceived of it differently in a deep sense — a claim later linguists, notably Ekkehart Malotki, dismantled by documenting Hopi tense and time reference in detail. The lesson in the wild: when you hear that a language's vocabulary 'proves' its speakers think in a fundamentally alien way, you are almost always hearing the discredited strong version, not the careful science."
+    ],
+    "quote": "We dissect nature along lines laid down by our native languages. — but the modern evidence shows those lines guide habitual attention, not the hard limits of what can be thought.",
+    "attribution": "Benjamin Lee Whorf, Language, Thought, and Reality, 1956 (with the modern qualification the strong version did not survive)",
+    "midday_nudge": "The next time someone explains a group's behavior with 'well, in their language there's no word for X,' try the test silently: is the claim that they can't conceive of X, or just that they don't habitually mark it? The first is almost always false. The second is the only version worth believing."
+  },
+  "quiz": [
+    {
+      "question": "What is the key difference between the 'strong' and 'weak' versions of linguistic relativity — and which survived scientific testing?",
+      "options": [
+        "The strong version says language influences attention and survived; the weak version says language determines thought and was rejected",
+        "The strong version says language determines what you can think and was rejected; the weak version says language nudges habitual attention and perception, and survived",
+        "Both versions were rejected; language has no measurable effect on thought at all",
+        "Both versions survived; the only debate is about how large the effect is"
+      ],
+      "correct": 1,
+      "explanation": "The strong version — linguistic determinism, the idea that you literally cannot think what your language can't express — failed under scrutiny, most famously when Whorf's Hopi 'no concept of time' claim was dismantled. The weak version, that language shapes habitual attention, memory, and perception at the margins, is the one supported by careful experiments like Boroditsky's and Kay and Kempton's."
+    },
+    {
+      "question": "Speakers of Guugu Yimithirr can stay oriented to the compass with remarkable accuracy. According to the linguistic relativity account, what produces this skill?",
+      "options": [
+        "Their language gives them an innate biological sense of direction other humans lack",
+        "Because their grammar requires marking cardinal direction to speak at all, they constantly practice tracking it, building the skill through habitual attention",
+        "The skill is unrelated to language and is simply a cultural tradition taught in childhood",
+        "Their vocabulary contains a special word that grants spatial awareness"
+      ],
+      "correct": 1,
+      "explanation": "The mechanism of real linguistic relativity is practiced attention, not magic. The language can't be spoken without knowing which way is north, so speakers track direction constantly and get extraordinarily good at it. No special biology, no magic word — just a feature the grammar forces you to attend to thousands of times until it becomes automatic."
+    },
+    {
+      "question": "You read a headline: 'Languages without a future tense make their speakers better at saving money.' What should the linguistic-relativity-literate reaction be?",
+      "options": [
+        "Accept it — this is exactly the kind of deep effect Sapir and Whorf proved",
+        "Treat it with heavy skepticism — it has the shape of the discredited strong version, claiming language determines a complex behavior, and such claims usually don't survive careful re-analysis",
+        "Reject all linguistic relativity outright — no language effect on thought is ever real",
+        "Accept it only if the language is non-European"
+      ],
+      "correct": 1,
+      "explanation": "The genuine effects are small and concentrated in perception, memory, and attention — color boundaries, spatial orientation, time layout. A claim that grammar drives a whole complex life outcome like saving behavior is the overreaching strong version dressed up, and such sweeping claims have a poor track record under re-analysis. Skepticism is correct without dismissing the real, modest effects."
+    }
+  ],
+  "closing": "Language shapes thought — but gently, at the edges, by drilling certain habits of attention rather than by walling off what can be conceived. The myth says your words are a cage. The evidence says they're a well-worn path: easy to follow, but you can always step off it.",
+  "sources": [
+    {
+      "label": "Boroditsky, L. — How Does Our Language Shape the Way We Think?, Edge / Cambridge University Press chapter, 2009",
+      "detail": "Summarizes the Pormpuraaw orientation and time-layout experiments demonstrating measurable, weak-version linguistic relativity.",
+      "url": "https://www.edge.org/conversation/lera_boroditsky-how-does-our-language-shape-the-way-we-think"
+    },
+    {
+      "label": "Kay, P. & Kempton, W. — What Is the Sapir-Whorf Hypothesis?, American Anthropologist, 1984",
+      "detail": "Classic experiment showing color-category boundaries in language produce small but real shifts in perceptual discrimination.",
+      "url": "https://anthrosource.onlinelibrary.wiley.com/doi/10.1525/aa.1984.86.1.02a00050"
+    }
+  ],
+  "ai_prompt": "I want to understand linguistic relativity — whether language shapes thought — without falling for the overclaimed pop version. First ask me what made me curious about it: a specific claim I heard, a language I speak, or just general interest. Then help me separate the discredited 'strong' version from the evidence-backed 'weak' version, and pressure-test whatever claim prompted me. Here's what sparked my question: [describe the claim or context]",
+  "verified": false
+}

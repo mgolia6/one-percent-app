@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "VL.10",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "The Illusion of Explanatory Depth",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "You know how a toilet flushes. You're sure of it. Now explain the mechanism, step by step, with nothing left out. Somewhere around the float valve, the confidence quietly drains away.",
+    "explanation_paragraphs": [
+      "In a Yale lab, psychologists Leonid Rozenblit and Frank Keil asked people to rate how well they understood everyday objects — zippers, locks, helicopters, flush toilets. People rated their understanding high. Then the researchers said: write out a step-by-step explanation of exactly how it works. People started writing, hit the gaps, and stalled. When asked to re-rate their understanding afterward, the numbers dropped sharply. The act of trying to explain had exposed how little was actually there.",
+      "This is the Illusion of Explanatory Depth: we routinely mistake familiarity with a thing for understanding of it. The mechanism is that our minds store a shallow, gist-level sketch — enough to recognize a zipper, talk about a zipper, use a zipper — and we mistake the ease of that recognition for a detailed causal model we do not have. Because we never normally try to generate the full explanation, the gap stays hidden. We feel like we know.",
+      "The illusion is specific. Rozenblit and Keil found it was strongest for explanatory, causal systems — devices and processes — and much weaker for facts, narratives, or procedures. You don't overestimate how many countries you can name; the limit is obvious. But you do overestimate how well you understand how a car engine, an economy, or a piece of legislation works, because those feel coherent from the outside while their internals stay invisible.",
+      "The stakes are that this illusion governs how we form opinions on things that matter. People hold confident positions on policies — carbon taxes, healthcare systems, tariffs — that they could not explain mechanistically if asked. Later studies showed that asking people to explain how a policy actually works, in detail, reliably reduced the extremity of their opinion. The confidence was riding on an explanation that was never there."
+    ],
+    "why_today": "Rozenblit, L. & Keil, F. (2002), 'The misunderstood limits of folk science: an illusion of explanatory depth,' Cognitive Science 26(5), 521–562 — the study that named and measured the effect.",
+    "morning_challenge": "Pick one thing you'd say you understand well — ideally a system, not a fact. How a recession happens. How your company actually makes money. How a bill becomes law. How the cloud stores your photos.\n\nNow explain it out loud, or in writing, step by step, as if to someone who knows nothing — no skipping, no 'and then it just works.'\n\nNotice the exact moment you reach for a hand-wave. That moment is the edge of your real understanding. You're not looking to feel stupid — you're looking to locate the edge, because most of the time you never see it."
+  },
+  "midday": {
+    "reframe": "Feeling like you understand something is not evidence that you do. The feeling comes from familiarity — from recognizing and using a thing — and familiarity is cheap. The only honest test of understanding is whether you can generate the explanation, not whether you can recognize one when you hear it.",
+    "itw_label": "IN THE WILD — TYPE A · ROZENBLIT & KEIL, COGNITIVE SCIENCE, 2002. FERNBACH ET AL., PSYCHOLOGICAL SCIENCE, 2013.",
+    "itw_paragraphs": [
+      "Rozenblit and Keil ran twelve experiments to make sure the effect wasn't an artifact. They tested it against general knowledge, procedures, and narratives, and the deep overconfidence showed up specifically for causal, mechanistic systems. People could rate, then attempt an explanation, then re-rate — and the re-rating after a failed explanation attempt was consistently and substantially lower. Crucially, simply being asked to explain, even before writing anything, already nudged estimates down, because people anticipated the gaps once explanation became the standard.",
+      "In 2013, Philip Fernbach and colleagues extended this to politics in Psychological Science. They asked people to rate their understanding of policies like a national flat tax or cap-and-trade, then asked half of them to write a mechanistic explanation of how the policy would actually work. Those who tried to explain rated their understanding lower afterward — and, notably, reported more moderate positions on the policy. Asking for a mechanism, not for arguments, was what deflated the false confidence.",
+      "The asymmetry matters for how you read your own certainty. Asking someone to list reasons they support a position tends to entrench them; asking them to explain the causal mechanics tends to humble them. The difference is that reasons are easy to generate and feel like understanding, while mechanisms expose whether the understanding is real. Most strong opinions are built on reasons, not mechanisms."
+    ],
+    "quote": "Most people feel they understand the world with far greater detail, coherence, and depth than they really do.",
+    "attribution": "Leonid Rozenblit & Frank Keil, Cognitive Science, 2002",
+    "midday_nudge": "Next time you catch yourself confident in a meeting — 'obviously the right move is X' — silently ask: could I explain the full mechanism behind that, or do I just recognize the shape of it? You don't have to say anything. Just notice which one it is."
+  },
+  "quiz": [
+    {
+      "question": "Rozenblit and Keil found the illusion of explanatory depth was strong for some things and weak for others. For which type of knowledge was it strongest?",
+      "options": [
+        "Memorized facts, like capital cities or historical dates",
+        "Causal, mechanistic systems — how devices and processes actually work",
+        "Personal narratives and stories the person had lived through",
+        "Step-by-step procedures the person performed regularly"
+      ],
+      "correct": 1,
+      "explanation": "The illusion is specific to explanatory, causal understanding. Facts have obvious limits — you know roughly how many capitals you can name. But a causal system feels coherent from the outside while its internal mechanism stays invisible, so you mistake recognizing it for understanding how it works. That's where the overconfidence concentrates."
+    },
+    {
+      "question": "A colleague says they fully understand how the company's pricing model works. What is the single most diagnostic way to test whether that's true, based on the research?",
+      "options": [
+        "Ask them how confident they feel about it on a scale of one to ten",
+        "Ask them to list reasons the pricing model is a good one",
+        "Ask them to explain the model step by step, mechanism by mechanism, with no gaps",
+        "Ask whether they've worked with the pricing model before"
+      ],
+      "correct": 2,
+      "explanation": "Confidence ratings and familiarity both reflect the illusion, not real understanding. Listing reasons actually tends to entrench a position without testing it. Only generating the full mechanistic explanation forces the hidden gaps into view — which is exactly the move that, in the studies, made people revise their self-rated understanding downward."
+    },
+    {
+      "question": "Fernbach's 2013 study found that asking people to explain how a policy works — rather than to justify it — made their opinions more moderate. Why does the mechanism request, specifically, have this effect?",
+      "options": [
+        "Explaining a mechanism is tiring, so people give up and agree with whatever's easiest",
+        "Listing justifications also moderates opinions, so the method doesn't actually matter",
+        "Generating a causal explanation exposes the gaps in understanding that confident positions were quietly resting on, deflating false certainty",
+        "People become more moderate only because they fear being judged for extreme views"
+      ],
+      "correct": 2,
+      "explanation": "Reasons are easy to produce and feel like understanding, which is why listing them tends to entrench. A mechanistic explanation is different: it requires the actual causal model, and when that model turns out to be thinner than assumed, the confidence it was supporting collapses with it. The opinion moderates because the false sense of understanding it stood on is gone."
+    }
+  ],
+  "closing": "The feeling of understanding is generated by familiarity, and familiarity is almost free. Real understanding is the ability to build the explanation from the ground up. The gap between the two is where most overconfidence lives — and you only ever see it when you try to explain.",
+  "sources": [
+    {
+      "label": "Rozenblit, L. & Keil, F. — The Misunderstood Limits of Folk Science: An Illusion of Explanatory Depth, Cognitive Science, 2002",
+      "detail": "The twelve-experiment study that named the effect, showing self-rated understanding drops sharply after people attempt to explain a system in full detail.",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog2605_1"
+    },
+    {
+      "label": "Fernbach, P. et al. — Political Extremism Is Supported by an Illusion of Understanding, Psychological Science, 2013",
+      "detail": "Extends the illusion to policy, showing that asking people to explain a policy's mechanism reduces both their self-rated understanding and the extremity of their position.",
+      "url": "https://journals.sagepub.com/doi/10.1177/0956797612464058"
+    }
+  ],
+  "ai_prompt": "I want to test whether I actually understand something or just feel like I do — the illusion of explanatory depth. First ask me to name one system, device, or policy I think I understand well. Then make me explain it to you step by step, mechanism by mechanism, and stop me the moment I hand-wave or skip a step, so I can see exactly where my real understanding ends. Here's what I want to test: [name the thing]",
+  "verified": false
+}

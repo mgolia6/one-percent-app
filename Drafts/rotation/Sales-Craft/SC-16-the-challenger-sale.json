@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "SC.16",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "The Challenger Sale",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "The salesperson everyone assumes is the best — warm, attentive, endlessly available — is statistically among the worst at closing complex deals. The one who wins is the one willing to make the customer slightly uncomfortable.",
+    "explanation_paragraphs": [
+      "Two reps call on the same prospect. The first is a relationship pro: builds rapport, asks what the customer needs, listens hard, and delivers exactly that. The second does something stranger — he tells the customer their current approach is quietly costing them money in a way they hadn't noticed, backs it with data, and reframes the problem. The first rep leaves the customer comfortable and unchanged. The second leaves them thinking, \"I need to fix this.\" In a large study of complex B2B sales, it was the second rep's profile, not the first's, that dominated the top performers.",
+      "Matthew Dixon and Brent Adamson, in The Challenger Sale, analyzed thousands of sales reps and found their behaviors clustered into five profiles. The intuitive favorite — the Relationship Builder — was the least likely to be a star performer in complex sales. The clear winner was the Challenger: a rep who follows a Teach–Tailor–Take Control approach. They Teach the customer something new about their own business, Tailor the message to what that specific stakeholder cares about, and Take Control of the conversation, including the hard parts like money and pushback. Challengers don't avoid tension. They use it productively.",
+      "The nuance is that 'challenge' doesn't mean argue or pressure. A Challenger earns the right to push by bringing a genuine insight — a reframe that makes the customer see their situation differently and more accurately. The teaching has to be valuable and surprising, or the assertiveness is just rudeness. And taking control isn't dominance; it's the confidence to stay the course on price, to push back respectfully, and to keep the conversation aimed at the decision rather than letting it drift. Relationship Builders avoid this tension to preserve goodwill — and that avoidance is precisely why they underperform.",
+      "This matters because in complex sales the customer often doesn't fully understand their own problem, and a rep who simply responds to stated needs ends up selling them what they already thought they wanted. That's a commodity sale, decided on price. The Challenger's reframe creates value before the product is even mentioned, because the insight itself is worth something. The research finding is blunt: being likable is not the differentiator. Teaching the customer something they didn't know — and having the nerve to act on it — is."
+    ],
+    "why_today": "The Challenger profile and the Teach–Tailor–Take Control model come from Matthew Dixon & Brent Adamson, The Challenger Sale: Taking Control of the Customer Conversation (Portfolio/Penguin, 2011), based on research by CEB (the Corporate Executive Board) across thousands of B2B sales reps.",
+    "morning_challenge": "Pick one prospect or account you're working. Before your next contact, prepare one piece of teaching: a non-obvious insight about their business or industry that reframes a problem they may not know they have.\n\nIt should make them think \"huh, I hadn't seen it that way\" — not just confirm what they already believe. Back it with a specific fact or number if you can.\n\nLead with that insight in your next conversation, before you talk about your product. Watch whether it shifts the discussion from 'what do you offer' to 'how do we fix this.'"
+  },
+  "midday": {
+    "reframe": "Being the most likable, available, give-them-what-they-ask-for rep feels like good selling, but in complex deals it's the losing profile. The winners teach the customer something new, tailor it, and have the nerve to take control — including the uncomfortable parts.",
+    "itw_label": "IN THE WILD — TYPE A · DIXON & ADAMSON, THE CHALLENGER SALE, PORTFOLIO/PENGUIN, 2011. CEB RESEARCH ON B2B SALES PROFILES.",
+    "itw_paragraphs": [
+      "The CEB research behind the book studied thousands of B2B sales reps and sorted their behaviors into five profiles: the Hard Worker, the Relationship Builder, the Lone Wolf, the Reactive Problem Solver, and the Challenger. When the data was mapped against actual performance in complex sales, the Challenger was by far the most overrepresented among top performers, while the Relationship Builder — the profile most managers would have bet on — was the least likely to be a star. The more complex and consultative the sale, the more pronounced the Challenger's advantage.",
+      "Dixon and Adamson argue the reason is that complex-sale customers don't reward reps for being responsive; they reward reps for bringing insight. A Challenger leads with what the authors call 'commercial teaching' — a reframe that exposes a problem or opportunity the customer hadn't fully appreciated, ideally one that leads back to the supplier's unique strengths. The teaching creates the demand. By contrast, a rep who only asks 'what keeps you up at night?' and responds to the answer is letting the customer define a problem they may not fully understand.",
+      "The 'Take Control' element is where Relationship Builders most often fail. The book documents that Challengers are comfortable with constructive tension — they hold firm on price, push back when the customer's thinking is flawed, and keep the deal moving toward a decision. Relationship Builders, prioritizing harmony, tend to concede, defer, and let deals stall. The research reframes assertiveness not as a personality flaw to be smoothed over but as a learnable, trainable driver of sales success."
+    ],
+    "quote": "Challengers win by pushing customers to think differently, using insight to create constructive tension in the sale.",
+    "attribution": "Paraphrase of Matthew Dixon & Brent Adamson, The Challenger Sale, Portfolio/Penguin, 2011",
+    "midday_nudge": "Before your next sales conversation, ask yourself: am I about to react to what the customer says they need, or am I bringing them something they don't yet know? If you have no teaching to offer — no reframe, no surprising insight — you're set up to be a Relationship Builder. Find one thing to teach them before you walk in."
+  },
+  "quiz": [
+    {
+      "question": "Two reps work the same complex deal. Rep A builds great rapport and carefully delivers exactly what the customer says they want. Rep B opens by showing the customer a hidden cost in their current approach, backed by data, before discussing any product. Based on the Challenger research, who is more likely to win — and why?",
+      "options": [
+        "Rep A, because customers buy from people they like and trust",
+        "Rep B, because teaching the customer something new reframes the problem and creates value before the product comes up, which is the behavior that distinguishes top performers in complex sales",
+        "It depends entirely on which rep offers the lower price",
+        "Rep A, because challenging a customer's thinking damages the relationship and risks the deal"
+      ],
+      "correct": 1,
+      "explanation": "The Challenger research found that in complex sales, the Relationship Builder profile (Rep A) was the least likely to be a top performer, while the Challenger (Rep B) was the most. The reason is that responding only to stated needs sells the customer what they already thought they wanted — a commodity decided on price. Leading with a teaching reframe creates value through insight itself, which is what actually differentiates winning reps."
+    },
+    {
+      "question": "A manager wants to coach a rep toward a 'Challenger' approach. Which behavior best reflects the 'Take Control' part of Teach–Tailor–Take Control?",
+      "options": [
+        "Immediately lowering the price whenever the customer expresses any hesitation, to keep goodwill",
+        "Respectfully holding firm on price and pushing back when the customer's reasoning is flawed, keeping the conversation aimed at a decision rather than letting it drift",
+        "Avoiding any topic that might create tension, so the relationship stays warm",
+        "Letting the customer set the entire agenda and following wherever they lead"
+      ],
+      "correct": 1,
+      "explanation": "Taking control means having the confidence to manage constructive tension — holding the line on price, respectfully challenging flawed thinking, and steering toward a decision. It is not dominance, but it is the opposite of the Relationship Builder's instinct to concede and defer to preserve harmony. The book identifies that conflict-avoidance is exactly where Relationship Builders lose deals."
+    },
+    {
+      "question": "Why does 'challenging' a customer only work if the rep brings genuine insight?",
+      "options": [
+        "Because customers will only tolerate pushback from reps they've known for years",
+        "Because without a valuable, surprising reframe, assertiveness is just pressure or rudeness — the teaching is what earns the rep the right to push and creates the constructive tension that moves the deal",
+        "Because insight lets the rep avoid ever discussing price",
+        "Because customers always already know their problems, so insight just confirms what they think"
+      ],
+      "correct": 1,
+      "explanation": "Challenging isn't arguing or applying pressure. The Challenger earns the right to take control by teaching the customer something genuinely new and useful about their own situation. If there's no real insight, the assertiveness has nothing to stand on and just reads as pushy. The reframe is the engine — it creates the productive tension and the value that makes the customer want to act, before the product is even on the table."
+    }
+  ],
+  "closing": "In complex deals, the comfortable rep loses. Bring the customer a genuine insight, tailor it to what they care about, and have the nerve to steer — likability was never the thing that closed the deal.",
+  "sources": [
+    {
+      "label": "Dixon, M. & Adamson, B. — The Challenger Sale: Taking Control of the Customer Conversation, Portfolio/Penguin, 2011",
+      "detail": "Presents the five rep profiles and the Teach–Tailor–Take Control model, based on CEB research showing the Challenger outperforms the Relationship Builder in complex sales.",
+      "url": "https://www.penguinrandomhouse.com/books/309062/the-challenger-sale-by-matthew-dixon-and-brent-adamson/"
+    },
+    {
+      "label": "Adamson, B. & Dixon, M. — 'The End of Solution Sales,' Harvard Business Review, July–August 2012",
+      "detail": "HBR article summarizing the Challenger research and the argument that insight-led selling outperforms responsive, needs-based selling.",
+      "url": "https://hbr.org/2012/07/the-end-of-solution-sales"
+    }
+  ],
+  "ai_prompt": "I want to build a Challenger-style approach for a specific deal — teaching the customer something new instead of just responding to their stated needs. Before we start, ask me about the customer, their industry, what they think their problem is, and what my product does well. Then help me craft one non-obvious insight that reframes their problem and earns the right to take control of the conversation. Here's the deal: [describe the customer and what I'm selling]",
+  "verified": false
+}

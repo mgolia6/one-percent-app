@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "VL.13",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "False Precision",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "'73% of people prefer it.' That number feels like science. But ask three questions — 73% of whom, measured how, out of how many — and it can dissolve into 'we asked eleven friends.' A specific number is a confidence costume. The decimal points are doing the persuading, not the truth.",
+    "explanation_paragraphs": [
+      "An ad claims a moisturizer 'reduces wrinkles by 47%.' The number is exact, so it reads as measured, rigorous, real. Then you find the study: 12 participants, self-reported, over two weeks, funded by the manufacturer. The 47% is real arithmetic performed on data far too thin to support a number that precise. The precision isn't lying about the math — it's lying about the certainty. It dresses a soft, shaky finding in the clothing of a hard, settled one.",
+      "False precision is stating a quantity to a level of exactness the underlying evidence cannot justify. The mechanism is psychological: specific numbers feel more credible than round ones. '73.4%' signals 'we measured carefully,' while 'most people' signals 'we're estimating.' But the signal is detachable from the reality — anyone can compute a precise figure from garbage data, and the precision survives even when the data doesn't. We read the decimal as evidence of rigor when it's often just evidence of a calculator.",
+      "The honest counterpart is calibration: the precision of a number should match the quality of the evidence behind it. A national poll of 2,000 people genuinely supports '52%.' A glance around the room supports 'about half' — and dressing that up as '51.3%' is false precision even if it happens to be arithmetically derived. Real measurement carries a margin of error; false precision is what you get when someone reports the point estimate and quietly hides the margin that would tell you how little they actually know.",
+      "The stakes are that false precision is persuasion technology. It's used to make weak studies sound strong, opinions sound like data, and guesses sound like findings. It works on smart people because the specific number short-circuits skepticism — we ask 'is that number right?' instead of 'where did that number come from?' Learning to hear the difference between a measured figure and a precise-sounding guess is one of the highest-leverage numeracy skills there is."
+    ],
+    "why_today": "False precision is a documented cognitive bias — specific numbers raise perceived credibility regardless of accuracy. See Charles Seife, 'Proofiness: The Dark Arts of Mathematical Deception' (2010), and the broader statistical-literacy tradition of Darrell Huff's 'How to Lie with Statistics' (1954).",
+    "morning_challenge": "Today, when you meet a precise number in the wild — a stat in an article, a percentage in a pitch, a metric in a meeting — run three questions before you let it persuade you:\n\n1. Who or what was measured, and how many of them?\n2. How was it measured — and who paid for the measuring?\n3. Where's the margin of error, and why isn't it shown?\n\nIf the number survives all three, respect it. If it can't even answer them, you've caught false precision: a guess wearing a decimal point. Notice how much less it persuades you the moment you stop treating the number as the evidence and start asking for the evidence behind it."
+  },
+  "midday": {
+    "reframe": "A number's precision is a claim about how much someone knows — and that claim can be fake. '73.4%' promises careful measurement. The promise is detachable from the truth: anyone can produce an exact figure from terrible data. Stop asking whether the number is right. Start asking where it came from.",
+    "itw_label": "IN THE WILD — TYPE A · SEIFE, 'PROOFINESS,' 2010. HUFF, 'HOW TO LIE WITH STATISTICS,' 1954.",
+    "itw_paragraphs": [
+      "Charles Seife, in 'Proofiness,' catalogs how exact-sounding numbers manufacture false authority — from advertising stats to congressional testimony where invented figures, once given a decimal point, get repeated as established fact. His core point is that a number's specificity and its accuracy are independent: the human tendency to trust precision means a fabricated '2.3 million' will out-persuade an honest 'we don't really know,' even when the honest answer is the correct one.",
+      "Darrell Huff made the same case in 1954 in 'How to Lie with Statistics,' the best-selling statistics book ever written. A recurring trick he documents is the precise figure built on a tiny or biased sample — the toothpaste 'recommended by' a handful of cherry-picked dentists, reported as a clean percentage. The percentage is arithmetically true and epistemically worthless, and the precision is exactly what makes readers skip the question of how few people stood behind it.",
+      "The pattern shows up wherever someone needs to sound certain: '90% of our users saw results' (which users, self-selected how?), 'increases productivity by 31%' (measured over what, against what baseline?), 'a $4,200 average saving' (average of whom, dragged up by a few outliers?). In each case the move is identical — report the precise point estimate, suppress the sample size and the spread, and let the decimal do the convincing."
+    ],
+    "quote": "It is the mark of an educated mind to rest satisfied with the degree of precision which the nature of the subject admits, and not to seek exactness where only an approximation is possible.",
+    "attribution": "Aristotle, Nicomachean Ethics, Book I",
+    "midday_nudge": "Find one precise number you're planning to use today — in a report, a message, a recommendation. Ask whether your evidence really supports that many digits. If it doesn't, round it down to the honesty your data can carry: 'roughly a third' beats '31.2%' when 31.2% is a guess. Precision you can't back isn't rigor — it's a tell."
+  },
+  "quiz": [
+    {
+      "question": "What is the core problem with false precision — what exactly is the misleading part?",
+      "options": [
+        "The arithmetic used to calculate the number is usually wrong",
+        "The number's exactness signals a level of certainty the underlying evidence doesn't support",
+        "Precise numbers are always less accurate than round numbers",
+        "Using percentages instead of raw counts is inherently deceptive"
+      ],
+      "correct": 1,
+      "explanation": "The math can be perfectly correct — '47%' may be exactly what the calculator returned. The deception is about certainty, not arithmetic: the precision implies careful, robust measurement, while the actual evidence (tiny sample, biased method, no margin of error) can't support that implied confidence. False precision detaches the look of rigor from the reality of it."
+    },
+    {
+      "question": "A pitch deck states 'customers save an average of $4,200 per year.' Which question most directly targets whether this is false precision?",
+      "options": [
+        "Is $4,200 a large enough number to be impressive to investors?",
+        "Was the average dragged up by a few outliers, and how many customers and how much spread are behind that figure?",
+        "Should the figure have been expressed as a percentage instead of dollars?",
+        "Is $4,200 rounded to the nearest hundred or the nearest dollar?"
+      ],
+      "correct": 1,
+      "explanation": "False precision hides in the suppressed sample size and spread. An 'average' of $4,200 could come from thousands of similar customers — or from three huge accounts dragging up a sea of small ones. The diagnostic question goes after where the number came from and how much variation it conceals, not whether the figure sounds nice or how it's rounded."
+    },
+    {
+      "question": "Aristotle wrote that an educated mind seeks 'the degree of precision which the nature of the subject admits.' How does this connect to false precision?",
+      "options": [
+        "It means you should always use the most decimal places available to look rigorous",
+        "It means precision should be calibrated to the evidence — claiming more exactness than the subject can support is the error, and stating an honest approximation is the disciplined move",
+        "It means approximations are always superior to precise measurements",
+        "It means only experts are allowed to use precise numbers"
+      ],
+      "correct": 1,
+      "explanation": "Aristotle's principle is calibration. Some subjects genuinely admit exact figures; others only admit rough estimates, and forcing a false exactness onto them is the intellectual error. The disciplined move is to match your stated precision to what the evidence can actually carry — 'roughly half' when that's all you know, rather than dressing a guess in misleading decimal points."
+    }
+  ],
+  "closing": "A precise number is a promise about how much someone knows — and the promise is easy to fake. The skill isn't distrusting all numbers; it's hearing the difference between a measured figure and a guess in a decimal costume. Ask where the number came from, not just whether it's right. That single habit defuses most of the statistics aimed at you.",
+  "sources": [
+    {
+      "label": "Seife, C. — Proofiness: The Dark Arts of Mathematical Deception, Viking, 2010",
+      "detail": "Documents how exact-sounding numbers manufacture false authority, and why a figure's specificity is independent of its accuracy.",
+      "url": "https://www.penguinrandomhouse.com/books/304751/proofiness-by-charles-seife/"
+    },
+    {
+      "label": "Huff, D. — How to Lie with Statistics, W. W. Norton, 1954",
+      "detail": "The classic on statistical deception, including precise percentages built on tiny or biased samples that suppress sample size and spread.",
+      "url": "https://wwnorton.com/books/9780393310726"
+    }
+  ],
+  "ai_prompt": "I want to pressure-test a statistic or precise number to see whether it's real evidence or false precision — an exact figure the underlying data can't support. First ask me to paste the claim and tell you where I found it. Then walk me through who was measured, the sample size, the method and who funded it, and the missing margin of error, and tell me how much I should actually trust the number. Here's the claim: [paste the statistic]",
+  "verified": false
+}

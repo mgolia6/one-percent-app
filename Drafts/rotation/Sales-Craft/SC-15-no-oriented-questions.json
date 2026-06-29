@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "SC.15",
+  "category": "Sales Craft",
+  "categoryTag": "SALES CRAFT",
+  "concept": "No-Oriented Questions",
+  "accent": "#E8FF47",
+  "accentDim": "rgba(232,255,71,0.10)",
+  "morning": {
+    "hook": "Every salesperson is trained to chase yes. But \"yes\" is the word people say to get you to go away. \"No\" is the word they say when they finally feel safe enough to tell you the truth.",
+    "explanation_paragraphs": [
+      "A rep emails a prospect who's gone dark: \"Are you still interested in moving forward?\" Silence. They try again: \"Does it make sense to reconnect this week?\" More silence. Finally they send one line: \"Have you given up on solving this problem?\" Within an hour, a reply: \"No — we've just been swamped, can we talk Thursday?\" The first two questions demanded a yes that committed the prospect to something. The third invited a no that cost them nothing and let them stay in control. That feeling of control is what got them to respond at all.",
+      "Chris Voss, the FBI's former lead international kidnapping negotiator, argues that the relentless pursuit of \"yes\" is one of the biggest mistakes in negotiation. A premature \"yes\" makes people defensive — they feel cornered, manipulated, on the hook. \"No,\" by contrast, makes people feel safe and in control. It's a word of protection. So instead of designing questions that force agreement, Voss flips it: ask No-oriented questions, the ones where \"no\" is the answer you actually want. \"Is now a bad time to talk?\" \"Have you given up on this project?\" \"Would it be ridiculous to...?\" Each one lets the counterpart say no while moving toward you.",
+      "The mechanism is autonomy. Human beings have a deep need to feel they are protecting their own interests, and saying no is the simplest way to assert that. When you let someone say no, you hand them control — and paradoxically, that's exactly when they relax and engage. The nuance is that No-oriented questions aren't tricks to extract a hidden yes. They genuinely give the other person an easy exit, which is what makes the conversation safe. Counterparts who feel free to walk are the ones who choose to stay.",
+      "This matters because most stalled deals aren't lost on price or product — they're stalled because the buyer feels pressured and pressure makes people freeze. A \"yes\" you squeezed out is brittle; the buyer often reverses it the moment they're alone. A \"no\" that opens a real conversation is durable, because it came with the buyer's sense of control intact. Reps who stop chasing yes and start inviting no get more replies, more honesty, and more deals that actually hold."
+    ],
+    "why_today": "No-oriented questions are a core technique in Chris Voss with Tahl Raz, Never Split the Difference: Negotiating As If Your Life Depended On It (HarperBusiness, 2016), particularly the chapter '“Yes” Is Nothing Without “How.”' Voss credits the underlying insight in part to negotiation trainer Jim Camp's work on the power of 'no.'",
+    "morning_challenge": "Find one message you need to send today to someone who's been unresponsive or non-committal — a prospect, a colleague, a stalled thread.\n\nRewrite your ask as a No-oriented question. Instead of \"Can we still make this work?\" try \"Have you given up on making this work?\" Instead of \"Do you have time this week?\" try \"Is this week a bad time to connect?\"\n\nSend the No-oriented version. Notice whether you get a faster, more honest reply than the yes-chasing version usually gets you."
+  },
+  "midday": {
+    "reframe": "Stop trying to get people to say yes. A forced yes is brittle and defensive. Start designing questions where 'no' is the answer you want — because 'no' is the word that makes people feel safe enough to actually engage with you.",
+    "itw_label": "IN THE WILD — TYPE A · VOSS & RAZ, NEVER SPLIT THE DIFFERENCE, HARPERBUSINESS, 2016. CAMP, START WITH NO, CROWN BUSINESS, 2002.",
+    "itw_paragraphs": [
+      "Voss describes the classic 'gone dark' email problem: a counterpart stops responding entirely. The fix he recommends is a single No-oriented question — \"Have you given up on this project?\" He reports that this kind of message has a striking ability to revive dead threads, because it triggers the recipient's need to correct a wrong assumption. Saying 'no, I haven't given up' feels safe and reasserts their control, where 'yes, I'm still interested' would have felt like recommitting to something they'd been avoiding.",
+      "The principle traces to Jim Camp, a negotiation coach whose book Start With No argued that 'yes' is often a counterfeit — said to end pressure rather than express real agreement. Camp taught negotiators to give the other side explicit permission to say no, removing the adversarial pressure that makes people dig in. Voss builds on this, distinguishing three kinds of yes: counterfeit (said to escape), confirmation (a reflexive answer to a simple question), and commitment (the real thing). Chasing yes usually produces the first two.",
+      "In practice, Voss frames No-oriented questions as a way to protect the relationship while still pushing the deal forward. Because the counterpart can decline at any moment, they never feel trapped — and people who don't feel trapped reveal more, object more honestly, and commit more durably. The counterintuitive result is that making it easy to say no is one of the most reliable ways to keep a negotiation alive."
+    ],
+    "quote": "“No” is not a failure. We have learned that “No” is the start of the negotiation, not the end of it.",
+    "attribution": "Chris Voss with Tahl Raz, Never Split the Difference, HarperBusiness, 2016",
+    "midday_nudge": "Before your next call or pitch, write down the one question you most want a 'yes' to. Then rewrite it so 'no' becomes the answer that moves things forward. \"Are you open to a pilot?\" becomes \"Would it be crazy to try a small pilot first?\" The no-version lowers the other person's guard — and that's when they actually lean in."
+  },
+  "quiz": [
+    {
+      "question": "A prospect has stopped replying to your follow-ups. Based on the No-oriented questions principle, which message is most likely to get a response?",
+      "options": [
+        "\"Just checking in — are you still interested in moving forward?\"",
+        "\"Have you given up on solving this problem?\"",
+        "\"Can we schedule a call this week to finalize things?\"",
+        "\"I'd love to reconnect — does Tuesday at 2pm work for you?\""
+      ],
+      "correct": 1,
+      "explanation": "\"Have you given up?\" is a No-oriented question: the easy, safe answer is \"No,\" which lets the prospect reassert control and correct a wrong assumption without committing to anything. The other three all demand a 'yes' — agreeing to interest, a call, or a specific time — which feels like recommitting to something they've been avoiding, so they stay silent. Inviting 'no' is what revives dead threads."
+    },
+    {
+      "question": "Why does Voss argue that a hard-won 'yes' is often less valuable than a 'no'?",
+      "options": [
+        "Because saying yes is grammatically weaker than saying no",
+        "Because a 'yes' extracted under pressure is frequently counterfeit — said to escape the pressure rather than express real commitment — and tends to reverse later, while a 'no' that opens honest dialogue is more durable",
+        "Because customers who say no are easier to upsell afterward",
+        "Because 'no' legally protects the salesperson from future disputes"
+      ],
+      "correct": 1,
+      "explanation": "Voss distinguishes counterfeit yes (said to end the pressure), confirmation yes (a reflexive answer), and commitment yes (the real one). Chasing agreement usually produces the first two, which collapse the moment the buyer is alone. A 'no' that comes with the buyer's sense of control intact opens a genuine conversation — and commitments made freely hold. The point isn't that no is magic; it's that pressured agreement is brittle."
+    },
+    {
+      "question": "You want a hesitant client to agree to a trial period. Which framing best applies the No-oriented approach?",
+      "options": [
+        "\"Will you commit to a 30-day trial starting Monday?\"",
+        "\"Don't you think a trial would be a smart way to reduce your risk?\"",
+        "\"Would it be a terrible idea to start with a short trial before you commit to anything bigger?\"",
+        "\"You're going to love this — should we get the trial set up today?\""
+      ],
+      "correct": 2,
+      "explanation": "\"Would it be a terrible idea to...\" invites a comfortable 'no' (\"No, that wouldn't be terrible\") that moves toward the trial while leaving the client fully in control. The first and fourth options demand commitment-yeses that pressure a hesitant buyer. The second is a leading 'don't you think' question that pushes for agreement and can feel manipulative — the opposite of giving someone a safe exit. Safety, not cleverness, is the goal."
+    }
+  ],
+  "closing": "Stop hunting for yes. Hand people the freedom to say no, and you'll get something far more valuable — the truth, and a commitment that actually holds.",
+  "sources": [
+    {
+      "label": "Voss, C. with Raz, T. — Never Split the Difference: Negotiating As If Your Life Depended On It, HarperBusiness, 2016",
+      "detail": "Chapters on the power of 'no' and No-oriented questions, including the 'have you given up on this project?' email technique for reviving stalled threads.",
+      "url": "https://www.harpercollins.com/products/never-split-the-difference-chris-vosstahl-raz"
+    },
+    {
+      "label": "Camp, J. — Start With No: The Negotiating Tools That the Pros Don't Want You to Know, Crown Business, 2002",
+      "detail": "Source of the underlying argument that 'yes' is often counterfeit and that giving the other side permission to say 'no' removes adversarial pressure.",
+      "url": "https://www.penguinrandomhouse.com/books/96550/start-with-no-by-jim-camp/"
+    }
+  ],
+  "ai_prompt": "I want to rewrite my asks as No-oriented questions so people feel safe enough to actually engage. Before we start, ask me what I'm trying to get someone to agree to, who they are, and how the conversation has gone so far. Then help me reframe my key questions so 'no' becomes the answer that moves things forward. Here's what I'm working on: [describe the ask and the person]",
+  "verified": false
+}

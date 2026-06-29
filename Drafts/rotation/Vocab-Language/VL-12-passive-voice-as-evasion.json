@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "VL.12",
+  "category": "Vocab & Language",
+  "categoryTag": "VOCAB & LANGUAGE",
+  "concept": "The Passive Voice as Evasion",
+  "accent": "#FF8C47",
+  "accentDim": "rgba(255,140,71,0.10)",
+  "morning": {
+    "hook": "'Mistakes were made.' Read it again. Notice what's missing: who made them. The sentence delivers an admission and an escape in the same breath. That's not an accident of grammar — it's the whole reason the sentence exists.",
+    "explanation_paragraphs": [
+      "A company's data leaks. The statement reads: 'Customer data was accessed by an unauthorized party, and steps are being taken.' Every verb is passive. Data 'was accessed' — by whom, and who failed to protect it, is gone. Steps 'are being taken' — by whom, on what timeline, is gone. The sentence describes a catastrophe with no one in it. Compare the active version a furious customer would write: 'We failed to secure your data, and we are now doing X.' Same facts, completely different accountability.",
+      "The passive voice is a grammatical construction where the thing acted upon becomes the subject, and the actor is demoted to a 'by' phrase — or dropped entirely. 'The committee rejected the proposal' (active) becomes 'The proposal was rejected' (passive), and the committee can vanish. This deletion is the feature that makes passive voice the native tongue of evasion: it is the only ordinary construction that lets you describe an action while erasing who did it.",
+      "Here's the nuance that keeps you honest: the passive voice is not bad. It's a precision tool. 'The patient was given 40mg' is correct when who administered it isn't the point. 'The bridge was completed in 1937' is natural — nobody wants the contractor's name. Scientists write 'the sample was heated' on purpose. The passive only becomes evasion when the actor is exactly the information the reader needs and the construction is being used to hide it. Grammar isn't the crime; concealment is.",
+      "The stakes are that agency-deletion is one of the most common and least noticed forms of spin, and it works precisely because it feels neutral. Nobody flags 'mistakes were made' as a lie — it's true, mistakes were made. But it launders responsibility into the passive grammar where you can't see it. Once you can hear the missing actor, a whole category of corporate apologies, political non-statements, and deflecting emails stops being persuasive and starts being obvious."
+    ],
+    "why_today": "The 'mistakes were made' construction is so canonical that linguists call it the 'past exonerative tense' (William Schneider). Geoffrey Pullum and others have documented both the genuine uses and the evasive misuse of the passive in English usage scholarship.",
+    "morning_challenge": "Today, hunt for one deleted actor.\n\nIn any statement, apology, news report, or work email you read, find a passive construction and ask one question: who actually did this? 'The deadline was missed' — by whom? 'Concerns have been raised' — by whom? 'It was decided' — by whom?\n\nIf the missing actor is irrelevant, the passive is fine — let it go. But if the missing actor is exactly the thing you'd want to know, you've caught agency being hidden in plain grammar. Just notice it. You don't have to call it out — you just have to stop being moved by it."
+  },
+  "midday": {
+    "reframe": "The passive voice isn't a writing error to delete on sight — it's a tool that happens to have one dangerous power: it can describe an action while erasing the actor. Your job isn't to ban it. It's to notice when that erasing power is doing the work, and ask the question the sentence was built to suppress: who?",
+    "itw_label": "IN THE WILD — TYPE A · SCHNEIDER, 'PAST EXONERATIVE TENSE.' PULLUM, LANGUAGE LOG. ORWELL, 'POLITICS AND THE ENGLISH LANGUAGE,' 1946.",
+    "itw_paragraphs": [
+      "The phrase 'mistakes were made' has been used as accountability-free contrition by U.S. administrations across decades — it's been attributed in various forms to figures from Nixon-era officials to Ronald Reagan to Bill Clinton, which is why it became a stock joke. The journalist William Schneider coined the term 'past exonerative tense' to describe it: grammatically past, functionally exonerating, because the construction performs the admission while deleting the person who would have to own it.",
+      "George Orwell flagged the same move in 1946 in 'Politics and the English Language,' arguing that vague and agentless constructions are how political language makes 'lies sound truthful and murder respectable' — by describing events as if they happened on their own, with no human hand on them. Note that Orwell himself, and modern linguists like Geoffrey Pullum, are careful: the problem is concealment of relevant agency, not the passive voice as a category. Pullum has repeatedly pointed out that style guides which tell you to 'avoid the passive' are usually wrong about what the passive even is.",
+      "Watch the construction in any corporate crisis statement and the pattern is identical: harms are passive ('accounts were compromised,' 'service was disrupted') while remedies are active and proud ('we are deploying,' 'we have launched'). The grammar quietly sorts the facts — bad things have no author, good things have us. Once you see that sorting, the statement reads less like an apology and more like a defense brief."
+    ],
+    "quote": "Things will be done in the name of which no one will take the blame, because the grammar will have done the work of taking it away.",
+    "attribution": "Paraphrase in the spirit of George Orwell, 'Politics and the English Language,' 1946",
+    "midday_nudge": "Reread one thing you've written this week that had any bad news in it. Find the passive sentences. For each, ask whether you deleted the actor because it genuinely didn't matter — or because the actor was you. If it was you, the active version is the honest one, even when it stings."
+  },
+  "quiz": [
+    {
+      "question": "What specifically makes the passive voice a tool for evasion, as opposed to just a grammatical style?",
+      "options": [
+        "Passive sentences are always longer and harder to read, which confuses people",
+        "It is the ordinary construction that lets you describe an action while dropping the person who performed it",
+        "The passive voice is grammatically incorrect in formal writing",
+        "Passive sentences are always less truthful than active ones"
+      ],
+      "correct": 1,
+      "explanation": "The evasive power is structural and specific: the passive demotes or deletes the actor while still describing the action. 'Mistakes were made' is fully grammatical and fully true — that's the point. The construction isn't wrong or even unclear; it just removes the one piece of information, the actor, that accountability depends on. That deletion is the lever evasion pulls."
+    },
+    {
+      "question": "Which of these is a legitimate, non-evasive use of the passive voice?",
+      "options": [
+        "A CEO writing 'errors in judgment were made' about a scandal he personally directed",
+        "A press release saying 'customer funds were lost' to avoid naming the team responsible",
+        "A history book saying 'the cathedral was built in 1248,' where the individual builders are genuinely beside the point",
+        "A manager writing 'the project was mishandled' to avoid naming who mishandled it"
+      ],
+      "correct": 2,
+      "explanation": "The passive is a precision tool, not a crime. It becomes evasion only when the deleted actor is exactly the information the reader needs and is being hidden. For the cathedral, nobody is looking for the bricklayers' names — the actor is genuinely irrelevant, so the passive is natural and honest. The other three delete an actor the reader specifically needs to know."
+    },
+    {
+      "question": "In corporate crisis statements, harms are often described in passive voice while fixes are described in active voice. Why is this pattern worth noticing?",
+      "options": [
+        "Because active voice is grammatically superior and should be used everywhere",
+        "Because the grammar quietly sorts the facts — bad events get no author, good actions get claimed — making the statement function as a defense rather than an honest account",
+        "Because passive voice always indicates the writer is lying about the facts",
+        "Because mixing voices in one document is a stylistic error to be corrected"
+      ],
+      "correct": 1,
+      "explanation": "The tell isn't the passive voice itself — it's the asymmetry. When 'accounts were compromised' (no author) sits beside 'we are deploying new security' (proud author), the grammar is doing accountability triage: distancing the organization from harm while attaching it to remedy. Spotting that pattern reveals the statement's actual purpose, which is to defend, not to own."
+    }
+  ],
+  "closing": "The passive voice is not the enemy — concealment is, and the passive is just its favorite hiding place. Learn to hear the missing actor, and 'mistakes were made' stops sounding like an admission and starts sounding like exactly what it is: someone reaching for the door.",
+  "sources": [
+    {
+      "label": "Orwell, G. — Politics and the English Language, Horizon, 1946",
+      "detail": "The essay that influentially linked agentless, vague constructions to political evasion — while later linguists refined the point to concealment of relevant agency, not the passive as a category.",
+      "url": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
+    },
+    {
+      "label": "Pullum, G. — Language Log: writings on the passive voice and the 'past exonerative tense'",
+      "detail": "Linguist's documentation that style guides routinely misidentify the passive, and that its real misuse is hiding relevant actors, not the construction itself.",
+      "url": "https://languagelog.ldc.upenn.edu/nll/?p=2922"
+    }
+  ],
+  "ai_prompt": "I want to catch where I (or a document I'm reading) use the passive voice to hide who did something — agency-deletion. First ask me whether I want to audit my own writing or analyze something I received, and to paste the text. Then for each passive construction, tell me who the deleted actor is and whether dropping them was legitimate or evasive — don't flag passive voice that's genuinely fine. Here's the text: [paste it]",
+  "verified": false
+}

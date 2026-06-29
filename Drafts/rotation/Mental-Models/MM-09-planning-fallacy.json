@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "MM.9",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "The Planning Fallacy",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "Ask yourself how long the project will take. Now ask how long the last three projects like it actually took. The gap between those two numbers is not bad luck. It's a bias with a name.",
+    "explanation_paragraphs": [
+      "In the late 1990s, the Scottish Parliament approved a new building with an estimated cost of around 40 million pounds and a tidy timeline. It opened in 2004 at a final cost of roughly 414 million pounds — more than ten times the original figure — and years late. No single villain caused this. At every stage, people made honest, optimistic forecasts based on the specific plan in front of them, assuming things would mostly go right. Things mostly didn't. The Scottish Parliament building is not an outlier. It's the planning fallacy operating at the scale where the numbers get headlines.",
+      "The planning fallacy, named by Daniel Kahneman and Amos Tversky in 1979, is the systematic tendency to underestimate the time, cost, and risk of future actions while overestimating their benefits. The crucial word is systematic. This isn't random error that averages out — it leans in one direction, almost always toward 'faster and cheaper than it will actually be.' And it persists even when you know about it, even after you've been burned by it repeatedly on identical tasks.",
+      "The mechanism is what Kahneman called taking the 'inside view.' When you plan, you build a story about this specific project — its steps, its parts, how it should unfold — and you forecast from that story. What the story leaves out is everything that goes wrong in the real world: the sick days, the dependency that slips, the requirement that changes, the integration that's harder than it looked. The inside view sees a clean path. Reality is a path with potholes, and there are always potholes you didn't draw.",
+      "The cost compounds because plans chain together. An underestimated task starves the next one of time; the buffer that was supposed to absorb shocks gets spent before the shocks arrive; the launch date that everyone committed to publicly becomes a death march to hit, or a credibility hit to miss. The planning fallacy doesn't just make individual estimates wrong — it makes whole systems of commitments fragile, because every estimate in the chain is leaning the same optimistic way."
+    ],
+    "why_today": "Daniel Kahneman and Amos Tversky named the planning fallacy in their 1979 work on intuitive prediction; Kahneman details it and the 'inside view' fix in Thinking, Fast and Slow (2011). It remains one of the most replicated findings in decision research.",
+    "morning_challenge": "Take one task or project you're estimating today and write down your gut estimate for how long it'll take.\n\nNow take the outside view: think of three similar things you (or your team) have done before, and recall how long they actually took — not how long you expected them to.\n\nIf your gut estimate is shorter than the historical reality, adjust it toward the history. The base rate knows something your plan doesn't."
+  },
+  "midday": {
+    "reframe": "Your estimate isn't a forecast — it's a best-case scenario wearing a forecast's clothes. The fix isn't to think harder about this project. It's to look at how long things like this have actually taken before.",
+    "itw_label": "IN THE WILD — TYPE A · KAHNEMAN & TVERSKY, INTUITIVE PREDICTION, 1979. FLYVBJERG, MEGAPROJECT PLANNING, 2006.",
+    "itw_paragraphs": [
+      "Economist Bent Flyvbjerg studied hundreds of large infrastructure projects — rail, bridges, tunnels, buildings — across decades and continents. He found cost overruns were the rule, not the exception, and that they hadn't improved over time despite everyone knowing the pattern. His proposed fix, 'reference class forecasting,' is the planning fallacy's antidote turned into a method: instead of estimating from the details of your project, you find the distribution of outcomes for a class of similar projects and place yours within it. The UK government now formally recommends this approach for major public projects.",
+      "Kahneman illustrated the fallacy with a story about his own textbook team. Asked to estimate how long their book would take, the group's inside-view guess was about two years. When he asked a member who knew the base rate how long comparable teams had taken, the honest answer was seven to ten years — and that a sizable fraction never finished at all. The team had this information and pressed on anyway. The book took roughly eight years. Even the people who literally discovered the bias were not immune to it.",
+      "In software, the planning fallacy is so reliable it's folklore: the 'ninety-ninety rule' jokes that the first 90% of a project takes 90% of the time, and the last 10% takes the other 90% of the time. Agile estimation techniques — story points, velocity tracking, planning poker — are largely machinery for dragging teams out of the inside view and forcing them to estimate against their own historical throughput rather than their optimism about the task in front of them."
+    ],
+    "quote": "The planning fallacy is a manifestation of a pervasive optimistic bias... people make decisions based on delusional optimism rather than on a rational weighting of gains, losses, and probabilities.",
+    "attribution": "Daniel Kahneman, Thinking, Fast and Slow, 2011",
+    "midday_nudge": "Look at one deadline you've committed to. Ask: did I estimate this from the specifics of the task, or from how long this kind of thing actually takes me? If it was the former, you're probably running on the inside view. Find one comparable past effort and check the real number against your plan."
+  },
+  "quiz": [
+    {
+      "question": "You ask two people to estimate a project. Person A breaks the project into detailed steps and adds up the time for each. Person B looks at how long the team's last five similar projects took. Whose estimate is likely more accurate, and why?",
+      "options": [
+        "Person A — breaking work into steps is the most rigorous way to estimate",
+        "Person B — the 'outside view' (base rates from similar past projects) systematically corrects for the optimism baked into step-by-step 'inside view' estimates",
+        "They'll be equally accurate; the methods are just different styles",
+        "Person A, as long as they add a small buffer to each step"
+      ],
+      "correct": 1,
+      "explanation": "Step-by-step estimation feels rigorous but is the inside view in disguise — it forecasts the clean path and omits the things that go wrong precisely because you can't enumerate them in advance. The outside view, using how long similar projects actually took, already has all those unenumerated problems baked into the historical number. This is reference class forecasting, and across studies it beats detailed bottom-up estimates for exactly this reason."
+    },
+    {
+      "question": "Kahneman's own textbook team estimated two years, learned that comparable teams took seven to ten, and still proceeded — finishing in about eight. What does this best illustrate?",
+      "options": [
+        "The team was unusually disorganized and the example doesn't generalize",
+        "The planning fallacy persists even when you know the base rate and even when you literally study the bias for a living — awareness alone doesn't fix it",
+        "Two years was a reasonable estimate that bad luck inflated to eight",
+        "Reference class forecasting doesn't actually work in practice"
+      ],
+      "correct": 1,
+      "explanation": "The point of the story is that the team HAD the outside-view number and discarded it in favor of their own optimism. Knowing about the planning fallacy doesn't immunize you against it — the inside view is the intuitive default and reasserts itself unless you deliberately, structurally override it with base rates. That's why the fix has to be a method you apply, not just an awareness you hold."
+    },
+    {
+      "question": "Your gut says a deliverable will take three days. Applying the planning fallacy's core lesson, what's the most reliable adjustment?",
+      "options": [
+        "Add a generic 50% buffer, since estimates are usually a bit low",
+        "Find similar deliverables you've actually completed, see how long they really took, and shift your estimate toward that historical range",
+        "Re-examine the three-day plan in more detail to catch anything you missed",
+        "Trust the three-day estimate but start earlier to be safe"
+      ],
+      "correct": 1,
+      "explanation": "The reliable correction isn't a generic buffer or more detailed planning — both stay trapped in the inside view. It's anchoring to the outside view: what did things like this actually take? A real reference class already accounts for the specific ways your work tends to slip, in the right proportion. Re-examining the plan in more detail (option C) often makes you MORE confident in a wrong number, because it deepens the very story that omits the potholes."
+    }
+  ],
+  "closing": "Your plan is the best case, not the likely case. The single most reliable way to fix an estimate isn't to think harder about the task — it's to look up how long the same kind of task has actually taken before, and believe the history over the hope.",
+  "sources": [
+    {
+      "label": "Kahneman, D. — Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
+      "detail": "Details the planning fallacy, the inside vs. outside view, and reference class forecasting, drawing on the author's 1979 work with Amos Tversky.",
+      "url": "https://www.worldcat.org/title/thinking-fast-and-slow/oclc/706020998"
+    },
+    {
+      "label": "Flyvbjerg, B. — 'From Nobel Prize to Project Management: Getting Risks Right,' Project Management Journal, 2006",
+      "detail": "Documents systematic cost and schedule overruns across hundreds of megaprojects and proposes reference class forecasting as the corrective method.",
+      "url": "https://journals.sagepub.com/doi/10.1177/875697280603700302"
+    }
+  ],
+  "ai_prompt": "I want to sanity-check an estimate for a task or project because I suspect I'm falling into the planning fallacy. Before helping, ask me what my current estimate is, how I arrived at it, and what similar things I've done before and how long they actually took. Then help me build an outside-view estimate from those base rates and compare it to my gut number. Here's the task I'm estimating: [describe the task and your current estimate]",
+  "verified": false
+}

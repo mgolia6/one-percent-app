@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "MM.6",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "The Map Is Not the Territory",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "A subway map shows you straight colored lines and evenly spaced stops. The actual city underneath is nothing like that — curved, dense, distances distorted. The map works precisely because it lies.",
+    "explanation_paragraphs": [
+      "In 1931, Harry Beck redrew the London Underground map. He threw out geography entirely — real distances, real angles, the actual shape of the river — and replaced it with clean horizontal, vertical, and 45-degree lines. Riders found it far easier to use than the geographically accurate version it replaced. But every so often someone exits at a station, expecting a long tube ride to the next stop, only to discover the two stations are a three-minute walk apart above ground. The map was never the city. It was a useful distortion of it.",
+      "Alfred Korzybski's principle is that a representation of something is not the thing itself, and can never fully capture it. Every map, model, forecast, diagram, or mental picture is a compression — it keeps the features that matter for some purpose and discards everything else. That discarding is not a flaw to be fixed; it is the entire point. A map that included every detail of the territory would be the territory, and just as useless to navigate.",
+      "The danger is not in using maps — you cannot think without them. The danger is forgetting you are holding one. When the model and the reality diverge, the disciplined mind updates the model. The trapped mind argues with reality. A financial model says the project clears its hurdle rate; the customers don't show up; the team keeps defending the spreadsheet instead of looking out the window. The map became more real than the territory it was supposed to describe.",
+      "This failure mode hides inside almost every confident plan. Org charts are maps — the real flow of decisions ignores the boxes. A personality label is a map — the actual person is more contradictory. A customer persona is a map — the actual buyer does something your slide never predicted. The cost of mistaking the model for reality is that you stop looking at reality, and reality is the only thing that ever sends you the bill."
+    ],
+    "why_today": "Alfred Korzybski introduced 'the map is not the territory' in Science and Sanity (1933), the founding text of general semantics. The principle is now a staple of decision theory and engineering risk analysis.",
+    "morning_challenge": "Pick one model you'll rely on today — a forecast, a plan, a customer persona, a mental picture of how a meeting will go.\n\nWrite down one thing it deliberately leaves out. Every model simplifies; name the simplification.\n\nThen, during the day, watch for the moment reality contradicts the model. Notice your instinct: do you update the map, or argue that the territory is wrong?"
+  },
+  "midday": {
+    "reframe": "A model being wrong is not a failure of the model — all models are wrong in the sense that they leave things out. The failure is treating the model as the thing itself, so that when reality disagrees, you defend the map instead of redrawing it.",
+    "itw_label": "IN THE WILD — TYPE A · KORZYBSKI, SCIENCE AND SANITY, 1933. BOX, ROBUSTNESS IN STATISTICS, ACADEMIC PRESS, 1979.",
+    "itw_paragraphs": [
+      "Statistician George Box wrote the line that became the working motto of the entire modeling world: 'All models are wrong, but some are useful.' He was not being cynical. His point was that the right question is never 'is this model true?' — it is always 'is the approximation good enough for the decision in front of me, and where will it break?' A model is judged by its usefulness for a purpose, not by its fidelity to every detail of reality.",
+      "The 2008 financial crisis is often read as a map-territory failure at scale. Risk models priced mortgage securities using historical data in which national house prices had never fallen sharply all at once. The model treated that absence as a law of nature rather than a feature of the limited territory it had sampled. When the actual territory produced something the map had no room for, institutions that had mistaken the model's silence for safety discovered the difference the hard way.",
+      "Beck's Underground map endured because it was honest about being a map. It made no claim to geographic truth and nobody expected it to. The maps that hurt people are the ones that quietly forget they are maps — the spreadsheet that becomes the business, the metric that becomes the mission, the plan that becomes the reason to ignore what is actually happening on the ground."
+    ],
+    "quote": "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness.",
+    "attribution": "Alfred Korzybski, Science and Sanity, 1933",
+    "midday_nudge": "Find one number or model you treated as fact this morning — a metric, a forecast, an estimate. Say out loud what real-world thing it is standing in for, and one way it could be diverging from that thing right now without you noticing."
+  },
+  "quiz": [
+    {
+      "question": "Your dashboard shows engagement is up 12% this quarter, so the team concludes the product is healthier. A week later, support tickets and cancellations are both climbing. What is the map-territory error most likely at work?",
+      "options": [
+        "The dashboard metric was calculated incorrectly and needs an audit",
+        "The team mistook a single proxy metric (the map) for the actual health of the product (the territory) — engagement was standing in for 'users are happy,' but it can rise for reasons that have nothing to do with satisfaction",
+        "Engagement is the wrong metric and should be replaced with cancellations",
+        "There is no error; metrics sometimes contradict each other and one of them is simply noise"
+      ],
+      "correct": 1,
+      "explanation": "The metric isn't necessarily wrong — it's a map. Engagement can climb because confused users click around more, or because a churn-bound cohort is making heavy final use before leaving. The error is treating the proxy as the reality it stands for. The fix isn't a better single metric; it's remembering the dashboard is a compression of reality and checking the territory directly when stakes are high."
+    },
+    {
+      "question": "George Box wrote 'all models are wrong, but some are useful.' Applied to a decision, what does this most usefully tell you to do?",
+      "options": [
+        "Distrust all models equally, since none of them are true",
+        "Stop asking whether a model is true and instead ask whether it's good enough for this specific decision — and identify in advance where it's likely to break",
+        "Use as many models as possible so their errors cancel out",
+        "Prefer the most detailed model available, because more detail means fewer things left out"
+      ],
+      "correct": 1,
+      "explanation": "Box's point is practical, not nihilistic. Since every model leaves things out, 'is it true?' is the wrong question — the right one is 'is the approximation good enough here, and where does it fail?' Knowing a model's breaking point in advance is what separates using a map from being trapped by one. More detail isn't automatically better; a model that included everything would be the territory itself."
+    },
+    {
+      "question": "A new hire keeps making decisions that contradict the official org chart, and they turn out to be right more often than the people who follow it. What does this reveal?",
+      "options": [
+        "The new hire is undermining the chain of command and should be corrected",
+        "The org chart (a map) doesn't match how decisions actually flow (the territory) — the new hire is navigating the real terrain while others navigate the diagram",
+        "The org chart needs to be made more detailed so it captures the real flow",
+        "Org charts are useless and should be abandoned"
+      ],
+      "correct": 1,
+      "explanation": "An org chart is a map of authority, not a description of how influence and decisions really move through an organization. Someone reading the territory directly will often outperform someone faithfully following the diagram. The lesson isn't to discard the chart — it's a useful simplification — but to never mistake it for the living thing it represents."
+    }
+  ],
+  "closing": "You will spend today navigating by maps — forecasts, plans, metrics, mental pictures. That's unavoidable and fine. Just don't fall in love with the map. When the territory disagrees, the territory is right.",
+  "sources": [
+    {
+      "label": "Korzybski, A. — Science and Sanity: An Introduction to Non-Aristotelian Systems and General Semantics, 1933",
+      "detail": "The founding text of general semantics, where the principle 'the map is not the territory' was introduced.",
+      "url": "https://www.worldcat.org/title/science-and-sanity/oclc/2939111"
+    },
+    {
+      "label": "Box, G. E. P. — 'Robustness in the Strategy of Scientific Model Building,' in Robustness in Statistics, Academic Press, 1979",
+      "detail": "Source of 'all models are wrong, but some are useful,' the working principle for treating models as useful approximations rather than truth.",
+      "url": "https://www.sciencedirect.com/book/9780124381506/robustness-in-statistics"
+    }
+  ],
+  "ai_prompt": "I want to pressure-test a model or plan I'm relying on to make sure I'm not mistaking the map for the territory. Before we analyze it, ask me what the model is, what real-world thing it's standing in for, and what decision I'm using it to make. Then help me find what it leaves out and where it's most likely to diverge from reality. Here's what I'm working with: [describe the model or plan]",
+  "verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "MM.7",
+  "category": "Mental Models",
+  "categoryTag": "MENTAL MODELS",
+  "concept": "Hanlon's Razor",
+  "accent": "#C847FF",
+  "accentDim": "rgba(200,71,255,0.10)",
+  "morning": {
+    "hook": "The email you didn't get a reply to. The colleague who cut you off in the meeting. The vendor who missed the deadline. Your brain has already written the story — and in the story, they did it on purpose.",
+    "explanation_paragraphs": [
+      "Someone sends you a curt, one-line reply to a message you spent twenty minutes crafting. No greeting, no thanks, just 'Fine, do it.' You feel the sting — they're being dismissive, they don't respect your work, maybe they're annoyed with you specifically. You spend the afternoon quietly building a case. The reality, which you learn three days later, is that they were typing one-handed on a phone in a hospital waiting room. There was no message in the curtness. You wrote it yourself.",
+      "Hanlon's Razor is a rule of thumb: never attribute to malice that which is adequately explained by stupidity — or, in its more useful modern form, by carelessness, overload, constraint, or simple human limitation. It is a 'razor' in the philosophical sense: a principle for cutting away unlikely explanations to get to the probable one. And the probable explanation for most things that feel like an attack is that no one was thinking about you at all.",
+      "The mechanism it corrects is a deep cognitive bias. Psychologists call it the fundamental attribution error: when other people mess up, we explain it by their character ('they're inconsiderate'); when we mess up, we explain it by our circumstances ('I was slammed'). Hanlon's Razor forces the second, more accurate frame onto other people. It's not about being naive — malice exists. It's about correcting for the fact that your brain systematically overweights it.",
+      "The stakes are practical, not moral. Assuming malice triggers defensiveness, retaliation, and stories that calcify into grudges — all of it expensive, and most of it built on a misreading. Assuming the more boring explanation keeps you in a problem-solving posture instead of a combat posture. You ask 'what happened?' instead of 'how dare they?' — and most of the time, the honest answer to the first question dissolves the second one entirely."
+    ],
+    "why_today": "The principle was named in a 1980 collection of jokes and aphorisms, Murphy's Law Book Two by Arthur Bloch, credited to a contributor named Robert J. Hanlon. It echoes a much older observation found in Goethe and others.",
+    "morning_challenge": "The next time someone does something today that lands as rude, dismissive, or hostile, pause before you respond.\n\nGenerate two non-malicious explanations: they're overloaded, they misread the situation, they're under pressure you can't see, they made an honest mistake.\n\nThen ask whether you have actual evidence of intent — or just the feeling of being slighted. Respond to the most likely explanation, not the most threatening one."
+  },
+  "midday": {
+    "reframe": "Most of what feels like an attack is not aimed at you. It's someone navigating their own day badly. Hanlon's Razor isn't about thinking the best of people — it's about correcting for a brain that's wired to assume the worst.",
+    "itw_label": "IN THE WILD — TYPE A · ROSS, THE INTUITIVE PSYCHOLOGIST, 1977. BLOCH, MURPHY'S LAW BOOK TWO, 1980.",
+    "itw_paragraphs": [
+      "The bias Hanlon's Razor corrects was documented by psychologist Lee Ross in 1977, who coined the term 'fundamental attribution error.' Decades of follow-up research established the pattern: observers consistently overestimate how much someone's behavior reflects their stable character and underestimate the role of the situation. When you see a stranger snap at a barista, you think 'rude person.' You don't see the phone call they just got. Hanlon's Razor is the applied antidote — a deliberate tilt back toward the situational explanation.",
+      "The principle is load-bearing in incident response and engineering culture. The 'blameless postmortem,' standard at companies like Google and Etsy, is built on the assumption that operators don't cause outages out of malice or even incompetence, but because systems let well-intentioned people make predictable mistakes. Teams that hunt for a culprit get hidden errors and defensive silence. Teams that assume good faith and bad systems get the truth — and fix the actual cause.",
+      "There's a known failure mode at the other end, sometimes called Hanlon's Razor's blind spot: applied indiscriminately, it can excuse genuine bad actors and patterns. The discipline is sequential, not absolute. Assume carelessness on the first instance. But a repeated 'mistake' that always benefits the same person, after they've been told, stops being adequately explained by stupidity. The razor is a default for first reads, not a permanent verdict."
+    ],
+    "quote": "Never attribute to malice that which is adequately explained by stupidity.",
+    "attribution": "Robert J. Hanlon, as published in Murphy's Law Book Two, Arthur Bloch, 1980",
+    "midday_nudge": "Think of one person who's been irritating you lately — someone whose behavior you've quietly filed under 'they're doing this on purpose.' Construct the most charitable plausible explanation for their last action. You don't have to believe it. Just notice it was available, and you hadn't reached for it."
+  },
+  "quiz": [
+    {
+      "question": "A teammate repeatedly leaves you off important email threads. The first time, applying Hanlon's Razor, what's the most useful response?",
+      "options": [
+        "Assume they're deliberately excluding you and raise it with your manager",
+        "Assume it's an oversight — they forgot, the list auto-populated, they didn't realize you needed to be on it — and simply ask to be added, watching whether it keeps happening",
+        "Say nothing and quietly track every instance as evidence",
+        "Assume incompetence and stop relying on them for anything"
+      ],
+      "correct": 1,
+      "explanation": "Hanlon's Razor sets your default for the first read: the boring explanation (oversight) is far more common than the threatening one (deliberate exclusion). Acting on the charitable read costs you nothing — you ask to be added and move on — while keeping you out of a combat posture. Critically, it doesn't ask you to ignore a pattern: if it keeps happening after you've flagged it, the razor stops applying and you escalate. The discipline is a default, not blindness."
+    },
+    {
+      "question": "Which scenario is the BEST example of correctly NOT applying Hanlon's Razor?",
+      "options": [
+        "A coworker forgot to CC you once on a routine update",
+        "A vendor missed a deadline during a week their office had a power outage",
+        "A colleague has 'accidentally' taken credit for your work three separate times, after you privately asked them to stop, and each time it advanced their standing",
+        "A new manager gave you blunt feedback that felt harsh"
+      ],
+      "correct": 2,
+      "explanation": "Hanlon's Razor is a default for first reads, not a permanent excuse. Its blind spot is letting genuine bad actors hide behind 'oops.' A repeated act that always benefits the same person, persists after they've been told, and follows a consistent pattern is no longer adequately explained by carelessness. The other options are exactly the kind of one-off, situationally-explained events the razor is built for."
+    },
+    {
+      "question": "Hanlon's Razor is the applied antidote to which documented cognitive bias?",
+      "options": [
+        "Confirmation bias — seeking information that confirms what you already believe",
+        "The fundamental attribution error — explaining others' behavior by their character while explaining our own by our circumstances",
+        "The sunk cost fallacy — continuing something because of resources already spent",
+        "Anchoring — over-relying on the first piece of information encountered"
+      ],
+      "correct": 1,
+      "explanation": "The fundamental attribution error, documented by Lee Ross in 1977, is the tendency to read other people's mistakes as character flaws ('they're inconsiderate') while reading our own as products of circumstance ('I was slammed'). Hanlon's Razor deliberately forces the situational explanation onto others, correcting a bias your brain runs automatically. Knowing the bias by name is what makes the correction repeatable."
+    }
+  ],
+  "closing": "Most of the slights you feel today were never aimed at you. People are overloaded, distracted, and clumsy far more often than they are cruel. Spend your energy on the problem, not on a story about an enemy who probably doesn't exist.",
+  "sources": [
+    {
+      "label": "Ross, L. — 'The Intuitive Psychologist and His Shortcomings,' Advances in Experimental Social Psychology, 1977",
+      "detail": "Coined the 'fundamental attribution error,' the documented bias toward attributing others' behavior to character over circumstance — the bias Hanlon's Razor corrects.",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0065260108603577"
+    },
+    {
+      "label": "Bloch, A. — Murphy's Law Book Two: More Reasons Why Things Go Wrong, Price/Stern/Sloan, 1980",
+      "detail": "The collection that named and published Hanlon's Razor, crediting the maxim to contributor Robert J. Hanlon.",
+      "url": "https://www.worldcat.org/title/murphys-law-book-two-more-reasons-why-things-go-wrong/oclc/7065040"
+    }
+  ],
+  "ai_prompt": "I keep reading someone's behavior as deliberate or hostile, and I want to check whether I'm committing the fundamental attribution error before I react. Before giving me advice, ask me what they did, what story I've built about their intent, and whether it's a one-off or a repeated pattern. Then help me generate the non-malicious explanations and decide whether the charitable default still applies. Here's the situation: [describe what happened]",
+  "verified": false
+}

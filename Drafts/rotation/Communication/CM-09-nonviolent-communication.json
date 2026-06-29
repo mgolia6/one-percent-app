@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "CM.9",
+  "category": "Communication",
+  "categoryTag": "COMMUNICATION",
+  "concept": "Nonviolent Communication (NVC)",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
+  "morning": {
+    "hook": "You walk in, see the dishes still in the sink, and say 'You never clean up after yourself.' In one sentence you've made an observation into an accusation, a feeling into a verdict, and a request into an attack. There was a version of that sentence that would have gotten the dishes done.",
+    "explanation_paragraphs": [
+      "A manager opens a one-on-one with 'Your reports have been sloppy lately.' The employee's shoulders go up; the rest of the conversation is defense and counter-attack. Now replay it: 'In the last two reports, I saw three figures that didn't match the appendix (observation). I felt worried (feeling), because I need the numbers to be reliable before they go to the client (need). Would you be willing to walk me through your check before the next one goes out? (request)' Same problem, same person — but the second version separates what happened from the story about what it means, and the employee can actually hear it.",
+      "Nonviolent Communication, developed by psychologist Marshall Rosenberg in the 1960s and 70s, breaks any difficult message into four parts: observation (the concrete, camera-recordable facts, stripped of evaluation), feeling (the emotion the situation produces in you), need (the universal human need underneath that feeling), and request (a specific, doable, present-tense action you are asking for). The discipline is keeping these four separate — because most conflict comes from collapsing them into a single loaded judgment.",
+      "The hardest part is the first step. 'You're being disrespectful' feels like an observation but is an evaluation — it tells the other person who they are, and people defend who they are. 'You interrupted me three times in that meeting' is an observation: it points at behavior, not character, and behavior is negotiable. The second subtle move is owning the feeling rather than outsourcing it: 'I feel frustrated' is a feeling; 'I feel like you don't respect me' is a disguised accusation wearing the word 'feel.' NVC asks you to locate the real need under the feeling, because the request only makes sense once the need is named.",
+      "NVC is not about being soft or suppressing anger — Rosenberg used it in war zones, prisons, and bitter divorces. The stakes are that judgment-language reliably produces the exact resistance you are trying to overcome. When you label someone, they defend the label instead of solving the problem. When you separate observation from evaluation and lead with your own need rather than their fault, you remove the thing the other person was bracing against — and the actual issue becomes addressable for the first time."
+    ],
+    "why_today": "Rosenberg, M. B. (2003). Nonviolent Communication: A Language of Life (2nd ed.). PuddleDancer Press. The four-component model — observation, feeling, need, request — is laid out across the book's opening chapters.",
+    "morning_challenge": "Find one complaint you've been carrying about a person — a coworker, a partner, a teammate. Write it down the way you'd normally say it.\n\nNow rebuild it in four lines. Observation: what actually happened, stated like a camera would record it, with zero evaluation. Feeling: the emotion it produces in you (one word, owned by you). Need: the universal need underneath. Request: one specific, present-tense, doable action.\n\nIf you get the chance today, use the rebuilt version instead of the original."
+  },
+  "midday": {
+    "reframe": "Most 'communication problems' are actually one problem: you fused an observation with a judgment, and the other person heard only the judgment. Pull the two apart and half the conflict disappears before you've said anything else.",
+    "itw_label": "IN THE WILD — TYPE A · ROSENBERG, NONVIOLENT COMMUNICATION, PUDDLEDANCER PRESS, 2003. CENTER FOR NONVIOLENT COMMUNICATION (CNVC.ORG).",
+    "itw_paragraphs": [
+      "Rosenberg founded the Center for Nonviolent Communication in 1984 and spent decades running the method in active conflict zones — mediating between Israelis and Palestinians, Hutu and Tutsi in Rwanda, and in Serbian and Sierra Leonean conflict settings. His recurring demonstration was to take a sentence of pure accusation from one party and reflect back the observation, feeling, and need buried inside it, until the other party could hear a human being instead of an enemy. The model was built for the highest-stakes communication failures, not just office friction.",
+      "The framework migrated into ordinary professional life through corporate and healthcare training. Mediators and HR teams adopted the observation-versus-evaluation distinction because it is the most common point of failure in workplace disputes: 'You're not a team player' is unactionable and triggers defense, while 'You declined the last three group reviews' is a fact a person can respond to. The structure forces the speaker to convert character verdicts into specific behavior, which is the only thing a request can act on.",
+      "A widely taught NVC distinction is between a request and a demand: a request leaves the other person genuinely free to say no, while a demand punishes a no with guilt or retaliation. Rosenberg's test is simple — notice how you react when the answer is 'no.' If your response is blame, it was never a request. This is why the fourth component must be specific and present-tense ('Would you send me the figures by Thursday?') rather than vague and eternal ('Be more reliable')."
+    ],
+    "quote": "When we focus on clarifying what is being observed, felt, and needed rather than on diagnosing and judging, we discover the depth of our own compassion.",
+    "attribution": "Marshall B. Rosenberg, Nonviolent Communication: A Language of Life, PuddleDancer Press, 2003",
+    "midday_nudge": "In your next tense message or conversation, catch one sentence before it leaves your mouth and run a quick check: is this an observation or an evaluation? If it names what someone IS rather than what they DID, rewrite it to point at the behavior. Watch how differently it lands."
+  },
+  "quiz": [
+    {
+      "question": "A teammate keeps missing the start of your standups. You want to address it. Which opening is an observation rather than an evaluation — and therefore less likely to trigger defensiveness?",
+      "options": [
+        "'You clearly don't take these meetings seriously.'",
+        "'You've joined the last four standups after they started — today it was about ten minutes in.'",
+        "'You're being kind of disrespectful to the team.'",
+        "'You always show up late to everything.'"
+      ],
+      "correct": 1,
+      "explanation": "An observation is camera-recordable: specific behavior, specific count, no verdict about character. 'Joined the last four after they started' is a fact the person can engage with. The other three diagnose who the person is ('don't take it seriously,' 'disrespectful,' 'always') — and people defend their identity rather than solve the problem. Starting with the behavior keeps the issue negotiable."
+    },
+    {
+      "question": "Which of these is a genuine NVC feeling statement, rather than a judgment disguised with the word 'feel'?",
+      "options": [
+        "'I feel like you're trying to undermine me.'",
+        "'I feel that this project is being mismanaged.'",
+        "'I feel anxious when the deadline moves without warning.'",
+        "'I feel you don't really care about the quality.'"
+      ],
+      "correct": 2,
+      "explanation": "A real feeling names an emotion you own ('anxious') and ties it to a concrete trigger. The other three use 'feel' to smuggle in an accusation about the other person's intent or competence — 'I feel like you're undermining me' is a verdict, not an emotion. The tell: if you could replace 'feel' with 'think' and the sentence still works, it's a judgment, not a feeling."
+    },
+    {
+      "question": "You ask a colleague: 'Can you just be more reliable?' Why does NVC consider this a weak request, even though it's polite?",
+      "options": [
+        "It's too direct and should be softened further with more qualifiers",
+        "It names a character trait, not a specific present-tense action the person can actually do — so there's nothing concrete to say yes to",
+        "Requests should always be made in writing, not verbally",
+        "It uses the word 'just,' which is unprofessional"
+      ],
+      "correct": 1,
+      "explanation": "A workable request is specific, doable, and present-tense: 'Would you send the draft by Thursday noon?' 'Be more reliable' is an evaluation of who they are over all time — there's no single action to agree to, so it can't actually be fulfilled or refused. Vague requests fail because the other person can't tell what would count as success."
+    }
+  ],
+  "closing": "The four steps — observation, feeling, need, request — aren't a politeness ritual. They're a way of removing the exact words people brace against, so the real problem can finally get solved instead of defended.",
+  "sources": [
+    {
+      "label": "Rosenberg, M. B. — Nonviolent Communication: A Language of Life (2nd ed.), PuddleDancer Press, 2003",
+      "detail": "The foundational text laying out the four-component model: observation, feeling, need, and request, with the observation-versus-evaluation distinction at its core.",
+      "url": "https://www.nonviolentcommunication.com/product/nvc3/"
+    },
+    {
+      "label": "The Center for Nonviolent Communication (CNVC) — founded by Marshall Rosenberg, 1984",
+      "detail": "The organization Rosenberg founded; documents the NVC model and its application in mediation and conflict zones worldwide.",
+      "url": "https://www.cnvc.org/learn-nvc/the-nvc-model"
+    }
+  ],
+  "ai_prompt": "I want to rewrite a difficult message using Nonviolent Communication — separating observation, feeling, need, and request so it lands without triggering defensiveness. Before we start, ask me what the situation is, who it's with, and what I'd normally say. Then help me rebuild it in the four components. Here's the situation: [describe the conflict or message]",
+  "verified": false
+}

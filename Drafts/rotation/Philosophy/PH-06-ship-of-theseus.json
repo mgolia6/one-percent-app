@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "PH.6",
+  "category": "Philosophy",
+  "categoryTag": "PHILOSOPHY",
+  "concept": "The Ship of Theseus",
+  "accent": "#FF4778",
+  "accentDim": "rgba(255,71,120,0.10)",
+  "morning": {
+    "hook": "A ship is preserved in a harbor for a thousand years. Each rotten plank is replaced, one at a time, until not a single original board remains. Is it still the same ship? Now ask the same question about the company you joined five years ago. Or about yourself.",
+    "explanation_paragraphs": [
+      "The ancient Athenians kept the ship of the hero Theseus in their harbor as a memorial, repairing it for centuries by swapping out decayed timbers for new ones. Plutarch records that the philosophers of the day used it as a live argument: at what point, if ever, does the ship stop being the ship of Theseus? Every plank can be replaced and the object still carries the same name, the same role, the same place in the harbor — yet none of its original matter survives. The puzzle is not really about boats. It is about what makes any changing thing continue to be itself.",
+      "The Ship of Theseus is a thought experiment about identity and continuity through change. It pulls apart two things we usually treat as one: the material a thing is made of, and the pattern or continuity that organizes it. If identity lives in the matter, the ship died the moment the first plank was swapped. If identity lives in the continuous form — the ongoing structure, function, and history — then the ship persists even when every atom has been exchanged. The experiment forces you to say which one you actually believe.",
+      "The seventeenth-century philosopher Thomas Hobbes sharpened it with a twist: suppose someone collected every discarded original plank and reassembled them into a second ship. Now you have two ships. Which is the real one — the continuous repaired vessel in the harbor, or the reassembled original timbers? There may be no single correct answer, and that is the point. Identity might not be a fact waiting to be discovered but a decision about which kind of continuity we choose to care about: matter, form, or narrative.",
+      "This is not abstract. The company you work for has likely replaced most of its staff, its products, its offices, and its strategy since it was founded — yet we still treat it as the same company, with the same obligations and reputation. Your own body has swapped out most of its cells; your beliefs and tastes have turned over too. Knowing that 'sameness' is something we construct rather than find changes how you think about a brand pivoting, a team being rebuilt, or a person reinventing themselves. The thing can survive total replacement — if the continuity that matters is preserved."
+    ],
+    "why_today": "The thought experiment is recorded in Plutarch's Life of Theseus (c. 75 CE), where Athenian philosophers debate the repaired ship. Thomas Hobbes added the reassembled-planks variant in De Corpore (1655).",
+    "morning_challenge": "Pick one thing in your life that has changed so much it's worth asking whether it's still 'the same' — a company you work for, a relationship, a project, or your own self compared to five years ago.\n\nWrite down what has been replaced, and what has stayed continuous. Is the continuity in the matter, the function, the people, or the story you tell about it?\n\nThen answer honestly: is it the same thing? Notice that your answer is a choice about what you've decided counts — not a fact you looked up."
+  },
+  "midday": {
+    "reframe": "Identity isn't stored in the parts. It's a decision about which kind of continuity you choose to track — the matter, the form, or the story. When something you care about gets rebuilt piece by piece, the real question isn't 'is it still the same?' It's 'which continuity am I trying to preserve?'",
+    "itw_label": "IN THE WILD — TYPE A · PLUTARCH, LIFE OF THESEUS, c. 75 CE. HOBBES, DE CORPORE, 1655.",
+    "itw_paragraphs": [
+      "Long-lived companies are real-world Ships of Theseus. Nokia began in 1865 as a paper mill, later made rubber boots and cables, became the world's dominant mobile phone maker, sold that business to Microsoft in 2014, and now builds telecom network equipment. Almost nothing material connects the 1865 paper mill to today's networking firm — not the product, the people, or the place — yet it is legally and reputationally treated as one continuous company. The continuity that survived was the corporate entity and its accumulated name, not any of its parts.",
+      "Software systems live the puzzle constantly. Engineering teams describe rewriting a service 'plank by plank' — the Strangler Fig pattern, named by Martin Fowler — replacing an old system one module at a time until none of the original code remains, while users experience it as the same continuously running product. The running application keeps its name, its data, and its users even as every line of its original source is retired. The identity lives in the continuous service, not the code.",
+      "The same logic governs how we judge people and brands that reinvent. When a person says 'I'm not who I was,' or a company rebrands after scandal, we are implicitly running the Theseus test: has enough continuity been broken that this counts as a genuinely new thing, or is it the same entity dodging its history? There is no neutral answer — which is exactly why accountability and reinvention are so contested. We are arguing about which continuity counts."
+    ],
+    "quote": "We cannot step twice into the same river, for fresh waters are ever flowing in upon us.",
+    "attribution": "Heraclitus, as reported by Plato in Cratylus (c. 360 BCE)",
+    "midday_nudge": "Notice one place today where 'same thing, totally changed' is doing quiet work — a renamed team, a rewritten document, a person who's evolved. Ask yourself what continuity you're tracking when you still call it the same. You'll see the choice underneath the label."
+  },
+  "quiz": [
+    {
+      "question": "What is the core philosophical tension the Ship of Theseus is designed to expose?",
+      "options": [
+        "Whether it's economical to repair old objects rather than replace them",
+        "Whether identity lives in the matter a thing is made of, or in its continuous form, function, and history",
+        "Whether ancient Athenians had the technology to preserve wooden ships",
+        "Whether physical objects exist at all independent of human perception"
+      ],
+      "correct": 1,
+      "explanation": "The puzzle works by separating two things we normally fuse: the material substance of a thing and the continuous pattern that organizes it. If identity is in the matter, replacing every plank destroys the ship; if it's in the continuity of form and history, the ship survives. The experiment forces you to commit to one, revealing that 'sameness' was never a single, simple property."
+    },
+    {
+      "question": "Hobbes's variant imagines reassembling all the original discarded planks into a second ship, leaving you with two candidates. Why is this version philosophically powerful?",
+      "options": [
+        "It proves the repaired ship was never really the original",
+        "It shows that with two equally valid claimants, identity may be a decision about which continuity to value rather than a single fact to discover",
+        "It demonstrates that wooden ships can't actually be reassembled",
+        "It establishes that the older ship is always the authentic one"
+      ],
+      "correct": 1,
+      "explanation": "By producing two ships — one with continuous form and place, one with the original matter — Hobbes makes it impossible to say which is 'really' the original without first choosing what kind of continuity counts. That choicelessness is the insight: identity over time may not be an objective fact but a judgment about which thread of continuity we've decided to track."
+    },
+    {
+      "question": "A company replaces nearly all its staff, products, and strategy over a decade, yet is still held accountable for promises it made years ago. Which reading of the Ship of Theseus best explains why?",
+      "options": [
+        "The company is clearly a different entity and shouldn't be held accountable",
+        "Accountability proves none of the original company actually changed",
+        "Identity is being tracked through continuous form and history — the corporate entity and its narrative — not through its material parts, so obligations carry across total turnover",
+        "Only the original founders can carry the company's obligations"
+      ],
+      "correct": 2,
+      "explanation": "Treating the company as the same entity despite full turnover means we are locating its identity in continuity of form, legal personhood, and narrative — not in its people or products. That is precisely the 'continuous form' answer to Theseus, and it's why a thing can survive total replacement of its parts while still owning its past commitments."
+    }
+  ],
+  "closing": "Everything you care about that lasts — a company, a craft, a self — is replacing its parts right now. The Ship of Theseus doesn't tell you whether it stays the same. It tells you that 'the same' was always your choice about which continuity to protect. Choose it on purpose.",
+  "sources": [
+    {
+      "label": "Plutarch — Life of Theseus, in Parallel Lives (c. 75 CE)",
+      "detail": "The original source recording Athenian philosophers debating whether the repeatedly repaired ship remained the same vessel.",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/Lives/Theseus*.html"
+    },
+    {
+      "label": "Identity Over Time — Stanford Encyclopedia of Philosophy",
+      "detail": "Scholarly overview of persistence, change, and the puzzles (including Theseus and Hobbes's variant) about what makes a thing the same thing over time.",
+      "url": "https://plato.stanford.edu/entries/identity-time/"
+    }
+  ],
+  "ai_prompt": "I want to think through a real situation in my life using the Ship of Theseus — something that has changed so much I'm not sure it's still 'the same' thing (a company, a relationship, a project, or myself). Before we analyze it, ask me what's been replaced and what has stayed continuous, then help me figure out which kind of continuity I actually care about. Here's the situation: [describe what has changed]",
+  "verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "AI.13",
+  "category": "AI",
+  "categoryTag": "AI",
+  "concept": "Tokenization",
+  "accent": "#47FFE8",
+  "accentDim": "rgba(71,255,232,0.10)",
+  "morning": {
+    "hook": "Ask a top language model how many R's are in 'strawberry' and for years it would confidently say two. The model wasn't stupid. It literally could not see the letters — it was looking at chunks, not characters.",
+    "explanation_paragraphs": [
+      "You type a sentence into ChatGPT. Before the model does anything with it, the text is shredded into pieces called tokens. The word 'strawberry' might become a single token, or split into 'straw' and 'berry,' depending on how common the pattern was in training. 'The' is one token. A rare medical term might be five. A model never sees your letters as letters — it sees a sequence of numerical IDs standing in for these chunks, and everything it 'knows' about language is built on top of that chunked view.",
+      "Tokenization is the process of breaking text into the units a language model actually processes. Most modern models use a method called byte-pair encoding, which starts from individual characters and repeatedly merges the most frequent adjacent pairs into reusable tokens. The result is a vocabulary of tens of thousands of tokens — common words become single tokens, rare words get split into fragments, and the model's entire experience of language is mediated through this fixed set of pieces. A rough rule of thumb for English: one token is about four characters, or three-quarters of a word.",
+      "This chunking explains a surprising amount of model behavior. Counting letters is hard because the model sees 'strawberry' as a couple of opaque chunks, not a string of characters — the letters are invisible inside the token. Arithmetic is shaky partly because numbers get split inconsistently ('1234' might be one token but '12345' two). Languages underrepresented in training data get chopped into many more tokens per word, which makes them slower and more expensive to process — the same sentence in English and in a lower-resource language can differ several-fold in token count.",
+      "Tokens are also the unit of money and memory. AI providers bill per token, input and output, so a prompt's cost is its token count, not its word count. The 'context window' — how much a model can hold at once — is measured in tokens, not pages. When people are surprised that a model 'forgot' the start of a long document, or that a verbose prompt cost more than expected, the explanation is almost always token math happening one layer below the words they actually wrote."
+    ],
+    "why_today": "Byte-pair encoding for neural text was introduced in Sennrich, Haddow & Birch (2016), 'Neural Machine Translation of Rare Words with Subword Units' (ACL). Token-based pricing and context limits are documented in current OpenAI and Anthropic API pricing pages (2026).",
+    "morning_challenge": "Find a token counter (OpenAI's Tokenizer page or Hugging Face's tokenizer playground are free) and paste in a few things: a normal English sentence, the same idea in another language if you know one, a long number like 1000000000, and an unusual word like 'antidisestablishmentarianism.'\n\nWatch where the splits land. Notice how the rare word and the big number fragment into many tokens, while common words stay whole.\n\nYou're not learning a technique here — you're seeing the layer the model actually reads, the one hiding under your text."
+  },
+  "midday": {
+    "reframe": "When a model does something weirdly dumb with letters or numbers, your first instinct is 'it doesn't understand.' Often the truer statement is 'it never saw what you think it saw.' The model isn't reading your words — it's reading tokens, and the gap between the two is where the quirks live.",
+    "itw_label": "IN THE WILD — TYPE A · SENNRICH, HADDOW & BIRCH, NEURAL MACHINE TRANSLATION OF RARE WORDS WITH SUBWORD UNITS, ACL 2016. OPENAI & ANTHROPIC API PRICING DOCS, 2026.",
+    "itw_paragraphs": [
+      "The 'strawberry' problem became a running joke in 2024 when users kept catching frontier models miscounting letters in common words. The cause was tokenization: a model that has never been exposed to the individual characters inside a token has no reliable way to count them. Newer models handle it better, partly through training tricks and partly through tool use, but the underlying reason it was ever hard is purely structural — the letters were hidden inside chunks the model treats as atomic.",
+      "Researchers have documented a 'token tax' on languages other than English. A 2023 analysis by Oxford-affiliated researchers found that some languages require up to 10 to 15 times more tokens than English to express the same content under common tokenizers, because their scripts and word patterns were underrepresented in training. Since AI services bill per token and cap context per token, speakers of those languages pay more and fit less into a single request — an invisible inequality baked into the tokenizer itself.",
+      "Token math also drives real product decisions. When developers complain that a feature is too expensive or that a document won't fit in context, the fix is usually token-level: trimming boilerplate, compressing instructions, or choosing a model with a larger context window. Entire job functions — 'prompt engineering,' 'context engineering' — exist partly because the gap between human words and machine tokens has measurable cost and capacity consequences."
+    ],
+    "quote": "The model does not see text. It sees a sequence of tokens — and almost every surprising thing it does with spelling, counting, or rare words traces back to that fact.",
+    "attribution": "Paraphrase of the subword-tokenization framing in Sennrich, Haddow & Birch, ACL 2016",
+    "midday_nudge": "Next time a model gives you a strange answer about spelling, a count, or a precise number, pause before assuming it 'can't reason.' Ask yourself whether the thing you cared about was even visible at the token level — it reframes the whole interaction."
+  },
+  "quiz": [
+    {
+      "question": "A model is asked to count the letters in a common word and gets it wrong, but it can write a flawless essay on quantum physics. Why is the simple task harder than the complex one?",
+      "options": [
+        "The model has more training data on physics than on spelling",
+        "Letter-counting requires seeing individual characters, but the model processes the word as one or two opaque tokens — the characters are hidden inside the chunk it cannot look into",
+        "Essays are easier because they are longer and give the model more room to reason",
+        "The model deliberately deprioritizes trivial tasks to save compute"
+      ],
+      "correct": 1,
+      "explanation": "Difficulty for a language model doesn't track human intuitions about 'simple' versus 'complex.' Counting letters is hard because tokenization hides the characters inside chunks the model treats as indivisible. Writing an essay works on the level the model actually operates — patterns over tokens. The lesson: a task being easy for you says nothing about whether the relevant information is even visible to the model."
+    },
+    {
+      "question": "Two people send prompts of identical word count, but one is billed noticeably more. Assuming the same model, what is the most likely explanation rooted in tokenization?",
+      "options": [
+        "The more expensive prompt was sent at a busier time of day",
+        "Word count and token count aren't the same — rare words, unusual formatting, numbers, or another language can fragment into far more tokens, and billing is per token",
+        "Longer words always cost more regardless of how they tokenize",
+        "The pricing difference is random and not predictable"
+      ],
+      "correct": 1,
+      "explanation": "Pricing is per token, and tokens don't map cleanly onto words. A prompt full of common English words may be cheaper than a same-length prompt heavy with rare terms, code, numbers, or a lower-resource language, because those fragment into more tokens. Understanding this means you can predict and control cost — the unit of money is the token, not the word."
+    },
+    {
+      "question": "Someone notices a model handles the same question more cheaply and reliably in English than in their native language. What does tokenization reveal about why?",
+      "options": [
+        "The model simply understands English better as a language",
+        "Languages underrepresented in the tokenizer's training data get split into more tokens per word, so the same meaning costs more tokens and fills the context window faster",
+        "Non-English text is always translated to English first, doubling the cost",
+        "The model refuses to process other languages at full quality"
+      ],
+      "correct": 1,
+      "explanation": "It isn't that the model 'prefers' English in some intentional sense — it's that the tokenizer was shaped by training data dominated by certain languages. Underrepresented scripts and word patterns fragment into more tokens, raising cost and consuming context faster. Recognizing this turns a vague sense of unfairness into a concrete, structural cause — and explains a real inequality in how these tools serve different users."
+    }
+  ],
+  "closing": "You will never type a token. You type words, and a layer you can't see chops them into pieces before the model reads anything. Knowing that layer exists doesn't change how you type — but it explains the cost on your bill, the limit on the context window, and every strange answer the model has ever given you about a letter or a number.",
+  "sources": [
+    {
+      "label": "Sennrich, R., Haddow, B. & Birch, A. — Neural Machine Translation of Rare Words with Subword Units, ACL 2016",
+      "detail": "The paper that brought byte-pair encoding into modern neural language models, establishing subword tokenization as the standard.",
+      "url": "https://aclanthology.org/P16-1162/"
+    },
+    {
+      "label": "OpenAI — What are tokens and how to count them (Help Center / Tokenizer)",
+      "detail": "Plain-language explainer on tokens, the ~4-characters-per-token rule of thumb, and how tokens map to pricing and context limits, with an interactive tokenizer.",
+      "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
+    }
+  ],
+  "ai_prompt": "I want to understand how tokenization affects the way I use AI tools — cost, context limits, and weird behavior. First ask me what I mainly use these tools for and whether I work in a language other than English. Then explain, with examples relevant to me, where tokenization is likely to bite. Here's my situation: [describe how you use AI]",
+  "verified": false
+}

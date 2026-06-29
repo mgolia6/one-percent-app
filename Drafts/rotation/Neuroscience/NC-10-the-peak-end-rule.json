@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "NC.10",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEUROSCIENCE & COGNITION",
+  "concept": "The Peak-End Rule",
+  "accent": "#47C8FF",
+  "accentDim": "rgba(71,200,255,0.10)",
+  "morning": {
+    "hook": "Two people sit through the same hour-long meeting. One remembers it as productive, the other as a slog. The difference often isn't the hour — it's the last two minutes and the single sharpest moment in between. Your memory doesn't average experiences. It edits them.",
+    "explanation_paragraphs": [
+      "In a now-famous experiment, patients undergoing a genuinely uncomfortable medical procedure were split into two groups. One group had the standard procedure. The other had the identical procedure plus a few extra minutes tacked on at the end — minutes that were still uncomfortable, but less so than the worst part. By any rational measure, the second group endured more total discomfort: same peak, more minutes, more pain in aggregate. Yet they remembered the whole experience as less unpleasant, and were more willing to return for follow-ups. More total pain, a better memory. Their minds weren't keeping a running total. They were keeping two data points.",
+      "The Peak-End Rule, identified by psychologist Daniel Kahneman and colleagues, describes how we retrospectively judge an experience: not by the sum or average of every moment, but heavily by two snapshots — the most intense moment (the peak, good or bad) and how it felt at the very end. The long boring or pleasant stretches in the middle barely register in memory. Kahneman framed this as a split between the 'experiencing self,' which lives through every moment, and the 'remembering self,' which keeps only the highlights and writes the story we actually carry forward and act on.",
+      "The nuance is that duration almost doesn't matter to memory — a phenomenon Kahneman called 'duration neglect.' A two-week vacation and a one-week vacation with the same peak and ending are remembered as roughly equally good. This isn't a flaw you can simply override with willpower; it's how retrospective evaluation works. And the remembering self wins: it's the self that decides whether to go back, whether to recommend, whether to renew. We make future choices based on remembered experiences, not lived ones.",
+      "The stakes show up everywhere experiences get judged and chosen again. A product demo, a customer-support call, a first date, a hospital stay, a conference, a workout, a difficult conversation — each will be filed in memory mostly by its peak and its ending. A great experience that fizzles at the end gets remembered as mediocre. A rough experience that ends well gets remembered as fine. Once you see the rule, you can stop optimizing the average and start managing the moments that actually get encoded."
+    ],
+    "why_today": "The Peak-End Rule was established by Daniel Kahneman and colleagues, notably Redelmeier, D. A. & Kahneman, D. (1996) on colonoscopy pain, and Kahneman, D., Fredrickson, B., Schreiber, C. & Redelmeier, D. (1993), 'When more pain is preferred to less,' Psychological Science.",
+    "morning_challenge": "This is a recognition lens, so spend today noticing the rule at work rather than acting on it.\n\nPick one experience from the last week you have a clear feeling about — a meeting, a meal, a trip, a call. Ask yourself: is my overall verdict tracking the whole thing, or really just the most intense moment and how it ended?\n\nThen flip it forward. Look at one experience you're responsible for shaping today — for a customer, a teammate, a guest, even yourself. Notice where its peak and its ending fall. You don't have to change anything yet. Just see that those two points will carry far more weight in memory than everything between them."
+  },
+  "midday": {
+    "reframe": "You can't make every minute of an experience excellent — and the Peak-End Rule says you don't have to. Memory is built from the peak and the end. So the question shifts from 'how do I make all of this good?' to 'where is the peak, and how does this end?'",
+    "itw_label": "IN THE WILD — TYPE A · REDELMEIER & KAHNEMAN, PAIN, 1996. KAHNEMAN ET AL., PSYCHOLOGICAL SCIENCE, 1993.",
+    "itw_paragraphs": [
+      "In the 1996 study by Redelmeier and Kahneman, patients' remembered pain from a colonoscopy correlated strongly with the average of the worst moment and the final moment — not with the total amount of discomfort or how long the procedure lasted. Extending the procedure with a gentler tail end, which added pain in absolute terms, produced a more favorable memory. The finding directly informed arguments for designing the end of unpleasant medical procedures to taper rather than stop at a harsh moment.",
+      "The earlier 'cold-water' experiments by Kahneman and colleagues isolated the effect cleanly. Participants held a hand in painfully cold water for 60 seconds, and separately for 60 seconds followed by 30 extra seconds as the water was warmed slightly — still cold, still unpleasant, just less so. Asked which trial they'd repeat, most chose the longer one, despite it containing strictly more discomfort. The improved ending rewrote the memory, and the memory drove the choice.",
+      "Service and experience designers have since leaned on the rule deliberately. The pattern of ending interactions on a high note — a small unexpected gift at hotel checkout, a thoughtful closing line on a support call, the final reveal at the end of a tour — reflects an understanding that the last moment is disproportionately weighted in how the whole thing is remembered and whether the person returns. The middle is where the experiencing self lives; the peak and end are where the remembering self files it."
+    ],
+    "quote": "We have strong preferences about the duration of our experiences of pain and pleasure. We want pain to be brief and pleasure to last. But our memory… represents the past by its most intense moment and by its end.",
+    "attribution": "Daniel Kahneman, on the experiencing self versus the remembering self",
+    "midday_nudge": "Think about one thing you'll wrap up today — a workday, a call, a project handoff, a conversation. Notice how it's currently set to end. Endings are the cheapest, highest-leverage point to influence a memory, and most of us let them happen by accident. Just observing where your endings land — strong, flat, or sour — is the skill this lens is building."
+  },
+  "quiz": [
+    {
+      "question": "Two customers each spend 40 minutes on a support call. Customer A's problem is solved early, then the agent rambles and ends abruptly. Customer B waits longer but the agent solves it and closes warmly with a clear next step. Both got their issue resolved. Why is Customer B likely to remember the call far more favorably?",
+      "options": [
+        "Customer B's call was objectively shorter and therefore less frustrating",
+        "Memory weights the peak and the ending far more than the average or total duration — B's call ended on a competent, warm note, which the remembering self files as the verdict for the whole interaction",
+        "Customer A is simply a more negative person",
+        "Resolution speed is the only thing that matters to satisfaction"
+      ],
+      "correct": 1,
+      "explanation": "The Peak-End Rule says retrospective judgment is dominated by the most intense moment and the final moment, not the running average. Both calls resolved the issue, but A ended flat and abrupt while B ended warm and clear. Because the ending is heavily weighted in memory, B's remembering self encodes the whole call as better — even if A's was equally or more efficient minute-to-minute."
+    },
+    {
+      "question": "Kahneman called the tendency for the length of an experience to barely affect its remembered quality 'duration neglect.' What's the practical implication of duration neglect for someone designing an experience?",
+      "options": [
+        "Longer experiences are always remembered as better, so you should extend everything",
+        "Since total length contributes little to memory, effort is often better spent shaping the peak and the ending than trying to make every minute uniformly good",
+        "Duration is irrelevant to the experiencing self as it happens",
+        "People can't tell how long anything lasts"
+      ],
+      "correct": 1,
+      "explanation": "Duration neglect means a longer pleasant stretch doesn't proportionally improve the memory, and a longer unpleasant stretch doesn't proportionally worsen it — memory keys off the peak and the end. So spreading effort evenly across every minute is a poor strategy for how things get remembered. Concentrating attention on a strong peak and a strong ending yields more memory-per-effort. (Note: the experiencing self still feels every minute — duration neglect is about memory, not lived reality.)"
+    },
+    {
+      "question": "Kahneman distinguished the 'experiencing self' from the 'remembering self.' Why does this distinction matter when you're deciding whether to repeat an experience?",
+      "options": [
+        "The experiencing self makes all future decisions, so lived moments dominate choice",
+        "The remembering self — which keeps mostly the peak and the end — is the one that decides whether to return, recommend, or renew, so memory can diverge from the actual sum of moments lived",
+        "The two selves always agree, so the distinction is academic",
+        "The remembering self is more accurate than the experiencing self"
+      ],
+      "correct": 1,
+      "explanation": "The experiencing self lives through every moment, but it's the remembering self — built from highlights and endings — that drives future choices: whether to go back, recommend, or renew. This is why an experience can be unpleasant minute-to-minute yet chosen again (the cold-water study), or pleasant overall yet avoided because it ended badly. The remembering self isn't more accurate; it's just the one holding the pen when decisions get made."
+    }
+  ],
+  "closing": "Your mind isn't an accountant adding up every moment — it's an editor keeping the highlight and the final scene. That's worth knowing twice over: it's how others will remember the experiences you create, and it's how you're quietly rewriting your own.",
+  "sources": [
+    {
+      "label": "Redelmeier, D. A. & Kahneman, D. — Patients' memories of painful medical treatments, Pain, 66(1), 3–8, 1996",
+      "detail": "The colonoscopy study demonstrating that remembered pain tracks the peak and end, not total discomfort or duration.",
+      "url": "https://doi.org/10.1016/0304-3959(96)02994-6"
+    },
+    {
+      "label": "Kahneman, D., Fredrickson, B. L., Schreiber, C. A. & Redelmeier, D. A. — When More Pain Is Preferred to Less, Psychological Science, 4(6), 401–405, 1993",
+      "detail": "The cold-water experiment isolating the peak-end effect and duration neglect in retrospective evaluation.",
+      "url": "https://doi.org/10.1111/j.1467-9280.1993.tb00589.x"
+    }
+  ],
+  "ai_prompt": "I want to apply the Peak-End Rule to an experience I'm responsible for — something people go through and then judge afterward, like a customer journey, an event, a meeting series, or an onboarding. First ask me to walk through the experience start to finish and tell you how it currently ends. Then help me identify where its peak and ending fall and how they're shaping the memory. Here's the experience: [describe it]",
+  "verified": false
+}

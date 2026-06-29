@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "PH.9",
+  "category": "Philosophy",
+  "categoryTag": "PHILOSOPHY",
+  "concept": "Akrasia",
+  "accent": "#FF4778",
+  "accentDim": "rgba(255,71,120,0.10)",
+  "morning": {
+    "hook": "You know exactly what you should do. You even want to want to do it. And then you do something else. The Greeks had a word for this 2,400 years before anyone called it procrastination: akrasia — acting against your own better judgment.",
+    "explanation_paragraphs": [
+      "It's 9 p.m. You've decided, sincerely, to spend the evening on the project that actually matters. You believe it's the right use of your time. No one is stopping you. And yet you find yourself an hour deep in your phone, having chosen — somehow, against your own stated judgment — the thing you'd already concluded was the worse option. This isn't ignorance; you knew better. It isn't external coercion; you were free. It's a failure that happens entirely inside the gap between knowing and doing.",
+      "Akrasia (from the Greek for 'lacking command' or 'without power') is the philosophical name for acting against one's better judgment — knowingly doing what you judge to be the worse course while a better one is available. It is usually translated as 'weakness of will' or 'incontinence.' Aristotle gave it sustained treatment in the Nicomachean Ethics, and it sits at the root of what we now call procrastination, impulsivity, and self-sabotage. The puzzle is ancient precisely because it seems almost paradoxical: how can you genuinely judge X to be best and then freely choose not-X?",
+      "Philosophers have disagreed sharply about whether akrasia is even possible. Socrates, as Plato presents him, denied it outright: he held that no one knowingly does wrong, and that apparent weakness of will is really just ignorance — if you truly knew the better course, you'd take it. Aristotle pushed back, arguing that knowledge can be 'present but not active' in the heated moment, overridden by appetite or passion, so a person can possess the right judgment and still fail to act on it. Modern thinkers add a temporal layer: present desire systematically outbids future benefit, a bias behavioral scientists call hypberbolic discounting — we radically overweight the immediate. The disagreement is unresolved, but the experience is universal.",
+      "Naming this changes how you treat your own failures to act. If you think procrastination is a character flaw or a motivation shortage, you'll keep trying to 'want it more,' which rarely works. But if you see it as akrasia — a structural gap between judgment and action, often driven by present desire overpowering a quieter future-self — you treat it as an engineering problem, not a moral one. You stop relying on willpower in the heated moment and start shaping the environment, the commitments, and the friction so that the gap closes before the moment arrives. The ancients couldn't fix the boulder, but they were honest that it existed."
+    ],
+    "why_today": "Aristotle analyzes akrasia (akrasia, 'weakness of will') extensively in the Nicomachean Ethics, Book VII (c. 340 BCE), responding to the Socratic position recorded in Plato's Protagoras that no one willingly does wrong.",
+    "morning_challenge": "Identify one recurring akratic moment in your life — a specific situation where you reliably do what you've already judged to be the worse choice (late-night scrolling, skipping the workout, dodging the hard task).\n\nDon't resolve to 'try harder.' Instead, study the moment like an engineer: what is the immediate desire that wins, and what future benefit is it outbidding?\n\nThen change one thing about the setup — not your willpower — so the better choice requires less command in the heated moment. Reduce friction for the right thing, or add friction to the wrong one."
+  },
+  "midday": {
+    "reframe": "Procrastination isn't a motivation problem you can will away. It's akrasia — a structural gap between what you judge and what you do, usually because present desire outbids your future self. Stop trying to want it more in the moment. Engineer the moment so the better choice needs less willpower.",
+    "itw_label": "IN THE WILD — TYPE A · ARISTOTLE, NICOMACHEAN ETHICS BOOK VII, c. 340 BCE. PLATO, PROTAGORAS, c. 380 BCE.",
+    "itw_paragraphs": [
+      "The clearest historical demonstration is the debate itself. In Plato's Protagoras, Socrates argues that 'no one goes willingly toward the bad,' insisting weakness of will is really miscalculation — you only chose the worse thing because, in the moment, you misjudged it as better. Aristotle, in Nicomachean Ethics Book VII, rejects this as too tidy: he distinguishes between having knowledge and using it, arguing that appetite can temporarily 'fetter' active knowledge, so the akratic person genuinely knows better yet acts otherwise. Twenty-three centuries later, neither position has fully won.",
+      "Modern behavioral science recast akrasia in temporal terms. Economist George Ainslie and others documented hyperbolic discounting: people consistently prefer a smaller reward now over a larger reward later, with the preference flipping irrationally as the moment approaches. This explains the 9 p.m. collapse — from a calm distance you genuinely prefer the productive evening, but as the moment arrives the immediate pull of the easier option spikes and overrides the judgment you made in the cool hour. The ancient puzzle and the modern data describe the same gap.",
+      "The practical response across traditions is the same: don't fight akrasia with raw willpower, route around it. Odysseus had himself lashed to the mast before the Sirens — a 'commitment device' that removes the choice from the weak moment. Today that looks like scheduling, app blockers, accountability partners, and pre-commitment: structures that bind your stronger present self to protect your weaker future self. The insight is that the reliable lever isn't more resolve in the heated moment; it's a decision made earlier, when judgment is calm and command is cheap."
+    ],
+    "quote": "The incontinent man, knowing that what he does is bad, does it as a result of passion, while the continent man, knowing that his appetites are bad, does not follow them because of his reason.",
+    "attribution": "Aristotle, Nicomachean Ethics, Book VII (c. 340 BCE)",
+    "midday_nudge": "Pick the one akratic trap most likely to catch you in the next 24 hours. Don't promise to resist it — that's the move that fails. Instead, set one tiny structural barrier right now, while your judgment is calm: block the app, lay out the gear, schedule the block, tell someone. Bind the present self before the weak moment arrives."
+  },
+  "quiz": [
+    {
+      "question": "What does 'akrasia' specifically describe?",
+      "options": [
+        "Not knowing what the right course of action is",
+        "Knowingly acting against your own better judgment when a better option is available",
+        "Being forced by others to do something you disagree with",
+        "Lacking the skills needed to complete a task"
+      ],
+      "correct": 1,
+      "explanation": "Akrasia is precisely the case where you do know the better course and are free to take it, yet choose the worse one anyway — 'weakness of will.' That's what makes it a genuine puzzle and distinguishes it from mere ignorance (not knowing better) or coercion (not being free). Procrastination is its most common modern form: you've already judged the task worth doing, and still don't."
+    },
+    {
+      "question": "How did Socrates' and Aristotle's views on akrasia differ?",
+      "options": [
+        "Socrates thought it was caused by laziness; Aristotle thought it was caused by fatigue",
+        "Socrates denied akrasia was possible, holding wrongdoing is really ignorance; Aristotle argued knowledge can be 'present but not active,' so you can know better and still fail to act",
+        "Both agreed akrasia was impossible and purely a translation error",
+        "Aristotle denied akrasia existed; Socrates built an entire ethics around it"
+      ],
+      "correct": 1,
+      "explanation": "Socrates (in Plato) held that no one knowingly does wrong — apparent weakness of will is really a failure of knowledge. Aristotle rejected this, distinguishing between possessing knowledge and actively using it: in the heated moment, appetite can override the judgment you genuinely hold. This distinction matters because it locates the failure not in what you know but in the gap between knowing and doing."
+    },
+    {
+      "question": "Given what akrasia reveals, why is 'just try to want it more' usually a poor strategy against procrastination?",
+      "options": [
+        "Because wanting things is morally wrong",
+        "Because the failure isn't a lack of desire or knowledge but a structural gap between judgment and action — often present desire outbidding future benefit — so the reliable fix is to engineer the moment rather than summon willpower in it",
+        "Because procrastination is actually impossible to change",
+        "Because you should always follow your immediate impulses instead"
+      ],
+      "correct": 1,
+      "explanation": "Akrasia means you already have the judgment and often the desire — what fails is acting on it when immediate temptation spikes. Trying to out-want the temptation in the heated moment fights on the temptation's home turf. The approach supported by both ancient and modern thinking is pre-commitment: shape your environment and commitments earlier, when judgment is calm, so the better choice needs less command later."
+    }
+  ],
+  "closing": "The gap between knowing and doing is 2,400 years old, and willpower has never reliably closed it. Akrasia's real lesson isn't to feel guilty for the gap — it's to stop fighting it in the weak moment and start binding yourself in the calm one. Lash yourself to the mast before you hear the song.",
+  "sources": [
+    {
+      "label": "Aristotle — Nicomachean Ethics, Book VII (c. 340 BCE)",
+      "detail": "Aristotle's classic analysis of akrasia, distinguishing possessing knowledge from actively using it, and responding to the Socratic denial of weakness of will.",
+      "url": "https://www.gutenberg.org/files/8438/8438-h/8438-h.htm"
+    },
+    {
+      "label": "Weakness of Will — Stanford Encyclopedia of Philosophy",
+      "detail": "Scholarly overview of akrasia from Socrates and Aristotle through contemporary debates about how acting against one's better judgment is possible.",
+      "url": "https://plato.stanford.edu/entries/weakness-will/"
+    }
+  ],
+  "ai_prompt": "I want to tackle a specific procrastination or self-sabotage pattern using the concept of akrasia — treating it as a structural gap rather than a willpower failure. Before giving advice, ask me what the recurring akratic moment is, what immediate desire wins in that moment, and what future benefit it's outbidding. Then help me design a pre-commitment or friction change instead of telling me to try harder. Here's the pattern: [describe the situation where you act against your better judgment]",
+  "verified": false
+}
