@@ -13,7 +13,8 @@ const FAINT = 'rgba(232,238,245,0.4)', GOLD = '#E0A93D', OK = '#47FFE8', WARN = 
 
 const CATEGORIES = [
   { key: 'history', label: 'History', file: '/verify-data/history.json' },
-  // future: { key: 'finance', label: 'Personal Finance', file: '/verify-data/finance.json' }, ...
+  { key: 'finance', label: 'Personal Finance', file: '/verify-data/finance.json' },
+  { key: 'health', label: 'Health & Performance', file: '/verify-data/health.json' },
 ]
 
 export default function VerifyPage() {
@@ -26,6 +27,9 @@ export default function VerifyPage() {
   const [flags, setFlags] = useState({})           // `${ed}|${no}` -> { flagged, note }
   const [signoffs, setSignoffs] = useState({})     // ed -> {status, verified_at}
   const [busy, setBusy] = useState(false)
+  const [lastSubmit, setLastSubmit] = useState(null) // latest submission for this category
+  const [submitting, setSubmitting] = useState(false)
+  const [justSubmitted, setJustSubmitted] = useState(false)
 
   useEffect(() => {
     let cancelled = false
@@ -60,6 +64,11 @@ export default function VerifyPage() {
     })
     const sm = {}; (ent || []).forEach(r => { sm[r.edition_id] = r })
     setChecks(cm); setFlags(fm); setSignoffs(sm)
+    const { data: sub } = await supabase.from('verification_submissions')
+      .select('id, submitted_at, status, verified_count, flagged_count, processed_at')
+      .eq('category', key).order('submitted_at', { ascending: false }).limit(1)
+    setLastSubmit(sub?.[0] || null)
+    setJustSubmitted(false)
   }, [])
 
   useEffect(() => { if (userId) loadCategory(cat) }, [userId, cat, loadCategory])
@@ -99,6 +108,26 @@ export default function VerifyPage() {
     setBusy(false)
   }
 
+  // Freeze the current review as a submission for me (Claude) to act on next session:
+  // signed-off entries get promoted to the library, flagged claims get reworked.
+  const submitReview = async () => {
+    if (submitting) return
+    setSubmitting(true)
+    const verifiedEditions = entries.filter(e => signoffs[e.edition_id]?.status === 'verified').map(e => e.edition_id)
+    const flaggedClaims = []
+    entries.forEach(e => e.claims.forEach(c => {
+      const f = flags[`${e.edition_id}|${c.no}`]
+      if (f?.flagged) flaggedClaims.push({ edition_id: e.edition_id, concept: e.concept, claim_no: c.no, claim: c.text, note: f.note || '' })
+    }))
+    const row = { category: cat, submitted_by: userId, submitted_at: new Date().toISOString(),
+      verified_count: verifiedEditions.length, flagged_count: flaggedClaims.length,
+      verified_editions: verifiedEditions, flagged_claims: flaggedClaims, status: 'pending' }
+    const { data } = await supabase.from('verification_submissions').insert(row).select('id, submitted_at, status, verified_count, flagged_count, processed_at').single()
+    setLastSubmit(data || row)
+    setJustSubmitted(true)
+    setSubmitting(false)
+  }
+
   if (loading) return (
     <div style={{ minHeight: '100vh', background: BG, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ fontSize: 11, color: FAINT, letterSpacing: '0.2em', fontFamily: "'DM Mono', monospace" }}>LOADING…</div>
@@ -106,6 +135,7 @@ export default function VerifyPage() {
   )
 
   const verifiedCount = entries.filter(e => signoffs[e.edition_id]?.status === 'verified').length
+  const flaggedTotal = entries.reduce((n, e) => n + e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged).length, 0)
 
   return (
     <div style={{ minHeight: '100vh', background: BG, color: INK, fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif", lineHeight: 1.5 }}>
@@ -212,7 +242,29 @@ export default function VerifyPage() {
         })}
 
         <div style={{ color: FAINT, fontSize: 12, marginTop: 8 }}>
-          Sign-offs are recorded here (who + when). Drafts stay <code style={{ color: OK }}>verified:false</code> in their files until I promote the signed-off set to live (numbering + four-file sync). Tell me "promote History" when a category is fully signed off.
+          Everything you tick, flag, and sign off saves automatically. When you’ve been through the whole category, hit <b style={{ color: OK }}>Submit for review</b> below — that hands the batch to me: I rework the flagged claims and promote the signed-off entries into the library.
+        </div>
+      </div>
+
+      {/* Sticky submit bar */}
+      <div style={{ position: 'sticky', bottom: 0, zIndex: 10, background: 'rgba(14,20,28,0.96)', backdropFilter: 'blur(10px)', borderTop: `1px solid ${LINE}` }}>
+        <div style={{ maxWidth: 760, margin: '0 auto', padding: '12px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: MUT, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <span><b style={{ color: OK }}>{verifiedCount}</b> signed off</span>
+            <span><b style={{ color: WARN }}>{flaggedTotal}</b> flagged</span>
+            <span style={{ color: FAINT }}>{entries.length - verifiedCount} left</span>
+            {lastSubmit && !justSubmitted && (
+              <span style={{ color: FAINT }}>· last submitted {new Date(lastSubmit.submitted_at).toLocaleDateString()}{lastSubmit.status === 'processed' ? ' ✓ processed' : ' (pending)'}</span>
+            )}
+          </div>
+          {justSubmitted ? (
+            <span style={{ color: OK, fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 600 }}>✓ SUBMITTED — I’ll pick this up next session</span>
+          ) : (
+            <button onClick={submitReview} disabled={submitting || (verifiedCount === 0 && flaggedTotal === 0)}
+              style={{ background: (verifiedCount === 0 && flaggedTotal === 0) ? 'rgba(255,255,255,0.08)' : GOLD, border: 'none', color: (verifiedCount === 0 && flaggedTotal === 0) ? FAINT : '#06212b', fontSize: 12, fontWeight: 700, letterSpacing: '0.04em', padding: '11px 20px', borderRadius: 9, cursor: (submitting || (verifiedCount === 0 && flaggedTotal === 0)) ? 'default' : 'pointer', fontFamily: "'DM Mono', monospace" }}>
+              {submitting ? 'SUBMITTING…' : 'SUBMIT FOR REVIEW →'}
+            </button>
+          )}
         </div>
       </div>
     </div>
