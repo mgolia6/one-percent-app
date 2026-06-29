@@ -1,6 +1,6 @@
 # One Percent — State Snapshot
-**Last updated: 2026-06-28 (Session 2)**
-Regenerated after Session 2: On This Day daily bonus shipped to all users; full admin overhaul (dark theme, feedback summary/surveys/addressed, phone entry, bug triage, API-health + analytics fixes). Session 1 had shipped Lock It In + Keep It Sharp + the onepercent.mpgink.com domain.
+**Last updated: 2026-06-28 (Session 3)**
+Session 3: 60 draft lessons generated (30 new-category + 30 rotation, in `Drafts/`, pending Dead Drop) + catalog-wide "Why Today" fix (28 live entries rewritten from citation dumps to genuine relevance). Session 2: On This Day + full admin overhaul. Session 1: Lock It In + Keep It Sharp + the onepercent.mpgink.com domain.
 
 ---
 
@@ -34,6 +34,15 @@ Regenerated after Session 2: On This Day daily bonus shipped to all users; full 
 
 ### Published Entries: 001–060
 All verified. (Entry 044 AMC→Codeforces correction applied 2026-06-25.)
+**Why-Today fix (Session 3):** every live entry's `morning.why_today` now argues present-day relevance (was citation dumps on 28 of them). Citations stay in the `sources` array. Verification flags untouched.
+
+### Drafts pending Dead Drop (NOT live) — 60 lessons
+- `Drafts/new-categories/` — History HS.1–10, Personal Finance PF.1–10, Health & Performance HP.1–10 (seeds the 3 new categories).
+- `Drafts/rotation/` — SC.14–17, AI.13–16, VL.10–13, MM.6–10, PH.6–10, NC.9–12, CM.9–12 (existing 7, deduped vs 001–060).
+- All `verified: false`, no entry numbers, no four-file sync. Next session: Dead Drop → fix their why_today (relevance-first) → assign 061–120 → four-file sync → go live.
+
+### Content rule (locked Session 3)
+**"Why Today" = relevance-first, citations-in-sources.** The why_today box must answer "why learn THIS, now?" with modern context — never a list of authors/years. See instructions v1.41.
 
 ### Category Counts (live entries; registry now 10 categories)
 | Cat | Key | Live Entries |
@@ -106,8 +115,9 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 ---
 
 ## Pending / In Progress
+- **Dead Drop the 60 drafts** (Claude in Chrome) → fix their why_today (relevance-first) → number 061–120 → four-file sync → go live. Clears a big chunk of the sprint in one pass.
 - **Add `POSTHOG_PERSONAL_KEY` to Vercel** → lights up the admin Analytics tab. Only open setup item.
-- **Content sprint:** ~340 entries across 10 categories to hit ~400 by end of Aug (banks in `Backlog/onepercentbacklog.md`). Critical path. Tier verification: full Dead Drop early/high-traffic, draft-verified + backfill on the tail.
+- **Content sprint:** ~340 entries across 10 categories to hit ~400 by end of Aug (60 now drafted; banks in `Backlog/onepercentbacklog.md`). Critical path. Tier verification: full Dead Drop early/high-traffic, draft-verified + backfill on the tail.
 - **Rotation re-balance** for 10 categories (new 3 need first entries before they surface).
 - **Favorites + block categories (up to 2)** — profile preference model designed, not built.
 - **Redeploy `send-lockin-review`** so review emails use onepercent.mpgink.com (optional, works via alias).
@@ -144,7 +154,8 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - State: `State/onepercentstate.md` (this file)
 - On This Day: `app/components/OnThisDay.jsx`, `app/on-this-day/page.js`, `app/api/on-this-day/route.js`
 - Admin: `app/admin/page.js` (+ `app/api/admin/feedback-summary`, `app/api/admin/analytics`, `app/api/health`)
-- Directions: `Directions/onepercentinstructions-v1_40.md` (current)
+- Directions: `Directions/onepercentinstructions-v1_41.md` (current)
+- Drafts (pending verification): `Drafts/new-categories/` + `Drafts/rotation/`
 
 ---
 

@@ -113,3 +113,27 @@ Shipped **Lock It In** (AI-coached recall) to all users, built and launched **Ke
 - Add `POSTHOG_PERSONAL_KEY` to light up Analytics.
 - Content sprint (~340 across 10 categories) remains the critical path.
 - Refactoring assessment + design review (new roadmap items).
+
+---
+
+# Session 3 — Content push (60 drafts) + catalog-wide "Why Today" fix
+
+## 60 draft lessons generated (NOT live — pending Dead Drop tomorrow)
+- **Batch 1 — seed the 3 new categories (30):** History HS.1–10, Personal Finance PF.1–10, Health & Performance HP.1–10. In `Drafts/new-categories/`.
+- **Batch 2 — normal rotation, existing 7 categories (30):** SC.14–17, AI.13–16, VL.10–13, MM.6–10, PH.6–10, NC.9–12, CM.9–12. In `Drafts/rotation/`. All fresh, deduped vs 001–060.
+- Generated via parallel subagents (one per category / 5-each), each matched to the 060.json schema. All `verified: false`, no four-file sync, no entry numbers — inert until verified.
+- Writers logged specific Dead Drop targets (e.g., CEB Challenger five-profile research; Rozenblit & Keil 2002; colonoscopy/cold-pressor study) — compiled in chat for tomorrow.
+
+## Catalog-wide "Why Today" fix (LIVE content)
+- **Problem (Matthew caught):** the `morning.why_today` ("WHY TODAY") box was a citation dump on many entries, not a statement of present-day relevance.
+- **Triage:** 041–060 → 16 of 20 were dumps/weak (4 AI ones already fine). 001–040 → only 12 dumps (earlier entries were written better); 004/015 left as already-good relevance framing.
+- **Fixed 28 live entries** (16 in 041–060, 12 in 001–040) via parallel subagents: rewrote why_today to genuine "why now" relevance in the One Percent voice; citations kept in the `sources` array; **one source migrated into sources** (Mehrabian & Wiener 1967 on 056) so no attribution lost. `verified`/`verified_by` untouched (framing, not new claims). All JSON re-validated.
+- Result: every live entry 001–060 now argues contemporary relevance in the WHY TODAY box.
+
+## Content learning (locked going forward)
+- **"Why Today" = relevance-first, citations-in-sources.** It must answer "why learn THIS, now?" with the modern context — never a list of authors/years. Added to instructions v1.41 + pre-gen checklist.
+- The 60 drafts were generated before this rule was explicit, so they likely repeat the citation-dump pattern in why_today → **run the relevance-rewrite pass on the drafts during tomorrow's verification** before they go live.
+
+## Wrap state
+- All draft + fix commits pushed to main (drafts inert; live why_today rewrites deploy as content).
+- Next session: Dead Drop the 60 drafts (Claude in Chrome) → fix their why_today → assign entry numbers 061–120 → four-file sync → go live. That clears a huge chunk of the ~340 sprint.

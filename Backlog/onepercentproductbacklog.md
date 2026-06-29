@@ -59,6 +59,8 @@ Note: the old `NEXT_PUBLIC_POSTHOG_KEY` is the public **ingest** key (`phc_`) an
 | **REFACTOR-001** | Refactoring assessment before native | page.js ~1,900 lines (split modals/tabs); admin ~1,050; **entry manifest still duplicated** (page.js + profile.js → extract `lib/entries.js`). Recommendation: do cheap high-leverage extractions on web now (clean seams for the port), defer deep restructuring to native. See State Roadmap. |
 | **DESIGN-001** | Design / appeal review | Structured aesthetic review: is the app genuinely appealing, not just functional? Audit design-system consistency, empty/loading states, mobile feel, Today-tab hierarchy (now carries commitment + KPIs + On This Day + lesson). Output: prioritized punch-list + retention verdict. Can be its own session. See State Roadmap. |
 | FEEDBACK-001 | Post-entry feedback → show concept name | Now shows ENTRY #N; could map number→concept (needs entries manifest in admin) for readability |
+| ~~CONTENT-002~~ | ~~"Why Today" was citation dumps~~ | ✅ Fixed all 28 affected live entries (001–060) → genuine present-day relevance; citations kept in `sources`. Rule locked in v1.41: why_today = relevance-first. |
+| CONTENT-003 | 60 drafts pending Dead Drop | `Drafts/new-categories/` (30) + `Drafts/rotation/` (30). Verify (Claude in Chrome) → rewrite their why_today relevance-first → number 061–120 → four-file sync → go live |
 
 ---
 

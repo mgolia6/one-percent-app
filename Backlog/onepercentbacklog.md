@@ -8,6 +8,14 @@ Status codes: `candidate` · `used` · `needs-verification`
 
 ---
 
+## Drafted 2026-06-28 (Session 3) — pending Dead Drop, NOT live
+
+60 lessons drafted into `Drafts/` (verified:false, no entry numbers). Verify (Claude in Chrome) → fix why_today relevance-first → number 061–120 → four-file sync → go live.
+- **New categories (30):** HS.1–10 (Library of Alexandria, Gutenberg, Black Death, Tulip Mania, Nixon Shock, Cuban Missile Crisis, Penicillin, Magna Carta, Bretton Woods, ARPANET); PF.1–10 (Compound Interest, Rule of 72, Savings Rate, Emergency Fund, Index Funds, Dollar-Cost Averaging, Employer Match, Inflation, Lifestyle Creep, Loss Aversion); HP.1–10 (Circadian Rhythm, Caffeine Half-Life, Zone 2, VO2 Max, Progressive Overload, Protein/MPS, Walk After Meals, Sleep Pressure, Grip Strength, Creatine).
+- **Rotation, existing 7 (30):** SC.14–17 (Black Swan, No-Oriented Qs, Challenger Sale, Power of Silence); AI.13–16 (Tokenization, RLHF, Prompt Injection, Multimodal); VL.10–13 (Illusion of Explanatory Depth, Linguistic Relativity, Passive Voice, False Precision); MM.6–10 (Map≠Territory, Hanlon's Razor, Chesterton's Fence, Planning Fallacy, Margin of Safety); PH.6–10 (Ship of Theseus, Absurdism, Hedonic Treadmill, Akrasia, Paradox of Choice); NC.9–12 (Cognitive Load, Peak-End, Retrieval Practice, Inattentional Blindness); CM.9–12 (NVC, Strategic Ambiguity, High/Low-Context, Summary Close).
+
+---
+
 ## How to use this file
 
 - **Claude:** Read before every concept selection. Cross-reference with search signal. Pick the strongest candidate for the current rotation slot. Mark as `used` after generation. Add new candidates surfaced during research.
