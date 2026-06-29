@@ -22,7 +22,7 @@
     "itw_label": "IN THE WILD — TYPE A · BAGNALL, 'ALEXANDRIA: LIBRARY OF DREAMS', PROC. AMERICAN PHILOSOPHICAL SOCIETY, 2002. EL-ABBADI, 'THE LIFE AND FATE OF THE ANCIENT LIBRARY OF ALEXANDRIA', UNESCO, 1990.",
     "itw_paragraphs": [
       "Historian Roger Bagnall has argued that the obsession with a single destructive fire reflects a modern hunger for a clean villain. The documentary record points instead to a slow institutional death: the expulsion of scholars under Ptolemy VIII around 145 BCE scattered the talent, and the steady decline of Ptolemaic wealth removed the funding that copying and preservation required. The Library died of attrition, not arson.",
-      "The same pattern recurs whenever a knowledge institution loses its patron. Mostafa El-Abbadi's UNESCO study of the Library emphasizes that its holdings were estimated in the hundreds of thousands of scrolls, an accumulation only possible under sustained state investment. Once that investment faltered, no single act was needed to destroy it. Papyrus simply decays, and a scroll that is not recopied within a few generations is gone.",
+      "The same pattern recurs whenever a knowledge institution loses its patron. Mostafa El-Abbadi's UNESCO study of the Library notes holdings traditionally estimated in the hundreds of thousands of scrolls — though the true number is disputed and almost certainly inflated by ancient sources — an accumulation only possible under sustained state investment. Once that investment faltered, no single act was needed to destroy it. Papyrus simply decays, and a scroll that is not recopied within a few generations is gone.",
       "Modern parallels are everywhere. Digital archives go dark when hosting bills go unpaid. Critical open-source software runs on the unpaid labor of a handful of maintainers, and audits repeatedly find core internet infrastructure dependent on projects one burnout away from abandonment. The lesson of Alexandria is not 'beware fires.' It is 'knowledge is a maintained system, and maintained systems fail quietly when no one funds the maintenance.'"
     ],
     "quote": "The destruction of the Library of Alexandria is one of history's great cautionary tales, but the caution is misread: the danger was never the flame, it was the centuries of declining support that left the collection undefended.",
@@ -69,7 +69,7 @@
     {
       "label": "Bagnall, R. S. — 'Alexandria: Library of Dreams', Proceedings of the American Philosophical Society, Vol. 146, No. 4, 2002",
       "detail": "Argues against the single-fire narrative and reconstructs the Library's decline as a long institutional and funding collapse.",
-      "url": "https://www.jstor.org/stable/1558256"
+      "url": "https://archive.nyu.edu/handle/2451/28263"
     },
     {
       "label": "El-Abbadi, M. — 'The Life and Fate of the Ancient Library of Alexandria', UNESCO Publishing, 1990",
