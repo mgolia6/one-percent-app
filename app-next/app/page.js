@@ -1140,6 +1140,7 @@ export default function HomePage() {
   const [weeklyWeekNumber, setWeeklyWeekNumber] = useState(1)
   const [bookmarks, setBookmarks] = useState({})
   const [activeTab, setActiveTab] = useState('today')
+  const [libTab, setLibTab] = useState('lessons') // admin IA: Library sub-tabs (lessons | prompts)
   const [libFilter, setLibFilter] = useState('')
   const [showGoalSheet, setShowGoalSheet] = useState(false)
   const [goalWhat, setGoalWhat] = useState('')
@@ -1762,8 +1763,10 @@ export default function HomePage() {
           </button>
         </div>
         <div className="action-strip" style={S.actionStrip}>
-          <button style={{ ...S.asBtn, color: '#47FFE8', fontWeight: 600, borderColor: 'rgba(71,255,232,0.4)', background: 'rgba(71,255,232,0.08)' }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
-          <div style={S.sep} />
+          {!isAdmin && <>
+            <button style={{ ...S.asBtn, color: '#47FFE8', fontWeight: 600, borderColor: 'rgba(71,255,232,0.4)', background: 'rgba(71,255,232,0.08)' }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
+            <div style={S.sep} />
+          </>}
           <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : 'rgba(232,238,245,0.72)', fontWeight: hasUnseenChangelog ? 600 : 400, borderColor: hasUnseenChangelog ? 'rgba(224,169,61,0.4)' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
           <div style={S.sep} />
           <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
@@ -1953,7 +1956,19 @@ export default function HomePage() {
       )}
 
       {/* ── LIBRARY TAB ── */}
-      {activeTab === 'library' && (
+      {/* Admin IA: Library sub-tab toggle (Lessons | Prompts) */}
+      {activeTab === 'library' && isAdmin && (
+        <div style={{ padding: '16px 18px 0', display: 'flex', gap: 6, background: 'rgba(255,255,255,0.02)', borderRadius: 0 }}>
+          {[{ id: 'lessons', label: 'LESSONS' }, { id: 'prompts', label: 'PROMPTS' }].map(s => (
+            <button key={s.id} onClick={() => setLibTab(s.id)} style={{ flex: 1, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.12em', fontWeight: 600, padding: '9px 0', borderRadius: 9, cursor: 'pointer',
+              border: `1px solid ${libTab === s.id ? 'rgba(71,255,232,0.4)' : 'rgba(255,255,255,0.1)'}`,
+              background: libTab === s.id ? 'rgba(71,255,232,0.1)' : 'transparent',
+              color: libTab === s.id ? '#47FFE8' : 'rgba(232,238,245,0.5)' }}>{s.label}</button>
+          ))}
+        </div>
+      )}
+
+      {activeTab === 'library' && (!isAdmin || libTab === 'lessons') && (
         <div style={{ ...S.screen, paddingTop: 20 }}>
           {/* Category chips 4x2 */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 20 }}>
@@ -2008,8 +2023,8 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* ── PROMPTS TAB ── */}
-      {activeTab === 'prompts' && (
+      {/* ── PROMPTS TAB ── (own tab for non-admins; Library sub-tab for admins) */}
+      {(activeTab === 'prompts' || (activeTab === 'library' && isAdmin && libTab === 'prompts')) && (
         <div style={S.screen}>
           {/* Prompt Vault — compact single-row hero */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px 0', borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 16 }}>
@@ -2237,16 +2252,27 @@ export default function HomePage() {
 
       {/* BOTTOM NAV */}
       <div style={S.bottomNav} className="op-bottom-nav">
-        {[
+        {(isAdmin
+          ? [
+          { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
+          { id: 'review', label: 'REVIEW', route: '/review', badge: dueCount, icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" stroke={'rgba(232,238,245,0.28)'}><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg> },
+          { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
+          { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
+          ]
+          : [
           { id: 'today', label: 'TODAY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='today'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> },
           { id: 'library', label: 'LIBRARY', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='library'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> },
           { id: 'prompts', label: 'PROMPTS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='prompts'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'} strokeLinejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg> },
           { id: 'progress', label: 'PROGRESS', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" stroke={activeTab==='progress'?'rgba(232,238,245,0.9)':'rgba(232,238,245,0.28)'}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
-        ].map(t => (
-          <div key={t.id} onClick={() => { setActiveTab(t.id); window.scrollTo({ top: 0, behavior: 'instant' }) }} style={S.tab(activeTab === t.id)}>
-            <div style={S.tabPip(activeTab === t.id, activeTab === t.id ? 'rgba(232,238,245,0.9)' : 'transparent')} />
-            <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.icon}</div>
-            <span style={S.tabLbl(activeTab === t.id)}>{t.label}</span>
+          ]
+        ).map(t => (
+          <div key={t.id} onClick={() => { if (t.route) { router.push(t.route) } else { setActiveTab(t.id); window.scrollTo({ top: 0, behavior: 'instant' }) } }} style={S.tab(!t.route && activeTab === t.id)}>
+            <div style={S.tabPip(!t.route && activeTab === t.id, (!t.route && activeTab === t.id) ? 'rgba(232,238,245,0.9)' : 'transparent')} />
+            <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+              {t.icon}
+              {t.badge > 0 && <span style={{ position: 'absolute', top: -4, right: -7, minWidth: 15, height: 15, padding: '0 4px', borderRadius: 8, background: '#47FFE8', color: '#06212b', fontSize: 9, fontWeight: 700, fontFamily: "'DM Mono', monospace", display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>{t.badge}</span>}
+            </div>
+            <span style={S.tabLbl(!t.route && activeTab === t.id)}>{t.label}</span>
           </div>
         ))}
       </div>
