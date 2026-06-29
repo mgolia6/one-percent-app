@@ -575,6 +575,7 @@ export default function AdminPage() {
             <button onClick={refreshAll} disabled={refreshing} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(232,238,245,0.12)', background: 'transparent', color: 'rgba(232,238,245,0.5)', cursor: 'pointer' }}>
               {refreshing ? 'REFRESHING…' : '↺ REFRESH'}
             </button>
+            <button onClick={() => router.push('/verify')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: '1px solid rgba(224,169,61,0.35)', background: 'rgba(224,169,61,0.1)', color: '#E0A93D', cursor: 'pointer' }}>VERIFY →</button>
             <button onClick={() => router.push('/')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 12px', borderRadius: 8, border: 'none', background: '#33506e', color: '#fff', cursor: 'pointer' }}>← APP</button>
           </div>
         </div>
