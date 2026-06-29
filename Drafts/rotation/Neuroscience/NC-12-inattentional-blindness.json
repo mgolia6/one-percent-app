@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "NC.12",
+  "category": "Neuroscience & Cognition",
+  "categoryTag": "NEUROSCIENCE & COGNITION",
+  "concept": "Inattentional Blindness",
+  "accent": "#47C8FF",
+  "accentDim": "rgba(71,200,255,0.10)",
+  "morning": {
+    "hook": "A person in a gorilla suit can walk into the middle of a scene, beat their chest, and stroll out — and roughly half the people watching will swear it never happened. Not because they have bad eyes. Because they were looking at something else.",
+    "explanation_paragraphs": [
+      "In the experiment that made this famous, viewers watch a short video of two teams passing basketballs and are told to count the passes made by the players in white. They concentrate hard. About halfway through, a person in a full gorilla suit walks into the middle of the screen, faces the camera, thumps their chest, and walks off — on screen for a full nine seconds. When the video ends and viewers are asked if they noticed anything unusual, around half say no. They counted the passes correctly. They simply never saw the gorilla, and many flatly refuse to believe it was there until it's replayed for them.",
+      "This is inattentional blindness, studied most famously by Daniel Simons and Christopher Chabris. The mechanism is that attention, not the eye, is the real gatekeeper of awareness. Your eyes take in far more than your conscious mind can process, so attention acts as a spotlight, and whatever falls outside it is often filtered out before it ever reaches awareness — even if it's large, moving, and right in your line of sight. Crucially, the more demanding the task you're focused on (counting passes by one specific team), the more completely you go blind to everything else. Focus has a cost, and the cost is everything you're not focused on.",
+      "The nuance is that this isn't a glitch in a few inattentive people — it's standard-issue human perception, and it gets stronger the harder you concentrate. We have a powerful and misleading intuition that we see the world as it is, that anything obvious would automatically grab our attention. Simons and Chabris called this the 'illusion of attention': we dramatically overestimate how much of our surroundings we actually take in. The people who miss the gorilla aren't unusual. The unusual thing is how certain everyone is that they would never miss it.",
+      "The stakes are everywhere attention is narrow and something unexpected matters. A radiologist hunting for one kind of abnormality can miss another. A driver focused on the road ahead can fail to see a motorcycle in plain view. A reviewer scanning a contract for one clause misses the obvious error in another. A team locked onto a metric stops seeing the customer complaint piling up beside it. Once you accept that focus actively hides things, you stop trusting 'I would have noticed' — and start building in the second look."
+    ],
+    "why_today": "Inattentional blindness was demonstrated in the 'invisible gorilla' study: Simons, D. J. & Chabris, C. F. (1999), 'Gorillas in our midst: Sustained inattentional blindness for dynamic events,' Perception, 28(9), 1059–1074.",
+    "morning_challenge": "This is a recognition lens — the goal today is to catch the limits of your own attention, not to fix them by force.\n\nNotice one moment when you're deeply focused on a task — drafting, reviewing, driving, searching for something specific. In that moment, ask: what am I almost certainly not seeing right now because my attention is locked on this?\n\nThen pick one important thing you'll review today — a document, a screen, a situation — and deliberately do a second pass with a different question in mind than your first pass. The point isn't to feel paranoid. It's to feel, just once, how much your focus was filtering out — so you stop trusting 'I would have noticed.'"
+  },
+  "midday": {
+    "reframe": "The dangerous thought isn't 'I might have missed something.' It's 'I would definitely have noticed if anything was off.' Inattentional blindness says that confidence is the illusion — the more focused you were, the more you were built to miss.",
+    "itw_label": "IN THE WILD — TYPE A · SIMONS & CHABRIS, PERCEPTION, 1999. DREW ET AL., PSYCHOLOGICAL SCIENCE, 2013.",
+    "itw_paragraphs": [
+      "In the original Simons and Chabris study, about half of observers counting basketball passes failed to notice the gorilla — and the rate of missing it rose when the counting task was made harder. The effect wasn't about poor vision or distraction; observers were staring directly at the scene. It was a direct consequence of how attention allocates a limited resource: load the spotlight with a demanding task and the unattended-but-obvious slips through the filter before it reaches awareness.",
+      "A 2013 study by Trafton Drew and colleagues took the gorilla into a professional setting. They embedded a small image of a gorilla into a series of lung CT scans and asked expert radiologists to look for cancer nodules. Eighty-three percent of the radiologists missed the gorilla — even though eye-tracking showed most of them had looked directly at it. Expertise didn't protect against inattentional blindness; the experts' attention was tuned to find nodules, and a gorilla isn't a nodule.",
+      "The phenomenon has serious safety implications in driving and aviation. The 'looked-but-failed-to-see' category of accidents — where a driver looks straight at a motorcycle or cyclist and pulls out anyway — is partly explained by inattentional blindness: drivers primed to look for cars can fail to perceive a less-expected vehicle in clear view. Pilot studies have shown similar effects with head-up displays, where a fixated pilot can miss an obstacle on the runway directly ahead. Attention shapes what reaches awareness, and what's unexpected often loses."
+    ],
+    "quote": "We think we see ourselves and the world as they really are, but we're actually missing a lot.",
+    "attribution": "Daniel Simons & Christopher Chabris, on the illusion of attention",
+    "midday_nudge": "Notice the next time you catch yourself thinking 'nothing important could have gotten past me' about something you reviewed or witnessed. Hold that certainty up to the gorilla study. You don't need to redo the work — just register that intense focus and total awareness are not the same thing, and your confidence isn't evidence you didn't miss something."
+  },
+  "quiz": [
+    {
+      "question": "A quality reviewer scans a report for formatting errors and signs off. Later, an obvious factual mistake — right in the section they read — is found. The reviewer insists they would have caught anything obvious. What does inattentional blindness suggest actually happened?",
+      "options": [
+        "The reviewer was careless and simply didn't do their job",
+        "Their attention was tuned to formatting, so a factual error — though obvious and in plain view — fell outside the attentional spotlight and never reached awareness, despite their eyes passing over it",
+        "The factual error must not have actually been visible on the page",
+        "The reviewer needs glasses or better lighting"
+      ],
+      "correct": 1,
+      "explanation": "This mirrors the gorilla and the radiology findings: looking directly at something is not the same as perceiving it. The reviewer's attention was loaded with one task (formatting), so an error in a different category slipped through the filter even though it was obvious and in their line of sight. The lesson isn't that they were lazy — it's that focused attention reliably hides the unattended, which is exactly why a second pass with a different goal is needed."
+    },
+    {
+      "question": "In Drew's study, 83% of expert radiologists missed a gorilla image inserted into a CT scan, even though eye-tracking showed they looked right at it. What's the most important implication?",
+      "options": [
+        "Radiologists are not as skilled as they claim to be",
+        "Expertise and focused attention don't protect against inattentional blindness — being tuned to find one thing (nodules) can make you blind to an unexpected thing in plain view, so experts need safeguards, not just confidence",
+        "Eye-tracking proves the radiologists weren't really looking at the scans",
+        "The gorilla was too small to be reasonably noticed"
+      ],
+      "correct": 1,
+      "explanation": "The unsettling part is that expertise made no difference — the radiologists looked directly at the gorilla and still didn't see it, because their attention was correctly tuned to the task of finding nodules. This shows inattentional blindness isn't a novice error to be trained away; it's a feature of how attention works. The remedy is structural — checklists, second readers, deliberate broad passes — not just trusting an expert's certainty that they'd have noticed."
+    },
+    {
+      "question": "Simons and Chabris coined the term 'illusion of attention.' Which belief best captures this illusion, and why is it dangerous?",
+      "options": [
+        "The belief that paying attention is tiring — dangerous because it makes people avoid focus",
+        "The belief that we perceive everything important in our visual field and would automatically notice anything obvious — dangerous because it makes us overconfident and skip the safeguards that catch what our attention filtered out",
+        "The belief that vision is more reliable than memory — dangerous because both are flawed",
+        "The belief that experts never make mistakes — dangerous in any field"
+      ],
+      "correct": 1,
+      "explanation": "The illusion of attention is our systematic overestimation of how much of our surroundings we actually take in — the gut conviction that anything obvious would 'pop out' and grab us. It's dangerous precisely because it breeds false confidence: if you believe you'd automatically catch anything important, you won't build in the second look, the checklist, or the fresh pair of eyes that actually catch what focused attention hid. Recognizing the illusion is what motivates the safeguard."
+    }
+  ],
+  "closing": "Focus is a spotlight, and a spotlight is also a way of making everything else dark. The most useful thing you can carry from the invisible gorilla isn't 'pay more attention' — it's the humility to stop believing that paying attention means you saw it all.",
+  "sources": [
+    {
+      "label": "Simons, D. J. & Chabris, C. F. — Gorillas in our midst: Sustained inattentional blindness for dynamic events, Perception, 28(9), 1059–1074, 1999",
+      "detail": "The original invisible-gorilla experiment establishing sustained inattentional blindness for a salient, dynamic event.",
+      "url": "https://doi.org/10.1068/p281059"
+    },
+    {
+      "label": "Drew, T., Võ, M. L.-H. & Wolfe, J. M. — The Invisible Gorilla Strikes Again: Sustained Inattentional Blindness in Expert Observers, Psychological Science, 24(9), 1848–1853, 2013",
+      "detail": "Demonstrated that expert radiologists overwhelmingly missed a gorilla image in CT scans they looked directly at.",
+      "url": "https://doi.org/10.1177/0956797613479386"
+    }
+  ],
+  "ai_prompt": "I want to find the blind spots that my focused attention might be hiding in an important task or decision I'm working on. First ask me what I'm focused on and what I'm specifically looking for, since inattentional blindness hides whatever falls outside that focus. Then help me design a deliberate second pass that looks for what my primary focus would filter out. Here's the task: [describe what you're focused on]",
+  "verified": false
+}

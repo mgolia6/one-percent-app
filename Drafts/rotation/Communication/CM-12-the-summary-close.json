@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "CM.12",
+  "category": "Communication",
+  "categoryTag": "COMMUNICATION",
+  "concept": "The Summary Close",
+  "accent": "#FF8C00",
+  "accentDim": "rgba(255,140,0,0.10)",
+  "morning": {
+    "hook": "The meeting ends. Everyone nods, feels aligned, and leaves. Three days later you discover four people thought four different things were decided, and the one task that mattered belongs to nobody. Sixty seconds at the end would have caught all of it.",
+    "explanation_paragraphs": [
+      "A good discussion has just wrapped. Ideas were sharp, agreement felt total, energy is high — and everyone is already half out the door. Then one person says: 'Before we go: we decided to ship the beta to the West Coast list first, not nationwide. Priya owns the email by Thursday, Sam confirms the list by Wednesday. Anyone hear that differently?' Two people blink. It turns out half the room thought 'beta' meant nationwide. The decision that felt unanimous wasn't — and the only reason anyone found out in the room, instead of in a week, is that someone restated it out loud before leaving.",
+      "The summary close is the deliberate act of ending a meeting or conversation by restating, in plain words, what was decided, who owns each action, and by when — and then explicitly inviting correction. Its power comes from forcing latent disagreement to surface while everyone is still present and the cost of fixing it is a sentence instead of a week. Agreement in a discussion is often an illusion of shared understanding: people nod at the same words while attaching different meanings to them. Saying the conclusion back converts vague consensus into a checkable, owned, scheduled commitment.",
+      "The reason it works is that ambiguity is comfortable in the moment and expensive later. Restating decisions feels almost rude — it can seem to imply people weren't paying attention, or it slows down a meeting that's 'basically done.' But that mild social friction is the entire point: it's the pressure that pops false agreement. A naming of owners ('Priya owns this') also defeats diffusion of responsibility — the well-documented effect where a task everyone heard becomes a task nobody does, precisely because everyone assumes someone else will.",
+      "People skip the summary close for predictable reasons, and each one is a trap. Time pressure ('we're already over'). Social discomfort ('it feels like I'm doubting them'). The illusion of alignment ('we obviously all agree'). And status — junior people often don't feel entitled to summarize, while senior people assume their meaning was understood. The cost of skipping is paid later and elsewhere: redone work, missed deadlines, and the meeting-after-the-meeting where people figure out what the meeting actually decided. The summary close moves that cost into the room, where it's cheapest to pay."
+    ],
+    "why_today": "The summary close draws on long-standing facilitation and negotiation practice — confirming decisions and action items at a meeting's end. It is documented in Doyle, M. & Straus, D. (1976). How to Make Meetings Work (Jove/Berkley), whose 'Interaction Method' emphasizes capturing decisions and action assignments before a group disperses.",
+    "morning_challenge": "In the next meeting or decision conversation you're in — even a two-person one — be the person who closes it.\n\nBefore anyone leaves, say back, out loud: here's what we decided, here's who owns each piece, here's by when. Then ask the real question: 'Did anyone hear that differently?'\n\nWatch what surfaces. The goal isn't to slow things down — it's to find the disagreement now, while it costs one sentence instead of one week."
+  },
+  "midday": {
+    "reframe": "The nods at the end of a meeting are not proof of agreement — they're proof everyone heard the same words. Saying the decision back, with owners and dates, is the cheapest test you have for whether those words meant the same thing to everyone.",
+    "itw_label": "IN THE WILD — TYPE A · DOYLE & STRAUS, HOW TO MAKE MEETINGS WORK, JOVE/BERKLEY, 1976. DARLEY & LATANÉ, JPSP, 1968.",
+    "itw_paragraphs": [
+      "Michael Doyle and David Straus's How to Make Meetings Work (1976) introduced the 'Interaction Method' of facilitation, built on the principle that a group must have a visible, shared record of its decisions and that someone must explicitly capture who agreed to do what before the group disperses. Their core insight is that meetings fail not for lack of discussion but for lack of a closing discipline — the conversation produces the feeling of progress while the concrete decisions and owners evaporate the moment people stand up. The summary close is the operational form of that discipline.",
+      "The reason an unowned action item tends to die has a name in social psychology: diffusion of responsibility, documented by John Darley and Bibb Latané in their 1968 bystander studies in the Journal of Personality and Social Psychology. They found that the more people present when help is needed, the less likely any single person is to act, because responsibility is split across the group until no one feels it. A task heard by a whole room is the meeting-room version of the same effect — naming a single owner out loud is what reassigns the responsibility that the group had quietly dissolved.",
+      "Modern execution practice encodes the same move under different names: the 'who, what, by when' close, the GTD-style insistence that every commitment have a single defined next action and owner, and the agile habit of confirming action items before a standup ends. Across all of them the mechanic is identical — verbalize the decisions and assignments while the group is still assembled, and invite correction. The technique is old and unglamorous precisely because it keeps being rediscovered by anyone who has watched an 'aligned' meeting fall apart afterward."
+    ],
+    "quote": "It is amazing how often people will leave a meeting with completely different ideas about what was decided... A good summary at the end forces these differences into the open while they can still be resolved.",
+    "attribution": "Paraphrase of Michael Doyle & David Straus, How to Make Meetings Work, Jove/Berkley, 1976",
+    "midday_nudge": "Think of a recent meeting where alignment felt obvious. Send a two-line follow-up now: 'Quick recap of what we decided and who owns what — [decision], [owner], [by when]. Did I capture that right?' If even one reply corrects you, you just found a misalignment before it cost real time."
+  },
+  "quiz": [
+    {
+      "question": "A discussion ends with everyone nodding and feeling aligned. Why does an experienced facilitator still restate the decisions, owners, and deadlines out loud before people leave?",
+      "options": [
+        "To demonstrate that they were paying attention during the meeting",
+        "Because nodding signals people heard the same words, not that they attached the same meaning — restating forces any hidden disagreement to surface while it's still cheap to fix",
+        "Because meetings are required to have formal minutes",
+        "To extend the meeting so it feels more substantial"
+      ],
+      "correct": 1,
+      "explanation": "Apparent agreement is often an illusion of shared understanding — people nod at identical words while meaning different things. The summary close converts vague consensus into a specific, checkable statement, which is what makes latent disagreement visible. Catching it in the room costs a sentence; catching it later costs redone work and missed deadlines."
+    },
+    {
+      "question": "A meeting ends with a clear action item everyone in the room heard — but no name attached to it. A week later it's untouched. Which mechanism best explains why, and what fixes it?",
+      "options": [
+        "The task wasn't important enough; nothing fixes that",
+        "Diffusion of responsibility — when a task is owned by 'the group,' each person assumes someone else will act, so naming a single owner out loud reassigns the responsibility",
+        "People simply forgot, and a reminder email is the only fix",
+        "The meeting was too long, so attention faded"
+      ],
+      "correct": 1,
+      "explanation": "Diffusion of responsibility (Darley & Latané) means a task spread across a whole group is felt by no one — everyone assumes someone else has it. A summary close defeats this by assigning a single named owner ('Priya owns the email by Thursday'), which is precisely the step a vague group agreement skips. The fix isn't more reminders; it's a name said in the room."
+    },
+    {
+      "question": "Which of these is the most common real reason people skip the summary close, even when they know it helps?",
+      "options": [
+        "They believe summaries are only appropriate for formal board meetings",
+        "Restating decisions creates mild social friction — it can feel like doubting people or slowing a meeting that's 'basically done' — and that discomfort, plus time pressure, outweighs a cost that won't be paid until later",
+        "Most meetings genuinely have no decisions worth summarizing",
+        "Summarizing requires special facilitation training that most people lack"
+      ],
+      "correct": 1,
+      "explanation": "The barrier is rarely ignorance of the technique — it's that the summary close has an immediate social and time cost (it feels mildly rude and slows a finished-feeling meeting) while its payoff is invisible and deferred. People trade a certain small discomfort now for an uncertain larger cost later. Recognizing that the friction IS the value — it's what pops false agreement — is what makes people willing to do it anyway."
+    }
+  ],
+  "closing": "The end of a meeting is the cheapest moment to discover you didn't actually agree. Spend the sixty seconds: say back what was decided, name who owns it, set the date, and ask if anyone heard it differently. The discomfort is the tool working.",
+  "sources": [
+    {
+      "label": "Doyle, M. & Straus, D. — How to Make Meetings Work: The New Interaction Method, Jove/Berkley, 1976",
+      "detail": "The foundational facilitation text behind capturing decisions and action assignments before a group disperses — the discipline underlying the summary close.",
+      "url": "https://www.penguinrandomhouse.com/books/322755/how-to-make-meetings-work-by-michael-doyle-and-david-straus/"
+    },
+    {
+      "label": "Darley, J. M. & Latané, B. — 'Bystander intervention in emergencies: Diffusion of responsibility,' Journal of Personality and Social Psychology, 8(4), 1968",
+      "detail": "The original research on diffusion of responsibility, explaining why an action item owned by 'the group' rather than a named person tends to go undone.",
+      "url": "https://doi.org/10.1037/h0025589"
+    }
+  ],
+  "ai_prompt": "I want to get better at closing meetings and conversations by summarizing decisions, owners, and deadlines out loud. Before giving me a template, ask me what kind of meetings I run, where alignment tends to break down afterward, and what's stopped me from summarizing in the past (time, discomfort, status). Then help me build a summary-close habit that fits my situation. Here's my context: [describe your meetings]",
+  "verified": false
+}
