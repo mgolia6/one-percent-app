@@ -50,6 +50,21 @@ Before modifying any file, Claude Code must:
 
 ---
 
+## Push Protocol (MANDATORY before every push)
+
+Before pushing any change, ask Matthew **two questions** and wait for his answer:
+
+1. **Push to `main`?** — `main` auto-deploys to production via Vercel. The alternative is holding on the feature branch / preview.
+2. **Admin-gate it?** — **DEFAULT IS YES.**
+
+The best default initial move for new work: **ship to `main` but gated behind the `is_admin` check.** This puts it live in the real environment so Matthew can verify it, without exposing it to all users. After he verifies, he decides: un-gate (roll out to everyone) or roll back.
+
+**Exception — shared UI edits.** Gating only applies to *new* features/sections that can be wrapped in `is_admin` (e.g. `/verify`, `/admin`). A change to existing shared UI everyone already sees (e.g. a color/layout fix on the home header) cannot be gated. In that case, say "not gateable — this touches shared UI" and just confirm the push-to-`main` decision.
+
+Never push without running this protocol first.
+
+---
+
 ## File Map
 
 ```
