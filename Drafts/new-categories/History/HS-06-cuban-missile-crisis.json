@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "HS.6",
+  "category": "History",
+  "categoryTag": "HISTORY",
+  "concept": "The Cuban Missile Crisis",
+  "accent": "#E0A93D",
+  "accentDim": "rgba(224,169,61,0.10)",
+  "morning": {
+    "hook": "For thirteen days in October 1962, the survival of human civilization may have hinged on the judgment of a single Soviet submarine officer no one has heard of. The famous part of the crisis was the standoff between two presidents. The part that nearly ended the world happened underwater, in the dark, with the radio dead.",
+    "explanation_paragraphs": [
+      "On October 16, 1962, President Kennedy was shown U-2 reconnaissance photographs of Soviet medium-range ballistic missile sites under construction in Cuba, ninety miles from Florida. Over the next thirteen days, Kennedy and a small group of advisors known as ExComm debated the response while a US naval blockade — carefully called a 'quarantine' to avoid the legal status of an act of war — ringed the island. The world watched two nuclear superpowers move toward a collision neither claimed to want.",
+      "The mechanism of the crisis was not a plan but an escalation ladder, where each side's defensive move looked offensive to the other. Khrushchev had placed the missiles partly to redress a real strategic imbalance and partly to deter another invasion of Cuba after the Bay of Pigs. Kennedy could not let them stand without appearing to surrender the hemisphere. Each move — the quarantine, the alert of Strategic Air Command to DEFCON 2, the readying of an invasion force — narrowed the room for the other side to back down without humiliation.",
+      "The closest call was almost invisible at the time. On October 27, US destroyers dropped practice depth charges on a Soviet submarine, B-59, that had lost radio contact and did not know whether war had already begun. The submarine carried a nuclear-tipped torpedo. Launching it required the agreement of three officers aboard; two reportedly favored firing. The third, second-in-command Vasili Arkhipov, refused. The crisis ended not only in the negotiating rooms but because one exhausted man underwater said no.",
+      "The resolution was a deal, and a partly secret one. Khrushchev publicly agreed to remove the missiles in exchange for a US pledge not to invade Cuba. Privately, Kennedy also agreed to withdraw American Jupiter missiles from Turkey — a concession kept quiet so it would not look like a trade. Both leaders, having stared into the same abyss, afterward built the Moscow–Washington hotline and signed the 1963 Partial Test Ban Treaty. The lesson they drew was that the machinery of confrontation could run faster than the men nominally controlling it."
+    ],
+    "why_today": "The most influential account of the crisis as a study in decision-making is Graham Allison's Essence of Decision: Explaining the Cuban Missile Crisis (1971; revised with Philip Zelikow, 1999), which argues that outcomes were shaped less by a single rational actor than by organizational routines and bureaucratic bargaining — a framework still taught in foreign-policy and management courses today.",
+    "morning_challenge": "Think of a current standoff in your own world — a negotiation, a conflict with a colleague, a tense family dynamic — where both sides feel they are only defending themselves.\n\nAsk: what does my last 'defensive' move look like from the other side? Is there an off-ramp that lets the other person back down without losing face?\n\nThe Cuban Missile Crisis was solved less by winning than by quietly engineering a way for the other side to retreat with dignity."
+  },
+  "midday": {
+    "reframe": "The crisis was not resolved by the side with more resolve. It was resolved by both sides recognizing that 'winning' a nuclear confrontation outright would require the other side to accept total humiliation — and that a cornered superpower is the most dangerous thing on Earth.",
+    "itw_label": "IN THE WILD — TYPE A · ALLISON & ZELIKOW, ESSENCE OF DECISION, 1999. NATIONAL SECURITY ARCHIVE, CUBAN MISSILE CRISIS DOCUMENTS.",
+    "itw_paragraphs": [
+      "Graham Allison's Essence of Decision used the crisis to challenge the assumption that governments act as single rational minds. He showed that the US response was shaped by organizational behavior — the Navy ran the blockade according to its own standard procedures, sometimes in tension with what the White House thought it had ordered — and by bargaining among officials with different agendas. The 'decision' was less a choice than the output of competing machines.",
+      "Declassified records gathered by the National Security Archive later revealed how much luck was involved. The B-59 submarine incident, the straying of a U-2 spy plane into Soviet airspace at the height of the crisis, and an accidental US missile test launch all occurred while both militaries were on a hair trigger. None were ordered by Kennedy or Khrushchev. Each could have been read as the opening shot of a war.",
+      "The enduring scholarly point is about control. Leaders imagine they hold the steering wheel in a confrontation, but large institutions under stress generate their own momentum — routines fire automatically, information arrives late or wrong, and subordinates improvise. The Cuban Missile Crisis is studied not because the leaders were brilliant, but because they recognized in time how little of the situation either of them actually controlled."
+    ],
+    "quote": "Above all, while defending our own vital interests, nuclear powers must avert those confrontations which bring an adversary to a choice of either a humiliating retreat or a nuclear war.",
+    "attribution": "John F. Kennedy, Commencement Address at American University, June 10, 1963",
+    "midday_nudge": "Next time you are in a disagreement you badly want to win, pause before the decisive move and ask one question: am I about to back this person into a corner where their only options are total surrender or escalation? If so, what third door can I build for them?"
+  },
+  "quiz": [
+    {
+      "question": "Allison's Essence of Decision argues that the crisis is best understood not as one rational government making a clean choice, but largely as the product of organizational routines and bureaucratic bargaining. Why does that distinction matter beyond 1962?",
+      "options": [
+        "It proves that Kennedy was a weak leader who lost control of his government",
+        "It shows that large institutions under stress generate their own momentum, so outcomes can diverge from what any single decision-maker intended — a dynamic visible in any big organization, not just governments",
+        "It means nuclear weapons are safe because procedures govern their use",
+        "It demonstrates that the Soviet system was uniquely chaotic compared to the American one"
+      ],
+      "correct": 1,
+      "explanation": "Allison's central insight is that a government is not a single mind. Standard operating procedures fire automatically and officials bargain over competing agendas, so the 'decision' is an emergent output rather than a pure choice. This is a general lesson about complex organizations under pressure — the same gap between 'what leadership ordered' and 'what the machine actually did' shows up in companies, militaries, and bureaucracies everywhere."
+    },
+    {
+      "question": "Kennedy quietly agreed to remove US missiles from Turkey but kept that concession secret. What does this reveal about how the standoff was actually defused?",
+      "options": [
+        "Kennedy was being dishonest and the deal was illegitimate",
+        "Letting an opponent retreat without public humiliation can be more important to resolution than the formal terms — the secrecy preserved Khrushchev's and Kennedy's ability to back down",
+        "The Turkish missiles were the only real issue in the crisis",
+        "Secret deals always produce better outcomes than public ones"
+      ],
+      "correct": 1,
+      "explanation": "The face-saving structure of the deal was load-bearing. A cornered superpower with no dignified exit is dangerous, so the concession was hidden to let both leaders retreat without appearing to capitulate. The through-line to everyday conflict: resolution often depends less on the literal terms than on whether the other side can step back without public humiliation."
+    },
+    {
+      "question": "Several of the most dangerous moments — the B-59 submarine, a strayed U-2, an accidental test launch — were not ordered by either leader. What broader point do these near-misses make?",
+      "options": [
+        "The leaders were incompetent and should have prevented every incident personally",
+        "In a high-tension standoff, accidents and autonomous actions by subordinates can drive escalation independently of leaders' intentions, so reducing the overall tension matters more than perfecting each order",
+        "Nuclear war was never actually a serious risk during the crisis",
+        "Submarines should not carry nuclear weapons"
+      ],
+      "correct": 1,
+      "explanation": "The near-misses show that escalation has its own machinery: when two systems are on a hair trigger, a lost radio, a navigation error, or a frightened officer can nearly start a war no one chose. The practical lesson, drawn by Kennedy and Khrushchev afterward, is that the safest move in a dangerous standoff is to lower the ambient tension itself, not to assume you control every moving part."
+    }
+  ],
+  "closing": "The Cuban Missile Crisis is remembered as a triumph of nerve. It is better remembered as a near-catastrophe of momentum — a warning that the systems we build to project strength can carry us past the point where anyone is still steering.",
+  "sources": [
+    {
+      "label": "Allison, G. & Zelikow, P. — Essence of Decision: Explaining the Cuban Missile Crisis (2nd ed.), Longman, 1999",
+      "detail": "The foundational study of the crisis as a problem in decision-making, introducing the rational-actor, organizational-behavior, and governmental-politics models.",
+      "url": "https://www.worldcat.org/title/essence-of-decision-explaining-the-cuban-missile-crisis/oclc/40755263"
+    },
+    {
+      "label": "National Security Archive — The Cuban Missile Crisis, 1962 (document collection)",
+      "detail": "Declassified US and Soviet documents, including records of the B-59 submarine incident and other near-misses, hosted by George Washington University.",
+      "url": "https://nsarchive2.gwu.edu/nsa/cuba_mis_cri/"
+    }
+  ],
+  "ai_prompt": "I want to understand the Cuban Missile Crisis as a case study in managing high-stakes standoffs without escalation. Before you explain, ask me whether I'm interested in the leadership decisions, the near-miss accidents, or how the lessons apply to conflicts in my own life. Then tailor the walkthrough to that. Here's the angle I care about most: [describe your interest or a standoff you're facing]",
+  "verified": false
+}

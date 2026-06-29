@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.2",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "The Rule of 72",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "You don't need a spreadsheet to know how long it takes money to double. You need one division you can do in your head — and once you can, a lot of financial claims stop sounding impressive and start sounding like arithmetic.",
+    "explanation_paragraphs": [
+      "An advisor, an ad, or a friend tells you something will 'grow your money' at 6% a year. Is that good? Most people have no intuition for what 6% does over time, so the number floats free of meaning. Now apply one trick: divide 72 by 6. You get 12. That's roughly how many years it takes your money to double at 6%. Suddenly the claim is concrete — money planted today is worth twice as much in about a dozen years, four times as much in roughly twenty-four. The abstract percentage became a timeline you can actually reason about.",
+      "The Rule of 72 is a mental shortcut: to estimate the number of years for an amount to double at a given annual compounding rate, divide 72 by the rate. At 8%, doubling takes about 9 years (72 ÷ 8). At 4%, about 18 years. At 12%, about 6 years. It works because doubling is governed by the natural logarithm of 2, which is about 0.693, and 72 happens to be a number that divides cleanly and lands close to the true answer across the range of rates people actually encounter. It is an approximation, not an identity — but for everyday rates it's accurate to within a fraction of a year.",
+      "The same rule exposes the cost of things that quietly work against you. Inflation at 3% halves your purchasing power in about 24 years — money in a no-interest account is silently losing half its real value over a working lifetime. A fund charging 1% more in fees than another isn't trivial: over decades, the compounding drag is measured in doublings forgone. And debt obeys the rule too: a balance at 18% doubles what you owe in about four years if left unpaid. The rule cuts both ways, which is what makes it useful as a bluff-detector.",
+      "What the Rule of 72 really buys you is calibration in the moment — the ability to hear a rate and instantly translate it into a doubling time without reaching for a calculator. That speed matters because financial decisions are often made conversationally, under mild social pressure, when nobody pauses to model anything. Being able to think 'that's a roughly 14-year double, the other option is a 9-year double' on the spot changes which claims impress you and which ones you wave off."
+    ],
+    "why_today": "The Rule of 72 appears in print as early as 1494 in Luca Pacioli's Summa de Arithmetica, the same foundational mathematics text that codified double-entry bookkeeping — making it one of the oldest practical financial heuristics still in everyday use.",
+    "morning_challenge": "Memorize the move: doubling time ≈ 72 ÷ rate. Then test it on three numbers that touch your real life.\n\nPick a savings or investment rate you've seen recently, the current inflation rate, and the interest rate on any debt you hold. Divide 72 by each.\n\nYou'll get three doubling times — one for your money growing, one for your purchasing power eroding, one for your debt expanding. Sit with which of those three is fastest. That comparison is the whole point."
+  },
+  "midday": {
+    "reframe": "A percentage is a number you can't feel. A doubling time is a story you can. The Rule of 72 turns the first into the second in one division.",
+    "itw_label": "IN THE WILD — TYPE A · PACIOLI, SUMMA DE ARITHMETICA, 1494. FEDERAL RESERVE INFLATION DATA.",
+    "itw_paragraphs": [
+      "The rule's pedigree is genuinely ancient. Luca Pacioli — the Franciscan friar often called the father of accounting — recorded the 72 doubling shortcut in his 1494 Summa de Arithmetica, alongside the double-entry bookkeeping system that still underpins modern finance. He presented it without derivation, as a known practical tool, which suggests merchants were already using it. A heuristic that survived five centuries of financial sophistication did so because it is fast, portable, and close enough.",
+      "Inflation is where the rule does its quietest work. At a 3% average inflation rate — close to long-run historical norms in many developed economies — the Rule of 72 implies that prices double, and the real value of un-invested cash halves, in roughly 24 years. This is why financial educators stress that 'safe' money sitting at zero interest is not actually safe in real terms: it is on a slow, predictable schedule toward losing half its buying power within a single career.",
+      "The rule also reframes fees, which marketing tends to make sound negligible. The difference between a low-cost fund and one charging an extra percentage point per year doesn't feel like much in any single year. But translated through compounding over an investing lifetime, that drag can consume a meaningful share of the doublings your money would otherwise have completed. The Rule of 72 is the back-of-envelope tool that makes 'just 1%' stop sounding small."
+    ],
+    "quote": "Wishes the years to double the capital at any rate, keep as a rule the number 72 in mind, which you will always divide by the interest.",
+    "attribution": "Paraphrase of Luca Pacioli, Summa de Arithmetica, 1494",
+    "midday_nudge": "Next time someone quotes you a rate of return, a fee, or an interest charge, run 72 ÷ rate before you respond. Do it silently. The doubling time you land on will tell you, faster than any pitch, whether the number deserves to impress you."
+  },
+  "quiz": [
+    {
+      "question": "An investment is described as returning about 9% per year. Using the Rule of 72, roughly how long would it take to double, and what does that estimate let you do?",
+      "options": [
+        "About 81 years — the rule multiplies the rate by 9",
+        "About 8 years (72 ÷ 9) — letting you instantly translate an abstract percentage into a concrete timeline you can compare against other options",
+        "Exactly 9 years, with no approximation involved",
+        "The rule can't be applied to investments, only to savings accounts"
+      ],
+      "correct": 1,
+      "explanation": "Divide 72 by the rate: 72 ÷ 9 ≈ 8 years to double. The value of the rule isn't precision — it's speed of intuition. It converts a floating percentage into a doubling time you can reason about and stack against alternatives in real time, without a calculator."
+    },
+    {
+      "question": "Why does the Rule of 72 apply just as much to inflation and debt as it does to investment growth?",
+      "options": [
+        "Because inflation and debt use entirely different math that happens to give the same answer",
+        "Because the rule estimates any compounding doubling time — whether something is growing for you (returns) or against you (rising prices, accruing debt), the same 72 ÷ rate logic gives a doubling or halving timeline",
+        "Because inflation and debt always grow at exactly the same rate as investments",
+        "It doesn't — the rule only works for positive returns"
+      ],
+      "correct": 1,
+      "explanation": "Compounding is direction-neutral. The Rule of 72 estimates how long any compounding quantity takes to double — your investments doubling up, your debt doubling what's owed, or inflation halving your money's real value. That's why it works as a bluff-detector in both directions: it puts growth and erosion on the same readable scale."
+    },
+    {
+      "question": "Someone keeps their savings in a no-interest account because it 'feels safe.' With inflation around 3%, what does the Rule of 72 reveal about that choice?",
+      "options": [
+        "It's genuinely safe because the dollar amount never decreases",
+        "At 3% inflation, purchasing power halves in roughly 24 years (72 ÷ 3), so the money is on a predictable schedule to lose about half its real value — 'safe' in dollars isn't safe in what those dollars can buy",
+        "Inflation has no effect on money that isn't invested",
+        "The account will double in value automatically over 24 years"
+      ],
+      "correct": 1,
+      "explanation": "72 ÷ 3 ≈ 24 years for prices to double — meaning the real value of un-invested cash halves over that span. Nominal safety (the number doesn't drop) masks real erosion (what it buys does). The rule makes that invisible cost concrete and schedulable, which is exactly why it's worth carrying in your head."
+    }
+  ],
+  "closing": "One division — 72 over the rate — turns every percentage you'll ever be quoted into a timeline you can feel. Carry it, and fewer numbers will be able to bluff you.",
+  "sources": [
+    {
+      "label": "Pacioli, L. — Summa de Arithmetica, Geometria, Proportioni et Proportionalita, 1494",
+      "detail": "Earliest known printed appearance of the Rule of 72 doubling heuristic, in the foundational text that also codified double-entry bookkeeping.",
+      "url": "https://www.britannica.com/biography/Luca-Pacioli"
+    },
+    {
+      "label": "U.S. Securities and Exchange Commission — Investor.gov on the Rule of 72",
+      "detail": "Official explainer of the Rule of 72 as a mental shortcut for estimating how long it takes an investment to double.",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/rule-72"
+    }
+  ],
+  "ai_prompt": "I want to get fluent at using the Rule of 72 on my own real numbers — returns, inflation, and any debt I carry. Before working through examples, ask me what rates I'm actually dealing with and what I'm trying to compare. Stick to illustrative math only, no specific product or investment recommendations. Here's my situation: [describe the rates and the decision you're weighing]",
+  "verified": false
+}

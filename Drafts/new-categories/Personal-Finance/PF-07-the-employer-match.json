@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.7",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "The Employer Match",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "There is a financial product that pays an instant, guaranteed 50% to 100% return with zero risk. Millions of people who qualify for it simply decline to take it. It's called the employer match, and skipping it is the closest thing to leaving cash on the sidewalk.",
+    "explanation_paragraphs": [
+      "You start a new job. Buried in the benefits paperwork is a line about a retirement plan: 'employer matches 100% of contributions up to 5% of salary.' It looks like jargon, so you skip it, or set your contribution to zero because money is tight and retirement feels far away. What that line actually said was: for every dollar you put in, up to a limit, your employer will hand you a second dollar — free, immediately, just for participating. Declining it is a real, recurring pay cut you chose without realizing it.",
+      "The mechanism is simple arithmetic. Say you earn $60,000 and your employer matches 100% up to 5%. If you contribute 5% — $3,000 a year — your employer adds another $3,000. You just turned $3,000 into $6,000 the instant it landed. That is a 100% return before the money is invested in anything. Even a partial match — 50% up to 6%, common in practice — is a guaranteed 50% return on those dollars. No stock, bond, or savings account on earth reliably offers that.",
+      "The nuance is vesting and access. Matched money sometimes 'vests' over a few years, meaning you must stay employed for a period to fully keep it — so the match rewards tenure, and leaving early can forfeit part of it. And because it's retirement money, it's generally not meant to be touched until later in life, often with penalties for early withdrawal. None of that changes the core math: even a partial, slow-vesting match is still free money you can't get any other way.",
+      "The stakes compound brutally over time. That extra $3,000 a year, invested and growing for decades, can become a six-figure sum through compounding — money that costs you nothing today beyond contributing what you were going to save anyway. Every year you contribute below the match threshold, you are voluntarily declining the highest-guaranteed-return offer most people will ever receive. The cost isn't visible on any paycheck, which is exactly why it goes unnoticed."
+    ],
+    "why_today": "Behavioral economists Richard Thaler and Cass Sunstein documented in Nudge (2008) how millions of employees fail to capture full employer matches despite the obvious math, and Thaler's 'Save More Tomorrow' program (with Shlomo Benartzi, 2004) was designed specifically to fix this gap.",
+    "morning_challenge": "Today, find out exactly what your employer match is — the percentage they match and the salary cap on it. Check your benefits portal, plan documents, or ask HR directly.\n\nThen confirm your own contribution rate. If you are contributing below the level that captures the full match, raise it at least to the match threshold today if your budget allows.\n\nIf you have no match, your action is simply to know that for certain — so you stop wondering."
+  },
+  "midday": {
+    "reframe": "An employer match is not a perk to consider. It's part of your compensation that only pays out if you opt in. Contributing below the match means working for less than your stated salary, on purpose.",
+    "itw_label": "IN THE WILD — TYPE A · THALER & SUNSTEIN, NUDGE, 2008. THALER & BENARTZI, SAVE MORE TOMORROW, JPE 2004.",
+    "itw_paragraphs": [
+      "In Nudge, Thaler and Sunstein highlight that a startling share of eligible employees contribute too little to capture their full employer match — effectively turning down free money — largely due to inertia, confusing paperwork, and the abstractness of retirement. The fix that works best, they show, isn't financial education alone; it's changing the default so participation happens automatically.",
+      "The 'Save More Tomorrow' plan, designed by Thaler and Benartzi, tackled the inertia directly by having workers pre-commit to raising their contribution rate alongside future raises. Across the firms that adopted it, average savings rates rose dramatically over a few years — demonstrating that the barrier was rarely the math and almost always the friction of acting.",
+      "The broader pattern researchers document is that automatic enrollment and automatic escalation can lift participation in employer plans from roughly half of eligible workers to the vast majority. The lesson in the wild is consistent: people don't decline the match because it's a bad deal — they decline it because no one made them do the one-time act of opting in at the right level."
+    ],
+    "quote": "Automatic enrollment turns the human tendency toward inertia from an enemy of saving into an ally. The match was always there; the default just lets people actually take it.",
+    "attribution": "Paraphrase of Richard Thaler & Cass Sunstein, Nudge, 2008",
+    "midday_nudge": "Right now, log into your retirement plan and read one number: your current contribution percentage. If you can't immediately say whether it clears the match threshold, that uncertainty is itself the problem to fix today."
+  },
+  "quiz": [
+    {
+      "question": "An employer offers to match 100% of contributions up to 5% of salary. An employee contributing 2% is told to think of the match as an investment return. On the first dollars they could be matching but aren't, what return are they declining?",
+      "options": [
+        "A small return that only matters near retirement",
+        "An immediate, guaranteed 100% return — one matched dollar for every dollar contributed up to the cap",
+        "A return that depends entirely on how the stock market performs that year",
+        "No real return, since matched money is just a loan"
+      ],
+      "correct": 1,
+      "explanation": "A 100%-up-to-5% match doubles every contributed dollar the moment it lands, before any market growth — a guaranteed 100% return on those dollars. By contributing only 2%, the employee captures part of the match but declines the rest. That foregone match is the highest-certainty return most people will ever be offered."
+    },
+    {
+      "question": "Two coworkers earn the same salary and both can afford to contribute up to their full match. One does; the other contributes nothing because 'retirement is decades away.' What is the most accurate way to describe the second coworker's choice?",
+      "options": [
+        "A reasonable trade-off, since money now is worth more than money later",
+        "A voluntary, recurring pay cut — they are choosing to receive less total compensation than the company is offering for the same work",
+        "A smart move, because keeping cash always beats locking it in a retirement plan",
+        "Irrelevant, since both will end up with similar retirement balances"
+      ],
+      "correct": 1,
+      "explanation": "The match is part of total compensation that only pays out on participation. Contributing nothing forfeits it entirely, so the second coworker earns strictly less for identical work. 'Retirement is far away' explains the inertia but doesn't change the math — and compounding makes the long horizon an argument *for* capturing it, not against."
+    },
+    {
+      "question": "Researchers found that automatic enrollment dramatically increases how many workers capture their employer match. What does this reveal about why people miss the match?",
+      "options": [
+        "Most people who skip the match have carefully decided it's a bad deal",
+        "The main barrier is friction and inertia — the one-time act of opting in at the right level — not a rational rejection of the offer",
+        "Matches are usually too small to be worth the paperwork",
+        "Workers prefer to invest the money themselves outside the plan"
+      ],
+      "correct": 1,
+      "explanation": "If people declined the match on the merits, changing the default wouldn't move behavior much. The fact that automatic enrollment lifts participation so sharply shows the obstacle is inertia and confusing setup, not a considered choice. The match is a good deal; the missing piece is simply the act of opting in."
+    }
+  ],
+  "closing": "Find your match, contribute at least up to it, and stop working for less than your company already agreed to pay you.",
+  "sources": [
+    {
+      "label": "Richard H. Thaler & Cass R. Sunstein — Nudge, Yale University Press, 2008",
+      "detail": "Documents how employees routinely fail to capture full employer matches and how default design (auto-enrollment, auto-escalation) closes the gap.",
+      "url": "https://yalebooks.yale.edu/book/9780300122237/nudge/"
+    },
+    {
+      "label": "Richard H. Thaler & Shlomo Benartzi — 'Save More Tomorrow', Journal of Political Economy, 2004",
+      "detail": "Field evidence that pre-committing to raise contributions with future raises sharply increases savings, showing the barrier to capturing matches is inertia, not math.",
+      "url": "https://www.journals.uchicago.edu/doi/10.1086/380085"
+    }
+  ],
+  "ai_prompt": "I want to make sure I'm capturing my full employer retirement match and not leaving free money behind. Before advising, ask me what my plan actually offers — the match percentage, the salary cap, the vesting schedule — and what I'm currently contributing. Don't recommend specific funds or products; help me reason about the match itself and how to capture it. Here's what I know so far: [describe your plan and current contribution]",
+  "verified": false
+}

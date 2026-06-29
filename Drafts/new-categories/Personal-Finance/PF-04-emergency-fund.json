@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.4",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "The Emergency Fund",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "An emergency fund earns almost nothing. That's the point. Its job isn't to grow your money — it's to keep one bad month from detonating every smart financial decision you've ever made.",
+    "explanation_paragraphs": [
+      "A car transmission fails. A medical bill arrives. A job ends with two weeks' notice. For someone without a cash cushion, each of these forces the same cascade: the expense goes onto a credit card at 20%-plus interest, or a retirement account gets raided early with penalties, or a high-interest loan gets taken out under pressure. The original problem was a $3,000 repair. The actual cost becomes that repair plus months of compounding debt, plus the long-term growth lost from money pulled out of investments at the worst possible time. The emergency fund exists to break that chain at the first link.",
+      "An emergency fund is a pool of cash — typically held in a plain, accessible savings account — equal to three to six months of your essential living expenses. Note the word 'essential': it's calculated on what you must spend to keep the lights on, not your full lifestyle. The number isn't arbitrary. Three months reflects how long a financially stable person with marketable skills might take to find new work; six months covers a harder market, a longer recovery, or a household with a single income. The fund is deliberately boring — liquid, stable, and untouched — because its value is availability, not return.",
+      "The nuance is in calibrating your own number rather than defaulting to the middle. Someone with steady, secure income, an in-demand skill set, and a partner who also earns can sit toward the three-month end. Someone with variable or commission income, a single-earner household, dependents, or a specialized job that's slow to replace should aim toward six months or beyond. The 'right' size is a function of how volatile your income is and how catastrophic a gap would be — not a one-size figure copied from an article.",
+      "The stakes are about sequence, not just safety. Without a buffer, every emergency converts into expensive debt, and that debt compounds against you precisely while you're already under stress — the worst time to be making forced financial decisions. With a buffer, an emergency is an inconvenience you pay for in cash and move past. The fund's low yield is the price of insurance: you accept that this money won't compound for you, in exchange for guaranteeing that a shock can't trigger the far more expensive compounding of debt."
+    ],
+    "why_today": "The three-to-six-month guideline is standard guidance from the U.S. Consumer Financial Protection Bureau and is emphasized across mainstream personal-finance frameworks. Its urgency is underscored by the Federal Reserve's annual Survey of Household Economics and Decisionmaking, which has repeatedly found that a large share of U.S. adults could not cover a modest unexpected expense with cash.",
+    "morning_challenge": "Calculate your own essential-monthly-spend today — just the non-negotiables: housing, utilities, food, transportation, insurance, minimum debt payments. Leave out discretionary spending.\n\nMultiply that figure by three and by six. Those two numbers are your personal emergency-fund range.\n\nThen locate yourself honestly on the spectrum: how stable is your income, and how replaceable is your role? That answer tells you whether you should aim for the lower or the higher end."
+  },
+  "midday": {
+    "reframe": "An emergency fund isn't idle money failing to grow. It's a firewall — the thing that stops a single bad month from forcing you into the expensive decisions you'd never make with a clear head.",
+    "itw_label": "IN THE WILD — TYPE A · U.S. FEDERAL RESERVE SHED REPORT. CONSUMER FINANCIAL PROTECTION BUREAU GUIDANCE.",
+    "itw_paragraphs": [
+      "The Federal Reserve's annual Survey of Household Economics and Decisionmaking (the SHED report) has repeatedly found that a substantial share of American adults would struggle to cover even a $400 unexpected expense entirely with cash or its equivalent — many would have to borrow, carry it on a card, or skip it. That single statistic is the clearest case for the emergency fund: a huge number of households are one modest shock away from being forced into high-interest debt, not because of poor planning broadly, but because of the absence of one specific buffer.",
+      "The Consumer Financial Protection Bureau frames the emergency fund as the foundation that protects every other financial goal — explicitly recommending that the money be kept separate from everyday spending and held somewhere safe and accessible rather than invested for growth. The guidance is deliberate about the trade-off: liquidity and stability are the features you want here, even at the cost of return, because the fund's entire purpose is to be there, in full, on the worst day.",
+      "The asymmetry is what makes the case decisive. The cost of holding an emergency fund is small and bounded — a few months of expenses earning modest interest instead of higher market returns. The cost of not holding one is unbounded and compounding: forced credit-card debt at punishing rates, early withdrawals from retirement accounts that incur penalties and surrender decades of future growth, and decisions made under acute financial stress. You are trading a small, certain, known cost for protection against a large, uncertain, escalating one."
+    ],
+    "quote": "An emergency fund turns a crisis into an inconvenience.",
+    "attribution": "Common personal-finance maxim; paraphrase of Consumer Financial Protection Bureau emergency-savings guidance",
+    "midday_nudge": "Check where your current cushion actually sits against the three-to-six-month range you calculated this morning. If you're below it, don't aim for the full amount today — pick one automatable step, like a small recurring transfer into a separate savings account. The firewall gets built in increments, not in one heroic deposit."
+  },
+  "quiz": [
+    {
+      "question": "Why is an emergency fund deliberately kept in a low-yield, easily accessible account instead of invested for higher returns?",
+      "options": [
+        "Because savings accounts always outperform investments over the long run",
+        "Because its purpose is to be fully available and stable on the worst day — liquidity and certainty matter more than return for money whose job is to absorb shocks",
+        "Because investing any emergency money is prohibited by financial regulations",
+        "Because emergency funds are too small to be worth investing"
+      ],
+      "correct": 1,
+      "explanation": "The fund's value is availability, not growth. It must be there in full, immediately, exactly when an emergency hits — which means it can't be exposed to market swings or withdrawal delays. Accepting a low yield is the price of guaranteeing the money is liquid and stable when you need it most."
+    },
+    {
+      "question": "Two people face an identical $3,000 car repair. One has an emergency fund; one doesn't. Why can the true cost diverge so dramatically?",
+      "options": [
+        "The repair costs more for people with savings because they can afford it",
+        "Without a buffer, the expense often becomes high-interest debt or an early investment withdrawal — so the real cost balloons to the repair plus compounding interest and lost future growth, while the funded person simply pays cash",
+        "There's no difference; both people pay exactly $3,000",
+        "The person without a fund will always get a cheaper repair out of necessity"
+      ],
+      "correct": 1,
+      "explanation": "The emergency fund breaks the cascade at the first link. The funded person pays $3,000 and moves on. The unfunded person pays $3,000 plus months of compounding credit-card interest, or surrenders penalties and decades of growth by raiding investments. Same shock, very different true cost — that gap is exactly what the fund prevents."
+    },
+    {
+      "question": "Why should the choice between a three-month and a six-month fund depend on personal circumstances rather than a single fixed rule?",
+      "options": [
+        "Because the right size depends on income volatility and how catastrophic a gap would be — stable dual-income earners can sit lower, while variable-income or single-earner households should aim higher",
+        "Because everyone should always hold exactly six months regardless of situation",
+        "Because the number is arbitrary and any amount works equally well",
+        "Because three months is correct for high earners and six for low earners, based on salary alone"
+      ],
+      "correct": 0,
+      "explanation": "The range exists to be calibrated. The drivers are how volatile your income is and how damaging an income gap would be — not your salary. Secure, replaceable-skill, dual-income situations can sit toward three months; variable income, dependents, or hard-to-replace roles point toward six or more. The fund is sized to your specific risk, not a blanket figure."
+    }
+  ],
+  "closing": "Build the firewall before you need it. Its job is to make sure a single bad month stays a bad month — instead of becoming a bad year of debt.",
+  "sources": [
+    {
+      "label": "U.S. Consumer Financial Protection Bureau — 'An essential guide to building an emergency fund'",
+      "detail": "Official guidance on emergency-fund purpose, sizing, and keeping the money separate, accessible, and stable rather than invested.",
+      "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+    },
+    {
+      "label": "U.S. Federal Reserve — Report on the Economic Well-Being of U.S. Households (SHED)",
+      "detail": "Annual survey documenting the share of adults who could not cover a modest unexpected expense with cash, underscoring the need for an emergency buffer.",
+      "url": "https://www.federalreserve.gov/consumerscommunities/shed.htm"
+    }
+  ],
+  "ai_prompt": "I want to figure out the right emergency-fund size for my actual situation and a realistic plan to build it. Before giving me a number, ask me about my essential monthly expenses, how stable or variable my income is, whether anyone depends on my income, and how replaceable my job is. Keep it to illustrative math and planning — no specific product or investment recommendations. Here's where I'm at: [describe your situation]",
+  "verified": false
+}

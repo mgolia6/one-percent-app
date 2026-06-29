@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "HP.6",
+  "category": "Health & Performance",
+  "categoryTag": "HEALTH & PERFORMANCE",
+  "concept": "Protein & Muscle Protein Synthesis",
+  "accent": "#FF5151",
+  "accentDim": "rgba(255,81,81,0.10)",
+  "morning": {
+    "hook": "You don't build muscle in the gym. You damage it there. The building happens later — in a kitchen, and only if you give the body the raw material to do it.",
+    "explanation_paragraphs": [
+      "Picture someone who trains hard four times a week but eats most of their protein at dinner — a small breakfast, a light lunch, then a large steak at night. They're frustrated that progress is slow despite the effort. The work is real, but the body can only assemble new muscle when amino acids are available, and a single late-day load leaves most of the day with the building machinery idling. Spreading similar total protein across breakfast, lunch, and dinner tends to keep that machinery switched on more often.",
+      "Muscle protein synthesis (MPS) is the process by which the body assembles new muscle protein from amino acids — the building blocks of protein. Resistance exercise raises the rate of MPS for roughly a day afterward, and dietary protein raises it in pulses after each meal. The amino acid leucine acts as a key trigger that signals the cell to begin building. When MPS exceeds muscle protein breakdown over time, you gain or maintain muscle; when breakdown wins, you lose it. The leverage point is keeping synthesis elevated through training plus adequate, distributed protein intake.",
+      "Plenty here is overhyped. The 'anabolic window' — the idea that you must consume protein within minutes of training or waste the session — is far weaker than supplement marketing implies; total daily protein matters far more than precise timing. You also can't force-feed muscle: beyond a per-meal dose of roughly 0.4 grams of protein per kilogram of bodyweight, extra protein in that sitting is largely oxidized or used elsewhere, not packed into muscle. More protein in one hit is not more muscle.",
+      "The stakes compound with age. After about 30, adults lose muscle steadily without resistance training and adequate protein — a process called sarcopenia that quietly erodes strength, metabolism, and independence over decades. Muscle is not just an aesthetic concern; it is metabolically active tissue tied to glucose regulation, fall prevention, and longevity. Getting enough protein, distributed across the day, alongside resistance training, is one of the highest-leverage health habits available."
+    ],
+    "why_today": "Distributed-intake and per-meal dosing research is summarized in Morton, R.W. et al. (2018), a meta-analysis of protein supplementation and resistance training in the British Journal of Sports Medicine, and in the work of Stuart Phillips and colleagues on the leucine threshold and muscle protein synthesis.",
+    "morning_challenge": "Today, audit where your protein actually lands. Look at your three meals and estimate the protein in each.\n\nIf it's bottom-heavy — most of it at dinner — move some to breakfast and lunch. A simple target: a palm-sized portion of a protein source (eggs, yogurt, beans, fish, meat, tofu) at each meal.\n\nDon't add total protein yet. Just redistribute what you already eat across the day and notice how different that feels."
+  },
+  "midday": {
+    "reframe": "Muscle isn't built by the heaviest meal of your day. It's built by the most consistent one. Synthesis responds to a steady signal, not a single spike.",
+    "itw_label": "IN THE WILD — TYPE A · MORTON ET AL., BJSM, 2018. PHILLIPS & VAN LOON, JOURNAL OF SPORTS SCIENCES, 2011.",
+    "itw_paragraphs": [
+      "A 2018 meta-analysis by Morton and colleagues, pooling 49 studies and roughly 1,900 participants, found that protein supplementation meaningfully increased strength and muscle mass during resistance training — but the benefit plateaued. Beyond a total intake of about 1.6 grams of protein per kilogram of bodyweight per day, additional protein produced no further gains for most people. The takeaway is not 'more is always better' but 'enough, reliably' — a ceiling, not an open throttle.",
+      "Work from Stuart Phillips's lab and others established the concept of a leucine threshold: each meal needs a sufficient dose of protein to fully trigger muscle protein synthesis, with the response saturating around 0.4 grams of protein per kilogram per meal in most adults. This is why distribution matters — three or four protein-containing meals that each cross the threshold stimulate synthesis more effectively than the same total protein crammed into one or two sittings.",
+      "Across this literature, the 'anabolic window' shrinks under scrutiny. Reviews of protein timing, including work by Brad Schoenfeld and Alan Aragon, found that the urgency of post-workout protein has been overstated; the practically relevant window is measured in hours, and total daily intake dominates the outcome. The marketing of immediate post-workout shakes outran the evidence that supports them."
+    ],
+    "quote": "Total daily protein and progressive resistance training are the primary drivers of muscle adaptation. Timing and supplement form are real but secondary variables.",
+    "attribution": "Paraphrase of Morton et al., British Journal of Sports Medicine, 2018",
+    "midday_nudge": "Pick your next meal and aim for a protein source about the size of your palm. You're not chasing a number — you're practicing crossing the threshold at one more meal than usual."
+  },
+  "quiz": [
+    {
+      "question": "Someone eats almost all their daily protein at dinner and trains regularly but struggles to gain muscle. Based on how muscle protein synthesis works, what is the most likely issue?",
+      "options": [
+        "They aren't eating protein within minutes of finishing their workout, so the session is wasted",
+        "Muscle protein synthesis responds to protein in pulses after each meal, so concentrating intake in one meal leaves the building machinery idle for most of the day even if total protein is adequate",
+        "Eating protein at night cannot build muscle because the body is preparing for sleep",
+        "They are eating too much protein per meal, which suppresses muscle growth"
+      ],
+      "correct": 1,
+      "explanation": "Synthesis is triggered in pulses by each protein-containing meal, and the per-meal response saturates. Loading nearly everything into dinner means most of the day's synthesis opportunities go unused, while a portion of that single large dose is used for purposes other than muscle. Distributing the same total across meals keeps synthesis stimulated more often — which is the practical lever, not exact post-workout timing."
+    },
+    {
+      "question": "A person currently meets the daily protein intake associated with maximal muscle gains during training. They double their protein, expecting double the muscle. What does the meta-analytic evidence predict?",
+      "options": [
+        "They will gain roughly twice as much muscle, since protein is the building block",
+        "Little to no additional muscle gain, because the benefit of added protein plateaus once daily intake is already sufficient",
+        "They will lose muscle because excess protein is toxic to muscle tissue",
+        "Muscle gain depends only on protein, so more protein always means more muscle"
+      ],
+      "correct": 1,
+      "explanation": "Morton et al. found that benefits to muscle and strength plateaued beyond roughly 1.6 g/kg/day for most people. Protein is necessary, but it is not a linear lever — once intake is adequate, the constraint shifts to training stimulus and recovery. This is the difference between a threshold to clear and a dial to crank endlessly."
+    },
+    {
+      "question": "Why does the concept of a per-meal 'leucine threshold' argue for spreading protein across several meals rather than one large one?",
+      "options": [
+        "Because leucine is only absorbed in small amounts and the rest is excreted unused at every meal",
+        "Because each meal must contain enough protein to fully trigger synthesis, and the response saturates per meal — so multiple threshold-crossing meals stimulate building more often than one oversized meal",
+        "Because eating large meals damages muscle tissue directly",
+        "Because leucine only works first thing in the morning"
+      ],
+      "correct": 1,
+      "explanation": "Each meal triggers a bout of synthesis that saturates once enough protein (and leucine) is present, around 0.4 g/kg per meal. Exceeding that in one sitting doesn't proportionally increase building. So three or four threshold-crossing meals produce more total stimulation across the day than the same protein concentrated into one — the logic behind distributing intake."
+    }
+  ],
+  "closing": "Protein doesn't build muscle in a single heroic meal. It builds it in a steady, distributed signal the body can act on all day long.",
+  "sources": [
+    {
+      "label": "Morton, R.W. et al. — A systematic review, meta-analysis and meta-regression of protein supplementation and resistance training, British Journal of Sports Medicine, 2018",
+      "detail": "Pooled analysis of 49 studies showing protein supplementation increases muscle and strength during resistance training, with benefits plateauing around 1.6 g/kg/day.",
+      "url": "https://bjsm.bmj.com/content/52/6/376"
+    },
+    {
+      "label": "Phillips, S.M. & Van Loon, L.J.C. — Dietary protein for athletes: from requirements to optimum adaptation, Journal of Sports Sciences, 2011",
+      "detail": "Foundational review of protein dosing, distribution, and the leucine-triggered muscle protein synthesis response.",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/02640414.2011.619204"
+    }
+  ],
+  "ai_prompt": "I want to improve how I distribute protein across my day to support muscle and long-term health, without obsessing over supplements or timing. Before giving advice, ask me about my bodyweight, my typical meals, whether I do resistance training, and any dietary restrictions. Then help me build a realistic, distributed protein plan. Here's my starting point: [describe your current eating and training]",
+  "verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "HP.10",
+  "category": "Health & Performance",
+  "categoryTag": "HEALTH & PERFORMANCE",
+  "concept": "Creatine",
+  "accent": "#FF5151",
+  "accentDim": "rgba(255,81,81,0.10)",
+  "morning": {
+    "hook": "The supplement aisle is mostly hope sold by the bottle. Then there's creatine — boring, cheap, and backed by hundreds of trials. The most-studied sports supplement on earth costs less than your coffee habit and almost nobody takes it.",
+    "explanation_paragraphs": [
+      "Imagine two lifters with identical programs. One spends money on a rotating cabinet of trendy powders promising fat loss and 'cellular energy.' The other ignores all of it and takes one flavorless scoop of creatine monohydrate a day. Over months, the second lifter tends to add a bit more strength and muscle, recovers a touch better between hard sets, and has spent a fraction of the money. The irony of the supplement world is that the most validated product is also one of the least glamorous and least marketed.",
+      "Creatine is a compound your body already makes and stores mostly in muscle, where it helps regenerate ATP — the immediate energy currency cells spend during short, intense efforts. Supplementing raises your muscles' creatine stores, giving you slightly more capacity for high-intensity work: an extra rep or two, marginally faster recovery between sets. Over time, that small per-session edge compounds into measurably greater strength and lean mass when paired with training. The mechanism is well understood and the effect, while modest, is real and repeatable.",
+      "Here's where to separate signal from noise. Creatine's well-established benefit is for strength and power performance; claims that it dramatically boosts endurance, burns fat, or works as a cognitive 'nootropic' are far weaker or preliminary — interesting, but not established consensus. The infamous worry that creatine 'damages your kidneys' is not supported in healthy people across decades of study; what it does cause is a few pounds of water weight as muscles hold more water, which is harmless and often mistaken for fat gain. And you don't need a 'loading phase' — a steady small daily dose reaches the same saturation, just a bit slower.",
+      "The stakes here are less about any single supplement and more about how to think. Creatine is a case study in evidence over marketing: the product with the strongest data is unglamorous, generic, and rarely advertised, while the loudest products often have the thinnest support. Learning to weight a supplement by the quality and quantity of its evidence — not its packaging or claims — is a skill that protects your money and your body far beyond this one powder."
+    ],
+    "why_today": "Creatine's safety and performance effects are summarized in Kreider, R.B. et al. (2017), the International Society of Sports Nutrition position stand on creatine, one of the most comprehensive reviews of the supplement's large evidence base.",
+    "morning_challenge": "Today, don't buy anything — investigate. If you're considering creatine, look up creatine monohydrate specifically (the most-studied form) and read the International Society of Sports Nutrition position stand summary.\n\nThen apply the lens more broadly: pick one supplement you currently take or are tempted by, and ask, 'What's the actual quality and quantity of evidence behind this?'\n\nThe goal isn't to start a supplement. It's to practice weighing evidence over marketing — using creatine as the benchmark for what 'well-supported' actually looks like."
+  },
+  "midday": {
+    "reframe": "Creatine flips the usual supplement logic: the more boring and generic a product is, sometimes the better the evidence — because hype and proof are often inversely related.",
+    "itw_label": "IN THE WILD — TYPE A · KREIDER ET AL., ISSN POSITION STAND, JISSN, 2017. BRANCH, IJSNEM, 2003.",
+    "itw_paragraphs": [
+      "The International Society of Sports Nutrition's 2017 position stand, led by Richard Kreider, reviewed the extensive creatine literature and concluded that creatine monohydrate is the most effective ergogenic supplement available for increasing high-intensity exercise capacity and lean mass during training, and that it is safe for healthy people across short- and long-term use. Few supplements have anything close to this depth of evidence behind them.",
+      "A meta-analysis by Jonathan Branch, published in 2003, pooled dozens of studies and quantified creatine's effect: a meaningful improvement in performance for short-duration, high-intensity, repeated-effort tasks — exactly the demands of weight training and sprint-style work — with little benefit for sustained endurance events. This sharp distinction is why creatine is rightly framed as a strength-and-power aid, not a do-everything supplement.",
+      "On safety, the position stand and subsequent reviews directly address the kidney myth: in healthy individuals, long-term creatine supplementation has not been shown to harm kidney function, and the often-cited weight gain is water drawn into muscle, not fat. The persistence of the kidney fear despite decades of contrary evidence is itself a lesson in how supplement folklore outlives the data."
+    ],
+    "quote": "Creatine monohydrate is the most effective ergogenic nutritional supplement currently available to athletes for increasing high-intensity exercise capacity and lean body mass during training.",
+    "attribution": "Paraphrase of Kreider et al., ISSN Position Stand, JISSN, 2017",
+    "midday_nudge": "Apply the creatine lens to your cabinet right now: pick one product and try to name a single high-quality review behind it. If you can't, that's useful information."
+  },
+  "quiz": [
+    {
+      "question": "Creatine is described as the most-studied sports supplement, yet it's rarely heavily marketed. What broader principle does this illustrate about evaluating supplements?",
+      "options": [
+        "The most-advertised supplements are always the most effective ones",
+        "The strength of a product's marketing is often unrelated — or even inversely related — to the strength of its evidence, so you should weight evidence quality over claims and packaging",
+        "Cheap supplements never work, which is why creatine isn't advertised",
+        "Only supplements with celebrity endorsements have real science behind them"
+      ],
+      "correct": 1,
+      "explanation": "Creatine is generic, cheap, and unglamorous, yet has hundreds of trials behind it — while many loudly marketed products have thin support. The lesson is to judge a supplement by the quality and quantity of its evidence rather than its advertising. Hype and proof frequently diverge, and creatine is the benchmark for what real evidence looks like."
+    },
+    {
+      "question": "A friend refuses to try creatine because they heard it 'wrecks your kidneys,' and they point to the few pounds they gained on it as proof of harm. How should this be assessed?",
+      "options": [
+        "They're right; the weight gain confirms the kidney damage",
+        "In healthy people, long-term studies haven't shown kidney harm, and the early weight gain is water drawn into muscle — not fat or a sign of damage",
+        "Creatine is dangerous for everyone and should be avoided entirely",
+        "The weight gain proves creatine is converting directly into fat"
+      ],
+      "correct": 1,
+      "explanation": "Decades of research in healthy individuals do not support the kidney-damage claim, and the characteristic early weight gain is intramuscular water, which is harmless and often mistaken for fat. The persistence of the myth despite the evidence is itself the lesson: supplement folklore can outlive the data that contradicts it."
+    },
+    {
+      "question": "Someone wants creatine to dramatically improve their marathon endurance and sharpen their memory. Based on where the evidence is strongest, what should they expect?",
+      "options": [
+        "Large, well-established gains in both endurance and memory",
+        "The strongest, most established benefit is for short, high-intensity strength and power work; endurance and cognitive claims are weaker or preliminary, so they shouldn't expect dramatic results there",
+        "No effect on anything, since creatine doesn't work at all",
+        "Benefits only for endurance, never for strength"
+      ],
+      "correct": 1,
+      "explanation": "Creatine's well-validated benefit is for short-duration, high-intensity, repeated efforts — strength and power. Its effects on sustained endurance are minimal, and cognitive benefits are an interesting but preliminary area, not established consensus. Matching expectations to where the evidence is strongest is the core skill: take the well-supported benefit, stay skeptical of the speculative ones."
+    }
+  ],
+  "closing": "The best-evidenced supplement on the shelf is also one of the cheapest and most boring. That's not a coincidence — it's a lesson in trusting data over hype.",
+  "sources": [
+    {
+      "label": "Kreider, R.B. et al. — International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation, Journal of the International Society of Sports Nutrition, 2017",
+      "detail": "Comprehensive review concluding creatine monohydrate is the most effective and a safe ergogenic supplement for high-intensity performance and lean mass.",
+      "url": "https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z"
+    },
+    {
+      "label": "Branch, J.D. — Effect of creatine supplementation on body composition and performance: a meta-analysis, International Journal of Sport Nutrition and Exercise Metabolism, 2003",
+      "detail": "Meta-analysis quantifying creatine's benefit for short-duration, high-intensity, repeated-effort performance.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12945830/"
+    }
+  ],
+  "ai_prompt": "I want to decide whether creatine makes sense for me and, more broadly, learn to evaluate any supplement by its evidence rather than its marketing. Before advising, ask me about my training goals, what I currently take, any health conditions, and what claims drew me in. Then walk me through the evidence lens. Here's my situation: [describe your goals and current supplements]",
+  "verified": false
+}

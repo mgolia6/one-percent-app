@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "HP.7",
+  "category": "Health & Performance",
+  "categoryTag": "HEALTH & PERFORMANCE",
+  "concept": "A Walk After Meals",
+  "accent": "#FF5151",
+  "accentDim": "rgba(255,81,81,0.10)",
+  "morning": {
+    "hook": "There's a free, two-minute intervention that blunts the blood-sugar spike after you eat. No app, no supplement, no gym. You just stand up and walk.",
+    "explanation_paragraphs": [
+      "Think about the post-lunch slump — the heavy, foggy feeling that pulls you toward coffee or a nap around 2pm. A common driver is the glucose surge from a carb-heavy meal followed by the body's overcorrection. Now picture the same lunch, but instead of sitting straight back down at the desk, you take a slow ten-minute walk around the block. The same food produces a flatter, gentler rise — and the crash that follows is smaller. The intervention costs almost nothing and fits inside an ordinary day.",
+      "After you eat carbohydrates, glucose enters your bloodstream and your muscles are one of the largest sinks for clearing it. When you contract muscle by walking, the muscle pulls glucose out of the blood through a pathway that doesn't fully depend on insulin — it's the mechanical work itself that opens the door. So light movement right after a meal recruits your legs as a glucose-disposal system in real time, lowering the peak rather than leaving it all to insulin. Even short, easy walking works because the muscles are large and the demand is immediate.",
+      "Two things are overhyped here. First, the magnitude: a post-meal walk meaningfully blunts the spike, but it is not a license to eat anything — diet still dominates overall glucose control. Second, continuous glucose monitors have turned 'spikes' into a wellness obsession for healthy people, where a normal post-meal rise is not a medical problem and chasing a perfectly flat line is unnecessary. The walk is a sound habit, not a cure, and it doesn't require a gadget to justify it.",
+      "The stakes are quiet but real. Repeated large glucose swings over years are associated with worse metabolic health, and prolonged sitting is independently linked to poorer outcomes. A short walk after meals targets both at once — it lowers the immediate spike and breaks up sedentary time — using a behavior so small it can survive a busy life. Few health levers offer this ratio of effort to payoff."
+    ],
+    "why_today": "The 'light walking after meals' effect is documented in Buffey, A.J. et al. (2022), a systematic review and meta-analysis in Sports Medicine showing that short bouts of light walking after eating improve post-meal glucose compared with sitting.",
+    "morning_challenge": "After one meal today — lunch is easiest — don't sit back down right away. Walk for 10 to 15 minutes at an easy, conversational pace.\n\nIt doesn't need to be brisk or far. A loop around the building, a walk to a coffee shop and back, pacing while you take a call.\n\nNotice your energy in the hour afterward compared with a normal post-meal slump. That difference is the mechanism working."
+  },
+  "midday": {
+    "reframe": "You've been told exercise has to be a session — blocked out, changed-clothes, sweated-through. The post-meal walk reframes movement as something you weave into eating itself, where it does specific metabolic work.",
+    "itw_label": "IN THE WILD — TYPE A · BUFFEY ET AL., SPORTS MEDICINE, 2022. DIPIETRO ET AL., DIABETES CARE, 2013.",
+    "itw_paragraphs": [
+      "A 2022 systematic review by Buffey and colleagues in Sports Medicine compared sitting, standing, and light walking after meals. Light walking — even in bouts as short as two to five minutes — produced meaningfully lower post-meal blood glucose and insulin than remaining seated. Standing helped a little; walking helped substantially more. The active ingredient is muscle contraction, not just being upright.",
+      "An earlier study by DiPietro and colleagues in Diabetes Care found that three short post-meal walks spread across the day were as effective, and in some measures more effective, than a single longer walk at controlling glucose in older adults at risk for impaired glucose tolerance. Timing the movement to when glucose is actually rising — right after meals — captured more benefit than the same movement done at an unrelated time.",
+      "The mechanism is well established in exercise physiology: contracting muscle increases glucose uptake through GLUT4 transporters via a contraction-stimulated pathway that operates alongside, and partly independently of, insulin. This is why even people with insulin resistance can lower post-meal glucose by walking — the muscles open a second door to clear sugar that doesn't fully depend on the insulin signal."
+    ],
+    "quote": "Breaking up sitting with short bouts of light walking after meals is a simple, accessible strategy that improves post-meal glucose and insulin responses.",
+    "attribution": "Paraphrase of Buffey et al., Sports Medicine, 2022",
+    "midday_nudge": "If you've already eaten, it's not too late — even a short walk to refill your water and loop the room counts. Anchor the habit to a meal you eat at the same time most days."
+  },
+  "quiz": [
+    {
+      "question": "Why does walking after a meal lower the blood-sugar spike even for someone whose insulin doesn't work efficiently?",
+      "options": [
+        "Walking burns off the calories from the meal instantly, so there is no glucose to spike",
+        "Muscle contraction pulls glucose out of the blood through a pathway that works alongside and partly independently of insulin, so working muscles clear sugar even when the insulin signal is weak",
+        "Walking suppresses appetite, so the person eats less and the spike never forms",
+        "Standing upright redirects blood away from the stomach and slows digestion completely"
+      ],
+      "correct": 1,
+      "explanation": "Contracting muscle takes up glucose via a contraction-stimulated route that doesn't fully depend on insulin. That's the key reason a post-meal walk helps people with insulin resistance: it opens a second door for glucose disposal. Calorie burn over a short walk is small — the effect is about active muscle acting as a real-time glucose sink, not about burning off the meal."
+    },
+    {
+      "question": "Two people eat the same lunch. One does a 30-minute walk at 9am; the other does a 10-minute walk right after lunch. Based on the timing research, what's the most likely difference in post-lunch glucose?",
+      "options": [
+        "The 9am walker has lower post-lunch glucose because longer walks always win",
+        "The post-lunch walker likely has a lower post-lunch spike, because movement timed to when glucose is actually rising captures more of the glucose-clearing benefit",
+        "There is no difference, since total daily walking time is all that matters",
+        "Both will have identical spikes because walking has no effect on glucose"
+      ],
+      "correct": 1,
+      "explanation": "DiPietro and colleagues found that movement timed to the post-meal window — when glucose is rising — controlled glucose better than the same or more movement done at an unrelated time. The lesson is that when you move can matter as much as how much, because the muscle is clearing glucose precisely when there's a surge to clear."
+    },
+    {
+      "question": "Someone starts taking post-meal walks and concludes they can now eat anything without consequence. What's the flaw in this reasoning?",
+      "options": [
+        "There is no flaw — a post-meal walk fully cancels out any meal",
+        "A walk blunts the spike but doesn't override overall diet; the walk is a useful tool layered on top of reasonable eating, not a replacement for it",
+        "Walking actually raises blood sugar, so this person will be worse off",
+        "The flaw is that walks only work if done before eating, never after"
+      ],
+      "correct": 1,
+      "explanation": "The walk meaningfully reduces the post-meal spike, but the overall composition and size of meals still dominate glucose control. Treating the walk as a license to eat without limits overstates a real-but-bounded effect. It's a high-value add-on to sensible eating, not a metabolic free pass."
+    }
+  ],
+  "closing": "The most effective movement isn't always the hardest. Sometimes it's a ten-minute walk, timed to land exactly when your body needs it.",
+  "sources": [
+    {
+      "label": "Buffey, A.J. et al. — The Acute Effects of Interrupting Prolonged Sitting Time with Standing and Light Walking on Postprandial Glycemia, Sports Medicine, 2022",
+      "detail": "Systematic review and meta-analysis showing short bouts of light walking after meals lower post-meal glucose and insulin more than sitting or standing.",
+      "url": "https://link.springer.com/article/10.1007/s40279-022-01649-4"
+    },
+    {
+      "label": "DiPietro, L. et al. — Three 15-min Bouts of Moderate Postmeal Walking Significantly Improves 24-h Glycemic Control in Older People at Risk for Impaired Glucose Tolerance, Diabetes Care, 2013",
+      "detail": "Trial showing short post-meal walks timed to glucose rises improve 24-hour glycemic control.",
+      "url": "https://diabetesjournals.org/care/article/36/10/3262/30900"
+    }
+  ],
+  "ai_prompt": "I want to build a sustainable post-meal walking habit to blunt my blood-sugar spikes and avoid the afternoon slump. Before suggesting a plan, ask me about my daily schedule, which meals are most regular, my work environment, and any mobility limits. Then help me anchor a short walk to the right meal. Here's my situation: [describe your typical day and meals]",
+  "verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.1",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "Compound Interest",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "Most people think wealth is built by earning more. The quiet truth is that the largest fortunes are built by money earning on money it already earned — a loop that does almost nothing for years and then does almost everything.",
+    "explanation_paragraphs": [
+      "Picture two people. One invests $5,000 a year from age 25 to 35 — ten years, $50,000 total — and then never adds another dollar. The other waits until 35 and invests $5,000 every single year until 65 — thirty years, $150,000 total. Intuition says the second person, who put in three times as much, ends up far ahead. At a steady 7% return, the early starter who stopped at 35 typically ends up with roughly the same or more by 65. The person who contributed a third as much money, but started ten years earlier, wins. The difference is not the money. It is the time the money had to compound.",
+      "Compound interest is interest earned on both your original money and on all the interest that money has already generated. Simple interest pays you only on the original sum. Compound interest pays you on a growing pile. If you put in $1,000 at 10%, simple interest gives you $100 every year forever. Compound interest gives you $100 the first year, then $110 the next (10% of $1,100), then $121, then $133. Each year the base is bigger, so the gain is bigger. The growth curve is not a straight line — it bends upward, slowly at first, then steeply.",
+      "The nuance most people miss is that almost all of the magic happens at the end. For the first decade, compounding looks unimpressive — you could practically match it by stuffing cash under a mattress. The dramatic acceleration shows up in the final years, which is exactly why it feels safe to wait and exactly why waiting is so costly. You cannot bolt on the early years later. The decades you skip at the start are the decades that would have been doing the heaviest lifting at the end.",
+      "Compounding is indifferent to whether you understand it. It rewards the person who starts early and leaves it alone, and it quietly penalizes the person who waits for a better moment, a higher salary, or more certainty. The same mechanism runs in reverse on debt: credit-card balances compound against you with the same relentless curve. The lever you actually control is not the rate — it is how early you let the loop begin and how long you refuse to interrupt it."
+    ],
+    "why_today": "Compounding's counterintuitive power is a central theme of Morgan Housel's The Psychology of Money (2020), which documents how the bulk of Warren Buffett's fortune accrued after age 65 — not because his returns were extraordinary, but because he had been compounding since childhood. The mathematics traces to Jacob Bernoulli's work on continuous compounding in the late 1600s.",
+    "morning_challenge": "Run one number today. Take any amount you could invest — say $200 — and use a free online compound-interest calculator to project it forward at 7% annual growth for 10, 20, and 30 years, with no further contributions.\n\nNotice how little it grows in the first decade and how steeply it climbs in the third. That bend is the entire lesson.\n\nThen ask the real question: is there an amount, however small, you could start compounding this month instead of next year?"
+  },
+  "midday": {
+    "reframe": "Compounding isn't a reward for being smart. It's a reward for being early and patient — two things that cost you nothing and that no raise can buy back later.",
+    "itw_label": "IN THE WILD — TYPE A · HOUSEL, THE PSYCHOLOGY OF MONEY, 2020. EINSTEIN APOCRYPHA — FACT-CHECKED.",
+    "itw_paragraphs": [
+      "Morgan Housel points out that Warren Buffett's net worth is a compounding story disguised as a stock-picking story. Of Buffett's documented fortune, the overwhelming majority was accumulated after his 60th birthday. Had he started investing in his 30s like a typical professional and retired at 60, Housel estimates his wealth would be a tiny fraction of what it became — not because his investing skill changed, but because he removed decades of compounding from both ends by neither starting earlier nor continuing later.",
+      "The popular quote 'Compound interest is the eighth wonder of the world' is almost universally attributed to Albert Einstein — and there is no credible evidence he ever said it. Quote researchers have traced no primary source. The misattribution is instructive on its own: the idea is so striking that people reach for the most famous genius they know to explain it. The math doesn't need Einstein. It works whether or not anyone clever endorses it.",
+      "The same curve that builds wealth destroys it in the form of revolving debt. A credit-card balance at a 20%-plus annual rate compounds against the borrower on exactly the principle described this morning — interest charged on interest. Minimum payments are engineered to keep the balance compounding for years, which is why a modest balance can quietly cost multiples of itself before it is cleared. Compounding is a neutral mechanism; which direction it runs depends entirely on which side of the loan you are standing on."
+    ],
+    "quote": "My wealth has come from a combination of living in America, some lucky genes, and compound interest.",
+    "attribution": "Warren Buffett, as cited in Morgan Housel, The Psychology of Money, 2020",
+    "midday_nudge": "Find the single highest-interest debt you carry, if any. That balance is compounding against you faster than almost any investment compounds for you — which makes paying it down one of the highest-guaranteed-return moves available. Note the rate. You'll feel the curve differently once you see it pointed at you."
+  },
+  "quiz": [
+    {
+      "question": "Two people each invest the same fixed amount per year at the same rate. One starts at 25 and stops at 35; the other starts at 35 and continues to 65, contributing far more total money. Why can the early starter still end up ahead?",
+      "options": [
+        "The early starter chose better investments, which is the real driver of the outcome",
+        "The early starter's contributions had far more time to compound, and because compounding accelerates over time, those extra early years can outweigh a much larger sum invested later",
+        "Investing at a young age locks in a higher interest rate than investing later in life",
+        "The later starter must have made withdrawals that reduced their balance"
+      ],
+      "correct": 1,
+      "explanation": "The lever is time, not the amount invested. Compounding bends upward, so the earliest dollars sit in the account the longest and generate the most growth-on-growth. The early starter's smaller sum had more decades to compound, which is why it can beat a larger sum that started later. You cannot retroactively add those early years."
+    },
+    {
+      "question": "Someone says, 'I'll start investing seriously once I'm earning more in a few years.' What does the structure of compounding suggest about this plan?",
+      "options": [
+        "It's sensible — a larger income later will let them contribute enough to fully catch up",
+        "It's fine because the first years of compounding contribute almost nothing anyway",
+        "Waiting forfeits the early years that, while unimpressive on their own, are the years doing the heaviest lifting at the very end — and those years can't be added back later",
+        "It only matters if interest rates fall during the waiting period"
+      ],
+      "correct": 2,
+      "explanation": "The early years look unimpressive precisely because the steep growth happens at the end of a long compounding period — and that steep end depends on having started early. Skipping the early years removes the foundation the late acceleration is built on. A higher income later cannot purchase back lost compounding time."
+    },
+    {
+      "question": "Why is carrying a high-interest credit-card balance described as compounding 'in reverse'?",
+      "options": [
+        "Because credit-card interest is calculated differently from investment returns and follows a straight line",
+        "Because interest is charged on the unpaid interest as well as the original balance, so the debt grows on a curve that works against the borrower the same way it works for an investor",
+        "Because debt can never be paid off once it begins compounding",
+        "Because the lender, not the borrower, is the one being penalized"
+      ],
+      "correct": 1,
+      "explanation": "Compounding is a neutral mechanism: interest on interest. For an investor it grows wealth; for a borrower it grows what is owed. A revolving balance charges interest on prior interest, so it climbs the same accelerating curve — just pointed at the borrower. That's why paying down high-interest debt acts like a guaranteed high return."
+    }
+  ],
+  "closing": "You don't need a higher rate or a windfall. You need to start the loop and refuse to interrupt it — the curve does the rest, and it does almost all of it at the end.",
+  "sources": [
+    {
+      "label": "Housel, M. — The Psychology of Money, Harriman House, 2020",
+      "detail": "Chapters on compounding and on Warren Buffett's wealth as a function of time invested rather than return rate.",
+      "url": "https://www.harriman-house.com/psychologyofmoney"
+    },
+    {
+      "label": "U.S. Securities and Exchange Commission — Investor.gov Compound Interest Calculator",
+      "detail": "Official government tool and explainer illustrating how compound interest accumulates over time on savings and investments.",
+      "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+    }
+  ],
+  "ai_prompt": "I want to understand what compounding could realistically do for my own situation — and what waiting costs me. Before giving me numbers, ask me a few questions: roughly what amount I could invest regularly, my rough time horizon in years, and whether I'm carrying any high-interest debt. Use only illustrative math, not specific product or investment recommendations. Here's where I'm starting from: [describe your situation]",
+  "verified": false
+}

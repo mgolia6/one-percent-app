@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "HS.9",
+  "category": "History",
+  "categoryTag": "HISTORY",
+  "concept": "Bretton Woods",
+  "accent": "#E0A93D",
+  "accentDim": "rgba(224,169,61,0.10)",
+  "morning": {
+    "hook": "In July 1944, while the war was still raging, 730 delegates from 44 nations met at a faded resort hotel in the New Hampshire mountains to design the world's money. They argued for three weeks and built a system that made the US dollar the center of global finance. That system formally collapsed in 1971 — and yet the dollar's dominance, which it created, is still with us today.",
+    "explanation_paragraphs": [
+      "The Bretton Woods Conference took place at the Mount Washington Hotel in New Hampshire in July 1944, as the Allies looked past the war toward rebuilding a shattered world economy. The memory of the 1930s haunted the room: competitive currency devaluations, collapsing trade, and economic chaos that had helped fuel the rise of fascism. The delegates wanted to design a monetary order stable enough to prevent a repeat. Out of the negotiations came the International Monetary Fund and the institution that became the World Bank.",
+      "The mechanism at the heart of the deal was a system of fixed but adjustable exchange rates anchored to the dollar. Other currencies were pegged to the US dollar, and the dollar alone was convertible into gold at a fixed price of $35 an ounce. Because the United States held the bulk of the world's gold reserves and had emerged from the war as the dominant industrial power, the dollar effectively became the world's reserve currency — the unit in which countries held savings and settled international trade. The world's money, in practice, ran through Washington.",
+      "The nuance is that this outcome was contested, not inevitable. Britain's delegation, led by the economist John Maynard Keynes, pushed for a neutral international currency he called 'bancor,' which would not privilege any single nation. The American negotiator Harry Dexter White wanted the dollar at the center. The US, holding the economic and military leverage, won. Bretton Woods was as much a transfer of financial power from London to Washington as it was a technical fix for exchange rates.",
+      "The stakes outlived the system itself. By the late 1960s, the US was printing more dollars than its gold could back, and in 1971 President Nixon suspended dollar-to-gold convertibility — the 'Nixon shock' — ending the formal Bretton Woods arrangement. Currencies began to float against one another, as they largely do today. But the deeper legacy held: the dollar remained the world's dominant reserve and trade currency, giving the United States lasting financial influence — what one French official memorably called America's 'exorbitant privilege.'"
+    ],
+    "why_today": "Barry Eichengreen's Exorbitant Privilege: The Rise and Fall of the Dollar and the Future of the International Monetary System (2011) explains how Bretton Woods entrenched the dollar at the center of global finance and why that dominance has persisted long after the original system's 1971 collapse.",
+    "morning_challenge": "Look at one 'standard' in your industry or daily life that everyone defaults to — a platform, a currency, a tool, a format.\n\nAsk: why is this the default? Was it chosen because it's best, or because whoever set it up at the right moment locked everyone else in?\n\nBretton Woods shows how the actor with leverage at a founding moment can shape a system that outlives the system itself."
+  },
+  "midday": {
+    "reframe": "Bretton Woods is usually told as a story about exchange rates and gold. The deeper story is about power: a moment of economic dominance was converted into a financial architecture, and the dollar's central role outlived the very rules that created it. Setting the standard at the founding moment can matter more than the standard's specific terms.",
+    "itw_label": "IN THE WILD — TYPE A · EICHENGREEN, EXORBITANT PRIVILEGE, 2011. STEIL, THE BATTLE OF BRETTON WOODS, 2013.",
+    "itw_paragraphs": [
+      "Barry Eichengreen documents how the dollar's reserve status confers concrete advantages on the United States: it can borrow more cheaply and run larger deficits than other countries because the world needs and holds dollars. This 'exorbitant privilege,' a phrase coined in 1960s France, is a direct inheritance of the structure built at Bretton Woods, even though the gold peg that originally backed it is long gone.",
+      "Benn Steil's history The Battle of Bretton Woods reframes the conference as a contest, not a consensus. Keynes's plan for a neutral international currency, bancor, was deliberately sidelined by the United States, whose negotiator Harry Dexter White ensured the dollar sat at the center. The technical debate over exchange-rate mechanics was inseparable from a geopolitical struggle over who would hold financial power after the war — and the answer was Washington, not London.",
+      "The persistence of the system's effects after 1971 is the key 'in the wild' lesson. When Nixon ended gold convertibility, many predicted the dollar's reign would end. Instead, network effects took over: because so much trade, debt, and reserves were already denominated in dollars, it remained easier for everyone to keep using dollars. The default, once established, defended itself — a pattern visible in dominant technologies and platforms today."
+    ],
+    "quote": "The dollar is our currency, but it's your problem.",
+    "attribution": "Attributed to US Treasury Secretary John Connally, addressing finance ministers, 1971",
+    "midday_nudge": "Today, when you reach for a default — a tool, a format, a vendor, a platform — pause once and ask: is this the best option, or just the one that got entrenched first? Bretton Woods is a reminder that incumbency, not merit, often explains why a standard rules."
+  },
+  "quiz": [
+    {
+      "question": "The formal Bretton Woods system ended in 1971 when the US suspended gold convertibility, yet the dollar remained the world's dominant currency. What does this persistence illustrate?",
+      "options": [
+        "The dollar's dominance was guaranteed by gold and could not survive without it",
+        "Once a standard becomes deeply embedded, network effects can keep it dominant even after the original rules that created it disappear",
+        "Bretton Woods had no lasting consequences after 1971",
+        "Floating exchange rates immediately replaced the dollar with a neutral currency"
+      ],
+      "correct": 1,
+      "explanation": "The gold peg was the original mechanism, but the dollar's centrality outlived it because so much global trade, debt, and reserves were already denominated in dollars. Switching away would have required everyone to move at once. This is a classic network effect: an entrenched standard defends itself, a dynamic that explains the staying power of dominant currencies, platforms, and technologies."
+    },
+    {
+      "question": "Keynes proposed a neutral international currency, 'bancor,' but the US insisted on the dollar at the center and prevailed. What does this outcome reveal about how international systems get designed?",
+      "options": [
+        "The technically best proposal always wins international negotiations",
+        "Founding architectures are shaped by who holds leverage at the moment of design, not purely by which idea is most elegant or fair",
+        "Keynes's plan was rejected because it was economically illiterate",
+        "International monetary systems are designed by neutral experts with no national interests"
+      ],
+      "correct": 1,
+      "explanation": "Keynes's bancor was a serious, arguably more neutral proposal, but the US held the economic and military leverage and used it to place the dollar at the center. The lesson is that the design of durable systems reflects the balance of power at their founding moment. Recognizing this helps you read any 'standard' as partly a record of who was strong when it was set."
+    },
+    {
+      "question": "Eichengreen describes the dollar's reserve status as an 'exorbitant privilege' that lets the US borrow cheaply and run large deficits. Why does understanding this matter beyond economics?",
+      "options": [
+        "It proves the US economy is fundamentally weak",
+        "It shows that controlling a widely used standard can convert a one-time advantage into lasting, structural power that compounds over decades",
+        "It means all countries have equal financial advantages",
+        "It demonstrates that reserve currencies have no real-world effects"
+      ],
+      "correct": 1,
+      "explanation": "Because the world needs dollars, the US enjoys ongoing benefits that other countries don't — a structural advantage rooted in the Bretton Woods architecture. The broader principle is that whoever controls a widely adopted standard can turn an initial edge into compounding, durable power. That pattern recurs wherever one player owns the rails everyone else must use."
+    }
+  ],
+  "closing": "Bretton Woods built a system that died in 1971 — and a dominance that never did. The lesson isn't about gold. It's that whoever sets the standard at the founding moment can keep winning long after the rules change.",
+  "sources": [
+    {
+      "label": "Eichengreen, B. — Exorbitant Privilege: The Rise and Fall of the Dollar, Oxford University Press, 2011",
+      "detail": "Analysis of how Bretton Woods entrenched the dollar's global role and why that dominance persisted after the system's 1971 collapse.",
+      "url": "https://global.oup.com/academic/product/exorbitant-privilege-9780199931095"
+    },
+    {
+      "label": "Steil, B. — The Battle of Bretton Woods, Princeton University Press, 2013",
+      "detail": "History of the 1944 conference as a power struggle between Keynes's bancor plan and the US dollar-centered design.",
+      "url": "https://press.princeton.edu/books/hardcover/9780691149097/the-battle-of-bretton-woods"
+    }
+  ],
+  "ai_prompt": "I want to understand Bretton Woods as a case study in how standards and dominance get established and then persist. Before explaining, ask me whether I'm most interested in the monetary history, the power-versus-merit angle, or applying the 'entrenched default' idea to my own industry. Then tailor it. Here's the angle I care about: [describe your interest]",
+  "verified": false
+}

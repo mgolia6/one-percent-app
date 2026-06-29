@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.9",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "Lifestyle Creep",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "You got the raise you wanted. A year later, you're somehow no further ahead than before — saving the same, stressed the same. The money didn't disappear into nothing. It disappeared into a slightly better life that already feels like the new baseline.",
+    "explanation_paragraphs": [
+      "Picture two versions of the same person. Last year they earned $50,000, drove a paid-off car, cooked most meals at home, and saved a little each month. This year they earn $65,000. The car is now a nicer one with a monthly payment, dinners out happen twice a week, the apartment is a step up, and the subscriptions have quietly multiplied. They feel like they're doing well — and they are living better. But the savings rate is unchanged, and a surprise bill would still hurt. The raise arrived and left without ever passing through the part of their finances that builds security.",
+      "Lifestyle creep (also called lifestyle inflation) is the tendency for spending to rise to meet rising income. The mechanism is that each upgrade quickly becomes the new normal — what felt like a treat becomes the floor you can't imagine dropping below. The math is unforgiving: a $15,000 raise that gets fully absorbed into nicer spending adds nothing to your savings, while the same raise, if even half is redirected, adds $7,500 a year — which, invested and compounded over decades, can grow into a transformative sum. The difference between the two outcomes is a single decision made at the moment the raise lands.",
+      "The nuance is that spending more as you earn more isn't inherently wrong — the entire point of earning is to live better, and refusing to ever upgrade is its own kind of poverty. The problem is *unconscious, total* absorption: when 100% of every raise vanishes into lifestyle by default, you've coupled your spending to your income so tightly that more money never translates into more freedom. The goal isn't to deny yourself; it's to choose deliberately which upgrades are worth it and to capture a slice of every raise before it gets a chance to be spent.",
+      "The stakes are that lifestyle creep is the quiet reason high earners can feel just as financially trapped as anyone else. Each upgrade raises your baseline cost of living, which means you now *need* the higher income to sustain it — reducing your flexibility to take risks, change careers, or weather a setback. A raise that fully converts into fixed lifestyle is a raise that bought you a more expensive cage instead of a wider door."
+    ],
+    "why_today": "The mechanism by which spending expands to fill available income echoes Parkinson's Law (C. Northcote Parkinson, 1955) applied to money, and is a recurring theme in Morgan Housel's The Psychology of Money (2020) and the classic savings-rate research behind Stanley & Danko's The Millionaire Next Door (1996).",
+    "morning_challenge": "Today, think back to your last raise, bonus, or income bump. Ask honestly: where did it go? Can you point to anything in your savings or net worth that changed because of it, or did it dissolve into a higher baseline?\n\nThen set one rule for your *next* raise before it arrives: decide a percentage — even 30% or 50% — that will be automatically redirected to savings or investing the moment your pay goes up, so the upgrade happens to your future before it happens to your lifestyle.\n\nWrite the rule down somewhere you'll see it when the raise comes."
+  },
+  "midday": {
+    "reframe": "A raise is only a raise if some of it survives. If your spending rises to meet every increase, you didn't get richer — you just got more expensive to be.",
+    "itw_label": "IN THE WILD — TYPE A · PARKINSON'S LAW, 1955. HOUSEL, THE PSYCHOLOGY OF MONEY, 2020. STANLEY & DANKO, THE MILLIONAIRE NEXT DOOR, 1996.",
+    "itw_paragraphs": [
+      "Stanley and Danko's research for The Millionaire Next Door found that many people with high incomes had surprisingly little wealth, while many quiet accumulators with modest incomes were far wealthier. The differentiator was rarely how much they earned — it was how much their spending tracked their income. The wealthy accumulators had resisted lifestyle creep, keeping their living costs well below what their income could have supported.",
+      "Parkinson's Law famously states that work expands to fill the time available; the financial corollary, widely observed, is that expenses expand to fill the income available. The insight is that without a deliberate counterforce — an automatic carve-out, a fixed savings target — spending naturally rises to consume whatever you make, no matter how much that is.",
+      "Morgan Housel argues that the most reliable path to financial independence isn't a high income but a persistent gap between what you earn and what you spend. Savings rate, in his framing, is largely within your control while investment returns are not — which makes resisting lifestyle creep one of the few high-leverage financial moves anyone can make regardless of how the markets behave."
+    ],
+    "quote": "Past a certain point of income, what you need is just whatever sits a little below your ego. Wealth is the spending you don't see — the income you chose not to convert into lifestyle.",
+    "attribution": "Paraphrase of Morgan Housel, The Psychology of Money, 2020",
+    "midday_nudge": "Look at one fixed monthly cost that crept up after a past income bump — a car payment, a bigger rent, a bundle of subscriptions. You don't have to cut it. Just notice that it now requires your raised income to sustain, and ask whether it bought enough freedom to justify the trade."
+  },
+  "quiz": [
+    {
+      "question": "A person gets a substantial raise but a year later saves no more than before, despite living noticeably better. What does this most clearly illustrate?",
+      "options": [
+        "That raises never actually improve someone's finances",
+        "Lifestyle creep — spending rose to fully absorb the higher income, so the raise improved daily life but added nothing to savings or security",
+        "That the person was underpaid and the raise was too small to matter",
+        "That saving money is impossible at any income level"
+      ],
+      "correct": 1,
+      "explanation": "The raise clearly improved their lifestyle, so it wasn't too small or useless — it was fully absorbed. When spending rises to meet new income by default, the increase never reaches savings or net worth. That gap between 'living better' and 'no more secure' is the defining signature of lifestyle creep."
+    },
+    {
+      "question": "Why can resisting lifestyle creep matter more for long-term wealth than earning a higher income, according to the savings-rate view?",
+      "options": [
+        "Because higher income is always taxed away completely",
+        "Because wealth is built by the persistent gap between earning and spending, and your savings rate is far more in your control than your investment returns",
+        "Because spending money is always a mistake",
+        "Because high earners legally cannot accumulate wealth"
+      ],
+      "correct": 1,
+      "explanation": "Two people can earn identically yet end up with very different wealth depending on how much their spending tracked their income. The gap between earning and spending — the savings rate — is what compounds into wealth, and unlike market returns, it's largely a choice. That's why resisting creep is high-leverage at any income."
+    },
+    {
+      "question": "Someone decides that whenever they get a raise, a fixed share will be automatically redirected to savings before the rest hits their spending. Why does deciding this *in advance* work better than promising to 'save more later'?",
+      "options": [
+        "Because saving later always earns higher returns",
+        "Because it captures part of the raise before each upgrade becomes the new normal — once spending rises to the new baseline, cutting back feels like a painful loss",
+        "Because it guarantees the raise will be larger",
+        "Because automatic saving is the only legal way to invest"
+      ],
+      "correct": 1,
+      "explanation": "Each upgrade quickly resets your sense of 'normal,' and dropping below a new baseline feels like deprivation — so 'save more later' rarely happens. Pre-committing intercepts a slice of the raise at the one moment it isn't yet spent, before the lifestyle adjusts. The timing of the decision, not just the intention, is what makes it stick."
+    }
+  ],
+  "closing": "Enjoy the raise — that's the point of earning it. Just decide what slice survives before your lifestyle votes to spend all of it.",
+  "sources": [
+    {
+      "label": "Thomas J. Stanley & William D. Danko — The Millionaire Next Door, Longstreet Press, 1996",
+      "detail": "Research finding that wealth accumulation correlates more with restrained spending relative to income than with income level itself.",
+      "url": "https://www.simonandschuster.com/books/The-Millionaire-Next-Door/Thomas-J-Stanley/9781589795471"
+    },
+    {
+      "label": "Morgan Housel — The Psychology of Money, Harriman House, 2020",
+      "detail": "Argues that savings rate and the gap between earning and spending — not income — drive lasting wealth, and that lifestyle inflation quietly undermines it.",
+      "url": "https://www.harriman-house.com/psychologyofmoney"
+    }
+  ],
+  "ai_prompt": "I want to figure out whether lifestyle creep is eating my raises and set a rule to capture more of my next income increase. Before advising, ask me about my recent income changes, where the extra money went, my current savings rate, and which upgrades actually improved my life versus which just became the new normal. Don't recommend specific products; help me design a simple, automatic carve-out rule. Here's my situation: [describe your income history and spending]",
+  "verified": false
+}

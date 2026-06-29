@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.8",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "Inflation",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "The safest place for your money is quietly the riskiest. Cash under a mattress can't crash — but it can melt. Inflation is the slow leak that drains purchasing power while the number in your account stays comfortingly the same.",
+    "explanation_paragraphs": [
+      "Imagine your grandparent kept $1,000 in cash in a drawer in 1990 and you found it today. The bill count is identical — still $1,000. But that money buys roughly a third of what it once did. Groceries, rent, a coffee: all cost multiples of what they did then. The cash didn't lose dollars; it lost power. This is inflation's trick — it never shows up as a loss on a statement, so it feels like nothing is happening even as your money steadily shrinks.",
+      "Inflation is the general rise in prices over time, which means each unit of currency buys a little less. The mechanism that matters for you is the gap between inflation and the return on your money. If prices rise 3% a year and your savings earn 1%, your *real* return is roughly -2% — you have more dollars but less buying power. A simple rule illustrates the speed: at 3% inflation, prices double in about 24 years (the 'rule of 72' — divide 72 by the rate). Money sitting still at zero interest loses half its real value over that span.",
+      "The nuance is that inflation isn't uniformly evil and cash isn't useless. A short-term emergency fund *should* be in cash precisely because stability matters more than growth when you might need it next week. Some inflation is normal and even intended in healthy economies. The danger is specifically *long-term* money — funds you won't touch for years — sitting in low-yield cash, where the quiet erosion has time to compound into a serious loss.",
+      "The stakes are that inflation reframes the whole idea of 'safe.' Holding a large long-term balance in cash feels prudent, but it locks in a near-certain real loss. Meanwhile, money invested in assets that historically grow faster than prices has a chance to preserve and build purchasing power. The decision isn't cash versus risk — it's choosing which risk you take: the visible, occasional volatility of investing, or the invisible, relentless erosion of doing nothing."
+    ],
+    "why_today": "The corrosive effect of inflation on cash is a central theme in Morgan Housel's The Psychology of Money (2020) and is rigorously documented in Jeremy Siegel's Stocks for the Long Run (1994), which tracks how cash and bonds have historically lost real value while diversified equities outpaced inflation over long horizons.",
+    "morning_challenge": "Today, look at how much money you're holding in cash or near-zero-interest accounts beyond your emergency fund.\n\nFor any long-term portion — money you genuinely won't need for years — ask a single question: is it earning at least as much as prices are rising? If you don't know the interest rate it's earning, find out today.\n\nYou don't have to move anything yet. The action is to see the leak clearly, because you can't fix what you've never measured."
+  },
+  "midday": {
+    "reframe": "Cash isn't the absence of risk. It's a bet that prices will stop rising — a bet that has lost, slowly and reliably, across nearly all of recorded economic history.",
+    "itw_label": "IN THE WILD — TYPE A · HOUSEL, THE PSYCHOLOGY OF MONEY, 2020. SIEGEL, STOCKS FOR THE LONG RUN, 1994.",
+    "itw_paragraphs": [
+      "Jeremy Siegel's long-horizon analysis in Stocks for the Long Run found that over very long periods, cash and short-term holdings barely kept pace with inflation and often lost real ground, while a diversified basket of stocks substantially outgrew rising prices. The point isn't that stocks are safe in the short run — they swing — but that over decades, the 'safe' asset quietly lost purchasing power while the volatile one preserved it.",
+      "Morgan Housel emphasizes that inflation is dangerous precisely because it's psychologically invisible: your account balance never goes down, so the loss never triggers the alarm a market crash would. People who would panic at a 20% portfolio drop will calmly watch inflation erode a similar amount over several years without noticing, because the dollar figure on the screen never changes.",
+      "Economic history offers stark illustrations of the same force at scale: in episodes of high inflation, families who held wealth in cash saw their savings effectively evaporate within years, while those holding real assets — property, productive businesses, broad equity — retained far more of their purchasing power. The everyday version is gentler but the direction is identical: idle cash decays."
+    ],
+    "quote": "Money in the bank that earns less than inflation isn't being saved. It's being slowly spent — you just don't get to choose what on.",
+    "attribution": "Paraphrase of Morgan Housel, The Psychology of Money, 2020",
+    "midday_nudge": "Find the interest rate on your largest cash account, then compare it to a recent inflation figure. If the account rate is lower, you've just identified, in plain numbers, how fast that money is losing real value."
+  },
+  "quiz": [
+    {
+      "question": "Someone keeps a large sum they won't need for fifteen years in an account earning near 0% interest, reasoning that 'cash can't lose money.' Why is this reasoning incomplete?",
+      "options": [
+        "Cash genuinely cannot lose value under any circumstances",
+        "The dollar count stays the same, but inflation steadily erodes what those dollars can buy — a real loss that never appears on the statement",
+        "Cash always earns enough interest to beat rising prices",
+        "The money is at risk only if the bank fails"
+      ],
+      "correct": 1,
+      "explanation": "'Can't lose money' is true only in nominal dollars. Inflation reduces purchasing power, so cash earning below the inflation rate produces a negative *real* return year after year. Because the balance never drops, the loss is invisible — but over fifteen years it can be substantial. That's the precise trap of treating idle cash as risk-free."
+    },
+    {
+      "question": "Prices are rising about 3% a year. One person's long-term savings earn 1%; another's earn 5%. What's happening to each person's purchasing power?",
+      "options": [
+        "Both are gaining purchasing power because both earn interest",
+        "The first is losing roughly 2% of real value per year; the second is gaining roughly 2% — the gap between return and inflation is what matters",
+        "Both are losing purchasing power equally because inflation affects everyone the same",
+        "Neither is affected, since inflation only matters for prices, not savings"
+      ],
+      "correct": 1,
+      "explanation": "Real return is roughly the nominal return minus inflation. Earning 1% against 3% inflation is about -2% real — purchasing power shrinks. Earning 5% against the same inflation is about +2% real — it grows. What determines whether money holds its value isn't the raw interest rate but how that rate compares to the rate prices are rising."
+    },
+    {
+      "question": "Why does inflation often go unaddressed even by people who would react strongly to a stock market crash?",
+      "options": [
+        "Inflation is too small to ever matter to a household",
+        "Inflation never reduces the account balance, so it doesn't trigger the same alarm a visible drop in numbers would — the loss is psychologically invisible",
+        "People are legally prevented from protecting against inflation",
+        "Inflation only affects businesses, not individuals"
+      ],
+      "correct": 1,
+      "explanation": "A market crash slashes the number on the screen, prompting an immediate reaction. Inflation does comparable damage to purchasing power but leaves the nominal balance untouched, so it never sets off the alarm. This invisibility — not the size of the effect — is why long-term cash erosion so often gets ignored."
+    }
+  ],
+  "closing": "Stability and safety aren't the same thing. Check what your long-term cash is actually earning against rising prices, because doing nothing is itself a decision that costs you.",
+  "sources": [
+    {
+      "label": "Morgan Housel — The Psychology of Money, Harriman House, 2020",
+      "detail": "Explores how inflation quietly erodes cash and why its invisibility makes it psychologically dangerous compared to visible market losses.",
+      "url": "https://www.harriman-house.com/psychologyofmoney"
+    },
+    {
+      "label": "Jeremy J. Siegel — Stocks for the Long Run, McGraw-Hill, 1994 (and later editions)",
+      "detail": "Long-horizon historical analysis showing cash and bonds frequently lost real value to inflation while diversified equities outpaced rising prices over decades.",
+      "url": "https://www.mhprofessional.com/stocks-for-the-long-run-the-definitive-guide-to-financial-market-returns-long-term-investment-strategies-9781264269808-usa"
+    }
+  ],
+  "ai_prompt": "I want to understand how inflation is affecting my own money and which of my balances are quietly losing purchasing power. Before advising, ask me what cash and savings I'm holding, the interest rates they earn, my emergency-fund needs, and my time horizon for each pot of money. Don't recommend specific products or tickers; help me reason about real vs. nominal returns and which money is 'long-term.' Here's my situation: [describe your cash, accounts, and timelines]",
+  "verified": false
+}

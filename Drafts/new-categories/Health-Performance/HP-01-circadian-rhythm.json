@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "HP.1",
+  "category": "Health & Performance",
+  "categoryTag": "HEALTH & PERFORMANCE",
+  "concept": "Circadian Rhythm",
+  "accent": "#FF5151",
+  "accentDim": "rgba(255,81,81,0.10)",
+  "morning": {
+    "hook": "There is a free, legal performance drug that sharpens your focus, stabilizes your mood, and helps you fall asleep that night. You can take it within minutes of waking, and most people walk right past it on their way to the coffee machine. It's sunlight.",
+    "explanation_paragraphs": [
+      "You wake up groggy, scroll your phone in a dim room, and reach for coffee to feel human. By 10pm you're wired and can't sleep, so you start the cycle again tomorrow. What's missing isn't more caffeine or more willpower — it's a signal your body has been waiting for since you opened your eyes: bright light hitting your retina early in the day. Step outside for ten minutes in the morning and the same person often reports steadier energy by mid-afternoon and easier sleep at night.",
+      "Your body runs on a roughly 24-hour internal clock — the circadian rhythm — governed by a cluster of cells in the brain called the suprachiasmatic nucleus. This master clock is set primarily by light. Specialized cells in your retina detect bright light (especially the blue wavelengths abundant in morning sun) and send a timing signal to the brain. That signal suppresses melatonin, triggers a healthy cortisol pulse that wakes you up, and — critically — starts a timer that releases melatonin about 14–16 hours later, setting you up to feel sleepy at the right time that night.",
+      "Here's what's overhyped and what's established. The established science: morning light exposure advances and stabilizes the circadian clock, and it is one of the most robust, well-replicated findings in chronobiology. What gets oversold: precise 'protocols' claiming you need an exact number of minutes or a specific lux reading. The honest version is simpler — outdoor light is dramatically brighter than indoor light (a cloudy day outside can be 10–100x brighter than a lit room), so getting outside soon after waking matters far more than hitting a stopwatch target. You don't need to stare at the sun, and you never should.",
+      "The stakes compound. A misaligned circadian rhythm isn't just about feeling tired — chronic circadian disruption is associated in the research with worse metabolic health, mood disturbances, and impaired cognitive performance. Shift workers, the most studied population of circadian disruption, show elevated risks across multiple health markers. You don't have to be a shift worker to be mildly misaligned: a life lived mostly indoors under dim artificial light, with bright screens at night, nudges your clock in exactly the wrong direction every single day."
+    ],
+    "why_today": "Neuroscientist Andrew Huberman (Stanford) has popularized morning light exposure as a foundational circadian tool, building on decades of chronobiology research including Czeisler and colleagues at Harvard on light's role in setting the human clock. Matthew Walker's 'Why We Sleep' (2017) covers the circadian system's role in sleep regulation.",
+    "morning_challenge": "Today, get outside within an hour of waking and stay there for about 10 minutes — no sunglasses, no staring at the sun. Walk, drink your coffee on a step, or just stand there.\n\nIf it's overcast, stay out a bit longer; clouds cut the intensity but the light is still far brighter than indoors. If you genuinely can't get outside, sit by the brightest window you have.\n\nTonight, notice when you start feeling sleepy. You're testing whether one morning signal changes how your evening lands."
+  },
+  "midday": {
+    "reframe": "Morning light isn't a wellness nicety — it's the input that tells your entire body what time it is. Skip it, and you're asking your brain to keep accurate time in a room with no clocks.",
+    "itw_label": "IN THE WILD — TYPE A · CZEISLER ET AL., HARVARD CHRONOBIOLOGY. WALKER, WHY WE SLEEP, 2017. HUBERMAN LAB, STANFORD.",
+    "itw_paragraphs": [
+      "Chronobiology research led by Charles Czeisler and colleagues at Harvard established that the human circadian clock is exquisitely sensitive to light timing — light in the morning advances the clock (shifting you earlier), while light at night delays it (shifting you later). This is why a bright phone screen at midnight can push your natural sleep onset even later, and why a dose of morning sun pulls it earlier. The timing of light, not just the amount, is what sets the system.",
+      "The intensity gap between indoor and outdoor light is the part most people underestimate. A typical well-lit office or home is around 100–500 lux. An overcast day outdoors is commonly 1,000–10,000 lux, and direct sunlight can exceed 100,000 lux. Your circadian system responds to these large differences, which is why 'I get light from my window' usually isn't enough — the glass and the dimmer indoor environment blunt exactly the signal your clock is calibrated to read.",
+      "Matthew Walker, in 'Why We Sleep,' describes how the circadian rhythm and the sleep-pressure system work as two cooperating processes — and how modern indoor living, with weak daytime light and strong nighttime light, degrades both. The morning-light intervention is so attractive precisely because it's free, low-risk, and targets the timing signal directly, rather than trying to brute-force sleep with supplements or sedatives after the clock is already misaligned."
+    ],
+    "quote": "The circadian rhythm is set, day after day, by the most reliable signal in our environment: the rising and setting of the sun.",
+    "attribution": "Paraphrase of Matthew Walker, Why We Sleep, 2017",
+    "midday_nudge": "Look at tonight in advance. Two to three hours before your target bedtime, plan to dim the bright overhead lights and cut back on screens — you spent this morning telling your clock it's daytime; don't spend tonight telling it the opposite."
+  },
+  "quiz": [
+    {
+      "question": "Someone gets plenty of bright light — but mostly from their phone and overhead lights late at night, with little exposure during the day. Based on how the circadian system works, what's the likely effect?",
+      "options": [
+        "It balances out — total light exposure is what matters, not when it happens",
+        "Light at night tends to delay the clock, pushing sleep onset later, while the weak daytime signal fails to anchor the rhythm — so timing, not total amount, is the problem",
+        "Any bright light improves circadian health regardless of timing",
+        "It has no effect because the clock is fixed at birth"
+      ],
+      "correct": 1,
+      "explanation": "The circadian system responds to the timing of light, not just the total dose. Morning and daytime light advance and anchor the clock; nighttime light delays it. Getting most of your bright light at night while living dimly during the day pushes the rhythm in the wrong direction — which is the opposite of what you want for good sleep timing."
+    },
+    {
+      "question": "A friend says 'I get morning light — I sit by a sunny window with my coffee.' Why might this be weaker than they think?",
+      "options": [
+        "Window light is identical to outdoor light, so it's fully sufficient",
+        "Indoor light — even by a window — is typically far dimmer than being outdoors, and the circadian system responds to those large intensity differences, so stepping outside delivers a much stronger signal",
+        "Coffee cancels out the benefit of morning light",
+        "Morning light only works if you measure the exact lux level first"
+      ],
+      "correct": 1,
+      "explanation": "The intensity gap is the key point: a lit indoor space might be a few hundred lux, while outdoors — even overcast — is often thousands of lux. The clock reads those big differences. Sitting by a window is better than nothing, but it usually delivers a much weaker signal than actually going outside."
+    },
+    {
+      "question": "Why is morning light described as targeting the 'timing' of your body, in a way that an evening sleeping pill does not?",
+      "options": [
+        "Morning light sedates you faster than a pill",
+        "Morning light sets the master clock so melatonin releases at the right time that night — addressing the cause of misaligned timing, rather than forcing sleep after the clock is already off",
+        "There is no difference; both work the same way",
+        "Sleeping pills also reset the circadian clock through light receptors"
+      ],
+      "correct": 1,
+      "explanation": "Morning light works upstream: it tells the master clock what time it is, which starts the timer for melatonin release roughly 14–16 hours later. That's addressing the timing system itself. A sedative tries to force sleep downstream, after the clock is already misaligned — it doesn't fix the underlying timing."
+    }
+  ],
+  "closing": "The cheapest performance upgrade you'll ever find is already waiting outside your door. Take it before the coffee, not instead of the sunrise.",
+  "sources": [
+    {
+      "label": "Walker, M. — Why We Sleep: Unlocking the Power of Sleep and Dreams, Scribner, 2017",
+      "detail": "Accessible synthesis of sleep and circadian science, including how light sets the clock and how modern lighting disrupts it.",
+      "url": "https://www.simonandschuster.com/books/Why-We-Sleep/Matthew-Walker/9781501144325"
+    },
+    {
+      "label": "Blume, C., Garbazza, C. & Spitschan, M. — Effects of light on human circadian rhythms, sleep and mood, Somnologie, 2019",
+      "detail": "Peer-reviewed review of how light timing and intensity shape the human circadian clock, sleep, and mood.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31534436/"
+    }
+  ],
+  "ai_prompt": "I want to use morning light and light timing to fix my sleep and daytime energy. Before giving me a plan, ask me about my current wake time, how soon I get outside (if at all), my evening light and screen habits, and what my sleep problem actually is. Then build me a realistic daily routine. Here's my situation: [describe your wake time, light exposure, and sleep issue]",
+  "verified": false
+}

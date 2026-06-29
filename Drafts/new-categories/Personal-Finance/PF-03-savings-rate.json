@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.3",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "Savings Rate Beats Income",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "Two people earn wildly different salaries and end up in roughly the same financial place. The high earner who saves 5% and the modest earner who saves 25% are not on the same trajectory — and it's the modest earner pulling ahead. Income is the number everyone watches. The savings rate is the number that actually decides the outcome.",
+    "explanation_paragraphs": [
+      "Consider someone earning $200,000 who spends $190,000 a year, and someone earning $70,000 who spends $52,500. The first saves $10,000 a year — 5% of income. The second saves $17,500 — 25% of income. The lower earner is saving more in absolute dollars and, more importantly, has built a life that costs far less to sustain. When you measure what matters — how many years of spending each person banks per year of work — the modest earner is dramatically ahead. The big salary created a big lifestyle, and the lifestyle ate the salary.",
+      "Your savings rate is the share of your take-home income you don't spend. It governs two things at once, and that double action is why it's the real lever. First, a higher savings rate means you set aside more to invest and compound. Second — and this is the part people forget — a higher savings rate means you live on less, so the pile of money you eventually need to sustain your life is smaller. A person who lives on 75% of their income needs to replace a smaller number than a person who lives on 95% of a much larger income. Spending less builds the fund faster and shrinks the target simultaneously.",
+      "The nuance is that income absolutely helps — but only if the savings rate holds as income rises. The trap is lifestyle inflation: each raise gets absorbed by a nicer apartment, a newer car, costlier habits, so spending rises in lockstep and the savings rate never moves. A doubled income with an unchanged savings rate of 5% is still a 5% savings rate; you simply have a more expensive life that is equally far from financial security. The raise felt like progress and changed almost nothing about your trajectory.",
+      "The stakes are stark when you do the arithmetic of working years. Rough models of saving and compounding show that someone saving 10% of income may need around five decades of work to fund retirement, while someone saving 50% may need roughly a decade and a half — at any income level. The savings rate, far more than the salary, sets how long you must keep working. It is the one major financial variable that is largely under your direct control, and it compounds in importance the moment you treat it as the headline number instead of the salary."
+    ],
+    "why_today": "The dominance of savings rate over income is quantified in Pete Adeney's widely-cited 2012 analysis 'The Shockingly Simple Math Behind Early Retirement,' which derives years-to-retirement almost entirely from savings rate. The underlying behavioral pattern — that spending rises to consume income — was documented by economists as the lifestyle-inflation or hedonic-treadmill effect.",
+    "morning_challenge": "Calculate your actual savings rate today. Take what you saved or invested last month, divide it by your take-home pay for that month, and multiply by 100.\n\nDon't judge the number — just know it. Most people have never once calculated it, which is exactly why it drifts.\n\nThen ask the lever question: what would it take to move that number up by five percentage points — and is the answer about earning more, or about one or two recurring costs you've stopped noticing?"
+  },
+  "midday": {
+    "reframe": "A raise you fully spend changes your lifestyle, not your trajectory. The savings rate is the only number that does both jobs — it fills the fund faster and shrinks the fund you need.",
+    "itw_label": "IN THE WILD — TYPE A · ADENEY, 'THE SHOCKINGLY SIMPLE MATH BEHIND EARLY RETIREMENT,' 2012. HEDONIC TREADMILL RESEARCH.",
+    "itw_paragraphs": [
+      "Pete Adeney's 2012 essay made a counterintuitive point with arithmetic: assuming reasonable long-run investment returns, the number of years you need to work before you can stop is determined almost entirely by your savings rate — not your salary. His tables show a person saving 10% facing roughly five decades of work, a person saving 25% facing a few decades, and a person saving 50% facing somewhere around fifteen years. Crucially, those relationships hold across income levels, because a higher savings rate raises contributions and lowers the lifestyle that must eventually be funded at the same time.",
+      "The reason high incomes so often fail to produce security is the documented phenomenon of hedonic adaptation, or the 'hedonic treadmill': people quickly adjust to a higher standard of living and reset their expectations, so a raise that felt life-changing becomes the new unremarkable baseline within months. Financially, this shows up as lifestyle inflation — spending expanding to match income — which keeps the savings rate flat even as the salary climbs. The treadmill is why earning more, by itself, reliably fails to move the needle.",
+      "This is why personal-finance writers consistently observe that some very high earners — physicians, lawyers, executives — reach midlife with little net worth, while disciplined median earners accumulate substantial savings. The differentiator in case after case is not the size of the paycheck but the gap between income and spending. A large gap, sustained and invested, compounds; a small gap on a large salary does not. The savings rate is the variable that quietly sorts these outcomes."
+    ],
+    "quote": "It's not your salary that makes you rich, it's your spending habits.",
+    "attribution": "Charles A. Jaffe, financial columnist",
+    "midday_nudge": "Look at your last raise, bonus, or income bump — whenever it came. Trace honestly where it went. If most of it got absorbed into a higher baseline of spending, you've just watched the hedonic treadmill in action. The fix isn't earning the next raise. It's deciding, in advance, what share of it never reaches your lifestyle."
+  },
+  "quiz": [
+    {
+      "question": "A person earning $200,000 saves 5% of it; a person earning $70,000 saves 25%. Why might the lower earner be on a stronger path to financial independence?",
+      "options": [
+        "Because lower earners always invest more skillfully than higher earners",
+        "Because the higher savings rate both sets aside more to compound AND means living on less, which shrinks the amount of money eventually needed to sustain their life",
+        "Because a $70,000 salary is taxed at a lower effective rate, which is the main driver",
+        "It doesn't — the $200,000 earner is necessarily ahead because they earn more"
+      ],
+      "correct": 1,
+      "explanation": "Savings rate does double duty: it raises what you invest and lowers the cost of the life you'll need to fund. The 25% saver banks more in absolute terms and has built a cheaper-to-sustain life, so their target number is smaller and fills faster. The big salary mostly funded a big lifestyle, not financial security."
+    },
+    {
+      "question": "Someone doubles their income but their savings rate stays at 5%. What has actually changed about their financial trajectory?",
+      "options": [
+        "They're now twice as close to financial independence because they earn twice as much",
+        "Very little — at an unchanged 5% savings rate they simply have a more expensive life, and the years-to-independence math, which depends mainly on savings rate, barely moves",
+        "Nothing about their savings matters as long as their income went up",
+        "They've automatically beaten lifestyle inflation by earning more"
+      ],
+      "correct": 1,
+      "explanation": "Years-to-independence is driven mainly by savings rate, not salary. A doubled income absorbed entirely by higher spending keeps the savings rate at 5%, so the trajectory is essentially unchanged — just funding a costlier lifestyle. This is lifestyle inflation: the raise felt like progress but moved the needle very little."
+    },
+    {
+      "question": "What is the core reason the savings rate is described as 'the real lever' compared to income?",
+      "options": [
+        "Because income is impossible to increase, while saving is easy for everyone",
+        "Because the savings rate is largely under your direct control and simultaneously accelerates how fast your fund grows and reduces how large that fund needs to be",
+        "Because investment returns don't matter once you save anything at all",
+        "Because a high income guarantees high spending in every case"
+      ],
+      "correct": 1,
+      "explanation": "The savings rate is the variable you most directly control, and it works on both sides of the equation: more saved and compounding, less spent so the eventual target is smaller. Income helps only if the savings rate holds as it rises. That dual action, plus its controllability, is what makes it the decisive lever."
+    }
+  ],
+  "closing": "Watch the gap, not the paycheck. The salary sets your ceiling; the savings rate decides how fast you actually climb — and how soon you can stop.",
+  "sources": [
+    {
+      "label": "Adeney, P. (Mr. Money Mustache) — 'The Shockingly Simple Math Behind Early Retirement,' 2012",
+      "detail": "Widely-cited analysis deriving years-to-retirement almost entirely from savings rate, with the relationship holding across income levels.",
+      "url": "https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/"
+    },
+    {
+      "label": "Brickman, P. & Campbell, D. — 'Hedonic Relativism and Planning the Good Society,' 1971",
+      "detail": "Origin of the 'hedonic treadmill' concept describing how people adapt to higher living standards, the behavioral basis of lifestyle inflation.",
+      "url": "https://psycnet.apa.org/record/1973-09579-001"
+    }
+  ],
+  "ai_prompt": "I want to figure out my real savings rate and find realistic ways to raise it without feeling deprived. Before suggesting anything, ask me about my take-home income, my rough monthly spending categories, and where any recent raises went. Keep it to illustrative math and behavior change — no specific product or investment recommendations. Here's my situation: [describe your income and spending]",
+  "verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "lockin_type": "apply",
+  "editionId": "PF.6",
+  "category": "Personal Finance",
+  "categoryTag": "PERSONAL FINANCE",
+  "concept": "Dollar-Cost Averaging",
+  "accent": "#3DE88A",
+  "accentDim": "rgba(61,232,138,0.10)",
+  "morning": {
+    "hook": "The biggest reason people fail to invest isn't lack of money. It's the question 'is now a good time?' Dollar-cost averaging deletes the question entirely — and that's the whole point.",
+    "explanation_paragraphs": [
+      "You finally have some money set aside to invest. You open the account, ready to go, and freeze. The market hit a record high last week — is now the worst possible moment? Or did it just dip — is it about to fall further? So you wait for a better entry point. Weeks pass. The money sits in cash. You never actually invest it. This is the most common way people lose to the market: not by buying badly, but by never buying at all, paralyzed by the timing question.",
+      "Dollar-cost averaging (DCA) is the practice of investing a fixed amount on a fixed schedule — say $200 on the first of every month — regardless of price. The mechanism is simple: when prices are high, your fixed $200 buys fewer shares; when prices are low, the same $200 buys more. Suppose a fund is $50 one month, $40 the next, $50 the third. Your $600 buys 4 + 5 + 4 = 13 shares, an average cost of about $46.15 per share — below the simple average price of $46.67, because you automatically bought more when it was cheap.",
+      "The honest nuance: DCA is not mathematically guaranteed to beat investing a lump sum all at once. Because markets rise more often than they fall, lump-sum investing wins on average over long horizons — your money is in the market longer. DCA's real value isn't squeezing out maximum return; it's behavioral. It removes the decision that stops people from acting, smooths out the emotional pain of a badly-timed lump sum, and turns investing into a habit instead of a recurring agonized choice.",
+      "The stakes are that the timing question has no good answer — not for you, not for professionals. Decades of research show that even experts cannot reliably call market tops and bottoms. Waiting for the 'right' moment is a bet you will almost certainly lose, paid for in the years your money sat idle. DCA's quiet power is that it makes you a consistent buyer through every market — the scary ones and the euphoric ones alike."
+    ],
+    "why_today": "Dollar-cost averaging was popularized for everyday investors by Benjamin Graham in The Intelligent Investor (1949), and championed by John C. Bogle, founder of Vanguard, who argued in Common Sense on Mutual Funds (1999) that consistent low-cost investing beats market-timing for nearly all individuals.",
+    "morning_challenge": "Today, set up one automatic recurring contribution — any amount you won't miss, even $25 — into a broad, diversified investment account you already have or can open.\n\nThe specific amount matters far less than the automation. The goal is to make the next twelve investing decisions for yourself in one sitting, so the timing question never gets a chance to stop you again.\n\nIf you already auto-invest, increase it by one small increment today."
+  },
+  "midday": {
+    "reframe": "You are not trying to buy at the bottom. You are trying to never let 'when' become an excuse for 'never.' Automation beats prediction.",
+    "itw_label": "IN THE WILD — TYPE A · GRAHAM, THE INTELLIGENT INVESTOR, 1949. BOGLE, COMMON SENSE ON MUTUAL FUNDS, 1999. DALBAR QAIB STUDIES.",
+    "itw_paragraphs": [
+      "Benjamin Graham, the mentor of Warren Buffett, recommended dollar-cost averaging to ordinary investors precisely because it sidesteps the impossible task of forecasting. In The Intelligent Investor he argued that a fixed periodic plan frees the investor from worrying about whether to act now or later — the schedule decides, removing the emotion that wrecks most amateur results.",
+      "The long-running DALBAR Quantitative Analysis of Investor Behavior studies repeatedly find that the average individual investor earns significantly less than the funds they invest in — a gap driven largely by buying after rallies and selling after drops. Consistent, scheduled investing is one of the few documented antidotes to this behavior gap, because it strips out the moment-to-moment decisions where investors do themselves the most damage.",
+      "John Bogle spent his career arguing that for the vast majority of people, trying to time entries is a losing game against costs and human psychology. His prescription was almost boring on purpose: invest steadily, keep costs low, and let time and compounding do the work — a philosophy that made automatic, schedule-based investing the default inside millions of retirement plans."
+    ],
+    "quote": "The idea of saving money and investing it regularly never made anybody poor. The market-timer's record is a graveyard of good intentions.",
+    "attribution": "Paraphrase of John C. Bogle, Common Sense on Mutual Funds, 1999",
+    "midday_nudge": "Check whether your contribution is genuinely automatic — pulled on a schedule without you pressing a button. If you still have to manually approve each one, you've left the door open for the timing question to walk back in."
+  },
+  "quiz": [
+    {
+      "question": "A friend has cash ready to invest but keeps waiting because 'the market feels too high right now.' Six months later the cash is still uninvested. What problem is dollar-cost averaging primarily designed to solve here?",
+      "options": [
+        "It guarantees they will earn more than investing the money all at once",
+        "It removes the timing decision that is keeping them on the sidelines, converting a paralyzing one-time choice into an automatic habit",
+        "It ensures they only ever buy when prices are falling",
+        "It eliminates the risk of ever losing money in the market"
+      ],
+      "correct": 1,
+      "explanation": "DCA's core value is behavioral, not magical. It does not guarantee outperformance and cannot prevent losses. Its power is that a fixed schedule answers 'when?' on your behalf, so the timing question stops blocking action. The friend's real failure is inaction, and automation is the direct fix."
+    },
+    {
+      "question": "An investor puts a fixed $300 into the same fund every month. The price drops sharply one month, then recovers. What does the fixed-dollar approach do automatically during the low-price month?",
+      "options": [
+        "It pauses buying until prices recover to protect the investor",
+        "It buys more shares than usual, because the same $300 purchases more when the price is lower",
+        "It buys fewer shares to avoid catching a falling market",
+        "It switches the money to cash until the trend reverses"
+      ],
+      "correct": 1,
+      "explanation": "With a fixed dollar amount, a lower price means each dollar buys more shares — so the down month automatically accumulates more shares. This is the mechanical reason a DCA investor's average cost per share tends to land below the average price over the period, without any decision-making required."
+    },
+    {
+      "question": "Research consistently shows the average individual investor underperforms the very funds they own. How does scheduled, automatic investing help close this 'behavior gap'?",
+      "options": [
+        "It lets investors react faster to market news",
+        "It removes the in-the-moment decisions — like buying after rallies and selling after drops — where investors tend to harm their own returns",
+        "It identifies which funds will perform best in the coming year",
+        "It increases returns by concentrating money into fewer assets"
+      ],
+      "correct": 1,
+      "explanation": "The behavior gap comes mostly from emotionally-timed buying and selling. A fixed schedule takes those discretionary moments off the table — you buy through fear and euphoria alike. It doesn't predict winners or react to news; it simply prevents the self-inflicted timing errors that studies attribute the gap to."
+    }
+  ],
+  "closing": "Stop trying to find the perfect moment. Pick a number, pick a date, automate it, and let the calendar make the decision you keep refusing to make.",
+  "sources": [
+    {
+      "label": "Benjamin Graham — The Intelligent Investor, Harper & Brothers, 1949 (rev. ed. HarperBusiness)",
+      "detail": "The foundational value-investing text that recommended fixed periodic ('dollar-cost averaging') investing to free ordinary investors from the impossible task of market timing.",
+      "url": "https://www.harpercollins.com/products/the-intelligent-investor-rev-ed-benjamin-graham"
+    },
+    {
+      "label": "John C. Bogle — Common Sense on Mutual Funds, John Wiley & Sons, 1999",
+      "detail": "Vanguard founder's case for low-cost, consistent, schedule-based investing over market timing for the typical individual investor.",
+      "url": "https://www.wiley.com/en-us/Common+Sense+on+Mutual+Funds%3A+Fully+Updated+10th+Anniversary+Edition-p-9780470138137"
+    }
+  ],
+  "ai_prompt": "I want to set up a simple, automatic investing habit using dollar-cost averaging and stop second-guessing market timing. Before giving advice, ask me about my situation — my income stability, whether I have an emergency fund, my time horizon, and what accounts I already have access to. Do not recommend specific products or tickers; help me think through the principle and the habit. Here's my situation: [describe your finances and what you're trying to do]",
+  "verified": false
+}

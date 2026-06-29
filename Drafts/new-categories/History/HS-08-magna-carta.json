@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "HS.8",
+  "category": "History",
+  "categoryTag": "HISTORY",
+  "concept": "The Magna Carta",
+  "accent": "#E0A93D",
+  "accentDim": "rgba(224,169,61,0.10)",
+  "morning": {
+    "hook": "The most famous document in the history of liberty was a peace treaty between a despised king and a gang of rebel barons protecting their own privileges. It failed almost immediately, was annulled by the Pope within weeks, and most of its clauses are now repealed. Its real power is that it established, in writing, one radical idea: even the king is under the law.",
+    "explanation_paragraphs": [
+      "In June 1215, at Runnymede meadow beside the Thames, King John of England met a coalition of rebellious barons who had grown furious at his arbitrary taxes, his abuse of justice, and his military failures in France. Cornered, John affixed his seal to a charter — later called Magna Carta, the 'Great Charter' — listing limits on royal power. It was not a bill of universal human rights. Much of it concerned feudal dues, fishing weirs, and the grievances of a wealthy aristocratic class against a king who had been squeezing them.",
+      "The mechanism that made it matter was the principle buried in the bargaining. Several clauses asserted that the king could not simply seize property, imprison free men, or levy certain taxes at will — he was bound by established law and customary process. Clause 39 declared that no free man could be punished 'except by the lawful judgment of his equals or by the law of the land.' The novelty was not the specific protections but the underlying claim: that the ruler's authority had limits he did not get to define alone.",
+      "The honest nuance is that the charter was, at first, a failure. 'Free men' in 1215 excluded the vast majority of the population, who were unfree peasants. Within ten weeks, King John persuaded Pope Innocent III to annul the document as extracted under duress, and England slid into civil war. Magna Carta could easily have become a forgotten footnote. Instead it was reissued, revised, and reconfirmed by later kings dozens of times, gradually hardening from a baronial peace deal into a recognized constraint on the Crown.",
+      "The stakes are visible in what the document became, not what it was. Centuries later, lawyers and revolutionaries reached back to Magna Carta — often reading into it more than the barons ever intended — to argue that government power must answer to law. Its language echoes in the English Bill of Rights, in the due-process guarantees of the US Constitution, and in the Universal Declaration of Human Rights. A self-interested medieval bargain became the founding metaphor for the rule of law."
+    ],
+    "why_today": "Historian Nicholas Vincent's Magna Carta: A Very Short Introduction (2012) traces how a flawed, largely failed feudal charter was repurposed over centuries into a symbol of liberty far grander than its authors intended — a case study in how meaning is assigned to documents long after they are written.",
+    "morning_challenge": "Notice one rule or principle in your own life that everyone treats as obviously fundamental — at work, in your community, in your family.\n\nAsk: where did it actually come from? Was it designed as the noble principle people now invoke, or did it start as a messy compromise that later got dressed up?\n\nMagna Carta teaches that foundational ideas often have grubby origins — and that this doesn't make them less real, only better understood."
+  },
+  "midday": {
+    "reframe": "Magna Carta's importance does not lie in 1215, when it was a failed aristocratic peace deal annulled within weeks. It lies in what later generations chose to make of one sentence in it: that even the most powerful person in the land is not above the law.",
+    "itw_label": "IN THE WILD — TYPE A · VINCENT, MAGNA CARTA: A VERY SHORT INTRODUCTION, 2012. BRITISH LIBRARY, MAGNA CARTA COLLECTION.",
+    "itw_paragraphs": [
+      "Historians emphasize how local and self-interested the original document was. Many clauses addressed narrow feudal grievances — scutage payments, the rights of heirs, royal forests — rather than abstract freedom. The barons were not democrats; they were protecting their class against a king who had overreached. Understanding this guards against the comfortable myth that liberty sprang fully formed from a meadow in 1215.",
+      "The British Library, which holds two of the four surviving 1215 copies, documents how the charter was repeatedly annulled, reissued, and amended. The version that became fixed in English law was not the 1215 text but later reissues, especially the 1225 confirmation. The document's authority grew through repetition and reinterpretation, not from its initial force, which collapsed almost at once.",
+      "The afterlife is where the real history happens. In the seventeenth century, the jurist Sir Edward Coke and others invoked Magna Carta against the Stuart kings, reframing a feudal bargain as a guarantee of fundamental rights — a reading the barons would not have recognized. That reinvented Magna Carta crossed the Atlantic and shaped American constitutional thinking, proving that a document's meaning can be authored as much by its later users as by its original signers."
+    ],
+    "quote": "No free man shall be seized or imprisoned, or stripped of his rights or possessions... except by the lawful judgment of his equals or by the law of the land.",
+    "attribution": "Magna Carta, Clause 39 (1215), as translated by the British Library",
+    "midday_nudge": "Pick one institution or rule you rely on today — a law, a company policy, a constitutional right. Spend two minutes finding out where it actually came from. You'll often discover, as with Magna Carta, that the noble principle was assembled out of compromise, conflict, and later reinterpretation."
+  },
+  "quiz": [
+    {
+      "question": "The original Magna Carta was a self-interested baronial peace deal that failed within weeks, yet it became a foundational symbol of liberty. What does this reveal about how foundational principles develop?",
+      "options": [
+        "Foundational principles must be designed perfectly from the start to matter",
+        "The lasting meaning of a document can come less from its authors' intentions than from how later generations choose to interpret and build on it",
+        "Magna Carta was unimportant because it failed in 1215",
+        "Liberty was fully invented by the barons at Runnymede"
+      ],
+      "correct": 1,
+      "explanation": "Magna Carta's significance grew over centuries as lawyers and revolutionaries read into it a broader principle than the barons intended. The lesson is that influential ideas are often retroactively constructed: meaning gets assigned to a document by its later users. This reframes how we should think about the origins of almost any 'foundational' principle."
+    },
+    {
+      "question": "Clause 39 limited the king's power to seize or imprison free men except by lawful judgment. Why is this the part of Magna Carta that endured, even though most clauses are now repealed?",
+      "options": [
+        "It was the longest and most detailed clause",
+        "It expressed a general, portable principle — that the ruler is bound by law and process — which could outlive the specific feudal disputes the rest of the charter addressed",
+        "It granted rights to every person living in England in 1215",
+        "The Pope specifically approved of it"
+      ],
+      "correct": 1,
+      "explanation": "Most of Magna Carta dealt with narrow, time-bound grievances. Clause 39 expressed a transferable idea — that authority is subject to law and fair process — which could be applied far beyond its original context. Durable principles tend to be the ones general enough to outgrow the specific quarrel that produced them."
+    },
+    {
+      "question": "In 1215, 'free men' excluded most of the population, who were unfree peasants. Why does acknowledging this limitation strengthen rather than weaken our understanding of Magna Carta?",
+      "options": [
+        "It proves Magna Carta was worthless and should be ignored",
+        "It shows that a principle can start narrow and exclusionary yet still seed something larger — honest history lets us see how rights expanded over time rather than treating them as fully formed at the start",
+        "It means only aristocrats deserve legal protection",
+        "It demonstrates that the document had no influence at all"
+      ],
+      "correct": 1,
+      "explanation": "Recognizing who Magna Carta excluded avoids a sanitized myth and reveals the actual mechanism of progress: a limited principle was later extended to far more people than its authors imagined. Understanding the narrow origin makes the long expansion of rights more legible, not less meaningful."
+    }
+  ],
+  "closing": "Magna Carta was a flawed bargain among privileged men that failed on arrival. Its greatness is that one idea inside it survived everything else: power, even a king's, must answer to law.",
+  "sources": [
+    {
+      "label": "Vincent, N. — Magna Carta: A Very Short Introduction, Oxford University Press, 2012",
+      "detail": "Concise scholarly account of the charter's feudal origins, immediate failure, and its later transformation into a symbol of liberty.",
+      "url": "https://global.oup.com/academic/product/magna-carta-a-very-short-introduction-9780199582877"
+    },
+    {
+      "label": "British Library — Magna Carta, 1215 (English translation and collection)",
+      "detail": "Full translated text and historical context from the institution holding two of the four surviving 1215 copies.",
+      "url": "https://www.bl.uk/magna-carta/articles/magna-carta-english-translation"
+    }
+  ],
+  "ai_prompt": "I want to understand the Magna Carta as a case study in how 'foundational principles' actually get built and reinterpreted over time. Before explaining, ask me whether I care most about the 1215 history, the idea that rulers are bound by law, or applying the 'meaning is assigned later' lesson to something in my own world. Then focus there. Here's what I'm curious about: [describe your angle]",
+  "verified": false
+}

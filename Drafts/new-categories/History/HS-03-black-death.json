@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "HS.3",
+  "category": "History",
+  "categoryTag": "HISTORY",
+  "concept": "The Black Death",
+  "accent": "#E0A93D",
+  "accentDim": "rgba(224,169,61,0.10)",
+  "morning": {
+    "hook": "The Black Death killed perhaps a third to half of Europe. The survivors, horrifyingly, often ended up richer. When labor becomes scarce, the people who do the work suddenly hold the leverage — and the powerful spend the next century trying to claw it back.",
+    "explanation_paragraphs": [
+      "Between roughly 1347 and 1351, plague swept across Europe, killing an enormous share of the population in a few catastrophic years. In the immediate aftermath, fields went unploughed, harvests rotted, and workshops stood empty for lack of hands. But the survivors stepped into a transformed economy. The same number of farms, mills, and estates now competed for far fewer workers. For a peasant or laborer who lived through the horror, the bargaining position had inverted overnight.",
+      "The mechanism is pure supply and demand applied to human labor. When workers are abundant, employers set the terms and wages stay low. When workers become scarce, the price of labor rises because employers must compete to secure the few available hands. After the plague, real wages for laborers across much of Western Europe rose substantially, and workers gained the leverage to demand better pay, refuse bad terms, and leave one lord for another who would pay more. Scarcity did for the medieval peasant what no rebellion had managed.",
+      "The landowning classes understood the threat immediately and fought it. In England, the Ordinance of Labourers in 1349 and the Statute of Labourers in 1351 tried to freeze wages at pre-plague levels and bar workers from leaving their employers. These were among the earliest attempts at legal wage control, and they largely failed: the underlying scarcity was too strong. The resentment they generated helped fuel the Peasants' Revolt of 1381. The powerful could pass laws, but they could not legislate away the new balance of supply and demand.",
+      "The stakes reach directly into the present. Every debate about wages, labor shortages, automation, and worker leverage is the same equation the Black Death revealed with brutal clarity: the price of labor tracks its scarcity, and when workers become hard to replace, power shifts toward them — which is precisely when those who hold capital invest most heavily in finding ways to not need them. Understanding the plague's economics is understanding the permanent tug-of-war over who needs whom."
+    ],
+    "why_today": "The wage-and-leverage analysis draws on economic historians including David Routt's 'The Economic Impact of the Black Death' (EH.Net Encyclopedia, 2008) and the long-run wage data in the work of Robert Allen on European real wages.",
+    "morning_challenge": "Today, look at your own work through the lens of replaceability. Ask honestly: how scarce is what you do? How hard would it be to replace you?\n\nThen widen it: where in the economy right now are workers scarce, and watch what happens to their wages and conditions. Where are they abundant, and watch the opposite.\n\nLeverage is not about effort. It is about scarcity."
+  },
+  "midday": {
+    "reframe": "Your wage is not primarily a reward for effort or even skill. It is a function of how easily you can be replaced. The Black Death proved this with a body count, and the equation has never changed.",
+    "itw_label": "IN THE WILD — TYPE A · ROUTT, 'THE ECONOMIC IMPACT OF THE BLACK DEATH', EH.NET ENCYCLOPEDIA, 2008. STATUTE OF LABOURERS, ENGLAND, 1351.",
+    "itw_paragraphs": [
+      "Economic historians have documented that in the decades after the plague, real wages for English and Western European laborers rose markedly while the value of land and the income of landlords fell. With fewer workers bidding for the same land and jobs, the terms of trade shifted toward labor. Peasants ate better, demanded cash wages over feudal obligations, and could walk off an estate that mistreated them — a freedom the manorial system had been built to deny.",
+      "The legal backlash is instructive. England's Statute of Labourers in 1351 made it a crime to demand or pay wages above pre-plague rates and tried to compel the able-bodied to work for whoever required them. It was, in effect, an attempt to use law to override a market the elite had lost control of. The statute was widely evaded and resented, and the broader struggle it represented fed directly into the Peasants' Revolt of 1381, one of the largest popular uprisings in English history.",
+      "The dynamic recurs in every era. When a pandemic, a boom, or a demographic shift makes a category of worker scarce, wages and bargaining power rise, and employers respond either by raising pay or by investing in automation and offshoring to reduce their dependence on those workers. The post-2020 labor market, with its wage gains in tight sectors and accelerating automation investment, is the same play running on a faster clock."
+    ],
+    "quote": "After the great mortality, so few servants and laborers remained that men knew not what to do — and those who survived demanded such wages that the lords were forced to grant them or lose their harvest.",
+    "attribution": "Paraphrase of medieval chronicle accounts cited in Routt, 'The Economic Impact of the Black Death', EH.Net Encyclopedia, 2008",
+    "midday_nudge": "Identify one skill or role in your industry that is currently scarce and one that is currently abundant. Watch their wages, conditions, and bargaining power over the next year. The plague's equation is still running."
+  },
+  "quiz": [
+    {
+      "question": "Why did surviving laborers often end up economically better off after the Black Death, despite the catastrophe?",
+      "options": [
+        "The plague destroyed the wealth of the rich, redistributing it directly to the poor",
+        "With the labor supply drastically reduced, the few remaining workers became scarce and could command higher wages and better terms — scarcity shifted bargaining power toward labor",
+        "Survivors inherited the property of everyone who died",
+        "The Church distributed emergency wages to all survivors"
+      ],
+      "correct": 1,
+      "explanation": "The driver was supply and demand applied to labor. Fewer workers competing for the same farms and workshops meant employers had to compete for them, pushing wages up and giving workers the leverage to demand better terms or leave. The plague didn't redistribute wealth directly — it made labor scarce, and scarcity is leverage."
+    },
+    {
+      "question": "What does the failure of England's Statute of Labourers (1351) reveal about wage control?",
+      "options": [
+        "Wage controls always succeed when enforced strictly enough",
+        "Laws attempting to freeze wages against a strong underlying scarcity tend to fail, because the powerful can pass statutes but cannot legislate away supply and demand",
+        "The statute succeeded completely and kept wages frozen for centuries",
+        "Wage laws are irrelevant because wages are set purely by tradition"
+      ],
+      "correct": 1,
+      "explanation": "The landowning class understood the threat and tried to outlaw the new leverage by capping wages and binding workers to employers. It largely failed because the scarcity was real and strong — workers were too valuable to replace. The episode shows that legal force struggles to override fundamental market pressure, and the resentment it bred helped spark the 1381 revolt."
+    },
+    {
+      "question": "How does the Black Death's lesson about labor scarcity apply to modern work?",
+      "options": [
+        "It doesn't — modern wages are set entirely by government regulation",
+        "Wages and worker leverage still track scarcity: when a type of worker becomes hard to replace, pay and power rise, and employers respond by raising wages or investing in automation to reduce dependence on them",
+        "Modern automation has made labor scarcity impossible",
+        "It applies only to agricultural workers, not to modern jobs"
+      ],
+      "correct": 1,
+      "explanation": "The core equation — the price of labor tracks its scarcity, and scarcity is leverage — is permanent. When workers become hard to replace, their wages and bargaining power rise, which is exactly when capital invests hardest in automation and offshoring to avoid needing them. Recognizing this lets you read any labor market in terms of replaceability rather than effort."
+    }
+  ],
+  "closing": "The plague was an atrocity, and it handed the survivors leverage they had never had. The lesson is cold but permanent: your bargaining power lives or dies on how easily you can be replaced.",
+  "sources": [
+    {
+      "label": "Routt, D. — 'The Economic Impact of the Black Death', EH.Net Encyclopedia (Economic History Association), 2008",
+      "detail": "Survey of the plague's effects on wages, land values, and labor relations in late-medieval Europe.",
+      "url": "https://eh.net/encyclopedia/the-economic-impact-of-the-black-death/"
+    },
+    {
+      "label": "Statute of Labourers — England, 1351 (UK Parliament / Avalon Project text)",
+      "detail": "Early attempt at legal wage control, capping wages at pre-plague levels and restricting workers' freedom to move, in response to post-plague labor scarcity.",
+      "url": "https://avalon.law.yale.edu/medieval/statlab.asp"
+    }
+  ],
+  "ai_prompt": "I want to use the Black Death's labor-scarcity lesson to assess my own bargaining power and read my industry's labor market clearly. Before we analyze, ask me what I do, how replaceable I think my role is, and which skills in my field seem scarce versus abundant right now. Then help me think through leverage honestly. Here's my context: [describe your role and industry]",
+  "verified": false
+}

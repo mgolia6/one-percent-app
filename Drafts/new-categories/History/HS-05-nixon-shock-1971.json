@@ -1,0 +1,82 @@
+{
+  "lockin_type": "aware",
+  "editionId": "HS.5",
+  "category": "History",
+  "categoryTag": "HISTORY",
+  "concept": "The Nixon Shock, 1971",
+  "accent": "#E0A93D",
+  "accentDim": "rgba(224,169,61,0.10)",
+  "morning": {
+    "hook": "On a Sunday night in August 1971, President Nixon went on television and quietly ended the system that had backed the world's money with gold. Since that night, the dollar in your pocket has been worth exactly what enough people agree it is worth — and nothing else.",
+    "explanation_paragraphs": [
+      "On August 15, 1971, Richard Nixon announced that the United States would 'suspend temporarily' the convertibility of the dollar into gold. Under the Bretton Woods system established in 1944, other countries held dollars knowing they could, in principle, exchange them for U.S. gold at a fixed rate of 35 dollars an ounce. By 1971, the U.S. had printed far more dollars than it held gold to back, foreign governments were lining up to redeem, and the gold was draining out. Rather than let the reserves empty, Nixon closed the gold window. The 'temporary' suspension became permanent.",
+      "The mechanism this revealed is the nature of fiat money. After 1971, the dollar was no longer a claim on a physical commodity. It became fiat currency — money that has value because a government declares it legal tender and, crucially, because people collectively trust and accept it. The entire modern monetary system rests on this shared agreement. There is no vault of gold underneath your bank balance. There is a network of confidence: confidence that others will accept the dollar tomorrow, that the issuing institution will not destroy its value, and that the agreement will hold.",
+      "This is neither inherently good nor bad, but it is profound. Fiat money gives governments and central banks enormous flexibility: they can expand the money supply in a crisis, respond to recessions, and are not chained to how much metal they happen to possess. That same flexibility is the source of inflation risk, because the discipline of a fixed gold quantity is gone and the only remaining constraint is institutional judgment and credibility. The system trades a hard physical anchor for human management — and human management can be wise or reckless.",
+      "The stakes are sitting in your bank account right now. Every dollar, euro, or yen you hold is a unit of collective belief, not a piece of stored metal. Understanding 1971 is understanding why central banks matter so much, why trust in institutions is not abstract but financial, why inflation is fundamentally a story about confidence, and why debates about cryptocurrency and gold keep returning to one question: what, exactly, should we agree to treat as money?"
+    ],
+    "why_today": "The standard account of the Nixon Shock and the end of Bretton Woods is documented by the Federal Reserve History project ('Nixon Ends Convertibility of U.S. Dollars to Gold', Federal Reserve, 2013), drawing on the August 1971 policy record.",
+    "morning_challenge": "Today, look at a number in your bank account or wallet and sit with one fact: that value rests entirely on collective agreement, not on any physical thing it can be redeemed for.\n\nAsk: what keeps that agreement holding? What would have to break for the number to stop meaning what it means?\n\nMoney is the most widely shared act of trust in human society. Notice that you participate in it without thinking."
+  },
+  "midday": {
+    "reframe": "Money stopped being a thing in 1971 and became an agreement. The dollar is not backed by gold or by anything you can touch. It is backed by the shared belief that everyone else will keep treating it as money tomorrow.",
+    "itw_label": "IN THE WILD — TYPE A · FEDERAL RESERVE HISTORY, 'NIXON ENDS CONVERTIBILITY OF U.S. DOLLARS TO GOLD', 2013. BRETTON WOODS AGREEMENT, 1944.",
+    "itw_paragraphs": [
+      "Bretton Woods, negotiated in 1944, made the U.S. dollar the anchor of the global monetary system: other currencies were pegged to the dollar, and the dollar was convertible to gold at 35 dollars an ounce. The arrangement depended on the United States holding enough gold to honor redemptions. By the late 1960s, U.S. spending on domestic programs and the Vietnam War had flooded the world with dollars, and foreign holders increasingly wanted gold instead. The system's anchor was no longer credible.",
+      "Nixon's August 1971 announcement, made without consulting most U.S. allies, ended convertibility and effectively dismantled Bretton Woods. After a brief attempt to restore fixed rates, the major economies moved to floating exchange rates by 1973. The world entered the era of pure fiat money, in which the value of currencies is set by markets and managed by central banks rather than fixed to gold. We have lived in that system ever since.",
+      "The consequences run through everything. Central banks like the Federal Reserve now manage money supply and interest rates with tools that only make sense in a fiat system, and their credibility is itself a load-bearing part of the currency's value. The recurring appeal of gold and the entire premise of cryptocurrencies — assets with fixed or rule-bound supply, outside government control — are direct responses to the world Nixon created in 1971: a world where money is trust, and trust can be managed, debased, or lost."
+    ],
+    "quote": "I have directed the Secretary of the Treasury to take the action necessary to defend the dollar against the speculators... to suspend temporarily the convertibility of the dollar into gold or other reserve assets.",
+    "attribution": "Richard Nixon, address to the nation, August 15, 1971",
+    "midday_nudge": "Next time you see a headline about inflation, the Federal Reserve, interest rates, or crypto, read it through the 1971 lens: this is a story about how much we trust the institutions that manage an agreement we all depend on. What is the confidence doing in this story?"
+  },
+  "quiz": [
+    {
+      "question": "What fundamentally changed about money when Nixon ended dollar-gold convertibility in 1971?",
+      "options": [
+        "The dollar became worth more because it was freed from gold",
+        "The dollar became fiat currency — money valued not by redemption for a physical commodity, but by government declaration and the collective trust that others will keep accepting it",
+        "The United States ran out of money entirely",
+        "Other countries stopped using the dollar in international trade"
+      ],
+      "correct": 1,
+      "explanation": "Before 1971 the dollar was, in principle, a claim on gold. After, it became fiat money: valuable because it is legal tender and because people collectively trust and accept it. There is no metal under your balance — only a network of confidence. That shift is the foundation of the entire modern monetary system."
+    },
+    {
+      "question": "What is the central trade-off introduced by a fiat money system?",
+      "options": [
+        "Fiat money is strictly worse than gold-backed money in every way",
+        "It trades the hard physical constraint of a fixed gold supply for flexibility — central banks can respond to crises, but the only remaining discipline is institutional credibility, which introduces inflation risk",
+        "Fiat money eliminates inflation entirely",
+        "Fiat money makes central banks unnecessary"
+      ],
+      "correct": 1,
+      "explanation": "Removing the gold anchor gives governments enormous flexibility to manage the economy, expand money in a crisis, and avoid being chained to metal reserves. But the same freedom removes an automatic constraint, leaving only human institutional judgment between sound money and debasement. Flexibility and inflation risk are two sides of the same coin."
+    },
+    {
+      "question": "Why do gold and cryptocurrency keep re-entering monetary debates as a direct legacy of 1971?",
+      "options": [
+        "Because they are physically more durable than paper money",
+        "Because they represent assets with fixed or rule-bound supply outside government control — a response to a fiat world where money's value rests on trust in institutions that can manage, debase, or lose it",
+        "Because governments have banned all fiat currency",
+        "Because they are the only assets that can be used for international trade"
+      ],
+      "correct": 1,
+      "explanation": "Once money became a managed agreement rather than a claim on metal, its value became inseparable from trust in the institutions managing it. Gold's enduring appeal and crypto's core premise — supply that is fixed or governed by rules rather than discretion — are both reactions to that vulnerability. The 1971 shift is precisely what makes 'what should we treat as money?' a live question."
+    }
+  ],
+  "closing": "In 1971, money quietly stopped being a thing you could redeem and became a thing we all agree to believe in. Every balance you hold is a vote of confidence in an agreement that has to be renewed every single day.",
+  "sources": [
+    {
+      "label": "Federal Reserve History — 'Nixon Ends Convertibility of U.S. Dollars to Gold and Announces Wage/Price Controls', 2013",
+      "detail": "Account of the August 1971 decision to suspend dollar-gold convertibility and its role in ending the Bretton Woods system.",
+      "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends"
+    },
+    {
+      "label": "Richard Nixon — 'Address to the Nation Outlining a New Economic Policy', August 15, 1971 (American Presidency Project)",
+      "detail": "Primary-source text of the speech announcing the suspension of dollar-gold convertibility.",
+      "url": "https://www.presidency.ucsb.edu/documents/address-the-nation-outlining-new-economic-policy-the-challenge-peace"
+    }
+  ],
+  "ai_prompt": "I want to really understand fiat money and the Nixon Shock, and connect it to something I care about — inflation, central banks, gold, or crypto. Before explaining, ask me which of those I'm most curious about and how much economics background I have, so you can pitch it right. Then walk me through how 1971 explains it. Here's where I'm starting from: [describe your question or background]",
+  "verified": false
+}
