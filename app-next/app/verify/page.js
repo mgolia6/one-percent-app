@@ -23,6 +23,7 @@ export default function VerifyPage() {
   const [cat, setCat] = useState('history')
   const [entries, setEntries] = useState([])      // from JSON
   const [checks, setChecks] = useState({})         // `${ed}|${no}` -> bool
+  const [flags, setFlags] = useState({})           // `${ed}|${no}` -> { flagged, note }
   const [signoffs, setSignoffs] = useState({})     // ed -> {status, verified_at}
   const [busy, setBusy] = useState(false)
 
@@ -50,12 +51,15 @@ export default function VerifyPage() {
     setEntries(json)
     const eds = json.map(e => e.edition_id)
     const [{ data: chk }, { data: ent }] = await Promise.all([
-      supabase.from('verification_checks').select('edition_id, claim_no, checked').in('edition_id', eds),
+      supabase.from('verification_checks').select('edition_id, claim_no, checked, flagged, flag_note').in('edition_id', eds),
       supabase.from('verification_entries').select('edition_id, status, verified_at').in('edition_id', eds),
     ])
-    const cm = {}; (chk || []).forEach(r => { cm[`${r.edition_id}|${r.claim_no}`] = r.checked })
+    const cm = {}, fm = {}; (chk || []).forEach(r => {
+      cm[`${r.edition_id}|${r.claim_no}`] = r.checked
+      if (r.flagged || r.flag_note) fm[`${r.edition_id}|${r.claim_no}`] = { flagged: !!r.flagged, note: r.flag_note || '' }
+    })
     const sm = {}; (ent || []).forEach(r => { sm[r.edition_id] = r })
-    setChecks(cm); setSignoffs(sm)
+    setChecks(cm); setFlags(fm); setSignoffs(sm)
   }, [])
 
   useEffect(() => { if (userId) loadCategory(cat) }, [userId, cat, loadCategory])
@@ -64,6 +68,24 @@ export default function VerifyPage() {
     setChecks(p => ({ ...p, [`${ed}|${no}`]: val }))
     await supabase.from('verification_checks').upsert(
       { edition_id: ed, claim_no: no, checked: val, checked_by: userId, checked_at: new Date().toISOString() },
+      { onConflict: 'edition_id,claim_no' })
+  }
+
+  // Flag a single claim as "can't verify" (+ optional why). Toggling on clears its check.
+  const toggleFlag = async (ed, no, val) => {
+    const key = `${ed}|${no}`
+    setFlags(p => ({ ...p, [key]: { flagged: val, note: p[key]?.note || '' } }))
+    if (val) setChecks(p => ({ ...p, [key]: false }))
+    await supabase.from('verification_checks').upsert(
+      { edition_id: ed, claim_no: no, flagged: val, ...(val ? { checked: false } : {}), checked_by: userId, checked_at: new Date().toISOString() },
+      { onConflict: 'edition_id,claim_no' })
+  }
+
+  const saveNote = async (ed, no, note) => {
+    const key = `${ed}|${no}`
+    setFlags(p => ({ ...p, [key]: { flagged: p[key]?.flagged ?? true, note } }))
+    await supabase.from('verification_checks').upsert(
+      { edition_id: ed, claim_no: no, flag_note: note, checked_by: userId, checked_at: new Date().toISOString() },
       { onConflict: 'edition_id,claim_no' })
   }
 
@@ -111,7 +133,7 @@ export default function VerifyPage() {
         {/* How-to */}
         <div style={{ background: CARD, border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, borderRadius: 10, padding: '14px 16px', marginBottom: 18, fontSize: 13.5 }}>
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.12em', color: GOLD, marginBottom: 8 }}>HOW TO USE</div>
-          Tap <b>Verify ↗</b> on each claim → confirm the source actually says the snippet → tick the box. Spot-check the <b>⛑ quotes</b> and <b>⚡ fixes</b> at minimum. When an entry looks right, hit <b>Sign off</b>. Everything you do here is saved to your account and syncs across devices. Signed-off entries are what I promote to live.
+          Tap <b>Verify ↗</b> on each claim → confirm the source actually says the snippet → tick the box. If a claim <b>doesn’t check out</b>, hit <b style={{ color: WARN }}>flag claim</b> and jot a quick why — I’ll rework just those before the entry goes live. When an entry looks right, hit <b>Sign off</b>. Everything saves to your account and syncs across devices.
         </div>
 
         {entries.map(e => {
@@ -119,6 +141,7 @@ export default function VerifyPage() {
           const verified = so?.status === 'verified'
           const flagged = so?.status === 'flagged'
           const done = e.claims.filter(c => checks[`${e.edition_id}|${c.no}`]).length
+          const flaggedClaims = e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged)
           return (
             <div key={e.edition_id} style={{ background: CARD, border: `1px solid ${verified ? OK : flagged ? WARN : LINE}`, borderRadius: 12, padding: 16, marginBottom: 14, opacity: verified ? 0.9 : 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 4 }}>
@@ -128,23 +151,48 @@ export default function VerifyPage() {
                          : <span style={{ fontSize: 10, letterSpacing: '0.08em', padding: '3px 9px', borderRadius: 20, border: `1px solid ${OK}`, color: OK }}>{e.verdict}</span>}
                 </div>
               </div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: FAINT, marginBottom: 6 }}>your checks: {done}/{e.claims.length}</div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: FAINT, marginBottom: 6 }}>your checks: {done}/{e.claims.length}{flaggedClaims.length > 0 ? <span style={{ color: WARN }}> · ⚑ {flaggedClaims.length} flagged</span> : null}</div>
 
               {e.claims.map(c => {
-                const on = !!checks[`${e.edition_id}|${c.no}`]
+                const key = `${e.edition_id}|${c.no}`
+                const on = !!checks[key]
+                const fl = !!flags[key]?.flagged
+                const note = flags[key]?.note || ''
                 return (
-                  <label key={c.no} style={{ display: 'flex', gap: 11, padding: '11px 0', borderTop: `1px solid ${LINE}`, cursor: 'pointer' }}>
-                    <input type="checkbox" checked={on} onChange={ev => toggleCheck(e.edition_id, c.no, ev.target.checked)}
-                      style={{ appearance: 'none', WebkitAppearance: 'none', minWidth: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${on ? OK : FAINT}`, background: on ? OK : 'transparent', position: 'relative', cursor: 'pointer' }} />
-                    <span style={{ fontSize: 14 }}>
-                      {c.kind ? <span style={{ color: GOLD, fontSize: 11, letterSpacing: '0.04em' }}>{c.kind} </span> : null}{c.text}
-                      <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px' }}>{c.snippet}</div>
-                      <a href={c.url} target="_blank" rel="noopener noreferrer" onClick={ev => ev.stopPropagation()}
-                        style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', color: '#06212b', background: OK, padding: '5px 12px', borderRadius: 7, textDecoration: 'none' }}>Verify ↗</a>
-                    </span>
-                  </label>
+                  <div key={c.no} style={{ borderTop: `1px solid ${LINE}`, padding: '11px 0' }}>
+                    <label style={{ display: 'flex', gap: 11, cursor: 'pointer' }}>
+                      <input type="checkbox" checked={on} disabled={fl} onChange={ev => toggleCheck(e.edition_id, c.no, ev.target.checked)}
+                        style={{ appearance: 'none', WebkitAppearance: 'none', minWidth: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${on ? OK : fl ? `${WARN}66` : FAINT}`, background: on ? OK : 'transparent', position: 'relative', cursor: fl ? 'default' : 'pointer', opacity: fl ? 0.5 : 1 }} />
+                      <span style={{ fontSize: 14, opacity: fl ? 0.65 : 1 }}>
+                        {c.kind ? <span style={{ color: GOLD, fontSize: 11, letterSpacing: '0.04em' }}>{c.kind} </span> : null}{c.text}
+                        <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px' }}>{c.snippet}</div>
+                        <a href={c.url} target="_blank" rel="noopener noreferrer" onClick={ev => ev.stopPropagation()}
+                          style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', color: '#06212b', background: OK, padding: '5px 12px', borderRadius: 7, textDecoration: 'none' }}>Verify ↗</a>
+                      </span>
+                    </label>
+
+                    {/* Per-claim flag + why */}
+                    <div style={{ marginLeft: 33, marginTop: 8 }}>
+                      <button onClick={() => toggleFlag(e.edition_id, c.no, !fl)}
+                        style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.06em', padding: '5px 11px', borderRadius: 7, cursor: 'pointer',
+                          border: `1px solid ${fl ? WARN : 'rgba(255,140,71,0.3)'}`, background: fl ? `${WARN}22` : 'transparent', color: WARN }}>
+                        {fl ? '⚑ CAN’T VERIFY' : 'flag claim'}
+                      </button>
+                      {fl && (
+                        <textarea defaultValue={note} onBlur={ev => saveNote(e.edition_id, c.no, ev.target.value)} rows={2}
+                          placeholder="Why can't this be verified? (e.g. source dead, number not found, contradicts another source)"
+                          style={{ display: 'block', width: '100%', marginTop: 8, background: BG, border: `1px solid ${WARN}55`, borderRadius: 8, color: INK, fontSize: 13, padding: '9px 11px', fontFamily: "-apple-system,sans-serif", resize: 'vertical', lineHeight: 1.45 }} />
+                      )}
+                    </div>
+                  </div>
                 )
               })}
+
+              {flaggedClaims.length > 0 && !verified && (
+                <div style={{ marginTop: 12, padding: '10px 12px', background: `${WARN}14`, border: `1px solid ${WARN}44`, borderRadius: 9, fontSize: 12.5, color: INK }}>
+                  <span style={{ color: WARN, fontWeight: 600 }}>⚑ {flaggedClaims.length} claim{flaggedClaims.length > 1 ? 's' : ''} can’t be verified.</span> Tell me <i>"fix {e.edition_id}"</i> and I’ll rework {flaggedClaims.length > 1 ? 'them' : 'it'} from your notes before this entry goes live.
+                </div>
+              )}
 
               <div style={{ display: 'flex', gap: 8, marginTop: 14, paddingTop: 12, borderTop: `1px dashed ${LINE}`, alignItems: 'center', flexWrap: 'wrap' }}>
                 {verified ? (

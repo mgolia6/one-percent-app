@@ -1752,9 +1752,9 @@ export default function HomePage() {
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#c8d800', flexShrink: 0 }} />BETA
               </span>
               {isAdmin && (
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#00c4ad', border: '1px solid rgba(0,196,173,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#00c4ad', flexShrink: 0 }} />ADMIN
-                </span>
+                <button onClick={() => router.push('/admin')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#00c4ad', border: '1px solid rgba(0,196,173,0.4)', display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#00c4ad', flexShrink: 0 }} />ADMIN →
+                </button>
               )}
             </div>
           </div>
@@ -1772,7 +1772,6 @@ export default function HomePage() {
           <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
           <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
           <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
-          {isAdmin && <><div style={S.sep} /><button style={{ ...S.asBtn, color: '#47FFE8', borderColor: 'rgba(71,255,232,0.3)' }} onClick={() => router.push('/admin')}>ADMIN →</button></>}
         </div>
       </div>
 
