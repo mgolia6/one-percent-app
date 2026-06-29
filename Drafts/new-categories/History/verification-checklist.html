@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Percent — History Verification (HS.1–10)</title>
+<style>
+  :root{--bg:#0e141c;--card:#1a2a3a;--ink:#e8eef5;--mut:rgba(232,238,245,.6);--faint:rgba(232,238,245,.4);--gold:#E0A93D;--ok:#47FFE8;--warn:#FF8C47;--line:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.5;padding:18px;max-width:780px;margin:0 auto}
+  h1{font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .how{background:var(--card);border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:10px;padding:16px;margin-bottom:18px}
+  .how h2{font-size:12px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+  .how ol{margin-left:18px;font-size:14px;color:var(--ink)}
+  .how li{margin-bottom:6px}
+  .how .final{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:14px}
+  .how code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:5px;font-size:13px;color:var(--ok)}
+  .bar{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:14px;z-index:5;font-size:13px;color:var(--mut)}
+  .bar b{color:var(--ok)}
+  .entry{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .entry.done{border-color:var(--ok);opacity:.92}
+  .ehead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+  .etitle{font-size:16px;font-weight:600}
+  .badge{font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:20px;border:1px solid var(--ok);color:var(--ok);white-space:nowrap}
+  .badge.fix{border-color:var(--warn);color:var(--warn)}
+  .claim{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line)}
+  .claim input{appearance:none;-webkit-appearance:none;min-width:22px;height:22px;border:2px solid var(--faint);border-radius:6px;margin-top:1px;cursor:pointer;position:relative;background:transparent}
+  .claim input:checked{background:var(--ok);border-color:var(--ok)}
+  .claim input:checked::after{content:"✓";position:absolute;color:#06212b;font-size:15px;font-weight:800;left:3px;top:-2px}
+  .ctext{font-size:14px}
+  .ctext .q{color:var(--gold);font-size:11px;letter-spacing:.04em}
+  .snip{color:var(--mut);font-size:13px;font-style:italic;margin:3px 0 6px}
+  .link{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;color:#06212b;background:var(--ok);padding:5px 12px;border-radius:7px;text-decoration:none}
+  .signoff{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:10px}
+  .signoff label{font-size:14px;font-weight:600}
+  .note{color:var(--faint);font-size:12px;margin-top:14px}
+  .reset{background:none;border:1px solid var(--line);color:var(--mut);padding:6px 12px;border-radius:7px;font-size:12px;cursor:pointer;margin-top:8px}
+</style>
+</head>
+<body>
+<h1>History — Dead Drop sign-off</h1>
+<div class="sub">Entries HS.1–10 · two AI passes done (confirm + adversarial) · this is the human check.</div>
+
+<div class="how">
+  <h2>How to use this — read first</h2>
+  <ol>
+    <li><b>For each claim</b>, tap <span class="link" style="padding:2px 8px">Verify ↗</span> to open the source.</li>
+    <li><b>Confirm</b> the page actually says what the snippet (in italics) claims.</li>
+    <li><b>Tick the box</b> if it checks out. (You don't have to check every single one — spot-check the ones that matter to you; the ⚑ quotes and the HS.3 fix are the highest-value.)</li>
+    <li>If something's <b>wrong</b>, jot the entry + claim and tell me.</li>
+    <li>When an entry looks good, tick <b>"I've verified this entry."</b></li>
+  </ol>
+  <div class="final">✅ <b>To sign off:</b> when you're satisfied, reply to me in chat: <code>sign off History</code> — and I'll flip all 10 to <code>verified: true, verified_by: Matthew</code>. List any entry numbers you want changed instead and I'll fix those first.</div>
+</div>
+
+<div class="bar">Entries verified: <b id="count">0</b> / 10</div>
+
+<div id="app"></div>
+
+<button class="reset" onclick="if(confirm('Clear all your checks?')){localStorage.removeItem('hs_verify');location.reload()}">Reset my checks</button>
+<div class="note">Your ticks are saved in this browser only (nothing is sent anywhere). All 10 files currently remain <code>verified:false</code> until you sign off in chat.</div>
+
+<script>
+const DATA=[
+ {id:"HS.1",title:"The Library of Alexandria",verdict:"PASS",fix:"URL fixed",claims:[
+  {q:"THESIS",t:"Slow institutional decline, not one great fire (= Bagnall's argument)",s:"“a whole literature of wishful thinking has grown up” about its destruction",u:"https://archive.nyu.edu/handle/2451/28263"},
+  {t:"Ptolemy VIII expelled foreign scholars ~145 BCE",s:"“As early as 145 BCE… expelled all foreign scholars”",u:"https://en.wikipedia.org/wiki/Library_of_Alexandria"},
+  {t:"Decline came from lost patronage/funding",s:"“a loss of patronage… leading to a decline in upkeep”",u:"https://www.worldhistory.org/Library_of_Alexandria/"}]},
+ {id:"HS.2",title:"Gutenberg's Printing Press",verdict:"PASS",claims:[
+  {t:"Did NOT invent movable type (China ~1040; Korea by 1377)",s:"“invented around 1040 CE… by Bi Sheng”",u:"https://en.wikipedia.org/wiki/Movable_type"},
+  {t:"~8–20M books in Europe by 1500",s:"“~30,000 editions… around 20 million copies”",u:"https://en.wikipedia.org/wiki/Incunable"},
+  {t:"Malleus Maleficarum: 28 editions 1486–1600",s:"“28 editions between 1486 and 1600”",u:"https://en.wikipedia.org/wiki/Malleus_Maleficarum"}]},
+ {id:"HS.3",title:"The Black Death",verdict:"FIXED",fix:"real-vs-nominal wages",claims:[
+  {q:"⚡ THE FIX",t:"Real wages did NOT rise immediately — nominal up, inflation ate it, real wages lagged to later 1370s; immediate gain = leverage",s:"“cash wages rose, [but] inflation reduced the purchasing power”",u:"https://eh.net/encyclopedia/the-economic-impact-of-the-black-death/"},
+  {t:"~1347–1351, a third to half of Europe died",s:"estimates cluster 30–60%",u:"https://www.britannica.com/event/Black-Death"},
+  {t:"Statute of Labourers 1351 froze wages at 1346 levels; fed the 1381 Revolt",s:"“maximum wage… commensurate with… 1346”; a cause of the Peasants' Revolt",u:"https://en.wikipedia.org/wiki/Statute_of_Labourers_1351"}]},
+ {id:"HS.4",title:"Tulip Mania",verdict:"PASS",fix:"URL fixed",claims:[
+  {q:"REVISIONISM",t:"Bubble was real but NOT an economy-wide catastrophe (Goldgar) — entry debunks the myth",s:"“couldn't find a single bankrupt… what suffered was trust”",u:"https://www.smithsonianmag.com/history/there-never-was-real-tulip-fever-180964915/"},
+  {q:"⛑ QUOTE",t:"Mackay: “Men… think in herds… go mad in herds… recover their senses slowly, and one by one” (verbatim)",s:"matches Project Gutenberg text exactly",u:"https://www.gutenberg.org/files/24518"}]},
+ {id:"HS.5",title:"The Nixon Shock, 1971",verdict:"PASS",claims:[
+  {q:"⛑ QUOTE",t:"Nixon: “…suspend temporarily the convertibility of the dollar into gold…” (verbatim)",s:"matches the Aug 15 1971 address transcript",u:"https://fraser.stlouisfed.org/archival-collection/papers-richard-m-nixon-1173/address-nation-outlining-a-new-economic-policy-3390/fulltext"},
+  {t:"Aug 15 1971 ended dollar–gold convertibility; floating by 1973",s:"“Nixon announced the US would end… convertibility”",u:"https://www.federalreservehistory.org/essays/gold-convertibility-ends"}]},
+ {id:"HS.6",title:"The Cuban Missile Crisis",verdict:"PASS",claims:[
+  {t:"B-59 / Arkhipov: nuclear torpedo, 3-officer rule, Arkhipov refused",s:"NS Archive submarine briefing book confirms the standard account",u:"https://nsarchive.gwu.edu/briefing-book/russia-programs/2022-10-03/soviet-submarines-nuclear-torpedoes-cuban-missile-crisis"},
+  {t:"Secret Jupiter-Turkey deal (RFK–Dobrynin), kept quiet",s:"confirmed incl. the secrecy motive",u:"https://nsarchive.gwu.edu/briefing-book/cuban-missile-crisis-nuclear-vault/2023-02-16/jupiter-missiles-and-endgame-cuban"}]},
+ {id:"HS.7",title:"Penicillin",verdict:"FIXED",fix:"dates reconciled",claims:[
+  {q:"⛑ QUOTE",t:"Fleming Nobel lecture: the resistance warning (verbatim)",s:"matches nobelprize.org lecture PDF, Dec 11 1945",u:"https://www.nobelprize.org/uploads/2018/06/fleming-lecture.pdf"},
+  {t:"Fleming 1928; Oxford team 1940 mouse experiment; 1945 Nobel",s:"ACS landmark + Nobel summary",u:"https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html"}]},
+ {id:"HS.8",title:"Magna Carta",verdict:"PASS",claims:[
+  {t:"June 1215 Runnymede; sealed not signed; preempts the “democracy” myth",s:"British Library overview",u:"https://www.bl.uk/magna-carta/"},
+  {q:"⛑ QUOTE",t:"Clause 39 (“No free man shall be seized…”) — faithful to BL translation",s:"matches British Library English translation",u:"https://www.bl.uk/magna-carta/articles/magna-carta-english-translation"},
+  {t:"Annulled by Innocent III within ~10 weeks (24 Aug 1215)",s:"“null and void… for ever”",u:"https://www.bl.uk/stories/blogs/posts/shameful-and-demeaning-the-annulment-of-magna-carta"}]},
+ {id:"HS.9",title:"Bretton Woods",verdict:"PASS",claims:[
+  {t:"730 delegates / 44 nations / July 1944; $35/oz; IMF + World Bank",s:"“730 delegates from… 44 allied nations”; “fixed the dollar to gold at… $35”",u:"https://en.wikipedia.org/wiki/Bretton_Woods_Conference"},
+  {q:"⛑ QUOTE",t:"Connally: “The dollar is our currency, but it's your problem” (1971, G-10 Rome)",s:"attributed to Treasury Sec Connally at the G-10",u:"https://www.ipe.com/the-dollar-is-our-currency-but-its-your-problem/25599.article"}]},
+ {id:"HS.10",title:"ARPANET",verdict:"PASS",claims:[
+  {t:"First message “LO” (LOGIN crashed), Oct 29 1969, UCLA→SRI",s:"“the l and the o… then crashed… first message… was lo”",u:"https://www.icann.org/en/blogs/details/the-first-message-transmission-29-10-2019-en"},
+  {t:"“Built to survive nuclear war” is a MYTH — entry debunks it correctly",s:"nuclear rationale was Baran's RAND study, “never true of the ARPANET”",u:"https://internetmythen.de/en/index0258.html"},
+  {t:"RFC 1, Steve Crocker, April 7 1969",s:"“RFC 1… by Steve Crocker… April 7, 1969”",u:"https://en.wikipedia.org/wiki/Request_for_Comments"}]}
+];
+const KEY="hs_verify";
+let state=JSON.parse(localStorage.getItem(KEY)||"{}");
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const app=document.getElementById("app");
+DATA.forEach((e,ei)=>{
+  const card=document.createElement("div");card.className="entry";card.id="e"+ei;
+  let h=`<div class="ehead"><div class="etitle">${e.id} · ${e.title}</div><div class="badge ${e.fix?'fix':''}">${e.verdict}${e.fix?' · '+e.fix:''}</div></div>`;
+  e.claims.forEach((c,ci)=>{
+    const k=ei+"_"+ci, on=state[k]?"checked":"";
+    h+=`<label class="claim"><input type="checkbox" data-k="${k}" ${on}><span class="ctext">${c.q?`<span class="q">${c.q}</span> `:""}${c.t}<div class="snip">${c.s}</div><a class="link" href="${c.u}" target="_blank" rel="noopener">Verify ↗</a></span></label>`;
+  });
+  const ek="entry_"+ei, eon=state[ek]?"checked":"";
+  h+=`<div class="signoff"><input type="checkbox" data-k="${ek}" data-entry="1" ${eon} style="min-width:22px;height:22px;appearance:none;-webkit-appearance:none;border:2px solid var(--faint);border-radius:6px;cursor:pointer"><label>I've verified this entry</label></div>`;
+  card.innerHTML=h;app.appendChild(card);
+});
+function refresh(){
+  let n=0;DATA.forEach((e,ei)=>{const el=document.getElementById("e"+ei);if(state["entry_"+ei]){el.classList.add("done");n++}else el.classList.remove("done")});
+  document.getElementById("count").textContent=n;
+}
+app.addEventListener("change",ev=>{const k=ev.target.dataset.k;if(!k)return;state[k]=ev.target.checked;save();if(ev.target.dataset.entry)refresh()});
+// reflect checked styling for entry boxes
+document.querySelectorAll('input[data-entry]').forEach(b=>{b.addEventListener('change',()=>{b.style.background=b.checked?'var(--ok)':'transparent';b.style.borderColor=b.checked?'var(--ok)':'var(--faint)'});if(b.checked){b.style.background='var(--ok)';b.style.borderColor='var(--ok)'}});
+refresh();
+</script>
+</body>
+</html>
