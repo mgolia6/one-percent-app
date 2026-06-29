@@ -138,8 +138,8 @@ export default function VerifyPage() {
   const flaggedTotal = entries.reduce((n, e) => n + e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged).length, 0)
 
   return (
-    <div style={{ minHeight: '100vh', background: BG, color: INK, fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif", lineHeight: 1.5 }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap'); *{box-sizing:border-box}`}</style>
+    <div style={{ minHeight: '100vh', background: BG, color: INK, fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif", lineHeight: 1.5, overflowX: 'hidden', maxWidth: '100vw' }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap'); *{box-sizing:border-box} html,body{overflow-x:hidden;max-width:100%}`}</style>
 
       <div style={{ position: 'sticky', top: 0, zIndex: 10, background: BG, borderBottom: `1px solid ${LINE}` }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
@@ -174,11 +174,11 @@ export default function VerifyPage() {
           const flaggedClaims = e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged)
           return (
             <div key={e.edition_id} style={{ background: CARD, border: `1px solid ${verified ? OK : flagged ? WARN : LINE}`, borderRadius: 12, padding: 16, marginBottom: 14, opacity: verified ? 0.9 : 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 4 }}>
-                <div style={{ fontSize: 16, fontWeight: 600 }}>{e.edition_id} · {e.concept}</div>
-                <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
-                  {e.fix ? <span style={{ fontSize: 10, letterSpacing: '0.06em', padding: '3px 9px', borderRadius: 20, border: `1px solid ${WARN}`, color: WARN, whiteSpace: 'nowrap' }}>{e.verdict} · {e.fix}</span>
-                         : <span style={{ fontSize: 10, letterSpacing: '0.08em', padding: '3px 9px', borderRadius: 20, border: `1px solid ${OK}`, color: OK }}>{e.verdict}</span>}
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                <div style={{ fontSize: 16, fontWeight: 600, flex: '1 1 auto', minWidth: 0, overflowWrap: 'anywhere' }}>{e.edition_id} · {e.concept}</div>
+                <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 1, minWidth: 0 }}>
+                  {e.fix ? <span style={{ fontSize: 10, letterSpacing: '0.06em', padding: '3px 9px', borderRadius: 12, border: `1px solid ${WARN}`, color: WARN, overflowWrap: 'anywhere' }}>{e.verdict} · {e.fix}</span>
+                         : <span style={{ fontSize: 10, letterSpacing: '0.08em', padding: '3px 9px', borderRadius: 20, border: `1px solid ${OK}`, color: OK, whiteSpace: 'nowrap' }}>{e.verdict}</span>}
                 </div>
               </div>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: FAINT, marginBottom: 6 }}>your checks: {done}/{e.claims.length}{flaggedClaims.length > 0 ? <span style={{ color: WARN }}> · ⚑ {flaggedClaims.length} flagged</span> : null}</div>
