@@ -72,9 +72,9 @@
       "url": "https://global.oup.com/academic/product/magna-carta-a-very-short-introduction-9780199582877"
     },
     {
-      "label": "British Library — Magna Carta, 1215 (English translation and collection)",
+      "label": "The National Archives (UK) — Magna Carta 1215, English translation (British Library translation)",
       "detail": "Full translated text and historical context from the institution holding two of the four surviving 1215 copies.",
-      "url": "https://www.bl.uk/magna-carta/articles/magna-carta-english-translation"
+      "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/british-library-magna-carta-1215-runnymede/"
     }
   ],
   "ai_prompt": "I want to understand the Magna Carta as a case study in how 'foundational principles' actually get built and reinterpreted over time. Before explaining, ask me whether I care most about the 1215 history, the idea that rulers are bound by law, or applying the 'meaning is assigned later' lesson to something in my own world. Then focus there. Here's what I'm curious about: [describe your angle]",
