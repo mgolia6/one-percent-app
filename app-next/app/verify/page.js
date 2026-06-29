@@ -11,6 +11,13 @@ import { supabase } from '@/lib/supabase'
 const BG = '#0e141c', CARD = '#1a2a3a', INK = '#e8eef5', MUT = 'rgba(232,238,245,0.6)'
 const FAINT = 'rgba(232,238,245,0.4)', GOLD = '#E0A93D', OK = '#47FFE8', WARN = '#FF8C47', LINE = 'rgba(255,255,255,0.08)'
 
+// Source quality tiers — guides where the human focuses scrutiny.
+const TIER = {
+  1: { label: 'T1 · PRIMARY', c: '#47FFE8' },   // regulator / peer-reviewed / primary data
+  2: { label: 'T2 · REPUTABLE', c: '#E0A93D' },  // encyclopedic / pro body / quality journalism
+  3: { label: 'T3 · SECONDARY', c: '#FF8C47' },  // blog / SEO / non-primary — check hardest
+}
+
 const CATEGORIES = [
   { key: 'history', label: 'History', file: '/verify-data/history.json' },
   { key: 'finance', label: 'Personal Finance', file: '/verify-data/finance.json' },
@@ -203,6 +210,13 @@ export default function VerifyPage() {
               </div>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: FAINT, marginBottom: 6 }}>your checks: {done}/{e.claims.length}{flaggedClaims.length > 0 ? <span style={{ color: WARN }}> · ⚑ {flaggedClaims.length} flagged</span> : null}</div>
 
+              {e.caveat && (
+                <div style={{ background: `${GOLD}12`, border: `1px solid ${GOLD}44`, borderRadius: 9, padding: '9px 12px', marginBottom: 8, fontSize: 12.5, color: INK }}>
+                  <span style={{ color: GOLD, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em', fontWeight: 600 }}>⚠ WATCH{Number.isInteger(e.weakest_claim_no) ? ` · CLAIM ${e.weakest_claim_no} FIRST` : ''}</span>
+                  <div style={{ marginTop: 3, overflowWrap: 'anywhere' }}>{e.caveat}</div>
+                </div>
+              )}
+
               {e.claims.map(c => {
                 const key = `${e.edition_id}|${c.no}`
                 const on = !!checks[key]
@@ -215,6 +229,10 @@ export default function VerifyPage() {
                         style={{ appearance: 'none', WebkitAppearance: 'none', minWidth: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${on ? OK : fl ? `${WARN}66` : FAINT}`, background: on ? OK : 'transparent', position: 'relative', cursor: fl ? 'default' : 'pointer', opacity: fl ? 0.5 : 1 }} />
                       <span style={{ fontSize: 14, opacity: fl ? 0.65 : 1, minWidth: 0 }}>
                         {c.kind ? <span style={{ color: GOLD, fontSize: 11, letterSpacing: '0.04em' }}>{c.kind} </span> : null}{c.text}
+                        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center', margin: '5px 0 4px' }}>
+                          {(() => { const t = TIER[c.tier || 2]; return <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', padding: '2px 7px', borderRadius: 5, color: t.c, border: `1px solid ${t.c}55`, background: `${t.c}14` }}>{t.label}</span> })()}
+                          {c.paraphrase && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', padding: '2px 7px', borderRadius: 5, color: WARN, border: `1px solid ${WARN}55`, background: `${WARN}14` }}>PARAPHRASED — NOT VERBATIM</span>}
+                        </div>
                         <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px', overflowWrap: 'anywhere' }}>{c.snippet}</div>
                         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: GOLD, margin: '0 0 7px', overflowWrap: 'anywhere' }}>
                           📍 {c.locate ? c.locate : <>on the page, find: “{(c.snippet || '').replace(/[“”"]/g, '').split(/\s+/).slice(0, 6).join(' ')}…”</>}

@@ -10,23 +10,29 @@
         "kind": "THESIS",
         "text": "Slow institutional decline, not one great fire (= Bagnall's argument)",
         "snippet": "“a whole literature of wishful thinking has grown up” about its destruction",
-        "url": "https://archive.nyu.edu/handle/2451/28263"
+        "url": "https://archive.nyu.edu/handle/2451/28263",
+        "tier": 1
       },
       {
         "no": 1,
         "kind": "",
         "text": "Ptolemy VIII expelled foreign scholars ~145 BCE",
         "snippet": "“As early as 145 BCE… expelled all foreign scholars”",
-        "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria"
+        "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+        "tier": 2
       },
       {
         "no": 2,
         "kind": "",
         "text": "Decline came from lost patronage/funding",
         "snippet": "“a loss of patronage… leading to a decline in upkeep”",
-        "url": "https://www.worldhistory.org/Library_of_Alexandria/"
+        "url": "https://www.worldhistory.org/Library_of_Alexandria/",
+        "tier": 2,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "The whole 'slow decline not one fire' thesis hangs on Bagnall (claim 0); claims 1-2 lean on Wikipedia/WorldHistory, and the 145 BCE Ptolemy VIII expulsion date is the cleanest hard fact to confirm.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "HS.2",
@@ -39,7 +45,8 @@
         "kind": "",
         "text": "Did NOT invent movable type (China ~1040; Korea by 1377)",
         "snippet": "“invented around 1040 CE… by Bi Sheng”",
-        "url": "https://en.wikipedia.org/wiki/Movable_type"
+        "url": "https://en.wikipedia.org/wiki/Movable_type",
+        "tier": 2
       },
       {
         "no": 1,
@@ -47,16 +54,20 @@
         "text": "~30,000 editions / ~20M copies in Europe by 1500",
         "snippet": "“By 1500 the presses of Western Europe had produced more than twenty million copies.” (~30,000 known editions)",
         "url": "https://en.wikipedia.org/wiki/Incunable",
-        "locate": "Wikipedia 'Incunable' → search the page for 'twenty million' (sentence: 'By 1500 the presses of Western Europe had produced more than twenty million copies')"
+        "locate": "Wikipedia 'Incunable' → search the page for 'twenty million' (sentence: 'By 1500 the presses of Western Europe had produced more than twenty million copies')",
+        "tier": 2
       },
       {
         "no": 2,
         "kind": "",
         "text": "Malleus Maleficarum: 28 editions 1486–1600",
         "snippet": "“28 editions between 1486 and 1600”",
-        "url": "https://en.wikipedia.org/wiki/Malleus_Maleficarum"
+        "url": "https://en.wikipedia.org/wiki/Malleus_Maleficarum",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "The '20M copies' figure is verbatim Wikipedia, but the '~30,000 editions' is a parenthetical estimate not pinned to a located quote — confirm that number's source separately.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "HS.3",
@@ -69,23 +80,29 @@
         "kind": "⚡ THE FIX",
         "text": "Real wages did NOT rise immediately — nominal up, inflation ate it, real wages lagged to later 1370s; immediate gain = leverage",
         "snippet": "“cash wages rose, [but] inflation reduced the purchasing power”",
-        "url": "https://eh.net/encyclopedia/the-economic-impact-of-the-black-death/"
+        "url": "https://eh.net/encyclopedia/the-economic-impact-of-the-black-death/",
+        "tier": 2
       },
       {
         "no": 1,
         "kind": "",
         "text": "~1347–1351; a third to half of Europe died (Europe-wide)",
         "snippet": "“between 30 and 60%… died.” Your 1/8–2/3 is the regional variation range.",
-        "url": "https://www.britannica.com/event/Black-Death/Effects-and-significance"
+        "url": "https://www.britannica.com/event/Black-Death/Effects-and-significance",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 2,
         "kind": "",
         "text": "Statute of Labourers 1351 froze wages at 1346 levels; fed the 1381 Revolt",
         "snippet": "“maximum wage… commensurate with… 1346”; a cause of the Peasants' Revolt",
-        "url": "https://en.wikipedia.org/wiki/Statute_of_Labourers_1351"
+        "url": "https://en.wikipedia.org/wiki/Statute_of_Labourers_1351",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "Claim 1's snippet is editorialized ('Your 1/8-2/3 is the regional variation range') rather than a verbatim quote, and the real-vs-nominal wage timing (claim 0) is the genuinely debated economic-history point.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "HS.4",
@@ -98,16 +115,21 @@
         "kind": "REVISIONISM",
         "text": "Bubble was real but NOT an economy-wide catastrophe (Goldgar) — entry debunks the myth",
         "snippet": "“couldn't find a single bankrupt… what suffered was trust”",
-        "url": "https://www.smithsonianmag.com/history/there-never-was-real-tulip-fever-180964915/"
+        "url": "https://www.smithsonianmag.com/history/there-never-was-real-tulip-fever-180964915/",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 1,
         "kind": "⛑ QUOTE",
         "text": "Mackay: “Men… think in herds… go mad in herds… recover their senses slowly, and one by one” (verbatim)",
         "snippet": "matches Project Gutenberg text exactly",
-        "url": "https://www.gutenberg.org/files/24518"
+        "url": "https://www.gutenberg.org/files/24518",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "Claim 0 rests on Goldgar's revisionism relayed via a popular Smithsonian piece (secondary), and the snippet paraphrases rather than quotes; verify the 'no single bankrupt' claim against Goldgar directly.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "HS.5",
@@ -120,16 +142,20 @@
         "kind": "⛑ QUOTE",
         "text": "Nixon: “…suspend temporarily the convertibility of the dollar into gold…” (verbatim)",
         "snippet": "matches the Aug 15 1971 address transcript",
-        "url": "https://fraser.stlouisfed.org/archival-collection/papers-richard-m-nixon-1173/address-nation-outlining-a-new-economic-policy-3390/fulltext"
+        "url": "https://fraser.stlouisfed.org/archival-collection/papers-richard-m-nixon-1173/address-nation-outlining-a-new-economic-policy-3390/fulltext",
+        "tier": 1
       },
       {
         "no": 1,
         "kind": "",
         "text": "Aug 15 1971 ended dollar–gold convertibility; floating by 1973",
         "snippet": "“Nixon announced the US would end… convertibility”",
-        "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends"
+        "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "Solid; primary FRASER transcript and Fed history — spot-check the verbatim Nixon 'suspend temporarily the convertibility' line for exact wording against the transcript.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "HS.6",
@@ -143,16 +169,21 @@
         "text": "B-59 / Arkhipov: nuclear torpedo, 3-officer rule, Arkhipov refused",
         "snippet": "“On most Soviet submarines… only the captain and political officer were required to authorize a launch. On B-59, a third signature was needed because Vasili Arkhipov was also chief of staff of the brigade.”",
         "url": "https://en.wikipedia.org/wiki/Soviet_submarine_B-59",
-        "locate": "Wikipedia 'Soviet submarine B-59' → search for 'third signature' / 'chief of staff of the brigade'"
+        "locate": "Wikipedia 'Soviet submarine B-59' → search for 'third signature' / 'chief of staff of the brigade'",
+        "tier": 2
       },
       {
         "no": 1,
         "kind": "",
         "text": "Secret Jupiter-Turkey deal (RFK–Dobrynin), kept quiet",
         "snippet": "confirmed incl. the secrecy motive",
-        "url": "https://nsarchive.gwu.edu/briefing-book/cuban-missile-crisis-nuclear-vault/2023-02-16/jupiter-missiles-and-endgame-cuban"
+        "url": "https://nsarchive.gwu.edu/briefing-book/cuban-missile-crisis-nuclear-vault/2023-02-16/jupiter-missiles-and-endgame-cuban",
+        "tier": 1,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "Claim 1's snippet ('confirmed incl. the secrecy motive') is a synthesis, not a quote, and the RFK-Dobrynin secret Jupiter-Turkey deal is the more interpretively loaded claim to confirm in the NSArchive doc.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "HS.7",
@@ -165,16 +196,21 @@
         "kind": "⛑ QUOTE",
         "text": "Fleming Nobel lecture: the resistance warning (verbatim)",
         "snippet": "matches nobelprize.org lecture PDF, Dec 11 1945",
-        "url": "https://www.nobelprize.org/uploads/2018/06/fleming-lecture.pdf"
+        "url": "https://www.nobelprize.org/uploads/2018/06/fleming-lecture.pdf",
+        "tier": 1
       },
       {
         "no": 1,
         "kind": "",
         "text": "Fleming 1928; Oxford team 1940 mouse experiment; 1945 Nobel",
         "snippet": "ACS landmark + Nobel summary",
-        "url": "https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html"
+        "url": "https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html",
+        "tier": 1,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "Both snippets are descriptive labels ('matches...PDF', 'ACS landmark + summary') not verbatim text; confirm Fleming's exact Nobel resistance-warning wording and that the 1928/1940/1945 dates all reconcile.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "HS.8",
@@ -187,23 +223,29 @@
         "kind": "",
         "text": "June 1215 Runnymede; sealed not signed; preempts the “democracy” myth",
         "snippet": "The National Archives (UK) resource",
-        "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/british-library-magna-carta-1215-runnymede/"
+        "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/british-library-magna-carta-1215-runnymede/",
+        "tier": 1,
+        "paraphrase": true
       },
       {
         "no": 1,
         "kind": "⛑ QUOTE",
         "text": "Clause 39 (“No free man shall be seized…”) — faithful translation",
         "snippet": "Magna Carta Project (UEA), Clause 39",
-        "url": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_39"
+        "url": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_39",
+        "tier": 2
       },
       {
         "no": 2,
         "kind": "",
         "text": "Annulled by Pope Innocent III within ~10 weeks (24 Aug 1215)",
         "snippet": "papal bull declared it “null and void… for ever”",
-        "url": "https://en.wikipedia.org/wiki/Magna_Carta"
+        "url": "https://en.wikipedia.org/wiki/Magna_Carta",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "Claim 0's snippet is just a source label ('National Archives resource') with no quoted content, so the 'sealed not signed' / June 1215 details aren't pinned to located text — verify there.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "HS.9",
@@ -216,23 +258,29 @@
         "kind": "",
         "text": "730 delegates / 44 nations / July 1944; IMF + World Bank",
         "snippet": "“730 delegates from… 44 allied nations”",
-        "url": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference"
+        "url": "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
+        "tier": 2
       },
       {
         "no": 1,
         "kind": "FIGURE",
         "text": "Dollar fixed to gold at $35/oz",
         "snippet": "gold.org: “fixed the dollar to gold at… US$35 per ounce” (NOT on the wiki conference page)",
-        "url": "https://www.gold.org/history-gold/bretton-woods-system"
+        "url": "https://www.gold.org/history-gold/bretton-woods-system",
+        "tier": 2
       },
       {
         "no": 2,
         "kind": "⛑ QUOTE",
         "text": "Connally: “The dollar is our currency, but it's your problem” (1971, G-10 Rome)",
         "snippet": "attributed to Treasury Sec Connally at the G-10",
-        "url": "https://www.ipe.com/the-dollar-is-our-currency-but-its-your-problem/25599.article"
+        "url": "https://www.ipe.com/the-dollar-is-our-currency-but-its-your-problem/25599.article",
+        "tier": 2,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "The Connally 'our currency, your problem' quote (claim 2) is widely repeated but debated/possibly apocryphal and sourced to a secondary trade site — treat attribution as the weakest link.",
+    "weakest_claim_no": 2
   },
   {
     "edition_id": "HS.10",
@@ -245,22 +293,28 @@
         "kind": "",
         "text": "First message “LO” (LOGIN crashed), Oct 29 1969, UCLA→SRI",
         "snippet": "“the l and the o… then crashed… first message… was lo”",
-        "url": "https://www.icann.org/en/blogs/details/the-first-message-transmission-29-10-2019-en"
+        "url": "https://www.icann.org/en/blogs/details/the-first-message-transmission-29-10-2019-en",
+        "tier": 2
       },
       {
         "no": 1,
         "kind": "",
         "text": "“Built to survive nuclear war” is a MYTH — entry debunks it correctly",
         "snippet": "nuclear rationale was Baran's RAND study, “never true of the ARPANET”",
-        "url": "https://internetmythen.de/en/index0258.html"
+        "url": "https://internetmythen.de/en/index0258.html",
+        "tier": 3,
+        "paraphrase": true
       },
       {
         "no": 2,
         "kind": "",
         "text": "RFC 1, Steve Crocker, April 7 1969",
         "snippet": "“RFC 1… by Steve Crocker… April 7, 1969”",
-        "url": "https://en.wikipedia.org/wiki/Request_for_Comments"
+        "url": "https://en.wikipedia.org/wiki/Request_for_Comments",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "Claim 1's nuclear-survivability debunk relies on internetmythen.de, a non-authoritative blog-style source; confirm the 'never true of ARPANET' framing against Baran/RAND or a stronger citation.",
+    "weakest_claim_no": 1
   }
 ]

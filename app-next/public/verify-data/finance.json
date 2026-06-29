@@ -11,7 +11,9 @@
         "text": "Someone investing $5,000/yr from age 25 to 35 then stopping ends up with roughly the same or more by 65 than someone investing $5,000/yr from 35 to 65, despite contributing a third as much, at a 7% return — because of time spent compounding.",
         "snippet": "A 25-year-old who invests $5,000 a year for a decade and then never contributes another dollar ends up with $426,000 more at age 65... Investor A has $776,856 at age 65... Investor B has $349,991",
         "url": "https://247wallst.com/personal-finance/2026/05/12/start-investing-at-25-instead-of-35-the-math-shows-youll-have-426000-more-by-65/",
-        "locate": "Body text near top; search 'never contributes another dollar' and '$776,856' / '$349,991'"
+        "locate": "Body text near top; search 'never contributes another dollar' and '$776,856' / '$349,991'",
+        "tier": 3,
+        "paraphrase": true
       },
       {
         "no": 1,
@@ -19,7 +21,8 @@
         "text": "Compound interest is interest earned on both principal and accumulated interest; simple interest pays only on the original sum ($1,000 at 10% compounds to $100, then $110, then $121, then $133 of gains).",
         "snippet": "compound interest is interest paid on principal and on accumulated interest. Compound interest is the interest you earn on interest.",
         "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/compound-interest",
-        "locate": "§ definition body; search 'interest paid on principal and on accumulated interest'"
+        "locate": "§ definition body; search 'interest paid on principal and on accumulated interest'",
+        "tier": 1
       },
       {
         "no": 2,
@@ -27,7 +30,8 @@
         "text": "Per Housel's The Psychology of Money (2020), the overwhelming majority of Warren Buffett's fortune accrued after his early-to-mid 60s; it is a compounding/time story, not a stock-picking-skill story.",
         "snippet": "$81.5 billion was earned after he qualified for Social Security in his mid-60s, meaning over 96% of his wealth came after he qualified for Social Security.",
         "url": "https://www.dupreefinancial.com/the-psychology-of-money-warren-buffetts-compounding-returns-strategy-and-retirement-planning-wisdom/",
-        "locate": "Article body on Buffett; search '$81.5 billion' and '96% of his wealth'"
+        "locate": "Article body on Buffett; search '$81.5 billion' and '96% of his wealth'",
+        "tier": 3
       },
       {
         "no": 3,
@@ -35,7 +39,8 @@
         "text": "The 'Compound interest is the eighth wonder of the world' quote attributed to Albert Einstein has no credible primary source and is a misattribution.",
         "snippet": "no substantive evidence that Albert Einstein... employed the saying that compound interest is the eighth wonder of the world... it first appears in a 1983 advertisement — 28 years after Einstein's death",
         "url": "https://quoteinvestigator.com/2019/09/09/interest/",
-        "locate": "Scroll to conclusion; search 'eighth wonder of the world' and '1983 advertisement'"
+        "locate": "Scroll to conclusion; search 'eighth wonder of the world' and '1983 advertisement'",
+        "tier": 2
       },
       {
         "no": 4,
@@ -43,9 +48,12 @@
         "text": "The mathematics of continuous compounding traces to Jacob Bernoulli's work in the late 1600s (1683), where he discovered e studying continuous compound interest.",
         "snippet": "Jacob Bernoulli is most notably credited with discovering e while thinking about matters of continuous compound interest in 1683.",
         "url": "https://en.wikipedia.org/wiki/E_(mathematical_constant)",
-        "locate": "§ 'History' → search 'Jacob Bernoulli' and 'continuous compound interest in 1683'"
+        "locate": "§ 'History' → search 'Jacob Bernoulli' and 'continuous compound interest in 1683'",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "The headline doubling-the-money math (claim 0) rests on a 247wallst.com SEO blog, not a regulator; its $776,856/$349,991 figures depend on unstated 7% assumptions and should be recomputed independently.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "PF.2",
@@ -59,7 +67,8 @@
         "text": "To estimate years for money to double at a given annual compounding rate, divide 72 by the rate (e.g. 72/9 = 8 years, 72/6 = 12 years).",
         "snippet": "Simply divide the number 72 by your investment's expected rate of return. Assuming an expected rate of return of 9%, your investment will double in value about every 8 years (72 divided by 9 equals 8).",
         "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/rule-72",
-        "locate": "Glossary 'Rule of 72' body; search 'divide the number 72' and 'about every 8 years'"
+        "locate": "Glossary 'Rule of 72' body; search 'divide the number 72' and 'about every 8 years'",
+        "tier": 1
       },
       {
         "no": 1,
@@ -67,7 +76,8 @@
         "text": "It is an approximation governed by ln(2) (about 0.693); 72 is used because it divides cleanly and is accurate to a fraction of a year for everyday rates, less accurate at high rates.",
         "snippet": "It provides a good approximation for annual compounding, and for compounding at typical rates (from 6% to 10%); the approximations are less accurate at higher interest rates. The value 72 is a convenient choice of numerator, since it has many small divisors.",
         "url": "https://en.wikipedia.org/wiki/Rule_of_72",
-        "locate": "§ 'Choice of rule' → search 'less accurate at higher interest rates' / 'many small divisors'"
+        "locate": "§ 'Choice of rule' → search 'less accurate at higher interest rates' / 'many small divisors'",
+        "tier": 2
       },
       {
         "no": 2,
@@ -75,7 +85,8 @@
         "text": "The Rule of 72 appears in print as early as 1494 in Luca Pacioli's Summa de Arithmetica, the text that also codified double-entry bookkeeping; he presented it without derivation, suggesting earlier use.",
         "snippet": "An early reference to the rule is in the Summa de arithmetica (Venice, 1494) of Luca Pacioli (1445-1514). Pacioli presents the rule... but does not derive or explain the rule, and it is thus assumed that the rule predates Pacioli.",
         "url": "https://en.wikipedia.org/wiki/Rule_of_72",
-        "locate": "§ 'History' → search 'Summa de arithmetica (Venice, 1494)' and 'Luca Pacioli'"
+        "locate": "§ 'History' → search 'Summa de arithmetica (Venice, 1494)' and 'Luca Pacioli'",
+        "tier": 2
       },
       {
         "no": 3,
@@ -83,7 +94,9 @@
         "text": "The rule applies symmetrically to inflation and debt: at 3% inflation purchasing power halves in about 24 years (72/3); an 18% debt doubles in about 4 years (72/18).",
         "snippet": "The rule number is divided by the interest percentage per period to obtain the approximate number of periods required for doubling.",
         "url": "https://en.wikipedia.org/wiki/Rule_of_72",
-        "locate": "§ 'Periodic compounding' (lead) → search 'divided by the interest percentage per period'"
+        "locate": "§ 'Periodic compounding' (lead) → search 'divided by the interest percentage per period'",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 4,
@@ -91,9 +104,12 @@
         "text": "Luca Pacioli's 1494 Summa de Arithmetica was a foundational mathematics text that contains the first published description of double-entry bookkeeping.",
         "snippet": "Pacioli wrote Summa di arithmetica (1494)... it became a standard text and included a section on double-entry bookkeeping. The Summa de arithmetica contains the first published description of the double-entry bookkeeping system.",
         "url": "https://www.britannica.com/biography/Luca-Pacioli",
-        "locate": "Body, accounting section; search 'first published description of the double-entry'"
+        "locate": "Body, accounting section; search 'first published description of the double-entry'",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "Claim 3 (3% inflation halves in ~24 yrs; 18% debt doubles in ~4 yrs) is the draft's own arithmetic, not stated in the Wikipedia snippet, which only gives the generic formula — confirm the worked examples.",
+    "weakest_claim_no": 3
   },
   {
     "edition_id": "PF.3",
@@ -107,7 +123,8 @@
         "text": "The number of working years before you can retire is determined almost entirely by your savings rate, not your salary, and this relationship holds across income levels.",
         "snippet": "when it comes to the question of how long it will take you to retire, there's only one factor that really matters: Your savings rate.",
         "url": "https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/",
-        "locate": "Early in post; search 'only one factor that really matters' and 'Your savings rate'"
+        "locate": "Early in post; search 'only one factor that really matters' and 'Your savings rate'",
+        "tier": 3
       },
       {
         "no": 1,
@@ -115,7 +132,8 @@
         "text": "A ~10% savings rate implies roughly five decades of work, while a ~50% savings rate implies roughly fifteen years (draft hedges as 'around fifteen years' / 'roughly a decade and a half').",
         "snippet": "At a 7% real return, a 10% savings rate takes 51 years to fund your retirement; 25% takes 32 years; 50% takes 17 years; 75% takes 7 years. ... 5% savings rate = 66 years, 10% = 51 years, 20% = 37 years, 50% = 17 years.",
         "url": "https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/",
-        "locate": "Savings-rate table section; search '10% savings rate takes 51 years' / '50% takes 17 years'"
+        "locate": "Savings-rate table section; search '10% savings rate takes 51 years' / '50% takes 17 years'",
+        "tier": 3
       },
       {
         "no": 2,
@@ -123,7 +141,8 @@
         "text": "The years-to-retirement math rests on assumed long-run real returns (~5%) and a 4% safe withdrawal rate / 25x annual expenses (Trinity study).",
         "snippet": "The calculations are based on an average return (after tax and inflation) of 5% and a Safe Withdrawal Rate (SWR) of 4% ... needing 25x your annual expenses in investments to reach your FIRE goal.",
         "url": "https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/",
-        "locate": "Assumptions section; search 'average return (after tax and inflation) of 5%' and '4%'"
+        "locate": "Assumptions section; search 'average return (after tax and inflation) of 5%' and '4%'",
+        "tier": 3
       },
       {
         "no": 3,
@@ -131,7 +150,9 @@
         "text": "A higher savings rate does double duty: it raises invested contributions AND lowers the lifestyle (target fund) that must eventually be funded.",
         "snippet": "every dollar saved both reduces the required FIRE number (Trinity Study 25x expenses) and increases the capital working to compound.",
         "url": "https://www.mrmoneymustache.com/2012/01/13/the-shockingly-simple-math-behind-early-retirement/",
-        "locate": "Body on saving's double effect; search 'reduces the required FIRE number'"
+        "locate": "Body on saving's double effect; search 'reduces the required FIRE number'",
+        "tier": 3,
+        "paraphrase": true
       },
       {
         "no": 4,
@@ -139,9 +160,12 @@
         "text": "Lifestyle inflation / the hedonic treadmill explains why higher income often fails to raise the savings rate; concept originates with Brickman & Campbell (1971).",
         "snippet": "people quickly adapt to a higher standard of living and reset their expectations -- the 'hedonic treadmill' -- which keeps the savings rate flat even as salary climbs.",
         "url": "https://en.wikipedia.org/wiki/Hedonic_treadmill",
-        "locate": "Wikipedia lead → search 'people quickly adapt to a higher standard of living'"
+        "locate": "Wikipedia lead → search 'people quickly adapt to a higher standard of living'",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "The whole entry leans on one MMM blog post (claims 0-3); the year-count table (claim 1) hinges on a 5%-vs-7% real-return assumption the snippet states inconsistently (7% in text, 5% elsewhere) — verify which figures the draft used.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "PF.4",
@@ -155,7 +179,8 @@
         "text": "An emergency fund is cash equal to three to six months of essential living expenses, held liquid and accessible rather than invested; its purpose is availability (insurance against being forced into high-interest debt), not growth.",
         "snippet": "Over time, you should aim to build three to six months' worth of living expenses in your emergency fund to prepare for potential income shocks.",
         "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
-        "locate": "CFPB guide body; search 'three to six months' worth of living expenses'"
+        "locate": "CFPB guide body; search 'three to six months' worth of living expenses'",
+        "tier": 1
       },
       {
         "no": 1,
@@ -163,7 +188,8 @@
         "text": "The Federal Reserve's annual SHED report repeatedly finds a substantial share of U.S. adults could not cover a $400 unexpected expense entirely with cash or its equivalent.",
         "snippet": "63 percent of adults said they would cover a hypothetical $400 emergency expense exclusively using cash or its equivalent ... the other 37 percent ... would have paid by borrowing the money or selling something of value, with 13 percent saying they would not be able to pay at all.",
         "url": "https://www.federalreserve.gov/consumerscommunities/sheddataviz/unexpectedexpenses-table.html",
-        "locate": "SHED unexpected-expenses table page; search '63 percent' and '13 percent saying they would not'"
+        "locate": "SHED unexpected-expenses table page; search '63 percent' and '13 percent saying they would not'",
+        "tier": 1
       },
       {
         "no": 2,
@@ -171,7 +197,8 @@
         "text": "The three-to-six-month guideline is standard CFPB guidance, which recommends keeping the money separate, safe, and accessible rather than invested for growth.",
         "snippet": "Emergency funds are usually kept in an account at an insured bank or federally insured credit union where the money is protected and easy to access ... while you want your savings to be accessible, you don't want it to be too accessible.",
         "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
-        "locate": "CFPB guide, where-to-keep-it section; search 'insured bank or federally insured credit union'"
+        "locate": "CFPB guide, where-to-keep-it section; search 'insured bank or federally insured credit union'",
+        "tier": 1
       },
       {
         "no": 3,
@@ -179,9 +206,12 @@
         "text": "A large share of households report not having set aside even 3 months of expenses in emergency savings, reinforcing the urgency.",
         "snippet": "55 percent of respondents said they had set aside money for 3 months of expenses in an emergency savings fund, with older people generally more prepared than younger people.",
         "url": "https://www.federalreserve.gov/publications/2025-economic-well-being-of-us-households-in-2024-savings-and-investments.htm",
-        "locate": "2024 SHED Savings & Investments; search '55 percent' and '3 months of expenses'"
+        "locate": "2024 SHED Savings & Investments; search '55 percent' and '3 months of expenses'",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "Claim 1 cites a specific 63%/37%/13% SHED split as the 'repeated' finding, but that ratio is year-specific and the Fed has since revised it upward — confirm the exact report year matches the snippet.",
+    "weakest_claim_no": 1
   },
   {
     "edition_id": "PF.5",
@@ -195,7 +225,8 @@
         "text": "The majority of actively managed funds fail to beat their benchmark index over long horizons, largely because of fees (Bogle's 'cost matters' arithmetic).",
         "snippet": "15 years of data shows 89.50% of large-cap funds underperformed the S&P 500, with only 10.50% outperforming... After 15 years, there were no categories in which the majority of active managers outperformed.",
         "url": "https://www.spglobal.com/spdji/en/spiva/article/spiva-us/",
-        "locate": "SPIVA US Year-End scorecard; search '89.50%' large-cap / 'no categories' after 15 years"
+        "locate": "SPIVA US Year-End scorecard; search '89.50%' large-cap / 'no categories' after 15 years",
+        "tier": 1
       },
       {
         "no": 1,
@@ -203,7 +234,8 @@
         "text": "John Bogle founded the first index fund for individual (retail) investors in 1976.",
         "snippet": "When John C. Bogle launched Vanguard 500 Index Fund on August 31, 1976, as First Index Investment Trust, he gave individual investors access to a strategy previously available only to institutional investors.",
         "url": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/articles/50-years-50-facts-indexing-since-1976.html",
-        "locate": "Vanguard '50 facts' article; search 'August 31, 1976' and 'First Index Investment Trust'"
+        "locate": "Vanguard '50 facts' article; search 'August 31, 1976' and 'First Index Investment Trust'",
+        "tier": 2
       },
       {
         "no": 2,
@@ -211,7 +243,8 @@
         "text": "Diversification reduces idiosyncratic (company-specific) risk without necessarily sacrificing expected return, per Markowitz's Modern Portfolio Theory; he described it as the 'only free lunch' in investing.",
         "snippet": "Diversification provides (in his words) a 'free lunch' for investors... The low/negative covariance reduces the volatility (risk) of the portfolio by eliminating the idiosyncratic risk inherent in individual securities.",
         "url": "https://www.ifa.com/articles/harry_markowitz_father_modern_portfolio_theory",
-        "locate": "IFA Markowitz article; search 'free lunch' and 'idiosyncratic risk'"
+        "locate": "IFA Markowitz article; search 'free lunch' and 'idiosyncratic risk'",
+        "tier": 3
       },
       {
         "no": 3,
@@ -219,9 +252,12 @@
         "text": "Harry Markowitz shared the 1990 Nobel Prize in Economic Sciences for his portfolio-allocation work (origin: 'Portfolio Selection,' Journal of Finance, 1952).",
         "snippet": "Markowitz won the 1990 Nobel Prize in Economic Sciences for groundbreaking work on the theory of portfolio allocation under uncertainty.",
         "url": "https://www.nobelprize.org/prizes/economic-sciences/1990/press-release/",
-        "locate": "Nobel 1990 press release; search '1990' and 'portfolio allocation under uncertainty'"
+        "locate": "Nobel 1990 press release; search '1990' and 'portfolio allocation under uncertainty'",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "Claim 0's '89.50% over 15 years / no category beats' figures are SPIVA period-specific and shift each scorecard edition; the live spglobal URL may show different numbers than the snippet — pin the scorecard year.",
+    "weakest_claim_no": 0
   },
   {
     "edition_id": "PF.6",
@@ -235,7 +271,8 @@
         "text": "Dollar-cost averaging is investing a fixed amount on a fixed schedule regardless of price, which mechanically buys more shares when prices are low and fewer when high.",
         "snippet": "Dollar-cost averaging means investing your money in equal portions, at regular intervals, regardless of the ups and downs in the market... you will buy more of an investment when its price is low and less of the investment when its price is high.",
         "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging",
-        "locate": "Glossary definition body → search 'investing your money in equal portions, at regular intervals'"
+        "locate": "Glossary definition body → search 'investing your money in equal portions, at regular intervals'",
+        "tier": 1
       },
       {
         "no": 1,
@@ -243,7 +280,8 @@
         "text": "DCA is not guaranteed to beat a lump sum; because markets rise more often than they fall, lump-sum investing wins on average over long horizons (roughly two-thirds of the time per Vanguard).",
         "snippet": "Vanguard updated their data using the MSCI World Index from 1976 to 2022... 68% of the time, investing everything at once beats dollar-cost averaging measured after one year. ... finding that lump sum investing outperforms DCA about 2/3 of the time.",
         "url": "https://corporate.vanguard.com/content/dam/corp/research/pdf/cost_averaging_invest_now_or_temporarily_hold_your_cash.pdf",
-        "locate": "PDF → search: 'investing everything at once beats dollar-cost averaging' / '68%' (MSCI World 1976-2022 section)"
+        "locate": "PDF → search: 'investing everything at once beats dollar-cost averaging' / '68%' (MSCI World 1976-2022 section)",
+        "tier": 2
       },
       {
         "no": 2,
@@ -251,7 +289,9 @@
         "text": "DCA's worked example: $600 across prices of $50/$40/$50 buys 13 shares at ~$46.15 average cost, below the ~$46.67 simple average price, because more shares are bought when cheap.",
         "snippet": "By making regular investments with the same amount of money each time, you will buy more of an investment when its price is low and less of the investment when its price is high.",
         "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging",
-        "locate": "Glossary definition body → search 'buy more of an investment when its price is low'"
+        "locate": "Glossary definition body → search 'buy more of an investment when its price is low'",
+        "tier": 1,
+        "paraphrase": true
       },
       {
         "no": 3,
@@ -259,7 +299,8 @@
         "text": "Dollar-cost averaging was popularized for ordinary investors by Benjamin Graham in The Intelligent Investor (1949).",
         "snippet": "The term was coined by Benjamin Graham in his 1949 book The Intelligent Investor... Graham presented dollar cost averaging as an important strategy for the 'defensive investor' in Chapter 5.",
         "url": "https://en.wikipedia.org/wiki/Dollar_cost_averaging",
-        "locate": "§ 'History' → search 'coined by Benjamin Graham in his 1949 book'"
+        "locate": "§ 'History' → search 'coined by Benjamin Graham in his 1949 book'",
+        "tier": 2
       },
       {
         "no": 4,
@@ -267,9 +308,13 @@
         "text": "John C. Bogle, founder of Vanguard, argued in Common Sense on Mutual Funds (1999) that consistent low-cost investing beats market-timing for nearly all individuals.",
         "snippet": "Vanguard founder's case for low-cost, consistent, schedule-based investing over market timing for the typical individual investor (Common Sense on Mutual Funds, John Wiley & Sons, 1999).",
         "url": "https://www.wiley.com/en-us/Common+Sense+on+Mutual+Funds%3A+Fully+Updated+10th+Anniversary+Edition-p-9780470138137",
-        "locate": "Wiley product page → search 'Common Sense on Mutual Funds' (book description / overview)"
+        "locate": "Wiley product page → search 'Common Sense on Mutual Funds' (book description / overview)",
+        "tier": 1,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "The worked $46.15-vs-$46.67 DCA example (claim 2) is the draft's own calculation pasted under an investor.gov snippet that does NOT contain those numbers — recompute the average-cost arithmetic independently.",
+    "weakest_claim_no": 2
   },
   {
     "edition_id": "PF.7",
@@ -283,7 +328,8 @@
         "text": "An employer 401(k) match is effectively free money offering an instant, guaranteed 50% to 100% return with zero risk (e.g., a 100%-up-to-5% match doubles every contributed dollar; a 50% match is a 50% return).",
         "snippet": "Employees who contribute to their 401(k) plan may get a matching contribution to their account from their employer... it's an instant, guaranteed 25-100% return that no investment reliably beats.",
         "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan",
-        "locate": "Glossary '401(k) Plan' definition → search 'matching contribution to their account from their employer'"
+        "locate": "Glossary '401(k) Plan' definition → search 'matching contribution to their account from their employer'",
+        "tier": 1
       },
       {
         "no": 1,
@@ -291,7 +337,8 @@
         "text": "The most common employer match formula is 50% of contributions up to 6% of salary (an effective 3% match), with 100%-up-to-some-percent and tiered formulas also common.",
         "snippet": "The most common matching formula among Vanguard plan holders was $0.50 per dollar on the first 6% of pay... The second most popular formula... is $1.00 per dollar on the first 3% of pay and $0.50 on the next 2% of pay.",
         "url": "https://corporate.vanguard.com/content/dam/corp/research/pdf/are_employers_optimizing_their_401k_match.pdf",
-        "locate": "PDF → search: 'most common matching formula' / '$0.50 per dollar on the first 6%'"
+        "locate": "PDF → search: 'most common matching formula' / '$0.50 per dollar on the first 6%'",
+        "tier": 2
       },
       {
         "no": 2,
@@ -299,7 +346,8 @@
         "text": "About one in four eligible workers fails to capture the full employer match, leaving roughly $24 billion per year unclaimed (Financial Engines, 2015 study of 4.4M participants at 553 companies; ~$1,336 per affected worker per year).",
         "snippet": "Americans leave $24 billion in unclaimed 401(k) company matches on the table each year... 25 percent miss out on receiving the full company 401(k) match by not saving enough.",
         "url": "https://www.nbcnews.com/business/retirement/workers-missing-out-24-billion-employer-matches-n357631",
-        "locate": "NBC article body → search '$24 billion in unclaimed 401(k) company matches'"
+        "locate": "NBC article body → search '$24 billion in unclaimed 401(k) company matches'",
+        "tier": 2
       },
       {
         "no": 3,
@@ -307,7 +355,8 @@
         "text": "Matched money often vests over a few years (cliff or graded schedules), so leaving early can forfeit part of it; only a minority of plans grant immediate full vesting.",
         "snippet": "'Vesting' in a retirement plan means ownership... Just 44% of employers that pay a 401(k) match offered immediate full vesting in 2024... For the rest, it may take many years - perhaps up to five or six - to own their full match.",
         "url": "https://www.irs.gov/retirement-plans/issue-snapshot-vesting-schedules-for-matching-contributions",
-        "locate": "IRS Issue Snapshot → search 'Vesting' and 'immediate full vesting' (vesting schedule section)"
+        "locate": "IRS Issue Snapshot → search 'Vesting' and 'immediate full vesting' (vesting schedule section)",
+        "tier": 1
       },
       {
         "no": 4,
@@ -315,9 +364,12 @@
         "text": "Thaler & Benartzi's Save More Tomorrow (JPE, 2004) and automatic enrollment show the barrier to capturing the match is inertia/friction, not rational rejection; SMarT raised average saving rates dramatically.",
         "snippet": "Average saving rates for SMarT program participants increased from 3.5% to 13.6% over the course of 40 months.",
         "url": "https://www.journals.uchicago.edu/doi/abs/10.1086/380085",
-        "locate": "JPE article abstract → search 'increased from 3.5% to 13.6% over the course of 40 months'"
+        "locate": "JPE article abstract → search 'increased from 3.5% to 13.6% over the course of 40 months'",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "The $24B unclaimed-match / 25% / ~$1,336 figures (claim 2) come from a 2015 Financial Engines study via an NBC article — a decade-old secondary source; verify the numbers and that the study scope matches.",
+    "weakest_claim_no": 2
   },
   {
     "edition_id": "PF.8",
@@ -331,7 +383,8 @@
         "text": "Inflation is the general rise in prices over time, meaning each unit of currency buys a little less; it erodes the purchasing power of cash even though the nominal balance never changes.",
         "snippet": "when the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money.",
         "url": "https://www.econlib.org/library/Enc/Inflation.html",
-        "locate": "Concise Encyclopedia 'Inflation' entry → search 'each unit of currency buys fewer goods and services'"
+        "locate": "Concise Encyclopedia 'Inflation' entry → search 'each unit of currency buys fewer goods and services'",
+        "tier": 2
       },
       {
         "no": 1,
@@ -339,7 +392,8 @@
         "text": "At 3% inflation, prices double (purchasing power halves) in about 24 years, via the Rule of 72 (72 divided by the rate).",
         "snippet": "At a 3% inflation rate, you divide 72 by three to get 24 years. Assuming a 3% rate of inflation, your purchasing power would be cut in half in 24 years.",
         "url": "https://en.wikipedia.org/wiki/Rule_of_72",
-        "locate": "§ 'Choice of rule' / examples → search 'At a 3% inflation rate' or '24 years'"
+        "locate": "§ 'Choice of rule' / examples → search 'At a 3% inflation rate' or '24 years'",
+        "tier": 2
       },
       {
         "no": 2,
@@ -347,7 +401,8 @@
         "text": "$1,000 in cash from 1990 buys roughly a third of what it once did today. Official CPI: $1,000 in 1990 equals about $2,548 in 2026, so a 1990 dollar now buys ~39% of its former goods (close to, slightly above, 'a third').",
         "snippet": "$1,000 in 1990 is equivalent in purchasing power to about $2,547.97 in 2026... The U.S. CPI was 130.7 in the year 1990 and 333.02 in 2026.",
         "url": "https://www.in2013dollars.com/us/inflation/1990?amount=1000",
-        "locate": "Top result table → search '$2,547.97 in 2026'; CPI line search '130.7 in the year 1990'"
+        "locate": "Top result table → search '$2,547.97 in 2026'; CPI line search '130.7 in the year 1990'",
+        "tier": 2
       },
       {
         "no": 3,
@@ -355,7 +410,9 @@
         "text": "Real return is roughly the nominal return minus inflation: 1% interest against 3% inflation is about -2% real, so cash earning below the inflation rate loses purchasing power year after year.",
         "snippet": "inflation corresponds to a reduction in the purchasing power of money. A CPI of 120 in the current period means that it now takes $120 to purchase a representative basket of goods that $100 once purchased.",
         "url": "https://www.econlib.org/library/Enc/Inflation.html",
-        "locate": "Encyclopedia 'Inflation' entry → search 'CPI of 120 in the current period'"
+        "locate": "Encyclopedia 'Inflation' entry → search 'CPI of 120 in the current period'",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 4,
@@ -363,9 +420,12 @@
         "text": "Adversarial note (not a draft claim): The Fed targets 2% inflation as measured by PCE, not CPI. The draft does not state a Fed target, so no correction is needed; CPI is correctly used here only as a purchasing-power illustration, not attributed to the Fed.",
         "snippet": "The Federal Reserve seeks to achieve inflation at the rate of 2 percent over the longer run as measured by the annual change in the price index for personal consumption expenditures (PCE).",
         "url": "https://www.federalreserve.gov/faqs/economy_14400.htm",
-        "locate": "Fed FAQ → search 'inflation at the rate of 2 percent over the longer run' (PCE answer)"
+        "locate": "Fed FAQ → search 'inflation at the rate of 2 percent over the longer run' (PCE answer)",
+        "tier": 1
       }
-    ]
+    ],
+    "caveat": "Claim 2's '~39% / close to a third' purchasing-power figure relies on in2013dollars.com, an unofficial CPI aggregator projecting a 2026 CPI (333.02) that is partly estimated, not finalized BLS data — check the 2026 CPI.",
+    "weakest_claim_no": 2
   },
   {
     "edition_id": "PF.9",
@@ -379,7 +439,9 @@
         "text": "Lifestyle creep (also called lifestyle inflation) is the tendency for spending to rise to meet rising income, so that more money never reaches savings or net worth and thus blocks wealth-building.",
         "snippet": "lifestyle creep occurs when spending increases at the same rate as income ... happens when your spending expands along with your income but savings fall by the wayside",
         "url": "https://en.wikipedia.org/wiki/Lifestyle_creep",
-        "locate": "Lead/intro → search 'spending increases at the same rate as income'"
+        "locate": "Lead/intro → search 'spending increases at the same rate as income'",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 1,
@@ -387,7 +449,9 @@
         "text": "Stanley & Danko's The Millionaire Next Door (1996) found wealth accumulation correlates more with restrained spending relative to income than with income level itself; many high earners are 'Under Accumulators of Wealth.'",
         "snippet": "high income does not equal wealth ... Under Accumulators of Wealth (UAW) - individuals who have a low net worth relative to their income ... millionaires live below their means, prioritize saving over spending",
         "url": "https://en.wikipedia.org/wiki/The_Millionaire_Next_Door",
-        "locate": "§ on UAW / themes → search 'Under Accumulators of Wealth' and 'live below their means'"
+        "locate": "§ on UAW / themes → search 'Under Accumulators of Wealth' and 'live below their means'",
+        "tier": 2,
+        "paraphrase": true
       },
       {
         "no": 2,
@@ -395,7 +459,8 @@
         "text": "Parkinson's Law (C. Northcote Parkinson, 1955) states work expands to fill the time available; the draft applies the widely-observed financial corollary that expenses expand to fill income available.",
         "snippet": "Parkinson's Law is the title of a satirical essay by the naval historian C. Northcote Parkinson which was published in The Economist in 1955 ... work expands to fill the time available for its completion",
         "url": "https://en.wikipedia.org/wiki/Parkinson's_law",
-        "locate": "Lead → search 'satirical essay' and 'C. Northcote Parkinson' / 'published in The Economist in 1955'"
+        "locate": "Lead → search 'satirical essay' and 'C. Northcote Parkinson' / 'published in The Economist in 1955'",
+        "tier": 2
       },
       {
         "no": 3,
@@ -403,9 +468,13 @@
         "text": "Morgan Housel (The Psychology of Money, 2020) argues lasting wealth comes from the savings rate / the gap between earning and spending — which is in your control — rather than from a high income or investment returns.",
         "snippet": "building wealth has little to do with your income or investment return and has much more to do with your savings rate ... real wealth is made more by your savings rate, because that is something directly in your control",
         "url": "https://en.wikipedia.org/wiki/The_Psychology_of_Money",
-        "locate": "§ Themes/summary → search 'savings rate' and 'directly in your control'"
+        "locate": "§ Themes/summary → search 'savings rate' and 'directly in your control'",
+        "tier": 2,
+        "paraphrase": true
       }
-    ]
+    ],
+    "caveat": "Claim 2 attributes a 'financial corollary' (expenses expand to fill income) to Parkinson's Law, but the snippet only supports the time-version essay; the money application is the draft's extrapolation, not sourced.",
+    "weakest_claim_no": 2
   },
   {
     "edition_id": "PF.10",
@@ -419,7 +488,8 @@
         "text": "Loss aversion (Kahneman & Tversky's prospect theory) means the pain of a loss is felt roughly twice as intensely as the pleasure of an equivalent gain, driving investors to panic-sell at lows and buy at highs.",
         "snippet": "Loss aversion refers to the fact that losses loom larger than gains... It is thought that the pain of losing is psychologically about twice as powerful as the pleasure of gaining.",
         "url": "https://www.behavioraleconomics.com/resources/mini-encyclopedia-of-be/loss-aversion/",
-        "locate": "Mini-encyclopedia 'Loss aversion' entry → search 'losses loom larger than gains' / 'twice as powerful'"
+        "locate": "Mini-encyclopedia 'Loss aversion' entry → search 'losses loom larger than gains' / 'twice as powerful'",
+        "tier": 2
       },
       {
         "no": 1,
@@ -427,7 +497,8 @@
         "text": "Loss aversion was identified by Kahneman & Tversky in Prospect Theory (Econometrica, 1979) and is encapsulated in 'losses loom larger than gains'; Kahneman won the 2002 Nobel.",
         "snippet": "Loss aversion is an important concept associated with prospect theory and is encapsulated in the expression 'losses loom larger than gains' (Kahneman & Tversky, 1979). Later in 2002 Kahneman was awarded the Nobel Prize in economics.",
         "url": "https://en.wikipedia.org/wiki/Prospect_theory",
-        "locate": "§ 'Loss aversion' → search \"losses loom larger than gains\" and 'Nobel Prize in economics'"
+        "locate": "§ 'Loss aversion' → search \"losses loom larger than gains\" and 'Nobel Prize in economics'",
+        "tier": 2
       },
       {
         "no": 2,
@@ -435,7 +506,8 @@
         "text": "The precise loss-aversion coefficient lambda is approximately 2.25, estimated in Tversky & Kahneman (1992) 'Advances in Prospect Theory' — i.e. losses weighted ~2.25x equivalent gains. (Draft says 'roughly twice'; consistent, though it cites only the 1979 paper, not the 1992 source of 2.25.)",
         "snippet": "A widely accepted magnitude of loss aversion is the parameter estimate of lambda = 2.25 obtained by Tversky & Kahneman (1992), which signifies that losses loom more than twice as large as equivalent gains.",
         "url": "https://en.wikipedia.org/wiki/Prospect_theory",
-        "locate": "§ 'Loss aversion' → search 'lambda = 2.25' / 'Tversky & Kahneman (1992)'"
+        "locate": "§ 'Loss aversion' → search 'lambda = 2.25' / 'Tversky & Kahneman (1992)'",
+        "tier": 2
       },
       {
         "no": 3,
@@ -443,8 +515,11 @@
         "text": "DALBAR's QAIB 'behavior gap' shows the average investor earns meaningfully less than the funds they own, due to poorly-timed buying and selling (selling after declines, buying after rallies).",
         "snippet": "The results consistently show that the average investor earns less - in many cases, much less - than mutual fund performance reports would suggest... The Average Equity Investor earned just 16.54% in 2024, compared to the S&P 500's 25.02% return.",
         "url": "https://www.dalbar.com/qaib/",
-        "locate": "DALBAR QAIB page → search 'average investor earns less' or '16.54% in 2024'"
+        "locate": "DALBAR QAIB page → search 'average investor earns less' or '16.54% in 2024'",
+        "tier": 2
       }
-    ]
+    ],
+    "caveat": "Claim 3's DALBAR QAIB behavior-gap figures (16.54% vs 25.02% for 2024) come from a paywalled vendor page and are notoriously methodology-disputed; the live URL may not show those exact numbers — verify the cited year.",
+    "weakest_claim_no": 3
   }
 ]
