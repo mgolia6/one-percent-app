@@ -1490,13 +1490,15 @@ export default function HomePage() {
   const totalTimeSeconds = Object.values(completions).reduce((a, c) => a + (c.time_to_quiz || 0), 0)
   const totalTimeMin = Math.round(totalTimeSeconds / 60)
 
-  // Today entry and last completed
-  const todayEntry = ENTRIES[unlockedCount - 1] || ENTRIES[0]
+  // Today's lesson = the OLDEST unlocked entry you still need to complete.
+  // (For daily-drip users this is the newest unlock; for fully-unlocked/admin it's the
+  // first gap — not the last entry in the catalog.)
+  const incompleteUnlocked = ENTRIES.filter((e, i) => i < unlockedCount && !completions[e.entry])
+  const todayEntry = incompleteUnlocked[0] || ENTRIES[unlockedCount - 1] || ENTRIES[0]
   const lastEntry = unlockedCount > 1 ? ENTRIES[unlockedCount - 2] : null
-  // On Deck: if entries remain unlocked, show next. Otherwise show oldest incomplete.
+  // On Deck = the next thing after today: next unlock if any, else the next incomplete.
   const nextUnlocked = unlockedCount < ENTRIES.length ? ENTRIES[unlockedCount] : null
-  const oldestIncomplete = ENTRIES.find(e => !completions[e.entry] && e.entry !== todayEntry?.entry) || null
-  const onDeckEntry = nextUnlocked || oldestIncomplete
+  const onDeckEntry = nextUnlocked || incompleteUnlocked.find(e => e.entry !== todayEntry?.entry) || null
   const todayCompleted = !!completions[todayEntry?.entry]
   const todayComp = completions[todayEntry?.entry]
 
