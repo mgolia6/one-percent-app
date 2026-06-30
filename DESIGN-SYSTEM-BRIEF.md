@@ -55,6 +55,14 @@ your job is to elevate it into something premium while keeping the identity.
   each screen, the premium/emotional bar, accessibility (legible contrast).
 - **YOURS:** everything in "craft" above — invent the system.
 
+## Copy & content ownership
+The **copy is owned in the repo and is not yours to invent.** The chat questions (`LockItIn.jsx`
+`MOVES`), the quiz questions and lesson content (verified entry JSON), the AI coaching/scoring
+(`api/lock-it-in`), and button/label strings are canonical. Use the **real copy as placeholder** to
+design the experience; do **not** fabricate lesson content or treat your placeholder text as final.
+Sharper copy suggestions are welcome as suggestions — we adopt selectively. You design how it looks
+and moves; we own what it says.
+
 ## Phase 1 deliverable — the conversational "LOCK IT IN" experience (2–3 directions)
 
 > **This is the app's flagship, AI-native interaction — a short *coached chat* that locks the concept
