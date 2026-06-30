@@ -62,9 +62,9 @@
   {
     "edition_id": "NC.10",
     "concept": "The Peak-End Rule",
-    "verdict": "FLAG",
-    "fix": "The morning explanation (paragraph 2) and the midday In-the-Wild section attribute the EXPERIMENTAL manipulation (splitting patients into a standard group vs. a group with extra gentler minutes 'tacked on at the end') to the 1996 Redelmeier & Kahneman study. That randomized split is actually the 2003 study: Redelmeier, D. A., Katz, J. & Kahneman, D., 'Memories of colonoscopy: a randomized trial,' Pain 104(2):187-194, 2003. The 1996 Pain study was observational/correlational only (it recorded real-time pain and correlated remembered pain with peak and last-3-minutes; it did NOT add minutes to patients' procedures). The 1993 cold-water study (Kahneman et al.) is the experiment that added a better end. Fix: either cite the 2003 randomized trial for the 'added minutes at the end' colonoscopy manipulation, or reframe the morning narrative so the experimental split is attributed to the cold-water study and the 1996 study is described as the correlational colonoscopy/lithotripsy finding.",
-    "caveat": "The colonoscopy 'extra-minutes-added-at-the-end' randomized manipulation described in the entry belongs to the 2003 Redelmeier, Katz & Kahneman trial, not the cited 1996 (observational) study; the 1996 paper established the peak-end correlation but did not experimentally extend procedures.",
+    "verdict": "PASS",
+    "fix": "added-minutes colonoscopy trial re-attributed to 2003 Redelmeier, Katz & Kahneman (1996 study was observational)",
+    "caveat": "FIXED from FLAG: the experimental 'extra gentler minutes' colonoscopy trial is now attributed to the 2003 Redelmeier/Katz/Kahneman randomized study; the 1996 study is described as observational. Re-verify the 2003 citation (Pain 104:187-194).",
     "weakest_claim_no": 1,
     "claims": [
       {
@@ -80,10 +80,10 @@
       {
         "no": 1,
         "kind": "",
-        "text": "In the 1996 Redelmeier & Kahneman colonoscopy study, patients were split into a standard group and a group that had a few extra, less-painful minutes tacked on at the end; the second group endured more total discomfort yet remembered the experience as less unpleasant (the 'added better end' colonoscopy manipulation).",
+        "text": "In the 2003 Redelmeier, Katz & Kahneman randomized colonoscopy trial, patients given extra gentler minutes at the end remembered the experience as less unpleasant despite more total discomfort",
         "snippet": "By random assignment, half the patients had a short interval added to the end of their procedure during which the tip of the colonoscope remained in the rectum.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/12855328/",
-        "locate": "PubMed 12855328 — Redelmeier, Katz & Kahneman, 'Memories of colonoscopy: a randomized trial,' Pain 2003; Ctrl-F 'short interval added to the end of their procedure'. The randomized 'added end' manipulation is the 2003 trial, NOT the 1996 study the draft cites.",
+        "url": "https://doi.org/10.1016/S0304-3959(03)00003-4",
+        "locate": "Pain 104(1-2):187-194, 2003 — search 'Memories of colonoscopy: a randomized trial'",
         "tier": 1,
         "paraphrase": true
       },

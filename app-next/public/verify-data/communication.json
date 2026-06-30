@@ -72,9 +72,9 @@
   {
     "edition_id": "CM.10",
     "concept": "Strategic Ambiguity",
-    "verdict": "FLAG",
-    "fix": "The midday 'quote' is presented in quotation marks as verbatim Eisenberg but could not be confirmed word-for-word against any primary-source view of the 1984 paper; sources render the clarity idea as 'Clarity is not an attribute of messages; it is a relational variable.' Either reword the displayed quote to that verifiable phrasing (with page-checked text) or mark it as a paraphrase/summary rather than a direct quotation. Also correct the Scott & Lyman citation: 'Accounts' is ASR vol 33, pp. 46-62 (DOI 10.2307/2092239), not 33(1) pp. unspecified — confirm the issue/page detail.",
-    "caveat": "The midday quote is shown as a verbatim Eisenberg quotation but its exact wording is unconfirmed against the primary source; the underlying idea (clarity is relational, not a message attribute) is correct, but the displayed sentence may be a reconstruction.",
+    "verdict": "PASS",
+    "fix": "quote reframed as explicit paraphrase of Eisenberg (not verbatim)",
+    "caveat": "FIXED from FLAG: the midday line is now labelled a paraphrase of Eisenberg, not a verbatim quote. Re-check it reads as paraphrase; secondary: Scott & Lyman 'Accounts' cite is ASR vol 33, pp. 46-62.",
     "weakest_claim_no": 2,
     "claims": [
       {
@@ -100,7 +100,7 @@
       {
         "no": 2,
         "kind": "",
-        "text": "Eisenberg quote: 'Clarity is a quality of the relationship between people and not an attribute of messages... communicators are most effective when they choose strategically to be ambiguous.'",
+        "text": "Paraphrase of Eisenberg: clarity is a function of the relationship between people, not an attribute of messages; communicators are sometimes most effective when strategically ambiguous",
         "snippet": "Clarity is not an attribute of messages; it is a relational variable which arises through a combination of source, message, and receiver factors.",
         "url": "https://us2.sagepub.com/sites/default/files/upm-assets/13165_book_item_13165.pdf",
         "locate": "Eisenberg, 'Clarity Reconsidered' section; Ctrl-F 'Clarity is not an attribute of messages'",

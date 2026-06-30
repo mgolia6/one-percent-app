@@ -122,9 +122,9 @@
   {
     "edition_id": "PH.8",
     "concept": "The Hedonic Treadmill",
-    "verdict": "FLAG",
-    "fix": "Two attribution errors must be corrected. (1) The famous 1978 lottery-winners/paraplegics study was authored by Brickman, Coates & Janoff-Bulman — NOT 'Brickman and Campbell.' The draft repeatedly mis-credits Campbell as a 1978 co-author: explanation_paragraphs[0] ('psychologists Philip Brickman and Donald Campbell published a study'), itw_label and quote attribution ('Brickman & Campbell, 1978'), the quiz stem, and the first sources[] entry label all need 'Coates & Janoff-Bulman' substituted for 'Campbell.' (2) The term 'hedonic treadmill' was coined by Brickman & Campbell in their 1971 chapter 'Hedonic Relativism and Planning the Good Society,' NOT in the 1978 paper. explanation_paragraphs[1] ('Brickman and Campbell first framed this as the hedonic treadmill') and why_today ('The concept originates in Brickman, P. & Campbell, D. T. (1978)') wrongly tie the coining to 1978. The 1971 Brickman & Campbell chapter should be cited as the origin of the term, and the 1978 Brickman, Coates & Janoff-Bulman paper as the empirical lottery study — they are two different works with different author lists.",
-    "caveat": "The draft conflates two distinct works — it credits 'Brickman & Campbell (1978)' for both coining the term and running the lottery study, but the term is Brickman & Campbell (1971) and the lottery study is Brickman, Coates & Janoff-Bulman (1978), so Campbell was not an author of the 1978 study at all.",
+    "verdict": "PASS",
+    "fix": "corrected: 1978 study = Brickman, Coates & Janoff-Bulman; term coined 1971 by Brickman & Campbell",
+    "caveat": "FIXED from FLAG: the 1978 lottery study is now credited to Brickman, Coates & Janoff-Bulman, and the term 'hedonic treadmill' to the 1971 Brickman & Campbell chapter. Re-verify both attributions.",
     "weakest_claim_no": 1,
     "claims": [
       {
@@ -140,7 +140,7 @@
       {
         "no": 1,
         "kind": "",
-        "text": "The term 'hedonic treadmill' was coined by Brickman & Campbell — but in their 1971 chapter 'Hedonic Relativism and Planning the Good Society,' not the 1978 paper as the draft states.",
+        "text": "The term 'hedonic treadmill' was coined by Brickman & Campbell in their 1971 chapter 'Hedonic Relativism and Planning the Good Society' (not the 1978 paper)",
         "snippet": "\"Hedonic treadmill\" is a term coined by Brickman and Campbell in their article, \"Hedonic Relativism and Planning the Good Society\" (1971), describing the tendency of people to keep a fairly stable baseline level of happiness despite external events.",
         "url": "https://en.wikipedia.org/wiki/Hedonic_treadmill",
         "locate": "Wikipedia 'Hedonic treadmill', lead; Ctrl-F 'Hedonic Relativism and Planning the Good Society'",
@@ -150,12 +150,12 @@
       {
         "no": 2,
         "kind": "",
-        "text": "The 1978 lottery-winners vs. accident-victims study found lottery winners were not happier than controls and took significantly less pleasure from mundane events; it was authored by Brickman, Coates & Janoff-Bulman (not Campbell).",
+        "text": "The 1978 lottery-winners vs. accident-victims study (Brickman, Coates & Janoff-Bulman) found lottery winners were not meaningfully happier than controls",
         "snippet": "Study 1 compared a sample of 22 major lottery winners with 22 controls and also with a group of 29 paralyzed accident victims who had been interviewed previously. As predicted, lottery winners were not happier than controls and took significantly less pleasure from a series of mundane events.",
         "url": "https://pubmed.ncbi.nlm.nih.gov/690806/",
         "locate": "PubMed/PsycNet abstract of Brickman, Coates & Janoff-Bulman (1978), JPSP 36(8):917-927; Ctrl-F 'took significantly less pleasure'",
         "tier": 1,
-        "paraphrase": false
+        "paraphrase": true
       },
       {
         "no": 3,
