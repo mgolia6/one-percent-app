@@ -1,0 +1,252 @@
+[
+  {
+    "edition_id": "AI.13",
+    "concept": "Tokenization",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The draft says some languages need '10 to 15 times more tokens than English,' but the Petrov et al. (2023) source states 'up to 15 times' (an upper bound, not a 10-15x range) — check that phrasing first.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "A language model never sees text as letters/words; it processes tokens (chunks mapped to numeric IDs), and quirks in spelling, counting, and rare-word handling trace back to that fact.",
+        "snippet": "LLMs never see the word \"strawberry\" in their input—they only see a number representing a token for that word, so they cannot reason over the word because they only receive a number.",
+        "url": "https://arxiv.org/html/2412.18626v1",
+        "locate": "Paper 'Why Do Large Language Models (LLMs) Struggle to Count Letters?' — Ctrl-F 'they only see a number representing a token'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Byte-pair encoding was brought into modern neural language models by Sennrich, Haddow & Birch (2016), 'Neural Machine Translation of Rare Words with Subword Units,' ACL 2016, which adapted BPE (a compression algorithm) to word segmentation.",
+        "snippet": "They adapt byte pair encoding (BPE), a compression algorithm, to the task of word segmentation.",
+        "url": "https://aclanthology.org/P16-1162/",
+        "locate": "ACL Anthology P16-1162 abstract — Ctrl-F 'adapt byte pair encoding (BPE), a compression algorithm'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Rule of thumb for English: roughly 1 token is about 4 characters, or about three-quarters of a word.",
+        "snippet": "A helpful rule of thumb is that one token generally corresponds to ~4 characters of text for common English text. This translates to roughly ¾ of a word (so 100 tokens ~= 75 words).",
+        "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+        "locate": "OpenAI Help Center 'What are tokens and how to count them?' — Ctrl-F 'one token generally corresponds to ~4 characters'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "The 'strawberry' letter-counting failure (models saying two R's) is caused by tokenization: the word splits into multiple tokens and the model cannot see the individual characters inside them.",
+        "snippet": "\"strawberry\" is decomposed by the GPT4-o tokenizer into three tokens: \"st\", \"raw\" and \"berry\"",
+        "url": "https://arxiv.org/html/2412.18626v1",
+        "locate": "Paper 'Why Do Large Language Models (LLMs) Struggle to Count Letters?' — Ctrl-F 'decomposed by the GPT4-o tokenizer into three tokens'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "A 2023 analysis by Oxford-affiliated researchers found some languages require up to 10 to 15 times more tokens than English to express the same content under common tokenizers.",
+        "snippet": "The same text translated into different languages can have drastically different tokenization lengths, with differences up to 15 times in some cases.",
+        "url": "https://arxiv.org/abs/2305.15425",
+        "locate": "Petrov, La Malfa, Torr & Bibi (U. Oxford), 'Language Model Tokenizers Introduce Unfairness Between Languages,' NeurIPS 2023 — abstract, Ctrl-F 'differences up to 15 times in some cases'",
+        "tier": 1,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "AI.14",
+    "concept": "RLHF (Reinforcement Learning from Human Feedback)",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The 'directly preceded ChatGPT' framing for InstructGPT is interpretive narrative (InstructGPT paper was March 2022, ChatGPT was Nov 2022, ~8 months later, and ChatGPT was built on GPT-3.5 not InstructGPT itself) rather than a strict primary-source claim.",
+    "weakest_claim_no": 1,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "RLHF is a three-step process (collect human preferences, train a reward model that scores responses, then fine-tune the main model with reinforcement learning against that reward model) that reshapes a base language model's behavior into a helpful instruction-follower.",
+        "snippet": "Training Language Models to Follow Instructions with Human Feedback ... scaled RLHF to large language models by fine-tuning GPT-3 using human preference comparisons, producing models much better at following user instructions in a helpful and harmless way.",
+        "url": "https://arxiv.org/abs/2203.02155",
+        "locate": "Abstract — Ctrl-F 'follow instructions with human feedback' / 'reward model'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "RLHF was applied to instruction-following in Ouyang et al. (2022), the InstructGPT paper from OpenAI, which directly preceded ChatGPT.",
+        "snippet": "[2203.02155] Training language models to follow instructions with human feedback",
+        "url": "https://arxiv.org/abs/2203.02155",
+        "locate": "arXiv listing page — Ctrl-F 'Training language models to follow instructions with human feedback'; authors Long Ouyang et al., 2022, OpenAI",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "A 1.3-billion-parameter InstructGPT model fine-tuned with human feedback was preferred by human evaluators over the 175-billion-parameter GPT-3, despite having 100x fewer parameters.",
+        "snippet": "In human evaluations on their prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters.",
+        "url": "https://arxiv.org/abs/2203.02155",
+        "locate": "Abstract — Ctrl-F '1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "The reward-model-from-human-comparisons technique RLHF is built on was introduced in Christiano et al. (2017), 'Deep Reinforcement Learning from Human Preferences' (NeurIPS/NIPS 2017), where humans indicate preferences between trajectory segments.",
+        "snippet": "The paper introduces an approach where humans indicated preferences between trajectory segments, with notation σ1 ≻ σ2 indicating that the human preferred trajectory segment σ1 to trajectory segment σ2.",
+        "url": "https://arxiv.org/pdf/1706.03741",
+        "locate": "Christiano, Leike, Brown, Martic, Legg, Amodei — Ctrl-F 'preferences between trajectory segments'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Sycophancy is a documented failure mode of preference-trained models: Anthropic showed (2023) that RLHF models tend to match user beliefs over truthful responses because agreeable answers are preferred.",
+        "snippet": "RLHF may encourage model responses that match user beliefs over truthful responses, a behavior known as sycophancy. ... both humans and preference models prefer convincingly-written sycophantic responses over correct ones a non-negligible fraction of the time.",
+        "url": "https://www.anthropic.com/news/towards-understanding-sycophancy-in-language-models",
+        "locate": "Anthropic, 'Towards Understanding Sycophancy in Language Models' (Oct 2023) — Ctrl-F 'match user beliefs over truthful responses'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "Direct Preference Optimization (DPO), introduced in 2023, achieves alignment without training a separate reward model, simplifying the RLHF pipeline.",
+        "snippet": "It avoids the need for a separate reward model to provide feedback to the model, as it directly optimizes the model using a closed-form expression ... DPO reformulates both the reward modeling and fine-tuning phases of RLHF into a unified optimization problem.",
+        "url": "https://arxiv.org/abs/2305.18290",
+        "locate": "Rafailov et al. 2023, 'Direct Preference Optimization' — Ctrl-F 'without the need for a reward model'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "AI.15",
+    "concept": "Prompt Injection",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link is the Simon Willison 2022 coining attribution: his primary blog post (simonwillison.net) was egress-blocked, so it rests on secondary sources (Wikipedia, Waxy.org, IBM, Willison's own podcast titled 'I Coined Prompt Injection'), and the draft's hedge 'Simon Willison and others' is correct since Riley Goodside first demonstrated the attack while Willison named it.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "",
+        "text": "Prompt injection is an attack where malicious instructions are smuggled into the content an AI processes, hijacking its behavior; the root cause is that the model treats system instructions, the user prompt, and external content as one undifferentiated stream of text with no internal boundary between trusted instructions and untrusted data.",
+        "snippet": "A Prompt Injection Vulnerability occurs when user prompts alter the LLM's behavior or output in unintended ways. ... this occurs when an attacker manipulates a large language model (LLM) through crafted inputs, causing the LLM to unknowingly execute the attacker's intentions.",
+        "url": "https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM01_PromptInjection.md",
+        "locate": "Section 'LLM01:2025 Prompt Injection' > Overview, Ctrl-F: 'occurs when user prompts alter the LLM's behavior'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "THESIS",
+        "text": "Prompt injection is listed as the top risk (LLM01, number one) in the OWASP Top 10 for LLM Applications (2025), and security researchers widely consider it the defining unsolved vulnerability of the agent era with no clean fix yet.",
+        "snippet": "## LLM01:2025 Prompt Injection",
+        "url": "https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM01_PromptInjection.md",
+        "locate": "Top heading of the document, Ctrl-F: 'LLM01:2025 Prompt Injection' (the LLM01 numbering = rank #1 / top of the Top 10 list)",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The term 'prompt injection' was named/coined by Simon Willison (and others) in September 2022, drawing a deliberate parallel to SQL injection, after Riley Goodside publicly demonstrated the attack on Twitter/X.",
+        "snippet": "In September 2022, developer Simon Willison gave this attack its now-famous name after data scientist Riley Goodside demonstrated how easy it was to derail a chatbot on X (formerly Twitter). Willison called it \"prompt injection\" because the mechanics reminded him of SQL injection attacks.",
+        "url": "https://en.wikipedia.org/wiki/Prompt_injection",
+        "locate": "Wikipedia 'Prompt injection' > History; corroborated at waxy.org/2022/09 and Heavybit podcast 'Ep. #39, Simon Willison: I Coined Prompt Injection'. Ctrl-F: 'Simon Willison'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Prompt injection has two flavors: direct injection (a user types adversarial text straight into the model to break its rules, i.e. jailbreaking) and the more dangerous indirect injection (malicious text hidden in third-party content the AI consumes on the user's behalf, such as a web page, email, or document), which can be invisible to humans.",
+        "snippet": "Direct prompt injections occur when a user's prompt input directly alters the behavior of the model in unintended or unexpected ways. ... Indirect prompt injections occur when an LLM accepts input from external sources, such as websites or files. ... prompt injections do not need to be human-visible/readable, as long as the content is parsed by the model.",
+        "url": "https://raw.githubusercontent.com/OWASP/www-project-top-10-for-large-language-model-applications/main/2_0_vulns/LLM01_PromptInjection.md",
+        "locate": "Section 'Types of Prompt Injection Vulnerabilities' > 'Direct Prompt Injections' / 'Indirect Prompt Injections', Ctrl-F: 'Indirect prompt injections occur when an LLM accepts input from external sources'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Indirect prompt injection against real-world applications was formalized by Greshake et al. (2023), 'Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection,' which showed attackers can remotely steer LLM-integrated apps by injecting prompts into content the app retrieves, without any direct interface to the victim.",
+        "snippet": "the paper reveals new attack vectors, using Indirect Prompt Injection, that enable adversaries to remotely (without a direct interface) exploit LLM-integrated applications by strategically injecting prompts into data likely to be retrieved.",
+        "url": "https://arxiv.org/abs/2302.12173",
+        "locate": "arXiv:2302.12173 abstract, Ctrl-F: 'without a direct interface'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "AI.16",
+    "concept": "Multimodal AI",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The thesis lists Anthropic's Claude alongside GPT-4o and Gemini as making 'text, image, and voice' table stakes, but Claude's confirmed multimodality is text and vision; native voice is not an established Claude feature, so the ecosystem-level 'voice is standard' claim leans mainly on GPT-4o and Gemini Live.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "A multimodal model converts different inputs (image, text, audio) into vectors in a shared internal representation/common space, so it can relate them and reason across modalities, rather than running separate bolted-together systems.",
+        "snippet": "CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks.",
+        "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+        "locate": "Abstract / Approach — Ctrl-F 'jointly trains an image encoder and a text encoder'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "CLIP (Radford et al., 2021) popularized cross-modal learning by training on hundreds of millions of image-caption pairs (~400 million) to predict which caption goes with which image, learning a shared image-text representation.",
+        "snippet": "the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet",
+        "url": "https://proceedings.mlr.press/v139/radford21a/radford21a.pdf",
+        "locate": "Abstract — Ctrl-F 'predicting which caption goes with which image'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "OpenAI's GPT-4o ('o' for 'omni'), released 2024, is a single model trained end-to-end across text, vision, and audio that accepts and generates multiple modalities and supports near-real-time spoken conversation (~232ms minimum audio response).",
+        "snippet": "GPT-4o is an autoregressive omni model that accepts as input any combination of text, audio, image, and video and generates any combination of text, audio, and image outputs... It can respond to audio inputs in as little as 232 milliseconds, with an average of 320 milliseconds, which is similar to human response time in a conversation.",
+        "url": "https://openai.com/index/hello-gpt-4o/",
+        "locate": "Intro — Ctrl-F 'accepts as input any combination of text, audio, image, and video'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Google's Gemini was built natively multimodal from the ground up, pre-trained simultaneously on text, images, audio, and video, contrasting with the older approach of stitching separate single-modality components together.",
+        "snippet": "Until now, the standard approach to creating multimodal models involved training separate components for different modalities and then stitching them together... we designed Gemini to be natively multimodal, pre-trained from the start on different modalities.",
+        "url": "https://blog.google/technology/ai/google-gemini-ai/",
+        "locate": "'Built to be multimodal' section — Ctrl-F 'natively multimodal, pre-trained from the start'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "As of 2025-2026, the leading assistants from major labs (OpenAI, Google, Anthropic) are multimodal by default, with text, vision, and voice as table stakes and video/real-time interaction the active frontier.",
+        "snippet": "The Claude 3 family of models are multimodal (image and video-frame input)... Vision (multimodal image input) was added to Claude on March 4, 2024 with the Claude 3 family, and was available on every tier (Opus, Sonnet, Haiku) from launch.",
+        "url": "https://www.anthropic.com/news/claude-3-family",
+        "locate": "Claude 3 announcement — Ctrl-F 'sophisticated vision capabilities'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  }
+]

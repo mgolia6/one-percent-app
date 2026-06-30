@@ -1,0 +1,252 @@
+[
+  {
+    "edition_id": "VL.10",
+    "concept": "The Illusion of Explanatory Depth",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The draft calls the Fernbach 2013 political-moderation finding one that 'reliably reduced the extremity of their opinion,' but multiple preregistered replications (Crawford & Ruscio 2021; Walker 2024) failed to reproduce the moderation effect even though the drop in self-rated understanding did replicate, so 'reliably' overstates the most contested claim.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The Illusion of Explanatory Depth: people feel they understand the world (especially how things work) with far more detail, coherence, and depth than they actually do.",
+        "snippet": "Most people feel they understand the world with far greater detail, coherence, and depth than they really do.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3062901/",
+        "locate": "Abstract / opening lines — Ctrl-F 'far greater detail, coherence, and depth'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The effect was named and measured by Leonid Rozenblit and Frank Keil at Yale, published as 'The misunderstood limits of folk science: an illusion of explanatory depth,' Cognitive Science 26(5), 521-562, 2002.",
+        "snippet": "Cognitive Science 26 (2002) 521–562 The misunderstood limits of folk science: an illusion of explanatory depth",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog2605_1",
+        "locate": "Title/header line and journal citation — Ctrl-F 'misunderstood limits of folk science'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Participants rated how well they understood everyday devices (e.g., zippers, locks, flush toilets), then were asked to write a step-by-step explanation, and re-rated their understanding markedly lower afterward.",
+        "snippet": "they asked participants to rate how well they understood artifacts such as a sewing machine, crossbow, or cell phone... they asked participants to write a detailed explanation of how each artifact works, and afterwards asked them re-rate how well they understand each one.",
+        "url": "https://en.wikipedia.org/wiki/Illusion_of_explanatory_depth",
+        "locate": "Section on the original Rozenblit & Keil studies — Ctrl-F 'rate how well they understood artifacts'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "The illusion is specific: it is much stronger for explanatory, causal/mechanistic knowledge than for facts, procedures, or narratives.",
+        "snippet": "The illusion is far stronger for explanatory knowledge than for facts, procedures, or narratives, particularly where the environment supports real-time explanations with visible mechanisms.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3062901/",
+        "locate": "Abstract — Ctrl-F 'far stronger for explanatory knowledge'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Fernbach et al. (2013, Psychological Science) extended the illusion to politics: asking people to give a mechanistic explanation of a policy reduced both their self-rated understanding and the extremity of their position, whereas enumerating reasons did not.",
+        "snippet": "Asking people to explain policies in detail both undermined the illusion of explanatory depth and led to attitudes that were more moderate (Experiments 1 and 2). Although these effects occurred when people were asked to generate a mechanistic explanation, they did not occur when people were instead asked to enumerate reasons for their policy preferences (Experiment 2).",
+        "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797612464058",
+        "locate": "Abstract — Ctrl-F 'undermined the illusion of explanatory depth and led to attitudes that were more moderate'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "ADVERSARIAL / replication check on claim 4: the political-moderation effect failed to replicate in preregistered studies (Crawford & Ruscio 2021), though the reduction in perceived understanding did replicate.",
+        "snippet": "None of the key effects were statistically significant, and only one survived a small-telescopes analysis. Although participants reported less policy understanding after providing mechanistic policy explanations, policy-position extremity and in-group favoritism were unaffected.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33667138/",
+        "locate": "Abstract of Crawford & Ruscio (2021) 'Three Preregistered Failures to Closely Replicate' — Ctrl-F 'policy-position extremity and in-group favoritism were unaffected'",
+        "tier": 1,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "VL.11",
+    "concept": "Linguistic Relativity",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link: the morning claim that splitting blue/green makes color discrimination 'measurably slower' near the boundary slightly mischaracterizes Kay & Kempton 1984, whose actual finding was that English speakers EXAGGERATE perceived distance across the lexical boundary (a subjective-distortion / name-strategy effect), not slowed discrimination per se; reaction-time slowing belongs to the later category-perception literature.",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Linguistic relativity is the idea (associated with Sapir and Whorf) that the language you speak shapes how you think; the strong version (language DETERMINES thought) was rejected/discredited, while the weak version (language influences/nudges habitual attention and perception) survived empirical testing.",
+        "snippet": "While the strong version—that language determines thought—has been widely rejected, the weaker version—that language influences thought—has received substantial empirical support in psycholinguistics and cognitive science.",
+        "url": "https://en.wikipedia.org/wiki/Linguistic_relativity",
+        "locate": "Linguistic relativity (Wikipedia) — Ctrl-F 'the strong version—that language determines thought—has been widely rejected'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The Australian language Guugu Yimithirr (studied by Stephen Levinson) uses cardinal/absolute directions and lacks spatial 'left/right' terms, so speaking it requires constant orientation, and speakers show absolute-frame spatial cognition even when not speaking.",
+        "snippet": "Since Guugu Yimithirr does not employ terms for left and right in a spatial sense and does not directly encode notions of relative location such as English in front of, behind, and at the side of, it is essential to use these cardinal direction terms for almost every description of location on the horizontal.",
+        "url": "https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/jlin.1997.7.1.98",
+        "locate": "Levinson 1997, 'Language and Cognition: The Cognitive Consequences of Spatial Description in Guugu Yimithirr', J. Linguistic Anthropology — Ctrl-F 'does not employ terms for left and right'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Boroditsky & Gaby's Pormpuraaw / Kuuk Thaayorre card-arrangement experiment: because their language uses cardinal directions, speakers arrange temporal sequences from east to west regardless of facing direction, whereas English speakers arrange left-to-right and Hebrew speakers right-to-left.",
+        "snippet": "Regardless of which direction they were facing, all speakers arranged the cards in order from east to west—the same direction the sun's path takes through the sky as the day passes.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3428806/",
+        "locate": "Boroditsky & Gaby 2012, 'The Thaayorre think of Time Like They Talk of Space', Frontiers in Psychology (PMC3428806) — Ctrl-F 'arranged the cards in order from east to west'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "A language drawing a sharp blue/green lexical boundary produces a small, real perceptual effect at that boundary, while a language lacking the distinction (Tarahumara, term siyoname/'green-or-blue') does not — a measurable but modest 'weak version' Whorfian effect (Kay & Kempton 1984).",
+        "snippet": "The researchers devised a more sensitive test of the hypothesis and detected a clear Whorfian effect in the domain of color, proposed a specific mechanism to account for this effect, and performed a second experiment designed to block the hypothesized mechanism, with the effect disappearing as predicted.",
+        "url": "https://anthrosource.onlinelibrary.wiley.com/doi/abs/10.1525/aa.1984.86.1.02a00050",
+        "locate": "Kay & Kempton 1984, 'What Is the Sapir-Whorf Hypothesis?', American Anthropologist 86(1):65-79 — Ctrl-F 'detected a clear Whorfian effect in the domain of color'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Whorf's strong claim that Hopi lacked a concept of time was dismantled by Ekkehart Malotki's detailed documentation of Hopi tense and temporal reference (Hopi Time, 1983).",
+        "snippet": "In 1983, linguist Ekkehart Malotki published a 600-page study of the grammar of time in the Hopi language, concluding that he had finally refuted Whorf's claims about the language. Malotki's treatise gave hundreds of examples of Hopi words and grammatical forms referring to temporal relations.",
+        "url": "https://en.wikipedia.org/wiki/Hopi_time_controversy",
+        "locate": "Hopi time controversy (Wikipedia) — Ctrl-F 'Malotki published a 600-page study'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "The closing/midday quote 'We dissect nature along lines laid down by our native languages' is a genuine Whorf quotation (from 'Science and Linguistics', 1940, reprinted in Language, Thought, and Reality, 1956).",
+        "snippet": "We dissect nature along lines laid down by our native languages.",
+        "url": "https://plato.stanford.edu/entries/linguistics/whorfianism.html",
+        "locate": "SEP 'Whorfianism' — Ctrl-F 'We dissect nature along lines laid down by our native languages'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "VL.12",
+    "concept": "The Passive Voice as Evasion",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The draft casts Orwell as a fellow 'flagger' of agency-deletion, but Orwell's own essay issues the over-broad 'never use the passive' rule that Pullum later criticizes, so Orwell is partly the target of the nuance, not purely a source of it.",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The passive voice demotes the actor to a 'by' phrase or drops it entirely, making it the one ordinary construction that lets you describe an action while erasing who did it — the structural feature that enables evasion, while remaining a legitimate precision tool when the actor is genuinely irrelevant.",
+        "snippet": "Some [critics] seem to confuse the grammatical concept with a rhetorical one involving inadequate attribution of agency or responsibility.",
+        "url": "https://www.lel.ed.ac.uk/~gpullum/passive_loathing.pdf",
+        "locate": "Pullum, 'Fear and Loathing of the English Passive' — Ctrl-F 'confuse the grammatical concept'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Linguists/analysts call the 'mistakes were made' construction the 'past exonerative tense,' a term coined by William Schneider.",
+        "snippet": "The term \"past exonerative tense\" was first coined by political analyst William Schneider to describe a construction used by political leaders, which enabled them to acknowledge wrongdoing while absolving themselves of responsibility.",
+        "url": "https://politicaldictionary.com/words/mistakes-were-made/",
+        "locate": "Political Dictionary, 'Mistakes Were Made' — Ctrl-F 'past exonerative tense'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "'Mistakes were made' has been used as accountability-free contrition by U.S. administrations across decades, from Nixon-era officials to Reagan to Clinton; the canonical instance is Reagan's 1987 State of the Union on Iran-Contra.",
+        "snippet": "We did not achieve what we wished, and serious mistakes were made in trying to do so.",
+        "url": "https://www.reaganlibrary.gov/archives/speech/address-joint-session-congress-state-union-1987",
+        "locate": "Reagan 1987 SOTU (Jan 27, 1987) — Ctrl-F 'serious mistakes were made'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "George Orwell in 'Politics and the English Language' (1946) argued that political language is built to make 'lies sound truthful and murder respectable' — describing events as if they happened with no human hand on them.",
+        "snippet": "Political language -- and with variations this is true of all political parties, from Conservatives to Anarchists -- is designed to make lies sound truthful and murder respectable, and to give an appearance of solidity to pure wind.",
+        "url": "https://www.orwell.ru/library/essays/politics/english/e_polit",
+        "locate": "Orwell, 'Politics and the English Language' (closing paragraphs) — Ctrl-F 'make lies sound truthful'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Geoffrey Pullum and modern linguists are careful that the problem is concealment of relevant agency, not the passive as a category; style guides that tell you to 'avoid the passive' routinely misidentify what the passive even is.",
+        "snippet": "the educated public's understanding of the grammatical term 'passive' ... is astonishingly bad; the stylistic advice ... is utterly mistaken.",
+        "url": "https://www.lel.ed.ac.uk/~gpullum/passive_loathing.pdf",
+        "locate": "Pullum, 'Fear and Loathing of the English Passive' — abstract/intro",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "VL.13",
+    "concept": "False Precision",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Calling Huff's 'How to Lie with Statistics' the 'best-selling statistics book ever written' overstates the documented record, which supports only 'best-selling statistics book of the second half of the twentieth century.'",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "False precision is stating a quantity to a level of exactness the underlying evidence cannot justify; specificity and accuracy are independent, so a precise figure can be derived from poor data and still signal unwarranted certainty.",
+        "snippet": "In \"Proofiness,\" Charles Seife delves into the concept of \"Potemkin numbers,\" statistics that create the illusion of precision and accuracy but are deeply flawed at their core. The book explores various deceptive practices with numbers, including over-precision, such as a diagnosis probability of a disease given as 92.18% instead of acknowledging a realistic range of 85-95%.",
+        "url": "https://www.bookey.app/book/proofiness",
+        "locate": "Proofiness summary — Ctrl-F 'Potemkin numbers'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Aristotle, Nicomachean Ethics Book I, argued an educated mind expects only the precision the nature of the subject admits.",
+        "snippet": "For it is the mark of an educated mind to expect that amount of exactness in each kind which the nature of the particular subject admits.",
+        "url": "https://wist.info/aristotle/5079/",
+        "locate": "Nicomachean Ethics Book 1, ch. 3 (1094b.24) — Ctrl-F 'mark of an educated mind'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Darrell Huff's 'How to Lie with Statistics' (1954) is the best-selling statistics book ever written.",
+        "snippet": "best-selling statistics book of the second half of the twentieth century",
+        "url": "https://en.wikipedia.org/wiki/Darrell_Huff",
+        "locate": "Darrell Huff Wikipedia lead — Ctrl-F 'best-selling statistics book'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Charles Seife's 'Proofiness: The Dark Arts of Mathematical Deception' was published in 2010 by Viking and catalogs how exact-sounding numbers manufacture false authority.",
+        "snippet": "Charles Seife's \"Proofiness: The Dark Arts of Mathematical Deception\" was published in 2010.",
+        "url": "https://www.sciencenews.org/article/book-review-proofiness-dark-arts-mathematical-deception-charles-seife",
+        "locate": "Science News review — Ctrl-F 'Proofiness'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  }
+]

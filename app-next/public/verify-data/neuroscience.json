@@ -1,0 +1,242 @@
+[
+  {
+    "edition_id": "NC.9",
+    "concept": "Cognitive Load Theory",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The 'about four things' working-memory figure follows Cowan's contested four-chunk model rather than the older Miller 7±2, and is presented as settled fact when the number is genuinely disputed.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Cognitive Load Theory was developed by educational psychologist John Sweller, first formalized in Sweller, J. (1988), 'Cognitive load during problem solving: Effects on learning,' Cognitive Science, 12(2), 257-285.",
+        "snippet": "Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257–285",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1202_4",
+        "locate": "Wiley Online Library citation header / DOI 10.1207/s15516709cog1202_4; Ctrl-F 'Cognitive load during problem solving'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Working memory has a limited capacity while long-term memory is effectively unlimited and holds schemas; CLT distinguishes intrinsic, extraneous, and germane load (per Sweller, van Merrienboer & Paas, 1998).",
+        "snippet": "a limited capacity working memory with partially independent subcomponents for auditory/verbal and visual/spatial information, plus an effectively unlimited long-term memory holding schemas of varying degrees of automation",
+        "url": "https://link.springer.com/article/10.1023/A:1022193728205",
+        "locate": "Sweller, van Merrienboer & Paas (1998), Educational Psychology Review 10(3):251-296; abstract, Ctrl-F 'effectively unlimited long-term memory'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Working memory can hold about four things at once (closing/hook 'about four chairs').",
+        "snippet": "a single, central capacity limit averaging about four chunks is implicated along with other, noncapacity-limited sources",
+        "url": "https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/magical-number-4-in-shortterm-memory-a-reconsideration-of-mental-storage-capacity/44023F1147D4A1D44BDC0AD226838496",
+        "locate": "Cowan (2001), 'The magical number 4 in short-term memory', Behavioral and Brain Sciences 24(1):87-114; abstract, Ctrl-F 'averaging about four chunks'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Working memory holds information for about twenty seconds before it drops out (hook).",
+        "snippet": "The duration of short-term memory is between 15 and 30 seconds ... without rehearsal or maintenance, most items are lost within 15 to 30 seconds.",
+        "url": "https://www.simplypsychology.org/short-term-memory.html",
+        "locate": "SimplyPsychology 'Short-Term Memory' / Atkinson & Shiffrin (1971); Ctrl-F '15 and 30 seconds'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Central-claim quote: 'If nothing has changed in long-term memory, nothing has been learned.'",
+        "snippet": "The aim of all instruction is to alter long-term memory. If nothing has changed in long-term memory, nothing has been learned.",
+        "url": "https://www.tandfonline.com/doi/abs/10.1207/s15326985ep4102_1",
+        "locate": "Kirschner, Sweller & Clark (2006), Educational Psychologist 41(2):75-86, p.77; Ctrl-F 'nothing has been learned'",
+        "tier": 1,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "NC.10",
+    "concept": "The Peak-End Rule",
+    "verdict": "FLAG",
+    "fix": "The morning explanation (paragraph 2) and the midday In-the-Wild section attribute the EXPERIMENTAL manipulation (splitting patients into a standard group vs. a group with extra gentler minutes 'tacked on at the end') to the 1996 Redelmeier & Kahneman study. That randomized split is actually the 2003 study: Redelmeier, D. A., Katz, J. & Kahneman, D., 'Memories of colonoscopy: a randomized trial,' Pain 104(2):187-194, 2003. The 1996 Pain study was observational/correlational only (it recorded real-time pain and correlated remembered pain with peak and last-3-minutes; it did NOT add minutes to patients' procedures). The 1993 cold-water study (Kahneman et al.) is the experiment that added a better end. Fix: either cite the 2003 randomized trial for the 'added minutes at the end' colonoscopy manipulation, or reframe the morning narrative so the experimental split is attributed to the cold-water study and the 1996 study is described as the correlational colonoscopy/lithotripsy finding.",
+    "caveat": "The colonoscopy 'extra-minutes-added-at-the-end' randomized manipulation described in the entry belongs to the 2003 Redelmeier, Katz & Kahneman trial, not the cited 1996 (observational) study; the 1996 paper established the peak-end correlation but did not experimentally extend procedures.",
+    "weakest_claim_no": 1,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The Peak-End Rule, identified by Daniel Kahneman and colleagues, holds that we retrospectively judge an experience not by the sum or average of every moment but heavily by two snapshots: the most intense moment (the peak) and how it felt at the very end.",
+        "snippet": "the value of an episode is determined not by the duration of pleasurable and painful periods but by the peak intensity of the good or bad feeling and by the feeling experienced at the end of the episode",
+        "url": "https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule",
+        "locate": "Peak-end rule, definition section; Ctrl-F 'peak intensity of the good or bad feeling and by the feeling experienced at the end'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "In the 1996 Redelmeier & Kahneman colonoscopy study, patients were split into a standard group and a group that had a few extra, less-painful minutes tacked on at the end; the second group endured more total discomfort yet remembered the experience as less unpleasant (the 'added better end' colonoscopy manipulation).",
+        "snippet": "By random assignment, half the patients had a short interval added to the end of their procedure during which the tip of the colonoscope remained in the rectum.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/12855328/",
+        "locate": "PubMed 12855328 — Redelmeier, Katz & Kahneman, 'Memories of colonoscopy: a randomized trial,' Pain 2003; Ctrl-F 'short interval added to the end of their procedure'. The randomized 'added end' manipulation is the 2003 trial, NOT the 1996 study the draft cites.",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "In the 1996 Redelmeier & Kahneman study, remembered total pain from colonoscopy and lithotripsy correlated strongly with the peak intensity and the intensity of the last 3 minutes, not with total discomfort or duration (duration neglect).",
+        "snippet": "Patients' judgments of total pain were strongly correlated with the peak intensity of pain (P < 0.005) and with the intensity of pain recorded during the last 3 minutes of the procedure (P < 0.005) ... Duration Neglect: the duration of the episode has little direct effect on total remembered discomfort.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/8857625/",
+        "locate": "PubMed 8857625 — Redelmeier & Kahneman, 'Patients' memories of painful medical treatments,' Pain 66(1):3-8, 1996; Ctrl-F 'peak intensity of pain' and 'last 3 min'.",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "In the cold-water experiment (Kahneman, Fredrickson, Schreiber & Redelmeier, 1993), participants held a hand in 14C water for 60s, then in a separate trial for 60s plus 30 extra seconds as the water was warmed slightly to ~15C (still cold); most chose to repeat the longer trial despite it containing strictly more discomfort.",
+        "snippet": "in the short trial, they immersed one hand in water at 14 C for 60 s; in the long trial, they immersed the other hand at 14 C for 60 s, then kept the hand in the water 30 s longer as the temperature of the water was gradually raised to 15 C ... A significant majority chose to repeat the long trial, apparently preferring more pain over less.",
+        "url": "https://journals.sagepub.com/doi/10.1111/j.1467-9280.1993.tb00589.x",
+        "locate": "SAGE / Psychological Science 4(6):401-405, 1993, 'When More Pain Is Preferred to Less: Adding a Better End'; Ctrl-F 'immersed one hand in water at 14' and 'chose to repeat the long trial'. (~69% preferred the long trial per secondary summaries.)",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Kahneman distinguished the 'experiencing self' (lives through every moment) from the 'remembering self' (keeps the highlights and the ending) and argued the remembering self drives future choices: memory represents the past by its most intense moment and its end.",
+        "snippet": "We actually don't choose between experiences, we choose between memories of experiences ... the remembering self is the one that keeps score and maintains the story of our life, and it is the one that makes decisions.",
+        "url": "https://www.ted.com/talks/daniel_kahneman_the_riddle_of_experience_vs_memory",
+        "locate": "Kahneman TED talk 'The riddle of experience vs. memory'; Ctrl-F 'we choose between memories of experiences'. The draft's midday block quote is a paraphrase/composite of this framing, attributed topically ('on the experiencing self versus the remembering self') rather than as a verbatim sourced citation.",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "NC.11",
+    "concept": "The Retrieval Practice Effect",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link is the verbatim pull-quote: it is genuinely Roediger & Karpicke's wording and appears in the 2006 Psychological Science article, but the identical sentence is also the opening line of their 2006 Perspectives on Psychological Science review, so the precise paper of origin is slightly ambiguous (attribution to the 2006 PsychSci paper is still defensible and correct).",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Taking a memory test (retrieval practice) produces substantially greater long-term retention than spending equal time restudying/re-reading the material, even though re-reading feels and tests better immediately.",
+        "snippet": "When the final test was given after 5 min, repeated studying improved recall relative to repeated testing. However, on the delayed tests, prior testing produced substantially greater retention than studying.",
+        "url": "https://journals.sagepub.com/doi/10.1111/j.1467-9280.2006.01693.x",
+        "locate": "Abstract, Ctrl-F: 'When the final test was given after 5 min'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The effect was demonstrated by Henry L. Roediger III & Jeffrey D. Karpicke in 2006 in 'Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention,' Psychological Science, 17(3), 249-255.",
+        "snippet": "Roediger, H. L., & Karpicke, J. D. (2006). Test-Enhanced Learning Taking Memory Tests Improves Long-Term Retention. Psychological Science, 17, 249-255.",
+        "url": "https://journals.sagepub.com/doi/10.1111/j.1467-9280.2006.01693.x",
+        "locate": "Article header / citation, Ctrl-F: 'Test-Enhanced Learning'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Karpicke & Blunt (2011, Science) showed retrieval practice beats elaborative concept mapping, including on inference/comprehension questions of meaningful learning.",
+        "snippet": "The advantage of retrieval practice was observed with test questions that assessed comprehension and required students to make inferences. The advantage of retrieval practice occurred even when the criterial test involved creating concept maps.",
+        "url": "https://www.science.org/doi/10.1126/science.1199327",
+        "locate": "Abstract, Ctrl-F: 'required students to make inferences'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Draft pull-quote attributed to Roediger & Karpicke, Test-Enhanced Learning, Psychological Science, 2006: that taking a test can have a greater positive effect on future retention than equivalent restudy.",
+        "snippet": "Taking a test on material can have a greater positive effect on future retention of that material than spending an equivalent amount of time restudying the material, even when performance on the test is far from perfect and no feedback is given on missed information.",
+        "url": "https://gwern.net/doc/psychology/spaced-repetition/2006-roediger.pdf",
+        "locate": "Opening of article body, Ctrl-F: 'can have a greater positive effect on future retention'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Retrieval practice works because it is effortful (a 'desirable difficulty'); the difficulty/struggle is part of the mechanism, not a side effect.",
+        "snippet": "testing is sometimes regarded as a desirable difficulty—learning occasions that may hamper learning in the short run but enhance learning in the long run.",
+        "url": "https://www.sciencedirect.com/topics/psychology/testing-effect",
+        "locate": "Testing Effect overview, Ctrl-F: 'desirable difficulty'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "NC.12",
+    "concept": "Inattentional Blindness",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The '~half miss the gorilla' figure is sound but soft: in the 1999 data the gorilla specifically was noticed by ~44% (so ~56% missed it), and the clean 50% comes only from a subset of conditions, so 'roughly half' is the honest framing the draft already uses.",
+    "weakest_claim_no": 1,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Inattentional blindness: when attention is engaged on a demanding task, people fail to consciously perceive an obvious, salient, unexpected event in plain sight.",
+        "snippet": "individuals do have inattentional blindness for dynamic events, and they will often fail to notice a seemingly obvious, but unexpected event if they are engaged in another monitoring task",
+        "url": "https://journals.sagepub.com/doi/10.1068/p281059",
+        "locate": "Simons & Chabris (1999), Perception 28(9), 1059-1074 — abstract/conclusions; Ctrl-F 'fail to notice a seemingly obvious'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "In the invisible-gorilla study, roughly half of viewers counting basketball passes failed to notice a person in a gorilla suit who walked into the scene, faced the camera, and thumped their chest, on screen for about nine seconds.",
+        "snippet": "the 'gorilla' stopped in the middle of the action, turned to face the camera, thumped its chest, and exited after a total of 9 seconds on screen, and only 50% of observers noticed",
+        "url": "https://journals.sagepub.com/doi/10.1068/p281059",
+        "locate": "Simons & Chabris (1999) gorilla/opaque condition; Ctrl-F 'thumped its chest' / 'nine seconds'. Cross-check: overall 54% noticed vs 46% missed across all 192 participants; gorilla noticed ~44%.",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The harder the primary attention task, the more likely people are to miss the unexpected event.",
+        "snippet": "More participants noticed the unexpected event in the Easy (64%) than the Hard (45%) condition",
+        "url": "https://journals.sagepub.com/doi/10.1068/p281059",
+        "locate": "Simons & Chabris (1999) results, task-difficulty manipulation; Ctrl-F 'Easy' 'Hard' condition percentages",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "In Drew, Vo & Wolfe (2013), Psychological Science, 83% of expert radiologists missed a gorilla image inserted into a lung CT scan, even though eye-tracking showed most looked directly at it.",
+        "snippet": "The researchers asked 24 radiologists to perform a familiar lung-nodule detection task. A gorilla, 48 times the size of the average nodule, was inserted in the last case that was presented. Eighty-three percent of the radiologists did not see the gorilla. Eye tracking revealed that the majority of those who missed the gorilla looked directly at its location.",
+        "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797613479386",
+        "locate": "Drew, Vo & Wolfe (2013), Psychological Science 24(9), 1848-1853 — abstract; Ctrl-F 'Eighty-three percent of the radiologists did not see the gorilla'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Simons and Chabris coined the 'illusion of attention' — people systematically overestimate how much of their surroundings they actually perceive.",
+        "snippet": "Chabris and Simons designed the Invisible Gorilla Experiment to investigate the phenomenon known as 'inattentional blindness,' where individuals fail to notice unexpected stimuli when their attention is directed elsewhere",
+        "url": "https://www.theinvisiblegorilla.com/",
+        "locate": "'Illusion of attention' is the authors' own term from their 2010 book The Invisible Gorilla, not the 1999 paper; draft attributes it to 'Simons and Chabris' generally, which is correct. Ctrl-F 'illusion of attention'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  }
+]

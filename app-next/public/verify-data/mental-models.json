@@ -1,0 +1,292 @@
+[
+  {
+    "edition_id": "MM.6",
+    "concept": "The Map Is Not the Territory",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The 'why_today' says Korzybski 'introduced' the phrase in Science and Sanity (1933), but it first appeared in his 1931 AAAS paper later reprinted in the 1933 book; accurate but slightly imprecise on the first-introduction year.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The central principle is that a representation of something (a map, model, forecast) is not the thing itself and can never fully capture it.",
+        "snippet": "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness.",
+        "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+        "locate": "Map–territory relation, opening section / 'Maps and Territory' — Ctrl-F: 'A map is not the territory it represents'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The phrase 'the map is not the territory' was coined by Alfred Korzybski, founder of general semantics.",
+        "snippet": "Korzybski remarked that \"the map is not the territory\" and that \"the word is not the thing,\" encapsulating his view that an abstraction derived from something is not the thing itself.",
+        "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+        "locate": "Map–territory relation — Ctrl-F: 'the map is not the territory'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Korzybski introduced the principle in Science and Sanity (1933), the founding text of general semantics.",
+        "snippet": "The phrase was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and Sanity (1933).",
+        "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+        "locate": "Map–territory relation, history of the phrase — Ctrl-F: 'A Non-Aristotelian System and Its Necessity for Rigour'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "George Box wrote 'all models are wrong, but some are useful' in his 1979 paper 'Robustness in the Strategy of Scientific Model Building' in Robustness in Statistics (Academic Press).",
+        "snippet": "ALL MODELS ARE WRONG BUT SOME ARE USEFUL ... Now it would be very remarkable if any system existing in the real world could be exactly represented by any simple model. However, cunningly chosen parsimonious models often do provide remarkably useful approximations.",
+        "url": "https://en.wikipedia.org/wiki/All_models_are_wrong",
+        "locate": "All models are wrong, Origin section — Ctrl-F: 'Robustness in the Strategy of Scientific Model Building' (section heading on p. 202, vol. pp. 201–236)",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Harry Beck redrew the London Underground map in 1931 as a diagrammatic design using horizontal, vertical, and 45-degree lines, discarding geographic accuracy.",
+        "snippet": "Henry Charles Beck ... was an English technical draughtsman who created the first diagrammatic Tube map for the London Underground in 1931 ... He limited his design to horizontal, vertical and 45-degree lines, magnifying the central area and compressing the outer reaches.",
+        "url": "https://en.wikipedia.org/wiki/Harry_Beck",
+        "locate": "Harry Beck, lead/Career — Ctrl-F: 'first diagrammatic Tube map'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "MM.7",
+    "concept": "Hanlon's Razor",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The attribution to Robert J. Hanlon rests on a single primary publication (Bloch, 1980) and is genuinely contested (plausible phonetic corruption of 'Heinlein's Razor' per the 1996 Jargon File); the draft hedges this correctly with 'credited to' and 'echoes a much older observation.'",
+    "weakest_claim_no": 1,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Hanlon's Razor states: never attribute to malice that which is adequately explained by stupidity.",
+        "snippet": "HANLON'S RAZOR: Never attribute to malice that which is adequately explained by stupidity.",
+        "url": "https://quoteinvestigator.com/2016/12/30/not-malice/",
+        "locate": "Quote Investigator, 'Never Attribute to Malice...' — Ctrl-F 'Never attribute to malice that which is adequately explained by stupidity'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The maxim was named/published in the 1980 compilation 'Murphy's Law Book Two: More Reasons Why Things Go Wrong' edited by Arthur Bloch, credited to a contributor named Robert J. Hanlon (a programmer at Tobyhanna Army Depot, Scranton PA, who submitted it for a sequel contest).",
+        "snippet": "The earliest close match for the quote appeared in the 1980 compilation 'Murphy's Law Book Two: More Reasons Why Things Go Wrong' edited by Arthur Bloch, where it was presented as 'HANLON'S RAZOR: Never attribute to malice that which is adequately explained by stupidity.' Robert J. Hanlon was a computer programmer at the Tobyhanna Army Depot in Scranton, Pennsylvania.",
+        "url": "https://quoteinvestigator.com/2016/12/30/not-malice/",
+        "locate": "Quote Investigator — Ctrl-F 'Tobyhanna Army Depot' and 'Murphy's Law Book Two'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The attribution to Hanlon is disputed/uncertain: the 1996 Jargon File speculated 'Hanlon's razor' may be a phonetic corruption of 'Heinlein's Razor,' citing Heinlein's 1941 novella 'Logic of Empire' ('You have attributed conditions to villainy that simply result from stupidity'); the idea also echoes Goethe's 1774 'The Sorrows of Young Werther.'",
+        "snippet": "In 1996, the Jargon File entry on Hanlon's Razor noted the existence of a similar statement in Heinlein's novella, with speculation that 'Hanlon's razor' might be a corruption of 'Heinlein's Razor'. In the novella Logic of Empire (1941), Robert A. Heinlein wrote, 'You have attributed conditions to villainy that simply result from stupidity.'",
+        "url": "https://en.wikipedia.org/wiki/Hanlon's_razor",
+        "locate": "Wikipedia 'Hanlon's razor', History section — Ctrl-F 'corruption of' and 'attributed conditions to villainy'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "The cognitive bias Hanlon's Razor corrects is the fundamental attribution error, the term coined by psychologist Lee Ross in his 1977 paper 'The Intuitive Psychologist and His Shortcomings' in Advances in Experimental Social Psychology.",
+        "snippet": "Lee Ross's paper 'The intuitive psychologist and his shortcomings: Distortions in the attribution process' was published in Advances in Experimental Social Psychology... in 1977. The Fundamental Attribution Error was coined by Lee Ross in 1977.",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0065260108603577",
+        "locate": "ScienceDirect, Ross (1977) 'The Intuitive Psychologist and His Shortcomings' — Ctrl-F 'fundamental attribution error'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "MM.8",
+    "concept": "Chesterton's Fence",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link: the midday quote is a modern paraphrase, not Chesterton's actual words (the draft correctly labels it 'Paraphrase of G.K. Chesterton'); his real phrasing is the two-reformers dialogue, so the verbatim attribution stays clean only because the draft does not claim the paraphrase is a direct quotation.",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Chesterton's central principle: before removing a fence/rule you must first understand why it was put there; the reformer who says 'I don't see the use of this' has not earned the right to clear it away.",
+        "snippet": "The more modern type of reformer goes gaily up to it and says, 'I don't see the use of this; let us clear it away.' To which the more intelligent type of reformer will do well to answer: 'If you don't see the use of it, I certainly won't let you clear it away.'",
+        "url": "https://www.gutenberg.org/ebooks/65688",
+        "locate": "Chapter 'The Drift from Domesticity' — Ctrl-F 'I don't see the use of this; let us clear it away'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Chesterton frames the institution being removed as a fence or gate across a road.",
+        "snippet": "There exists in such a case a certain institution or law; let us say, for the sake of simplicity, a fence or gate erected across a road.",
+        "url": "https://www.gutenberg.org/ebooks/65688",
+        "locate": "Chapter 'The Drift from Domesticity' — Ctrl-F 'a fence or gate erected across a road'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The parable appears in Chesterton's 1929 book The Thing (later subtitled Why I Am a Catholic), in the chapter 'The Drift from Domesticity'.",
+        "snippet": "The Thing was published in 1929 ... It was published by Sheed & Ward in New York in 1929 ... includes the essay 'The Drift from Domesticity.'",
+        "url": "https://catholiclibrary.org/library/view?docId=/Contemporary-EN/XCT.165.html&chunk.id=00000011",
+        "locate": "Catholic Library facsimile of 'The Drift from Domesticity'; corroborated by Internet Archive copy archive.org/details/thingwhyiamcatho0000gkch",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Midday quote 'Do not remove a fence until you know why it was put up in the first place' — draft attributes it as a PARAPHRASE of Chesterton, The Thing, 1929 (not a verbatim quotation).",
+        "snippet": "The more modern type of reformer goes gaily up to it and says, 'I don't see the use of this; let us clear it away.' To which the more intelligent type of reformer will do well to answer: 'If you don't see the use of it, I certainly won't let you clear it away.'",
+        "url": "https://www.gutenberg.org/ebooks/65688",
+        "locate": "Chapter 'The Drift from Domesticity' — the original is the two-reformers dialogue; the draft's one-line version is a paraphrase, which the draft labels correctly",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Fred Brooks introduced the 'second-system effect' in The Mythical Man-Month (1975): the tendency to over-engineer the second system by re-adding features/constraints withheld from the lean first one.",
+        "snippet": "When one is designing the second system one should be aware that they are susceptible to over-engineering it ... the second system is the most dangerous system a man ever designs.",
+        "url": "https://en.wikipedia.org/wiki/Second-system_effect",
+        "locate": "Wikipedia 'Second-system effect' — Ctrl-F 'most dangerous system'; book is Brooks, The Mythical Man-Month, 1975",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "MM.9",
+    "concept": "The Planning Fallacy",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link is verbatim sourcing: WebFetch was blocked (gateway 403 on Wikipedia, arXiv, PMI, and all hosts), so several snippets are paraphrased from WebSearch result summaries rather than confirmed word-for-word against the primary PDFs.",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The planning fallacy, named by Daniel Kahneman and Amos Tversky in 1979, is the systematic tendency to underestimate the time, cost, and risk of future actions while overestimating their benefits; the mechanism is the 'inside view.'",
+        "snippet": "The planning fallacy was first formally described by Daniel Kahneman and Amos Tversky in a 1979 paper titled \"Intuitive Prediction: Biases and Corrective Procedures\" ... the term was introduced to describe people's tendency \"to underestimate the time required to complete a project\" ... \"the constituents of the specific problem rather than on the distribution of outcomes in similar cases\" (the inside view).",
+        "url": "https://en.wikipedia.org/wiki/Planning_fallacy",
+        "locate": "Lead / 'Original definition' section — Ctrl-F 'Intuitive Prediction: Biases and Corrective Procedures'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Kahneman quote: people fall victim to the planning fallacy and make decisions based on delusional optimism rather than a rational weighting of gains, losses, and probabilities.",
+        "snippet": "they make decisions based on delusional optimism rather than on a rational weighting of gains, losses, and probabilities.",
+        "url": "https://hbr.org/2003/07/delusions-of-success-how-optimism-undermines-executives-decisions",
+        "locate": "Lovallo & Kahneman, 'Delusions of Success' (HBR 2003); same wording reused in Thinking, Fast and Slow (2011) ch. 22-23 — Ctrl-F 'delusional optimism'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The Scottish Parliament (Holyrood) building was approved with an initial estimate around £40 million, opened in 2004 years late, at a final cost of roughly £414 million — more than ten times the original figure.",
+        "snippet": "scheduled to open in 2001, but opened in 2004, more than three years late with an estimated final cost of £414 million, many times higher than initial estimates of between £10m and £40m.",
+        "url": "https://en.wikipedia.org/wiki/Scottish_Parliament_Building",
+        "locate": "Lead / 'Cost' section — Ctrl-F '£414 million'; Fraser Inquiry called the £40m figure 'never realistic'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Kahneman's own curriculum-textbook team made an inside-view estimate of about two years; an expert who knew the base rate said comparable teams took seven to ten years and a sizable fraction never finished; the team proceeded anyway and the book took roughly eight years.",
+        "snippet": "Kahneman asked Seymour Fox ... whether he could think of teams similar to theirs ... Fox realized that many teams did not finish the project, and those who did took around seven to ten years ... Kahneman's team ended up taking eight years.",
+        "url": "https://corporate.jasoncollins.blog/outside-view",
+        "locate": "Thinking, Fast and Slow, ch. 23 'The Outside View' — Ctrl-F 'seven to ten years' / 'Seymour'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Bent Flyvbjerg's study of hundreds of large infrastructure projects found cost overruns were the rule not the exception and had not improved over decades; his 'reference class forecasting' fix bases estimates on the distribution of outcomes for similar projects and is recommended for UK public projects.",
+        "snippet": "substantial cost escalation is the rule rather than the exception ... cost estimates have not improved and cost escalation not decreased over the past 70 years ... reference class forecasting ... bases forecasts on actual performance in a reference class of comparable projects ... an outside view—as opposed to the traditional inside view.",
+        "url": "https://journals.sagepub.com/doi/10.1177/875697280603700302",
+        "locate": "Flyvbjerg, 'From Nobel Prize to Project Management: Getting Risks Right,' Project Management Journal 37(3), 2006, pp. 5-15 — Ctrl-F 'reference class forecasting'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "MM.10",
+    "concept": "Margin of Safety",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link is the ITW Buffett bridge metaphor: the draft says 'build it to hold 50,000' for '30,000-pound trucks,' whereas Buffett's actual framing is a bridge built for 30,000 lbs crossed only by 10,000-lb trucks; it is presented as paraphrase (not a quote) so it is defensible but the numbers don't match his stated version.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Benjamin Graham called margin of safety the central concept of investment and devoted the final chapter (Ch. 20) of The Intelligent Investor to it.",
+        "snippet": "Chapter 20 of The Intelligent Investor covers the \"'Margin of Safety' as the Central Concept of Investment,\" which Graham describes as the \"secret of sound investment\" distilled into three words.",
+        "url": "https://medium.com/the-intelligent-investor-series/chapter-20-the-margin-of-safety-as-a-central-concept-of-investment-2f617ed997d6",
+        "locate": "The Intelligent Investor, Chapter 20 title — Ctrl-F 'Margin of Safety as the Central Concept of Investment'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Graham's quote: 'The function of the margin of safety is, in essence, that of rendering unnecessary an accurate estimate of the future.' (used as the midday quote)",
+        "snippet": "The function of the margin of safety is, in essence, that of rendering unnecessary an accurate estimate of the future.",
+        "url": "https://libquotes.com/benjamin-graham/quote/lbt1h3b",
+        "locate": "The Intelligent Investor, Ch. 20 — Ctrl-F 'rendering unnecessary an accurate estimate of the future'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Warren Buffett named the margin of safety, as identified by Ben Graham, the cornerstone of investment success.",
+        "snippet": "We believe this margin of safety principle, emphasised by Ben Graham, to be the cornerstone of investment success.",
+        "url": "https://www.cnbc.com/2024/03/10/heres-what-warren-buffett-means-by-investing-with-a-margin-of-safety.html",
+        "locate": "Buffett 1997 Berkshire Hathaway Chairman's Letter, quoted in CNBC — Ctrl-F 'cornerstone of investment success'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Margin of safety originated in engineering, where it is a formal ratio of a structure's actual capacity to the load it is expected to bear.",
+        "snippet": "The Factor of Safety (FoS) is the ratio of the actual strength of a structure/material (ultimate stress) to the maximum stress it should sustain in service (allowable stress)... it is the ratio between the maximum load a material or structure can handle and the actual load it experiences during use.",
+        "url": "https://en.wikipedia.org/wiki/Factor_of_safety",
+        "locate": "Engineering 'Factor of safety' definition — Ctrl-F 'ratio of the actual strength' / 'maximum load a material or structure can handle'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Buffett's bridge analogy for margin of safety (ITW: build a bridge for 30,000-pound trucks to hold 50,000 pounds).",
+        "snippet": "When you build a bridge, you insist it can carry 30,000 pounds, but you only drive 10,000 pound trucks across it. And that same principle works in investing.",
+        "url": "https://www.cnbc.com/2024/03/10/heres-what-warren-buffett-means-by-investing-with-a-margin-of-safety.html",
+        "locate": "CNBC Buffett margin-of-safety explainer — Ctrl-F 'build a bridge' / '30,000 pounds'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  }
+]

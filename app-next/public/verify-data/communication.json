@@ -1,0 +1,252 @@
+[
+  {
+    "edition_id": "CM.9",
+    "concept": "Nonviolent Communication (NVC)",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The exact verbatim wording of the four-component definitions and the request/demand passage was confirmed only via search-engine summaries and encyclopedic/secondary pages because CNVC.org, PuddleDancer, and Wikipedia all returned HTTP 403 to direct fetches; the underlying claims are well-corroborated but a couple of snippets are paraphrased rather than primary-source verbatim.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Nonviolent Communication is a method that breaks a difficult message into four separate parts and works by separating concrete observation from evaluation/judgment, so the listener stops defending and the real problem becomes addressable.",
+        "snippet": "NVC has four components - observations, feelings, needs, and requests... Observations: These are facts (what we are seeing, hearing, or touching) as distinct from our evaluation of meaning and significance. The framework encourages expressing observations and needs without judgment in order to foster voluntary cooperation. It aims to increase empathic understanding and reduce conflict.",
+        "url": "https://en.wikipedia.org/wiki/Nonviolent_Communication",
+        "locate": "Nature of NVC / four components — Ctrl-F 'observations, feelings, needs'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "NVC was developed by clinical psychologist Marshall Rosenberg in the 1960s and 1970s.",
+        "snippet": "Nonviolent Communication (NVC) is a communication process developed by clinical psychologist Marshall Rosenberg in the 1960s and 1970s based on the principles of nonviolence and humanistic psychology.",
+        "url": "https://en.wikipedia.org/wiki/Nonviolent_Communication",
+        "locate": "Lead section — Ctrl-F 'developed by clinical psychologist Marshall Rosenberg'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The four components are observations, feelings, needs, and requests, defined as: observations (facts as distinct from evaluation), feelings (how we feel in relation to what we observe), needs (the needs/values/desires that create our feelings), and requests (concrete actions we ask for).",
+        "snippet": "1. Observations: These are facts (what we are seeing, hearing, or touching) as distinct from our evaluation of meaning and significance. 2. Feelings: How we feel in relation to what we observe. 3. Needs: The needs, values, desires, etc. that create our feelings. 4. Requests: The concrete actions we request in order to enrich our lives.",
+        "url": "https://en.wikipedia.org/wiki/Nonviolent_Communication",
+        "locate": "Four components section — Ctrl-F 'Observations: These are facts'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Rosenberg founded the Center for Nonviolent Communication in 1984 and ran NVC in war-torn areas including Rwanda and the Middle East.",
+        "snippet": "Marshall B. Rosenberg, Ph.D. (1934-2015) founded the Center for Nonviolent Communication in 1984... Dr. Rosenberg provided training and initiated peace programs in a number of war-torn areas including Rwanda, Burundi, Nigeria, Malaysia, Indonesia, Sri Lanka, Sierra Leone, the Middle East, Colombia, Serbia, Croatia, and Northern Ireland.",
+        "url": "https://www.cnvc.org/about/marshall",
+        "locate": "Founder bio — Ctrl-F 'war-torn areas including Rwanda'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "NVC distinguishes a request from a demand: a request leaves the other person free to say no, and you can tell which it was by how you react to a 'no' (punitive consequences = demand).",
+        "snippet": "Requests are distinguished from demands in that one is open to hearing a response of \"no\" without this triggering an attempt to force the matter. Whether we are making a request or a demand is often evident by our response when our request is denied. A denied demand will lead to punitive consequences; a denied request most often will lead to further dialogue.",
+        "url": "https://en.wikipedia.org/wiki/Nonviolent_Communication",
+        "locate": "Requests vs demands — Ctrl-F 'Requests are distinguished from demands'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "Attributed quote: 'When we focus on clarifying what is being observed, felt, and needed rather than on diagnosing and judging, we discover the depth of our own compassion.' — Marshall B. Rosenberg, Nonviolent Communication: A Language of Life.",
+        "snippet": "When we focus on clarifying what is being observed, felt, and needed rather than on diagnosing and judging, we discover the depth of our own compassion.",
+        "url": "https://quotefancy.com/marshall-b-rosenberg-quotes",
+        "locate": "Rosenberg quotes — Ctrl-F 'clarifying what is being observed, felt, and needed'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "CM.10",
+    "concept": "Strategic Ambiguity",
+    "verdict": "FLAG",
+    "fix": "The midday 'quote' is presented in quotation marks as verbatim Eisenberg but could not be confirmed word-for-word against any primary-source view of the 1984 paper; sources render the clarity idea as 'Clarity is not an attribute of messages; it is a relational variable.' Either reword the displayed quote to that verifiable phrasing (with page-checked text) or mark it as a paraphrase/summary rather than a direct quotation. Also correct the Scott & Lyman citation: 'Accounts' is ASR vol 33, pp. 46-62 (DOI 10.2307/2092239), not 33(1) pp. unspecified — confirm the issue/page detail.",
+    "caveat": "The midday quote is shown as a verbatim Eisenberg quotation but its exact wording is unconfirmed against the primary source; the underlying idea (clarity is relational, not a message attribute) is correct, but the displayed sentence may be a reconstruction.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Eisenberg's 1984 paper 'Ambiguity as Strategy in Organizational Communication' coined the concept of strategic ambiguity and argued that clarity is not always the goal of organizational communication.",
+        "snippet": "clarity is both non-normative and not a sensible standard against which to gauge individual or organizational effectiveness... people in organizations confront multiple situational requirements, develop multiple and often conflicting goals, and respond with communicative strategies which do not always minimize ambiguity, but are nonetheless effective",
+        "url": "https://eric.ed.gov/?id=EJ308143",
+        "locate": "ERIC record EJ308143 abstract; Ctrl-F 'clarity is both non-normative'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Eisenberg argued strategic ambiguity enables 'unified diversity' — letting different groups read a shared mission/goal in their own terms so they cooperate without resolving every disagreement.",
+        "snippet": "Strategic ambiguity is essential to organizing in that it: (1) promotes unified diversity, (2) facilitates organizational change, and (3) amplifies existing source attributions and preserves privileged positions.",
+        "url": "https://www.sciencedirect.com/org/science/article/pii/S0025174725000175",
+        "locate": "Eisenberg functions of strategic ambiguity; Ctrl-F 'promotes unified diversity'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Eisenberg quote: 'Clarity is a quality of the relationship between people and not an attribute of messages... communicators are most effective when they choose strategically to be ambiguous.'",
+        "snippet": "Clarity is not an attribute of messages; it is a relational variable which arises through a combination of source, message, and receiver factors.",
+        "url": "https://us2.sagepub.com/sites/default/files/upm-assets/13165_book_item_13165.pdf",
+        "locate": "Eisenberg, 'Clarity Reconsidered' section; Ctrl-F 'Clarity is not an attribute of messages'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "'Constructive ambiguity' is a phrase associated with Henry Kissinger; the 1972 Shanghai Communiqué used deliberately imprecise language on Taiwan's status so both sides could claim consistency with their positions.",
+        "snippet": "The 1972 Shanghai Joint Communique included an ambiguous United States 'acknowledgement,' but not 'endorsement,' of the 'One China' concept... 'The United States acknowledges that all Chinese on either side of the Taiwan Strait maintain there is but one China and that Taiwan is a province of China.'",
+        "url": "https://en.wikipedia.org/wiki/Constructive_ambiguity",
+        "locate": "Constructive ambiguity, Kissinger/Shanghai Communiqué; Ctrl-F 'acknowledges that all Chinese on either side'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Scott and Lyman's 1968 'Accounts' (American Sociological Review) analyzes how people use language (excuses and justifications) to explain or evade responsibility for untoward behavior after the fact.",
+        "snippet": "An account is a linguistic device employed whenever an action is subjected to valuative inquiry... accounts may be classified as excuses and justifications, which are socially approved vocabularies that neutralize an act or its consequences.",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118517390.wbetc179",
+        "locate": "Accounts Theory (Copes) summarizing Scott & Lyman 1968; Ctrl-F 'excuses and justifications'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "CM.11",
+    "concept": "High-Context vs. Low-Context Communication",
+    "verdict": "PASS",
+    "caveat": "The country placements (Germany/Switzerland/US as low-context, Japan/China/Arab as high-context) are Hall's own broad national generalizations and are widely critiqued as overgeneralized, but the draft already hedges them as illustrative rather than absolute.",
+    "fix": "",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Edward T. Hall introduced the high-context / low-context distinction in his 1976 book Beyond Culture, framing how cultures distribute meaning between explicit words and surrounding context.",
+        "snippet": "In 1976, Hall published the book Beyond Culture, in which he introduced the concepts of high-context and low-context cultures.",
+        "url": "https://www.ebsco.com/research-starters/communication-and-mass-media/high-context-and-low-context-cultures",
+        "locate": "Origins / Hall's framework section — Ctrl-F: \"In 1976, Hall published the book Beyond Culture\"",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Hall's definition of a high-context message: most of the information is in the physical context or internalized in the person, with very little in the explicit transmitted message.",
+        "snippet": "A high-context (HC) communication or message is one in which most of the information is either in the physical context or internalized in the person, while very little is in the coded, explicit, transmitted part of the message.",
+        "url": "https://en.wikipedia.org/wiki/High-_and_low-context_cultures",
+        "locate": "Definition section quoting Hall (Beyond Culture, 1976, p. 91) — Ctrl-F: \"either in the physical context or internalized in the person\"",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Erin Meyer's The Culture Map (2014) carries Hall's framework into global business, using 'Communicating' (low-context vs. high-context) as the first of eight scales.",
+        "snippet": "Communicating: Low-Context vs. High-Context",
+        "url": "https://www.deployyourself.com/book-review/the-culture-map-erin-meyer-eight-scales/",
+        "locate": "List of the eight scales — Ctrl-F: \"Communicating: Low-Context vs. High-Context\" (listed first)",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Hall placed Germany, Switzerland, and the U.S. toward the low-context end and Japan, China, and many Arab cultures toward the high-context end of his scale.",
+        "snippet": "Hall's context scale shows Japanese on the high-context end ... progressing through Arabs, Latin-Americans, Italians, English, French, Northern Americans, and Scandinavians, with Germans and Swiss-Germans at the low-context end.",
+        "url": "https://www.ebsco.com/research-starters/communication-and-mass-media/high-context-and-low-context-cultures",
+        "locate": "Country examples / context scale discussion — Ctrl-F: \"Germans and Swiss-Germans at the low-context end\"",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Hall was an anthropologist who worked at the U.S. State Department's Foreign Service Institute, where he helped train diplomats and founded the field of intercultural communication.",
+        "snippet": "Hall served at the Foreign Service Institute of the U.S. Department of State during the 1951-1955 period, where he played a role in founding the scholarly field of intercultural communication.",
+        "url": "https://en.wikipedia.org/wiki/Edward_T._Hall",
+        "locate": "Career / Foreign Service Institute section — Ctrl-F: \"Foreign Service Institute of the U.S. Department of State\"",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "CM.12",
+    "concept": "The Summary Close",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The central thesis (restating decisions/owners/dates surfaces hidden disagreement) is craft/facilitation wisdom, not an empirically tested effect — it is sourced to a 1976 practitioner book, not controlled research.",
+    "weakest_claim_no": 0,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The summary close — ending a meeting by restating what was decided, who owns each action and by when, then inviting correction — forces latent disagreement to surface while it is still cheap to fix.",
+        "snippet": "The summary close is the deliberate act of ending a meeting or conversation by restating, in plain words, what was decided, who owns each action, and by when — and then explicitly inviting correction.",
+        "url": "https://www.penguinrandomhouse.com/books/322755/how-to-make-meetings-work-by-michael-doyle-and-david-straus/",
+        "locate": "morning.explanation_paragraphs[1], Ctrl-F: 'The summary close is the deliberate act'",
+        "tier": 3,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Michael Doyle and David Straus's How to Make Meetings Work (1976) introduced the 'Interaction Method' of facilitation, emphasizing a visible shared record of decisions and capturing who agreed to do what before a group disperses (published by Jove/Berkley).",
+        "snippet": "How to Make Meetings Work: The New Interaction Method - Michael Doyle, David Straus",
+        "url": "https://books.google.com/books/about/How_to_Make_Meetings_Work.html?id=kYAV9yKLucUC",
+        "locate": "why_today / midday.itw_paragraphs[0], Ctrl-F: 'introduced the 'Interaction Method''",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Diffusion of responsibility was documented by John Darley and Bibb Latané in their 1968 bystander study in the Journal of Personality and Social Psychology (vol. 8, no. 4, pp. 377-383, doi:10.1037/h0025589).",
+        "snippet": "Darley, JM & Latane, B 1968, 'Bystander intervention in emergencies: Diffusion of responsibility', Journal of Personality and Social Psychology, vol. 8, no. 4, pp. 377–383, doi:10.1037/h0025589",
+        "url": "https://doi.org/10.1037/h0025589",
+        "locate": "midday.itw_paragraphs[1] / sources[1], Ctrl-F: 'diffusion of responsibility, documented by John Darley and Bibb Latané'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Darley & Latané found that the more people present when help is needed, the less likely any single person is to act, because responsibility is split across the group until no one feels it.",
+        "snippet": "the more people present when help is needed, the less likely any single person is to act, because responsibility is split across the group until no one feels it",
+        "url": "https://en.wikipedia.org/wiki/Bystander_effect",
+        "locate": "midday.itw_paragraphs[1], Ctrl-F: 'the more people present when help is needed'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "The Doyle & Straus quote on people leaving meetings with different ideas about what was decided is presented as a paraphrase, not a verbatim quotation.",
+        "snippet": "It is amazing how often people will leave a meeting with completely different ideas about what was decided... A good summary at the end forces these differences into the open while they can still be resolved.",
+        "url": "https://www.amazon.com/Make-Meetings-Work-Michael-Doyle/dp/0425138704",
+        "locate": "midday.quote + attribution, Ctrl-F: 'Paraphrase of Michael Doyle & David Straus'",
+        "tier": 3,
+        "paraphrase": true
+      }
+    ]
+  }
+]

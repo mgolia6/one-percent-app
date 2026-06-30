@@ -1,0 +1,242 @@
+[
+  {
+    "edition_id": "SC.14",
+    "concept": "The Black Swan Concept",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The midday card's quote is presented as a verbatim Voss quotation but is a reordered/merged reconstruction of the book's actual two-sentence passage, and the entry's core thesis (irrational behavior = hidden constraint) is negotiation craft advice, not an empirically verified fact.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Chris Voss, a former FBI lead hostage/kidnapping negotiator, coined 'Black Swans' for unknown-unknown pieces of information that reshape a negotiation once revealed, in Never Split the Difference (HarperBusiness, 2016).",
+        "snippet": "He spent 24 years working in the FBI Crisis Negotiation Unit and was the FBI's chief international hostage and kidnapping negotiator from 2003 to 2007.",
+        "url": "https://www.blackswanltd.com/chris-voss",
+        "locate": "Bio section; Ctrl-F 'chief international hostage and kidnapping negotiator'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The 'black swan' term originates from Nassim Nicholas Taleb's 2007 book and refers to unknown unknowns / high-impact, unpredictable events; Voss adapts it to negotiation.",
+        "snippet": "Nicolas Nassim Taleb wrote a book in 2007 called The Black Swan: The Impact of the Highly Improbable. At the same time, Voss was coming out of the FBI. He stumbled across the book and took a deeper dive into it.",
+        "url": "https://crisp.co/podcast/episode-5-chris-voss/",
+        "locate": "Search result snippet; Ctrl-F 'Nicolas Nassim Taleb wrote a book in 2007'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The Black Swan concept is the subject of the final chapter, Chapter 10 'Find the Black Swan,' of Never Split the Difference.",
+        "snippet": "The tenth and last chapter of Never Split the Difference by Chris Voss is called \"Find the Black Swan.\" This chapter is about finding black swans, which is the most important part of Never Split the Difference and the name of Chris Voss's personal company.",
+        "url": "https://www.thesummarist.net/summary/never-split-the-difference/find-the-black-swan/",
+        "locate": "Chapter 10 summary; Ctrl-F 'tenth and last chapter'",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Voss advises bracing for at least three Black Swans in a negotiation — pieces of information that flip the negotiation once known.",
+        "snippet": "Chris goes so far as to brace himself to have at least three Black Swans to uncover in a negotiation, that is, at least three pieces of information that flip the negotiation on its head once known.",
+        "url": "https://www.thesummarist.net/summary/never-split-the-difference/find-the-black-swan/",
+        "locate": "Chapter 10 summary; Ctrl-F 'at least three Black Swans'",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Midday quote attributed verbatim to Voss: 'Every case is new. We must let what we know — our known knowns — guide us but not blind us to what we do not know.' The book's actual passage reads as two sentences in a different order and is not rendered this way.",
+        "snippet": "Let what you know—your known knowns—guide you but not blind you. Every case is new, so remain flexible and adaptable.",
+        "url": "https://www.goodreads.com/author/quotes/5525291.Chris_Voss",
+        "locate": "Goodreads Voss quotes; Ctrl-F 'known knowns—guide you but not blind you'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "Apparently irrational counterpart behavior signals a hidden constraint/motive you can't yet see, and the move is to get curious rather than push harder.",
+        "snippet": "Such hidden or unexpected information are hard to uncover, but can change everything in your negotiations.",
+        "url": "https://www.masterclass.com/classes/chris-voss-teaches-the-art-of-negotiation/chapters/black-swans",
+        "locate": "Black Swans lesson description; Ctrl-F 'change everything in your negotiations'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "SC.15",
+    "concept": "No-Oriented Questions",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The midday pull-quote is a non-verbatim composite: Voss's book actually reads \"'No' is not a failure... It is not the end of the negotiation, but the beginning,\" while \"No is the start of the negotiation, not the end of it\" is a separately-circulated Voss line — the draft welds the two into one sentence, so it is paraphrase rather than a clean verbatim quotation.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Chris Voss teaches 'No-oriented questions' — questions designed so that 'no' is the answer you want — because saying 'no' makes a counterpart feel safe and in control, which makes them engage; chasing 'yes' backfires.",
+        "snippet": "If a potential business partner is ignoring you, contact them with a clear and concise \"No\"-oriented question that suggests you are ready to walk away. \"Have you given up on this project?\" works wonders. ... The \"No\" answer the email demands offers the other party the feeling of safety and the illusion of control.",
+        "url": "https://www.freshworks.com/crm/sales/sdr-sales-development-reps/summary-of-never-split-the-difference-blog/",
+        "locate": "Section on 'No'-oriented questions; Ctrl-F 'Have you given up on this project'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The signature email for reviving a 'gone dark' counterpart is the single No-oriented question 'Have you given up on this project?', which Voss says reliably triggers a reply.",
+        "snippet": "The one-line email \"Have you given up on this project?\" gets an immediate response every single time.",
+        "url": "https://www.freshworks.com/crm/sales/sdr-sales-development-reps/summary-of-never-split-the-difference-blog/",
+        "locate": "Ctrl-F 'gets an immediate response every single time'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Voss distinguishes three kinds of 'Yes': Counterfeit (said to escape), Confirmation (a reflexive answer), and Commitment (the real agreement).",
+        "snippet": "There are actually three kinds of \"Yes\": Counterfeit, Confirmation, and Commitment.",
+        "url": "https://quotefancy.com/quote/2865951/Chris-Voss-There-are-actually-three-kinds-of-Yes-Counterfeit-Confirmation-and-Commitment",
+        "locate": "Quote page; Ctrl-F 'Counterfeit, Confirmation, and Commitment'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Voss credits the underlying 'power of no' insight to negotiation trainer Jim Camp's book 'Start With No'; Camp mentored Voss at the FBI.",
+        "snippet": "Chris Voss discovered the book at Reagan National Airport in 2002 and, after buying and reading it, invited Camp to the FBI's Crisis Negotiation Unit in Langley, Virginia, where Voss eventually asked him to help develop training exercises for his team.",
+        "url": "https://campnegotiations.com/post/ChristopherVoss",
+        "locate": "Camp Negotiations 'Mentor to Christopher Voss' page; Ctrl-F 'Reagan National Airport'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Quote attributed to Voss: “No” is not a failure. We have learned that “No” is the start of the negotiation, not the end of it.",
+        "snippet": "\"No\" is not a failure. ... It is not the end of the negotiation, but the beginning.",
+        "url": "https://quotefancy.com/quote/3709544/Chris-Voss-No-is-the-start-of-the-negotiation-not-the-end-of-it",
+        "locate": "Book passage; Ctrl-F 'It is not the end of the negotiation, but the beginning'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "SC.16",
+    "concept": "The Challenger Sale",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The headline '~40% of star performers are Challengers' stat is well-corroborated across independent summaries and the HBR article, but the original CEB book/HBR primary pages were paywalled and gateway-blocked from direct fetch, so it rests on consistent secondary sourcing rather than a directly retrieved primary table.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "In CEB's study of thousands of B2B reps, the Challenger profile dominated top performers in complex sales while the Relationship Builder was the least likely to be a star; winning reps lead with insight, not likability.",
+        "snippet": "every sales rep in the world falls into one of five distinct profiles, and while all of these types of reps can deliver average sales performance, only one—the Challenger—delivers consistently high performance.",
+        "url": "https://hbr.org/2012/07/the-end-of-solution-sales",
+        "locate": "The End of Solution Sales (HBR Jul-Aug 2012) — Ctrl-F 'five distinct profiles'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The book/CEB research sorted rep behaviors into five profiles: the Hard Worker, the Relationship Builder, the Lone Wolf, the Reactive Problem Solver, and the Challenger.",
+        "snippet": "The five profiles are: Challenger, Relationship Builder, Hard Worker, Lone Wolf, and Reactive Problem Solver.",
+        "url": "https://challengerinc.com/what-is-challenger-sales-methodology/",
+        "locate": "Challenger Inc — 'What is the Challenger Sales Methodology?' — Ctrl-F 'Reactive Problem Solver'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The Challenger was by far the most overrepresented profile among top performers (~40% of star performers), while the Relationship Builder was the least likely to be a star.",
+        "snippet": "Of all the high performers in the study, nearly 40% were Challengers.",
+        "url": "https://challengerinc.com/what-is-challenger-sales-methodology/",
+        "locate": "Challenger Inc / Reading Graphics summary — Ctrl-F 'nearly 40% were Challengers'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Relationship Builders were the weakest profile in complex sales, generating the fewest star performers (~7%).",
+        "snippet": "The relationship builder comes in last and constitutes the smallest percentage of all high performers.",
+        "url": "https://hbr.org/2012/07/the-end-of-solution-sales",
+        "locate": "The End of Solution Sales (HBR Jul-Aug 2012) — Ctrl-F 'relationship builder comes in last'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "The Challenger operates via Teach-Tailor-Take Control: teach the customer something new, tailor the message to the stakeholder, and take control of the conversation including money and pushback.",
+        "snippet": "they win by teaching customers something new about their business, tailoring the message to each stakeholder, and taking control of the conversation around money and urgency.",
+        "url": "https://challengerinc.com/what-is-challenger-sales-methodology/",
+        "locate": "Challenger Inc — Teach / Tailor / Take Control section — Ctrl-F 'taking control of the conversation around money'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "SC.17",
+    "concept": "The Power of Silence in Sales",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "This is craft/negotiation advice, not empirical research — the central 'silence pressures the counterpart to talk' mechanism is sourced from Voss's experience and trainer lore (the 'first to speak loses' adage), not a controlled study, and the entry honestly labels it as such; no talk-ratio or Gong.io stat appears to disprove.",
+    "weakest_claim_no": 2,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Silence after a question or offer is a deliberate tool that pressures the counterpart to fill the gap, revealing information, an objection, or a concession — the party who talks least after asking tends to gain the advantage.",
+        "snippet": "Tactical silence can be a potent tool in creating space for reflection and provoking revealing responses from the other party, and it not only presses pause on the back-and-forth exchange, but it also subtly shifts the pressure to the other side, forcing them to fill the void with information.",
+        "url": "https://www.keenindependent.com/news/unlocking-negotiation-power-at-vc25",
+        "locate": "Section on tactical silence / pauses — Ctrl-F 'shifts the pressure to the other side'",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Chris Voss, the FBI's former lead international kidnapping negotiator, teaches the 'effective pause' — deliberate quiet that pressures the other side to keep talking and reveal more — in Never Split the Difference (HarperBusiness, 2016).",
+        "snippet": "The \"Effective Pause\" is named so because it is effective. Voss coaches people to use a skill and then \"shut the front door\"... you can count one-thousands to yourself if you have to, and typically you won't get past 7 seconds.",
+        "url": "https://www.blackswanltd.com/newsletter/how-to-use-silence-to-your-advantage",
+        "locate": "Black Swan Group (Voss's firm) newsletter on silence — Ctrl-F 'Effective Pause'",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Voss pairs the pause with mirroring — repeating the last few words the counterpart said and then falling silent — which prompts them to elaborate and often reveal information they hadn't intended to share.",
+        "snippet": "It is as simple as a plain repetition of the last few words, followed by silence, that generally forces the other party to open up a bit more and fill in the silence.",
+        "url": "https://www.masterclass.com/classes/chris-voss-teaches-the-art-of-negotiation/chapters/mirroring",
+        "locate": "Mirroring chapter (Voss's own MasterClass) — Ctrl-F 'followed by silence'",
+        "tier": 3,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Quote: 'He who has learned to disagree without being disagreeable has discovered the most valuable secret of negotiation.' — Robert Estabrook.",
+        "snippet": "He who has learned to disagree without being disagreeable has discovered the most valuable secret of negotiation.",
+        "url": "https://www.goodreads.com/quotes/501685-he-who-has-learned-to-disagree-without-being-disagreeable-has",
+        "locate": "Goodreads Robert Estabrook quote page — Ctrl-F 'disagree without being disagreeable'",
+        "tier": 3,
+        "paraphrase": false
+      }
+    ]
+  }
+]

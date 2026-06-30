@@ -22,6 +22,13 @@ const CATEGORIES = [
   { key: 'history', label: 'History', file: '/verify-data/history.json' },
   { key: 'finance', label: 'Personal Finance', file: '/verify-data/finance.json' },
   { key: 'health', label: 'Health & Performance', file: '/verify-data/health.json' },
+  { key: 'ai', label: 'AI', file: '/verify-data/ai.json' },
+  { key: 'sales-craft', label: 'Sales Craft', file: '/verify-data/sales-craft.json' },
+  { key: 'vocab-language', label: 'Vocab & Language', file: '/verify-data/vocab-language.json' },
+  { key: 'mental-models', label: 'Mental Models', file: '/verify-data/mental-models.json' },
+  { key: 'philosophy', label: 'Philosophy', file: '/verify-data/philosophy.json' },
+  { key: 'neuroscience', label: 'Neuroscience', file: '/verify-data/neuroscience.json' },
+  { key: 'communication', label: 'Communication', file: '/verify-data/communication.json' },
 ]
 
 export default function VerifyPage() {

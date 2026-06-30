@@ -1,0 +1,322 @@
+[
+  {
+    "edition_id": "PH.6",
+    "concept": "The Ship of Theseus",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "Weakest link is the midday quote: the 'fresh waters are ever flowing in upon us' wording is one English translation of Plato's Cratylus 402a and the river doctrine is attributed to Heraclitus only via Plato, but the draft already hedges this correctly with 'as reported by Plato in Cratylus.'",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The Ship of Theseus is a thought experiment about identity and continuity through change, separating the matter a thing is made of from the continuous form/function/history that organizes it; identity over time may be a decision about which kind of continuity to value rather than a single fact to discover.",
+        "snippet": "The Ship of Theseus is an example... where over a long period all of the planks composing a certain ship are replaced one by one, eventually resulting in a ship indiscernible from the original but composed of entirely different planks.",
+        "url": "https://plato.stanford.edu/entries/identity-time/",
+        "locate": "Stanford Encyclopedia of Philosophy, 'Identity Over Time' — Ctrl-F 'Ship of Theseus'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Plutarch records that the Athenians preserved the ship in which Theseus returned, replacing decayed planks with new timber, and that it became a standing example among philosophers debating whether it remained the same ship.",
+        "snippet": "The ship wherein Theseus and the youth of Athens returned from Crete had thirty oars, and was preserved by the Athenians down even to the time of Demetrius Phalereus, for they took away the old planks as they decayed, putting in new and stronger timber in their places, insomuch that this ship became a standing example among the philosophers, for the logical question of things that grow; one side holding that the ship remained the same, and the other contending that it was not the same.",
+        "url": "https://classics.mit.edu/Plutarch/theseus.html",
+        "locate": "Plutarch, Life of Theseus, ch. 23 (Dryden/Clough trans.) — Ctrl-F 'thirty oars'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Thomas Hobbes added the twist (in De Corpore, 1655) of reassembling all the original discarded planks into a second ship, yielding two candidate ships and the 'two ships numerically the same, which is absurd' problem.",
+        "snippet": "if some man had kept the old planks as they were taken out, and by putting them afterwards together in the same order, had again made a ship of them, this, without doubt, had also been the same numerical ship with that which was at the beginning; and so there would have been two ships numerically the same, which is absurd.",
+        "url": "https://rintintin.colorado.edu/~vancecd/phil1020/Hobbes.pdf",
+        "locate": "Thomas Hobbes, De Corpore (1655), 'On Sameness of Identity' — Ctrl-F 'kept the old planks'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "The SEP frames the puzzle as two competing claimants — the replacement ship and the reassembly ship — which it uses to motivate identity-vs-constitution distinctions, supporting the draft's 'no single correct answer / decision about continuity' reading.",
+        "snippet": "Saying that both Replacement and Reassembly are identical with the original ship putatively conflicts with the transitivity of identity since Replacement seems to be... clearly distinct from Reassembly.",
+        "url": "https://plato.stanford.edu/entries/identity-time/",
+        "locate": "Stanford Encyclopedia of Philosophy, 'Identity Over Time' — Ctrl-F 'Reassembly'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Midday quote: 'We cannot step twice into the same river, for fresh waters are ever flowing in upon us,' attributed to Heraclitus as reported by Plato in Cratylus (c. 360 BCE).",
+        "snippet": "Heraclitus, I believe, says that all things pass and nothing stays, and comparing existing things to the flow of a river, he says you could not step twice into the same river.",
+        "url": "https://plato.stanford.edu/entries/heraclitus/",
+        "locate": "Plato, Cratylus 402a (paraphrased in SEP 'Heraclitus') — Ctrl-F 'step twice into the same river'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "PH.7",
+    "concept": "Absurdism",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The framing that absurdism is cleanly distinct from existentialism rests partly on Camus's own disavowal of the label, while many encyclopedias still classify him as broadly existentialist, so 'distinct school' is an interpretive (not uncontested) claim.",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "Absurdism holds that the 'absurd' is the confrontation/relationship between the human craving for meaning and a universe that offers none in return; it resides in the relationship, not in the world or the human alone.",
+        "snippet": "The Absurd can be defined as a metaphysical tension or opposition that results from the presence of human consciousness—with its ever-pressing demand for order and meaning in life—in an essentially meaningless and indifferent universe.",
+        "url": "https://iep.utm.edu/albert-camus/",
+        "locate": "Section 'The Absurd' — Ctrl-F 'metaphysical tension or opposition that results from the presence of human consciousness'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "Absurdism is associated with Albert Camus and laid out in The Myth of Sisyphus (Le Mythe de Sisyphe), first published in French in 1942, with the English translation (Justin O'Brien) first published in 1955.",
+        "snippet": "The Myth of Sisyphus (French: Le mythe de Sisyphe) is a 1942 philosophical work by Albert Camus. The English translation by Justin O'Brien was first published in 1955.",
+        "url": "https://en.wikipedia.org/wiki/The_Myth_of_Sisyphus",
+        "locate": "Lead paragraph — Ctrl-F 'is a 1942 philosophical work by Albert Camus'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The essay opens by declaring suicide the one truly serious philosophical problem (quoted in the draft's explanation).",
+        "snippet": "There is but one truly serious philosophical problem, and that is suicide. Judging whether life is or is not worth living amounts to answering the fundamental question of philosophy.",
+        "url": "https://www2.hawaii.edu/~freeman/courses/phil360/16.%20Myth%20of%20Sisyphus.pdf",
+        "locate": "Opening of 'An Absurd Reasoning' — Ctrl-F 'one truly serious philosophical problem'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Absurdism is distinguished from existentialism and nihilism: Camus is often grouped with existentialists but disowned the label, and he rejected the 'leap' (e.g. Kierkegaard's) as 'philosophical suicide.'",
+        "snippet": "Albert Camus (1913-1960), a Frenchman born in Algeria, was one of the leading existentialists (though he himself disowned the label).",
+        "url": "https://iep.utm.edu/albert-camus/",
+        "locate": "Opening biographical paragraph — Ctrl-F 'though he himself disowned the label'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Camus concludes that one must imagine Sisyphus happy — meaning is found in lucidly owning the struggle, not in reaching the summit. Draft midday quote is verbatim.",
+        "snippet": "The struggle itself toward the heights is enough to fill a man's heart. One must imagine Sisyphus happy.",
+        "url": "https://en.wikiquote.org/wiki/Sisyphus",
+        "locate": "Camus quotations / final lines of The Myth of Sisyphus — Ctrl-F 'One must imagine Sisyphus happy'",
+        "tier": 1,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "PH.8",
+    "concept": "The Hedonic Treadmill",
+    "verdict": "FLAG",
+    "fix": "Two attribution errors must be corrected. (1) The famous 1978 lottery-winners/paraplegics study was authored by Brickman, Coates & Janoff-Bulman — NOT 'Brickman and Campbell.' The draft repeatedly mis-credits Campbell as a 1978 co-author: explanation_paragraphs[0] ('psychologists Philip Brickman and Donald Campbell published a study'), itw_label and quote attribution ('Brickman & Campbell, 1978'), the quiz stem, and the first sources[] entry label all need 'Coates & Janoff-Bulman' substituted for 'Campbell.' (2) The term 'hedonic treadmill' was coined by Brickman & Campbell in their 1971 chapter 'Hedonic Relativism and Planning the Good Society,' NOT in the 1978 paper. explanation_paragraphs[1] ('Brickman and Campbell first framed this as the hedonic treadmill') and why_today ('The concept originates in Brickman, P. & Campbell, D. T. (1978)') wrongly tie the coining to 1978. The 1971 Brickman & Campbell chapter should be cited as the origin of the term, and the 1978 Brickman, Coates & Janoff-Bulman paper as the empirical lottery study — they are two different works with different author lists.",
+    "caveat": "The draft conflates two distinct works — it credits 'Brickman & Campbell (1978)' for both coining the term and running the lottery study, but the term is Brickman & Campbell (1971) and the lottery study is Brickman, Coates & Janoff-Bulman (1978), so Campbell was not an author of the 1978 study at all.",
+    "weakest_claim_no": 1,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The hedonic treadmill (hedonic adaptation) is the well-documented tendency for people to return to a relatively stable baseline of happiness after positive or negative life events.",
+        "snippet": "The hedonic treadmill is an interpretation of subjective well-being based on adaptation-level theory, published by Philip Brickman and Donald T. Campbell in a book chapter in 1971, according to which a person's moods change in response to good and bad experiences but return quickly to neutrality, so that both happiness and sadness tend to be transitory.",
+        "url": "https://www.oxfordreference.com/display/10.1093/oi/authority.20110803095928134",
+        "locate": "Oxford Reference 'Hedonic treadmill' entry; Ctrl-F 'return quickly to neutrality'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "The term 'hedonic treadmill' was coined by Brickman & Campbell — but in their 1971 chapter 'Hedonic Relativism and Planning the Good Society,' not the 1978 paper as the draft states.",
+        "snippet": "\"Hedonic treadmill\" is a term coined by Brickman and Campbell in their article, \"Hedonic Relativism and Planning the Good Society\" (1971), describing the tendency of people to keep a fairly stable baseline level of happiness despite external events.",
+        "url": "https://en.wikipedia.org/wiki/Hedonic_treadmill",
+        "locate": "Wikipedia 'Hedonic treadmill', lead; Ctrl-F 'Hedonic Relativism and Planning the Good Society'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "The 1978 lottery-winners vs. accident-victims study found lottery winners were not happier than controls and took significantly less pleasure from mundane events; it was authored by Brickman, Coates & Janoff-Bulman (not Campbell).",
+        "snippet": "Study 1 compared a sample of 22 major lottery winners with 22 controls and also with a group of 29 paralyzed accident victims who had been interviewed previously. As predicted, lottery winners were not happier than controls and took significantly less pleasure from a series of mundane events.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/690806/",
+        "locate": "PubMed/PsycNet abstract of Brickman, Coates & Janoff-Bulman (1978), JPSP 36(8):917-927; Ctrl-F 'took significantly less pleasure'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Later research by Diener, Lucas & Scollon (2006, American Psychologist) refined set-point theory: baselines are not hedonically neutral, vary between individuals, and can shift lastingly after events like disability or unemployment.",
+        "snippet": "Individuals' set points are not hedonically neutral... People have different set points, which are partly dependent on their temperaments... Well-being set points can change under some conditions... panel studies that revealed permanent satisfaction changes after negative events such as disability or unemployment.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16719675/",
+        "locate": "Diener, Lucas & Scollon (2006) 'Beyond the Hedonic Treadmill', American Psychologist 61:305-314; Ctrl-F 'set points are not hedonically neutral'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Affective-forecasting 'impact bias' (Gilbert & Wilson) shows people overestimate the intensity and duration of emotional reactions; assistant professors overestimated how long tenure decisions would affect their happiness.",
+        "snippet": "Gilbert, Pinel, Wilson, Blumberg, and Wheatley (1998) asked assistant professors to forecast how happy they would feel if they received or were denied tenure... people often display an impact bias, overestimating the intensity and duration of their emotional reactions to such events.",
+        "url": "https://dtg.sites.fas.harvard.edu/Wilson%20&%20Gilbert%20(Advances).pdf",
+        "locate": "Wilson & Gilbert, 'Affective Forecasting'; Ctrl-F 'overestimating the intensity and duration'",
+        "tier": 1,
+        "paraphrase": true
+      }
+    ]
+  },
+  {
+    "edition_id": "PH.9",
+    "concept": "Akrasia",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The midday closing quote uses the W.D. Ross phrasing 'does not follow them because of his reason,' a defensible translation variant of NE 1145b but not the word-for-word standard Ross text ('refuses on account of his rational principle to follow them'); also the body misspells 'hyperbolic' as 'hypberbolic' (typo, not a factual error).",
+    "weakest_claim_no": 3,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "",
+        "text": "Akrasia is the philosophical term for acting against one's better judgment, usually translated as 'weakness of will' or 'incontinence.'",
+        "snippet": "The Greek word 'akrasia' is usually said to translate literally as 'lack of self-control', but it has come to be used as a general term for the phenomenon known as weakness of will, or incontinence, the disposition to act contrary to one's own considered judgment about what it is best to do.",
+        "url": "https://www.rep.routledge.com/articles/thematic/akrasia/v-1",
+        "locate": "Routledge Encyclopedia of Philosophy, 'Akrasia' entry — Ctrl-F 'disposition to act contrary to one's own considered judgment'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "'Akrasia' derives from Greek meaning lacking command / without power (a- 'without' + kratos 'strength/control').",
+        "snippet": "the noun akrasia is a borrowing from ancient Greek ἀκρασία (\"impotence, want of self-command\") and ἀκρατής (\"powerless, without authority, without self-command, incontinent\").",
+        "url": "https://en.wiktionary.org/wiki/akrasia",
+        "locate": "Wiktionary 'akrasia' — Etymology section, Ctrl-F 'want of self-command'",
+        "tier": 2,
+        "paraphrase": false
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Socrates, as presented by Plato, denied akrasia outright, holding that no one knowingly does wrong and that apparent weakness of will is really ignorance; in the Protagoras he argues no one goes willingly toward the bad.",
+        "snippet": "No one goes willingly toward the bad or what he believes to be bad; neither is it human nature, so it seems, to want to go toward what one believes to be bad instead of to the good.",
+        "url": "https://en.wikipedia.org/wiki/Akrasia",
+        "locate": "Plato, Protagoras 358d (quoted in Akrasia overview) — Ctrl-F 'No one goes willingly toward the bad'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 3,
+        "kind": "THESIS",
+        "text": "Aristotle, in Nicomachean Ethics Book VII, pushed back on Socrates, arguing that knowledge can be 'present but not active' / possessed but not exercised in the heated moment, so a person can hold the right judgment and still fail to act on it (overridden by appetite/passion).",
+        "snippet": "Since we use the word 'know' in two senses it makes a difference whether a man has the knowledge but is not exercising it, or is exercising it.",
+        "url": "https://classics.mit.edu/Aristotle/nicomachaen.7.vii.html",
+        "locate": "Aristotle, Nicomachean Ethics Book VII (NE 1146b–1147a, Ross trans.) — Ctrl-F 'know in two senses' / 'has the knowledge but is not exercising it'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Aristotle records and rejects the Socratic position that knowledge cannot be mastered: that it is strange if knowledge in a man could be dragged about like a slave, and that the wrongdoer acts by reason of ignorance, never having a right judgment.",
+        "snippet": "Now we may ask how a man who judges rightly can behave incontinently. That he should behave so when he has knowledge, some say is impossible; for it would be strange — so Socrates thought — if when knowledge was in a man something else could master it and drag it about like a slave.",
+        "url": "https://classics.mit.edu/Aristotle/nicomachaen.7.vii.html",
+        "locate": "Aristotle, Nicomachean Ethics Book VII (NE 1145b, Ross trans.) — Ctrl-F 'drag it about like a slave'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 5,
+        "kind": "",
+        "text": "The midday quote attributed to Aristotle (incontinent man knowingly does what is bad through passion; continent man resists his appetites through reason) appears in Nicomachean Ethics Book VII.",
+        "snippet": "The incontinent man, knowing that what he does is bad, does it as a result of passion, while the continent man, knowing that his appetites are bad, refuses on account of his rational principle to follow them.",
+        "url": "https://classics.mit.edu/Aristotle/nicomachaen.7.vii.html",
+        "locate": "Aristotle, Nicomachean Ethics Book VII (NE 1145b, Ross trans.) — Ctrl-F 'The incontinent man, knowing that what he does is bad'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 6,
+        "kind": "",
+        "text": "Modern behavioral science recast akrasia in temporal terms via hyperbolic discounting (George Ainslie and others): a smaller-sooner reward is preferred over a larger-later one, with the preference reversing as the moment approaches.",
+        "snippet": "George Ainslie offers a theory ... having first proposed what he terms a 'hyperbolic discounting theory' ... Present decisions are made against what we expect our future selves to want, with personal valuations on a time scale that, if plotted, would assume the shape of a hyperbolic curve.",
+        "url": "https://psychiatryonline.org/doi/10.1176/appi.ps.53.5.638",
+        "locate": "Ainslie, 'Breakdown of Will' review (Psychiatric Services) — Ctrl-F 'hyperbolic discounting'",
+        "tier": 2,
+        "paraphrase": false
+      }
+    ]
+  },
+  {
+    "edition_id": "PH.10",
+    "concept": "The Paradox of Choice",
+    "verdict": "PASS",
+    "fix": "",
+    "caveat": "The maximizing-job-seeker 'higher salary yet feel worse' claim is the weakest link: it comes from a single secondary study (Iyengar, Wells & Schwartz 2006, 'Doing Better but Feeling Worse'), not the 2000 jam study or the book proper, and the draft states it without a source citation in-text.",
+    "weakest_claim_no": 4,
+    "claims": [
+      {
+        "no": 0,
+        "kind": "THESIS",
+        "text": "The paradox of choice, named by Barry Schwartz in his 2004 book of that title, is that while some choice beats none, more choice beyond a certain point tends to reduce satisfaction and well-being rather than increase it.",
+        "snippet": "Learning to choose is hard. Learning to choose well is harder. And learning to choose well in a world of unlimited possibilities is harder still, perhaps too hard.",
+        "url": "https://en.wikipedia.org/wiki/The_Paradox_of_Choice",
+        "locate": "The Paradox of Choice: Why More Is Less (Barry Schwartz) — Ctrl-F 'Learning to choose is hard'",
+        "tier": 1,
+        "paraphrase": false
+      },
+      {
+        "no": 1,
+        "kind": "",
+        "text": "In Iyengar & Lepper's 2000 'When Choice is Demotivating' jam study, a tasting table offered either 6 or 24 jams.",
+        "snippet": "people are more likely to purchase ... jams ... when offered a limited array of 6 choices rather than an extensive array of 24 or 30 choices",
+        "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20&%20Lepper%20(2000).pdf",
+        "locate": "Iyengar & Lepper (2000), JPSP 79(6) abstract — Ctrl-F 'limited array of 6 choices'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 2,
+        "kind": "",
+        "text": "Shoppers at the 24-jam display bought far less often than at the 6-jam display: roughly 3% versus roughly 30%. (The 24-jam table drew MORE lookers — about 60% stopped vs 40% at the 6-jam table — so the 40% figure that appears in some retellings is the stop rate, not the purchase rate; the draft correctly uses ~3% vs ~30% for purchases.)",
+        "snippet": "More choices (24 jams) attracted more shoppers (60%), but only converted 3% into buyers. Less choices (6 jams) attracted less shoppers (40%), but converted 30% into buyers.",
+        "url": "https://www.rejoiner.com/resources/increase-email-conversion-rate",
+        "locate": "Iyengar & Lepper (2000) Study 1 results, as reported in jam-study summaries — Ctrl-F 'converted 30% into buyers'",
+        "tier": 2,
+        "paraphrase": true
+      },
+      {
+        "no": 3,
+        "kind": "",
+        "text": "Choice overload is real but conditional: a 2010 meta-analysis by Scheibehenne, Greifeneder & Todd ('Can There Ever Be Too Many Options?', JCR) pooling ~50 experiments found a near-zero average effect, with overload appearing only under moderators like complex options, time pressure, unclear preferences, or high comparison effort.",
+        "snippet": "examined 63 conditions from 50 published and unpublished experiments (N = 5,036) and found a mean effect size of virtually zero but considerable variance between studies",
+        "url": "https://academic.oup.com/jcr/article-abstract/37/3/409/1827647",
+        "locate": "Scheibehenne, Greifeneder & Todd (2010), Journal of Consumer Research 37(3):409-425 — Ctrl-F 'mean effect size of virtually zero'",
+        "tier": 1,
+        "paraphrase": true
+      },
+      {
+        "no": 4,
+        "kind": "",
+        "text": "Schwartz distinguishes 'maximizers' (seek the single best) from 'satisficers' (take the first option that is good enough); maximizers often secure objectively better outcomes (e.g. job-seekers landing ~20% higher salaries) yet report more regret and lower satisfaction.",
+        "snippet": "maximizing college seniors searching for jobs actually found positions with 20 percent higher starting salaries than satisficing job seekers ... were ultimately less satisfied",
+        "url": "https://en.wikipedia.org/wiki/The_Paradox_of_Choice",
+        "locate": "Iyengar, Wells & Schwartz (2006) 'Doing Better but Feeling Worse', Psychological Science — Ctrl-F '20 percent higher starting salaries'",
+        "tier": 2,
+        "paraphrase": true
+      }
+    ]
+  }
+]
