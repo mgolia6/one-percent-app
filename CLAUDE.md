@@ -173,7 +173,8 @@ Category accent colors locked — see `.claude/knowledge/design-system.md`
 - `.claude/knowledge/entry-system.md` — edition IDs, rotation, category colors, pre-gen checklist
 - `.claude/knowledge/design-system.md` — full design tokens, component patterns
 - `WORKING-WITH-CLAUDE-DESIGN.md` — playbook for the design tool (brief the problem not the solution; fixed vs. yours; how to judge + hand off)
-- `DESIGN-MOMENTS.md` — active design brief for the reward moments (peak + end)
+- `DESIGN-SYSTEM-BRIEF.md` — full-app visual direction (identity-first: lock the language on the lesson view, then roll across every screen)
+- `DESIGN-MOMENTS.md` — active design brief for the reward moments (peak + end), designed inside the locked language
 - `.claude/rules/wrap-protocol.md` — full 10-step wrap checklist
 - `Directions/onepercentinstructions-v1_41.md` — full project instructions (authoritative)
 - `LAYOUT.md` — every layout decision ever made
