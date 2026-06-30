@@ -1,6 +1,6 @@
 # One Percent — State Snapshot
-**Last updated: 2026-06-28 (Session 3)**
-Session 3: 60 draft lessons generated (30 new-category + 30 rotation, in `Drafts/`, pending Dead Drop) + catalog-wide "Why Today" fix (28 live entries rewritten from citation dumps to genuine relevance). Session 2: On This Day + full admin overhaul. Session 1: Lock It In + Keep It Sharp + the onepercent.mpgink.com domain.
+**Last updated: 2026-06-30 (Session 4)**
+Session 4: built /verify into a real verification workstation (per-claim flags, Submit, ⌗ Runs archive, lifecycle states, source tiers/⚠ caveats/📍 locate/copy-search) + verified the 30 rotation drafts (27 PASS, 3 FLAG fixed) + upgraded Finance/Health sources (tier-3 11→1, 6→0; caught real errors) + editionId renumber (flat per category) + Today/On-Deck bug fix + integrated the top action strip + kicked off a GitHub-connected **design-tool** pass (Phase 1 = the "Lock It In" conversational mode, codenamed **Aurora**). Content promotion HELD (interleave-at-end built + ready). Full detail: `Logs/onepercentlog2026-06-30.md`. Session 3: 60 draft lessons + "Why Today" fix. Session 2: On This Day + admin overhaul. Session 1: Lock It In + Keep It Sharp + domain.
 
 ---
 
@@ -24,9 +24,9 @@ Session 3: 60 draft lessons generated (30 new-category + 30 rotation, in `Drafts
 - **Live at:** **onepercent.mpgink.com** (primary) · one-percent-app.vercel.app (alias, still serves prod)
 - **Auth:** Email/password
 - **Beta status:** Closed beta, ~6 active testers
-- **Total entries live:** 60
-- **Last commit:** `6d326b4` — Fix dark-on-dark text in welcome/boot sequence
-- **Latest prod deploy:** `fb7c0ec` (READY) + `6d326b4` (boot fix, deploying)
+- **Total entries live:** 60 (nothing promoted Session 4 — promotion held for interleaved batch)
+- **Last commit:** `c3f3645` — Brief: copy & content ownership (design docs)
+- **Working branch:** `claude/ai-chat-agent-feedback-jx5un9` (== main, all Session-4 work fast-forwarded to main)
 
 ---
 
@@ -92,8 +92,13 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - **`lockins`** (spaced repetition): user_id, entry_number, concept, category, keeper, hook, box(0–3), status, due_at, last_reviewed_at, review_count, reminder_sent_at. Unique (user_id, entry_number). Per-op RLS.
 - **`on_this_day`** (daily bonus): date PK, year, event, blurb, why_today, source_url, source_title, category. RLS: authed select + insert.
 - **RLS added:** `feedback_update_admin`, `profiles_update_admin`, `is_admin()` SECURITY DEFINER helper.
+- **Verification tables (Session 4, admin-only RLS via `is_admin()`):**
+  - `verification_checks` — per-claim ticks: edition_id, claim_no, checked, **flagged, flag_note**, checked_by/at.
+  - `verification_entries` — per-entry signoff: edition_id, category, concept, status, verified_by/at, **needs_recheck, recheck_note**.
+  - `verification_submissions` — frozen batches: category, counts, verified_editions jsonb, flagged_claims jsonb, status (pending|processed|promoted).
+  - `verification_category_state` — category pk, state (active|submitted|re_review|promoted), promoted_at.
 - **Edge function `send-lockin-review`** (Verify JWT OFF). On This Day generation is a **Next.js route** (`/api/on-this-day`), not an edge function — cron GETs it.
-- **changelog:** v1.0 published (Lock It In + Keep It Sharp + domain); **v1.1 drafted** (On This Day, published=false, awaiting approval).
+- **changelog:** v1.0 published; **v1.1 drafted** (On This Day, published=false); **Session-4 changelog NOT yet drafted** (Supabase MCP was down at wrap — draft + insert next session, published=false). Note: Session-4 work is mostly /verify (admin-only) + content prep; little is user-visible yet.
 
 ---
 
@@ -115,7 +120,24 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 ---
 
 ## Pending / In Progress
-- **Dead Drop the 60 drafts** (Claude in Chrome) → fix their why_today (relevance-first) → number 061–120 → four-file sync → go live. Clears a big chunk of the sprint in one pass.
+- **Verify the 60 drafts in `/verify`** (now a real workstation, not Claude-in-Chrome). All 60 are
+  loaded as 10 category tabs with two-pass data (snippet/url/locate/tier/paraphrase + ⚠ caveat).
+  History signed off (8 + HS.2/HS.6 re-sourced); PF/Health sources upgraded to tier-1; user verifying
+  the rest. **Workflow:** verify → Submit (tab shows SUBMITTED) → I rework flags (RE-REVIEW) → re-sign
+  → promote.
+- **PROMOTION HELD — interleave-at-end (decided Session 4).** New entries go at 061+ **interleaved by
+  category** (round-robin), NEVER mid-catalog, so advanced users (DonRobbo, most complete) get a
+  rotating next-up not one category in a row. `scripts/promote.mjs --dirs a,b,c` interleave mode built
+  + dry-run-tested. Run it once a content batch is signed off (dry-run → --write → mark category state
+  promoted + submission status → build → push). Then update the four-file-sync entry count (now 3
+  files: config TOTAL_ENTRIES, page.js manifest, entry JSONs — profile dropped its array).
+- **DESIGN PASS in flight (design tool, GitHub-connected).** Phase 1 = the conversational **Lock It In**
+  experience (codenamed **Aurora** in the tool). Identity-first: lock the language on this one
+  interaction, then roll across screens (`DESIGN-SYSTEM-BRIEF.md`), moments inside it
+  (`DESIGN-MOMENTS.md`), per the playbook (`WORKING-WITH-CLAUDE-DESIGN.md`). **Aurora not yet pushed to
+  the repo** (no branch/PR/code) — when it lands, review + wire into real `LockItIn`, admin-gated.
+  **Next design chunk:** the post-lesson **slip-back** (WHAT'S NEXT/Keep-Sharp, closing, sources,
+  `ai_prompt`, feedback) — pending user confirm on what "prompt / additional content / feedback" map to.
 - **Add `POSTHOG_PERSONAL_KEY` to Vercel** → lights up the admin Analytics tab. Only open setup item.
 - **Content sprint:** ~340 entries across 10 categories to hit ~400 by end of Aug (60 now drafted; banks in `Backlog/onepercentbacklog.md`). Critical path. Tier verification: full Dead Drop early/high-traffic, draft-verified + backfill on the tail.
 - **Rotation re-balance** for 10 categories (new 3 need first entries before they surface).

@@ -1,8 +1,29 @@
 # One Percent — Product Backlog
 **onepercentproductbacklog.md | Living file — updated each session**
-Last updated: 2026-06-15 (Session 2)
+Last updated: 2026-06-30 (Session 4)
 
 This file tracks all non-content work: features, bugs, platform upgrades, infrastructure, and notifications. Content concept candidates live in `onepercentbacklog.md`.
+
+---
+
+## ✅ Shipped 2026-06-30 — Session 4 (verification workstation + content prep + design pass kickoff)
+
+| Item | Notes |
+|---|---|
+| ~~/verify built into a real workstation~~ | ✅ Per-claim flag + why; Submit for Review (frozen batches); ⌗ Runs archive; lifecycle chips (SUBMITTED→RE-REVIEW→PROCESSED→PROMOTED); claim labels (CLAIM N, ⚠ CHECK FIRST), SOURCE tier badges, 📍 locate, ⧉ copy-search; ⚠ WATCH caveat + paraphrase flags. 4 new admin-only tables. |
+| ~~30 rotation entries verified~~ | ✅ Two-pass (confirm+adversarial), full schema. 27 PASS, 3 FLAG (CM.10/NC.10/PH.8 fixed) + PH.09 typo. 7 new /verify tabs. |
+| ~~Finance/Health source upgrade~~ | ✅ Tier-3 sources 11→1 (Finance), 6→0 (Health). Caught real errors (HP.10 case-report dosing, PF.7 IRS misattribution, PF.10 DALBAR→Morningstar). |
+| ~~editionId renumber~~ | ✅ Flat per category (AI.1–12, SC.1–13, etc.); display only, progress key untouched. |
+| ~~Today/On-Deck bug~~ | ✅ Default to oldest uncompleted unlocked entry (was last catalog entry + collided for admin). |
+| ~~Top action strip~~ | ✅ De-pilled into integrated inline links; removed SIGN OUT (in Profile); ADMIN badge → /admin link. |
+| ~~Nav IA (admin-gated)~~ | ✅ Library = Lessons+Prompts sub-tabs; Review → bottom nav. |
+| ~~"Why I'm here" copy~~ | ✅ Natural-language commitment sentence. |
+| ~~promote.mjs + interleave mode~~ | ✅ Deterministic 3-file sync; `--dirs` round-robin interleave; emits category-state SQL. Dry-run tested. |
+| ~~Push Protocol + design docs~~ | ✅ CLAUDE.md Push Protocol; DESIGN-SYSTEM-BRIEF / DESIGN-MOMENTS / WORKING-WITH-CLAUDE-DESIGN. |
+
+**Open from Session 4:** content promotion HELD (interleave-at-end, run when a batch signs off);
+design pass in flight (Phase 1 = "Lock It In"/Aurora, not yet pushed to repo); next design chunk =
+post-lesson slip-back. Session-4 Supabase changelog not yet drafted (MCP down at wrap).
 
 ---
 

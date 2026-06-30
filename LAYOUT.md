@@ -330,3 +330,16 @@ Two tabs: **ACCOUNT | BADGES**
 
 ## 2026-06-28 Session 3 — No layout changes
 Content-only session (60 drafts generated; "Why Today" rewritten across live entries 001–060). No UI/layout changes.
+
+---
+
+## Session 4 (2026-06-30) layout changes
+- **Top action strip (home header):** de-pilled — bordered/filled chips → quiet inline mono text
+  links (`BUG · FEEDBACK · INFO · CHANGELOG`, REVIEW for non-admins). SIGN OUT removed (now Profile
+  only). ADMIN badge is now a button linking to `/admin`.
+- **Bottom nav (admin-gated):** `TODAY · REVIEW · LIBRARY · PROGRESS`; Review opens `/review` with a
+  due-count badge. Library gains a `[ Lessons | Prompts ]` segmented control. Non-admins unchanged
+  (`TODAY · LIBRARY · PROMPTS · PROGRESS`).
+- **Today / On-Deck cards:** now key off the oldest *uncompleted unlocked* entry (was last catalog entry).
+- **editionId labels:** flat per-category (AI.1–12, etc.) across library/lesson/sources.
+- `/verify` (admin) heavily expanded — see verify-data/SCHEMA.md.
