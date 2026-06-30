@@ -10,10 +10,16 @@
 //
 // DRY-RUN BY DEFAULT. Pass --write to actually change files. Always `npm run build` after.
 //
-// Usage:
-//   node scripts/promote.mjs --dir ../Drafts/new-categories/History            # dry-run all drafts in dir
+// Single category (sequential):
+//   node scripts/promote.mjs --dir ../Drafts/new-categories/History
 //   node scripts/promote.mjs --dir ../Drafts/new-categories/History --only HS.1,HS.2,HS.3
-//   node scripts/promote.mjs --dir ../Drafts/new-categories/History --write --by Matthew --date 2026-06-29
+//
+// Multiple categories INTERLEAVED (round-robin in the order given) — keeps the appended
+// block rotating so advanced users don't get one category in a row:
+//   node scripts/promote.mjs --dirs ../Drafts/new-categories/History,../Drafts/new-categories/Personal-Finance,../Drafts/rotation/AI
+//   ...add --only HS.1,PF.1,AI.13 to promote just the signed-off subset
+//   ...add --sequential to append category-by-category instead of interleaving
+//   ...add --write --by Matthew --date 2026-06-30 to apply
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -29,15 +35,15 @@ function arg(name, def = null) {
   return (!v || v.startsWith('--')) ? true : v
 }
 
-const dir = arg('dir')
 const write = !!arg('write')
 const by = arg('by', 'Matthew')
 const date = arg('date', new Date().toISOString().slice(0, 10))
 const only = arg('only') ? String(arg('only')).split(',').map(s => s.trim()) : null
+const sequential = !!arg('sequential')
 
-if (!dir) { console.error('ERROR: --dir <draft folder> is required'); process.exit(1) }
-const draftDir = path.resolve(process.cwd(), dir)
-if (!fs.existsSync(draftDir)) { console.error(`ERROR: draft dir not found: ${draftDir}`); process.exit(1) }
+const dirList = arg('dirs') ? String(arg('dirs')).split(',').map(s => s.trim())
+  : arg('dir') ? [String(arg('dir'))] : []
+if (!dirList.length) { console.error('ERROR: pass --dir <folder> or --dirs <folder,folder,...>'); process.exit(1) }
 
 const CONFIG = path.join(APP, 'lib/config.js')
 const PAGE = path.join(APP, 'app/page.js')
@@ -49,14 +55,30 @@ const totalMatch = configSrc.match(/TOTAL_ENTRIES\s*=\s*(\d+)/)
 if (!totalMatch) { console.error('ERROR: could not find TOTAL_ENTRIES in config.js'); process.exit(1) }
 const currentTotal = parseInt(totalMatch[1], 10)
 
-// --- load + order drafts ---
-let files = fs.readdirSync(draftDir).filter(f => f.endsWith('.json'))
-  .sort((a, b) => {
-    const na = (a.match(/-(\d+)-/) || [])[1], nb = (b.match(/-(\d+)-/) || [])[1]
-    return (parseInt(na || 0) - parseInt(nb || 0)) || a.localeCompare(b)
-  })
-let drafts = files.map(f => ({ file: f, json: JSON.parse(fs.readFileSync(path.join(draftDir, f), 'utf8')) }))
-if (only) drafts = drafts.filter(d => only.includes(d.json.editionId))
+// --- load each category's drafts (sorted by the -NN- index in the filename) ---
+const loadDir = (d) => {
+  const abs = path.resolve(process.cwd(), d)
+  if (!fs.existsSync(abs)) { console.error(`ERROR: draft dir not found: ${abs}`); process.exit(1) }
+  let ds = fs.readdirSync(abs).filter(f => f.endsWith('.json'))
+    .sort((a, b) => {
+      const na = (a.match(/-(\d+)-/) || [])[1], nb = (b.match(/-(\d+)-/) || [])[1]
+      return (parseInt(na || 0) - parseInt(nb || 0)) || a.localeCompare(b)
+    })
+    .map(f => ({ file: f, json: JSON.parse(fs.readFileSync(path.join(abs, f), 'utf8')) }))
+  if (only) ds = ds.filter(d => only.includes(d.json.editionId))
+  return ds
+}
+const perDir = dirList.map(loadDir)
+
+// --- order: interleave (round-robin across categories) or sequential (block per category) ---
+const interleave = !sequential && perDir.length > 1
+let drafts = []
+if (interleave) {
+  const maxLen = Math.max(...perDir.map(a => a.length))
+  for (let i = 0; i < maxLen; i++) for (const arr of perDir) if (arr[i]) drafts.push(arr[i])
+} else {
+  drafts = perDir.flat()
+}
 if (!drafts.length) { console.error('ERROR: no drafts matched'); process.exit(1) }
 
 // --- guard: editionIds not already in the manifest ---
@@ -76,7 +98,8 @@ const plan = drafts.map(d => {
 const newTotal = n
 
 console.log(`\nPROMOTION PLAN  (${write ? 'WRITE' : 'DRY-RUN'})`)
-console.log(`  drafts dir : ${draftDir}`)
+console.log(`  order      : ${interleave ? 'INTERLEAVED (round-robin across categories)' : 'SEQUENTIAL (block per category)'}`)
+console.log(`  categories : ${dirList.map(d => d.split('/').pop()).join(', ')}`)
 console.log(`  TOTAL_ENTRIES: ${currentTotal} → ${newTotal}`)
 console.log(`  signed-off by: ${by}   date: ${date}`)
 console.log(`  promoting ${plan.length}:`)
@@ -105,4 +128,15 @@ fs.writeFileSync(PAGE, lines.join('\n'))
 fs.writeFileSync(CONFIG, configSrc.replace(/TOTAL_ENTRIES\s*=\s*\d+/, `TOTAL_ENTRIES = ${newTotal}`))
 
 console.log(`\n✓ Wrote ${plan.length} entry JSONs, ${plan.length} manifest rows, TOTAL_ENTRIES=${newTotal}.`)
-console.log('NEXT: run `npm run build` and review the diff before committing.\n')
+console.log('NEXT: run `npm run build`, review the diff, then commit.')
+// Category-state SQL so /verify moves the promoted categories to the "✓ Promoted" group.
+// Map the draft category (display name) → the /verify tab key used in the state table.
+const CAT_KEY = {
+  'History': 'history', 'Personal Finance': 'finance', 'Health & Performance': 'health',
+  'AI': 'ai', 'Sales Craft': 'sales-craft', 'Vocab & Language': 'vocab-language',
+  'Mental Models': 'mental-models', 'Philosophy': 'philosophy',
+  'Neuroscience & Cognition': 'neuroscience', 'Communication': 'communication',
+}
+const keys = [...new Set(plan.map(p => CAT_KEY[p.category] || p.category))]
+console.log('THEN mark categories promoted in Supabase (so /verify moves them to ✓ Promoted):')
+console.log(keys.map(k => `  insert into verification_category_state(category,state,promoted_at) values('${k}','promoted',now()) on conflict(category) do update set state='promoted', promoted_at=now();`).join('\n') + '\n')
