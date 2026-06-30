@@ -48,6 +48,8 @@ export default function VerifyPage() {
   const [view, setView] = useState('verify')        // 'verify' | 'archive'
   const [allSubs, setAllSubs] = useState([])         // all submissions, newest first
   const [copied, setCopied] = useState(null)         // key of the just-copied claim
+  const [catAgg, setCatAgg] = useState({})           // cat -> { verified, recheck }
+  const [promoted, setPromoted] = useState({})       // cat -> promoted_at
 
   const copySearch = (key, text) => {
     const clean = (text || '').replace(/[“”"]/g, '').trim()
@@ -81,6 +83,24 @@ export default function VerifyPage() {
 
   useEffect(() => { if (userId) loadArchive() }, [userId, loadArchive])
 
+  // Cross-category lifecycle state for the tab chips (submitted / re-review / promoted).
+  const loadCatStates = useCallback(async () => {
+    const [{ data: ents }, { data: st }] = await Promise.all([
+      supabase.from('verification_entries').select('category, status, needs_recheck'),
+      supabase.from('verification_category_state').select('category, state, promoted_at'),
+    ])
+    const agg = {}
+    ;(ents || []).forEach(r => {
+      const a = agg[r.category] || (agg[r.category] = { verified: 0, recheck: 0 })
+      if (r.status === 'verified') a.verified++
+      if (r.needs_recheck) a.recheck++
+    })
+    const pm = {}; (st || []).forEach(r => { if (r.state === 'promoted') pm[r.category] = r.promoted_at })
+    setCatAgg(agg); setPromoted(pm)
+  }, [])
+
+  useEffect(() => { if (userId) loadCatStates() }, [userId, loadCatStates])
+
   const loadCategory = useCallback(async (key) => {
     const def = CATEGORIES.find(c => c.key === key)
     if (!def) return
@@ -90,7 +110,7 @@ export default function VerifyPage() {
     const eds = json.map(e => e.edition_id)
     const [{ data: chk }, { data: ent }] = await Promise.all([
       supabase.from('verification_checks').select('edition_id, claim_no, checked, flagged, flag_note').in('edition_id', eds),
-      supabase.from('verification_entries').select('edition_id, status, verified_at').in('edition_id', eds),
+      supabase.from('verification_entries').select('edition_id, status, verified_at, needs_recheck, recheck_note').in('edition_id', eds),
     ])
     const cm = {}, fm = {}; (chk || []).forEach(r => {
       cm[`${r.edition_id}|${r.claim_no}`] = r.checked
@@ -135,11 +155,14 @@ export default function VerifyPage() {
   const signOff = async (entry, status) => {
     if (busy) return
     setBusy(true)
+    // Signing off (or flagging) clears the re-check flag — the human has looked again.
     const row = { edition_id: entry.edition_id, category: cat, concept: entry.concept, status,
-      verified_by: status === 'verified' ? userId : null, verified_at: status === 'verified' ? new Date().toISOString() : null, updated_at: new Date().toISOString() }
+      verified_by: status === 'verified' ? userId : null, verified_at: status === 'verified' ? new Date().toISOString() : null,
+      needs_recheck: false, updated_at: new Date().toISOString() }
     setSignoffs(p => ({ ...p, [entry.edition_id]: row }))
     await supabase.from('verification_entries').upsert(row, { onConflict: 'edition_id' })
     setBusy(false)
+    loadCatStates()
   }
 
   // Freeze the current review as a submission for me (Claude) to act on next session:
@@ -172,6 +195,21 @@ export default function VerifyPage() {
   const verifiedCount = entries.filter(e => signoffs[e.edition_id]?.status === 'verified').length
   const flaggedTotal = entries.reduce((n, e) => n + e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged).length, 0)
 
+  // Per-category lifecycle chip: promoted > re-review > submitted > processed.
+  const latestSubByCat = {}
+  allSubs.forEach(s => { if (!latestSubByCat[s.category]) latestSubByCat[s.category] = s })
+  const catStatus = (key) => {
+    if (promoted[key]) return { kind: 'promoted', label: '✓ PROMOTED', c: OK }
+    if ((catAgg[key]?.recheck || 0) > 0) return { kind: 're_review', label: `RE-REVIEW · ${catAgg[key].recheck}`, c: WARN }
+    const sub = latestSubByCat[key]
+    if (sub?.status === 'pending') return { kind: 'submitted', label: 'SUBMITTED', c: GOLD }
+    if (sub?.status === 'processed') return { kind: 'processed', label: '✓ PROCESSED', c: OK }
+    return null
+  }
+  const activeCats = CATEGORIES.filter(c => !promoted[c.key])
+  const promotedCats = CATEGORIES.filter(c => promoted[c.key])
+  const catIsPromoted = !!promoted[cat]
+
   return (
     <div style={{ minHeight: '100vh', background: BG, color: INK, fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif", lineHeight: 1.5, overflowX: 'hidden', maxWidth: '100vw' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap'); *{box-sizing:border-box} html,body{overflow-x:hidden;max-width:100%}`}</style>
@@ -195,13 +233,30 @@ export default function VerifyPage() {
         )}
 
         {view === 'verify' && <>
-        {/* Category switcher */}
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18 }}>
-          {CATEGORIES.map(c => (
-            <button key={c.key} onClick={() => setCat(c.key)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.06em', padding: '7px 14px', borderRadius: 8, border: 'none', cursor: 'pointer',
-              background: cat === c.key ? GOLD : 'rgba(255,255,255,0.06)', color: cat === c.key ? '#06212b' : MUT, fontWeight: 600 }}>{c.label}</button>
-          ))}
+        {/* Category switcher — active categories with lifecycle chips */}
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+          {activeCats.map(c => {
+            const st = catStatus(c.key)
+            const active = cat === c.key
+            return (
+              <button key={c.key} onClick={() => setCat(c.key)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.06em', padding: '7px 12px', borderRadius: 8, border: active ? 'none' : `1px solid ${st ? st.c + '55' : 'transparent'}`, cursor: 'pointer',
+                background: active ? GOLD : 'rgba(255,255,255,0.06)', color: active ? '#06212b' : MUT, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 7 }}>
+                {c.label}
+                {st && <span style={{ fontSize: 8.5, letterSpacing: '0.04em', padding: '2px 6px', borderRadius: 5, fontWeight: 700, background: active ? 'rgba(6,33,43,0.18)' : `${st.c}1f`, color: active ? '#06212b' : st.c }}>{st.label}</span>}
+              </button>
+            )
+          })}
         </div>
+
+        {/* Promoted (cleared) categories — live in the library, out of the active flow */}
+        {promotedCats.length > 0 && (
+          <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap', alignItems: 'center', marginBottom: 18 }}>
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: FAINT }}>✓ PROMOTED — LIVE IN LIBRARY:</span>
+            {promotedCats.map(c => (
+              <button key={c.key} onClick={() => setCat(c.key)} style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.04em', padding: '4px 10px', borderRadius: 7, border: `1px solid ${OK}44`, cursor: 'pointer', background: cat === c.key ? `${OK}1f` : 'transparent', color: OK, opacity: 0.85 }}>{c.label} ↗</button>
+            ))}
+          </div>
+        )}
 
         {/* How-to */}
         <div style={{ background: CARD, border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, borderRadius: 10, padding: '14px 16px', marginBottom: 18, fontSize: 13.5 }}>
@@ -209,14 +264,26 @@ export default function VerifyPage() {
           Tap <b>Verify ↗</b> on each claim → confirm the source actually says the snippet → tick the box. If a claim <b>doesn’t check out</b>, hit <b style={{ color: WARN }}>flag claim</b> and jot a quick why — I’ll rework just those before the entry goes live. When an entry looks right, hit <b>Sign off</b>. Everything saves to your account and syncs across devices.
         </div>
 
+        {catIsPromoted && (
+          <div style={{ background: `${OK}12`, border: `1px solid ${OK}55`, borderRadius: 10, padding: '12px 14px', marginBottom: 16, fontSize: 13, color: INK }}>
+            <span style={{ color: OK, fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: '0.08em', fontWeight: 700 }}>✓ PROMOTED</span> — this category is already live in the library. It’s kept here for reference; no need to re-verify unless something changed.
+          </div>
+        )}
+
         {entries.map(e => {
           const so = signoffs[e.edition_id]
-          const verified = so?.status === 'verified'
+          const recheck = !!so?.needs_recheck
+          const verified = so?.status === 'verified' && !recheck
           const flagged = so?.status === 'flagged'
           const done = e.claims.filter(c => checks[`${e.edition_id}|${c.no}`]).length
           const flaggedClaims = e.claims.filter(c => flags[`${e.edition_id}|${c.no}`]?.flagged)
           return (
-            <div key={e.edition_id} style={{ background: CARD, border: `1px solid ${verified ? OK : flagged ? WARN : LINE}`, borderRadius: 12, padding: 16, marginBottom: 14, opacity: verified ? 0.9 : 1 }}>
+            <div key={e.edition_id} style={{ background: CARD, border: `1px solid ${recheck ? WARN : verified ? OK : flagged ? WARN : LINE}`, borderRadius: 12, padding: 16, marginBottom: 14, opacity: verified ? 0.9 : 1 }}>
+              {recheck && (
+                <div style={{ background: `${WARN}1a`, border: `1px solid ${WARN}66`, borderRadius: 8, padding: '8px 11px', marginBottom: 10, fontSize: 12.5, color: INK }}>
+                  <span style={{ color: WARN, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.08em', fontWeight: 700 }}>↻ RE-CHECK NEEDED</span>{so?.recheck_note ? ` — ${so.recheck_note}` : ' — I reworked this after your submission; please re-verify and sign off again.'}
+                </div>
+              )}
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
                 <div style={{ fontSize: 16, fontWeight: 600, flex: '1 1 auto', minWidth: 0, overflowWrap: 'anywhere' }}>{e.edition_id} · {e.concept}</div>
                 <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 1, minWidth: 0 }}>

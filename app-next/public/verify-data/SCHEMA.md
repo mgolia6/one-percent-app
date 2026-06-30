@@ -66,3 +66,20 @@ Concrete pointer: section/heading + a Ctrl-F phrase. Examples:
 
 When generating with subagents, instruct each to return ALL of: `snippet, url, locate, tier,
 paraphrase` per claim, and `caveat` + `weakest_claim_no` per entry.
+
+## Lifecycle (how /verify tracks state)
+
+Tables: `verification_checks` (per-claim ticks/flags), `verification_entries` (per-entry
+signoff + `needs_recheck`), `verification_submissions` (frozen batches), and
+`verification_category_state` (per-category `state`: active|submitted|re_review|promoted).
+
+Category tab chips are derived: **PROMOTED** > **RE-REVIEW (n)** > **SUBMITTED** > **PROCESSED**.
+
+When acting on a submission:
+- **Reworked an entry after submission?** set `verification_entries.needs_recheck = true`
+  (+ `recheck_note`) for that edition_id. The tab shows RE-REVIEW and the entry shows a
+  ↻ RE-CHECK banner until the human signs off again (which clears the flag).
+- **Promoted a category to the live library?** run `scripts/promote.mjs --write`, then
+  `update verification_category_state set state='promoted', promoted_at=now()` (upsert) for
+  that category key, and set its latest submission `status='promoted'`. The tab leaves the
+  active row and moves to the "✓ Promoted — live in library" group.
