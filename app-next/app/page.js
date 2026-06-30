@@ -77,7 +77,7 @@ function WelcomeOverlay({ firstName, streak, longestStreak, completedCount, last
     if (completedCount >= 25) return `${completedCount} concepts in the vault. You're compounding.`
     if (completedCount >= 10) return `${completedCount} entries done. The reps are adding up.`
     if (lastConcept) return `Last time: ${lastConcept}. Today builds on it.`
-    if (goalWhat) return `You're here to change ${goalWhat}. This is how.`
+    if (goalWhat) return `You set a goal. Today's a rep toward it.`
     return `One concept. That's the whole ask.`
   })()
 
@@ -1537,10 +1537,10 @@ export default function HomePage() {
     header: { background: 'rgba(11,17,25,0.97)', backdropFilter: 'blur(14px)', position: 'sticky', top: 0, zIndex: 50, borderBottom: '1px solid rgba(255,255,255,0.06)' },
     headerTop: { padding: '14px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' },
     wm: { fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: '0.16em', color: '#e8eef5' },
-    actionStrip: { padding: '0 18px 11px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 7 },
-    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.16)', color: 'rgba(232,238,245,0.72)', background: 'rgba(255,255,255,0.03)', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '6px 13px', borderRadius: 100, border: '1px solid rgba(255,71,120,0.32)', color: '#FF4778', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1 },
-    sep: { width: 1, height: 12, background: 'rgba(255,255,255,0.08)', flexShrink: 0, margin: '0 1px' },
+    actionStrip: { padding: '0 20px 12px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 18 },
+    asBtn: { fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: '0.14em', padding: 0, border: 'none', borderRadius: 0, color: 'rgba(232,238,245,0.5)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1, transition: 'color 0.15s' },
+    asBtnBug: { fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: '0.14em', padding: 0, border: 'none', color: 'rgba(255,71,120,0.7)', background: 'transparent', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0, lineHeight: 1, transition: 'color 0.15s' },
+    sep: { display: 'none' },
     av: { width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' },
     screen: { padding: '18px 18px 90px' },
     secLabel: { fontSize: 15, fontWeight: 600, color: '#e8eef5', letterSpacing: '-0.01em', marginBottom: 10, marginTop: 2 },
@@ -1589,7 +1589,7 @@ export default function HomePage() {
   ]
 
   const goalSentence = goalWhat && goalWhen && goalProof
-    ? `I will change ${goalWhat}. ${goalWhen.charAt(0).toUpperCase() + goalWhen.slice(1)}, I'll know it worked — ${goalProof.replace(/\.$/, '')}.`
+    ? `I'm here to work on ${goalWhat}. ${goalWhen.charAt(0).toUpperCase() + goalWhen.slice(1)}, I'll know it's working when ${goalProof.replace(/\.$/, '')}.`
     : ''
 
   const catTotalEntries = ENTRIES.length / 7  // approx per category (40/7 ≈ 5.7, use catTotals)
@@ -1600,6 +1600,8 @@ export default function HomePage() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Caveat:wght@400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
         .action-strip::-webkit-scrollbar{display:none;}
+        .action-strip button{transition:color 0.15s, opacity 0.15s;}
+        .action-strip button:hover{color:#e8eef5;opacity:1;}
         .lib-filter-scroll::-webkit-scrollbar{display:none;}
         @keyframes ldot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.2;transform:scale(0.5)}}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -1765,15 +1767,13 @@ export default function HomePage() {
           </button>
         </div>
         <div className="action-strip" style={S.actionStrip}>
-          {!isAdmin && <>
-            <button style={{ ...S.asBtn, color: '#47FFE8', fontWeight: 600, borderColor: 'rgba(71,255,232,0.4)', background: 'rgba(71,255,232,0.08)' }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` • ${dueCount}` : ''}</button>
-            <div style={S.sep} />
-          </>}
-          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : 'rgba(232,238,245,0.72)', fontWeight: hasUnseenChangelog ? 600 : 400, borderColor: hasUnseenChangelog ? 'rgba(224,169,61,0.4)' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
-          <div style={S.sep} />
-          <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
-          <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
+          {!isAdmin && (
+            <button style={{ ...S.asBtn, color: '#47FFE8', opacity: dueCount > 0 ? 1 : 0.85 }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` ${dueCount}` : ''}</button>
+          )}
+          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
           <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
+          <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
+          <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
         </div>
       </div>
 
