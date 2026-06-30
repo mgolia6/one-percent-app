@@ -4,6 +4,21 @@ Brief for Claude design (or any prototyping tool) pointed at this repo. Build **
 playable, phone-framed prototypes** of the app's key reward moments — then we wire the winners
 into the real app. Read the ground-truth files below; don't guess the brand.
 
+> **Read this as INTENT, not a spec.** The mechanics described below (corner-bracket clamp, vault,
+> segmented streak, etc.) are **one reference direction, not a requirement.** Your job is to
+> *design* — bring your own mechanic and **give me 2–3 distinct directions per moment**, including
+> ones I didn't ask for. Then I'll pick one to refine. Process guide: `WORKING-WITH-CLAUDE-DESIGN.md`.
+
+## What's FIXED vs. what's YOURS
+**Fixed (non-negotiable):**
+- Brand tokens + a dark, premium, on-brand look (it has to live next to the real app).
+- The **peak-end discipline** (over-invest in exactly two moments; keep the rest quiet).
+- The **emotional job** of each moment (peak = *you just permanently captured this, and you earned
+  it*; end = *bank the win, protect the streak, pull me back tomorrow*).
+- **Restraint / earned tiers** — a full reward fires only at the top tier.
+
+**Yours (design it):** the metaphor, the mechanic, the motion vocabulary, the exact copy. Surprise me.
+
 ## Read these files for ground truth
 - `app-next/lib/categories.js` — **canonical category names + accent colors** (source of truth).
 - `app-next/components/EntryViewer.jsx` — the lesson + quiz flow. The **PEAK** currently lives
