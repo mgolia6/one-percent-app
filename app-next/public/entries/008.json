@@ -1,6 +1,6 @@
 {
   "lockin_type": "apply",
-  "editionId": "AI.2.1",
+  "editionId": "AI.3",
   "category": "AI",
   "categoryTag": "AI",
   "concept": "Chain-of-Thought Prompting",

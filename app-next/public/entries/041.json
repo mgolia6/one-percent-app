@@ -7,72 +7,72 @@
   "accent": "#FF8C00",
   "accentDim": "rgba(255,140,0,0.10)",
   "morning": {
-    "hook": "You can have the best intentions in the world and still cause real damage. Intent and impact are not the same thing \u2014 and only one of them the other person experiences.",
+    "hook": "You can have the best intentions in the world and still cause real damage. Intent and impact are not the same thing — and only one of them the other person experiences.",
     "explanation_paragraphs": [
-      "You give someone feedback. You've thought carefully about how to phrase it. You deliver it with care. They leave the conversation feeling criticized, dismissed, or attacked. You meant to help. They experienced something else. This is the intent-impact gap \u2014 one of the most consistent sources of friction in professional relationships, and one of the most underexamined.",
-      "The gap exists because intent lives inside you and impact lands on someone else. You have direct access to your own intentions. The other person has zero access to them \u2014 they only have what they experienced. When those two things diverge, most people's instinct is to defend the intent: 'That's not what I meant.' But that defense, however accurate, doesn't address what actually happened in the interaction. The impact was real regardless of what you meant.",
-      "This distinction has roots in both communication research and organizational psychology. Researchers at the Harvard Negotiation Project, whose work underpins the book Difficult Conversations (Stone, Patton, and Heen, 1999), identified intent-impact confusion as one of the central dynamics that derail hard conversations. Their finding: people almost never intend to hurt each other, but the conversations that go badly are full of impact that lands as exactly that. The problem isn't bad intent \u2014 it's the assumption that good intent is sufficient, or that it cancels out bad impact.",
-      "The practical move is to separate the two explicitly. Acknowledge what landed \u2014 not what you meant. 'I can see that landed hard' is not an admission of guilt. It's an acknowledgment of reality. Once impact is acknowledged, intent can be discussed. But leading with intent defense before acknowledging impact almost always makes things worse, because it signals that your interpretation of events matters more than theirs."
+      "You give someone feedback. You've thought carefully about how to phrase it. You deliver it with care. They leave the conversation feeling criticized, dismissed, or attacked. You meant to help. They experienced something else. This is the intent-impact gap — one of the most consistent sources of friction in professional relationships, and one of the most underexamined.",
+      "The gap exists because intent lives inside you and impact lands on someone else. You have direct access to your own intentions. The other person has zero access to them — they only have what they experienced. When those two things diverge, most people's instinct is to defend the intent: 'That's not what I meant.' But that defense, however accurate, doesn't address what actually happened in the interaction. The impact was real regardless of what you meant.",
+      "This distinction has roots in both communication research and organizational psychology. Researchers at the Harvard Negotiation Project, whose work underpins the book Difficult Conversations (Stone, Patton, and Heen, 1999), identified intent-impact confusion as one of the central dynamics that derail hard conversations. Their finding: people almost never intend to hurt each other, but the conversations that go badly are full of impact that lands as exactly that. The problem isn't bad intent — it's the assumption that good intent is sufficient, or that it cancels out bad impact.",
+      "The practical move is to separate the two explicitly. Acknowledge what landed — not what you meant. 'I can see that landed hard' is not an admission of guilt. It's an acknowledgment of reality. Once impact is acknowledged, intent can be discussed. But leading with intent defense before acknowledging impact almost always makes things worse, because it signals that your interpretation of events matters more than theirs."
     ],
     "why_today": "Most of your hard conversations now happen in writing — Slack, email, a comment thread — where the other person can't see your face and has nothing to go on but the words that landed. Intent has never been more invisible, or impact more amplified. The instinct to fire back 'that's not what I meant' is exactly the move that turns a small misread into a standoff.",
-    "morning_challenge": "Think of a recent conversation that didn't land the way you intended. Write down two things: what your intent was, and what you think the other person actually experienced.\n\nThose are two separate things. If you conflated them in the moment \u2014 defending your intent before acknowledging their experience \u2014 that's the gap.\n\nNext time it happens: lead with impact acknowledgment before you even mention your intent."
+    "morning_challenge": "Think of a recent conversation that didn't land the way you intended. Write down two things: what your intent was, and what you think the other person actually experienced.\n\nThose are two separate things. If you conflated them in the moment — defending your intent before acknowledging their experience — that's the gap.\n\nNext time it happens: lead with impact acknowledgment before you even mention your intent."
   },
   "midday": {
-    "reframe": "Good intent is a starting point, not a defense. The question isn't whether you meant well \u2014 it's whether you're willing to take the impact seriously regardless of what you meant.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 STONE, PATTON & HEEN, DIFFICULT CONVERSATIONS, HARVARD NEGOTIATION PROJECT, 1999/2010",
+    "reframe": "Good intent is a starting point, not a defense. The question isn't whether you meant well — it's whether you're willing to take the impact seriously regardless of what you meant.",
+    "itw_label": "IN THE WILD — TYPE A · STONE, PATTON & HEEN, DIFFICULT CONVERSATIONS, HARVARD NEGOTIATION PROJECT, 1999/2010",
     "itw_paragraphs": [
       "The Harvard Negotiation Project spent years analyzing what goes wrong in conversations that matter. One pattern surfaced consistently: both parties were usually operating from good or neutral intentions, yet the conversations still produced anger, defensiveness, and broken trust. Each person was treating their intent as more real than the other person's experience of the impact.",
       "Stone, Patton, and Heen formalized this as one of three core conversations within a conversation. They found that the intent-impact conversation is almost always implicit, running beneath the surface. One person is mentally focused on defending their intent. The other is focused on the impact they experienced. Neither is talking about the same thing, so neither feels heard.",
-      "Their prescription \u2014 taught in Harvard's Program on Negotiation and embedded in corporate training at organizations from Google to the U.S. State Department \u2014 is to make the distinction explicit. Separate what happened from what it meant, and separate what you intended from what the other person experienced. The conversation gets unstuck when both parties can hold their version lightly enough to be curious about the other."
+      "Their prescription — taught in Harvard's Program on Negotiation and embedded in corporate training at organizations from Google to the U.S. State Department — is to make the distinction explicit. Separate what happened from what it meant, and separate what you intended from what the other person experienced. The conversation gets unstuck when both parties can hold their version lightly enough to be curious about the other."
     ],
-    "quote": "Intentions are invisible. The other person can't see them. What they can see is your behavior \u2014 and that's where impact is made.",
+    "quote": "Intentions are invisible. The other person can't see them. What they can see is your behavior — and that's where impact is made.",
     "attribution": "Douglas Stone, Bruce Patton & Sheila Heen, Difficult Conversations, Harvard Negotiation Project, 1999",
-    "midday_nudge": "The next time you're tempted to say 'That's not what I meant' \u2014 pause. Say 'I can see that landed differently than I intended' first. That one move changes the entire dynamic of what follows."
+    "midday_nudge": "The next time you're tempted to say 'That's not what I meant' — pause. Say 'I can see that landed differently than I intended' first. That one move changes the entire dynamic of what follows."
   },
   "quiz": [
     {
       "question": "You give a colleague what you consider constructive feedback. They respond defensively and seem hurt. Your first move should be:",
       "options": [
         "Clarify your intent immediately so they understand you weren't trying to criticize them",
-        "Acknowledge what they experienced before discussing what you intended \u2014 the impact was real regardless of your intent, and leading with intent defense typically escalates the situation",
+        "Acknowledge what they experienced before discussing what you intended — the impact was real regardless of your intent, and leading with intent defense typically escalates the situation",
         "Give them time to process, then follow up with a more detailed explanation of your reasoning",
         "Ask them why they took it personally, since the feedback was objective"
       ],
       "correct": 1,
-      "explanation": "Defending intent before acknowledging impact signals that your interpretation of the event matters more than the other person's experience. It almost always escalates. The sequence matters \u2014 acknowledge what landed first, then if relevant, clarify intent. Reversing that order turns what could be a repair into a second impact."
+      "explanation": "Defending intent before acknowledging impact signals that your interpretation of the event matters more than the other person's experience. It almost always escalates. The sequence matters — acknowledge what landed first, then if relevant, clarify intent. Reversing that order turns what could be a repair into a second impact."
     },
     {
       "question": "Why does good intent not cancel out negative impact, according to the intent-impact framework?",
       "options": [
-        "Because intent is irrelevant \u2014 only behavior and outcomes matter in professional communication",
+        "Because intent is irrelevant — only behavior and outcomes matter in professional communication",
         "Because intent is internal and invisible; the other person only has access to what they experienced, not to what you meant. Impact is the reality they live with, regardless of what produced it",
         "Because people in conflict are incapable of accurately perceiving intent due to emotional activation",
         "Because organizational research shows that most people assume bad intent by default when they receive criticism"
       ],
       "correct": 1,
-      "explanation": "Intent lives inside you. Impact lands on someone else. The other person has no direct access to your intent \u2014 they only have what they experienced. Good intent is real and worth discussing, but it doesn't retroactively change what was experienced. Stone, Patton, and Heen's key insight: both accounts \u2014 intent and impact \u2014 are partial truths, and both need to be in the conversation for it to move forward."
+      "explanation": "Intent lives inside you. Impact lands on someone else. The other person has no direct access to your intent — they only have what they experienced. Good intent is real and worth discussing, but it doesn't retroactively change what was experienced. Stone, Patton, and Heen's key insight: both accounts — intent and impact — are partial truths, and both need to be in the conversation for it to move forward."
     },
     {
       "question": "Which best describes the practical difference between intent and impact in professional communication?",
       "options": [
         "Intent is what you planned to say; impact is what you actually said",
         "Intent is how you felt when you communicated; impact is how the other person felt afterward",
-        "Intent is your internal aim \u2014 what you were trying to accomplish; impact is the actual effect your communication had on the other person, which may be completely different from your aim",
-        "Intent and impact are the same thing described from different perspectives \u2014 they converge once both parties communicate clearly"
+        "Intent is your internal aim — what you were trying to accomplish; impact is the actual effect your communication had on the other person, which may be completely different from your aim",
+        "Intent and impact are the same thing described from different perspectives — they converge once both parties communicate clearly"
       ],
       "correct": 2,
-      "explanation": "Intent is your internal aim. Impact is the effect that actually landed. They can be completely misaligned even when your communication is careful and your intent is good \u2014 because communication is filtered through the other person's history, context, and current state, all of which you can't fully see or control."
+      "explanation": "Intent is your internal aim. Impact is the effect that actually landed. They can be completely misaligned even when your communication is careful and your intent is good — because communication is filtered through the other person's history, context, and current state, all of which you can't fully see or control."
     }
   ],
   "closing": "You don't get to decide what impact you have. You only get to decide what you do with it once you see it.",
   "sources": [
     {
-      "label": "Stone, D., Patton, B., & Heen, S. \u2014 Difficult Conversations: How to Discuss What Matters Most, Penguin Books, 1999/2010",
+      "label": "Stone, D., Patton, B., & Heen, S. — Difficult Conversations: How to Discuss What Matters Most, Penguin Books, 1999/2010",
       "detail": "Primary source for the intent-impact framework, developed through the Harvard Negotiation Project.",
       "url": "https://www.penguinrandomhouse.com/books/331191/difficult-conversations-by-douglas-stone-bruce-patton-and-sheila-heen/"
     }
   ],
-  "ai_prompt": "I want to work through a conversation where my intent and the impact didn't match. Ask me what happened before giving any advice \u2014 I want help separating what I meant from what landed, and figuring out what to do next. Here's the situation: [describe what happened]",
+  "ai_prompt": "I want to work through a conversation where my intent and the impact didn't match. Ask me what happened before giving any advice — I want help separating what I meant from what landed, and figuring out what to do next. Here's the situation: [describe what happened]",
   "verified": true,
   "verified_by": "claude_in_chrome_dead_drop",
   "verified_date": "2026-06-25"

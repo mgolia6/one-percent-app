@@ -1,6 +1,6 @@
 {
   "lockin_type": "aware",
-  "editionId": "MM.3",
+  "editionId": "MM.2",
   "category": "Mental Models",
   "categoryTag": "MENTAL MODELS",
   "concept": "Survivorship Bias",
@@ -9,87 +9,87 @@
   "morning": {
     "hook": "You can't learn much from success stories alone. The failures aren't here to tell you what went wrong.",
     "explanation_paragraphs": [
-      "During World War II, the U.S. military was losing too many bombers to enemy fire. They brought in a team of statisticians from Columbia University \u2014 the Statistical Research Group \u2014 and asked them to figure out where to add armor to the planes. The team mapped the bullet holes on every bomber that returned from a mission. The damage clustered heavily on the wings and fuselage. The obvious conclusion: reinforce those areas.",
-      "A Hungarian mathematician named Abraham Wald told them they had it exactly backwards. The planes they were studying were the ones that made it home. The bullet holes on returning aircraft showed where a plane could take damage and still survive. The planes that didn't come back \u2014 the ones destroyed \u2014 had taken hits somewhere else. The empty spots on the diagram weren't undamaged areas. They were the fatal zones. Wald recommended reinforcing the areas with the fewest bullet holes. The military followed his advice.",
-      "This is survivorship bias: the systematic error of drawing conclusions from the survivors in a dataset while ignoring the ones that didn't make it \u2014 because the failures aren't visible. You're studying a filtered sample without realizing it's filtered.",
-      "It shows up everywhere. Business books study successful companies and reverse-engineer their habits \u2014 but thousands of companies followed the same habits and failed. You don't hear about them. An investor who got rich taking concentrated bets tells you concentration is the key. The investors who went broke on the same strategy aren't writing books. A startup founder shares their origin story of sleeping on the floor and grinding through adversity \u2014 what you're not hearing is how many founders slept on the floor and never shipped."
+      "During World War II, the U.S. military was losing too many bombers to enemy fire. They brought in a team of statisticians from Columbia University — the Statistical Research Group — and asked them to figure out where to add armor to the planes. The team mapped the bullet holes on every bomber that returned from a mission. The damage clustered heavily on the wings and fuselage. The obvious conclusion: reinforce those areas.",
+      "A Hungarian mathematician named Abraham Wald told them they had it exactly backwards. The planes they were studying were the ones that made it home. The bullet holes on returning aircraft showed where a plane could take damage and still survive. The planes that didn't come back — the ones destroyed — had taken hits somewhere else. The empty spots on the diagram weren't undamaged areas. They were the fatal zones. Wald recommended reinforcing the areas with the fewest bullet holes. The military followed his advice.",
+      "This is survivorship bias: the systematic error of drawing conclusions from the survivors in a dataset while ignoring the ones that didn't make it — because the failures aren't visible. You're studying a filtered sample without realizing it's filtered.",
+      "It shows up everywhere. Business books study successful companies and reverse-engineer their habits — but thousands of companies followed the same habits and failed. You don't hear about them. An investor who got rich taking concentrated bets tells you concentration is the key. The investors who went broke on the same strategy aren't writing books. A startup founder shares their origin story of sleeping on the floor and grinding through adversity — what you're not hearing is how many founders slept on the floor and never shipped."
     ],
-    "why_today": "Your feed is a survivorship machine. Every founder story, every \"how I built this,\" every viral thread on the habits of the wealthy is a sample pre-filtered to remove everyone who did the same thing and sank. The algorithm doesn't show you the failures \u2014 they're not engaging, and they're not posting. In an attention economy that rewards winners with reach, the planes that didn't come back have never been more invisible, and the temptation to copy the survivors has never been stronger.",
-    "morning_challenge": "Think of a strategy, habit, or belief you hold that's based primarily on the success of people you've observed or read about.\n\nNow ask Wald's question: where are the ones who tried the same thing and it didn't work?\n\nIf you can't answer that \u2014 if the failures aren't visible to you \u2014 you may be reinforcing the wings."
+    "why_today": "Your feed is a survivorship machine. Every founder story, every \"how I built this,\" every viral thread on the habits of the wealthy is a sample pre-filtered to remove everyone who did the same thing and sank. The algorithm doesn't show you the failures — they're not engaging, and they're not posting. In an attention economy that rewards winners with reach, the planes that didn't come back have never been more invisible, and the temptation to copy the survivors has never been stronger.",
+    "morning_challenge": "Think of a strategy, habit, or belief you hold that's based primarily on the success of people you've observed or read about.\n\nNow ask Wald's question: where are the ones who tried the same thing and it didn't work?\n\nIf you can't answer that — if the failures aren't visible to you — you may be reinforcing the wings."
   },
   "midday": {
     "reframe": "The most dangerous data is the data that's already been filtered by outcome before you see it.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 PEOPLE + SCIENCE (OCT 2025) / BBC WORKLIFE (2020)",
+    "itw_label": "IN THE WILD — TYPE A · PEOPLE + SCIENCE (OCT 2025) / BBC WORKLIFE (2020)",
     "itw_paragraphs": [
       "People + Science's October 2025 analysis mapped survivorship bias directly onto modern organizational strategy. The pattern appears in product development (studying your successful products to find the 'secret sauce,' while ignoring the failed ones that had the same features), in hiring (modeling new hires on your top performers, without examining what your top performers share with employees who washed out), and in strategic planning (emulating competitors who survived market shifts, without studying the ones that didn't).",
-      "The same distortion runs through how organizations interpret customer feedback. The customers who stayed and gave you data are, by definition, the ones who didn't leave. The people who churned \u2014 who had the most critical signal \u2014 aren't in your dataset. You're listening to the survivors.",
-      "BBC Worklife illustrates the bias with a familiar example: Bill Gates and Mark Zuckerberg achieved enormous success without finishing university, and their stories have attracted massive media attention \u2014 Peter Thiel even launched a program paying young people $100,000 to drop out. The implied lesson is that skipping a degree is a viable path to outsized success. But that conclusion is built entirely on the survivors. When you look at the full population of non-graduates rather than the famous exceptions, a different picture emerges: in the UK, graduate employment runs at 88% versus 72% for non-graduates, with a median salary gap of roughly \u00a310,000 annually. The survivors are visible and celebrated. The rest are just data.",
-      "The distortion has intensified in the social media era \u2014 not because the bias is new, but because the visibility asymmetry is wider than ever. You see people succeeding. When there is failure, it's presented by an observer, not from the perspective of the person who failed. The dataset you're consuming has already been sorted before it reaches you."
+      "The same distortion runs through how organizations interpret customer feedback. The customers who stayed and gave you data are, by definition, the ones who didn't leave. The people who churned — who had the most critical signal — aren't in your dataset. You're listening to the survivors.",
+      "BBC Worklife illustrates the bias with a familiar example: Bill Gates and Mark Zuckerberg achieved enormous success without finishing university, and their stories have attracted massive media attention — Peter Thiel even launched a program paying young people $100,000 to drop out. The implied lesson is that skipping a degree is a viable path to outsized success. But that conclusion is built entirely on the survivors. When you look at the full population of non-graduates rather than the famous exceptions, a different picture emerges: in the UK, graduate employment runs at 88% versus 72% for non-graduates, with a median salary gap of roughly £10,000 annually. The survivors are visible and celebrated. The rest are just data.",
+      "The distortion has intensified in the social media era — not because the bias is new, but because the visibility asymmetry is wider than ever. You see people succeeding. When there is failure, it's presented by an observer, not from the perspective of the person who failed. The dataset you're consuming has already been sorted before it reaches you."
     ],
     "quote": "The absent data is often more informative than the data you have. The question is whether you notice it's missing.",
     "attribution": "Adapted from Abraham Wald's work with the Statistical Research Group, Columbia University, 1943",
-    "midday_nudge": "What decision are you currently making \u2014 or have recently made \u2014 where the people or examples informing it are pre-filtered by success? What would you need to look at to see the full picture?"
+    "midday_nudge": "What decision are you currently making — or have recently made — where the people or examples informing it are pre-filtered by success? What would you need to look at to see the full picture?"
   },
   "quiz": [
     {
-      "question": "Abraham Wald recommended reinforcing the areas of returning bombers that had the fewest bullet holes \u2014 the opposite of what the military initially planned. What was the reasoning that made his approach correct?",
+      "question": "Abraham Wald recommended reinforcing the areas of returning bombers that had the fewest bullet holes — the opposite of what the military initially planned. What was the reasoning that made his approach correct?",
       "options": [
         "Fewer bullet holes in certain areas indicated that enemy gunners were deliberately avoiding those zones, suggesting they were decoys or less structurally critical",
-        "The areas with the fewest holes represented where damage was most likely to be fatal \u2014 planes hit there didn't return, so those spots never appeared in the data on surviving aircraft",
+        "The areas with the fewest holes represented where damage was most likely to be fatal — planes hit there didn't return, so those spots never appeared in the data on surviving aircraft",
         "Reinforcing undamaged areas was more cost-effective, since those surfaces were easier to access and required less structural modification than already-damaged zones",
         "Wald's statistical models showed that bullet distribution was random, so the clustering on wings and fuselage was a coincidence that shouldn't drive reinforcement decisions"
       ],
       "correct": 1,
-      "explanation": "The planes in Wald's dataset were the survivors \u2014 already filtered by the fact that they made it back. Bullet holes on returning aircraft showed where a plane could absorb damage and still fly. The empty areas weren't undamaged \u2014 they were the zones where damage was fatal. Planes hit there didn't return and weren't in the data. Wald's insight was recognizing what the missing data implied."
+      "explanation": "The planes in Wald's dataset were the survivors — already filtered by the fact that they made it back. Bullet holes on returning aircraft showed where a plane could absorb damage and still fly. The empty areas weren't undamaged — they were the zones where damage was fatal. Planes hit there didn't return and weren't in the data. Wald's insight was recognizing what the missing data implied."
     },
     {
       "question": "A team is analyzing why their last three product launches succeeded and trying to identify the common factors to replicate. What survivorship bias risk does this approach carry?",
       "options": [
         "The team may over-index on qualitative factors like design and narrative, which are harder to replicate than quantitative factors like pricing and distribution",
-        "The analysis only examines launches that succeeded, so any factors shared with failed launches \u2014 which aren't being studied \u2014 may appear to be success drivers when they aren't",
+        "The analysis only examines launches that succeeded, so any factors shared with failed launches — which aren't being studied — may appear to be success drivers when they aren't",
         "Looking backward at past launches is generally less useful than forward-looking market research, regardless of whether the launches succeeded or failed",
         "Three data points are too few to draw conclusions, so the team needs to study at least ten launches before patterns become statistically meaningful"
       ],
       "correct": 1,
-      "explanation": "If the factors you identify as 'success drivers' were also present in failed launches, they're not actually drivers \u2014 they're just common features. By studying only successful launches, the team has no way to distinguish between factors that correlate with success and factors that were simply present. The missing failures are where the real signal lives."
+      "explanation": "If the factors you identify as 'success drivers' were also present in failed launches, they're not actually drivers — they're just common features. By studying only successful launches, the team has no way to distinguish between factors that correlate with success and factors that were simply present. The missing failures are where the real signal lives."
     },
     {
       "question": "Which of the following is the most accurate description of why survivorship bias is difficult to counteract, even when people know it exists?",
       "options": [
         "People are trained to focus on positive outcomes, so they instinctively study success even when they know the failures are more informative",
-        "The failures are structurally invisible \u2014 they leave the dataset, the industry, or the conversation, making it genuinely difficult to access the information needed to correct the bias",
+        "The failures are structurally invisible — they leave the dataset, the industry, or the conversation, making it genuinely difficult to access the information needed to correct the bias",
         "Survivorship bias only affects large-scale decisions, so it feels irrelevant to the everyday choices where it actually has the most impact",
         "Most people misidentify survivorship bias as confirmation bias, so they apply the wrong correction and the distortion persists"
       ],
       "correct": 1,
-      "explanation": "The core problem is structural, not attitudinal. Failed companies close. Failed products get discontinued. Failed strategies get abandoned and forgotten. The information you'd need to correct the bias has often literally left the room. Knowing the bias exists doesn't automatically surface the missing data \u2014 you have to actively seek out what isn't there, which requires deliberate effort and often external sources."
+      "explanation": "The core problem is structural, not attitudinal. Failed companies close. Failed products get discontinued. Failed strategies get abandoned and forgotten. The information you'd need to correct the bias has often literally left the room. Knowing the bias exists doesn't automatically surface the missing data — you have to actively seek out what isn't there, which requires deliberate effort and often external sources."
     }
   ],
   "closing": "Before you study the winners, ask Wald's question: where are the planes that didn't come back?",
   "sources": [
     {
-      "label": "Survivorship Bias \u2014 Encyclopaedia Britannica (primary definition and Wald account). BBC Worklife \u2014 How 'survivorship bias' can cause you to make mistakes, 2020.",
+      "label": "Survivorship Bias — Encyclopaedia Britannica (primary definition and Wald account). BBC Worklife — How 'survivorship bias' can cause you to make mistakes, 2020.",
       "detail": "Britannica covers the Wald story and definition. BBC Worklife piece illustrates survivorship bias via the tech dropout example (Zuckerberg, Gates, Dell).",
       "url": "https://www.britannica.com/science/survivorship-bias",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Michelsen, M.W. Jr. \u2014 Making Aircraft Survivable: Abraham Wald's Counterintuitive Armor Theory. Vintage Aviation News, February 13, 2026.",
+      "label": "Michelsen, M.W. Jr. — Making Aircraft Survivable: Abraham Wald's Counterintuitive Armor Theory. Vintage Aviation News, February 13, 2026.",
       "detail": "Recent detailed account of Wald's WWII work and the Statistical Research Group at Columbia University.",
       "url": "https://vintageaviationnews.com/warbird-articles/making-aircraft-survivable-abraham-walds-counterintuitive-armor-theory.html",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "People + Science \u2014 The Missing Bullet Holes: How a WWII Statistician's Insight Can Save Your Strategy. October 21, 2025.",
-      "detail": "Modern business strategy application of survivorship bias \u2014 product development, hiring, strategic planning, and customer feedback as domains where the bias actively distorts decisions.",
+      "label": "People + Science — The Missing Bullet Holes: How a WWII Statistician's Insight Can Save Your Strategy. October 21, 2025.",
+      "detail": "Modern business strategy application of survivorship bias — product development, hiring, strategic planning, and customer feedback as domains where the bias actively distorts decisions.",
       "url": "https://peopleplusscience.com/the-missing-bullet-holes-how-a-wwii-statisticians-insight-can-save-your-strategy/",
       "verified": true,
       "verified_by": "Matthew"
     }
   ],
-  "ai_prompt": "I'm going to describe a decision, strategy, or belief I hold. I want you to help me identify where survivorship bias might be distorting my thinking \u2014 specifically, what the 'planes that didn't come back' might look like in my situation. Ask me clarifying questions if needed, then help me see what the missing failures might tell me that the visible successes can't. Here's my situation: [describe your decision or strategy]",
+  "ai_prompt": "I'm going to describe a decision, strategy, or belief I hold. I want you to help me identify where survivorship bias might be distorting my thinking — specifically, what the 'planes that didn't come back' might look like in my situation. Ask me clarifying questions if needed, then help me see what the missing failures might tell me that the visible successes can't. Here's my situation: [describe your decision or strategy]",
   "verified": true,
   "verified_by": "Matthew",
   "verified_date": "2026-05-26"

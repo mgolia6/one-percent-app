@@ -9,37 +9,37 @@
   "morning": {
     "hook": "When AI doesn't behave the way you need it to, there are two ways to fix that. Most organizations reach for the expensive one first.",
     "explanation_paragraphs": [
-      "Your team has deployed an AI tool for customer communication. The outputs are close but not quite right \u2014 the tone is slightly off, the format doesn't match your brand. Someone suggests fine-tuning the model. That means months of data preparation, engineering work, and ongoing cost. Before committing to that path, the right question is: have you actually tested whether better prompting solves this?",
+      "Your team has deployed an AI tool for customer communication. The outputs are close but not quite right — the tone is slightly off, the format doesn't match your brand. Someone suggests fine-tuning the model. That means months of data preparation, engineering work, and ongoing cost. Before committing to that path, the right question is: have you actually tested whether better prompting solves this?",
       "Prompting is the act of crafting the instructions and context you give to a model at inference time. Fine-tuning is the process of training a model on new data to change its underlying weights, altering how it behaves at a fundamental level. Both are legitimate tools. They solve different problems. Confusing them is one of the most common and expensive mistakes in enterprise AI deployment.",
-      "The decision framework is roughly this: prompting is the right tool when the behavior you want is achievable through clear instruction \u2014 when the model already knows how to do what you need, it just needs to be directed properly. Fine-tuning is the right tool when you need to inject knowledge the model doesn't have (proprietary data, specialized domain knowledge), or when you need behavior that cannot be reliably achieved through prompting alone.",
-      "The practical implication is sequencing: exhaust prompting before fine-tuning. A well-constructed system prompt \u2014 with clear role definition, output format specifications, tone guidelines, and examples \u2014 solves a surprisingly large percentage of 'the model isn't behaving right' problems without any model modification."
+      "The decision framework is roughly this: prompting is the right tool when the behavior you want is achievable through clear instruction — when the model already knows how to do what you need, it just needs to be directed properly. Fine-tuning is the right tool when you need to inject knowledge the model doesn't have (proprietary data, specialized domain knowledge), or when you need behavior that cannot be reliably achieved through prompting alone.",
+      "The practical implication is sequencing: exhaust prompting before fine-tuning. A well-constructed system prompt — with clear role definition, output format specifications, tone guidelines, and examples — solves a surprisingly large percentage of 'the model isn't behaving right' problems without any model modification."
     ],
     "why_today": "The fine-tuning vs. prompting decision framework is actively discussed in AI deployment literature as of 2024-2026. OpenAI's fine-tuning documentation and Chip Huyen's AI Engineering (O'Reilly, 2025) treat this as a foundational decision in enterprise AI strategy.",
-    "morning_challenge": "If you or your organization is using AI tools, think about a case where the output quality was unsatisfying. Was the fix attempted through better prompting \u2014 clear instructions, specific examples, format guidance? Or did the conversation skip directly to 'we need a custom model'?\n\nIf you haven't systematically tried prompting first, that's the experiment to run before considering anything else."
+    "morning_challenge": "If you or your organization is using AI tools, think about a case where the output quality was unsatisfying. Was the fix attempted through better prompting — clear instructions, specific examples, format guidance? Or did the conversation skip directly to 'we need a custom model'?\n\nIf you haven't systematically tried prompting first, that's the experiment to run before considering anything else."
   },
   "midday": {
     "reframe": "Fine-tuning is not an upgrade from prompting. It's a different tool for a different problem. Reaching for it when prompting would work is expensive, slow, and often unnecessary.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 OPENAI FINE-TUNING DOCUMENTATION, 2024. CHIP HUYEN, AI ENGINEERING, O'REILLY, 2025.",
+    "itw_label": "IN THE WILD — TYPE A · OPENAI FINE-TUNING DOCUMENTATION, 2024. CHIP HUYEN, AI ENGINEERING, O'REILLY, 2025.",
     "itw_paragraphs": [
-      "OpenAI's own guidance on fine-tuning begins with a clear recommendation: before fine-tuning, ensure you have genuinely exhausted prompt engineering \u2014 including few-shot examples and system prompt optimization. Their documentation notes that fine-tuning is most valuable when you need consistent stylistic changes that can't be reliably achieved through prompting, when you have hundreds or thousands of labeled examples, or when reducing prompt length is important for latency or cost reasons.",
+      "OpenAI's own guidance on fine-tuning begins with a clear recommendation: before fine-tuning, ensure you have genuinely exhausted prompt engineering — including few-shot examples and system prompt optimization. Their documentation notes that fine-tuning is most valuable when you need consistent stylistic changes that can't be reliably achieved through prompting, when you have hundreds or thousands of labeled examples, or when reducing prompt length is important for latency or cost reasons.",
       "The few-shot prompting middle ground is worth understanding specifically. Instead of modifying the model, you include examples of correct input-output pairs directly in your prompt. 'Given this customer inquiry, respond in this format: [example 1], [example 2].' For many formatting and style problems, three to ten good examples in the prompt achieves what teams assume requires fine-tuning.",
       "When fine-tuning genuinely is the right answer, it tends to look like specific scenarios: a legal firm that needs a model trained on their own brief formats; a medical device company that needs the model to understand proprietary technical specifications; a customer service team that needs the model to handle a very specific product taxonomy not in the base model's training data. In each case, the knowledge required doesn't exist in the base model and can't be reliably injected through prompting."
     ],
-    "quote": "Fine-tuning is powerful when you need it. The problem is that most teams need it less often than they think \u2014 and discover this after they've already paid for it.",
+    "quote": "Fine-tuning is powerful when you need it. The problem is that most teams need it less often than they think — and discover this after they've already paid for it.",
     "attribution": "Paraphrase of industry practitioner consensus, AI Engineering literature, 2024-2025",
-    "midday_nudge": "If you're working on any AI deployment \u2014 look at the system prompt or instructions. Are they specific? Do they include examples? Do they define the format of the output? If not, those are the first experiments to run before concluding the model needs to be changed."
+    "midday_nudge": "If you're working on any AI deployment — look at the system prompt or instructions. Are they specific? Do they include examples? Do they define the format of the output? If not, those are the first experiments to run before concluding the model needs to be changed."
   },
   "quiz": [
     {
-      "question": "Your team wants an AI to write customer emails in your company's specific voice \u2014 warm but direct, always under 150 words, with a specific signature format. This is best addressed through:",
+      "question": "Your team wants an AI to write customer emails in your company's specific voice — warm but direct, always under 150 words, with a specific signature format. This is best addressed through:",
       "options": [
-        "Fine-tuning \u2014 voice and format consistency requires model-level changes that prompting cannot reliably achieve",
-        "Prompting \u2014 a well-constructed system prompt with the voice guidelines, word count constraint, format specification, and 2-3 examples of ideal output can reliably achieve this without model modification",
-        "Fine-tuning plus prompting \u2014 both are needed for consistent tone and format",
-        "A different base model \u2014 some models are better at style consistency"
+        "Fine-tuning — voice and format consistency requires model-level changes that prompting cannot reliably achieve",
+        "Prompting — a well-constructed system prompt with the voice guidelines, word count constraint, format specification, and 2-3 examples of ideal output can reliably achieve this without model modification",
+        "Fine-tuning plus prompting — both are needed for consistent tone and format",
+        "A different base model — some models are better at style consistency"
       ],
       "correct": 1,
-      "explanation": "Voice, tone, word count, and format are exactly the class of behaviors that prompting handles well \u2014 because the model already knows how to write in different tones and formats; it just needs clear instruction and examples. Fine-tuning adds enormous cost and complexity without meaningfully improving performance on a task this well-defined. OpenAI's own guidance uses this exact class of problem as an example where prompting should be tried first."
+      "explanation": "Voice, tone, word count, and format are exactly the class of behaviors that prompting handles well — because the model already knows how to write in different tones and formats; it just needs clear instruction and examples. Fine-tuning adds enormous cost and complexity without meaningfully improving performance on a task this well-defined. OpenAI's own guidance uses this exact class of problem as an example where prompting should be tried first."
     },
     {
       "question": "Which scenario most clearly justifies fine-tuning over prompting?",
@@ -56,23 +56,23 @@
       "question": "What is few-shot prompting, and how does it relate to the fine-tuning vs. prompting decision?",
       "options": [
         "A rapid fine-tuning technique that requires fewer training examples than standard fine-tuning",
-        "A prompting technique where you include 2-10 examples of desired input-output behavior directly in the prompt \u2014 it often achieves style and format consistency that teams assume requires fine-tuning, at a fraction of the cost",
+        "A prompting technique where you include 2-10 examples of desired input-output behavior directly in the prompt — it often achieves style and format consistency that teams assume requires fine-tuning, at a fraction of the cost",
         "A method for prompting models with very short, precise instructions to reduce token usage",
         "An evaluation framework for testing whether a model's outputs are consistent"
       ],
       "correct": 1,
-      "explanation": "Few-shot prompting is the middle ground that many teams skip. By including 2-10 examples of correct behavior in the prompt itself, you give the model demonstrated patterns to follow \u2014 achieving format consistency and style matching without modifying the model. The decision framework is: zero-shot prompt \u2192 few-shot prompt \u2192 fine-tuning, in that order."
+      "explanation": "Few-shot prompting is the middle ground that many teams skip. By including 2-10 examples of correct behavior in the prompt itself, you give the model demonstrated patterns to follow — achieving format consistency and style matching without modifying the model. The decision framework is: zero-shot prompt → few-shot prompt → fine-tuning, in that order."
     }
   ],
   "closing": "The best AI deployment is usually the simplest one that works. A well-written prompt is simpler than a fine-tuned model. Start there.",
   "sources": [
     {
-      "label": "OpenAI \u2014 Fine-Tuning Guide and Documentation, 2024",
+      "label": "OpenAI — Fine-Tuning Guide and Documentation, 2024",
       "detail": "OpenAI's official guidance on when to fine-tune versus prompt engineer, including the recommendation to exhaust prompting before fine-tuning.",
       "url": "https://platform.openai.com/docs/guides/fine-tuning"
     },
     {
-      "label": "Huyen, C. \u2014 AI Engineering, O'Reilly Media, 2025",
+      "label": "Huyen, C. — AI Engineering, O'Reilly Media, 2025",
       "detail": "Industry-standard reference for enterprise AI application development, including the fine-tuning vs. prompting decision framework.",
       "url": "https://www.oreilly.com/library/view/ai-engineering/9781098166298/"
     }

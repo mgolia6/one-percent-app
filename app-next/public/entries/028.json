@@ -7,77 +7,77 @@
   "accent": "#FF8C47",
   "accentDim": "rgba(255,140,71,0.10)",
   "morning": {
-    "hook": "Two headlines. Same event. One says 'protesters gathered.' The other says 'mob descended.' You just formed two completely different opinions \u2014 and neither headline gave you a single fact.",
+    "hook": "Two headlines. Same event. One says 'protesters gathered.' The other says 'mob descended.' You just formed two completely different opinions — and neither headline gave you a single fact.",
     "explanation_paragraphs": [
-      "Loaded language is word choice designed to trigger an emotional response before rational evaluation can happen. The words themselves often carry no additional factual content \u2014 'mob' and 'crowd' can describe identical assemblies \u2014 but they activate entirely different associations, threat assessments, and moral judgments. By the time your reasoning engages, your conclusion is already being shaped.",
-      "The mechanism works because language and emotion aren't processed in sequence. When you read a word like 'invasion' or 'regime' or 'freedom,' the emotional associations fire before the logical evaluation begins. This isn't a flaw you can easily override by paying closer attention \u2014 it's baked into how the brain processes language. The loaded word has already done its work by the time you're consciously reading the sentence.",
-      "Loaded language appears in three main contexts. In media and politics, it's often strategic \u2014 word choice is deliberate and tested. In advertising, it's structural \u2014 words like 'natural,' 'premium,' and 'clinically proven' are chosen specifically for their emotional payload, not their precision. In everyday conversation, it's often unconscious \u2014 people reach for charged words because they feel more accurate, when really they feel more emotionally resonant.",
-      "The literacy this builds isn't cynicism \u2014 it's precision. Noticing loaded language doesn't mean assuming everyone is manipulating you. It means pausing long enough to ask: what is the factual claim here, separate from the emotional frame around it? Those are usually different questions. Getting good at separating them is one of the more practically useful cognitive skills you can develop."
+      "Loaded language is word choice designed to trigger an emotional response before rational evaluation can happen. The words themselves often carry no additional factual content — 'mob' and 'crowd' can describe identical assemblies — but they activate entirely different associations, threat assessments, and moral judgments. By the time your reasoning engages, your conclusion is already being shaped.",
+      "The mechanism works because language and emotion aren't processed in sequence. When you read a word like 'invasion' or 'regime' or 'freedom,' the emotional associations fire before the logical evaluation begins. This isn't a flaw you can easily override by paying closer attention — it's baked into how the brain processes language. The loaded word has already done its work by the time you're consciously reading the sentence.",
+      "Loaded language appears in three main contexts. In media and politics, it's often strategic — word choice is deliberate and tested. In advertising, it's structural — words like 'natural,' 'premium,' and 'clinically proven' are chosen specifically for their emotional payload, not their precision. In everyday conversation, it's often unconscious — people reach for charged words because they feel more accurate, when really they feel more emotionally resonant.",
+      "The literacy this builds isn't cynicism — it's precision. Noticing loaded language doesn't mean assuming everyone is manipulating you. It means pausing long enough to ask: what is the factual claim here, separate from the emotional frame around it? Those are usually different questions. Getting good at separating them is one of the more practically useful cognitive skills you can develop."
     ],
-    "why_today": "Every headline you scroll past, every push notification, every product page and group chat is competing for a reaction in under a second \u2014 and the fastest way to get one is word choice, not argument. \"Mob\" versus \"crowd,\" \"slashed\" versus \"reduced,\" \"surrender\" versus \"compromise\": the verdict is delivered before you've read the facts. In a feed engineered to make you feel something before you think anything, the ability to separate the emotional frame from the actual claim is less a media-literacy nicety than basic cognitive self-defense.",
-    "morning_challenge": "Pick one news article or work email to read this morning with this filter active:\n\nFor every adjective or charged word \u2014 'concerning,' 'alarming,' 'bold,' 'failed,' 'historic,' 'unprecedented' \u2014 ask:\n\u2014 What would this sentence say if I replaced that word with a neutral one?\n\u2014 What information, specifically, justifies using the charged word over the neutral one?\n\nYou're not looking for manipulation everywhere. You're building the habit of noticing the gap between emotional framing and factual content. That gap is where loaded language lives."
+    "why_today": "Every headline you scroll past, every push notification, every product page and group chat is competing for a reaction in under a second — and the fastest way to get one is word choice, not argument. \"Mob\" versus \"crowd,\" \"slashed\" versus \"reduced,\" \"surrender\" versus \"compromise\": the verdict is delivered before you've read the facts. In a feed engineered to make you feel something before you think anything, the ability to separate the emotional frame from the actual claim is less a media-literacy nicety than basic cognitive self-defense.",
+    "morning_challenge": "Pick one news article or work email to read this morning with this filter active:\n\nFor every adjective or charged word — 'concerning,' 'alarming,' 'bold,' 'failed,' 'historic,' 'unprecedented' — ask:\n— What would this sentence say if I replaced that word with a neutral one?\n— What information, specifically, justifies using the charged word over the neutral one?\n\nYou're not looking for manipulation everywhere. You're building the habit of noticing the gap between emotional framing and factual content. That gap is where loaded language lives."
   },
   "midday": {
-    "reframe": "Loaded language isn't always a weapon someone is using against you. Sometimes it's a mirror \u2014 it tells you exactly what the speaker wants you to feel before they've made a single argument. That's useful data.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 PISKORSKI, DA SAN MARTINO ET AL., SEMEVAL-2023 TASK 3",
+    "reframe": "Loaded language isn't always a weapon someone is using against you. Sometimes it's a mirror — it tells you exactly what the speaker wants you to feel before they've made a single argument. That's useful data.",
+    "itw_label": "IN THE WILD — TYPE A · PISKORSKI, DA SAN MARTINO ET AL., SEMEVAL-2023 TASK 3",
     "itw_paragraphs": [
-      "Since 2019, an international research consortium has been building and iterating on large-scale datasets annotated for persuasion techniques in news. The most comprehensive iteration \u2014 SemEval-2023 Task 3, led by Jakub Piskorski, Nicolas Stefanovitch, Giovanni Da San Martino, and Preslav Nakov \u2014 expanded the corpus to nine languages (English, French, German, Italian, Polish, Russian, Georgian, Greek, and Spanish) and a taxonomy of 23 identified persuasion techniques. Loaded language appeared as the single most frequent technique in the dataset, accounting for 18.5% of all annotated instances across all languages \u2014 more than any other technique in the taxonomy.",
-      "What makes their classification useful is the precision: loaded language is defined specifically as the use of words or phrases with strong emotional implications \u2014 positive or negative \u2014 to influence the audience's attitude without presenting additional factual information. The definition explicitly separates the emotional payload from the information content. A word can be technically accurate and still be loaded. 'Regime' and 'government' can both be factually correct descriptions of the same entity; the choice between them is not neutral.",
-      "The paper also reveals the scale of the problem in practice. Loaded language alone accounts for 18.5% of all annotated persuasion technique instances \u2014 nearly one in five. The second most common technique, Name Calling or Labeling, accounts for 23.7%. Together they represent over 40% of all persuasion technique use across the entire nine-language corpus. The authors note that these two techniques \u2014 both operating through word choice rather than argument structure \u2014 dwarf every other technique by several orders of magnitude. Persuasion in news, in other words, most commonly happens at the level of the individual word, not the argument."
+      "Since 2019, an international research consortium has been building and iterating on large-scale datasets annotated for persuasion techniques in news. The most comprehensive iteration — SemEval-2023 Task 3, led by Jakub Piskorski, Nicolas Stefanovitch, Giovanni Da San Martino, and Preslav Nakov — expanded the corpus to nine languages (English, French, German, Italian, Polish, Russian, Georgian, Greek, and Spanish) and a taxonomy of 23 identified persuasion techniques. Loaded language appeared as the single most frequent technique in the dataset, accounting for 18.5% of all annotated instances across all languages — more than any other technique in the taxonomy.",
+      "What makes their classification useful is the precision: loaded language is defined specifically as the use of words or phrases with strong emotional implications — positive or negative — to influence the audience's attitude without presenting additional factual information. The definition explicitly separates the emotional payload from the information content. A word can be technically accurate and still be loaded. 'Regime' and 'government' can both be factually correct descriptions of the same entity; the choice between them is not neutral.",
+      "The paper also reveals the scale of the problem in practice. Loaded language alone accounts for 18.5% of all annotated persuasion technique instances — nearly one in five. The second most common technique, Name Calling or Labeling, accounts for 23.7%. Together they represent over 40% of all persuasion technique use across the entire nine-language corpus. The authors note that these two techniques — both operating through word choice rather than argument structure — dwarf every other technique by several orders of magnitude. Persuasion in news, in other words, most commonly happens at the level of the individual word, not the argument."
     ],
-    "quote": "Loaded language: the use of words or phrases with strong emotional implications \u2014 positive or negative \u2014 to influence the audience's attitude without presenting additional factual information.",
-    "attribution": "Da San Martino et al. \u2014 NLP Propaganda Detection Lab, SemEval 2025 Task 3 definition",
-    "midday_nudge": "Look at the language you use in your own communication today. Not to judge it \u2014 to notice it. When you write 'critical opportunity' or 'major concern' or 'exciting development,' what would the neutral version say? The gap between the two is information about what you want someone to feel."
+    "quote": "Loaded language: the use of words or phrases with strong emotional implications — positive or negative — to influence the audience's attitude without presenting additional factual information.",
+    "attribution": "Da San Martino et al. — NLP Propaganda Detection Lab, SemEval 2025 Task 3 definition",
+    "midday_nudge": "Look at the language you use in your own communication today. Not to judge it — to notice it. When you write 'critical opportunity' or 'major concern' or 'exciting development,' what would the neutral version say? The gap between the two is information about what you want someone to feel."
   },
   "quiz": [
     {
       "question": "Two descriptions of the same quarterly earnings miss: (A) 'Revenue fell short of projections.' (B) 'The company collapsed to meet its targets.' What makes B an example of loaded language?",
       "options": [
-        "B is factually inaccurate \u2014 you can't use 'collapsed' to describe a revenue miss",
-        "B adds strong emotional connotations \u2014 implying crisis and failure \u2014 without adding factual information beyond what A states",
+        "B is factually inaccurate — you can't use 'collapsed' to describe a revenue miss",
+        "B adds strong emotional connotations — implying crisis and failure — without adding factual information beyond what A states",
         "B is more specific than A, which is what makes it loaded",
-        "A is also loaded \u2014 'fell short' carries a negative connotation too"
+        "A is also loaded — 'fell short' carries a negative connotation too"
       ],
       "correct": 1,
-      "explanation": "Loaded language is defined by the addition of emotional content without additional factual content. 'Fell short of projections' states what happened. 'Collapsed to meet its targets' implies severity, systemic failure, and crisis \u2014 none of which are established by the fact of a revenue miss. The word 'collapsed' does emotional work that no factual claim justifies. Option D is worth considering \u2014 language exists on a spectrum \u2014 but 'fell short' is a standard neutral descriptor, while 'collapsed' is markedly loaded."
+      "explanation": "Loaded language is defined by the addition of emotional content without additional factual content. 'Fell short of projections' states what happened. 'Collapsed to meet its targets' implies severity, systemic failure, and crisis — none of which are established by the fact of a revenue miss. The word 'collapsed' does emotional work that no factual claim justifies. Option D is worth considering — language exists on a spectrum — but 'fell short' is a standard neutral descriptor, while 'collapsed' is markedly loaded."
     },
     {
       "question": "Why does loaded language work even on people who know what it is?",
       "options": [
-        "It doesn't \u2014 awareness is a complete defense against the effect",
-        "Because emotional processing of words happens faster than rational evaluation \u2014 the associations fire before deliberate analysis engages",
+        "It doesn't — awareness is a complete defense against the effect",
+        "Because emotional processing of words happens faster than rational evaluation — the associations fire before deliberate analysis engages",
         "Because loaded language is more vivid and therefore easier to remember",
         "Because people unconsciously trust speakers who use emotionally resonant language"
       ],
       "correct": 1,
-      "explanation": "Emotional language associations activate through fast, automatic processing \u2014 what Kahneman calls System 1. Deliberate evaluation happens later, through System 2. By the time you're consciously analyzing a claim, the emotional frame set by the loaded word has already influenced how you're reading it. Awareness creates some resistance \u2014 you can notice the effect and correct for it \u2014 but the initial emotional activation isn't optional. This is why linguists and media literacy researchers treat loaded language as structurally different from lying: it doesn't assert a falsehood you can evaluate; it primes an emotional response you're already having."
+      "explanation": "Emotional language associations activate through fast, automatic processing — what Kahneman calls System 1. Deliberate evaluation happens later, through System 2. By the time you're consciously analyzing a claim, the emotional frame set by the loaded word has already influenced how you're reading it. Awareness creates some resistance — you can notice the effect and correct for it — but the initial emotional activation isn't optional. This is why linguists and media literacy researchers treat loaded language as structurally different from lying: it doesn't assert a falsehood you can evaluate; it primes an emotional response you're already having."
     },
     {
       "question": "You're reviewing a vendor proposal that describes a competitor's product as 'bloated,' 'legacy,' and 'rigid.' How should you interpret this language?",
       "options": [
-        "As useful shorthand \u2014 these are standard industry descriptors that probably reflect genuine technical limitations",
-        "As red flags \u2014 if the vendor can't make technical claims, this is manipulation",
+        "As useful shorthand — these are standard industry descriptors that probably reflect genuine technical limitations",
+        "As red flags — if the vendor can't make technical claims, this is manipulation",
         "As an emotional framing you should note and then separate: ask what specific, factual claims justify each word",
-        "As irrelevant \u2014 vendor proposals are expected to use persuasive language, so it should be discounted entirely"
+        "As irrelevant — vendor proposals are expected to use persuasive language, so it should be discounted entirely"
       ],
       "correct": 2,
-      "explanation": "The right response to loaded language isn't dismissal \u2014 it's translation. 'Bloated' might mean 'the feature set is larger than you need.' 'Legacy' might mean 'built on an older architecture.' 'Rigid' might mean 'less configurable.' Those could be legitimate concerns worth evaluating. The problem is that the emotional words have already delivered a verdict before the facts are established. Translating each loaded term into a specific, testable claim is the practical skill \u2014 you're not rejecting the content, you're separating the argument from the activation."
+      "explanation": "The right response to loaded language isn't dismissal — it's translation. 'Bloated' might mean 'the feature set is larger than you need.' 'Legacy' might mean 'built on an older architecture.' 'Rigid' might mean 'less configurable.' Those could be legitimate concerns worth evaluating. The problem is that the emotional words have already delivered a verdict before the facts are established. Translating each loaded term into a specific, testable claim is the practical skill — you're not rejecting the content, you're separating the argument from the activation."
     }
   ],
   "closing": "Language is never neutral. The question is whether the emotional content is carrying information or replacing it. Getting good at spotting the difference is one of the most durable cognitive skills you can build.",
   "sources": [
     {
-      "label": "Piskorski, Stefanovitch, Da San Martino, Nakov et al. \u2014 SemEval-2023 Task 3: Detecting the Category, the Framing, and the Persuasion Techniques in Online News in a Multi-lingual Setup, 2023",
+      "label": "Piskorski, Stefanovitch, Da San Martino, Nakov et al. — SemEval-2023 Task 3: Detecting the Category, the Framing, and the Persuasion Techniques in Online News in a Multi-lingual Setup, 2023",
       "detail": "Primary source. Nine languages, 23 persuasion techniques taxonomy. Loaded language is the most frequent technique: 11,731 instances, 18.5% of all annotated spans. Da San Martino at Department of Mathematics, University of Padova.",
       "url": "https://aclanthology.org/2023.semeval-1.317"
     },
     {
-      "label": "Kahneman, D. \u2014 Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
+      "label": "Kahneman, D. — Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
       "detail": "System 1 / System 2 framework. The dual-process model explains why emotional activation from loaded language precedes deliberate evaluation. Foundational for understanding why awareness provides incomplete protection against the effect.",
       "url": "https://www.farrarstrausgiroux.com/"
     }
   ],
-  "ai_prompt": "Help me audit a piece of writing for loaded language. I'll paste something I wrote or received, and I want you to flag every word or phrase that carries emotional content beyond its factual meaning \u2014 then help me rewrite each one as a neutral, precise alternative. Don't just list the problems; help me see the gap between the emotional version and the factual version. Here's the text: [paste it]",
+  "ai_prompt": "Help me audit a piece of writing for loaded language. I'll paste something I wrote or received, and I want you to flag every word or phrase that carries emotional content beyond its factual meaning — then help me rewrite each one as a neutral, precise alternative. Don't just list the problems; help me see the gap between the emotional version and the factual version. Here's the text: [paste it]",
   "verified": true,
   "verified_by": "Matthew",
   "verified_date": "2026-06-04"

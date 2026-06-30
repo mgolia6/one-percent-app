@@ -9,21 +9,21 @@
   "morning": {
     "hook": "There's a level of pressure at which you do your best work. Below it, you're not trying hard enough. Above it, you're not functioning well enough. Most people never find it deliberately.",
     "explanation_paragraphs": [
-      "You've had days where the stakes were just right \u2014 enough pressure to sharpen your attention but not so much that you froze. You delivered clearly. You made good decisions quickly. You were operating at capacity. You've also had days where the pressure was too low and you coasted, or too high and you went blank during the presentation, fumbled your words, or made decisions you later couldn't explain. The difference between those days isn't talent. It's arousal level.",
-      "The Yerkes-Dodson Law, first described by psychologists Robert Yerkes and John Dodson in 1908, captures the relationship between arousal (physiological and psychological activation) and performance in an inverted U-shaped curve. At low arousal, performance is poor \u2014 insufficient motivation, lack of focus. As arousal increases, performance improves. But beyond an optimal point, further increases degrade performance \u2014 anxiety, cognitive narrowing, and impaired working memory take over.",
-      "The two key variables that shift the curve are task complexity and individual factors. For simple, well-practiced tasks, the optimal arousal level is higher \u2014 you can perform under significant stress because the behavior is automatic. For complex tasks requiring working memory, creativity, or novel problem-solving, the optimal arousal level is much lower \u2014 moderate stress helps, but high stress significantly impairs the cognitive resources the task requires.",
-      "The practical implication is that arousal management \u2014 not just effort or commitment \u2014 is a performance variable. If you're under-aroused before a low-stakes task, small interventions can elevate performance. If you're over-aroused before a high-stakes complex task, interventions that lower arousal \u2014 controlled breathing, deliberate reframing \u2014 can measurably improve performance."
+      "You've had days where the stakes were just right — enough pressure to sharpen your attention but not so much that you froze. You delivered clearly. You made good decisions quickly. You were operating at capacity. You've also had days where the pressure was too low and you coasted, or too high and you went blank during the presentation, fumbled your words, or made decisions you later couldn't explain. The difference between those days isn't talent. It's arousal level.",
+      "The Yerkes-Dodson Law, first described by psychologists Robert Yerkes and John Dodson in 1908, captures the relationship between arousal (physiological and psychological activation) and performance in an inverted U-shaped curve. At low arousal, performance is poor — insufficient motivation, lack of focus. As arousal increases, performance improves. But beyond an optimal point, further increases degrade performance — anxiety, cognitive narrowing, and impaired working memory take over.",
+      "The two key variables that shift the curve are task complexity and individual factors. For simple, well-practiced tasks, the optimal arousal level is higher — you can perform under significant stress because the behavior is automatic. For complex tasks requiring working memory, creativity, or novel problem-solving, the optimal arousal level is much lower — moderate stress helps, but high stress significantly impairs the cognitive resources the task requires.",
+      "The practical implication is that arousal management — not just effort or commitment — is a performance variable. If you're under-aroused before a low-stakes task, small interventions can elevate performance. If you're over-aroused before a high-stakes complex task, interventions that lower arousal — controlled breathing, deliberate reframing — can measurably improve performance."
     ],
     "why_today": "Hustle culture sells a lie this curve disproves: that more pressure always means more output. We've built a working world of always-on notifications and back-to-back high-stakes everything, then wonder why the hardest cognitive work — the strategy, the judgment calls — keeps coming out worse. The skill that scarce now isn't grinding harder. It's deliberately dialing your own arousal to the point where your prefrontal cortex actually shows up.",
-    "morning_challenge": "Think about your performance in your last high-stakes situation. Where were you on the curve? Too low (underengaged, not sharp enough), optimal (focused, clear, performing well), or too high (anxious, narrowed, impaired)?\n\nNow: what's one specific thing you could do before the next similar situation to move toward optimal? Not 'try harder' \u2014 a specific intervention on your arousal level."
+    "morning_challenge": "Think about your performance in your last high-stakes situation. Where were you on the curve? Too low (underengaged, not sharp enough), optimal (focused, clear, performing well), or too high (anxious, narrowed, impaired)?\n\nNow: what's one specific thing you could do before the next similar situation to move toward optimal? Not 'try harder' — a specific intervention on your arousal level."
   },
   "midday": {
-    "reframe": "Pressure improves performance \u2014 to a point. Past that point, it doesn't push you harder. It makes you worse. Knowing where that point is for you, on this specific type of task, is a competitive advantage.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 YERKES & DODSON, JOURNAL OF COMPARATIVE NEUROLOGY AND PSYCHOLOGY, 1908. ARNSTEN, NATURE REVIEWS NEUROSCIENCE, 2009.",
+    "reframe": "Pressure improves performance — to a point. Past that point, it doesn't push you harder. It makes you worse. Knowing where that point is for you, on this specific type of task, is a competitive advantage.",
+    "itw_label": "IN THE WILD — TYPE A · YERKES & DODSON, JOURNAL OF COMPARATIVE NEUROLOGY AND PSYCHOLOGY, 1908. ARNSTEN, NATURE REVIEWS NEUROSCIENCE, 2009.",
     "itw_paragraphs": [
       "Yerkes and Dodson's original 1908 experiment used mice learning to discriminate between two chambers, with different levels of electric shock as motivation. At low shock levels, learning was slow. At moderate levels, learning was fastest. At high shock levels, learning degraded significantly. The finding replicated across species and tasks and produced the inverted U that has borne their names for over a century.",
-      "Amy Arnsten's research at Yale School of Medicine provided the neurological mechanism. Under moderate stress, catecholamines \u2014 dopamine and norepinephrine \u2014 are released in amounts that optimize prefrontal cortex function, sharpening attention and working memory. Under high stress, catecholamine levels exceed the optimum and actually impair the prefrontal cortex \u2014 the region responsible for complex reasoning. The brain effectively goes offline for higher-order cognition and defaults to more automatic responses.",
-      "Sports psychology has applied the Yerkes-Dodson framework extensively. The concept of being 'in the zone' or 'flow state' corresponds roughly to the peak of the inverted U \u2014 the state where arousal is high enough for sharp engagement but not so high as to impair function. Elite performance coaches work systematically to help athletes identify their optimal arousal level for specific performance contexts and develop pre-performance routines that reliably produce that state."
+      "Amy Arnsten's research at Yale School of Medicine provided the neurological mechanism. Under moderate stress, catecholamines — dopamine and norepinephrine — are released in amounts that optimize prefrontal cortex function, sharpening attention and working memory. Under high stress, catecholamine levels exceed the optimum and actually impair the prefrontal cortex — the region responsible for complex reasoning. The brain effectively goes offline for higher-order cognition and defaults to more automatic responses.",
+      "Sports psychology has applied the Yerkes-Dodson framework extensively. The concept of being 'in the zone' or 'flow state' corresponds roughly to the peak of the inverted U — the state where arousal is high enough for sharp engagement but not so high as to impair function. Elite performance coaches work systematically to help athletes identify their optimal arousal level for specific performance contexts and develop pre-performance routines that reliably produce that state."
     ],
     "quote": "The optimal level of arousal depends on the task. Simple tasks benefit from high activation. Complex tasks suffer from it.",
     "attribution": "Paraphrase of Yerkes-Dodson (1908) and Arnsten (2009)",
@@ -39,41 +39,41 @@
         "Conducting a sensitive performance review conversation requiring nuanced judgment"
       ],
       "correct": 1,
-      "explanation": "The Yerkes-Dodson curve shifts based on task complexity. For simple, highly practiced, automatic tasks \u2014 like a sprinter's start or a musician's memorized passage \u2014 high arousal is compatible with excellent performance because the behavior doesn't rely heavily on prefrontal cortex function. For complex tasks requiring working memory or nuanced judgment, high arousal impairs exactly those systems."
+      "explanation": "The Yerkes-Dodson curve shifts based on task complexity. For simple, highly practiced, automatic tasks — like a sprinter's start or a musician's memorized passage — high arousal is compatible with excellent performance because the behavior doesn't rely heavily on prefrontal cortex function. For complex tasks requiring working memory or nuanced judgment, high arousal impairs exactly those systems."
     },
     {
       "question": "Arnsten's research documented the neurological mechanism underlying the Yerkes-Dodson curve. What happens in the brain when arousal becomes too high?",
       "options": [
         "The amygdala shuts down, reducing emotional processing",
-        "Catecholamine levels (dopamine and norepinephrine) exceed the optimal range and impair prefrontal cortex function \u2014 the region responsible for complex reasoning and executive function \u2014 causing the brain to default to more automatic subcortical responses",
+        "Catecholamine levels (dopamine and norepinephrine) exceed the optimal range and impair prefrontal cortex function — the region responsible for complex reasoning and executive function — causing the brain to default to more automatic subcortical responses",
         "The hippocampus stops encoding new memories, which is why people can't recall events from extremely stressful periods",
         "Cortisol accumulates in the prefrontal cortex, physically damaging the neural connections needed for complex thought"
       ],
       "correct": 1,
-      "explanation": "Arnsten's finding is that the prefrontal cortex operates in a goldilocks zone for catecholamines. Moderate dopamine and norepinephrine levels optimize PFC function; excessive levels actively impair it. When arousal is too high, the PFC goes offline for complex cognition and the brain defaults to faster, more automatic subcortical responses \u2014 adaptive for physical threat but maladaptive for complex cognitive tasks."
+      "explanation": "Arnsten's finding is that the prefrontal cortex operates in a goldilocks zone for catecholamines. Moderate dopamine and norepinephrine levels optimize PFC function; excessive levels actively impair it. When arousal is too high, the PFC goes offline for complex cognition and the brain defaults to faster, more automatic subcortical responses — adaptive for physical threat but maladaptive for complex cognitive tasks."
     },
     {
-      "question": "A sales rep is about to enter a high-stakes final presentation. They're visibly anxious \u2014 heart racing, thoughts scattered. Based on the Yerkes-Dodson framework, what is the most useful intervention?",
+      "question": "A sales rep is about to enter a high-stakes final presentation. They're visibly anxious — heart racing, thoughts scattered. Based on the Yerkes-Dodson framework, what is the most useful intervention?",
       "options": [
         "Remind them of the stakes and how important this is to increase motivation and sharpen focus",
-        "Use a brief physiological intervention to lower arousal before the presentation \u2014 slow controlled breathing, reframing the situation as a conversation rather than a test \u2014 to move from over-aroused toward optimal arousal for the complex task ahead",
-        "Encourage them to channel the anxiety into energy \u2014 high arousal is productive if directed correctly",
+        "Use a brief physiological intervention to lower arousal before the presentation — slow controlled breathing, reframing the situation as a conversation rather than a test — to move from over-aroused toward optimal arousal for the complex task ahead",
+        "Encourage them to channel the anxiety into energy — high arousal is productive if directed correctly",
         "Have them review their notes and pitch deck one more time to reduce uncertainty about content"
       ],
       "correct": 1,
-      "explanation": "A final complex presentation requires prefrontal cortex function at a high level. Over-arousal impairs exactly those functions. Increasing stakes further (option A) would push arousal higher, further impairing performance. 'Channeling' anxiety (option C) doesn't address the neurological impairment caused by excessive catecholamines. Physiological interventions \u2014 specifically those that reduce sympathetic nervous system activation \u2014 are the evidence-based approach: slow breathing activates the parasympathetic system and measurably reduces arousal."
+      "explanation": "A final complex presentation requires prefrontal cortex function at a high level. Over-arousal impairs exactly those functions. Increasing stakes further (option A) would push arousal higher, further impairing performance. 'Channeling' anxiety (option C) doesn't address the neurological impairment caused by excessive catecholamines. Physiological interventions — specifically those that reduce sympathetic nervous system activation — are the evidence-based approach: slow breathing activates the parasympathetic system and measurably reduces arousal."
     }
   ],
   "closing": "The most underused performance lever isn't effort. It's the ability to deliberately place yourself at the right point on the curve before the work begins.",
   "sources": [
     {
-      "label": "Yerkes, R.M. & Dodson, J.D. \u2014 The Relation of Strength of Stimulus to Rapidity of Habit-Formation, Journal of Comparative Neurology and Psychology, 18(5), 1908",
+      "label": "Yerkes, R.M. & Dodson, J.D. — The Relation of Strength of Stimulus to Rapidity of Habit-Formation, Journal of Comparative Neurology and Psychology, 18(5), 1908",
       "detail": "Foundational paper documenting the inverted U relationship between arousal and learning performance, establishing the Yerkes-Dodson Law.",
       "url": "https://psychclassics.yorku.ca/Yerkes/Law/"
     },
     {
-      "label": "Arnsten, A.F.T. \u2014 Stress Signalling Pathways that Impair Prefrontal Cortex Structure and Function, Nature Reviews Neuroscience, 10(6), 2009",
-      "detail": "Documents the neurological mechanism underlying the Yerkes-Dodson curve \u2014 the role of dopamine and norepinephrine in modulating prefrontal cortex function.",
+      "label": "Arnsten, A.F.T. — Stress Signalling Pathways that Impair Prefrontal Cortex Structure and Function, Nature Reviews Neuroscience, 10(6), 2009",
+      "detail": "Documents the neurological mechanism underlying the Yerkes-Dodson curve — the role of dopamine and norepinephrine in modulating prefrontal cortex function.",
       "url": "https://www.nature.com/articles/nrn2648"
     }
   ],

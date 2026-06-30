@@ -9,25 +9,25 @@
   "morning": {
     "hook": "Every time you make someone read to the end to find out what you want, you've already lost part of your audience.",
     "explanation_paragraphs": [
-      "You get an email. It's six paragraphs. It walks through background, context, what happened last quarter, what the team tried, what didn't work, a few caveats \u2014 and somewhere in paragraph five is the actual ask. By the time you get there, you've already made three assumptions about what the point was going to be, and two of them were wrong. You're annoyed. You might not even act on it.",
-      "BLUF \u2014 Bottom Line Up Front \u2014 is a communication principle formalized by the U.S. military in Army Regulation 25-50, the Army's official guide to preparing and managing correspondence. The regulation is explicit: put the main point first. Not after the context. Not after the background. First. The reasoning is practical \u2014 in high-stakes, time-compressed environments, the person reading your message may not finish it. If the most important thing is buried, it may never land.",
-      "The structure BLUF creates is deductive rather than inductive. Inductive writing builds toward a conclusion \u2014 it lays out evidence and arrives at a point. That's how most people are taught to write, and it's the wrong default for professional communication. Deductive writing states the conclusion first, then provides the support. The reader knows immediately what they're evaluating, which makes the supporting detail faster to process and easier to act on.",
-      "The principle applies equally to emails, Slack messages, presentations, verbal updates, and meeting requests. In each case, the same question applies: if the person stops reading or listening after the first two sentences, did they get the most important thing? If the answer is no, you haven't BLUFed. You've buried the lead \u2014 and you've made your reader do work that was yours to do."
+      "You get an email. It's six paragraphs. It walks through background, context, what happened last quarter, what the team tried, what didn't work, a few caveats — and somewhere in paragraph five is the actual ask. By the time you get there, you've already made three assumptions about what the point was going to be, and two of them were wrong. You're annoyed. You might not even act on it.",
+      "BLUF — Bottom Line Up Front — is a communication principle formalized by the U.S. military in Army Regulation 25-50, the Army's official guide to preparing and managing correspondence. The regulation is explicit: put the main point first. Not after the context. Not after the background. First. The reasoning is practical — in high-stakes, time-compressed environments, the person reading your message may not finish it. If the most important thing is buried, it may never land.",
+      "The structure BLUF creates is deductive rather than inductive. Inductive writing builds toward a conclusion — it lays out evidence and arrives at a point. That's how most people are taught to write, and it's the wrong default for professional communication. Deductive writing states the conclusion first, then provides the support. The reader knows immediately what they're evaluating, which makes the supporting detail faster to process and easier to act on.",
+      "The principle applies equally to emails, Slack messages, presentations, verbal updates, and meeting requests. In each case, the same question applies: if the person stops reading or listening after the first two sentences, did they get the most important thing? If the answer is no, you haven't BLUFed. You've buried the lead — and you've made your reader do work that was yours to do."
     ],
     "why_today": "Work has gone async and overloaded — Slack, email, and a dozen channels competing for a few seconds of skimming attention each. Nobody reads to the end anymore; they triage. Burying your point at the bottom isn't politeness, it's a bet that the busiest person you're writing to will do work you should have done for them — and in a feed of unread messages, that's a bet you lose.",
-    "morning_challenge": "Pull up the last significant email or message you sent \u2014 one where you were making an ask or sharing a recommendation.\n\nFind your actual point. Where does it appear? Line one? Line five? The second-to-last paragraph?\n\nNow rewrite just the opening two sentences so that someone who reads only those two sentences gets the complete bottom line.\n\nThat's what BLUF looks like in practice."
+    "morning_challenge": "Pull up the last significant email or message you sent — one where you were making an ask or sharing a recommendation.\n\nFind your actual point. Where does it appear? Line one? Line five? The second-to-last paragraph?\n\nNow rewrite just the opening two sentences so that someone who reads only those two sentences gets the complete bottom line.\n\nThat's what BLUF looks like in practice."
   },
   "midday": {
-    "reframe": "Burying your point isn't modesty \u2014 it's friction. Every sentence between your opening and your ask is a sentence the reader has to work through before they can help you.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 U.S. ARMY REGULATION 25-50",
+    "reframe": "Burying your point isn't modesty — it's friction. Every sentence between your opening and your ask is a sentence the reader has to work through before they can help you.",
+    "itw_label": "IN THE WILD — TYPE A · U.S. ARMY REGULATION 25-50",
     "itw_paragraphs": [
-      "Army Regulation 25-50 \u2014 titled Information Management: Records Management: Preparing and Managing Correspondence \u2014 is the U.S. Army's official standard for written communication. It governs how memos, emails, and official correspondence are structured across all branches. One of its core mandates: army writing will be concise, organized, and to the point, with the main point \u2014 the bottom line \u2014 presented upfront.",
+      "Army Regulation 25-50 — titled Information Management: Records Management: Preparing and Managing Correspondence — is the U.S. Army's official standard for written communication. It governs how memos, emails, and official correspondence are structured across all branches. One of its core mandates: army writing will be concise, organized, and to the point, with the main point — the bottom line — presented upfront.",
       "The regulation exists because the cost of unclear communication in military contexts is high and immediate. A commander reading a field report during a mission doesn't have time to parse a narrative structure to find the operational recommendation. The recommendation comes first. The supporting detail follows for those who need it. This structure ensures that the person with the least time still gets the most critical information.",
-      "The insight that transferred from military to professional contexts is that most knowledge workers are, in their own way, in the same situation as that commander. They are processing more messages than they can fully read, making decisions faster than the detail warrants, and constantly triaging what gets full attention versus a quick scan. BLUF is a structural response to that reality \u2014 it front-loads the value so that partial attention still produces full comprehension of the most important thing."
+      "The insight that transferred from military to professional contexts is that most knowledge workers are, in their own way, in the same situation as that commander. They are processing more messages than they can fully read, making decisions faster than the detail warrants, and constantly triaging what gets full attention versus a quick scan. BLUF is a structural response to that reality — it front-loads the value so that partial attention still produces full comprehension of the most important thing."
     ],
     "quote": "Army writing will be concise, organized, and to the point. Give members of Congress the Bottom Line Up Front; be direct and to the point using clear, concise, and straightforward language.",
-    "attribution": "Army Regulation 25-50 \u2014 Information Management: Records Management: Preparing and Managing Correspondence, U.S. Department of the Army",
-    "midday_nudge": "Before you send your next message or email today \u2014 any message \u2014 ask: does line one contain the bottom line? If not, move it there before you hit send. Do it every time today and notice how the responses change."
+    "attribution": "Army Regulation 25-50 — Information Management: Records Management: Preparing and Managing Correspondence, U.S. Department of the Army",
+    "midday_nudge": "Before you send your next message or email today — any message — ask: does line one contain the bottom line? If not, move it there before you hit send. Do it every time today and notice how the responses change."
   },
   "quiz": [
     {
@@ -36,48 +36,48 @@
         "\"I wanted to reach out because our team has been working on something we think could have real impact, and I'd love to walk you through the thinking before making any formal ask...\"",
         "\"I'm requesting approval for $40K to pilot a new customer onboarding program. Details and ROI projections are below.\"",
         "\"As you may know, our onboarding completion rates have been a challenge for the last two quarters, which has led us to explore some potential solutions...\"",
-        "\"Quick question for you when you have a moment \u2014 would love your thoughts on something our team has been working through.\""
+        "\"Quick question for you when you have a moment — would love your thoughts on something our team has been working through.\""
       ],
       "correct": 1,
-      "explanation": "Option B leads with the ask \u2014 the actual bottom line \u2014 in the first sentence. The reader knows immediately what is being requested and what's coming next. Options A, C, and D all delay the point: A buries the ask in a future conversation, C opens with context that makes the reader work to infer the direction, and D is so vague it communicates nothing. BLUF doesn't mean stripping out context \u2014 it means putting the conclusion before the context, not after it."
+      "explanation": "Option B leads with the ask — the actual bottom line — in the first sentence. The reader knows immediately what is being requested and what's coming next. Options A, C, and D all delay the point: A buries the ask in a future conversation, C opens with context that makes the reader work to infer the direction, and D is so vague it communicates nothing. BLUF doesn't mean stripping out context — it means putting the conclusion before the context, not after it."
     },
     {
-      "question": "Why does the U.S. Army's writing standard require the bottom line to appear first \u2014 rather than building to a conclusion the way most narrative writing does?",
+      "question": "Why does the U.S. Army's writing standard require the bottom line to appear first — rather than building to a conclusion the way most narrative writing does?",
       "options": [
         "Military personnel are trained to read only the first paragraph of any document",
-        "In high-stakes, time-compressed environments, a reader may not finish the message \u2014 front-loading the most important information ensures it lands even with partial attention",
+        "In high-stakes, time-compressed environments, a reader may not finish the message — front-loading the most important information ensures it lands even with partial attention",
         "The Army found that deductive writing produces shorter documents overall, reducing paper consumption",
         "Building to a conclusion is considered manipulative in official government communication"
       ],
       "correct": 1,
-      "explanation": "The regulation exists because the person reading a field report or operational memo may not have time to finish it \u2014 and if the key recommendation is in paragraph four, it may never reach them. Front-loading the bottom line is a structural guarantee that the most critical information transfers even under time pressure or incomplete reading. This same dynamic applies in any context where attention is limited: if partial reading produces full comprehension of the main point, the communication has succeeded even in the worst case."
+      "explanation": "The regulation exists because the person reading a field report or operational memo may not have time to finish it — and if the key recommendation is in paragraph four, it may never reach them. Front-loading the bottom line is a structural guarantee that the most critical information transfers even under time pressure or incomplete reading. This same dynamic applies in any context where attention is limited: if partial reading produces full comprehension of the main point, the communication has succeeded even in the worst case."
     },
     {
-      "question": "A colleague sends a Slack message that reads: 'Hey, so I've been looking at the Q2 data and there are a few things worth flagging \u2014 been going back and forth on how to frame this but basically what I'm seeing is that we may want to reconsider the current approach.' What has gone wrong?",
+      "question": "A colleague sends a Slack message that reads: 'Hey, so I've been looking at the Q2 data and there are a few things worth flagging — been going back and forth on how to frame this but basically what I'm seeing is that we may want to reconsider the current approach.' What has gone wrong?",
       "options": [
         "The message is too short to convey the full picture",
-        "The message violates BLUF \u2014 it builds toward a point rather than stating it, forcing the reader to infer what the actual issue or ask is before they even know whether to engage",
+        "The message violates BLUF — it builds toward a point rather than stating it, forcing the reader to infer what the actual issue or ask is before they even know whether to engage",
         "Slack is not an appropriate channel for sharing data analysis",
         "The hedging language signals low confidence, which undermines the credibility of the finding"
       ],
       "correct": 1,
-      "explanation": "The message never states the bottom line. The reader learns that something is worth flagging, that the colleague is uncertain how to frame it, and that some reconsideration may be warranted \u2014 but they don't know what the problem is, what the recommendation is, or what response is needed. A BLUF version might open: 'We should reconsider the current Q2 strategy \u2014 here's what the data is showing.' Same information, completely different cognitive load for the reader. The hedging isn't the core problem; the structure is."
+      "explanation": "The message never states the bottom line. The reader learns that something is worth flagging, that the colleague is uncertain how to frame it, and that some reconsideration may be warranted — but they don't know what the problem is, what the recommendation is, or what response is needed. A BLUF version might open: 'We should reconsider the current Q2 strategy — here's what the data is showing.' Same information, completely different cognitive load for the reader. The hedging isn't the core problem; the structure is."
     }
   ],
   "closing": "BLUF isn't about being blunt. It's about respecting the reader's time enough to give them the point before the explanation. That's a form of clarity that most people never practice deliberately.",
   "sources": [
     {
-      "label": "Army Regulation 25-50 \u2014 Information Management: Records Management: Preparing and Managing Correspondence, U.S. Department of the Army",
+      "label": "Army Regulation 25-50 — Information Management: Records Management: Preparing and Managing Correspondence, U.S. Department of the Army",
       "detail": "The official U.S. Army correspondence standard that codifies BLUF as a required writing practice. Mandates that army writing be concise, organized, and to the point, with the main point presented upfront. The foundational institutional source for the BLUF principle.",
       "url": "https://armypubs.army.mil/epubs/DR_pubs/DR_a/ARN34697-AR_25-50-000-WEB-1.pdf"
     },
     {
-      "label": "Asplund, J-E. \u2014 BLUF: The Military Standard That Can Make Your Writing More Powerful, Animalz, 2019 (revised 2026)",
+      "label": "Asplund, J-E. — BLUF: The Military Standard That Can Make Your Writing More Powerful, Animalz, 2019 (revised 2026)",
       "detail": "Widely cited professional treatment of BLUF applied to business and content communication. Covers how the principle transfers from military correspondence to knowledge work writing.",
       "url": "https://www.animalz.co/blog/bottom-line-up-front"
     }
   ],
-  "ai_prompt": "I have a message I need to send \u2014 an email, proposal, or update \u2014 and I want to rewrite it using BLUF. Help me identify the actual bottom line and restructure it so the most important thing comes first. Ask me what the message is and who it's going to before you rewrite anything. Here's what I'm working with: [paste your draft or describe the situation]",
+  "ai_prompt": "I have a message I need to send — an email, proposal, or update — and I want to rewrite it using BLUF. Help me identify the actual bottom line and restructure it so the most important thing comes first. Ask me what the message is and who it's going to before you rewrite anything. Here's what I'm working with: [paste your draft or describe the situation]",
   "verified": true,
   "verified_by": "Matthew",
   "verified_date": "2026-06-10"

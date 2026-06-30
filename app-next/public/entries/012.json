@@ -1,6 +1,6 @@
 {
   "lockin_type": "apply",
-  "editionId": "CM.3",
+  "editionId": "CM.2",
   "category": "Communication",
   "categoryTag": "COMM",
   "concept": "The Ladder of Inference",
@@ -9,21 +9,21 @@
   "morning": {
     "hook": "By the time most people act on a conclusion, they've forgotten they ever made an assumption.",
     "explanation_paragraphs": [
-      "Here's a scenario. A colleague doesn't respond to your message for two days. You notice it. You recall that last week's meeting felt a little tense. You conclude they're avoiding you \u2014 probably frustrated about something you said. You decide to give them space rather than push. Two days later you find out their inbox was buried and they hadn't seen the message. The whole story you built was fiction, but the behavior it produced was real.",
-      "This is what organizational psychologist Chris Argyris called the Ladder of Inference \u2014 a model he developed to explain how humans move from observable data to action, often without realizing they've skipped several steps in between. Peter Senge brought the framework to a wider audience in The Fifth Discipline Fieldbook (1994), where it became one of the core tools of organizational learning.",
-      "The ladder has seven rungs. At the bottom: reality \u2014 the raw, observable facts. Then: selected data (what you chose to pay attention to). Then: interpreted meaning (what you decided it meant). Then: assumptions (what you filled in without checking). Then: conclusions. Then: beliefs. Then, at the top: actions. Most people spend their time at the top of the ladder without realizing how much of the climb was unconscious.",
-      "The problem Argyris identified is what he called the reflexive loop: your beliefs at the top of the ladder influence which data you select at the bottom. You don't just climb the ladder once \u2014 you run it in a loop, constantly filtering new information through conclusions you've already reached. Over time, the ladder becomes invisible. You stop seeing it as reasoning and start seeing it as reality."
+      "Here's a scenario. A colleague doesn't respond to your message for two days. You notice it. You recall that last week's meeting felt a little tense. You conclude they're avoiding you — probably frustrated about something you said. You decide to give them space rather than push. Two days later you find out their inbox was buried and they hadn't seen the message. The whole story you built was fiction, but the behavior it produced was real.",
+      "This is what organizational psychologist Chris Argyris called the Ladder of Inference — a model he developed to explain how humans move from observable data to action, often without realizing they've skipped several steps in between. Peter Senge brought the framework to a wider audience in The Fifth Discipline Fieldbook (1994), where it became one of the core tools of organizational learning.",
+      "The ladder has seven rungs. At the bottom: reality — the raw, observable facts. Then: selected data (what you chose to pay attention to). Then: interpreted meaning (what you decided it meant). Then: assumptions (what you filled in without checking). Then: conclusions. Then: beliefs. Then, at the top: actions. Most people spend their time at the top of the ladder without realizing how much of the climb was unconscious.",
+      "The problem Argyris identified is what he called the reflexive loop: your beliefs at the top of the ladder influence which data you select at the bottom. You don't just climb the ladder once — you run it in a loop, constantly filtering new information through conclusions you've already reached. Over time, the ladder becomes invisible. You stop seeing it as reasoning and start seeing it as reality."
     ],
-    "why_today": "The Ladder of Inference remains one of the most widely taught frameworks in organizational psychology and leadership development. Asana's March 2026 resource guide on the model identifies it as one of the most practical tools for reducing misunderstanding in team environments \u2014 particularly relevant as more communication happens asynchronously, where the absence of tone and body language gives the ladder more rungs to climb unchecked.",
-    "morning_challenge": "Think of a recent situation where you reacted to someone \u2014 a colleague, a partner, anyone \u2014 and later found out you'd misread it.\n\nTrace the ladder backward: What did you actually observe? What did you select from that observation? What meaning did you assign? What assumption did you make? What conclusion did you reach?\n\nAt which rung did you leave the facts behind?"
+    "why_today": "The Ladder of Inference remains one of the most widely taught frameworks in organizational psychology and leadership development. Asana's March 2026 resource guide on the model identifies it as one of the most practical tools for reducing misunderstanding in team environments — particularly relevant as more communication happens asynchronously, where the absence of tone and body language gives the ladder more rungs to climb unchecked.",
+    "morning_challenge": "Think of a recent situation where you reacted to someone — a colleague, a partner, anyone — and later found out you'd misread it.\n\nTrace the ladder backward: What did you actually observe? What did you select from that observation? What meaning did you assign? What assumption did you make? What conclusion did you reach?\n\nAt which rung did you leave the facts behind?"
   },
   "midday": {
     "reframe": "You're not reacting to what happened. You're reacting to your interpretation of what you selected from what happened.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 SENGE, THE FIFTH DISCIPLINE FIELDBOOK (1994) / ASANA (MARCH 2026)",
+    "itw_label": "IN THE WILD — TYPE A · SENGE, THE FIFTH DISCIPLINE FIELDBOOK (1994) / ASANA (MARCH 2026)",
     "itw_paragraphs": [
-      "In The Fifth Discipline Fieldbook, Senge's team wrote: 'We live in a world of self-generating beliefs which remain largely untested. We adopt those beliefs because they are based on conclusions, which are inferred from what we observe, plus our past experience.' The ladder describes the mechanism by which those untested beliefs form \u2014 and why they feel so certain once they do. By the time you reach a conclusion, the rungs below it have become invisible.",
+      "In The Fifth Discipline Fieldbook, Senge's team wrote: 'We live in a world of self-generating beliefs which remain largely untested. We adopt those beliefs because they are based on conclusions, which are inferred from what we observe, plus our past experience.' The ladder describes the mechanism by which those untested beliefs form — and why they feel so certain once they do. By the time you reach a conclusion, the rungs below it have become invisible.",
       "Asana's March 2026 guide on the model notes that the Ladder of Inference is especially consequential in team communication because misunderstandings compound. One person climbs the ladder based on an ambiguous message. They act on the conclusion. The other person observes that action, builds their own ladder from it, and acts on that. Two people are now operating from separate constructed realities, neither of which was ever checked against the facts.",
-      "The correction Argyris proposed wasn't to slow down all reasoning \u2014 that's not practical. It was to make the ladder visible as a shared tool: to be able to say 'here's the data I observed, here's the meaning I assigned, here's the assumption I made \u2014 does that match what you intended?' Making the climb explicit is what allows it to be corrected before it becomes action."
+      "The correction Argyris proposed wasn't to slow down all reasoning — that's not practical. It was to make the ladder visible as a shared tool: to be able to say 'here's the data I observed, here's the meaning I assigned, here's the assumption I made — does that match what you intended?' Making the climb explicit is what allows it to be corrected before it becomes action."
     ],
     "quote": "We live in a world of self-generating beliefs which remain largely untested. We adopt those beliefs because they are based on conclusions, which are inferred from what we observe, plus our past experience.",
     "attribution": "Rick Ross, in Peter Senge et al., The Fifth Discipline Fieldbook (1994)",
@@ -34,56 +34,56 @@
       "question": "Argyris identified what he called the 'reflexive loop' as one of the most dangerous features of the Ladder of Inference. What does it describe?",
       "options": [
         "The tendency to repeat the same reasoning errors across similar situations, even after being corrected once",
-        "The way beliefs formed at the top of the ladder filter which data you select at the bottom \u2014 meaning your conclusions actively shape what you notice, creating a self-reinforcing cycle",
+        "The way beliefs formed at the top of the ladder filter which data you select at the bottom — meaning your conclusions actively shape what you notice, creating a self-reinforcing cycle",
         "The reflex to defend a conclusion once it's been stated publicly, making it harder to revise even when new data arrives",
         "The pattern of inferring other people's intentions from their behavior without asking them directly"
       ],
       "correct": 1,
-      "explanation": "The reflexive loop means the ladder isn't a one-time climb \u2014 it runs in a continuous cycle. The beliefs and conclusions you've already reached determine which data you pay attention to at the bottom of the ladder. You filter new information through old conclusions, which reinforces those conclusions, which further shapes your selection. Over time the ladder becomes invisible and the conclusions feel like facts."
+      "explanation": "The reflexive loop means the ladder isn't a one-time climb — it runs in a continuous cycle. The beliefs and conclusions you've already reached determine which data you pay attention to at the bottom of the ladder. You filter new information through old conclusions, which reinforces those conclusions, which further shapes your selection. Over time the ladder becomes invisible and the conclusions feel like facts."
     },
     {
-      "question": "A manager reads an email from a team member that says 'I'll get it done.' The manager interprets this as dismissive \u2014 the team member always says that and then misses the deadline. The manager decides not to follow up, assuming the team member finds it micromanaging. The deadline is missed. At which rung did the reasoning go wrong?",
+      "question": "A manager reads an email from a team member that says 'I'll get it done.' The manager interprets this as dismissive — the team member always says that and then misses the deadline. The manager decides not to follow up, assuming the team member finds it micromanaging. The deadline is missed. At which rung did the reasoning go wrong?",
       "options": [
-        "At the bottom rung \u2014 the manager failed to observe the full situation because they only read part of the email",
-        "At the selected data rung \u2014 the manager chose to focus on the phrase 'I'll get it done' while ignoring other signals that might have been present",
-        "At the assumptions rung \u2014 the manager filled in a meaning ('dismissive') and a motive ('finds follow-up micromanaging') that were never verified, and acted on both",
-        "At the actions rung \u2014 the manager's decision not to follow up was the error, and better actions could have been taken even from the same conclusion"
+        "At the bottom rung — the manager failed to observe the full situation because they only read part of the email",
+        "At the selected data rung — the manager chose to focus on the phrase 'I'll get it done' while ignoring other signals that might have been present",
+        "At the assumptions rung — the manager filled in a meaning ('dismissive') and a motive ('finds follow-up micromanaging') that were never verified, and acted on both",
+        "At the actions rung — the manager's decision not to follow up was the error, and better actions could have been taken even from the same conclusion"
       ],
       "correct": 2,
-      "explanation": "The manager had observable data: the phrase 'I'll get it done.' They selected it, assigned meaning (dismissive), made an assumption about the team member's attitude toward follow-up, and acted on that assumption. None of those rungs were checked. The assumption that the team member finds follow-up micromanaging was never verified \u2014 it was inferred from a pattern, filled in without confirmation, and treated as fact."
+      "explanation": "The manager had observable data: the phrase 'I'll get it done.' They selected it, assigned meaning (dismissive), made an assumption about the team member's attitude toward follow-up, and acted on that assumption. None of those rungs were checked. The assumption that the team member finds follow-up micromanaging was never verified — it was inferred from a pattern, filled in without confirmation, and treated as fact."
     },
     {
       "question": "The Ladder of Inference is taught as a communication tool, not just a personal reasoning model. How does making the ladder explicit between two people change a conversation?",
       "options": [
         "It slows the conversation down enough that both people have time to reconsider their positions before committing to them",
         "It gives one person a structured way to correct the other's faulty reasoning without appearing confrontational",
-        "It creates a shared vocabulary for tracing reasoning \u2014 both people can say 'here's the data I saw, here's what I assumed' \u2014 which allows mismatches to be identified and corrected before they become action",
+        "It creates a shared vocabulary for tracing reasoning — both people can say 'here's the data I saw, here's what I assumed' — which allows mismatches to be identified and corrected before they become action",
         "It removes emotion from the conversation by shifting the focus from what people feel to what they observe"
       ],
       "correct": 2,
-      "explanation": "Making the ladder explicit as a shared tool means both parties can show their work \u2014 not to win an argument, but to find where the reasoning diverged. 'Here's what I observed, here's the meaning I assigned, here's the assumption I made' gives the other person something specific to respond to. Misunderstandings that would otherwise compound into action can be caught at the assumption or interpretation rung, before they produce consequences."
+      "explanation": "Making the ladder explicit as a shared tool means both parties can show their work — not to win an argument, but to find where the reasoning diverged. 'Here's what I observed, here's the meaning I assigned, here's the assumption I made' gives the other person something specific to respond to. Misunderstandings that would otherwise compound into action can be caught at the assumption or interpretation rung, before they produce consequences."
     }
   ],
   "closing": "The conclusion felt obvious because you forgot you made an assumption to get there.",
-  "ai_prompt": "I'm trying to understand a situation where I think I may have climbed the Ladder of Inference \u2014 where I moved from an observation to a conclusion without fully checking my assumptions. Help me trace my reasoning rung by rung: what I actually observed, what I selected, what meaning I assigned, what I assumed, and what conclusion I reached. Then help me identify where I left the facts behind and what I'd need to verify before acting. Here's the situation: [describe what happened and how you reacted]",
+  "ai_prompt": "I'm trying to understand a situation where I think I may have climbed the Ladder of Inference — where I moved from an observation to a conclusion without fully checking my assumptions. Help me trace my reasoning rung by rung: what I actually observed, what I selected, what meaning I assigned, what I assumed, and what conclusion I reached. Then help me identify where I left the facts behind and what I'd need to verify before acting. Here's the situation: [describe what happened and how you reacted]",
   "sources": [
     {
-      "label": "Argyris, C. \u2014 Overcoming Organizational Defenses: Facilitating Organizational Learning. Allyn and Bacon, 1990.",
+      "label": "Argyris, C. — Overcoming Organizational Defenses: Facilitating Organizational Learning. Allyn and Bacon, 1990.",
       "detail": "Primary source for the Ladder of Inference framework. Argyris developed the model to explain how untested beliefs form and drive organizational behavior.",
       "url": "https://asana.com/resources/ladder-of-inference",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Senge, P., Kleiner, A., Roberts, C., Ross, R., & Smith, B. \u2014 The Fifth Discipline Fieldbook. Doubleday, 1994.",
-      "detail": "Popularized the Ladder of Inference for a broad organizational audience. Rick Ross's chapter (pp. 242\u2013246) contains the quote used in the midday section and the core illustration of the model.",
+      "label": "Senge, P., Kleiner, A., Roberts, C., Ross, R., & Smith, B. — The Fifth Discipline Fieldbook. Doubleday, 1994.",
+      "detail": "Popularized the Ladder of Inference for a broad organizational audience. Rick Ross's chapter (pp. 242–246) contains the quote used in the midday section and the core illustration of the model.",
       "url": "https://cdn.edreports.org/legacy/files/Ladder-of-Inference-OCDE.pdf",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Asana \u2014 How to Use the Ladder of Inference for Better Decisions. Asana Resources, March 14, 2026.",
-      "detail": "Contemporary application guide covering the model's seven rungs, the reflexive loop, and team communication implications \u2014 particularly for asynchronous environments.",
+      "label": "Asana — How to Use the Ladder of Inference for Better Decisions. Asana Resources, March 14, 2026.",
+      "detail": "Contemporary application guide covering the model's seven rungs, the reflexive loop, and team communication implications — particularly for asynchronous environments.",
       "url": "https://asana.com/resources/ladder-of-inference",
       "verified": true,
       "verified_by": "Matthew"

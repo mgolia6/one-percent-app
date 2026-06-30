@@ -7,72 +7,72 @@
   "accent": "#47FFE8",
   "accentDim": "rgba(71,255,232,0.10)",
   "morning": {
-    "hook": "When you search for 'car,' you want results about automobiles, not results that contain the exact letters c-a-r. AI handles this through a technology called embeddings \u2014 and it's the foundation of almost every intelligent search experience you use.",
+    "hook": "When you search for 'car,' you want results about automobiles, not results that contain the exact letters c-a-r. AI handles this through a technology called embeddings — and it's the foundation of almost every intelligent search experience you use.",
     "explanation_paragraphs": [
-      "Type 'affordable transportation to work' into a smart search box and you might get results about buses, bikes, ride-sharing, and used cars \u2014 none of which contain your exact phrase. Type the same phrase into a simple keyword search and you get documents that contain those exact words in that order. The difference between these two experiences is embeddings.",
-      "An embedding is a numerical representation of meaning. AI models are trained to convert text (words, sentences, documents) into lists of numbers \u2014 vectors \u2014 where similar meanings produce similar vectors. 'Car,' 'automobile,' 'vehicle,' and 'ride' will produce vectors that are close to each other in this numerical space. 'Car' and 'banana' will produce vectors far apart. The model has learned to encode meaning as geometry: concepts that relate to each other in human understanding are positioned near each other in the vector space.",
-      "Vector search uses this property to find similar content rather than matching content. Instead of asking 'which documents contain these words?', vector search asks 'which documents have vectors similar to the vector of this query?' The result is semantic search \u2014 search that understands what you mean rather than matching what you typed. This is the technology behind intelligent search, recommendation engines, and the RAG systems that let AI models retrieve relevant documents before answering a question.",
-      "For anyone working in product, data, or AI: embeddings and vector search are now commodity infrastructure. OpenAI, Cohere, Anthropic, and Google all provide embedding APIs. Vector databases \u2014 Pinecone, Weaviate, Chroma, pgvector \u2014 are standard components of AI application architecture. If you're building anything that needs to 'find similar things,' 'understand what a document is about,' or 'match a question to relevant content,' you are almost certainly using embeddings, whether you know it or not."
+      "Type 'affordable transportation to work' into a smart search box and you might get results about buses, bikes, ride-sharing, and used cars — none of which contain your exact phrase. Type the same phrase into a simple keyword search and you get documents that contain those exact words in that order. The difference between these two experiences is embeddings.",
+      "An embedding is a numerical representation of meaning. AI models are trained to convert text (words, sentences, documents) into lists of numbers — vectors — where similar meanings produce similar vectors. 'Car,' 'automobile,' 'vehicle,' and 'ride' will produce vectors that are close to each other in this numerical space. 'Car' and 'banana' will produce vectors far apart. The model has learned to encode meaning as geometry: concepts that relate to each other in human understanding are positioned near each other in the vector space.",
+      "Vector search uses this property to find similar content rather than matching content. Instead of asking 'which documents contain these words?', vector search asks 'which documents have vectors similar to the vector of this query?' The result is semantic search — search that understands what you mean rather than matching what you typed. This is the technology behind intelligent search, recommendation engines, and the RAG systems that let AI models retrieve relevant documents before answering a question.",
+      "For anyone working in product, data, or AI: embeddings and vector search are now commodity infrastructure. OpenAI, Cohere, Anthropic, and Google all provide embedding APIs. Vector databases — Pinecone, Weaviate, Chroma, pgvector — are standard components of AI application architecture. If you're building anything that needs to 'find similar things,' 'understand what a document is about,' or 'match a question to relevant content,' you are almost certainly using embeddings, whether you know it or not."
     ],
     "why_today": "Embedding models and vector search are foundational components of modern AI application architecture as of 2024-2026. OpenAI's text-embedding-3 series (January 2024) is a current leading embedding API. Theoretical foundation: Mikolov, T. et al. (2013). Distributed Representations of Words and Phrases. NeurIPS 2013 (the Word2Vec paper).",
-    "morning_challenge": "Think about a search or recommendation experience you use regularly that seems to understand what you mean rather than just match keywords \u2014 Spotify's Discover Weekly, LinkedIn job suggestions, a smart document search.\n\nThat experience almost certainly uses embeddings and vector search under the hood. Now think: is there a search or retrieval problem in your work that currently runs on keyword matching? Could semantic search change what's findable?"
+    "morning_challenge": "Think about a search or recommendation experience you use regularly that seems to understand what you mean rather than just match keywords — Spotify's Discover Weekly, LinkedIn job suggestions, a smart document search.\n\nThat experience almost certainly uses embeddings and vector search under the hood. Now think: is there a search or retrieval problem in your work that currently runs on keyword matching? Could semantic search change what's findable?"
   },
   "midday": {
-    "reframe": "Keyword search finds what you asked for. Vector search finds what you meant. For most real-world information needs, those are different things \u2014 and the gap between them is where embeddings live.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 MIKOLOV ET AL., WORD2VEC, NEURIPS 2013. OPENAI TEXT-EMBEDDING-3, 2024. PINECONE, WEAVIATE, PGVECTOR.",
+    "reframe": "Keyword search finds what you asked for. Vector search finds what you meant. For most real-world information needs, those are different things — and the gap between them is where embeddings live.",
+    "itw_label": "IN THE WILD — TYPE A · MIKOLOV ET AL., WORD2VEC, NEURIPS 2013. OPENAI TEXT-EMBEDDING-3, 2024. PINECONE, WEAVIATE, PGVECTOR.",
     "itw_paragraphs": [
-      "Tomas Mikolov's Word2Vec paper at Google in 2013 demonstrated for the first time at scale that neural networks could learn meaningful geometric relationships between words. The famous example: the vector for 'King' minus 'Man' plus 'Woman' produces a vector very close to 'Queen.' The model hadn't been told about the concept of royalty or gender \u2014 it had learned the relationship from the statistical patterns in text. This was the proof-of-concept that semantic meaning could be encoded as numbers.",
-      "Modern embedding models \u2014 OpenAI's text-embedding-3-large, Cohere's Embed 3, Google's text-embedding-gecko \u2014 extend this concept to full documents and multilingual content, producing vectors that capture semantic relationships across thousands of dimensions. Two documents discussing the same concept but in completely different words will have similar vectors; two documents that share many words but discuss different topics will have dissimilar vectors.",
+      "Tomas Mikolov's Word2Vec paper at Google in 2013 demonstrated for the first time at scale that neural networks could learn meaningful geometric relationships between words. The famous example: the vector for 'King' minus 'Man' plus 'Woman' produces a vector very close to 'Queen.' The model hadn't been told about the concept of royalty or gender — it had learned the relationship from the statistical patterns in text. This was the proof-of-concept that semantic meaning could be encoded as numbers.",
+      "Modern embedding models — OpenAI's text-embedding-3-large, Cohere's Embed 3, Google's text-embedding-gecko — extend this concept to full documents and multilingual content, producing vectors that capture semantic relationships across thousands of dimensions. Two documents discussing the same concept but in completely different words will have similar vectors; two documents that share many words but discuss different topics will have dissimilar vectors.",
       "The vector database ecosystem grew rapidly in 2022-2024 as RAG became a standard AI application pattern. Pinecone launched as a managed vector database in 2021; Weaviate, Qdrant, and Chroma followed. The incumbent relational databases added vector support: pgvector for PostgreSQL became the default for teams that didn't want to manage a separate vector database. By 2025, vector search capability was available in virtually every major cloud database offering."
     ],
     "quote": "Embeddings are how AI systems represent what things mean, not just what they say. They are the layer that makes AI actually understand.",
     "attribution": "Paraphrase of the conceptual framework established by Mikolov et al., NeurIPS 2013",
-    "midday_nudge": "If you use AI for document search, customer support, or recommendations in your work: find out if it's using keyword search or vector search. If it's keyword search, that's a specific and solvable gap \u2014 semantic search over the same content would surface meaningfully different and better results."
+    "midday_nudge": "If you use AI for document search, customer support, or recommendations in your work: find out if it's using keyword search or vector search. If it's keyword search, that's a specific and solvable gap — semantic search over the same content would surface meaningfully different and better results."
   },
   "quiz": [
     {
       "question": "What is an embedding, and why does it enable semantic search that keyword search cannot?",
       "options": [
         "An embedding is a compressed version of a document that takes less storage space, making search faster",
-        "An embedding is a numerical vector representation of meaning \u2014 similar meanings produce similar vectors \u2014 enabling search to find conceptually related content rather than lexically matching content",
+        "An embedding is a numerical vector representation of meaning — similar meanings produce similar vectors — enabling search to find conceptually related content rather than lexically matching content",
         "An embedding is a metadata tag assigned to documents by AI models to enable categorization",
         "An embedding is a translation layer that converts queries into multiple languages for cross-lingual search"
       ],
       "correct": 1,
-      "explanation": "The key property of embeddings is that meaning is encoded as geometry: similar concepts produce vectors that are close to each other in the high-dimensional space. This enables a search for 'affordable transportation' to find documents about buses, bikes, and carpooling \u2014 because their vectors are geometrically close to the query vector \u2014 even though none of those documents contain the exact query phrase. Keyword search can only find lexical matches; vector search finds semantic neighbors."
+      "explanation": "The key property of embeddings is that meaning is encoded as geometry: similar concepts produce vectors that are close to each other in the high-dimensional space. This enables a search for 'affordable transportation' to find documents about buses, bikes, and carpooling — because their vectors are geometrically close to the query vector — even though none of those documents contain the exact query phrase. Keyword search can only find lexical matches; vector search finds semantic neighbors."
     },
     {
-      "question": "Mikolov's Word2Vec demonstration showed that 'King - Man + Woman \u2248 Queen' in vector space. What does this arithmetic demonstrate about how embeddings work?",
+      "question": "Mikolov's Word2Vec demonstration showed that 'King - Man + Woman ≈ Queen' in vector space. What does this arithmetic demonstrate about how embeddings work?",
       "options": [
         "That embedding models can do basic arithmetic with language, enabling mathematical operations on text",
-        "That the geometric relationships between word vectors encode meaningful semantic relationships \u2014 the model had learned that royalty and gender are related concepts through patterns in text, without being explicitly taught those relationships",
+        "That the geometric relationships between word vectors encode meaningful semantic relationships — the model had learned that royalty and gender are related concepts through patterns in text, without being explicitly taught those relationships",
         "That Word2Vec models understand the concept of analogy and can solve analogy problems reliably",
         "That simple linear algebra operations on word vectors can produce any desired word as output"
       ],
       "correct": 1,
-      "explanation": "The vector arithmetic demonstration reveals something profound: the model learned semantic structure \u2014 the relationship between male and female versions of concepts, between countries and their capitals \u2014 purely from patterns in large text corpora. It wasn't programmed with these relationships; it discovered them. The geometric relationships in the vector space mirror semantic relationships in human understanding."
+      "explanation": "The vector arithmetic demonstration reveals something profound: the model learned semantic structure — the relationship between male and female versions of concepts, between countries and their capitals — purely from patterns in large text corpora. It wasn't programmed with these relationships; it discovered them. The geometric relationships in the vector space mirror semantic relationships in human understanding."
     },
     {
       "question": "A product manager is evaluating whether to use vector search for their company's internal knowledge base. Which use case would most benefit from the switch from keyword to vector search?",
       "options": [
         "Finding a specific document when you know its exact title",
         "Searching for policy documents by exact policy number or code",
-        "Finding relevant troubleshooting guides when users describe a problem in their own words \u2014 'the thing keeps crashing when I do X' should surface guides about that error even if the guide never uses the word 'crashing'",
+        "Finding relevant troubleshooting guides when users describe a problem in their own words — 'the thing keeps crashing when I do X' should surface guides about that error even if the guide never uses the word 'crashing'",
         "Retrieving the most recently updated documents in a specific folder"
       ],
       "correct": 2,
-      "explanation": "Vector search's advantage is in the gap between how people describe a problem and the vocabulary used in the document that solves it. A troubleshooting guide might say 'application terminates unexpectedly upon executing function X' while the user searches for 'keeps crashing when I do X.' Keyword search finds nothing; vector search finds the semantically similar document. Use cases A, B, and D are exact-match retrieval \u2014 vector search adds no advantage for these."
+      "explanation": "Vector search's advantage is in the gap between how people describe a problem and the vocabulary used in the document that solves it. A troubleshooting guide might say 'application terminates unexpectedly upon executing function X' while the user searches for 'keeps crashing when I do X.' Keyword search finds nothing; vector search finds the semantically similar document. Use cases A, B, and D are exact-match retrieval — vector search adds no advantage for these."
     }
   ],
-  "closing": "Embeddings are invisible infrastructure \u2014 you almost never interact with them directly. But they're underneath nearly every AI experience that actually understands you rather than just matches you.",
+  "closing": "Embeddings are invisible infrastructure — you almost never interact with them directly. But they're underneath nearly every AI experience that actually understands you rather than just matches you.",
   "sources": [
     {
-      "label": "Mikolov, T. et al. \u2014 Distributed Representations of Words and Phrases and their Compositionality, NeurIPS 2013",
+      "label": "Mikolov, T. et al. — Distributed Representations of Words and Phrases and their Compositionality, NeurIPS 2013",
       "detail": "The Word2Vec paper that established embeddings as a practical technique for encoding semantic meaning as numerical vectors.",
       "url": "https://arxiv.org/abs/1310.4546"
     },
     {
-      "label": "OpenAI \u2014 Text Embeddings Documentation and text-embedding-3 Model Release, January 2024",
+      "label": "OpenAI — Text Embeddings Documentation and text-embedding-3 Model Release, January 2024",
       "detail": "Documents the current state of embedding APIs for production use.",
       "url": "https://platform.openai.com/docs/guides/embeddings"
     }

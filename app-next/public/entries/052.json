@@ -9,17 +9,17 @@
   "morning": {
     "hook": "People work twice as hard to avoid losing $100 as they do to gain $100. If you're only selling the upside, you're using half the available motivation.",
     "explanation_paragraphs": [
-      "You've built a strong value case. You've shown the ROI, the efficiency gains, the competitive advantage. The buyer nods, seems interested, and then does nothing. The deal stalls. What's happening? Buyers aren't just making decisions based on what they'll gain. They're also making decisions based on what they're afraid to lose \u2014 and that second force is measurably more powerful than the first.",
+      "You've built a strong value case. You've shown the ROI, the efficiency gains, the competitive advantage. The buyer nods, seems interested, and then does nothing. The deal stalls. What's happening? Buyers aren't just making decisions based on what they'll gain. They're also making decisions based on what they're afraid to lose — and that second force is measurably more powerful than the first.",
       "Loss aversion is one of the most replicated findings in behavioral economics. Daniel Kahneman and Amos Tversky documented it through their development of Prospect Theory in the late 1970s. Core finding: losses feel roughly twice as psychologically impactful as equivalent gains. A $500 loss feels approximately as bad as a $1,000 gain feels good. The pain of losing something is not symmetrical with the pleasure of acquiring the same thing.",
-      "For sales, the practical implication is a framing shift. Most salespeople are trained to sell the upside \u2014 here's what you'll gain. Loss aversion suggests that equal emphasis on what the buyer is currently losing, or will continue to lose by not acting, activates a more powerful motivational force.",
-      "There are two specific loss frames that research has validated as most effective. First: the status quo as loss \u2014 what is the buyer losing right now by not having this solution? Second: the missed opportunity as loss \u2014 if they delay, something they could have will no longer be available. Both are more psychologically motivating than equivalent gain frames \u2014 but they work because they're true."
+      "For sales, the practical implication is a framing shift. Most salespeople are trained to sell the upside — here's what you'll gain. Loss aversion suggests that equal emphasis on what the buyer is currently losing, or will continue to lose by not acting, activates a more powerful motivational force.",
+      "There are two specific loss frames that research has validated as most effective. First: the status quo as loss — what is the buyer losing right now by not having this solution? Second: the missed opportunity as loss — if they delay, something they could have will no longer be available. Both are more psychologically motivating than equivalent gain frames — but they work because they're true."
     ],
     "why_today": "In a tighter market, buyers default to doing nothing — budgets are frozen, committees have ballooned, and 'no decision' beats 'wrong decision' every time. Selling the upside just makes you one more optimistic vendor in the queue. The reps closing in this climate are the ones making the cost of staying put feel as real and ongoing as the price of moving.",
     "morning_challenge": "Take your current most-stalled deal. Write two versions of your value case:\n\nVersion 1 (gain frame): What the buyer gets by moving forward.\nVersion 2 (loss frame): What the buyer is losing every week they don't move forward.\n\nWhich version is more urgent? Which do you currently lead with?"
   },
   "midday": {
     "reframe": "The buyer isn't just evaluating what you're offering. They're weighing it against what they might lose by being wrong. Your job is to make the cost of inaction as visible as the benefit of action.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 KAHNEMAN & TVERSKY, ECONOMETRICA, 1979. KAHNEMAN, THINKING FAST AND SLOW, 2011. CIALDINI, INFLUENCE, 2006.",
+    "itw_label": "IN THE WILD — TYPE A · KAHNEMAN & TVERSKY, ECONOMETRICA, 1979. KAHNEMAN, THINKING FAST AND SLOW, 2011. CIALDINI, INFLUENCE, 2006.",
     "itw_paragraphs": [
       "Kahneman and Tversky's original Prospect Theory experiments used controlled monetary gambles. The consistent finding: people weighted losses more heavily than equivalent gains when making decisions, and their choices systematically deviated from what pure expected-value calculation would predict. The asymmetry was approximately 2:1.",
       "Cialdini's work on influence extended the loss aversion finding to persuasion contexts. In field experiments with home energy audits, homeowners who were told how much money they were losing by not insulating improved their insulation rates significantly more than homeowners told how much money they would save. Same information, opposite frame. The loss frame produced more action.",
@@ -27,62 +27,62 @@
     ],
     "quote": "Losses loom larger than gains. The asymmetry is real, it is large, and it is nearly universal.",
     "attribution": "Daniel Kahneman, Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
-    "midday_nudge": "Identify one active deal. Find one specific, quantifiable thing the buyer is losing right now because they don't have your solution. Not a gain they'd get \u2014 an actual ongoing cost. Put that number in your next follow-up. See what it does to the conversation."
+    "midday_nudge": "Identify one active deal. Find one specific, quantifiable thing the buyer is losing right now because they don't have your solution. Not a gain they'd get — an actual ongoing cost. Put that number in your next follow-up. See what it does to the conversation."
   },
   "quiz": [
     {
       "question": "Kahneman and Tversky found that the psychological impact of losses is approximately twice that of equivalent gains. What is the most direct implication for how a salesperson should frame their value case?",
       "options": [
         "Salespeople should avoid discussing risk or loss because it creates negative associations with the product",
-        "Equal time should be given to gain framing and loss framing \u2014 but since losses are psychologically weightier, accurately articulating what the buyer is currently losing will generally activate stronger motivation than gain framing alone",
+        "Equal time should be given to gain framing and loss framing — but since losses are psychologically weightier, accurately articulating what the buyer is currently losing will generally activate stronger motivation than gain framing alone",
         "The ROI calculation should be doubled when presenting it to account for the asymmetry",
-        "Loss framing only works for large purchases \u2014 for smaller deals, gain framing is more effective"
+        "Loss framing only works for large purchases — for smaller deals, gain framing is more effective"
       ],
       "correct": 1,
-      "explanation": "If losses are twice as motivating as equivalent gains, a sales conversation that only presents gains is underutilizing the available motivational force. The loss frame doesn't replace the gain frame \u2014 it activates a different and more powerful psychological driver. The most effective structure presents both: what you'll gain (the aspiration) and what you're currently losing (the urgency)."
+      "explanation": "If losses are twice as motivating as equivalent gains, a sales conversation that only presents gains is underutilizing the available motivational force. The loss frame doesn't replace the gain frame — it activates a different and more powerful psychological driver. The most effective structure presents both: what you'll gain (the aspiration) and what you're currently losing (the urgency)."
     },
     {
       "question": "A salesperson says: 'Every month you stay on your current system, you're losing approximately $40,000 in processing inefficiency.' This is an example of:",
       "options": [
-        "Artificial urgency \u2014 a manipulation tactic that creates false pressure",
-        "A status quo loss frame \u2014 articulating what the buyer is already losing in their current situation, which loss aversion research suggests is more motivating than presenting an equivalent gain of $40,000",
-        "Competitive positioning \u2014 framing the current vendor as a liability",
-        "A cost-of-delay calculation \u2014 a standard financial analysis unrelated to behavioral economics"
+        "Artificial urgency — a manipulation tactic that creates false pressure",
+        "A status quo loss frame — articulating what the buyer is already losing in their current situation, which loss aversion research suggests is more motivating than presenting an equivalent gain of $40,000",
+        "Competitive positioning — framing the current vendor as a liability",
+        "A cost-of-delay calculation — a standard financial analysis unrelated to behavioral economics"
       ],
       "correct": 1,
-      "explanation": "This is a status quo loss frame \u2014 it makes the cost of the current situation visible as active ongoing loss rather than absent gain. The key is that it's not manufactured. If the buyer is genuinely losing $40,000 per month in inefficiency, articulating that is accurate framing of a real cost. The loss aversion research says this frame will be more motivating than 'you could gain $40,000 per month.'"
+      "explanation": "This is a status quo loss frame — it makes the cost of the current situation visible as active ongoing loss rather than absent gain. The key is that it's not manufactured. If the buyer is genuinely losing $40,000 per month in inefficiency, articulating that is accurate framing of a real cost. The loss aversion research says this frame will be more motivating than 'you could gain $40,000 per month.'"
     },
     {
       "question": "Cialdini's home insulation study found that homeowners responded more strongly to loss framing than gain framing with the same dollar amount. What does this demonstrate?",
       "options": [
         "Negative framing is always more persuasive than positive framing, regardless of context",
-        "The same factual information, framed as ongoing loss versus potential gain, produces meaningfully different behavioral responses \u2014 suggesting that how you frame an economic argument matters as much as the economic argument itself",
+        "The same factual information, framed as ongoing loss versus potential gain, produces meaningfully different behavioral responses — suggesting that how you frame an economic argument matters as much as the economic argument itself",
         "People are more responsive to loss framing because they don't trust gain claims in sales contexts",
         "The effect only applies to commodity purchases like home insulation, not complex B2B decisions"
       ],
       "correct": 1,
-      "explanation": "The Cialdini finding is about framing, not content. The dollar amount was identical in both conditions \u2014 what changed was whether it was presented as a loss being incurred (more motivating) or a gain to be achieved (less motivating). In B2B sales, the same ROI analysis can be more or less compelling depending on whether it's structured as 'here's what you'll gain' versus 'here's what you're currently losing.'"
+      "explanation": "The Cialdini finding is about framing, not content. The dollar amount was identical in both conditions — what changed was whether it was presented as a loss being incurred (more motivating) or a gain to be achieved (less motivating). In B2B sales, the same ROI analysis can be more or less compelling depending on whether it's structured as 'here's what you'll gain' versus 'here's what you're currently losing.'"
     }
   ],
-  "closing": "The status quo isn't neutral. For your buyer, staying put is a daily decision to keep losing something. Your job is to make that visible \u2014 and let the math do the rest.",
+  "closing": "The status quo isn't neutral. For your buyer, staying put is a daily decision to keep losing something. Your job is to make that visible — and let the math do the rest.",
   "sources": [
     {
-      "label": "Kahneman, D. & Tversky, A. \u2014 Prospect Theory: An Analysis of Decision Under Risk, Econometrica, 47(2), 1979",
+      "label": "Kahneman, D. & Tversky, A. — Prospect Theory: An Analysis of Decision Under Risk, Econometrica, 47(2), 1979",
       "detail": "Foundational paper establishing loss aversion and Prospect Theory. Documents the 2:1 asymmetry between loss sensitivity and gain sensitivity.",
       "url": "https://www.jstor.org/stable/1914185"
     },
     {
-      "label": "Kahneman, D. \u2014 Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
+      "label": "Kahneman, D. — Thinking, Fast and Slow, Farrar, Straus and Giroux, 2011",
       "detail": "Comprehensive synthesis of behavioral economics research including loss aversion and framing effects.",
       "url": "https://us.macmillan.com/books/9780374533557/thinkingfastandslow"
     },
     {
-      "label": "Cialdini, R.B. \u2014 Influence: The Psychology of Persuasion, Harper Business, 2006",
+      "label": "Cialdini, R.B. — Influence: The Psychology of Persuasion, Harper Business, 2006",
       "detail": "Documents field experiments on loss framing in persuasion contexts including the home insulation study.",
       "url": "https://www.harpercollins.com/products/influence-robert-b-cialdini"
     }
   ],
-  "ai_prompt": "I want to reframe my value case for a stalled deal using loss aversion principles. Ask me about the deal \u2014 where it is, what the buyer's current situation looks like, and what they're probably losing by staying put \u2014 before we work on the framing. Here's the deal: [describe the opportunity and where it's stuck]",
+  "ai_prompt": "I want to reframe my value case for a stalled deal using loss aversion principles. Ask me about the deal — where it is, what the buyer's current situation looks like, and what they're probably losing by staying put — before we work on the framing. Here's the deal: [describe the opportunity and where it's stuck]",
   "verified": true,
   "verified_by": "claude_in_chrome_dead_drop",
   "verified_date": "2026-06-25"

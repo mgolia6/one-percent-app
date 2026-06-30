@@ -1,6 +1,6 @@
 {
   "lockin_type": "aware",
-  "editionId": "NC.3",
+  "editionId": "NC.1",
   "category": "Neuroscience & Cognition",
   "categoryTag": "NEURO & COGNITION",
   "concept": "Dopamine & Motivation",
@@ -9,51 +9,51 @@
   "morning": {
     "hook": "Dopamine isn't the pleasure chemical. It's the wanting chemical. And that distinction changes everything about how motivation actually works.",
     "explanation_paragraphs": [
-      "The popular understanding of dopamine goes like this: do something good, get a dopamine hit, feel pleasure. It's the brain's reward signal. Which is why people talk about dopamine spikes from social media likes, sugar, and Netflix. The problem is this understanding is mostly wrong \u2014 and the accurate version is far more useful.",
-      "In the 1990s, neuroscientist Wolfram Schultz made a foundational discovery studying dopamine neurons in primates. He found that dopamine doesn't fire at the moment of reward \u2014 it fires in anticipation of reward. When an animal learned that a stimulus predicted a reward, dopamine activity shifted backward in time to the moment the cue appeared, not when the reward arrived. The brain was firing on expectation, not satisfaction.",
-      "Kent Berridge at the University of Michigan pushed this further with what he called the wanting/liking distinction. Dopamine drives wanting \u2014 the motivation to pursue, the drive to act, the pull toward a goal. Liking \u2014 the actual hedonic pleasure of getting the thing \u2014 runs on a different neurochemical system entirely, primarily opioids. You can want something intensely and not particularly enjoy it once you have it. You can like something and not be especially motivated to pursue it. They're separate systems.",
-      "The practical implication is significant. If dopamine is about anticipation, then motivation is built in the approach \u2014 not the arrival. The person who is deeply engaged with their work isn't necessarily experiencing more pleasure from the output. They're experiencing more wanting during the process. Setting clear goals, creating visible progress markers, and building in moments of anticipation aren't just productivity tricks. They're dopaminergic architecture."
+      "The popular understanding of dopamine goes like this: do something good, get a dopamine hit, feel pleasure. It's the brain's reward signal. Which is why people talk about dopamine spikes from social media likes, sugar, and Netflix. The problem is this understanding is mostly wrong — and the accurate version is far more useful.",
+      "In the 1990s, neuroscientist Wolfram Schultz made a foundational discovery studying dopamine neurons in primates. He found that dopamine doesn't fire at the moment of reward — it fires in anticipation of reward. When an animal learned that a stimulus predicted a reward, dopamine activity shifted backward in time to the moment the cue appeared, not when the reward arrived. The brain was firing on expectation, not satisfaction.",
+      "Kent Berridge at the University of Michigan pushed this further with what he called the wanting/liking distinction. Dopamine drives wanting — the motivation to pursue, the drive to act, the pull toward a goal. Liking — the actual hedonic pleasure of getting the thing — runs on a different neurochemical system entirely, primarily opioids. You can want something intensely and not particularly enjoy it once you have it. You can like something and not be especially motivated to pursue it. They're separate systems.",
+      "The practical implication is significant. If dopamine is about anticipation, then motivation is built in the approach — not the arrival. The person who is deeply engaged with their work isn't necessarily experiencing more pleasure from the output. They're experiencing more wanting during the process. Setting clear goals, creating visible progress markers, and building in moments of anticipation aren't just productivity tricks. They're dopaminergic architecture."
     ],
-    "why_today": "In 2025, Robinson and Berridge published a 30-year retrospective on incentive sensitization theory in the Annual Review of Psychology \u2014 one of the field's most rigorous journals. The wanting/liking distinction has now been active in peer-reviewed research for three decades and continues to generate new findings about motivation, addiction, and decision-making. Understanding it correctly is more relevant than ever in a world designed to trigger wanting without delivering much liking.",
-    "morning_challenge": "Think about something you're currently procrastinating on \u2014 a project, a conversation, a task.\n\nNow ask: have you built any anticipation into it? Is there a clear next step that creates a pull, or is the whole thing sitting as an undifferentiated obligation?\n\nMotivation is upstream of action. If the wanting isn't there, the doing usually isn't either. What would make this thing feel like something to move toward?"
+    "why_today": "In 2025, Robinson and Berridge published a 30-year retrospective on incentive sensitization theory in the Annual Review of Psychology — one of the field's most rigorous journals. The wanting/liking distinction has now been active in peer-reviewed research for three decades and continues to generate new findings about motivation, addiction, and decision-making. Understanding it correctly is more relevant than ever in a world designed to trigger wanting without delivering much liking.",
+    "morning_challenge": "Think about something you're currently procrastinating on — a project, a conversation, a task.\n\nNow ask: have you built any anticipation into it? Is there a clear next step that creates a pull, or is the whole thing sitting as an undifferentiated obligation?\n\nMotivation is upstream of action. If the wanting isn't there, the doing usually isn't either. What would make this thing feel like something to move toward?"
   },
   "midday": {
-    "reframe": "You don't lack discipline. You may just lack dopaminergic architecture \u2014 clear goals, visible progress, and something to anticipate.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 ROBINSON & BERRIDGE, ANNUAL REVIEW OF PSYCHOLOGY (2025) / SCHULTZ REWARD PREDICTION ERROR",
+    "reframe": "You don't lack discipline. You may just lack dopaminergic architecture — clear goals, visible progress, and something to anticipate.",
+    "itw_label": "IN THE WILD — TYPE A · ROBINSON & BERRIDGE, ANNUAL REVIEW OF PSYCHOLOGY (2025) / SCHULTZ REWARD PREDICTION ERROR",
     "itw_paragraphs": [
-      "Robinson and Berridge's 2025 paper in the Annual Review of Psychology \u2014 a 30-year retrospective on incentive sensitization theory \u2014 consolidates three decades of research on the wanting/liking distinction. The core finding holds: dopamine drives the motivation to pursue rewards, not the pleasure of receiving them. The two systems are neurochemically distinct, and conflating them produces a systematically wrong model of why people do what they do.",
-      "Schultz's reward prediction error framework adds a second layer. Dopamine neurons don't just fire on anticipation \u2014 they fire specifically on unexpected reward. When a reward is fully predicted, dopamine activity flattens. The brain has already priced it in. This is why novelty and uncertainty are motivationally potent \u2014 they keep the prediction error signal alive. It's also why routine, even positive routine, can feel demotivating over time. The dopamine system habituates to the expected.",
-      "The design implications are direct. Environments built to maximize wanting \u2014 variable reward schedules, unpredictable notifications, endless scroll \u2014 exploit the prediction error system deliberately. Understanding this doesn't make the pull go away, but it makes it legible. You can recognize when your wanting is being manufactured versus when it's pointing at something that actually matters to you."
+      "Robinson and Berridge's 2025 paper in the Annual Review of Psychology — a 30-year retrospective on incentive sensitization theory — consolidates three decades of research on the wanting/liking distinction. The core finding holds: dopamine drives the motivation to pursue rewards, not the pleasure of receiving them. The two systems are neurochemically distinct, and conflating them produces a systematically wrong model of why people do what they do.",
+      "Schultz's reward prediction error framework adds a second layer. Dopamine neurons don't just fire on anticipation — they fire specifically on unexpected reward. When a reward is fully predicted, dopamine activity flattens. The brain has already priced it in. This is why novelty and uncertainty are motivationally potent — they keep the prediction error signal alive. It's also why routine, even positive routine, can feel demotivating over time. The dopamine system habituates to the expected.",
+      "The design implications are direct. Environments built to maximize wanting — variable reward schedules, unpredictable notifications, endless scroll — exploit the prediction error system deliberately. Understanding this doesn't make the pull go away, but it makes it legible. You can recognize when your wanting is being manufactured versus when it's pointing at something that actually matters to you."
     ],
     "quote": "Dopamine makes you want things. Other brain systems make you like them. The two are not the same, and they are not always in agreement.",
-    "attribution": "Adapted from Kent Berridge, University of Michigan \u2014 wanting/liking distinction research, 1996\u20132025",
-    "midday_nudge": "Where in your work right now is wanting high but liking low \u2014 or liking high but wanting mysteriously absent? What does that tell you?"
+    "attribution": "Adapted from Kent Berridge, University of Michigan — wanting/liking distinction research, 1996–2025",
+    "midday_nudge": "Where in your work right now is wanting high but liking low — or liking high but wanting mysteriously absent? What does that tell you?"
   },
   "quiz": [
     {
       "question": "Wolfram Schultz's research on dopamine neurons in primates revealed something unexpected about when dopamine fires. What did he find, and why does it matter?",
       "options": [
-        "Dopamine fires most strongly during the consumption of a reward \u2014 the moment of peak pleasure \u2014 which explains why pleasant experiences feel reinforcing",
-        "Dopamine fires in anticipation of a predicted reward, not at the moment of reward delivery \u2014 meaning the brain's motivational signal is about expectation, not satisfaction",
+        "Dopamine fires most strongly during the consumption of a reward — the moment of peak pleasure — which explains why pleasant experiences feel reinforcing",
+        "Dopamine fires in anticipation of a predicted reward, not at the moment of reward delivery — meaning the brain's motivational signal is about expectation, not satisfaction",
         "Dopamine fires in response to pain and discomfort as a protective signal, which is why challenging experiences can feel motivating over time",
         "Dopamine fires uniformly across all positive experiences, with intensity scaling to the subjective value of the reward rather than its timing"
       ],
       "correct": 1,
-      "explanation": "Schultz found that once an animal learned a cue predicted a reward, dopamine activity shifted to fire at the cue \u2014 not the reward. The brain was responding to anticipated reward, not delivered reward. This is the reward prediction error framework: dopamine signals the gap between what was expected and what happened. When a reward is fully predicted, dopamine flattens. When it's unexpected, dopamine spikes. Motivation lives in anticipation, not arrival."
+      "explanation": "Schultz found that once an animal learned a cue predicted a reward, dopamine activity shifted to fire at the cue — not the reward. The brain was responding to anticipated reward, not delivered reward. This is the reward prediction error framework: dopamine signals the gap between what was expected and what happened. When a reward is fully predicted, dopamine flattens. When it's unexpected, dopamine spikes. Motivation lives in anticipation, not arrival."
     },
     {
       "question": "Berridge's wanting/liking distinction separates two systems that are often assumed to be the same. How does understanding this distinction change how you'd approach a motivation problem?",
       "options": [
-        "It suggests that increasing enjoyment of a task \u2014 making it more pleasant \u2014 is the most reliable way to increase motivation to do it",
+        "It suggests that increasing enjoyment of a task — making it more pleasant — is the most reliable way to increase motivation to do it",
         "It means motivation and enjoyment are the same experience processed by different brain regions, so interventions targeting either one will affect both",
-        "It reveals that wanting (the drive to pursue) and liking (the pleasure of having) run on separate neurochemical systems \u2014 so boosting anticipation and clear goals targets motivation directly, independent of whether the task is inherently enjoyable",
+        "It reveals that wanting (the drive to pursue) and liking (the pleasure of having) run on separate neurochemical systems — so boosting anticipation and clear goals targets motivation directly, independent of whether the task is inherently enjoyable",
         "It implies that people who are highly motivated are also experiencing more pleasure from their work, since the two systems are correlated even if distinct"
       ],
       "correct": 2,
-      "explanation": "Wanting runs primarily on dopamine; liking runs primarily on opioid systems. They're separable \u2014 you can want something and not enjoy it, or enjoy something without being particularly motivated to pursue it. This means motivation interventions should target the wanting system directly: clear goals, visible progress, anticipation, novelty. Waiting until a task becomes enjoyable before expecting motivation is working on the wrong system."
+      "explanation": "Wanting runs primarily on dopamine; liking runs primarily on opioid systems. They're separable — you can want something and not enjoy it, or enjoy something without being particularly motivated to pursue it. This means motivation interventions should target the wanting system directly: clear goals, visible progress, anticipation, novelty. Waiting until a task becomes enjoyable before expecting motivation is working on the wrong system."
     },
     {
-      "question": "The dopamine system habituates to expected rewards \u2014 when a reward is fully predicted, dopamine activity flattens. What does this suggest about how to sustain motivation over time on a long project?",
+      "question": "The dopamine system habituates to expected rewards — when a reward is fully predicted, dopamine activity flattens. What does this suggest about how to sustain motivation over time on a long project?",
       "options": [
         "Sustained motivation requires increasingly larger rewards over time, since the brain requires escalating stimulation to maintain the same dopamine response",
         "Long projects should be broken into phases with distinct milestones and occasional unexpected wins, so the prediction error signal stays active rather than habituating to a flat expectation of eventual completion",
@@ -61,28 +61,28 @@
         "Motivation naturally declines on long projects regardless of structure, so the solution is willpower and discipline rather than environmental design"
       ],
       "correct": 1,
-      "explanation": "If the dopamine system habituates to the expected, then a long project with a single distant outcome offers almost no ongoing motivational signal \u2014 the brain has priced in the eventual completion and stopped firing. Breaking the work into phases with visible milestones, celebrating unexpected progress, and introducing novelty keeps the prediction error system engaged. This isn't gamification for its own sake \u2014 it's working with the neurochemistry of anticipation rather than against it."
+      "explanation": "If the dopamine system habituates to the expected, then a long project with a single distant outcome offers almost no ongoing motivational signal — the brain has priced in the eventual completion and stopped firing. Breaking the work into phases with visible milestones, celebrating unexpected progress, and introducing novelty keeps the prediction error system engaged. This isn't gamification for its own sake — it's working with the neurochemistry of anticipation rather than against it."
     }
   ],
   "closing": "Motivation isn't about wanting to want. It's about building the conditions where the wanting shows up on its own.",
-  "ai_prompt": "I want to understand why I'm motivated \u2014 or not motivated \u2014 toward something specific in my life right now. Using the neuroscience of dopamine and the wanting/liking distinction, help me diagnose what's actually going on. Ask me about what I'm trying to do, how I've structured it, and what anticipation or progress signals exist. Then help me figure out whether I'm dealing with a wanting problem, a liking problem, or a design problem. Here's what I'm working on: [describe the goal or task]",
+  "ai_prompt": "I want to understand why I'm motivated — or not motivated — toward something specific in my life right now. Using the neuroscience of dopamine and the wanting/liking distinction, help me diagnose what's actually going on. Ask me about what I'm trying to do, how I've structured it, and what anticipation or progress signals exist. Then help me figure out whether I'm dealing with a wanting problem, a liking problem, or a design problem. Here's what I'm working on: [describe the goal or task]",
   "sources": [
     {
-      "label": "Schultz, W., Dayan, P., & Montague, P.R. \u2014 A Neural Substrate of Prediction and Reward. Science, 275(5306), 1593\u20131599 (1997).",
-      "detail": "Foundational paper establishing the reward prediction error framework \u2014 dopamine neurons fire on anticipated reward, shifting activity from reward delivery to the predictive cue. One of the most cited papers in neuroscience.",
+      "label": "Schultz, W., Dayan, P., & Montague, P.R. — A Neural Substrate of Prediction and Reward. Science, 275(5306), 1593–1599 (1997).",
+      "detail": "Foundational paper establishing the reward prediction error framework — dopamine neurons fire on anticipated reward, shifting activity from reward delivery to the predictive cue. One of the most cited papers in neuroscience.",
       "url": "https://www.science.org/doi/10.1126/science.275.5306.1593",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Robinson, T.E. & Berridge, K.C. \u2014 The incentive sensitization theory of addiction: 30 years on. Annual Review of Psychology, 76: 29\u201358 (2025).",
+      "label": "Robinson, T.E. & Berridge, K.C. — The incentive sensitization theory of addiction: 30 years on. Annual Review of Psychology, 76: 29–58 (2025).",
       "detail": "Thirty-year retrospective on the wanting/liking distinction and incentive sensitization theory. Consolidates the neurochemical separation of dopamine-driven wanting from opioid-driven liking.",
       "url": "https://sites.lsa.umich.edu/berridge-lab/publications/",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Berridge, K.C. & Robinson, T.E. \u2014 What is the role of dopamine in reward: hedonic impact, reward learning, or incentive salience? Brain Research Reviews, 28(3), 309\u2013369 (1998).",
+      "label": "Berridge, K.C. & Robinson, T.E. — What is the role of dopamine in reward: hedonic impact, reward learning, or incentive salience? Brain Research Reviews, 28(3), 309–369 (1998).",
       "detail": "Primary source for the wanting/liking distinction. Establishes that dopamine mediates incentive salience (wanting) rather than hedonic pleasure (liking), which are neurochemically dissociable.",
       "url": "https://www.sciencedirect.com/science/article/abs/pii/S0165017398000198",
       "verified": true,

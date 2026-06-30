@@ -1,6 +1,6 @@
 {
   "lockin_type": "apply",
-  "editionId": "CM.2",
+  "editionId": "CM.1",
   "category": "Communication",
   "categoryTag": "COMM",
   "concept": "Feedback That Lands",
@@ -9,79 +9,79 @@
   "morning": {
     "hook": "Most feedback doesn't fail because it's dishonest. It fails because the person on the receiving end can't hear it.",
     "explanation_paragraphs": [
-      "Most professionals know they should give feedback. Far fewer know how to give feedback that actually changes behavior \u2014 which is the only kind that matters. The gap between feedback given and feedback received is where most managerial communication breaks down.",
-      "In 2017, Kim Scott published Radical Candor, which maps feedback behavior across four quadrants. The model has four quadrants, but two failure modes dominate workplace feedback: ruinous empathy (you care too much to say the hard thing, so you say nothing useful) and obnoxious aggression (you say the hard thing without caring enough about the person receiving it). Both break communication. The fix isn't a personality trait \u2014 it's a structure. Caring personally while challenging directly is a practice, not a disposition.",
-      "The most durable framework for delivering that structure is the SBI model, developed by the Center for Creative Leadership: Situation, Behavior, Impact. You describe the specific situation in which the behavior occurred. You name the observable behavior \u2014 not the person's character, not your interpretation, the behavior itself. Then you describe the impact it had. No judgment, no labels, no story about who they are. Just what happened and what it caused.",
-      "A 2025 study in the Journal of Applied Psychology (Welsh & Henderson) found that feedback framed in performance-oriented and helping-focused terms produced better outcomes for both the giver and receiver \u2014 the recipient was more likely to act on it, more likely to feel positively about the interaction, and more likely to improve. The framing wasn't a courtesy. It was a performance variable."
+      "Most professionals know they should give feedback. Far fewer know how to give feedback that actually changes behavior — which is the only kind that matters. The gap between feedback given and feedback received is where most managerial communication breaks down.",
+      "In 2017, Kim Scott published Radical Candor, which maps feedback behavior across four quadrants. The model has four quadrants, but two failure modes dominate workplace feedback: ruinous empathy (you care too much to say the hard thing, so you say nothing useful) and obnoxious aggression (you say the hard thing without caring enough about the person receiving it). Both break communication. The fix isn't a personality trait — it's a structure. Caring personally while challenging directly is a practice, not a disposition.",
+      "The most durable framework for delivering that structure is the SBI model, developed by the Center for Creative Leadership: Situation, Behavior, Impact. You describe the specific situation in which the behavior occurred. You name the observable behavior — not the person's character, not your interpretation, the behavior itself. Then you describe the impact it had. No judgment, no labels, no story about who they are. Just what happened and what it caused.",
+      "A 2025 study in the Journal of Applied Psychology (Welsh & Henderson) found that feedback framed in performance-oriented and helping-focused terms produced better outcomes for both the giver and receiver — the recipient was more likely to act on it, more likely to feel positively about the interaction, and more likely to improve. The framing wasn't a courtesy. It was a performance variable."
     ],
-    "why_today": "Feedback quality is measurable and it's declining. McLean's HR Trends Survey 2025 found that only 26% of employees believe annual performance reviews are effective. HR Dive's April 2026 analysis found that employees who clearly understand their job expectations \u2014 which requires real feedback, not evaluation theater \u2014 are 8.6 times more likely to be engaged. Feedback that lands is now a retention lever, not a management nicety.",
-    "morning_challenge": "Think of a piece of feedback you've been meaning to give \u2014 or have already given \u2014 that didn't land the way you intended.\n\nRun it through SBI:\n\u2014 What was the specific Situation?\n\u2014 What was the observable Behavior? (Not your interpretation of it \u2014 the behavior itself.)\n\u2014 What was the actual Impact? (On the team, the project, the relationship \u2014 something concrete.)\n\nNotice which part is hardest to answer cleanly. That's usually where the feedback broke down."
+    "why_today": "Feedback quality is measurable and it's declining. McLean's HR Trends Survey 2025 found that only 26% of employees believe annual performance reviews are effective. HR Dive's April 2026 analysis found that employees who clearly understand their job expectations — which requires real feedback, not evaluation theater — are 8.6 times more likely to be engaged. Feedback that lands is now a retention lever, not a management nicety.",
+    "morning_challenge": "Think of a piece of feedback you've been meaning to give — or have already given — that didn't land the way you intended.\n\nRun it through SBI:\n— What was the specific Situation?\n— What was the observable Behavior? (Not your interpretation of it — the behavior itself.)\n— What was the actual Impact? (On the team, the project, the relationship — something concrete.)\n\nNotice which part is hardest to answer cleanly. That's usually where the feedback broke down."
   },
   "midday": {
     "reframe": "Ruinous empathy isn't kindness. It's conflict avoidance dressed up as care.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 WELSH & HENDERSON, JOURNAL OF APPLIED PSYCHOLOGY (2025) / McLEAN HR TRENDS 2026",
+    "itw_label": "IN THE WILD — TYPE A · WELSH & HENDERSON, JOURNAL OF APPLIED PSYCHOLOGY (2025) / McLEAN HR TRENDS 2026",
     "itw_paragraphs": [
-      "Welsh and Henderson's 2025 study in the Journal of Applied Psychology tested two feedback framing styles and their effects on givers and receivers. Feedback framed as performance-oriented and helper-focused \u2014 rather than critical or evaluative \u2014 produced measurably better outcomes on both sides: receivers were more likely to act on it and feel positively about the exchange; givers felt better about having delivered it. The framing changed the outcome without changing the content.",
-      "McLean's HR Trends Survey 2026 found that employees who clearly understand job expectations are 8.6 times more likely to be engaged \u2014 and that organizations failing to create positive employee experiences see voluntary turnover 40% higher than those that do. Feedback is the mechanism through which expectations get understood. When it doesn't land, the expectation doesn't transfer.",
-      "The most common failure mode in the field isn't malicious feedback \u2014 it's withheld feedback. The manager who says nothing because they don't want to upset someone, who gives vague praise to avoid conflict, who saves the real concern for the annual review. Kim Scott named this ruinous empathy: it feels kind in the moment, but it leaves people without the information they need to grow."
+      "Welsh and Henderson's 2025 study in the Journal of Applied Psychology tested two feedback framing styles and their effects on givers and receivers. Feedback framed as performance-oriented and helper-focused — rather than critical or evaluative — produced measurably better outcomes on both sides: receivers were more likely to act on it and feel positively about the exchange; givers felt better about having delivered it. The framing changed the outcome without changing the content.",
+      "McLean's HR Trends Survey 2026 found that employees who clearly understand job expectations are 8.6 times more likely to be engaged — and that organizations failing to create positive employee experiences see voluntary turnover 40% higher than those that do. Feedback is the mechanism through which expectations get understood. When it doesn't land, the expectation doesn't transfer.",
+      "The most common failure mode in the field isn't malicious feedback — it's withheld feedback. The manager who says nothing because they don't want to upset someone, who gives vague praise to avoid conflict, who saves the real concern for the annual review. Kim Scott named this ruinous empathy: it feels kind in the moment, but it leaves people without the information they need to grow."
     ],
-    "quote": "Feedback is a gift. It costs nothing to give and can be invaluable to receive \u2014 but only if it's delivered in a way the other person can actually use.",
+    "quote": "Feedback is a gift. It costs nothing to give and can be invaluable to receive — but only if it's delivered in a way the other person can actually use.",
     "attribution": "Kim Scott, Radical Candor (2017)",
-    "midday_nudge": "Who on your team is operating without accurate feedback right now \u2014 not because you haven't thought about it, but because you haven't said it in a way they could hear?"
+    "midday_nudge": "Who on your team is operating without accurate feedback right now — not because you haven't thought about it, but because you haven't said it in a way they could hear?"
   },
   "quiz": [
     {
       "question": "Kim Scott identified two primary failure modes in workplace feedback. What are they, and what does each one get wrong?",
       "options": [
-        "Positive feedback (praise without substance) and negative feedback (criticism without solution) \u2014 both fail because they lack actionable direction",
-        "Formal feedback (annual reviews) and informal feedback (hallway comments) \u2014 both fail because they lack the right context and preparation",
-        "Ruinous empathy (withholding hard truths out of misplaced kindness) and obnoxious aggression (delivering hard truths without genuine care for the person) \u2014 both break the feedback relationship from opposite directions",
-        "Evaluative feedback (judging past performance) and developmental feedback (guiding future improvement) \u2014 both fail when they're delivered without psychological safety"
+        "Positive feedback (praise without substance) and negative feedback (criticism without solution) — both fail because they lack actionable direction",
+        "Formal feedback (annual reviews) and informal feedback (hallway comments) — both fail because they lack the right context and preparation",
+        "Ruinous empathy (withholding hard truths out of misplaced kindness) and obnoxious aggression (delivering hard truths without genuine care for the person) — both break the feedback relationship from opposite directions",
+        "Evaluative feedback (judging past performance) and developmental feedback (guiding future improvement) — both fail when they're delivered without psychological safety"
       ],
       "correct": 2,
-      "explanation": "Scott's model maps two axes: caring personally and challenging directly. Ruinous empathy scores high on care but low on challenge \u2014 you protect the relationship at the cost of honesty. Obnoxious aggression scores high on challenge but low on care \u2014 you say the thing but damage the relationship in the process. Radical Candor is the intersection: honest because you care, not despite it."
+      "explanation": "Scott's model maps two axes: caring personally and challenging directly. Ruinous empathy scores high on care but low on challenge — you protect the relationship at the cost of honesty. Obnoxious aggression scores high on challenge but low on care — you say the thing but damage the relationship in the process. Radical Candor is the intersection: honest because you care, not despite it."
     },
     {
       "question": "The SBI model structures feedback as Situation, Behavior, Impact. A manager gives this feedback: 'You always check out in meetings. It's really disrespectful and I don't think you take this team seriously.' Which element of SBI is most clearly missing?",
       "options": [
-        "Situation \u2014 the feedback doesn't reference a specific context when the behavior occurred",
-        "Behavior \u2014 'check out' is an interpretation, not an observable behavior, and 'always' is a generalization that replaces the specific incident",
-        "Impact \u2014 the feedback doesn't describe any concrete effect on the team or project",
-        "All three \u2014 the feedback fails at every stage of the SBI model simultaneously"
+        "Situation — the feedback doesn't reference a specific context when the behavior occurred",
+        "Behavior — 'check out' is an interpretation, not an observable behavior, and 'always' is a generalization that replaces the specific incident",
+        "Impact — the feedback doesn't describe any concrete effect on the team or project",
+        "All three — the feedback fails at every stage of the SBI model simultaneously"
       ],
       "correct": 1,
-      "explanation": "The feedback skips Situation entirely and replaces observable Behavior with an interpretive label ('check out') and a generalization ('always'). 'Disrespectful' and 'don't take this seriously' are character judgments, not impacts. SBI requires specificity at every step \u2014 not to protect the giver's feelings, but because vague feedback gives the receiver nothing to act on."
+      "explanation": "The feedback skips Situation entirely and replaces observable Behavior with an interpretive label ('check out') and a generalization ('always'). 'Disrespectful' and 'don't take this seriously' are character judgments, not impacts. SBI requires specificity at every step — not to protect the giver's feelings, but because vague feedback gives the receiver nothing to act on."
     },
     {
       "question": "Welsh and Henderson's 2025 Journal of Applied Psychology study found that how feedback is framed affects whether it lands. What was the key finding?",
       "options": [
         "Feedback delivered in writing is significantly more likely to be acted on than verbal feedback, regardless of framing",
-        "The timing of feedback matters more than the framing \u2014 feedback delivered within 24 hours of an event produces better outcomes than delayed feedback",
-        "Feedback framed as performance-oriented and helping-focused produced better outcomes for both givers and receivers \u2014 higher likelihood of action, more positive emotional response, and greater improvement",
+        "The timing of feedback matters more than the framing — feedback delivered within 24 hours of an event produces better outcomes than delayed feedback",
+        "Feedback framed as performance-oriented and helping-focused produced better outcomes for both givers and receivers — higher likelihood of action, more positive emotional response, and greater improvement",
         "Positive feedback produces stronger behavioral change than corrective feedback, regardless of how either is delivered"
       ],
       "correct": 2,
-      "explanation": "Welsh and Henderson found that framing \u2014 not just content \u2014 changed outcomes measurably. When feedback was delivered as 'I'm trying to help you perform better' rather than 'here's what you did wrong,' both parties came away better: receivers were more likely to act and feel good about it; givers felt better about having delivered it. Framing isn't a courtesy. It's the mechanism."
+      "explanation": "Welsh and Henderson found that framing — not just content — changed outcomes measurably. When feedback was delivered as 'I'm trying to help you perform better' rather than 'here's what you did wrong,' both parties came away better: receivers were more likely to act and feel good about it; givers felt better about having delivered it. Framing isn't a courtesy. It's the mechanism."
     }
   ],
-  "closing": "Feedback that doesn't land isn't feedback \u2014 it's noise. The SBI model doesn't make the conversation easier. It makes it useful.",
+  "closing": "Feedback that doesn't land isn't feedback — it's noise. The SBI model doesn't make the conversation easier. It makes it useful.",
   "sources": [
     {
-      "label": "Scott, K. \u2014 Radical Candor: Be a Kickass Boss Without Losing Your Humanity. St. Martin's Press, 2017.",
+      "label": "Scott, K. — Radical Candor: Be a Kickass Boss Without Losing Your Humanity. St. Martin's Press, 2017.",
       "detail": "Primary source for the Radical Candor framework (Care Personally, Challenge Directly) and the four-quadrant model including ruinous empathy and obnoxious aggression.",
       "url": "https://www.radicalcandor.com/our-approach",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "Welsh, E.T. & Henderson, K.E. \u2014 Win, Win, Win: Framing Feedback for Better Giver and Receiver Outcomes. Journal of Applied Psychology, 55, 817\u2013831 (2025).",
-      "detail": "Peer-reviewed study finding that performance-oriented, helping-focused feedback framing improves outcomes for both givers and receivers \u2014 higher likelihood of action, more positive affect, greater improvement.",
+      "label": "Welsh, E.T. & Henderson, K.E. — Win, Win, Win: Framing Feedback for Better Giver and Receiver Outcomes. Journal of Applied Psychology, 55, 817–831 (2025).",
+      "detail": "Peer-reviewed study finding that performance-oriented, helping-focused feedback framing improves outcomes for both givers and receivers — higher likelihood of action, more positive affect, greater improvement.",
       "url": "https://halopsychology.com/2026/01/12/7-frameworks-to-help-you-give-effective-feedback-with-examples/",
       "verified": true,
       "verified_by": "Matthew"
     },
     {
-      "label": "McLean & Company \u2014 HR Trends Survey 2025/2026, cited in HR Dive, April 7, 2026.",
+      "label": "McLean & Company — HR Trends Survey 2025/2026, cited in HR Dive, April 7, 2026.",
       "detail": "Employees who clearly understand job expectations are 8.6 times more likely to be engaged. Organizations without positive employee experiences see 40% higher voluntary turnover.",
       "url": "https://www.hrdive.com/news/employers-provide-clear-feedback-see-higher-engagement/816821/",
       "verified": true,
@@ -91,5 +91,5 @@
   "verified": true,
   "verified_by": "Matthew",
   "verified_date": "2026-05-26",
-  "ai_prompt": "I need to deliver a piece of feedback to someone and I want it to actually land. Help me structure it using the SBI model \u2014 Situation, Behavior, Impact. Ask me what happened, then help me turn my instinct into feedback that's specific, observable, and focused on impact rather than character or intent. Here's the situation: [describe who you need to give feedback to and what happened]"
+  "ai_prompt": "I need to deliver a piece of feedback to someone and I want it to actually land. Help me structure it using the SBI model — Situation, Behavior, Impact. Ask me what happened, then help me turn my instinct into feedback that's specific, observable, and focused on impact rather than character or intent. Here's the situation: [describe who you need to give feedback to and what happened]"
 }

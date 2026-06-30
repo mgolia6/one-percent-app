@@ -10,74 +10,74 @@
     "hook": "You don't learn while you sleep. You learn so that you can consolidate while you sleep. Cut the sleep and you've cut the learning.",
     "explanation_paragraphs": [
       "You spend an hour studying a new framework, learning a new skill, or absorbing a difficult concept. You feel like you understand it. Then you skip sleep. The next day, you remember the broad strokes but the nuance has gone. What happened? The learning occurred. The consolidation didn't.",
-      "Memory consolidation is the process by which newly acquired information is stabilized and integrated into long-term memory. Sleep is not passive. It is the period during which the brain actively processes the day's experiences \u2014 replaying, organizing, and transferring information from the hippocampus, where new memories are held temporarily, into the neocortex, where they are stored long-term.",
-      "The most important figure in the modern understanding of sleep and memory is Matthew Walker, a neuroscientist at UC Berkeley. The key mechanisms: during slow-wave (deep) sleep, the brain replays the day's learning events \u2014 the hippocampus sends signals to the neocortex in a process called memory replay. During REM sleep, emotional memories are processed and the brain makes novel connections between disparate pieces of information.",
-      "The applied implications are direct. Sleep deprivation doesn't just make you feel bad \u2014 it measurably impairs the consolidation of everything you learned the day before. Studies by Walker and colleagues show that a full night of sleep after learning produces memory retention roughly 20-40% better than equivalent waking rest. Pulling an all-nighter doesn't just fail to help \u2014 it actively undermines the learning you've already done."
+      "Memory consolidation is the process by which newly acquired information is stabilized and integrated into long-term memory. Sleep is not passive. It is the period during which the brain actively processes the day's experiences — replaying, organizing, and transferring information from the hippocampus, where new memories are held temporarily, into the neocortex, where they are stored long-term.",
+      "The most important figure in the modern understanding of sleep and memory is Matthew Walker, a neuroscientist at UC Berkeley. The key mechanisms: during slow-wave (deep) sleep, the brain replays the day's learning events — the hippocampus sends signals to the neocortex in a process called memory replay. During REM sleep, emotional memories are processed and the brain makes novel connections between disparate pieces of information.",
+      "The applied implications are direct. Sleep deprivation doesn't just make you feel bad — it measurably impairs the consolidation of everything you learned the day before. Studies by Walker and colleagues show that a full night of sleep after learning produces memory retention roughly 20-40% better than equivalent waking rest. Pulling an all-nighter doesn't just fail to help — it actively undermines the learning you've already done."
     ],
     "why_today": "We've built a culture that treats sleep as the adjustable variable — the thing you trim to fit one more course, one more late shift, one more hour of doomscrolling. But the same week everyone is racing to learn new tools and skills before they're obsolete, they're sabotaging the exact biological step that turns today's learning into something they'll still have tomorrow. Cutting sleep to study harder is closing the document before it saves.",
     "morning_challenge": "Think about the last skill or knowledge domain you were actively trying to develop. What was your sleep like during that period?\n\nIf you were routinely under 7 hours, you were learning on one end and losing it on the other.\n\nOne structural change: protect the night after any significant learning. That night is when the learning becomes yours."
   },
   "midday": {
     "reframe": "Sleep isn't recovery from learning. Sleep is the final stage of learning. Skipping it is like writing a document and closing without saving.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 WALKER ET AL., NEURON, 2002. WILSON & MCNAUGHTON, SCIENCE, 1994.",
+    "itw_label": "IN THE WILD — TYPE A · WALKER ET AL., NEURON, 2002. WILSON & MCNAUGHTON, SCIENCE, 1994.",
     "itw_paragraphs": [
       "Walker's motor learning studies demonstrated the consolidation effect in controlled conditions. Participants learned a finger-tapping sequence. Those who slept after the learning session showed a 20% improvement in speed and accuracy on testing the next day, without any additional practice. Those who remained awake during the same interval showed no improvement. The only variable was sleep.",
-      "The hippocampal-neocortical transfer mechanism was documented by Wilson and McNaughton at MIT. Using multi-electrode recordings from rat hippocampi, they showed that neurons that fired together during maze navigation during waking hours fired together again in the same sequences during slow-wave sleep \u2014 the brain literally replaying the day's experience.",
-      "The insight and creative connection function of REM sleep has a more famous illustration: the documented role of sleep in scientific breakthroughs. August Kekul\u00e9 described discovering the ring structure of benzene through a dream. These accounts are anecdotal, but they align with the neurological finding: REM sleep is when the brain makes connections between information stored in separate regions."
+      "The hippocampal-neocortical transfer mechanism was documented by Wilson and McNaughton at MIT. Using multi-electrode recordings from rat hippocampi, they showed that neurons that fired together during maze navigation during waking hours fired together again in the same sequences during slow-wave sleep — the brain literally replaying the day's experience.",
+      "The insight and creative connection function of REM sleep has a more famous illustration: the documented role of sleep in scientific breakthroughs. August Kekulé described discovering the ring structure of benzene through a dream. These accounts are anecdotal, but they align with the neurological finding: REM sleep is when the brain makes connections between information stored in separate regions."
     ],
-    "quote": "Sleep is not the enemy of productivity. It is one of the most powerful enhancers of it \u2014 for learning, creativity, and decision-making alike.",
+    "quote": "Sleep is not the enemy of productivity. It is one of the most powerful enhancers of it — for learning, creativity, and decision-making alike.",
     "attribution": "Matthew Walker, Why We Sleep, Scribner, 2017",
-    "midday_nudge": "If you learned something today that you actually want to retain \u2014 a new approach, a difficult concept, something from a course or conversation \u2014 treat tonight's sleep as the final step in that learning. Protect it."
+    "midday_nudge": "If you learned something today that you actually want to retain — a new approach, a difficult concept, something from a course or conversation — treat tonight's sleep as the final step in that learning. Protect it."
   },
   "quiz": [
     {
       "question": "Walker's motor skill study showed that sleeping after learning a finger-tapping sequence produced roughly 20% better performance than waking rest. What does this most directly demonstrate?",
       "options": [
         "That sleep improves performance by recovering physical fatigue in the muscles used for the task",
-        "That sleep actively consolidates skill learning \u2014 the improvement occurred without additional practice, during unconsciousness, indicating the brain was processing and stabilizing the skill during sleep",
+        "That sleep actively consolidates skill learning — the improvement occurred without additional practice, during unconsciousness, indicating the brain was processing and stabilizing the skill during sleep",
         "That well-rested people perform better on all tasks, which accounts for the improvement",
         "That the testing conditions after sleep were more favorable than after waking rest"
       ],
       "correct": 1,
-      "explanation": "The critical detail is that the improvement happened without additional practice and without waking engagement with the task. The participants who slept didn't do anything differently during sleep \u2014 they were unconscious. Yet their performance improved substantially. This isolates sleep itself as the active variable. It's not recovery from fatigue \u2014 it's active processing that can only happen during the sleep state."
+      "explanation": "The critical detail is that the improvement happened without additional practice and without waking engagement with the task. The participants who slept didn't do anything differently during sleep — they were unconscious. Yet their performance improved substantially. This isolates sleep itself as the active variable. It's not recovery from fatigue — it's active processing that can only happen during the sleep state."
     },
     {
       "question": "What is the hippocampal-neocortical transfer, and why does it matter for learning?",
       "options": [
         "The process by which the neocortex sends stress signals to the hippocampus during high-pressure situations, impairing new memory formation",
-        "The mechanism by which newly encoded memories held temporarily in the hippocampus are transferred and integrated into long-term storage in the neocortex during sleep \u2014 the core biological process of memory consolidation",
+        "The mechanism by which newly encoded memories held temporarily in the hippocampus are transferred and integrated into long-term storage in the neocortex during sleep — the core biological process of memory consolidation",
         "The pathway through which emotional experiences are separated from factual memories and stored in different brain regions",
         "The feedback loop between hippocampus and neocortex that enables working memory during waking hours"
       ],
       "correct": 1,
-      "explanation": "New memories are initially encoded in the hippocampus \u2014 a temporary holding structure. For them to become durable long-term memories, they must be transferred to the neocortex. This transfer happens primarily during slow-wave sleep, when the hippocampus replays the day's learning events. Without this transfer, memories remain fragile and subject to interference."
+      "explanation": "New memories are initially encoded in the hippocampus — a temporary holding structure. For them to become durable long-term memories, they must be transferred to the neocortex. This transfer happens primarily during slow-wave sleep, when the hippocampus replays the day's learning events. Without this transfer, memories remain fragile and subject to interference."
     },
     {
       "question": "You're preparing for an important presentation tomorrow morning. You have four hours tonight. Which approach best applies what we know about sleep and memory consolidation?",
       "options": [
-        "Use all four hours studying \u2014 maximum input before the event is the priority",
-        "Study for two to three hours, then sleep for whatever time remains \u2014 even reduced sleep will consolidate more than waking, and sleep-deprived performance impairs delivery regardless of content quality",
-        "Sleep for all four hours without studying \u2014 sleep quality matters more than preparation",
+        "Use all four hours studying — maximum input before the event is the priority",
+        "Study for two to three hours, then sleep for whatever time remains — even reduced sleep will consolidate more than waking, and sleep-deprived performance impairs delivery regardless of content quality",
+        "Sleep for all four hours without studying — sleep quality matters more than preparation",
         "Alternate between studying and brief naps to maximize both input and consolidation"
       ],
       "correct": 1,
       "explanation": "Sleep deprivation impairs both consolidation of what you've already learned and your waking performance. An all-nighter sacrifices both. The optimal strategy is to study until you've covered what matters, then protect as much sleep as possible. The research consistently shows that moderate sleep-protected preparation outperforms maximal studying with sleep deprivation on actual performance measures."
     }
   ],
-  "closing": "Every night of good sleep is doing cognitive work you couldn't do while awake. Every night you cut short is skipping that work \u2014 and the debt compounds.",
+  "closing": "Every night of good sleep is doing cognitive work you couldn't do while awake. Every night you cut short is skipping that work — and the debt compounds.",
   "sources": [
     {
-      "label": "Walker, M.P. et al. \u2014 Practice with Sleep Makes Perfect, Neuron, 35(1), 2002",
+      "label": "Walker, M.P. et al. — Practice with Sleep Makes Perfect, Neuron, 35(1), 2002",
       "detail": "Controlled study demonstrating 20% improvement in motor skill performance after sleep versus waking rest.",
       "url": "https://www.cell.com/neuron/fulltext/S0896-6273(02)00746-8"
     },
     {
-      "label": "Wilson, M.A. & McNaughton, B.L. \u2014 Reactivation of Hippocampal Ensemble Memories During Sleep, Science, 265(5172), 1994",
-      "detail": "Foundational paper documenting hippocampal memory replay during sleep \u2014 the biological mechanism of memory consolidation.",
+      "label": "Wilson, M.A. & McNaughton, B.L. — Reactivation of Hippocampal Ensemble Memories During Sleep, Science, 265(5172), 1994",
+      "detail": "Foundational paper documenting hippocampal memory replay during sleep — the biological mechanism of memory consolidation.",
       "url": "https://www.science.org/doi/10.1126/science.8036517"
     },
     {
-      "label": "Walker, M. \u2014 Why We Sleep, Scribner, 2017",
+      "label": "Walker, M. — Why We Sleep, Scribner, 2017",
       "detail": "Synthesis of sleep and memory consolidation research. Note: some broader epidemiological claims have been critiqued; core memory consolidation findings from controlled experiments are well-supported.",
       "url": "https://www.simonandschuster.com/books/Why-We-Sleep/Matthew-Walker/9781501144325"
     }

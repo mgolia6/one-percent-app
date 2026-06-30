@@ -7,82 +7,82 @@
   "accent": "#FF8C00",
   "accentDim": "rgba(255,140,0,0.10)",
   "morning": {
-    "hook": "You've probably heard that 93% of communication is nonverbal. That statistic is wrong. Memorably, persistently, consequentially wrong \u2014 and understanding why it's wrong will make you a better communicator than believing it ever could.",
+    "hook": "You've probably heard that 93% of communication is nonverbal. That statistic is wrong. Memorably, persistently, consequentially wrong — and understanding why it's wrong will make you a better communicator than believing it ever could.",
     "explanation_paragraphs": [
       "The claim goes like this: words account for only 7% of communication; tone of voice accounts for 38%; body language accounts for 55%. Therefore, 93% of what you communicate has nothing to do with what you actually say. You'll find this in management training decks, leadership books, communication courses, and TED Talk slides. It is one of the most cited statistics in professional development. It is also a profound misrepresentation of the research it claims to cite.",
-      "The source is Albert Mehrabian, a UCLA psychology professor who conducted two studies in 1967 \u2014 not one study of general communication, but two narrow laboratory experiments about a very specific thing: how people form judgments about feelings and liking from a single spoken word when the verbal and nonverbal channels carry inconsistent signals. Mehrabian himself has repeatedly and explicitly stated that his findings have been catastrophically misapplied. In his words, the 7-38-55 rule 'was never meant to apply to normal conversation.'",
-      "Mehrabian's actual finding: when someone hears a single word spoken with an inconsistent emotional tone \u2014 the word 'brute' said warmly, or 'honey' said coldly \u2014 they resolve the inconsistency by weighting tone (38%) and facial expression (55%) more heavily than the word's literal meaning (7%). The finding applies specifically to judgments of emotional affect, in single-word utterances, under conditions of inconsistency between channels.",
+      "The source is Albert Mehrabian, a UCLA psychology professor who conducted two studies in 1967 — not one study of general communication, but two narrow laboratory experiments about a very specific thing: how people form judgments about feelings and liking from a single spoken word when the verbal and nonverbal channels carry inconsistent signals. Mehrabian himself has repeatedly and explicitly stated that his findings have been catastrophically misapplied. In his words, the 7-38-55 rule 'was never meant to apply to normal conversation.'",
+      "Mehrabian's actual finding: when someone hears a single word spoken with an inconsistent emotional tone — the word 'brute' said warmly, or 'honey' said coldly — they resolve the inconsistency by weighting tone (38%) and facial expression (55%) more heavily than the word's literal meaning (7%). The finding applies specifically to judgments of emotional affect, in single-word utterances, under conditions of inconsistency between channels.",
       "Why does this matter? Because acting on the myth produces bad communication. It leads people to invest in 'presence' and body language at the expense of substance and clarity. It lets poor communicators off the hook: if only 7% is words, why work hard on what you say? The truth from actual communication research is more demanding: words, structure, clarity, and precision are the primary carriers of meaning."
     ],
     "why_today": "We've never communicated through more channels with less of our actual selves attached — muted video calls, async Slack threads, AI-polished emails. The 93% myth is the alibi the moment loves: it tells anxious professionals that charisma and 'presence' can carry a hollow point. They can't. In a flood of frictionless words, the people who win are the ones whose words are actually worth reading.",
-    "morning_challenge": "Think about the last time you worked hard on delivery \u2014 rehearsing tone, managing presence \u2014 without working equally hard on what you were actually saying.\n\nNow think about the last time you were genuinely persuaded by something someone communicated. Was it primarily how they said it, or was it the precision, clarity, and insight of what they said?\n\nThe myth flatters delivery. The evidence supports substance."
+    "morning_challenge": "Think about the last time you worked hard on delivery — rehearsing tone, managing presence — without working equally hard on what you were actually saying.\n\nNow think about the last time you were genuinely persuaded by something someone communicated. Was it primarily how they said it, or was it the precision, clarity, and insight of what they said?\n\nThe myth flatters delivery. The evidence supports substance."
   },
   "midday": {
-    "reframe": "Nonverbal communication matters \u2014 especially when it's inconsistent with the verbal message. But it doesn't replace the verbal message. Words are not 7% of communication. They are the primary carrier of meaning.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 MEHRABIAN & FERRIS, JOURNAL OF CONSULTING PSYCHOLOGY, 1967. LAPAKKO, COMMUNICATION QUARTERLY, 1997.",
+    "reframe": "Nonverbal communication matters — especially when it's inconsistent with the verbal message. But it doesn't replace the verbal message. Words are not 7% of communication. They are the primary carrier of meaning.",
+    "itw_label": "IN THE WILD — TYPE A · MEHRABIAN & FERRIS, JOURNAL OF CONSULTING PSYCHOLOGY, 1967. LAPAKKO, COMMUNICATION QUARTERLY, 1997.",
     "itw_paragraphs": [
       "Mehrabian's 1967 studies used a carefully controlled methodology: participants heard a single word spoken in different tones and shown photographs of faces expressing different emotions. They were asked to rate the speaker's overall attitude. The design isolated the three channels and measured their relative contribution to attitude inference under conditions of deliberate inconsistency. The percentages reflect only that narrow task.",
-      "David Lapakko's 1997 analysis in Communication Quarterly traced how the myth proliferated through the management literature of the 1970s and 1980s \u2014 stripped of its methodological context, simplified to a memorable statistic, and repeated so many times it achieved the status of established fact. Mehrabian's finding had become a folk statistic that survived on the strength of how good it sounded, not on what it actually demonstrated.",
+      "David Lapakko's 1997 analysis in Communication Quarterly traced how the myth proliferated through the management literature of the 1970s and 1980s — stripped of its methodological context, simplified to a memorable statistic, and repeated so many times it achieved the status of established fact. Mehrabian's finding had become a folk statistic that survived on the strength of how good it sounded, not on what it actually demonstrated.",
       "The actual communication research on what drives persuasion, comprehension, and attitude change tells a different story. Clarity of argument, precision of language, evidence quality, and logical structure are consistently among the top predictors of persuasive impact. A crystal-clear argument delivered with moderate affect is far more persuasive than a confident delivery of an unclear one. The myth has it almost exactly backwards."
     ],
-    "quote": "My findings are often misquoted. Clearly, if the speaker's words are inconsistent with his nonverbal behavior, the nonverbal behavior tends to dominate. But this was the finding of my experiments \u2014 not a general principle.",
+    "quote": "My findings are often misquoted. Clearly, if the speaker's words are inconsistent with his nonverbal behavior, the nonverbal behavior tends to dominate. But this was the finding of my experiments — not a general principle.",
     "attribution": "Albert Mehrabian, as cited in Philip Yaffe, The '7% Rule': Fact, Fiction, or Misunderstanding, Ubiquity, 2011",
-    "midday_nudge": "Before your next presentation or important conversation: spend equal time on your content \u2014 the actual substance, the structure, the key claims \u2014 as you do on your delivery. If you spend three hours on slides and thirty minutes thinking through what you're actually arguing, you have the priorities backwards."
+    "midday_nudge": "Before your next presentation or important conversation: spend equal time on your content — the actual substance, the structure, the key claims — as you do on your delivery. If you spend three hours on slides and thirty minutes thinking through what you're actually arguing, you have the priorities backwards."
   },
   "quiz": [
     {
       "question": "What did Mehrabian's 1967 studies actually measure, and why does that make the '93% is nonverbal' claim a misapplication?",
       "options": [
         "They measured overall communication effectiveness across a range of conversation types",
-        "They measured how people infer emotional attitudes from a single spoken word when verbal and nonverbal channels are inconsistent \u2014 a highly specific experimental condition that has no valid generalization to normal multi-word, contextually rich communication",
-        "They measured communication in face-to-face settings only \u2014 the misapplication is extending the findings to written or virtual communication",
-        "They measured communication between strangers \u2014 the misapplication is extending the findings to familiar relationships"
+        "They measured how people infer emotional attitudes from a single spoken word when verbal and nonverbal channels are inconsistent — a highly specific experimental condition that has no valid generalization to normal multi-word, contextually rich communication",
+        "They measured communication in face-to-face settings only — the misapplication is extending the findings to written or virtual communication",
+        "They measured communication between strangers — the misapplication is extending the findings to familiar relationships"
       ],
       "correct": 1,
-      "explanation": "The experimental conditions were radically constrained: a single word, heard without context, with deliberate inconsistency between channels, measuring attitude inference about feelings and liking. Normal communication involves multiple words, sentences with structure, shared context, and prior relationship. Mehrabian himself has explicitly stated his findings do not apply to normal conversation. The generalization is not a stretch \u2014 it's a category error."
+      "explanation": "The experimental conditions were radically constrained: a single word, heard without context, with deliberate inconsistency between channels, measuring attitude inference about feelings and liking. Normal communication involves multiple words, sentences with structure, shared context, and prior relationship. Mehrabian himself has explicitly stated his findings do not apply to normal conversation. The generalization is not a stretch — it's a category error."
     },
     {
       "question": "Which represents the most accurate understanding of how verbal and nonverbal communication interact?",
       "options": [
         "Nonverbal communication is always more powerful than verbal communication",
-        "Words are the primary carrier of semantic meaning; nonverbal signals modulate that meaning \u2014 most powerfully when they're inconsistent with the verbal message, which is precisely the condition Mehrabian studied",
+        "Words are the primary carrier of semantic meaning; nonverbal signals modulate that meaning — most powerfully when they're inconsistent with the verbal message, which is precisely the condition Mehrabian studied",
         "Verbal and nonverbal communication carry equal weight and should receive equal preparation time",
         "Nonverbal communication matters primarily in in-person settings; in writing, the 7% figure roughly applies"
       ],
       "correct": 1,
-      "explanation": "This is the accurate synthesis: words carry meaning (semantic content, logical structure, argument); nonverbal signals modulate how that meaning is received. Mehrabian's finding is actually useful when understood correctly: it tells us that when what we say and how we say it are inconsistent, the nonverbal signal dominates. But it doesn't mean words don't matter \u2014 it means inconsistency between channels is costly."
+      "explanation": "This is the accurate synthesis: words carry meaning (semantic content, logical structure, argument); nonverbal signals modulate how that meaning is received. Mehrabian's finding is actually useful when understood correctly: it tells us that when what we say and how we say it are inconsistent, the nonverbal signal dominates. But it doesn't mean words don't matter — it means inconsistency between channels is costly."
     },
     {
       "question": "A manager is preparing for a difficult conversation with an underperforming team member. They spend most of their preparation time practicing tone of voice and body language, reasoning that '93% of communication is nonverbal.' What's wrong with this approach?",
       "options": [
-        "Nothing \u2014 nonverbal communication is genuinely the most important element of feedback conversations",
-        "It misapplies Mehrabian's research to a context it doesn't apply to. The actual content of the feedback \u2014 the specific observations, the impact, the expected change \u2014 is the primary carrier of meaning. Nonverbal delivery matters for how the message lands emotionally, but cannot substitute for precision and clarity in what's actually being communicated",
+        "Nothing — nonverbal communication is genuinely the most important element of feedback conversations",
+        "It misapplies Mehrabian's research to a context it doesn't apply to. The actual content of the feedback — the specific observations, the impact, the expected change — is the primary carrier of meaning. Nonverbal delivery matters for how the message lands emotionally, but cannot substitute for precision and clarity in what's actually being communicated",
         "Tone and body language matter but should be practiced less than two-thirds of total preparation time",
         "The preparation approach is fine for most feedback conversations but not for formal performance reviews"
       ],
       "correct": 1,
-      "explanation": "Feedback conversations require high verbal precision \u2014 specific observations, clear articulation of impact, explicit expectations for change. These are carried by words, not tone. A feedback conversation with perfect body language and imprecise content leaves the recipient confused about what exactly they need to change. Tone matters for whether the recipient feels respected \u2014 but it can't substitute for the content."
+      "explanation": "Feedback conversations require high verbal precision — specific observations, clear articulation of impact, explicit expectations for change. These are carried by words, not tone. A feedback conversation with perfect body language and imprecise content leaves the recipient confused about what exactly they need to change. Tone matters for whether the recipient feels respected — but it can't substitute for the content."
     }
   ],
-  "closing": "The most persistent myths in professional development are the ones that sound like permission. The 93% myth gives permission to underinvest in substance. That's precisely why it spread \u2014 and precisely why it's wrong.",
+  "closing": "The most persistent myths in professional development are the ones that sound like permission. The 93% myth gives permission to underinvest in substance. That's precisely why it spread — and precisely why it's wrong.",
   "sources": [
     {
-      "label": "Mehrabian, A. & Ferris, S.R. \u2014 Inference of Attitudes from Nonverbal Communication in Two Channels, Journal of Consulting Psychology, 31(3), 1967",
+      "label": "Mehrabian, A. & Ferris, S.R. — Inference of Attitudes from Nonverbal Communication in Two Channels, Journal of Consulting Psychology, 31(3), 1967",
       "detail": "One of the two original studies whose findings were combined into the '7-38-55' rule.",
       "url": "https://psycnet.apa.org/record/1968-02846-001"
     },
     {
-      "label": "Mehrabian, A. & Wiener, M. \u2014 Decoding of Inconsistent Communications, Journal of Personality and Social Psychology, 6(1), 1967",
+      "label": "Mehrabian, A. & Wiener, M. — Decoding of Inconsistent Communications, Journal of Personality and Social Psychology, 6(1), 1967",
       "detail": "The second of the two original studies whose findings were combined into the '7-38-55' rule.",
       "url": "https://psycnet.apa.org/record/1967-08861-001"
     },
     {
-      "label": "Lapakko, D. \u2014 Communication Is About 93% Nonverbal: An Urban Legend Proliferates, Communication Quarterly, 45(2), 1997",
+      "label": "Lapakko, D. — Communication Is About 93% Nonverbal: An Urban Legend Proliferates, Communication Quarterly, 45(2), 1997",
       "detail": "Documents the trajectory of the Mehrabian myth through management literature and training contexts.",
       "url": "https://www.tandfonline.com/doi/abs/10.1080/01463379709370054"
     }
   ],
-  "ai_prompt": "I want to rethink how I'm preparing for an important presentation or conversation \u2014 specifically how I'm balancing substance and delivery. Ask me about the situation and what I've been focused on preparing before we recalibrate. Here's what I'm working on: [describe the presentation or conversation and your current preparation approach]",
+  "ai_prompt": "I want to rethink how I'm preparing for an important presentation or conversation — specifically how I'm balancing substance and delivery. Ask me about the situation and what I've been focused on preparing before we recalibrate. Here's what I'm working on: [describe the presentation or conversation and your current preparation approach]",
   "verified": true,
   "verified_by": "claude_in_chrome_dead_drop",
   "verified_date": "2026-06-25"

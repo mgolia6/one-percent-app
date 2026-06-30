@@ -7,72 +7,72 @@
   "accent": "#47FFE8",
   "accentDim": "rgba(71,255,232,0.10)",
   "morning": {
-    "hook": "Anyone can build an AI feature. Almost nobody can tell you whether it's actually working. That gap \u2014 between deploying AI and knowing if it's good \u2014 is one of the most consequential unsolved problems in the field.",
+    "hook": "Anyone can build an AI feature. Almost nobody can tell you whether it's actually working. That gap — between deploying AI and knowing if it's good — is one of the most consequential unsolved problems in the field.",
     "explanation_paragraphs": [
       "Your team ships an AI-powered feature. Users seem to like it. A few complain. But you have no rigorous way to measure whether it's performing well, getting worse over time, or producing subtly wrong outputs that nobody has caught yet. This is the eval problem: the difficulty of systematically evaluating whether an AI system is working as intended.",
-      "Evaluation \u2014 'evals' in the field's terminology \u2014 is the practice of measuring AI system quality. For traditional software, this is relatively tractable: you define inputs, expected outputs, and write tests. For AI systems, outputs are probabilistic, context-dependent, and often require human judgment to assess. A summary can be factually accurate but miss the key point. A response can be grammatically perfect but tonally wrong.",
-      "There are three broad approaches to evals. Model-based evals use a separate AI model to evaluate the outputs of the primary model. Human evals use human raters to assess output quality on defined dimensions. Automated evals use deterministic tests where possible \u2014 checking whether specific information appears in an output, whether format requirements are met. Each has distinct tradeoffs: model-based evals are scalable but introduce a second system's errors; human evals are high-quality but expensive and slow; automated evals are cheap and fast but can only capture what's precisely definable.",
+      "Evaluation — 'evals' in the field's terminology — is the practice of measuring AI system quality. For traditional software, this is relatively tractable: you define inputs, expected outputs, and write tests. For AI systems, outputs are probabilistic, context-dependent, and often require human judgment to assess. A summary can be factually accurate but miss the key point. A response can be grammatically perfect but tonally wrong.",
+      "There are three broad approaches to evals. Model-based evals use a separate AI model to evaluate the outputs of the primary model. Human evals use human raters to assess output quality on defined dimensions. Automated evals use deterministic tests where possible — checking whether specific information appears in an output, whether format requirements are met. Each has distinct tradeoffs: model-based evals are scalable but introduce a second system's errors; human evals are high-quality but expensive and slow; automated evals are cheap and fast but can only capture what's precisely definable.",
       "Without evals, you cannot detect model drift (when a model's behavior changes after a provider update), cannot measure the impact of prompt changes, cannot identify which edge cases your system fails on, and cannot make confident claims about quality to stakeholders. Organizations that deploy AI without eval infrastructure are operating on vibes."
     ],
     "why_today": "The eval problem is a central active challenge in AI engineering as of 2025-2026. Chip Huyen's AI Engineering (O'Reilly, 2025) dedicates multiple chapters to evaluation frameworks. The field includes HELM (Holistic Evaluation of Language Models, Liang et al., 2022, Stanford) and ongoing work at major AI labs.",
-    "morning_challenge": "If you're using AI in any workflow \u2014 your own or your organization's \u2014 answer honestly: how do you know if it's working well?\n\nIf your answer is 'it feels right' or 'we haven't had complaints,' you don't have an eval. You have an absence of visible failure, which is not the same thing.\n\nIdentify one property of your AI system you could actually measure. Even one automated check is a better signal than none."
+    "morning_challenge": "If you're using AI in any workflow — your own or your organization's — answer honestly: how do you know if it's working well?\n\nIf your answer is 'it feels right' or 'we haven't had complaints,' you don't have an eval. You have an absence of visible failure, which is not the same thing.\n\nIdentify one property of your AI system you could actually measure. Even one automated check is a better signal than none."
   },
   "midday": {
     "reframe": "Deploying an AI system without evals is like shipping software without tests and calling it stable because users haven't complained yet. Complaints are a lagging indicator. Evals are a leading one.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 LIANG ET AL., HELM, STANFORD, 2022. HUYEN, AI ENGINEERING, O'REILLY, 2025.",
+    "itw_label": "IN THE WILD — TYPE A · LIANG ET AL., HELM, STANFORD, 2022. HUYEN, AI ENGINEERING, O'REILLY, 2025.",
     "itw_paragraphs": [
       "Stanford's HELM benchmark attempted to create a comprehensive evaluation framework for large language models across 42 scenarios and 7 key metrics: accuracy, calibration, robustness, fairness, bias, toxicity, and efficiency. The project's core finding was uncomfortable: no single model performed best across all dimensions, and gains in one area often came with regressions in another. AI systems are multidimensional in ways that resist simple summary scores.",
-      "At the application layer, the eval problem is more tractable but still underinvested. Most organizations that deploy AI features have production monitoring for uptime and latency \u2014 the infrastructure-level signals. Few have systematic evaluation of output quality over time. The practical consequence: they discover quality degradation when a user complains, when a downstream metric moves unexpectedly, or when a journalist writes about it.",
-      "The emerging best practice in 2025 is 'evals as a first-class artifact' \u2014 treating the evaluation suite as something that ships with the AI feature, is maintained alongside it, and is run as part of the deployment pipeline. This means writing evals before you build the feature, running them on every prompt change or model update, and treating eval regressions the same way engineering teams treat test failures \u2014 as blockers, not notifications."
+      "At the application layer, the eval problem is more tractable but still underinvested. Most organizations that deploy AI features have production monitoring for uptime and latency — the infrastructure-level signals. Few have systematic evaluation of output quality over time. The practical consequence: they discover quality degradation when a user complains, when a downstream metric moves unexpectedly, or when a journalist writes about it.",
+      "The emerging best practice in 2025 is 'evals as a first-class artifact' — treating the evaluation suite as something that ships with the AI feature, is maintained alongside it, and is run as part of the deployment pipeline. This means writing evals before you build the feature, running them on every prompt change or model update, and treating eval regressions the same way engineering teams treat test failures — as blockers, not notifications."
     ],
-    "quote": "If you can't measure whether your AI is working, you can't improve it. You can only guess \u2014 and that's not engineering.",
+    "quote": "If you can't measure whether your AI is working, you can't improve it. You can only guess — and that's not engineering.",
     "attribution": "Paraphrase of Chip Huyen, AI Engineering, O'Reilly, 2025",
-    "midday_nudge": "For any AI feature you're responsible for: write down three properties the output must have to be considered good. Now figure out how you'd test each one automatically. If you can't, the property is too vague \u2014 sharpen it until it's testable."
+    "midday_nudge": "For any AI feature you're responsible for: write down three properties the output must have to be considered good. Now figure out how you'd test each one automatically. If you can't, the property is too vague — sharpen it until it's testable."
   },
   "quiz": [
     {
       "question": "What is the core challenge that makes evaluating AI system outputs harder than evaluating traditional software outputs?",
       "options": [
         "AI systems are more complex internally, making it harder to trace why they produce specific outputs",
-        "AI outputs are probabilistic, context-dependent, and often require human judgment to assess quality \u2014 you can't define a single correct output for most natural language tasks the way you can for deterministic software",
+        "AI outputs are probabilistic, context-dependent, and often require human judgment to assess quality — you can't define a single correct output for most natural language tasks the way you can for deterministic software",
         "AI systems update their behavior over time through continued training, making stable test cases impossible",
         "AI systems are too expensive to test at the volume required for statistical significance"
       ],
       "correct": 1,
-      "explanation": "The fundamental evaluation challenge is that most AI outputs don't have a single correct answer. A good summary could take many forms. A good customer response could express the same content in dozens of ways. These properties can't be captured by comparing output to a fixed expected answer \u2014 they require either human judgment or a proxy measure that may not fully capture what 'good' means."
+      "explanation": "The fundamental evaluation challenge is that most AI outputs don't have a single correct answer. A good summary could take many forms. A good customer response could express the same content in dozens of ways. These properties can't be captured by comparing output to a fixed expected answer — they require either human judgment or a proxy measure that may not fully capture what 'good' means."
     },
     {
       "question": "What is model-based evaluation, and what is its key limitation?",
       "options": [
         "Using a simpler, faster model to pre-screen outputs before a stronger model evaluates them",
-        "Using a stronger AI model to assess the quality of a primary model's outputs \u2014 scalable and cost-effective, but introduces the evaluator model's own errors, biases, and blind spots into the assessment pipeline",
-        "Fine-tuning a model specifically for evaluation tasks \u2014 limited by the quality of the training data",
-        "Comparing outputs from multiple models on the same input \u2014 limited by the fact that model consensus doesn't guarantee quality"
+        "Using a stronger AI model to assess the quality of a primary model's outputs — scalable and cost-effective, but introduces the evaluator model's own errors, biases, and blind spots into the assessment pipeline",
+        "Fine-tuning a model specifically for evaluation tasks — limited by the quality of the training data",
+        "Comparing outputs from multiple models on the same input — limited by the fact that model consensus doesn't guarantee quality"
       ],
       "correct": 1,
-      "explanation": "Model-based evals are attractive because they scale \u2014 you can evaluate thousands of outputs without human reviewers. The limitation is that the evaluator model has its own failure modes. If it systematically misses a particular type of error, it won't detect those errors in the primary model's outputs. Best practice is to validate model-based evals against human judgment periodically to calibrate how well the evaluator's assessments correlate with what humans actually care about."
+      "explanation": "Model-based evals are attractive because they scale — you can evaluate thousands of outputs without human reviewers. The limitation is that the evaluator model has its own failure modes. If it systematically misses a particular type of error, it won't detect those errors in the primary model's outputs. Best practice is to validate model-based evals against human judgment periodically to calibrate how well the evaluator's assessments correlate with what humans actually care about."
     },
     {
       "question": "An organization has deployed an AI customer response system with no formal eval infrastructure. Which best describes their actual quality measurement situation?",
       "options": [
         "They have implicit quality measurement through customer satisfaction scores and support escalation rates",
-        "They have no quality measurement \u2014 they have downstream business metrics that are lagging indicators of serious problems, but no systematic evaluation of AI output quality that would detect degradation early or characterize failure modes",
+        "They have no quality measurement — they have downstream business metrics that are lagging indicators of serious problems, but no systematic evaluation of AI output quality that would detect degradation early or characterize failure modes",
         "They have sufficient quality measurement as long as the model provider publishes benchmark results",
         "They can infer quality from output volume and latency monitoring"
       ],
       "correct": 1,
-      "explanation": "Customer satisfaction scores and escalation rates are lagging indicators \u2014 they detect serious problems after they've already affected users and business outcomes. They don't tell you what failure modes exist, how often edge cases occur, or whether quality has changed after a model update. Without evals that systematically assess output quality on defined dimensions, the organization is learning about quality failures from their consequences rather than their causes."
+      "explanation": "Customer satisfaction scores and escalation rates are lagging indicators — they detect serious problems after they've already affected users and business outcomes. They don't tell you what failure modes exist, how often edge cases occur, or whether quality has changed after a model update. Without evals that systematically assess output quality on defined dimensions, the organization is learning about quality failures from their consequences rather than their causes."
     }
   ],
   "closing": "The AI systems that cause the most damage aren't the ones that break visibly. They're the ones that degrade quietly, with no eval infrastructure to catch it.",
   "sources": [
     {
-      "label": "Liang, P. et al. \u2014 Holistic Evaluation of Language Models (HELM), Stanford CRFM, 2022",
+      "label": "Liang, P. et al. — Holistic Evaluation of Language Models (HELM), Stanford CRFM, 2022",
       "detail": "Comprehensive benchmark framework evaluating language models across 42 scenarios and 7 dimensions.",
       "url": "https://crfm.stanford.edu/helm/"
     },
     {
-      "label": "Huyen, C. \u2014 AI Engineering, O'Reilly Media, 2025",
+      "label": "Huyen, C. — AI Engineering, O'Reilly Media, 2025",
       "detail": "Industry-standard reference for AI application development, covering evaluation frameworks and best practices for eval infrastructure.",
       "url": "https://www.oreilly.com/library/view/ai-engineering/9781098166298/"
     }

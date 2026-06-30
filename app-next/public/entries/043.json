@@ -7,27 +7,27 @@
   "accent": "#47C8FF",
   "accentDim": "rgba(71,200,255,0.10)",
   "morning": {
-    "hook": "By 3pm, you are measurably worse at making decisions than you were at 9am. Not because you're tired. Because deciding is a finite resource \u2014 and you've been spending it all day.",
+    "hook": "By 3pm, you are measurably worse at making decisions than you were at 9am. Not because you're tired. Because deciding is a finite resource — and you've been spending it all day.",
     "explanation_paragraphs": [
-      "You've been in back-to-back meetings since 9. You've resolved three ambiguous situations, given two pieces of feedback, approved four requests, and pushed back on two others. Now someone asks you to weigh in on a staffing decision that deserves careful thought. You give it a quick read and say 'whatever you think is best.' You're not being lazy. Your decision-making capacity has been depleted \u2014 and it's affecting the quality of your judgment whether you're aware of it or not.",
+      "You've been in back-to-back meetings since 9. You've resolved three ambiguous situations, given two pieces of feedback, approved four requests, and pushed back on two others. Now someone asks you to weigh in on a staffing decision that deserves careful thought. You give it a quick read and say 'whatever you think is best.' You're not being lazy. Your decision-making capacity has been depleted — and it's affecting the quality of your judgment whether you're aware of it or not.",
       "Decision fatigue is the deterioration in the quality of decisions made after a long session of decision-making. The concept was developed by social psychologist Roy Baumeister, building on his ego depletion research. The more decisions you make, the less mental energy remains for subsequent ones. This doesn't show up as tiredness. It shows up as worse choices: more impulsive decisions, more deference to defaults, more avoidance of anything requiring sustained evaluation.",
-      "The most cited empirical demonstration comes from a 2011 study by Shai Danziger and colleagues, published in PNAS, analyzing 1,112 parole hearings by Israeli judges over ten months. Prisoners who appeared early in the session were granted parole approximately 65% of the time. Those who appeared later, as judges became more fatigued, were granted parole at rates approaching zero. The judges weren't consciously biased. They were depleted. The default action \u2014 denying parole \u2014 required the least cognitive effort.",
-      "The practical implication isn't to make fewer decisions \u2014 that's rarely an option. It's to structure your decision-making around your cognitive state. High-stakes decisions belong in the morning. Low-stakes choices can move to afternoons. Meals and breaks reset capacity measurably."
+      "The most cited empirical demonstration comes from a 2011 study by Shai Danziger and colleagues, published in PNAS, analyzing 1,112 parole hearings by Israeli judges over ten months. Prisoners who appeared early in the session were granted parole approximately 65% of the time. Those who appeared later, as judges became more fatigued, were granted parole at rates approaching zero. The judges weren't consciously biased. They were depleted. The default action — denying parole — required the least cognitive effort.",
+      "The practical implication isn't to make fewer decisions — that's rarely an option. It's to structure your decision-making around your cognitive state. High-stakes decisions belong in the morning. Low-stakes choices can move to afternoons. Meals and breaks reset capacity measurably."
     ],
     "why_today": "The modern workday is a decision firehose: back-to-back calls, a Slack channel that never stops asking 'quick question?', and an inbox engineered to make you choose all day long. You're spending the same finite budget the parole judges spent — except no one schedules your biggest call for 9am on your behalf. Knowing this is the difference between protecting your judgment and defaulting your way through the afternoon.",
-    "morning_challenge": "Map your decision load today. When are your highest-stakes calls scheduled?\n\nIf any are after 2pm, consider whether they can move earlier \u2014 or whether you can reset before them.\n\nAnd notice: are you making any default choices today that you'd make differently with a full tank?"
+    "morning_challenge": "Map your decision load today. When are your highest-stakes calls scheduled?\n\nIf any are after 2pm, consider whether they can move earlier — or whether you can reset before them.\n\nAnd notice: are you making any default choices today that you'd make differently with a full tank?"
   },
   "midday": {
     "reframe": "The worst time to make your most important decision today is after you've already made twenty others. Structure your day like you know that.",
-    "itw_label": "IN THE WILD \u2014 TYPE A \u00b7 DANZIGER, LEVAV & AVNAIM-PESSO, PNAS, 2011. BAUMEISTER ET AL., EGO DEPLETION RESEARCH.",
+    "itw_label": "IN THE WILD — TYPE A · DANZIGER, LEVAV & AVNAIM-PESSO, PNAS, 2011. BAUMEISTER ET AL., EGO DEPLETION RESEARCH.",
     "itw_paragraphs": [
-      "The Israeli parole board study is striking not because judges are unusual but because their situation is controlled enough to measure what normally can't be measured. The judges were experienced professionals applying consistent legal standards. Their decisions correlated strongly with session position and meal timing \u2014 not case quality.",
+      "The Israeli parole board study is striking not because judges are unusual but because their situation is controlled enough to measure what normally can't be measured. The judges were experienced professionals applying consistent legal standards. Their decisions correlated strongly with session position and meal timing — not case quality.",
       "Baumeister's ego depletion framework proposed that willpower and effortful cognition draw from the same limited resource. His famous radish-and-cookie study (1998) showed that participants who resisted eating cookies gave up significantly faster on a subsequent unsolvable puzzle than those who hadn't used that self-control. The resource had been spent.",
       "Organizations that have taken decision fatigue seriously have restructured accordingly. Steve Jobs's wardrobe uniformity was an explicit strategy to eliminate trivial decisions from his cognitive budget. The intuition is accurate: every decision, regardless of stakes, draws from the same pool."
     ],
     "quote": "The best decision-makers are not the ones who try harder. They're the ones who protect their cognitive budget.",
-    "attribution": "Paraphrase of Roy Baumeister's ego depletion research, 1998\u20132011",
-    "midday_nudge": "You're probably past peak decision capacity right now. If there's anything genuinely important you've been putting off because it 'needs more thought' \u2014 either schedule it for tomorrow morning or give yourself a real break before you touch it."
+    "attribution": "Paraphrase of Roy Baumeister's ego depletion research, 1998–2011",
+    "midday_nudge": "You're probably past peak decision capacity right now. If there's anything genuinely important you've been putting off because it 'needs more thought' — either schedule it for tomorrow morning or give yourself a real break before you touch it."
   },
   "quiz": [
     {
@@ -35,7 +35,7 @@
       "options": [
         "Judges became more strict later in the day as they reviewed more cases",
         "Cases later in the session were systematically worse than earlier ones",
-        "Depleted judges defaulted to the low-effort option \u2014 denial \u2014 rather than making the effortful individualized assessment required to grant parole",
+        "Depleted judges defaulted to the low-effort option — denial — rather than making the effortful individualized assessment required to grant parole",
         "Prisoners who appeared later had less experienced legal representation"
       ],
       "correct": 2,
@@ -44,19 +44,19 @@
     {
       "question": "Decision fatigue tends to produce which specific pattern of deteriorated judgment?",
       "options": [
-        "Increased risk-taking \u2014 fatigued decision-makers become more aggressive",
-        "Defaulting to inaction or the status quo \u2014 depleted minds gravitate toward whichever option requires the least cognitive effort",
-        "Overconfidence \u2014 fatigued decision-makers stop second-guessing themselves",
-        "Emotional reactivity \u2014 fatigue causes people to weigh feelings more heavily"
+        "Increased risk-taking — fatigued decision-makers become more aggressive",
+        "Defaulting to inaction or the status quo — depleted minds gravitate toward whichever option requires the least cognitive effort",
+        "Overconfidence — fatigued decision-makers stop second-guessing themselves",
+        "Emotional reactivity — fatigue causes people to weigh feelings more heavily"
       ],
       "correct": 1,
-      "explanation": "The dominant pattern is default-seeking \u2014 choosing whatever requires the least mental effort. The fatigued brain isn't making bad choices because it's impulsive \u2014 it's making bad choices because it's conserving. The lowest-effort option wins by default."
+      "explanation": "The dominant pattern is default-seeking — choosing whatever requires the least mental effort. The fatigued brain isn't making bad choices because it's impulsive — it's making bad choices because it's conserving. The lowest-effort option wins by default."
     },
     {
       "question": "Which scheduling change would most directly address decision fatigue?",
       "options": [
         "Reducing the total number of decisions per day by delegating more",
-        "Moving high-stakes judgment calls to the beginning of the day and including genuine breaks before cognitively demanding sessions \u2014 the research shows both session position and meal breaks significantly affect decision quality",
+        "Moving high-stakes judgment calls to the beginning of the day and including genuine breaks before cognitively demanding sessions — the research shows both session position and meal breaks significantly affect decision quality",
         "Making decisions in groups rather than individually",
         "Writing down reasoning for all decisions to prevent impulsive choices"
       ],
@@ -67,12 +67,12 @@
   "closing": "Your judgment at the end of the day is not your judgment. It's what's left of your judgment after everything else used it up.",
   "sources": [
     {
-      "label": "Danziger, S., Levav, J., & Avnaim-Pesso, L. \u2014 Extraneous Factors in Judicial Decisions, PNAS, 108(17), 2011",
+      "label": "Danziger, S., Levav, J., & Avnaim-Pesso, L. — Extraneous Factors in Judicial Decisions, PNAS, 108(17), 2011",
       "detail": "Primary empirical study on decision fatigue. Analyzed 1,112 parole hearings, finding that parole grant rates correlated with session position and meal timing.",
       "url": "https://www.pnas.org/doi/10.1073/pnas.1018033108"
     },
     {
-      "label": "Baumeister, R.F. et al. \u2014 Ego Depletion: Is the Self a Limited Resource?, JPSP, 74(5), 1998",
+      "label": "Baumeister, R.F. et al. — Ego Depletion: Is the Self a Limited Resource?, JPSP, 74(5), 1998",
       "detail": "Foundational research establishing ego depletion as the mechanism underlying decision fatigue.",
       "url": "https://psycnet.apa.org/record/1998-01923-003"
     }
