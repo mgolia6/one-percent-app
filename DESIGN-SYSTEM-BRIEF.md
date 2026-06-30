@@ -56,8 +56,15 @@ your job is to elevate it into something premium while keeping the identity.
 - **YOURS:** everything in "craft" above — invent the system.
 
 ## Phase 1 deliverable — the INTERACTIVE QUIZ, as it plays out (2–3 directions)
-Design the whole quiz **experience**, not a static screen — a playable, phone-framed (~390×844),
-dark prototype on a real lesson (Personal Finance · "Compound Interest"). It must play through:
+
+> **The MOTION is the deliverable — not a screen.** Do NOT build a static quiz form that reveals
+> answers. Build the *choreography* of playing through it: every beat below must be **animated and
+> playable** (tap an option → it responds → feedback animates → it transitions to the next →
+> resolves into the peak). If it looks like a form with selectable options, it's wrong. Think
+> Oura/Arc-grade micro-interaction, alive and tactile.
+
+Playable, phone-framed (~390×844), dark prototype on a real lesson (Personal Finance ·
+"Compound Interest"). It must play through, with motion on every beat:
 
 1. **Question presentation.** One concept, 3 questions. *(Today all 3 render at once with a single
    SUBMIT that reveals everything — `EntryViewer.jsx` ~670. You're free to redesign the flow — e.g.
