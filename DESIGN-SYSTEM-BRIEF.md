@@ -5,12 +5,14 @@ screen, then roll it across every screen. Read with `WORKING-WITH-CLAUDE-DESIGN.
 and `DESIGN-MOMENTS.md` (the reward moments live inside this system).
 
 ## The approach — identity FIRST, screens second
-1. **Phase 1 — set the language.** Design the **lesson view** (the heart of the app) 2–3 distinct
-   ways at full fidelity. We pick the one that feels like a flagship app. This *is* the system.
+1. **Phase 1 — set the language on the INTERACTIVE QUIZ.** Design the quiz *experience* — how it
+   plays out, end to end, resolving into the peak — 2–3 distinct ways, as a playable prototype.
+   The quiz is the core interactive loop (states, motion, feedback, the run-up to the reward), so
+   designing it proves the whole language at once. We pick the one that feels like a flagship app.
 2. **Phase 2 — roll it out.** Apply the chosen language across every screen (inventory below),
-   producing a consistent set.
-3. **Phase 3 — the moments.** Peak + end (see `DESIGN-MOMENTS.md`) designed *inside* the locked
-   language so they can never drift.
+   including the lesson reading view, home, review, progress, profile.
+3. **Phase 3 — the END moment.** The session close (see `DESIGN-MOMENTS.md`) designed *inside* the
+   locked language. (The peak is already designed in Phase 1 as the quiz's resolution.)
 
 > Read this as INTENT, not a spec. Bring your own system; give **2–3 directions** in Phase 1.
 > Fixed vs. yours below.
@@ -53,11 +55,24 @@ your job is to elevate it into something premium while keeping the identity.
   each screen, the premium/emotional bar, accessibility (legible contrast).
 - **YOURS:** everything in "craft" above — invent the system.
 
-## Phase 1 deliverable — the lesson view, 2–3 directions
-Full-fidelity, phone-framed (~390×844), dark. Show a real lesson (e.g. Personal Finance ·
-"Compound Interest"): the concept title as a confident hero, the explanation, and the 3-question
-quiz state. Each direction is a complete visual language (type, color, depth, components, spacing).
-Make them genuinely *distinct* takes on "premium dark learning," not variations of one idea.
+## Phase 1 deliverable — the INTERACTIVE QUIZ, as it plays out (2–3 directions)
+Design the whole quiz **experience**, not a static screen — a playable, phone-framed (~390×844),
+dark prototype on a real lesson (Personal Finance · "Compound Interest"). It must play through:
+
+1. **Question presentation.** One concept, 3 questions. *(Today all 3 render at once with a single
+   SUBMIT that reveals everything — `EntryViewer.jsx` ~670. You're free to redesign the flow — e.g.
+   one question at a time with transitions, a progress sense, building anticipation.)*
+2. **Answering.** Selecting an option should feel responsive and satisfying — state, depth, motion;
+   not a flat form. The accent is light, not a thin border.
+3. **Feedback.** Right/wrong lands with **premium, kind** feedback — no harsh red/green boxes. Let
+   correct answers feel good and wrong ones feel like a nudge, not a buzzer. Build a little tension
+   across the three.
+4. **Resolution → the PEAK.** The last answer flows into the mastery-confirmation moment
+   (`DESIGN-MOMENTS.md`): 3/3 / 2/3 / miss, premium, earned, emotional — NOT a lock/seal/schematic.
+
+This single flow proves the entire language — type, color, depth, components, motion, feedback.
+Make the 2–3 directions genuinely *distinct* takes on "a premium quiz experience," not one idea
+restyled. Include a replay/reset so we can run it again and try the miss path.
 
 ## Phase 2 — screen inventory (after the language is locked)
 Apply the chosen language to: **Home/Library** (Today, library grid, progress) · **Lesson** (the
