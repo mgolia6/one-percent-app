@@ -13,10 +13,11 @@ const FAINT = 'rgba(232,238,245,0.4)', GOLD = '#E0A93D', OK = '#47FFE8', WARN = 
 
 // Source quality tiers — guides where the human focuses scrutiny.
 const TIER = {
-  1: { label: 'T1 · PRIMARY', c: '#47FFE8' },   // regulator / peer-reviewed / primary data
-  2: { label: 'T2 · REPUTABLE', c: '#E0A93D' },  // encyclopedic / pro body / quality journalism
-  3: { label: 'T3 · SECONDARY', c: '#FF8C47' },  // blog / SEO / non-primary — check hardest
+  1: { label: 'SOURCE: PRIMARY', c: '#47FFE8' },        // regulator / peer-reviewed / primary data
+  2: { label: 'SOURCE: REPUTABLE', c: '#E0A93D' },      // encyclopedic / pro body / quality journalism
+  3: { label: 'SOURCE: WEAK (secondary)', c: '#FF8C47' }, // blog / SEO / non-primary — check hardest
 }
+const KIND_LABEL = { THESIS: 'MAIN CLAIM', FIGURES: 'KEY FIGURES' }
 
 const CATEGORIES = [
   { key: 'history', label: 'History', file: '/verify-data/history.json' },
@@ -46,6 +47,14 @@ export default function VerifyPage() {
   const [justSubmitted, setJustSubmitted] = useState(false)
   const [view, setView] = useState('verify')        // 'verify' | 'archive'
   const [allSubs, setAllSubs] = useState([])         // all submissions, newest first
+  const [copied, setCopied] = useState(null)         // key of the just-copied claim
+
+  const copySearch = (key, text) => {
+    const clean = (text || '').replace(/[“”"]/g, '').trim()
+    try { navigator.clipboard.writeText(clean) } catch {}
+    setCopied(key)
+    setTimeout(() => setCopied(k => k === key ? null : k), 1500)
+  }
 
   useEffect(() => {
     let cancelled = false
@@ -235,14 +244,30 @@ export default function VerifyPage() {
                       <input type="checkbox" checked={on} disabled={fl} onChange={ev => toggleCheck(e.edition_id, c.no, ev.target.checked)}
                         style={{ appearance: 'none', WebkitAppearance: 'none', minWidth: 22, height: 22, marginTop: 1, borderRadius: 6, border: `2px solid ${on ? OK : fl ? `${WARN}66` : FAINT}`, background: on ? OK : 'transparent', position: 'relative', cursor: fl ? 'default' : 'pointer', opacity: fl ? 0.5 : 1 }} />
                       <span style={{ fontSize: 14, opacity: fl ? 0.65 : 1, minWidth: 0 }}>
-                        {c.kind ? <span style={{ color: GOLD, fontSize: 11, letterSpacing: '0.04em' }}>{c.kind} </span> : null}{c.text}
+                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.08em', marginBottom: 4, display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+                          <span style={{ color: FAINT }}>CLAIM {c.no}</span>
+                          {c.kind ? <span style={{ color: GOLD }}>· {KIND_LABEL[c.kind] || c.kind}</span> : null}
+                          {e.weakest_claim_no === c.no ? <span style={{ color: GOLD, fontWeight: 600 }}>· ⚠ CHECK THIS FIRST</span> : null}
+                        </div>
+                        {c.text}
                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center', margin: '5px 0 4px' }}>
                           {(() => { const t = TIER[c.tier || 2]; return <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', padding: '2px 7px', borderRadius: 5, color: t.c, border: `1px solid ${t.c}55`, background: `${t.c}14` }}>{t.label}</span> })()}
-                          {c.paraphrase && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', padding: '2px 7px', borderRadius: 5, color: WARN, border: `1px solid ${WARN}55`, background: `${WARN}14` }}>PARAPHRASED — NOT VERBATIM</span>}
+                          {c.paraphrase && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.06em', padding: '2px 7px', borderRadius: 5, color: WARN, border: `1px solid ${WARN}55`, background: `${WARN}14` }}>PARAPHRASED — NOT WORD-FOR-WORD</span>}
                         </div>
-                        <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '3px 0 6px', overflowWrap: 'anywhere' }}>{c.snippet}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10.5, color: GOLD, margin: '0 0 7px', overflowWrap: 'anywhere' }}>
-                          📍 {c.locate ? c.locate : <>on the page, find: “{(c.snippet || '').replace(/[“”"]/g, '').split(/\s+/).slice(0, 6).join(' ')}…”</>}
+                        <div style={{ margin: '6px 0' }}>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: FAINT }}>SOURCE SAYS</span>
+                          <div style={{ color: MUT, fontSize: 13, fontStyle: 'italic', margin: '2px 0 0', overflowWrap: 'anywhere' }}>{c.snippet}</div>
+                        </div>
+                        <div style={{ margin: '0 0 7px' }}>
+                          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: FAINT }}>WHERE TO LOOK</span>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: GOLD, margin: '2px 0 0', overflowWrap: 'anywhere' }}>
+                            📍 {c.locate ? c.locate : <>on the page, find: “{(c.snippet || '').replace(/[“”"]/g, '').split(/\s+/).slice(0, 6).join(' ')}…”</>}
+                          </div>
+                          <button onClick={ev => { ev.preventDefault(); ev.stopPropagation(); copySearch(key, c.snippet) }}
+                            style={{ marginTop: 6, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.06em', padding: '5px 11px', borderRadius: 7, cursor: 'pointer',
+                              border: `1px solid ${copied === key ? OK : LINE}`, background: copied === key ? `${OK}18` : 'rgba(255,255,255,0.04)', color: copied === key ? OK : MUT }}>
+                            {copied === key ? '✓ COPIED — paste into Find (⌘F / Ctrl-F)' : '⧉ COPY SEARCH TEXT'}
+                          </button>
                         </div>
                         <a href={c.url} target="_blank" rel="noopener noreferrer" onClick={ev => ev.stopPropagation()}
                           style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', color: '#06212b', background: OK, padding: '5px 12px', borderRadius: 7, textDecoration: 'none' }}>Verify ↗</a>
