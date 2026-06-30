@@ -45,10 +45,24 @@ reason to use it. Give it the **job + constraints + what "good" means**, and let
   (`<accent hex>`) variant."
 - **Hand off (to Claude Code):** "Wire this into `<component>`, real data, admin-gated."
 
+## Set the aesthetic target by FEELING + REFERENCE, never by literal motifs
+Hard-won lesson. We wrote "neon precision / machined / clamp / corner brackets / segmented bars"
+and the tool rendered a literal **engineering schematic** — green tick-marks, brackets around the
+word, "SPECIMEN 042." A HUD, not a premium app. Two failure modes to avoid:
+- **Literal-motif briefs.** Describing *mechanisms* (lock, seal, clamp, gauge, brackets) makes it
+  draw the mechanism. Describe the **feeling + quality bar + reference apps** instead, and let it
+  invent the mechanic. ("Feels like an Apple Fitness ring closing," not "a bolt throws.")
+- **Mono + thin strokes everywhere = terminal.** DM Mono is for *small labels only*; hero type is
+  big confident DM Sans. Use accent color as **light/glow/gradient/depth**, not thin green lines.
+Name the reference class explicitly (Linear, Arc, Apple, Oura, Copilot Money) and what to AVOID
+(blueprint/CAD/wireframe/HUD/dashboard). If it looks like a schematic, the brief over-prescribed.
+
 ## Principles we've locked
 - **Peak–end:** over-invest in exactly two moments; everything else whispers.
 - **Restraint:** full reward only when earned.
-- **On-brand material:** the prototype must look like it belongs in the real app.
+- **Premium-emotional, not mechanical:** reward moments are consumer celebrations (warmth, depth,
+  light, beautiful type), not machines locking shut.
+- **On-brand:** the prototype must look like it belongs in a flagship app.
 - **Design the problem, get options, then converge** — never hand it the finished answer.
 
 ## Where things live

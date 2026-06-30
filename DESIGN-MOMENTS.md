@@ -37,10 +37,33 @@ into the real app. Read the ground-truth files below; don't guess the brand.
 - Type: **DM Sans** (UI) + **DM Mono** (labels/numbers — uppercase, letter-spaced ~0.16em).
 - Voice: terse, confident, no fluff, lightly gamified. "Locked in." not "Great job!!".
 
-## Material language — NEON PRECISION
-Cold, machined, futuristic. Thin 1px strokes, hard mechanical easing `cubic-bezier(.6,0,.2,1)`,
-light sweeps/pulses, snap/clamp motions, corner brackets, segmented bars.
-**NO skeuomorphism, NO springy bounce, NO wax/paper/confetti.** Weight and precision, never cartoon.
+## Look & feel — premium, restrained, alive
+The quality bar is **Linear · Arc · Apple · Oura · Vercel** — refined typography, real depth and
+material, generous spacing, and motion that's purposeful, weighted, and physical (eased, never
+decorative). Dark and neon-accented, but **elegant and expensive**, like a flagship app.
+
+Confident and minimal: let the concept and the moment breathe. One or two hero elements, strong
+type hierarchy, subtle glow/depth, motion that *rewards* rather than *decorates*.
+
+**DO NOT produce (this is what "1st-grader CAD" looks like — avoid it):**
+- Technical-drawing / blueprint / wireframe / CAD aesthetics.
+- Corner brackets, crosshairs, calipers, tick-marks, or HUD/sci-fi circuit-diagram overlays.
+- Hard geometric "precision" motifs that read cold, crude, and amateur.
+- Segmented engineering bars, dashed borders everywhere, clip-art icons, default system UI.
+- Spring-bounce, confetti, emoji-as-design, or anything that reads cheap or childish.
+
+If a frame looks like an engineering schematic or a dashboard, it's wrong. It should look like a
+beautifully art-directed moment in a premium consumer app.
+
+**Type & color discipline (this is where it went wrong before):**
+- **DM Mono is for SMALL labels only** — never hero type, never body. The concept name is large,
+  confident **DM Sans display** type, and it is the hero.
+- Use the accent as **light, gradient, glow, and depth** — not as thin green strokes on black.
+  Thin lines + mono caps + brackets = terminal/HUD. Avoid.
+- Embrace **depth and warmth**: soft gradients, subtle glow, real shadow, generous space. Flat.
+
+**Reference the feeling of these reward moments:** Apple Fitness ring close · Oura readiness reveal ·
+Copilot Money / Robinhood number resolves · Headspace session complete · Arc's little delights.
 
 ## The one principle — PEAK–END
 Design strictly by the peak-end rule (it's literally lesson NC.10 in this app — practice it).
@@ -49,34 +72,33 @@ rest quiet. Rewards are **earned** — a full beat fires only at the top tier.
 
 ---
 
-## MOMENT 1 — THE PEAK: "the concept locks in" (start here)
-The instant of mastery confirmation after the 3-question quiz. Single highest-intensity moment.
+## MOMENT 1 — THE PEAK: mastery confirmation (start here)
+The instant after the quiz when the user learns they nailed it — the single most rewarding beat of
+a session. **The job:** make them *feel* they just permanently captured this concept — a genuine
+little hit of pride. Premium, warm, satisfying, and earned.
 
-The concept name (e.g. "Compound Interest") sits in a thin-bordered frame (the specimen).
-- **3/3:** two corner brackets (top-left + bottom-right) snap inward and clamp the frame like
-  calipers closing (fast, hard ease). A hard click (one-frame flash). A thin light-line sweeps
-  left→right once. The border brightens to the accent with a single light-pulse bloom. A DM Mono
-  label types in `LOCKED · 3/3`, then a terse line: "Filed for life."
-- **2/3:** brackets snap but only partially seat; dimmer, no glow, no sweep. `ONE OPEN · 2/3`
-  (muted/amber). "Close. One rep from sealed." CTA `RUN IT BACK`.
-- **0–1/3:** the clamp tries and **releases** — brackets snap inward then slide back open (it
-  didn't take). Border stays dim. `DIDN'T TAKE · 1/3`. "Reps fix this." The RETRY button is the
-  loud accent CTA. Honest, never punishing.
+- The **concept name is the hero** — set it large and beautifully; let the category accent become
+  light, color, and depth around it. The reward is felt through motion + light + type, not labels.
+- Motion should feel **expensive**: a settle, a bloom of light, a number resolving — the close of an
+  Apple Fitness ring, not a machine.
+- **Earned tiers** (visibly different via energy/color/light/motion — never via brackets or labels):
+  - **3/3:** the full, warm celebration. The peak.
+  - **2/3:** quieter, dimmer — acknowledged, not celebrated. "One more rep."
+  - **0–1/3:** honest and kind — no celebration, a calm reset with a confident, loud RETRY. Never punishing, never sad.
 
-Control bar to replay: `[3/3] [2/3] [MISS]`. 3/3 must feel like a genuine, restrained win; the
-miss must feel honest, not sad.
+Replay controls `[3/3] [2/3] [MISS]`. **Do NOT render a lock, seal, bracket, specimen, gauge, or
+schematic.** The mechanic is yours — give 2–3 *premium* directions.
 
-## MOMENT 2 — THE END: the session close (one continuous beat)
+## MOMENT 2 — THE END: the session close
 The last thing before the app is put down — weighted as heavily as the peak, and the retention
-lever. After the peak, the screen resolves into `SESSION · COMPLETE`, assembling top→bottom:
-1. **Bank the win** — the locked concept files into `THE VAULT`; a counter ticks `11 → 12`,
-   `12 / 70 LOCKED`, a thin progress notch fills.
-2. **Secure the streak** — a 7-segment week bar; today's segment lights with a click + single
-   pulse; `🔒 6 DAYS · SAFE TILL TOMORROW` (loss aversion made physical).
-3. **Open tomorrow's loop** — a panel slides up: kicker `TOMORROW`, the next category in its
-   accent, a one-line teaser hook ("The 2-minute habit that flattens your blood-sugar spike."),
-   and a thin `unlocks in 14h` countdown.
-4. A single quiet exit: `SEE YOU TOMORROW`.
+lever. It should leave the user feeling **accomplished and quietly pulled toward tomorrow** — premium,
+warm, calm-confident. Three jobs (the treatment is yours — make each *beautiful*, never a dashboard
+or stat readout):
+1. **Bank the win** — reflect their growing mastery back in a way that feels *valuable*, not a metric.
+2. **Protect the streak** — make continuing feel worth protecting (loss aversion), warmly.
+3. **Open tomorrow** — a genuine, enticing hook for the next concept that creates anticipation.
+
+End on one calm, confident exit. **Avoid gauges, segmented bars, counters, and terminal aesthetics.**
 
 ## Deliverable
 One interactive artifact, phone-framed (~360×740), dark, mobile-first, using the tokens above,
