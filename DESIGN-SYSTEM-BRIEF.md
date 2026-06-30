@@ -5,10 +5,10 @@ screen, then roll it across every screen. Read with `WORKING-WITH-CLAUDE-DESIGN.
 and `DESIGN-MOMENTS.md` (the reward moments live inside this system).
 
 ## The approach — identity FIRST, screens second
-1. **Phase 1 — set the language on the INTERACTIVE QUIZ.** Design the quiz *experience* — how it
-   plays out, end to end, resolving into the peak — 2–3 distinct ways, as a playable prototype.
-   The quiz is the core interactive loop (states, motion, feedback, the run-up to the reward), so
-   designing it proves the whole language at once. We pick the one that feels like a flagship app.
+1. **Phase 1 — set the language on the conversational "LOCK IT IN" chat.** Design the app's flagship
+   AI interaction — a coached 3-turn chat that ends in a score + memory hook + keeper — as a playable
+   prototype, 2–3 distinct ways. It's the densest mix of presence, motion, feedback, and payoff, so
+   designing it proves the whole language. (The multiple-choice quiz is the fallback, designed later.)
 2. **Phase 2 — roll it out.** Apply the chosen language across every screen (inventory below),
    including the lesson reading view, home, review, progress, profile.
 3. **Phase 3 — the END moment.** The session close (see `DESIGN-MOMENTS.md`) designed *inside* the
@@ -55,31 +55,34 @@ your job is to elevate it into something premium while keeping the identity.
   each screen, the premium/emotional bar, accessibility (legible contrast).
 - **YOURS:** everything in "craft" above — invent the system.
 
-## Phase 1 deliverable — the INTERACTIVE QUIZ, as it plays out (2–3 directions)
+## Phase 1 deliverable — the conversational "LOCK IT IN" experience (2–3 directions)
 
-> **The MOTION is the deliverable — not a screen.** Do NOT build a static quiz form that reveals
-> answers. Build the *choreography* of playing through it: every beat below must be **animated and
-> playable** (tap an option → it responds → feedback animates → it transitions to the next →
-> resolves into the peak). If it looks like a form with selectable options, it's wrong. Think
-> Oura/Arc-grade micro-interaction, alive and tactile.
+> **This is the app's flagship, AI-native interaction — a short *coached chat* that locks the concept
+> in. NOT the multiple-choice quiz (that's the fallback), NOT a static screen.** The deliverable is
+> the **playable, animated conversation** — the AI's presence, the streaming, the message
+> choreography, the build, and the payoff. If it looks like a form or a plain chat-bubble clone,
+> it's wrong. Think a beautifully art-directed AI tutor (Arc/Oura-grade), alive and warm.
 
-Playable, phone-framed (~390×844), dark prototype on a real lesson (Personal Finance ·
-"Compound Interest"). It must play through, with motion on every beat:
+Ground truth: `app-next/components/LockItIn.jsx` (the real 3-turn flow) + `app-next/app/api/lock-it-in`.
+Playable, phone-framed (~390×844), dark, themed by the category accent. Real lesson: Personal
+Finance · "Compound Interest". The flow, animated on every beat:
 
-1. **Question presentation.** One concept, 3 questions. *(Today all 3 render at once with a single
-   SUBMIT that reveals everything — `EntryViewer.jsx` ~670. You're free to redesign the flow — e.g.
-   one question at a time with transitions, a progress sense, building anticipation.)*
-2. **Answering.** Selecting an option should feel responsive and satisfying — state, depth, motion;
-   not a flat form. The accent is light, not a thin border.
-3. **Feedback.** Right/wrong lands with **premium, kind** feedback — no harsh red/green boxes. Let
-   correct answers feel good and wrong ones feel like a nudge, not a buzzer. Build a little tension
-   across the three.
-4. **Resolution → the PEAK.** The last answer flows into the mastery-confirmation moment
-   (`DESIGN-MOMENTS.md`): 3/3 / 2/3 / miss, premium, earned, emotional — NOT a lock/seal/schematic.
+1. **The AI opens** (recall): *"In your own words — what is **Compound Interest**, and why does it
+   matter?"* The question should *arrive* with presence (a tutor thinking/typing), not just appear.
+2. **You answer** — a beautiful, inviting input. On send, your message settles in and the AI
+   **streams** a short, warm coaching reply (*"Good — that's the kind of thinking that makes it stick."*).
+3. **Move 2** (apply): *"Can you think of an example of this in action?"* → answer → coached reply.
+4. **Move 3** (the keeper): *"If you kept one sentence about Compound Interest, what's the keeper?"*
+   → answer → FINISH. A quiet sense of progress builds across the three moves.
+5. **The payoff** (the peak for this mode — currently flat, make it land): a premium reveal of the
+   **score**, a one-line recap, a **🧠 memory hook** (an AI-offered image/association to make it
+   stick), and **YOUR KEEPER** — an editable sentence saved for later (with a "your version / sharper
+   version" choice). End on **LOCK IT IN →**. See `DESIGN-MOMENTS.md` for the peak's emotional bar
+   (premium, earned — NOT a lock/seal/schematic).
 
-This single flow proves the entire language — type, color, depth, components, motion, feedback.
-Make the 2–3 directions genuinely *distinct* takes on "a premium quiz experience," not one idea
-restyled. Include a replay/reset so we can run it again and try the miss path.
+This proves the entire language — type, color, depth, motion, the feel of an AI presence, and the
+payoff. Make the 2–3 directions genuinely *distinct* takes on "a premium AI learning conversation,"
+not one idea restyled. Include a replay so we can run it again.
 
 ## Phase 2 — screen inventory (after the language is locked)
 Apply the chosen language to: **Home/Library** (Today, library grid, progress) · **Lesson** (the
