@@ -12,6 +12,7 @@ import analytics from '@/lib/analytics'
 import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
 import OnThisDay from '@/components/OnThisDay'
 import TodayLanding from '@/components/TodayLanding'
+import IgnitionBoot from '@/components/IgnitionBoot'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1656,16 +1657,27 @@ export default function HomePage() {
         // Find last completed concept name
         const lastEntryNum = Object.keys(completions).sort((a,b) => parseInt(b)-parseInt(a))[0]
         const lastConcept = null // we don't cache concept names client-side; leave null for now
-        return <WelcomeOverlay
-          firstName={firstName}
-          streak={profile?.current_streak || 0}
-          longestStreak={profile?.longest_streak || 0}
-          completedCount={completedCount}
-          lastConcept={lastConcept}
-          goalWhat={profile?.goal_what || ''}
-          fading={welcomeFading}
-          onDismiss={() => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }}
-        />
+        const dismiss = () => { setWelcomeFading(true); setTimeout(() => setShowWelcome(false), 500) }
+        return isAdmin ? (
+          <IgnitionBoot
+            firstName={firstName}
+            streak={profile?.current_streak || 0}
+            todayEntry={todayEntry}
+            accent={accent}
+            onDismiss={dismiss}
+          />
+        ) : (
+          <WelcomeOverlay
+            firstName={firstName}
+            streak={profile?.current_streak || 0}
+            longestStreak={profile?.longest_streak || 0}
+            completedCount={completedCount}
+            lastConcept={lastConcept}
+            goalWhat={profile?.goal_what || ''}
+            fading={welcomeFading}
+            onDismiss={dismiss}
+          />
+        )
       })()}
 
       {/* COMMIT RITUAL OVERLAY */}
