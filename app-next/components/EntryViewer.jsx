@@ -571,7 +571,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const scoreSub = displayScore === 3 ? "You've got this one locked in." : displayScore === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
 
   return (
-    <div style={{ background: T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, transition: 'background 0.6s ease, color 0.4s ease' }}>
+    <div style={{ background: isAdmin ? 'radial-gradient(125% 58% at 50% 4%, #16242f 0%, #101b24 44%, #0b1118 100%)' : T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, position: 'relative', transition: 'background 0.6s ease, color 0.4s ease' }}>
+      {isAdmin && <div style={{ position: 'absolute', left: '-20%', top: 0, width: '140%', height: '46%', pointerEvents: 'none', zIndex: 0, background: `radial-gradient(50% 60% at 50% 26%, ${ACCENT}1f, transparent 66%)`, filter: 'blur(14px)' }} />}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}

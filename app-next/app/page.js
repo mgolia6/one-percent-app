@@ -11,6 +11,7 @@ import { getDueCount } from '@/lib/lockins'
 import analytics from '@/lib/analytics'
 import DeepCut, { DeepCutFAB } from '@/components/DeepCut'
 import OnThisDay from '@/components/OnThisDay'
+import TodayLanding from '@/components/TodayLanding'
 
 const GREETINGS = [
   "Sharp minds don't take days off.",
@@ -1815,6 +1816,22 @@ export default function HomePage() {
 
       {/* ── TODAY TAB ── */}
       {activeTab === 'today' && (
+        isAdmin ? (
+        <div style={{ background: 'radial-gradient(125% 58% at 50% 6%, #16242f 0%, #101b24 44%, #0b1118 100%)', minHeight: '100dvh', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', left: '-20%', top: '-8%', width: '140%', height: '52%', pointerEvents: 'none', background: `radial-gradient(50% 60% at 50% 30%, ${accent}22, transparent 66%)`, filter: 'blur(14px)' }} />
+          <TodayLanding
+            firstName={profile?.first_name || (profile?.name ? profile.name.split(' ')[0] : '')}
+            streak={profile?.current_streak || 0}
+            completedCount={completedCount}
+            dueCount={dueCount}
+            todayEntry={todayEntry}
+            onDeckEntry={onDeckEntry}
+            todayCompleted={todayCompleted}
+            accent={accent}
+            onBegin={(n) => router.push(`/entry/${n}`)}
+          />
+        </div>
+        ) : (
         <div style={S.screen}>
           {/* Commitment */}
           <div style={S.commitment} onClick={() => { setGoalStep(1); setShowGoalSheet(true) }}>
@@ -1952,6 +1969,7 @@ export default function HomePage() {
             )
           })()}
         </div>
+        )
       )}
 
       {/* ── LIBRARY TAB ── */}
