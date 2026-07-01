@@ -3,16 +3,15 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { categoryColor } from '@/lib/categories'
 
 // "On This Day" — a daily bonus card on the Today tab. Facts come from Wikipedia's
 // on-this-day feed via /api/on-this-day (auto-verified, sourced); Claude only writes
 // the framing. One shared card per calendar date: the first signed-in viewer of the
 // day generates + caches it in `on_this_day`; everyone else reads the cache.
 
-const ACCENT = categoryColor('History') // #E0A93D
+const PURPLE = '#C847FF', P_RGB = '200,71,255'
 const pad = (n) => String(n).padStart(2, '0')
-const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
 export default function OnThisDay() {
   const router = useRouter()
@@ -26,12 +25,9 @@ export default function OnThisDay() {
     const today = `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`
 
     async function load() {
-      // 1) Cached card for today?
       const { data: cached } = await supabase.from('on_this_day').select('*').eq('date', today).maybeSingle()
       if (!alive) return
       if (cached) { setCard(cached); setDone(true); return }
-
-      // 2) Generate from the API, then cache it (first viewer of the day).
       try {
         const res = await fetch('/api/on-this-day')
         if (!res.ok) { setDone(true); return }
@@ -39,7 +35,6 @@ export default function OnThisDay() {
         if (!alive) return
         if (fresh?.event) {
           setCard(fresh)
-          // Best-effort cache; ignore conflicts (another user may have written first).
           supabase.from('on_this_day').upsert(fresh, { onConflict: 'date', ignoreDuplicates: true }).then(() => {})
         }
       } catch (_) { /* hide on failure */ }
@@ -53,65 +48,35 @@ export default function OnThisDay() {
 
   const d = new Date(card.date + 'T12:00:00Z')
   const dateLabel = `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}`
+  const yearLabel = card.year != null ? (card.year < 0 ? `${Math.abs(card.year)} BC` : card.year) : null
 
   return (
-    <div
-      onClick={() => setOpen(o => !o)}
-      style={{
-        background: '#1a2a3a', border: '1px solid rgba(224,169,61,0.22)', borderLeft: `3px solid ${ACCENT}`,
-        borderRadius: 12, padding: '16px 18px', marginBottom: 16, cursor: 'pointer',
-        fontFamily: "'DM Sans', sans-serif", transition: 'border-color 0.15s',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.16em', color: ACCENT }}>
-          ON THIS DAY · {dateLabel}
+    <div onClick={() => setOpen(o => !o)} style={{ borderRadius: 14, background: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.08)', padding: '14px 15px', cursor: 'pointer', fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ width: 38, height: 38, flex: 'none', borderRadius: 11, background: `rgba(${P_RGB},0.12)`, border: `1px solid rgba(${P_RGB},0.3)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={PURPLE} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l2.5 2" /></svg>
         </div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 8, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.4)', border: '1px solid rgba(232,238,245,0.14)', borderRadius: 4, padding: '2px 6px' }}>
-          BONUS
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 6 }}>
-        {card.year != null && (
-          <div style={{ fontSize: 22, fontWeight: 700, color: ACCENT, letterSpacing: '-0.02em', flexShrink: 0, lineHeight: 1 }}>
-            {card.year < 0 ? `${Math.abs(card.year)} BC` : card.year}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.18em', color: PURPLE }}>ON THIS DAY · {dateLabel}</div>
+          <div style={{ fontSize: 14.5, fontWeight: 600, color: '#f1f6fb', marginTop: 4, lineHeight: 1.35 }}>
+            {yearLabel != null && <span style={{ color: PURPLE }}>{yearLabel} · </span>}{card.blurb || card.event}
           </div>
-        )}
-        <div style={{ fontSize: 15, fontWeight: 600, color: '#e8eef5', lineHeight: 1.4 }}>{card.blurb || card.event}</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flex: 'none', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .25s ease' }}><polyline points="6 9 12 15 18 9" /></svg>
       </div>
 
       {open && (
-        <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        <div style={{ marginTop: 12, paddingLeft: 50 }}>
           {card.why_today && (
-            <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.75)', lineHeight: 1.65, marginBottom: 12 }}>
-              <span style={{ color: ACCENT, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em', marginRight: 8 }}>WHY IT STICKS</span>
-              {card.why_today}
+            <div style={{ paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.16em', color: PURPLE, marginBottom: 8 }}>WHY THIS STICKS</div>
+              <div style={{ fontSize: 13, lineHeight: 1.65, color: 'rgba(232,238,245,0.72)' }}>{card.why_today}</div>
             </div>
           )}
           {card.source_url && (
-            <a
-              href={card.source_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              style={{ display: 'block', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.5)', textDecoration: 'none', marginBottom: 10 }}
-            >
-              ✓ Verified via Wikipedia → {card.source_title}
-            </a>
+            <a href={card.source_url} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} style={{ display: 'block', fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: '0.06em', color: 'rgba(232,238,245,0.45)', textDecoration: 'none', marginTop: 10 }}>✓ Verified via Wikipedia → {card.source_title}</a>
           )}
-          <button
-            onClick={e => { e.stopPropagation(); router.push('/on-this-day') }}
-            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.1em', fontWeight: 600, color: ACCENT }}
-          >
-            VIEW THE ARCHIVE →
-          </button>
-        </div>
-      )}
-
-      {!open && (
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.35)', marginTop: 8 }}>
-          TAP FOR WHY IT MATTERS
+          <button onClick={e => { e.stopPropagation(); router.push('/on-this-day') }} style={{ background: 'none', border: 'none', padding: 0, marginTop: 10, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontSize: 9.5, letterSpacing: '0.1em', fontWeight: 600, color: PURPLE }}>VIEW THE ARCHIVE →</button>
         </div>
       )}
     </div>
