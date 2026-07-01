@@ -75,7 +75,7 @@ export default function IgnitionBoot({ firstName, streak = 0, todayEntry, accent
         @keyframes ibPulse{0%,100%{opacity:0.4}50%{opacity:0.85}}
         @keyframes ibCaret{0%,49%{opacity:1}50%,100%{opacity:0}}
         @keyframes ibMarkIn{from{opacity:0;transform:scale(0.72)}to{opacity:1;transform:scale(1)}}
-        @keyframes ibIgnite{0%{transform:translate(-50%,-50%) scale(.2);opacity:.95}22%{transform:translate(-50%,-50%) scale(1.55);opacity:1}48%{transform:translate(-50%,-50%) scale(1.66);opacity:1}100%{transform:translate(-50%,-50%) scale(.02);opacity:0}}
+        @keyframes ibIgnite{0%{transform:translate(-50%,-50%) scale(.2);opacity:.95}20%{transform:translate(-50%,-50%) scale(1.5);opacity:1}42%{transform:translate(-50%,-50%) scale(1.62);opacity:1}100%{transform:translate(calc(-50% - 40vw),calc(-50% - 42vh)) scale(.04);opacity:0}}
       `}</style>
 
       {/* greeting — typed; header/status strip dropped per feedback */}

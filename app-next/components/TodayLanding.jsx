@@ -33,7 +33,7 @@ function Mark({ size = 30, rgb, accent }) {
   )
 }
 
-export default function TodayLanding({ firstName, streak = 0, completedCount = 0, dueCount = 0, todayEntry, onDeckEntry, todayCompleted, accent = '#3DE88A', onBegin }) {
+export default function TodayLanding({ firstName, streak = 0, completedCount = 0, dueCount = 0, todayEntry, onDeckEntry, onDeckLocked = true, todayCompleted, accent = '#3DE88A', onBegin, onOpen }) {
   const A = accent
   const rgb = hexToRgb(accent)
   const [teaser, setTeaser] = useState('')
@@ -138,18 +138,27 @@ export default function TodayLanding({ firstName, streak = 0, completedCount = 0
         <OnThisDay />
       </div>
 
-      {/* On Deck · Tomorrow */}
+      {/* On Deck — two states, mirroring the classic home:
+          locked next-unlock ("UP NEXT · UNLOCKS TOMORROW", padlock, not tappable) vs
+          an already-unlocked incomplete lesson ("PICK UP WHERE YOU LEFT OFF", chevron, tappable). */}
       {onDeckEntry && (
-        <div style={{ ...rise(5), marginTop: 16, borderRadius: 16, background: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.09)', padding: '16px 17px' }}>
+        <div
+          onClick={() => { if (!onDeckLocked) onOpen?.(onDeckEntry.entry) }}
+          style={{ ...rise(5), marginTop: 16, borderRadius: 16, background: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.09)', padding: '16px 17px', cursor: onDeckLocked ? 'default' : 'pointer' }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
-            <div style={{ width: 42, height: 42, flex: 'none', borderRadius: 12, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700, color: 'rgba(232,238,245,0.6)' }}>{String(onDeckEntry.entry).padStart(2, '0')}</div>
+            <div style={{ width: 42, height: 42, flex: 'none', borderRadius: 12, background: `rgba(${rgb},0.1)`, border: `1px solid rgba(${rgb},0.28)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700, color: A }}>{String(onDeckEntry.entry).padStart(2, '0')}</div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 16, fontWeight: 600, color: '#f1f6fb' }}>{onDeckEntry.concept}</div>
-              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.1em', color: 'rgba(232,238,245,0.4)', marginTop: 4 }}>{String(onDeckEntry.category || '').toUpperCase()} · UNLOCKS IN {countdown}</div>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 8.5, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.45)', marginBottom: 4 }}>{onDeckLocked ? 'UP NEXT · UNLOCKS TOMORROW' : 'PICK UP WHERE YOU LEFT OFF'}</div>
+              <div style={{ fontSize: 16, fontWeight: 600, color: '#f1f6fb', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{onDeckEntry.concept}</div>
+              <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.1em', color: A, marginTop: 4 }}>{onDeckEntry.editionId} · {String(onDeckEntry.category || '').toUpperCase()}{onDeckLocked ? ` · UNLOCKS IN ${countdown}` : ''}</div>
             </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.35)" strokeWidth="1.7" strokeLinecap="round"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+            {onDeckLocked
+              ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.35)" strokeWidth="1.7" strokeLinecap="round"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+              : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            }
           </div>
-          <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)', fontSize: 12.5, lineHeight: 1.5, color: 'rgba(232,238,245,0.5)' }}>On deck for tomorrow — it builds directly on today.</div>
+          <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)', fontSize: 12.5, lineHeight: 1.5, color: 'rgba(232,238,245,0.5)' }}>{onDeckLocked ? 'On deck for tomorrow — it builds directly on today.' : 'You started this one — tap to pick up where you left off.'}</div>
         </div>
       )}
     </div>

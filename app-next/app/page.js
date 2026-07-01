@@ -1285,8 +1285,12 @@ export default function HomePage() {
       if (!sessionStorage.getItem('welcomed')) {
         sessionStorage.setItem('welcomed', '1')
         setShowWelcome(true)
-        setTimeout(() => setWelcomeFading(true), 6000)
-        setTimeout(() => setShowWelcome(false), 6700)
+        // Admins get IgnitionBoot — a loading screen that persists until they tap Begin.
+        // Non-admins keep the classic auto-dismissing WelcomeOverlay.
+        if (!prof?.is_admin) {
+          setTimeout(() => setWelcomeFading(true), 6000)
+          setTimeout(() => setShowWelcome(false), 6700)
+        }
       }
       } catch (err) {
         console.error('Init error:', err)
@@ -1885,9 +1889,11 @@ export default function HomePage() {
             dueCount={dueCount}
             todayEntry={todayEntry}
             onDeckEntry={onDeckEntry}
+            onDeckLocked={!!nextUnlocked}
             todayCompleted={todayCompleted}
             accent={accent}
             onBegin={(n) => router.push(`/entry/${n}`)}
+            onOpen={(n) => router.push(`/entry/${n}`)}
           />
         </div>
         ) : (
