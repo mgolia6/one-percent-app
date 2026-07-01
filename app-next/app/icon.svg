@@ -1,18 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1a2a3a"/>
-      <stop offset="1" stop-color="#0e141c"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.6">
-      <stop offset="0" stop-color="#47FFE8" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#47FFE8" stop-opacity="0"/>
-    </radialGradient>
+    <radialGradient id="bg" cx="50%" cy="50%" r="85%"><stop offset="0%" stop-color="#173039"></stop><stop offset="100%" stop-color="#070f14"></stop></radialGradient>
+    <radialGradient id="gl" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#3DE88A" stop-opacity="0.4"></stop><stop offset="100%" stop-color="#3DE88A" stop-opacity="0"></stop></radialGradient>
+    <radialGradient id="orb" cx="42%" cy="38%" r="62%"><stop offset="0%" stop-color="#eafff5"></stop><stop offset="42%" stop-color="#3DE88A"></stop><stop offset="100%" stop-color="#178a4f"></stop></radialGradient>
+    <radialGradient id="sp" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.82"></stop><stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop></radialGradient>
   </defs>
-  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#tile)"/>
-  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#glow)"/>
-  <rect x="17.5" y="17.5" width="477" height="477" rx="110.5" fill="none" stroke="#47FFE8" stroke-opacity="0.22" stroke-width="3"/>
-  <text x="256" y="258" text-anchor="middle" dominant-baseline="central"
-        font-family="'DM Sans','Helvetica Neue',Arial,sans-serif"
-        font-size="300" font-weight="800" letter-spacing="-14" fill="#47FFE8">1%</text>
+  <rect width="64" height="64" rx="14.4" fill="url(#bg)"></rect>
+  <circle cx="32" cy="32" r="31.0" fill="none" stroke="rgba(61,232,138,0.13)" stroke-width="1.2"></circle>
+  <circle cx="32" cy="32" r="25.9" fill="none" stroke="rgba(61,232,138,0.26)" stroke-width="1.2"></circle>
+  <circle cx="32" cy="32" r="20.8" fill="none" stroke="rgba(61,232,138,0.42)" stroke-width="1.2"></circle>
+  <circle cx="32" cy="32" r="15.7" fill="none" stroke="rgba(61,232,138,0.62)" stroke-width="1.2"></circle>
+  <circle cx="32" cy="32" r="9.6" fill="url(#orb)"></circle>
+  <circle cx="29.4" cy="29.1" r="4.5" fill="url(#sp)"></circle>
 </svg>
