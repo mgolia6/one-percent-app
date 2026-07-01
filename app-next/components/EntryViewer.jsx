@@ -7,6 +7,7 @@ import LockItIn from './LockItIn'
 import LockItInAurora from './LockItInAurora'
 import QuizAurora from './QuizAurora'
 import ReturnMoment from './ReturnMoment'
+import LockItInTab from './LockItInTab'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -701,18 +702,29 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
 
-            {/* Mode chooser: conversational recall vs. multiple-choice quiz */}
+            {/* Mode chooser — admin gets the reimagined launcher */}
             {mode === 'choose' && !submitted && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 8 }}>
-                <button onClick={() => setMode('chat')} style={{ textAlign: 'left', background: ACCENT, border: 'none', borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#0A0A0A' }}>Lock it in with AI →</div>
-                  <div style={{ fontSize: 11, color: 'rgba(10,10,10,0.7)', marginTop: 3, lineHeight: 1.5 }}>A short back-and-forth — explain it, apply it, defend it.</div>
-                </button>
-                <button onClick={() => setMode('quiz')} style={{ textAlign: 'left', background: 'none', border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: T.text }}>Take the quick quiz</div>
-                  <div style={{ fontSize: 11, color: T.textDim, marginTop: 3, lineHeight: 1.5 }}>3 multiple-choice questions.</div>
-                </button>
-              </div>
+              isAdmin ? (
+                <LockItInTab
+                  entry={entry}
+                  accent={ACCENT}
+                  completed={false}
+                  total={entry.quiz.length}
+                  onPickTutor={() => setMode('chat')}
+                  onPickQuiz={() => setMode('quiz')}
+                />
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 8 }}>
+                  <button onClick={() => setMode('chat')} style={{ textAlign: 'left', background: ACCENT, border: 'none', borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: '#0A0A0A' }}>Lock it in with AI →</div>
+                    <div style={{ fontSize: 11, color: 'rgba(10,10,10,0.7)', marginTop: 3, lineHeight: 1.5 }}>A short back-and-forth — explain it, apply it, defend it.</div>
+                  </button>
+                  <button onClick={() => setMode('quiz')} style={{ textAlign: 'left', background: 'none', border: `1px solid ${T.borderMid}`, borderRadius: 6, padding: '14px 16px', cursor: 'pointer', fontFamily: "'Inter',sans-serif" }}>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: T.text }}>Take the quick quiz</div>
+                    <div style={{ fontSize: 11, color: T.textDim, marginTop: 3, lineHeight: 1.5 }}>3 multiple-choice questions.</div>
+                  </button>
+                </div>
+              )
             )}
 
             {/* Conversational "Lock It In" — admin gets the immersive Aurora treatment */}
@@ -750,6 +762,34 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             )}
 
             {submitted && (
+              isAdmin ? (
+                <>
+                  <LockItInTab
+                    entry={entry}
+                    accent={ACCENT}
+                    userId={userId}
+                    completed
+                    method={mode === 'chat' ? 'tutor' : 'quiz'}
+                    score={displayScore}
+                    total={entry.quiz.length}
+                    keeper={chatKeeper}
+                    hook={chatHook}
+                    onRevisit={() => setTab('morning')}
+                  />
+                  <button onClick={replayInteractive} style={{ display: 'block', margin: '18px auto 0', background: `${ACCENT}14`, border: `1px solid ${ACCENT}55`, borderRadius: 999, padding: '9px 18px', fontSize: 10, letterSpacing: '0.12em', color: ACCENT, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontWeight: 600 }}>
+                    ↻ REPLAY {mode === 'chat' ? 'LOCK IT IN' : 'QUIZ'} (AURORA PREVIEW)
+                  </button>
+                  {showEntryFeedback && (
+                    <PostEntryFeedback
+                      entryNumber={entry.entry}
+                      userId={userId}
+                      accent={ACCENT}
+                      theme={T}
+                      onSubmit={() => { setShowEntryFeedback(false); if (onFeedbackDone) onFeedbackDone(ACCENT) }}
+                    />
+                  )}
+                </>
+              ) : (
               <>
                 <div ref={scoreRef} className={`op-score-box ${scoreBg}`} style={{ border: `2px solid ${scoreBorder}` }}>
                   <div style={{ fontSize: 36, fontWeight: 500, color: scoreColor }}>{displayScore}/3</div>
@@ -862,6 +902,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
 
                 </div>
               </>
+              )
             )}
 
             <div style={{ fontSize: 14, color: T.textMid, borderTop: `1px solid ${T.border}`, paddingTop: 20, marginTop: 20, lineHeight: 1.8, fontStyle: 'italic' }}>{entry.closing}</div>
