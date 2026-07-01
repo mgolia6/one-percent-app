@@ -5,6 +5,7 @@ import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
 import analytics from '@/lib/analytics'
 import LockItIn from './LockItIn'
 import LockItInAurora from './LockItInAurora'
+import QuizAurora from './QuizAurora'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -506,6 +507,43 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     if (onComplete) onComplete({ score: s, timeToQuiz, answers: chatAnswers || { mode: 'chat' } })
   }
 
+  // Completion path for the immersive Quiz Aurora — mirrors handleSubmit.
+  const handleAuroraQuizComplete = ({ score: s, answers: picks }) => {
+    if (submitted) return
+    const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
+    setAnswers(picks || {})
+    setSubmitted(true)
+    if (s >= 2) setShowCelebration(true)
+    if (!feedbackShown.current) {
+      feedbackShown.current = true
+      setShowEntryFeedback(true)
+    }
+    setTimeout(() => scoreRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
+    analytics.quizSubmitted({
+      entryNumber: entry.number,
+      category: entry.category,
+      concept: entry.concept,
+      score: s,
+      maxScore: entry.quiz.length,
+      timeToQuizMs: Date.now() - startTime,
+    })
+    if (onComplete) onComplete({ score: s, timeToQuiz, answers: picks })
+  }
+
+  // Admin-only: re-run the immersive interactive experience on a completed entry
+  // (Aurora only renders when !submitted). Non-destructive — the saved completion
+  // stays; finishing again just re-records the same result.
+  const replayInteractive = () => {
+    setSubmitted(false)
+    setShowCelebration(false)
+    setShowEntryFeedback(false)
+    feedbackShown.current = false
+    if (mode === 'quiz') setAnswers({})
+    if (mode === 'chat') { setChatScore(null); setChatKeeper(null); setChatHook(null) }
+    setTab('evening')
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50)
+  }
+
   const tabs = [
     { id: 'morning', label: 'CONCEPT', icon: BookOpen },
     { id: 'midday', label: 'IN THE WILD', icon: Lightbulb },
@@ -668,8 +706,11 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                 : <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
             )}
 
-            {/* Multiple-choice quiz */}
-            {mode === 'quiz' && (<>
+            {/* Multiple-choice quiz — admin gets the immersive Quiz Aurora */}
+            {mode === 'quiz' && (
+              isAdmin && !submitted ? (
+                <QuizAurora entry={entry} accent={ACCENT} onComplete={handleAuroraQuizComplete} onSwitch={() => setMode('choose')} />
+              ) : (<>
             {entry.quiz.map((q, qi) => (
               <div key={qi} style={{ marginBottom: 28 }}>
                 <div style={{ fontSize: 14, color: T.text, lineHeight: 1.7, marginBottom: 12, fontWeight: 400 }}>{qi + 1}. {q.question}</div>
@@ -689,7 +730,8 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             ))}
 
             {!submitted && <button className="op-submit-btn" onClick={handleSubmit} disabled={!allAnswered}>SUBMIT</button>}
-            </>)}
+            </>)
+            )}
 
             {submitted && (
               <>
@@ -716,6 +758,20 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                     </div>
                   )}
                 </div>
+
+                {/* Admin-only: replay the immersive interactive experience */}
+                {isAdmin && (
+                  <button
+                    onClick={replayInteractive}
+                    style={{
+                      display: 'block', margin: '14px auto 0', background: `${ACCENT}14`, border: `1px solid ${ACCENT}55`,
+                      borderRadius: 999, padding: '9px 18px', fontSize: 10, letterSpacing: '0.12em', color: ACCENT,
+                      cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontWeight: 600,
+                    }}
+                  >
+                    ↻ REPLAY {mode === 'chat' ? 'LOCK IT IN' : 'QUIZ'} (AURORA PREVIEW)
+                  </button>
+                )}
 
                 {/* Post-entry feedback */}
                 {submitted && showEntryFeedback && (
