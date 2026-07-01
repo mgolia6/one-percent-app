@@ -65,11 +65,39 @@ Produce:
 Return ONLY compact JSON, no prose, no code fences:
 {"score":0-3,"recap":"...","hook":"...","keeper_ok":true|false,"keeper_suggested":"..."}`
 
+// For the quiz path (no conversation): generate the canonical keeper + memory hook
+// straight from the concept, so every completion has a keeper to save and a "why it
+// sticks" — parity with the tutor path.
+const SUMMARY_SYSTEM = (entry) => `You are writing two short artifacts for a learner who just finished a multiple-choice quiz on a concept, for a micro-learning app.
+
+${grounding(entry)}
+
+Produce:
+- keeper: the single most important one-sentence takeaway about ${entry.concept} — accurate, concrete, and memorable, ≤22 words. This is the canonical "keep this" line, stored and resurfaced for spaced repetition, so it must be true and substantive.
+- hook: a vivid, concrete, slightly exaggerated mental image or association that makes THIS concept stick (one sentence). Visual and a little surprising — a memory aid, not a definition.
+
+Return ONLY compact JSON, no prose, no code fences:
+{"keeper":"...","hook":"..."}`
+
 export async function POST(req) {
   try {
     const { action, entry, messages, qa } = await req.json()
     if (!entry?.concept) {
       return new Response(JSON.stringify({ error: 'Missing entry' }), { status: 400 })
+    }
+
+    // ── SUMMARY: keeper + hook for the quiz path (no conversation) ──
+    if (action === 'summary') {
+      const msg = await client.messages.create({
+        model: MODEL,
+        max_tokens: 300,
+        system: SUMMARY_SYSTEM(entry),
+        messages: [{ role: 'user', content: `Write the keeper and hook for ${entry.concept}.` }],
+      })
+      const text = (msg.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim()
+      let v
+      try { v = JSON.parse(text.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim()) } catch { v = {} }
+      return new Response(JSON.stringify({ keeper: v.keeper || '', hook: v.hook || '' }), { headers: { 'Content-Type': 'application/json' } })
     }
 
     // ── CLOSE: score + memory hook + keeper check (non-streaming, structured) ──

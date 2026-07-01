@@ -8,6 +8,7 @@ import LockItInAurora from './LockItInAurora'
 import QuizAurora from './QuizAurora'
 import ReturnMoment from './ReturnMoment'
 import LockItInTab from './LockItInTab'
+import SectionFeedback from './SectionFeedback'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -516,6 +517,12 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     if (submitted) return
     const timeToQuiz = Math.round((Date.now() - startTime) / 1000)
     setAnswers(picks || {})
+    // Quiz path has no keeper/hook — generate the canonical keeper + memory hook so
+    // the completed summary and spaced-repetition have them, same as the tutor path.
+    fetch('/api/lock-it-in', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'summary', entry }) })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d) { if (d.keeper) setChatKeeper(d.keeper); if (d.hook) setChatHook(d.hook) } })
+      .catch(() => {})
     setSubmitted(true)
     if (s >= 2) setShowCelebration(true)
     if (isAdmin) setShowReturnMoment(true)
@@ -609,6 +616,16 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           keeper={chatKeeper}
           hook={chatHook}
           onClose={() => setShowReturnMoment(false)}
+        />
+      )}
+
+      {/* Section Feedback sheet — rises after the Return Moment is dismissed (admin) */}
+      {showEntryFeedback && !showReturnMoment && isAdmin && (
+        <SectionFeedback
+          entryNumber={entry.entry}
+          userId={userId}
+          accent={ACCENT}
+          onClose={() => setShowEntryFeedback(false)}
         />
       )}
 
@@ -779,15 +796,6 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
                   <button onClick={replayInteractive} style={{ display: 'block', margin: '18px auto 0', background: `${ACCENT}14`, border: `1px solid ${ACCENT}55`, borderRadius: 999, padding: '9px 18px', fontSize: 10, letterSpacing: '0.12em', color: ACCENT, cursor: 'pointer', fontFamily: "'DM Mono', monospace", fontWeight: 600 }}>
                     ↻ REPLAY {mode === 'chat' ? 'LOCK IT IN' : 'QUIZ'} (AURORA PREVIEW)
                   </button>
-                  {showEntryFeedback && (
-                    <PostEntryFeedback
-                      entryNumber={entry.entry}
-                      userId={userId}
-                      accent={ACCENT}
-                      theme={T}
-                      onSubmit={() => { setShowEntryFeedback(false); if (onFeedbackDone) onFeedbackDone(ACCENT) }}
-                    />
-                  )}
                 </>
               ) : (
               <>
