@@ -1,8 +1,22 @@
 # One Percent — Product Backlog
 **onepercentproductbacklog.md | Living file — updated each session**
-Last updated: 2026-06-30 (Session 4)
+Last updated: 2026-07-01 (Session 5)
 
 This file tracks all non-content work: features, bugs, platform upgrades, infrastructure, and notifications. Content concept candidates live in `onepercentbacklog.md`.
+
+---
+
+## ✅ Shipped 2026-07-01 — Session 5 (favicon/PWA + context-checkpoint hook)
+
+| Item | Notes |
+|---|---|
+| ~~Branded favicon~~ | ✅ `app/icon.svg` neon "1%" on dark tile (design-system colors); `favicon.ico` regenerated; legible to 16px. Replaces stock Next.js icon. |
+| ~~Installable PWA~~ | ✅ `app/manifest.js` (standalone, `#0e141c` theme), `apple-icon.png` (iOS home screen), `public/icon-192/512` + full-bleed maskable, `viewport.themeColor`. Add-to-Home-Screen now branded. Verified vs. Next 16.2.6 docs. |
+| ~~Context Checkpoint hook~~ | ✅ `PreCompact` hook (`.claude/scripts/context-checkpoint.sh`) auto-commits in-flight work to the feature branch (never main) before the ~1M-token window compacts; CLAUDE.md protocol section added. Tested live. |
+| Aurora status check | ⏳ Confirmed NOT in repo or Canva — it's in **Claude design**. Import via share URL (Vercel `import-claude-design-from-url`) when Matthew provides it. |
+
+**Changelog drafted (published=false):** v1.2 "A sharper home screen" (Session-4 visible bits),
+v1.3 "Add One Percent to your home screen" (favicon/install). v1.1 (On This Day) still pending.
 
 ---
 

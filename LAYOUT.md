@@ -1,5 +1,5 @@
 # One Percent — Layout & Design State
-**Last updated:** 2026-06-15
+**Last updated:** 2026-07-01
 
 ---
 
@@ -343,3 +343,10 @@ Content-only session (60 drafts generated; "Why Today" rewritten across live ent
 - **Today / On-Deck cards:** now key off the oldest *uncompleted unlocked* entry (was last catalog entry).
 - **editionId labels:** flat per-category (AI.1–12, etc.) across library/lesson/sources.
 - `/verify` (admin) heavily expanded — see verify-data/SCHEMA.md.
+
+---
+
+## Session 5 (2026-07-01) — No in-app layout changes
+Branded favicon / installable PWA (`app/icon.svg` neon "1%", `favicon.ico`, `apple-icon.png`,
+`app/manifest.js`, maskable/192/512 icons, `viewport.themeColor` `#0e141c`) + a `PreCompact`
+context-checkpoint hook. Browser-chrome + tooling only — no screen/layout changes.

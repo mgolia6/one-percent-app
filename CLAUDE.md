@@ -83,7 +83,7 @@ one-percent-app/
 ├── CLAUDE.md                          ← this file
 ├── State/onepercentstate.md           ← always read first
 ├── Logs/                              ← read latest each session
-├── Directions/                        ← full instructions (v1_38 = current)
+├── Directions/                        ← full instructions (v1_42 = current)
 ├── Backlog/
 │   ├── onepercentbacklog.md           ← content candidates
 │   └── onepercentproductbacklog.md    ← features, bugs, upgrades
@@ -187,5 +187,5 @@ Category accent colors locked — see `.claude/knowledge/design-system.md`
 - `DESIGN-SYSTEM-BRIEF.md` — full-app visual direction (identity-first: lock the language on the lesson view, then roll across every screen)
 - `DESIGN-MOMENTS.md` — active design brief for the reward moments (peak + end), designed inside the locked language
 - `.claude/rules/wrap-protocol.md` — full 10-step wrap checklist
-- `Directions/onepercentinstructions-v1_41.md` — full project instructions (authoritative)
+- `Directions/onepercentinstructions-v1_42.md` — full project instructions (authoritative)
 - `LAYOUT.md` — every layout decision ever made

@@ -1,5 +1,6 @@
 # One Percent — State Snapshot
-**Last updated: 2026-06-30 (Session 4)**
+**Last updated: 2026-07-01 (Session 5)**
+Session 5: shipped a branded **favicon + installable PWA** (neon "1%" icon, `app/manifest.js`, apple/maskable icons, theme-color) and a **Context Checkpoint hook** (`PreCompact` → auto-commits in-flight work to the feature branch before the ~1M-token window compacts; CLAUDE.md protocol added). Confirmed **Aurora is NOT in the repo or Canva** — it's in **Claude design**; will import via its share URL (Vercel `import-claude-design-from-url`) when Matthew has it. Drafted changelog v1.2 + v1.3 (published=false). Full detail: `Logs/onepercentlog2026-07-01.md`.
 Session 4: built /verify into a real verification workstation (per-claim flags, Submit, ⌗ Runs archive, lifecycle states, source tiers/⚠ caveats/📍 locate/copy-search) + verified the 30 rotation drafts (27 PASS, 3 FLAG fixed) + upgraded Finance/Health sources (tier-3 11→1, 6→0; caught real errors) + editionId renumber (flat per category) + Today/On-Deck bug fix + integrated the top action strip + kicked off a GitHub-connected **design-tool** pass (Phase 1 = the "Lock It In" conversational mode, codenamed **Aurora**). Content promotion HELD (interleave-at-end built + ready). Full detail: `Logs/onepercentlog2026-06-30.md`. Session 3: 60 draft lessons + "Why Today" fix. Session 2: On This Day + admin overhaul. Session 1: Lock It In + Keep It Sharp + domain.
 
 ---
@@ -24,8 +25,8 @@ Session 4: built /verify into a real verification workstation (per-claim flags, 
 - **Live at:** **onepercent.mpgink.com** (primary) · one-percent-app.vercel.app (alias, still serves prod)
 - **Auth:** Email/password
 - **Beta status:** Closed beta, ~6 active testers
-- **Total entries live:** 60 (nothing promoted Session 4 — promotion held for interleaved batch)
-- **Last commit:** `c3f3645` — Brief: copy & content ownership (design docs)
+- **Total entries live:** 60 (nothing promoted — promotion held for interleaved batch)
+- **Last commit:** `91a5ce9` — branded favicon + PWA icons/manifest + context-checkpoint hook
 - **Working branch:** `claude/ai-chat-agent-feedback-jx5un9` (== main, all Session-4 work fast-forwarded to main)
 
 ---
@@ -98,7 +99,7 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
   - `verification_submissions` — frozen batches: category, counts, verified_editions jsonb, flagged_claims jsonb, status (pending|processed|promoted).
   - `verification_category_state` — category pk, state (active|submitted|re_review|promoted), promoted_at.
 - **Edge function `send-lockin-review`** (Verify JWT OFF). On This Day generation is a **Next.js route** (`/api/on-this-day`), not an edge function — cron GETs it.
-- **changelog:** v1.0 published; **v1.1 drafted** (On This Day, published=false); **Session-4 changelog NOT yet drafted** (Supabase MCP was down at wrap — draft + insert next session, published=false). Note: Session-4 work is mostly /verify (admin-only) + content prep; little is user-visible yet.
+- **changelog:** v1.0 published; **drafted & awaiting approval (published=false):** v1.1 (On This Day), **v1.2 "A sharper home screen"** (Session-4 visible: Today/On-Deck oldest-incomplete, integrated top bar, natural-language "why I'm here"), **v1.3 "Add One Percent to your home screen"** (Session-5 favicon + install). Publish once Matthew approves wording.
 
 ---
 
@@ -115,6 +116,7 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - **On This Day** — daily history bonus card (Today tab) + `/on-this-day` archive + daily cron + admin backfill. Wikipedia-sourced, Claude-framed, auto-verified. **Live for all users.**
 - **Admin (overhauled):** dark theme, responsive cards, feedback summary + AI summarize + check-in surveys + addressed toggle, admin phone entry, systems strip, bug triage, fixed API-health email bug, analytics proxy.
 - **Single source of truth category registry** (`lib/categories.js`, 10 categories)
+- **Installable PWA** — branded neon "1%" favicon/app icon, `app/manifest.js`, apple + maskable icons, Add-to-Home-Screen (standalone), dark theme-color
 - Dark-first UI, DM Sans + DM Mono
 
 ---
@@ -134,8 +136,10 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - **DESIGN PASS in flight (design tool, GitHub-connected).** Phase 1 = the conversational **Lock It In**
   experience (codenamed **Aurora** in the tool). Identity-first: lock the language on this one
   interaction, then roll across screens (`DESIGN-SYSTEM-BRIEF.md`), moments inside it
-  (`DESIGN-MOMENTS.md`), per the playbook (`WORKING-WITH-CLAUDE-DESIGN.md`). **Aurora not yet pushed to
-  the repo** (no branch/PR/code) — when it lands, review + wire into real `LockItIn`, admin-gated.
+  (`DESIGN-MOMENTS.md`), per the playbook (`WORKING-WITH-CLAUDE-DESIGN.md`). **Aurora confirmed NOT in
+  the repo or Canva (checked Session 5) — it lives in Claude design.** Import path: get the Aurora
+  **share URL** from Claude design → Vercel MCP `import-claude-design-from-url` → review vs. brief →
+  wire into real `LockItIn.jsx`, admin-gated. Waiting on Matthew for the URL.
   **Next design chunk:** the post-lesson **slip-back** (WHAT'S NEXT/Keep-Sharp, closing, sources,
   `ai_prompt`, feedback) — pending user confirm on what "prompt / additional content / feedback" map to.
 - **Add `POSTHOG_PERSONAL_KEY` to Vercel** → lights up the admin Analytics tab. Only open setup item.
@@ -176,7 +180,7 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - State: `State/onepercentstate.md` (this file)
 - On This Day: `app/components/OnThisDay.jsx`, `app/on-this-day/page.js`, `app/api/on-this-day/route.js`
 - Admin: `app/admin/page.js` (+ `app/api/admin/feedback-summary`, `app/api/admin/analytics`, `app/api/health`)
-- Directions: `Directions/onepercentinstructions-v1_41.md` (current)
+- Directions: `Directions/onepercentinstructions-v1_42.md` (current)
 - Drafts (pending verification): `Drafts/new-categories/` + `Drafts/rotation/`
 
 ---
@@ -186,4 +190,5 @@ Entry 061 → **CM** (Communication, CM.9). Rotation needs **re-balancing for 10
 - Four-file sync on entry adds (config, page.js, profile.js, entry JSON)
 - Wrap checklist: log → changelog → state → backlog → LAYOUT → instructions → build → commit → push → confirm
 - Build check (`cd app-next && npm run build`) must be clean before every push
+- **Context Checkpoint** (`PreCompact` hook): before the window compacts, in-flight work auto-commits to the feature branch (never main). Proactively flush open decisions into this file when the session runs long — see CLAUDE.md "Context Checkpoint Protocol"
 - Edge function deploys may be approval-gated in the agent env — Matthew deploys via Supabase dashboard/assistant when needed; remember to set **Verify JWT OFF** for cron-called functions
