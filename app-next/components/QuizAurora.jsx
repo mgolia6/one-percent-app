@@ -42,11 +42,20 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
 
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
+  const fbRef = useRef(null)
   const timers = useRef([])
   const after = (ms, fn) => { timers.current.push(setTimeout(fn, ms)) }
   const clearTimers = () => { timers.current.forEach(clearTimeout); timers.current = [] }
 
   useEffect(() => () => { clearTimers(); cancelAnimationFrame(rafRef.current) }, [])
+
+  // When feedback appears, scroll the "which was right + why" into view so a wrong
+  // answer is never missed (esp. with 4 options on a small screen).
+  useEffect(() => {
+    if (sub !== 'fb') return
+    const t = setTimeout(() => fbRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 90)
+    return () => clearTimeout(t)
+  }, [sub, qi])
 
   const q = Q[qi] || Q[0]
   const fb = sub === 'fb'
@@ -256,8 +265,11 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
               </div>
 
               {fb && (
-                <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid rgba(255,255,255,0.08)', animation: 'qaRise .45s ease both' }}>
-                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, letterSpacing: '0.24em', marginBottom: 8, fontWeight: 500, color: chosen === q.correct ? A : AMBER }}>{chosen === q.correct ? 'CORRECT' : 'NOT QUITE'}</div>
+                <div ref={fbRef} style={{ marginTop: 22, paddingTop: 18, borderTop: `1px solid ${chosen === q.correct ? `rgba(${rgb},0.25)` : `rgba(${AMBER_RGB},0.3)`}`, animation: 'qaRise .45s ease both' }}>
+                  <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10.5, letterSpacing: '0.24em', marginBottom: 8, fontWeight: 600, color: chosen === q.correct ? A : AMBER }}>{chosen === q.correct ? '✓ CORRECT' : '✕ NOT QUITE'}</div>
+                  {chosen !== q.correct && (
+                    <div style={{ fontSize: 13.5, lineHeight: 1.5, color: '#eafff4', marginBottom: 8 }}>The answer: <span style={{ color: A, fontWeight: 600 }}>{q.options[q.correct]}</span></div>
+                  )}
                   <div style={{ fontSize: 14.5, lineHeight: 1.6, color: 'rgba(232,238,245,0.7)' }}>{q.explanation}</div>
                 </div>
               )}
@@ -283,7 +295,13 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
               <canvas ref={canvasRef} style={{ width: 300, height: 216, display: 'block' }} />
               <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 12, letterSpacing: '0.4em', color: perfect ? A : 'rgba(232,238,245,0.5)', opacity: pk >= 3 ? 1 : 0, transform: pk >= 3 ? 'translateY(0)' : 'translateY(8px)', transition: 'opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1)' }}>{peakKicker}</div>
               <div style={{
-                fontSize: 30, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 1.04, marginTop: 12, color: perfect ? '#eafff3' : '#eef3f9',
+                fontSize: 46, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1, marginTop: 8, color: perfect ? '#eafff3' : '#eef3f9',
+                textShadow: perfect ? `0 2px 30px rgba(${rgb},0.5)` : 'none',
+                opacity: pk >= 2 ? 1 : 0, transform: pk >= 2 ? 'translateY(0)' : 'translateY(10px)',
+                transition: 'opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)',
+              }}>{score} <span style={{ color: 'rgba(232,238,245,0.4)', fontWeight: 600 }}>/ {total}</span></div>
+              <div style={{
+                fontSize: 24, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.1, marginTop: 10, color: perfect ? '#eafff3' : '#eef3f9',
                 textShadow: perfect ? (pk >= 3 ? `0 2px 48px rgba(${rgb},0.7), 0 0 22px rgba(${rgb},0.45)` : `0 2px 20px rgba(${rgb},0.25)`) : 'none',
                 opacity: pk >= 2 ? 1 : 0, transform: pk >= 2 ? 'translateY(0) scale(1)' : 'translateY(16px) scale(0.95)',
                 transition: 'opacity .7s ease, transform .85s cubic-bezier(.2,.7,.2,1), text-shadow .7s ease',
