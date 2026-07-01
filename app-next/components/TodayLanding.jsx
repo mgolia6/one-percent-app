@@ -85,14 +85,8 @@ export default function TodayLanding({ firstName, streak = 0, completedCount = 0
         @keyframes tlGlow{0%{transform:translate(-4%,-3%) scale(1)}50%{transform:translate(4%,3%) scale(1.08)}100%{transform:translate(-4%,-3%) scale(1)}}
       `}</style>
 
-      {/* header */}
-      <div style={{ ...rise(0), display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 2px 6px' }}>
-        <Mark size={30} rgb={rgb} accent={A} />
-        <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 600, color: 'rgba(241,246,251,0.85)' }}>{(name || 'M')[0].toUpperCase()}</div>
-      </div>
-
       {/* date + welcome */}
-      <div style={{ ...rise(1), marginTop: 14 }}>
+      <div style={{ ...rise(1), marginTop: 6 }}>
         <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: '0.2em', color: 'rgba(232,238,245,0.4)' }}>{dateLine}</div>
         <div style={{ fontSize: 23, fontWeight: 600, color: '#f6fbff', marginTop: 6 }}>Good {partOfDay}{name ? `, ${name}` : ''}.</div>
       </div>

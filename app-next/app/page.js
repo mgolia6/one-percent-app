@@ -1132,6 +1132,8 @@ export default function HomePage() {
   const [showHowItWorks, setShowHowItWorks] = useState(false)
   const [showWelcome, setShowWelcome] = useState(false)
   const [deepCutOpen, setDeepCutOpen] = useState(false)
+  const [headerMenu, setHeaderMenu] = useState(false)
+  const [fbFabOpen, setFbFabOpen] = useState(false)
   const [welcomeFading, setWelcomeFading] = useState(false)
   const [signingOut, setSigningOut] = useState(false)
   const [showWhatsNew, setShowWhatsNew] = useState(false)
@@ -1636,6 +1638,21 @@ export default function HomePage() {
       {/* Deep Cut FAB — floats above bottom nav on all tabs */}
       <DeepCutFAB onClick={() => setDeepCutOpen(true)} />
 
+      {/* Feedback / bug — floats opposite the Deep Cut FAB (admin) */}
+      {isAdmin && (
+        <div style={{ position: 'fixed', left: 20, bottom: 92, zIndex: 200 }}>
+          {fbFabOpen && (
+            <div style={{ position: 'absolute', bottom: 58, left: 0, background: '#111a24', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 6, minWidth: 156, boxShadow: '0 16px 40px rgba(0,0,0,0.6)' }}>
+              <button onClick={() => { setFbFabOpen(false); setShowFeedback(true) }} style={{ display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: '9px 12px', borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 13.5, color: 'rgba(232,238,245,0.85)' }}>Send feedback</button>
+              <button onClick={() => { setFbFabOpen(false); setShowBug(true) }} style={{ display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: '9px 12px', borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 13.5, color: '#FF4778' }}>Report a bug</button>
+            </div>
+          )}
+          <button onClick={() => setFbFabOpen(v => !v)} aria-label="feedback" style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(26,42,58,0.9)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(232,238,245,0.8)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+          </button>
+        </div>
+      )}
+
       {/* Deep Cut drawer */}
       {deepCutOpen && (
         <DeepCut
@@ -1760,35 +1777,65 @@ export default function HomePage() {
       )}
 
       {/* HEADER */}
-      <div style={S.header} className="op-header">
-        <div style={S.headerTop}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-            <span style={S.wm}>ONE PERCENT</span>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(184,204,0,0.18)', color: '#c8d800', border: '1px solid rgba(184,204,0,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#c8d800', flexShrink: 0 }} />BETA
-              </span>
-              {isAdmin && (
-                <button onClick={() => router.push('/admin')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#00c4ad', border: '1px solid rgba(0,196,173,0.4)', display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
-                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#00c4ad', flexShrink: 0 }} />ADMIN →
-                </button>
+      {isAdmin ? (
+        <div style={S.header} className="op-header">
+          <div style={{ ...S.headerTop, position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <button onClick={() => setHeaderMenu(v => !v)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center' }} aria-label="menu">
+                <svg width="26" height="26" viewBox="0 0 64 64">
+                  <defs><radialGradient id="hdrOrb" cx="42%" cy="38%" r="62%"><stop offset="0%" stopColor="#eafff5" /><stop offset="42%" stopColor={accent} /><stop offset="100%" stopColor={accent} /></radialGradient></defs>
+                  <circle cx="32" cy="32" r="31" fill="none" stroke={`${accent}22`} strokeWidth="1.4" />
+                  <circle cx="32" cy="32" r="25.9" fill="none" stroke={`${accent}44`} strokeWidth="1.4" />
+                  <circle cx="32" cy="32" r="20.8" fill="none" stroke={`${accent}6b`} strokeWidth="1.4" />
+                  <circle cx="32" cy="32" r="15.7" fill="none" stroke={`${accent}9e`} strokeWidth="1.4" />
+                  <circle cx="32" cy="32" r="9.6" fill="url(#hdrOrb)" />
+                  <circle cx="29.4" cy="29.1" r="4.5" fill="rgba(255,255,255,0.7)" />
+                </svg>
+              </button>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 8px', borderRadius: 4, fontWeight: 600, background: 'rgba(184,204,0,0.18)', color: '#c8d800', border: '1px solid rgba(184,204,0,0.4)' }}>BETA</span>
+              <button onClick={() => router.push('/admin')} style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 8px', borderRadius: 4, fontWeight: 600, background: 'rgba(0,196,173,0.12)', color: '#00c4ad', border: '1px solid rgba(0,196,173,0.4)', cursor: 'pointer' }}>ADMIN →</button>
+              {hasUnseenChangelog && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#E0A93D' }} />}
+              {headerMenu && (
+                <div style={{ position: 'absolute', top: 42, left: 0, zIndex: 60, background: '#111a24', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 6, minWidth: 176, boxShadow: '0 20px 44px rgba(0,0,0,0.6)' }}>
+                  {[
+                    { label: hasUnseenChangelog ? 'Changelog •' : 'Changelog', on: () => { router.push('/changelog'); markChangelogSeen() } },
+                    { label: 'How it works', on: () => setShowHowItWorks(true) },
+                    { label: 'About', on: () => router.push('/about') },
+                  ].map(m => (
+                    <button key={m.label} onClick={() => { setHeaderMenu(false); m.on() }} style={{ display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', padding: '9px 12px', borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 13.5, color: 'rgba(232,238,245,0.85)' }}>{m.label}</button>
+                  ))}
+                </div>
               )}
             </div>
+            <button onClick={() => router.push('/profile')} style={S.av}>
+              {profile?.avatar_url ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} /> : <User size={14} strokeWidth={1.5} color="rgba(26,42,58,0.5)" />}
+            </button>
           </div>
-          <button onClick={() => router.push('/profile')} style={S.av}>
-            {profile?.avatar_url ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} /> : <User size={14} strokeWidth={1.5} color="rgba(26,42,58,0.5)" />}
-          </button>
         </div>
-        <div className="action-strip" style={S.actionStrip}>
-          {!isAdmin && (
+      ) : (
+        <div style={S.header} className="op-header">
+          <div style={S.headerTop}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+              <span style={S.wm}>ONE PERCENT</span>
+              <div style={{ display: 'flex', gap: 4 }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.1em', padding: '3px 9px', borderRadius: 4, fontWeight: 600, background: 'rgba(184,204,0,0.18)', color: '#c8d800', border: '1px solid rgba(184,204,0,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#c8d800', flexShrink: 0 }} />BETA
+                </span>
+              </div>
+            </div>
+            <button onClick={() => router.push('/profile')} style={S.av}>
+              {profile?.avatar_url ? <img src={profile.avatar_url} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} /> : <User size={14} strokeWidth={1.5} color="rgba(26,42,58,0.5)" />}
+            </button>
+          </div>
+          <div className="action-strip" style={S.actionStrip}>
             <button style={{ ...S.asBtn, color: '#47FFE8', opacity: dueCount > 0 ? 1 : 0.85 }} onClick={() => router.push('/review')}>REVIEW{dueCount > 0 ? ` ${dueCount}` : ''}</button>
-          )}
-          <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
-          <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
-          <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
-          <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
+            <button style={{ ...S.asBtn, color: hasUnseenChangelog ? '#E0A93D' : undefined }} onClick={() => { router.push('/changelog'); markChangelogSeen() }}>CHANGELOG{hasUnseenChangelog ? ' •' : ''}</button>
+            <button style={S.asBtn} onClick={() => setShowHowItWorks(true)}>INFO</button>
+            <button style={S.asBtn} onClick={() => setShowFeedback(true)}>FEEDBACK</button>
+            <button style={S.asBtnBug} onClick={() => setShowBug(true)}>BUG</button>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="op-desktop-shell" style={{ display: 'flex' }}>
       {/* DESKTOP SIDEBAR */}
