@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { BookOpen, Lightbulb, Award, Flame } from 'lucide-react'
 import analytics from '@/lib/analytics'
 import LockItIn from './LockItIn'
+import LockItInAurora from './LockItInAurora'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -660,9 +661,11 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
               </div>
             )}
 
-            {/* Conversational "Lock It In" */}
+            {/* Conversational "Lock It In" — admin gets the immersive Aurora treatment */}
             {mode === 'chat' && !submitted && (
-              <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
+              isAdmin
+                ? <LockItInAurora entry={entry} accent={ACCENT} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
+                : <LockItIn entry={entry} accent={ACCENT} theme={T} onComplete={handleChatComplete} onSwitch={() => setMode('choose')} />
             )}
 
             {/* Multiple-choice quiz */}
