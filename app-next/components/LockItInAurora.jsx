@@ -54,8 +54,18 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
 
   const qa = useRef([])
   const taRef = useRef(null)
+  const keeperRef = useRef(null)
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
+
+  // Auto-grow a textarea with its content, up to ~40% of the viewport, then scroll.
+  const autosize = (el) => {
+    if (!el) return
+    el.style.height = 'auto'
+    el.style.height = Math.min(el.scrollHeight, Math.round(window.innerHeight * 0.4)) + 'px'
+  }
+  useEffect(() => { autosize(taRef.current) }, [input, mv, phase])
+  useEffect(() => { autosize(keeperRef.current) }, [keeperDraft, payoff])
 
   const speaking = phase === 'coach' || phase === 'coached'
   const thinking = phase === 'thinking'
@@ -326,14 +336,14 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
                   )}
                   <div style={{ display: 'flex', gap: 10, alignItems: 'flex-end' }}>
                     <textarea
-                      ref={taRef} className="lia-ta" rows={2} value={input}
-                      onChange={(e) => setInput(e.target.value)}
+                      ref={taRef} className="lia-ta" rows={1} value={input}
+                      onChange={(e) => { setInput(e.target.value); autosize(e.target) }}
                       onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send() } }}
                       placeholder="Answer in your own words…"
                       style={{
                         flex: 1, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 14,
                         padding: '13px 15px', fontSize: 15, lineHeight: 1.45, color: '#f1f6fb', fontFamily: "'DM Sans',sans-serif",
-                        resize: 'none', boxSizing: 'border-box',
+                        resize: 'none', boxSizing: 'border-box', minHeight: 50, maxHeight: '40vh', overflowY: 'auto',
                       }}
                     />
                     <button onClick={send} style={{
@@ -379,12 +389,12 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
                   <div style={{ fontSize: 11, color: A, marginBottom: 8, lineHeight: 1.5 }}>Tightened this so what you revisit later is accurate — edit it to sound like you.</div>
                 )}
                 <textarea
-                  className="lia-ta" rows={2} value={keeperDraft}
-                  onChange={(e) => { setKeeperDraft(e.target.value); setKeeperChoice('edit') }}
+                  ref={keeperRef} className="lia-ta" rows={1} value={keeperDraft}
+                  onChange={(e) => { setKeeperDraft(e.target.value); setKeeperChoice('edit'); autosize(e.target) }}
                   style={{
                     width: '100%', background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10,
                     padding: '11px 13px', fontSize: 14.5, lineHeight: 1.5, color: '#f1f6fb', fontFamily: "'DM Sans',sans-serif",
-                    resize: 'none', boxSizing: 'border-box',
+                    resize: 'none', boxSizing: 'border-box', minHeight: 48, maxHeight: '30vh', overflowY: 'auto',
                   }}
                 />
                 {result && !eq(result.suggested, result.theirKeeper) && (
