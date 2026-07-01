@@ -9,6 +9,8 @@ import QuizAurora from './QuizAurora'
 import ReturnMoment from './ReturnMoment'
 import LockItInTab from './LockItInTab'
 import SectionFeedback from './SectionFeedback'
+import ConceptTab from './ConceptTab'
+import InTheWildTab from './InTheWildTab'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -652,7 +654,9 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         <div style={{ width: 40, height: 3, background: ACCENT, marginTop: 12 }} />
       </div>
 
-      {/* Tabs */}
+      {/* Tabs — admins work through the lesson sequentially first; the tabs only
+          appear once it's completed (via tutor or quiz). Non-admins keep tabs. */}
+      {(!isAdmin || submitted) && (
       <div style={{ display: 'flex', borderBottom: `1px solid ${T.border}`, marginTop: 20, padding: '0 12px', gap: 4, transition: 'border-color 0.4s ease' }}>
         {tabs.map(t => {
           const Icon = t.icon
@@ -666,12 +670,16 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
           )
         })}
       </div>
+      )}
 
       {/* Content */}
       <div style={{ padding: '24px 24px 0' }} className="fade-in" key={tab}>
 
-        {/* Morning */}
+        {/* Morning / Concept */}
         {tab === 'morning' && (
+          isAdmin ? (
+            <ConceptTab entry={entry} accent={ACCENT} onNext={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'morning', toTab: 'midday' }); setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }} />
+          ) : (
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>THE CONCEPT</div>
             <div style={{ fontSize: 20, color: T.text, lineHeight: 1.5, fontWeight: 400, marginBottom: 20, letterSpacing: '-0.01em' }}>{entry.morning.hook}</div>
@@ -690,10 +698,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             </div>
             <button className="op-next-btn" onClick={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'morning', toTab: 'midday' }); setTab('midday'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>IN THE WILD →</button>
           </div>
+          )
         )}
 
-        {/* Midday */}
+        {/* Midday / In the Wild */}
         {tab === 'midday' && (
+          isAdmin ? (
+            <InTheWildTab entry={entry} accent={ACCENT} onNext={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'midday', toTab: 'evening' }); setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }} />
+          ) : (
           <div>
             <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>IN THE WILD</div>
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, marginBottom: 24 }}>
@@ -712,12 +724,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
             <div style={{ fontSize: 14, color: T.textDim, lineHeight: 1.7, borderTop: `1px solid ${T.border}`, paddingTop: 16, marginBottom: 8 }}>{entry.midday.midday_nudge}</div>
             <button className="op-next-btn" onClick={() => { analytics.tabSwitched({ entryNumber: entry.number, fromTab: 'midday', toTab: 'evening' }); setTab('evening'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>LOCK IT IN →</button>
           </div>
+          )
         )}
 
-        {/* Evening */}
+        {/* Evening / Lock It In */}
         {tab === 'evening' && (
           <div>
-            <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>
+            {/* Redundant title removed for admins — the tab bar / launcher already labels it */}
+            {!isAdmin && <div style={{ fontSize: 10, letterSpacing: '0.12em', marginBottom: 16, fontWeight: 600, textTransform: 'uppercase', color: ACCENT }}>LOCK IT IN</div>}
 
             {/* Mode chooser — admin gets the reimagined launcher */}
             {mode === 'choose' && !submitted && (
