@@ -36,6 +36,18 @@
           }
         ]
       }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/scripts/context-checkpoint.sh\"",
+            "timeout": 60,
+            "statusMessage": "Context checkpoint: saving in-flight work before compaction"
+          }
+        ]
+      }
     ]
   }
 }
