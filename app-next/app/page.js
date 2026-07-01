@@ -2299,7 +2299,7 @@ export default function HomePage() {
             <div style={S.tabPip(!t.route && activeTab === t.id, (!t.route && activeTab === t.id) ? 'rgba(232,238,245,0.9)' : 'transparent')} />
             <div style={{ width: 22, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
               {t.icon}
-              {t.badge > 0 && <span style={{ position: 'absolute', top: -4, right: -7, minWidth: 15, height: 15, padding: '0 4px', borderRadius: 8, background: '#47FFE8', color: '#06212b', fontSize: 9, fontWeight: 700, fontFamily: "'DM Mono', monospace", display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>{t.badge}</span>}
+              {t.badge > 0 && <span style={{ position: 'absolute', top: -4, right: -7, minWidth: 15, height: 15, padding: '0 4px', borderRadius: 8, background: isAdmin ? accent : '#47FFE8', color: '#06140c', fontSize: 9, fontWeight: 700, fontFamily: "'DM Mono', monospace", display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>{t.badge}</span>}
             </div>
             <span style={S.tabLbl(!t.route && activeTab === t.id)}>{t.label}</span>
           </div>
