@@ -6,6 +6,7 @@ import analytics from '@/lib/analytics'
 import LockItIn from './LockItIn'
 import LockItInAurora from './LockItInAurora'
 import QuizAurora from './QuizAurora'
+import ReturnMoment from './ReturnMoment'
 import { enrollLockin, getLockin, removeLockin } from '@/lib/lockins'
 
 function Celebration({ score, accent, onDone }) {
@@ -409,7 +410,7 @@ const THEMES = {
   },
 }
 
-export default function EntryViewer({ entry, onComplete, onBack, userStats, userId, onFeedbackDone, isAdmin = false }) {
+export default function EntryViewer({ entry, onComplete, onBack, userStats, userId, onFeedbackDone, isAdmin = false, streak = 0 }) {
   const [tab, setTab] = useState('morning')
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
@@ -424,6 +425,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const [themeKey, setThemeKey] = useState('morning')
   const [startTime] = useState(Date.now())
   const [promptCopied, setPromptCopied] = useState(false)
+  const [showReturnMoment, setShowReturnMoment] = useState(false) // admin: end-of-session Return Moment (staged, admin-only)
 
   const T = THEMES[themeKey]
   const scoreRef = useRef(null)
@@ -491,6 +493,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     if (chatAnswers?.hook) setChatHook(chatAnswers.hook)
     setSubmitted(true)
     if (s >= 2) setShowCelebration(true)
+    if (isAdmin) setShowReturnMoment(true)
     if (!feedbackShown.current) {
       feedbackShown.current = true
       setShowEntryFeedback(true)
@@ -514,6 +517,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
     setAnswers(picks || {})
     setSubmitted(true)
     if (s >= 2) setShowCelebration(true)
+    if (isAdmin) setShowReturnMoment(true)
     if (!feedbackShown.current) {
       feedbackShown.current = true
       setShowEntryFeedback(true)
@@ -594,6 +598,18 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
       `}</style>
 
       {showCelebration && <Celebration score={score} accent={ACCENT} onDone={() => setShowCelebration(false)} />}
+
+      {/* End-of-session Return Moment (admin-only, staged — sits ahead of the completion screen) */}
+      {showReturnMoment && isAdmin && (
+        <ReturnMoment
+          entry={entry}
+          userId={userId}
+          streak={streak}
+          keeper={chatKeeper}
+          hook={chatHook}
+          onClose={() => setShowReturnMoment(false)}
+        />
+      )}
 
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px 12px', borderBottom: `1px solid ${T.border}`, background: T.headerBg, backdropFilter: 'blur(8px)', position: 'sticky', top: 0, zIndex: 10, transition: 'background 0.6s ease, border-color 0.4s ease' }}>

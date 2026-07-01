@@ -400,6 +400,7 @@ export default function EntryPage() {
         userStats={userStats}
         userId={user?.id}
         isAdmin={profile?.is_admin || false}
+        streak={profile?.current_streak || 0}
         onFeedbackDone={(accent) => {
           setFeedbackAccent(accent || '#47FFE8')
           setShowFeedbackOverlay(true)
