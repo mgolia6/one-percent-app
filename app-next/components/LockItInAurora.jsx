@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 // "Lock It In" — Aurora treatment (design handoff, 2026-07). A full-screen,
 // immersive coached chat: presence orb, three open-text moves with streamed
@@ -40,6 +41,16 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
   const [result, setResult] = useState(null) // { score, recap, hook, keeperOk, theirKeeper, suggested }
   const [keeperDraft, setKeeperDraft] = useState('')
   const [keeperChoice, setKeeperChoice] = useState('yours') // yours | sharper | edit
+
+  // Render full-screen via a portal to <body> so no transformed/overflow ancestor
+  // can clip it; lock background scroll while open.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [])
 
   const qa = useRef([])
   const taRef = useRef(null)
@@ -208,9 +219,9 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
     border: `1px solid ${active ? A : 'rgba(255,255,255,0.1)'}`, color: active ? A : 'rgba(232,238,245,0.6)',
   })
 
-  return (
+  const overlay = (
     <div style={{
-      position: 'fixed', inset: 0, zIndex: 1000, overflow: 'hidden', fontFamily: "'DM Sans',sans-serif",
+      position: 'fixed', inset: 0, zIndex: 2000, overflow: 'hidden', fontFamily: "'DM Sans',sans-serif",
       background: 'radial-gradient(125% 60% at 50% 8%, #16242f 0%, #101b24 44%, #0b1118 100%)',
     }}>
       <style>{`
@@ -392,4 +403,6 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
       </div>
     </div>
   )
+
+  return mounted ? createPortal(overlay, document.body) : null
 }

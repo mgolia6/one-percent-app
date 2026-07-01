@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 
 // "Quiz Aurora" — immersive multiple-choice treatment (design handoff, 2026-07).
 // One question at a time with immediate feedback, an ambient glow that grows with
@@ -29,6 +30,15 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
   const [answers, setAnswers] = useState({}) // { qi: optionIndex }
   const [score, setScore] = useState(0)
   const [pk, setPk] = useState(0) // peak reveal step 0..4
+
+  // Full-screen via portal to <body> so no transformed ancestor clips it; lock scroll.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [])
 
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
@@ -147,8 +157,8 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
     : score === total - 1 ? 'One away. One more rep and it’s yours.'
     : 'A couple slipped. Reps fix this — come back and run it again.'
 
-  return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 1000, overflow: 'hidden', fontFamily: "'DM Sans',sans-serif", background: '#0c1117' }}>
+  const overlay = (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 2000, overflow: 'hidden', fontFamily: "'DM Sans',sans-serif", background: '#0c1117' }}>
       <style>{`
         @keyframes qaDrift{0%{transform:translate(-3%,-2%) scale(1)}50%{transform:translate(3%,2%) scale(1.06)}100%{transform:translate(-3%,-2%) scale(1)}}
         @keyframes qaRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -293,4 +303,6 @@ export default function QuizAurora({ entry, accent = '#3DE88A', onComplete, onSw
       </div>
     </div>
   )
+
+  return mounted ? createPortal(overlay, document.body) : null
 }
