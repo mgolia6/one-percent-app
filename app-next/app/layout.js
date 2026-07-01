@@ -7,6 +7,10 @@ export const metadata = {
   description: 'A daily micro-learning system',
 }
 
+export const viewport = {
+  themeColor: '#0e141c',
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

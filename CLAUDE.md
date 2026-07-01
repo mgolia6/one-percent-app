@@ -65,6 +65,17 @@ Never push without running this protocol first.
 
 ---
 
+## Context Checkpoint Protocol (survives the token limit)
+
+The conversation window (~1M tokens) auto-**compacts** when it fills — it summarizes and continues, it does not hard-stop. Compaction is lossy and the container is ephemeral, so anything not written down can blur or vanish. Protection is enforced two ways:
+
+1. **Automatic (hook).** A `PreCompact` hook (`.claude/scripts/context-checkpoint.sh`, wired in `.claude/settings.json`) fires **just before** any compaction. It commits uncommitted work to the **feature branch** (never `main` — production auto-deploys) as a `WIP context checkpoint` commit and pushes it. This guarantees no code/file loss even if nobody remembers. WIP checkpoints are safe to squash later.
+2. **Manual / soft part (Claude's job).** The hook can't reason. When the window is getting long — or when the checkpoint `systemMessage` prompts it — flush open decisions and mid-task threads into `State/onepercentstate.md` (and a one-liner in the current `Logs/` file), then tell Matthew a checkpoint ran. If uncommitted changes are on `main`, the hook will NOT auto-commit — move them to the feature branch or handle per Push Protocol.
+
+Rule of thumb: **if it's committed+pushed, in a repo file, or in Supabase, compaction can't hurt it.** The only risk is the gap between "decided" and "written down" — close it proactively.
+
+---
+
 ## File Map
 
 ```
