@@ -132,6 +132,9 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
     const suggested = r.keeper_suggested || theirKeeper
     setResult({ score: r.score, recap: r.recap, hook: r.hook, keeperOk: r.keeper_ok !== false, theirKeeper, suggested })
     setKeeperDraft(r.keeper_ok !== false ? theirKeeper : suggested)
+    // If we had to tighten their keeper, default the toggle to the sharper version
+    // so the highlighted tab matches the text that's actually shown.
+    setKeeperChoice(r.keeper_ok !== false ? 'yours' : 'sharper')
   }, [phase, input, mv, entry, concept])
 
   const onContinue = () => {
@@ -395,7 +398,7 @@ export default function LockItInAurora({ entry, accent = '#3DE88A', onComplete, 
 
                   <div style={{ width: '100%', background: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 14, padding: '15px 16px', marginTop: 11 }}>
                     <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.16em', fontWeight: 500, color: 'rgba(232,238,245,0.5)', marginBottom: 9 }}>YOUR KEEPER — saved to revisit</div>
-                    {!result.keeperOk && (
+                    {!result.keeperOk && keeperChoice === 'sharper' && (
                       <div style={{ fontSize: 11, color: A, marginBottom: 8, lineHeight: 1.5 }}>Tightened this so what you revisit later is accurate — edit it to sound like you.</div>
                     )}
                     <textarea
