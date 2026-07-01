@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import { TOTAL_ENTRIES } from '@/lib/config'
 import { CATEGORIES } from '@/lib/categories'
+import { enablePush, sendTestPush, pushSupported, isStandalone } from '@/lib/push'
 
 const ACCENT = '#33506e'
 const CYAN = '#47FFE8'
@@ -166,6 +167,8 @@ export default function AdminPage() {
   const [aiSummary, setAiSummary] = useState({ state: 'idle', text: '' }) // idle | loading | done | error
   const [phoneEdits, setPhoneEdits] = useState({})
   const [phoneSaving, setPhoneSaving] = useState(null)
+  const [pushState, setPushState] = useState('idle') // idle | enabling | enabled | sending | sent | error
+  const [pushMsg, setPushMsg] = useState('')
 
   useEffect(() => {
     async function init() {
@@ -229,6 +232,39 @@ export default function AdminPage() {
       setPhoneEdits(prev => { const n = { ...prev }; delete n[userId]; return n })
     }
     setPhoneSaving(null)
+  }
+
+  const PUSH_ERR = {
+    unsupported: 'This browser/device does not support web push.',
+    'missing-vapid': 'VAPID public key not set — add NEXT_PUBLIC_VAPID_PUBLIC_KEY in Vercel and redeploy.',
+    denied: 'Notifications were blocked. Enable them for this site in settings, then try again.',
+    'not-subscribed': 'Enable notifications first.',
+  }
+  function pushErrText(msg) {
+    const code = String(msg || '').split(':')[0]
+    return PUSH_ERR[code] || String(msg || 'Something went wrong.')
+  }
+
+  async function doEnablePush() {
+    setPushState('enabling'); setPushMsg('')
+    try {
+      await enablePush()
+      setPushState('enabled')
+      setPushMsg('Subscribed on this device. Send yourself a test below.')
+    } catch (e) {
+      setPushState('error'); setPushMsg(pushErrText(e?.message))
+    }
+  }
+
+  async function doSendTestPush() {
+    setPushState('sending'); setPushMsg('')
+    try {
+      await sendTestPush()
+      setPushState('sent')
+      setPushMsg('Test sent — it should land within a few seconds.')
+    } catch (e) {
+      setPushState('error'); setPushMsg(pushErrText(e?.message))
+    }
   }
 
   async function toggleReviewed(id, current) {
@@ -1201,6 +1237,45 @@ export default function AdminPage() {
         {/* ── EMAIL TAB ── */}
         {tab === 'email' && (
           <div>
+
+            {/* PUSH NOTIFICATIONS (BETA) */}
+            <SectionLabel>PUSH NOTIFICATIONS (BETA)</SectionLabel>
+            <Card style={{ marginBottom: 20, borderTop: `3px solid ${CYAN}` }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#e8eef5', marginBottom: 6 }}>Web Push — test on your own device</div>
+              <div style={{ fontSize: 13, color: 'rgba(232,238,245,0.6)', lineHeight: 1.6, marginBottom: 14 }}>
+                Foundation pass: enable notifications, subscribe this device, and send yourself a test.
+                Wiring push into the daily/lock-in reminder crons comes next.
+                <br /><strong style={{ color: 'rgba(232,238,245,0.8)' }}>iOS:</strong> you must first install the app (Share → Add to Home Screen) and open it from the icon — iOS only delivers push to an installed PWA.
+              </div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(232,238,245,0.4)', letterSpacing: '0.08em', marginBottom: 14 }}>
+                {typeof window !== 'undefined' && !pushSupported()
+                  ? 'THIS BROWSER: PUSH UNSUPPORTED'
+                  : (typeof window !== 'undefined' && !isStandalone() ? 'NOT INSTALLED — ENABLE STILL WORKS ON DESKTOP/ANDROID; INSTALL FIRST ON iOS' : 'INSTALLED PWA ✓')}
+              </div>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                <button
+                  onClick={doEnablePush}
+                  disabled={pushState === 'enabling'}
+                  style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', padding: '10px 20px', borderRadius: 8, border: `1px solid ${CYAN}40`, background: `${CYAN}12`, color: CYAN, cursor: 'pointer', fontWeight: 600 }}
+                >
+                  {pushState === 'enabling' ? 'ENABLING…' : (pushState === 'enabled' || pushState === 'sent' || pushState === 'sending' ? 'RE-ENABLE' : 'ENABLE ON THIS DEVICE')}
+                </button>
+                {(pushState === 'enabled' || pushState === 'sending' || pushState === 'sent') && (
+                  <button
+                    onClick={doSendTestPush}
+                    disabled={pushState === 'sending'}
+                    style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: '0.12em', padding: '10px 20px', borderRadius: 8, border: 'none', background: CYAN, color: '#0a1420', cursor: 'pointer', fontWeight: 700 }}
+                  >
+                    {pushState === 'sending' ? 'SENDING…' : 'SEND ME A TEST'}
+                  </button>
+                )}
+              </div>
+              {pushMsg && (
+                <div style={{ marginTop: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.04em', color: pushState === 'error' ? PINK : (pushState === 'sent' || pushState === 'enabled' ? CYAN : 'rgba(232,238,245,0.5)') }}>
+                  {pushMsg}
+                </div>
+              )}
+            </Card>
 
             {/* PASSWORD RESET BLAST */}
             <SectionLabel>AUTH MIGRATION</SectionLabel>
