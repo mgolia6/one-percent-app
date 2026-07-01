@@ -73,12 +73,12 @@ export default function TodayLanding({ firstName, streak = 0, completedCount = 0
   const primaryBtn = {
     width: '100%', appearance: 'none', cursor: 'pointer', padding: 16, borderRadius: 14, border: 'none', marginTop: 18,
     fontFamily: "'DM Sans',sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: '0.05em', color: '#06140c',
-    background: `linear-gradient(180deg, #6cffb0, ${A} 60%, #2fc676)`, boxShadow: `0 12px 30px -8px rgba(${rgb},0.5), inset 0 1px 0 rgba(255,255,255,0.5)`,
+    background: `linear-gradient(180deg, ${A}f2, ${A} 60%, ${A}cc)`, boxShadow: `0 12px 30px -8px rgba(${rgb},0.5), inset 0 1px 0 rgba(255,255,255,0.5)`,
   }
   const parts = ['CONCEPT', 'IN THE WILD', 'LOCK IT IN']
 
   return (
-    <div style={{ fontFamily: "'DM Sans',sans-serif", padding: '6px 22px 40px', position: 'relative', zIndex: 2 }}>
+    <div style={{ fontFamily: "'DM Sans',sans-serif", padding: '6px 22px 120px', position: 'relative', zIndex: 2 }}>
       <style>{`
         @keyframes tlRise{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
         @keyframes tlPulse{0%,100%{opacity:0.5}50%{opacity:1}}
@@ -123,7 +123,7 @@ export default function TodayLanding({ firstName, streak = 0, completedCount = 0
                 <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.5)' }}>{String(todayEntry.category || '').toUpperCase()} · {todayEntry.editionId}</span>
                 <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 9, letterSpacing: '0.12em', color: A, animation: 'tlPulse 2.4s ease-in-out infinite' }}>● {todayCompleted ? 'DONE' : 'UNLOCKED'}</span>
               </div>
-              <div style={{ fontSize: 35, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.05, color: '#f6fbff' }}>{todayEntry.concept}</div>
+              <div style={{ fontSize: todayEntry.concept && todayEntry.concept.length > 16 ? 27 : 33, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.08, color: '#f6fbff' }}>{todayEntry.concept}</div>
               {teaser && <div style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.5, color: 'rgba(232,238,245,0.6)', marginTop: 10 }}>{teaser}</div>}
               <div style={{ display: 'flex', gap: 8, marginTop: 18 }}>
                 {parts.map((p, i) => (

@@ -18,11 +18,20 @@ function hexToRgb(hex) {
 export default function IgnitionBoot({ firstName, streak = 0, todayEntry, accent = '#3DE88A', onDismiss }) {
   const A = accent
   const rgb = hexToRgb(accent)
+  const [dr, dg, db] = rgb.split(',').map(Number)
+  const darkAccent = `rgb(${Math.round(dr * 0.42)},${Math.round(dg * 0.42)},${Math.round(db * 0.42)})`
   const name = firstName && firstName !== 'there' ? firstName : ''
   const [teaser, setTeaser] = useState('')
   const [igniting, setIgniting] = useState(false)
   const [now, setNow] = useState(0)
   const done = useRef(false)
+  const nameStr = name || 'there'
+  const [typedName, setTypedName] = useState('')
+  useEffect(() => {
+    let i = 0
+    const id = setInterval(() => { i++; setTypedName(nameStr.slice(0, i)); if (i >= nameStr.length) clearInterval(id) }, 60)
+    return () => clearInterval(id)
+  }, [nameStr])
 
   useEffect(() => {
     setNow(Date.now())
@@ -64,31 +73,26 @@ export default function IgnitionBoot({ firstName, streak = 0, todayEntry, accent
         @keyframes ibCharge{from{stroke-dashoffset:194.78}to{stroke-dashoffset:0}}
         @keyframes ibGlow{0%,100%{opacity:0.5;transform:scale(0.96)}50%{opacity:0.85;transform:scale(1.04)}}
         @keyframes ibPulse{0%,100%{opacity:0.4}50%{opacity:0.85}}
-        @keyframes ibIgnite{0%{transform:translate(-50%,-50%) scale(.3);opacity:.9}20%{transform:translate(-50%,-50%) scale(1.55);opacity:1}44%{transform:translate(-50%,-50%) scale(1.66);opacity:1}100%{transform:translate(-118px,-315px) scale(.05);opacity:0}}
+        @keyframes ibCaret{0%,49%{opacity:1}50%,100%{opacity:0}}
+        @keyframes ibMarkIn{from{opacity:0;transform:scale(0.72)}to{opacity:1;transform:scale(1)}}
+        @keyframes ibIgnite{0%{transform:translate(-50%,-50%) scale(.2);opacity:.95}22%{transform:translate(-50%,-50%) scale(1.55);opacity:1}48%{transform:translate(-50%,-50%) scale(1.66);opacity:1}100%{transform:translate(-50%,-50%) scale(.02);opacity:0}}
       `}</style>
 
-      {/* status strip */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', animation: 'ibRise .6s cubic-bezier(.2,.7,.2,1) both' }}>
-        <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: '0.16em', color: 'rgba(232,238,245,0.32)' }}>{timeStr}</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '6px 11px', borderRadius: 100, background: `rgba(${GOLD_RGB},0.1)`, border: `1px solid rgba(${GOLD_RGB},0.3)` }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD, boxShadow: `0 0 8px rgba(${GOLD_RGB},0.9)` }} />
-          <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: '0.1em', color: GOLD }}>{streak} DAY STREAK</span>
-        </div>
-      </div>
-
-      {/* greeting */}
-      <div style={{ marginTop: 40, animation: 'ibRise .6s cubic-bezier(.2,.7,.2,1) .1s both' }}>
+      {/* greeting — typed; header/status strip dropped per feedback */}
+      <div style={{ marginTop: 8 }}>
         <div style={{ fontSize: 17, fontWeight: 300, fontStyle: 'italic', color: 'rgba(232,238,245,0.55)' }}>Welcome back,</div>
-        <div style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.03em', color: '#f6fbff', marginTop: 4 }}>{name || 'there'}.</div>
+        <div style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.03em', color: '#f6fbff', marginTop: 4, minHeight: 52 }}>
+          {typedName}{typedName.length >= nameStr.length ? '.' : <span style={{ display: 'inline-block', width: 3, height: 34, background: A, marginLeft: 3, verticalAlign: '-4px', animation: 'ibCaret .8s steps(1) infinite' }} />}
+        </div>
       </div>
 
       {/* the Begin mark */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <button onClick={ignite} style={{ position: 'relative', width: 200, height: 200, appearance: 'none', border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}>
+        <button onClick={ignite} style={{ position: 'relative', width: 200, height: 200, appearance: 'none', border: 'none', background: 'none', cursor: 'pointer', padding: 0, animation: 'ibMarkIn .9s cubic-bezier(.2,.7,.2,1) both' }}>
           <div style={{ position: 'absolute', inset: '10%', borderRadius: '50%', background: `radial-gradient(circle, rgba(${rgb},0.35), transparent 68%)`, filter: 'blur(18px)', animation: 'ibGlow 3.6s ease-in-out infinite' }} />
           <svg width="200" height="200" viewBox="0 0 64 64" style={{ position: 'relative' }}>
             <defs>
-              <radialGradient id="ibOrb" cx="42%" cy="38%" r="62%"><stop offset="0%" stopColor="#eafff5" /><stop offset="42%" stopColor={A} /><stop offset="100%" stopColor="#178a4f" /></radialGradient>
+              <radialGradient id="ibOrb" cx="42%" cy="38%" r="62%"><stop offset="0%" stopColor="#eafff5" /><stop offset="42%" stopColor={A} /><stop offset="100%" stopColor={darkAccent} /></radialGradient>
             </defs>
             <circle cx="32" cy="32" r="31" fill="none" stroke={`rgba(${rgb},0.13)`} strokeWidth="1.1" />
             <circle cx="32" cy="32" r="25.9" fill="none" stroke={`rgba(${rgb},0.26)`} strokeWidth="1.1" />
@@ -116,7 +120,7 @@ export default function IgnitionBoot({ firstName, streak = 0, todayEntry, accent
       {igniting && (
         <div style={{
           position: 'absolute', left: '50%', top: '46%', width: 620, height: 620, borderRadius: '50%', pointerEvents: 'none',
-          mixBlendMode: 'screen', background: 'radial-gradient(circle, #ffffff 0%, #c9ffe4 24%, #4dffb0 46%, transparent 70%)',
+          mixBlendMode: 'screen', background: `radial-gradient(circle, #ffffff 0%, rgba(${rgb},0.92) 34%, rgba(${rgb},0.5) 52%, transparent 72%)`,
           animation: 'ibIgnite 1.15s cubic-bezier(.45,.03,.25,1) forwards',
         }} />
       )}

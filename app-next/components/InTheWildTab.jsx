@@ -21,7 +21,7 @@ export default function InTheWildTab({ entry, accent = '#3DE88A', onNext }) {
       {/* Reframe hero */}
       <div style={{ minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'center', animation: 'iwRise .6s cubic-bezier(.2,.7,.2,1) both' }}>
         <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: '0.24em', color: A }}>IN THE WILD</div>
-        <div style={{ fontSize: 29, fontWeight: 600, lineHeight: 1.28, letterSpacing: '-0.02em', color: '#f1f6fb', marginTop: 16 }}>{md.reframe}</div>
+        <div style={{ fontSize: 22, fontWeight: 600, lineHeight: 1.34, letterSpacing: '-0.02em', color: '#f1f6fb', marginTop: 16 }}>{md.reframe}</div>
         <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 9.5, letterSpacing: '0.18em', color: 'rgba(232,238,245,0.4)', marginTop: 26 }}>SEE IT IN THE REAL WORLD ↓</div>
       </div>
 
@@ -65,7 +65,7 @@ export default function InTheWildTab({ entry, accent = '#3DE88A', onNext }) {
           <button onClick={onNext} style={{
             width: '100%', appearance: 'none', cursor: 'pointer', padding: 16, borderRadius: 15, border: 'none',
             fontFamily: "'DM Sans',sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: '0.04em', color: '#06140c',
-            background: `linear-gradient(180deg, #6cffb0, ${A} 60%, #2fc676)`,
+            background: `linear-gradient(180deg, ${A}f2, ${A} 60%, ${A}cc)`,
             boxShadow: `0 12px 30px -8px rgba(${rgb},0.5), inset 0 1px 0 rgba(255,255,255,0.5)`,
           }}>LOCK IT IN →</button>
         </div>

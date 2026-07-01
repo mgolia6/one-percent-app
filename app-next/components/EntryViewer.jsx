@@ -571,7 +571,7 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
   const scoreSub = displayScore === 3 ? "You've got this one locked in." : displayScore === 2 ? 'One away. Come back and get that third.' : 'The concepts will stick with more reps. Come back.'
 
   return (
-    <div style={{ background: isAdmin ? 'radial-gradient(125% 58% at 50% 4%, #16242f 0%, #101b24 44%, #0b1118 100%)' : T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, position: 'relative', transition: 'background 0.6s ease, color 0.4s ease' }}>
+    <div style={{ background: isAdmin ? 'radial-gradient(125% 58% at 50% 4%, #16242f 0%, #101b24 44%, #0b1118 100%)' : T.bg, minHeight: '100vh', fontFamily: "'Inter',sans-serif", color: T.text, maxWidth: 720, margin: '0 auto', paddingBottom: 80, position: 'relative', overflowX: 'hidden', transition: 'background 0.6s ease, color 0.4s ease' }}>
       {isAdmin && <div style={{ position: 'absolute', left: '-20%', top: 0, width: '140%', height: '46%', pointerEvents: 'none', zIndex: 0, background: `radial-gradient(50% 60% at 50% 26%, ${ACCENT}1f, transparent 66%)`, filter: 'blur(14px)' }} />}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
@@ -635,8 +635,14 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px 12px', borderBottom: `1px solid ${T.border}`, background: T.headerBg, backdropFilter: 'blur(8px)', position: 'sticky', top: 0, zIndex: 10, transition: 'background 0.6s ease, border-color 0.4s ease' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 11, letterSpacing: '0.15em', color: T.text, fontWeight: 600, transition: 'color 0.4s ease' }}>ONE PERCENT</span>
-          <span style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', fontWeight: 500, transition: 'color 0.4s ease' }}>#{entry.entry}</span>
+          {isAdmin ? (
+            <button onClick={onBack} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: '0.14em', color: 'rgba(232,238,245,0.55)' }}>← LIBRARY</button>
+          ) : (
+            <>
+              <span style={{ fontSize: 11, letterSpacing: '0.15em', color: T.text, fontWeight: 600, transition: 'color 0.4s ease' }}>ONE PERCENT</span>
+              <span style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', fontWeight: 500, transition: 'color 0.4s ease' }}>#{entry.entry}</span>
+            </>
+          )}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           {userStats?.streak > 0 && <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, fontSize: 11, color: T.textMid, fontWeight: 500, transition: 'color 0.4s ease' }}><Flame size={11} strokeWidth={1.5} />{userStats.streak}</span>}

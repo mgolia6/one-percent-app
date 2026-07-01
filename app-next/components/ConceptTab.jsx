@@ -24,7 +24,7 @@ export default function ConceptTab({ entry, accent = '#3DE88A', onNext }) {
       <div style={rise()}>
         <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: '0.2em' }}>
           <span style={{ color: A }}>{String(entry.categoryTag || entry.category || '').toUpperCase()}</span>
-          {day != null && <span style={{ color: 'rgba(232,238,245,0.4)' }}> · DAY {String(day).padStart(2, '0')}</span>}
+          {entry.editionId && <span style={{ color: 'rgba(232,238,245,0.4)' }}> · {entry.editionId}</span>}
         </div>
         <div style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.03em', lineHeight: 1.05, color: '#f1f6fb', marginTop: 8 }}>{entry.concept}</div>
       </div>
@@ -67,7 +67,7 @@ export default function ConceptTab({ entry, accent = '#3DE88A', onNext }) {
           <button onClick={onNext} style={{
             width: '100%', appearance: 'none', cursor: 'pointer', padding: 16, borderRadius: 15, border: 'none',
             fontFamily: "'DM Sans',sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: '0.04em', color: '#06140c',
-            background: `linear-gradient(180deg, #6cffb0, ${A} 60%, #2fc676)`,
+            background: `linear-gradient(180deg, ${A}f2, ${A} 60%, ${A}cc)`,
             boxShadow: `0 12px 30px -8px rgba(${rgb},0.5), inset 0 1px 0 rgba(255,255,255,0.5)`,
           }}>IN THE WILD →</button>
         </div>
