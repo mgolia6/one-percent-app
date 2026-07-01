@@ -643,16 +643,19 @@ export default function EntryViewer({ entry, onComplete, onBack, userStats, user
         </div>
       </div>
 
-      {/* Datebar */}
-      <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', padding: '8px 24px', borderBottom: `1px solid ${T.border}`, fontWeight: 500, transition: 'color 0.4s ease, border-color 0.4s ease' }}>
-        {entry.editionId} · {entry.concept}
-      </div>
-
-      {/* Concept */}
-      <div style={{ padding: '28px 24px 0' }}>
-        <div style={{ fontSize: 32, fontWeight: 600, color: T.text, letterSpacing: '-0.02em', lineHeight: 1.1, transition: 'color 0.4s ease' }}>{entry.concept}</div>
-        <div style={{ width: 40, height: 3, background: ACCENT, marginTop: 12 }} />
-      </div>
+      {/* Datebar + big concept title — hidden for admins (each reimagined tab owns
+          its own header, so this would duplicate the title). */}
+      {!isAdmin && (
+        <>
+          <div style={{ fontSize: 10, color: T.textFaint, letterSpacing: '0.1em', padding: '8px 24px', borderBottom: `1px solid ${T.border}`, fontWeight: 500, transition: 'color 0.4s ease, border-color 0.4s ease' }}>
+            {entry.editionId} · {entry.concept}
+          </div>
+          <div style={{ padding: '28px 24px 0' }}>
+            <div style={{ fontSize: 32, fontWeight: 600, color: T.text, letterSpacing: '-0.02em', lineHeight: 1.1, transition: 'color 0.4s ease' }}>{entry.concept}</div>
+            <div style={{ width: 40, height: 3, background: ACCENT, marginTop: 12 }} />
+          </div>
+        </>
+      )}
 
       {/* Tabs — admins work through the lesson sequentially first; the tabs only
           appear once it's completed (via tutor or quiz). Non-admins keep tabs. */}
